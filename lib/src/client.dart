@@ -1,12 +1,8 @@
-import 'dart:collection';
-
-import 'package:dart_holodex_api/src/models.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:enum_to_string/enum_to_string.dart';
 
-import '../dart_holodex_api.dart';
 import 'client_base.dart';
-import 'enums.dart';
+import '../dart_holodex_api.dart';
 
 class HolodexClient extends BaseHolodexClient {
   /// Creates a new instance of [HolodexClient]
@@ -152,10 +148,7 @@ class HolodexClient extends BaseHolodexClient {
 
     final dio.Response response = await get(path: '/videos', params: params);
 
-    // TODO: Test if works
     final List list = response.data['items'];
-    print(response.data['items']);
-    
     return list.map((video) => VideoFull.fromMap(video)).toList(); // Returns as `List<Video>`
   }
   
