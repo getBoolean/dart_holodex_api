@@ -36,7 +36,17 @@ to `/example` folder.
 var client = HolodexClient(apiKey: apiKey);
 
 // Get one video and print it
-final VideoFull video = await client.getVideo('_1OIrkKLMJM');
+final VideoFull video = await client.getVideo('Gx_GPwpyLxw', includes: [
+    IncludesData.channelStats,
+    IncludesData.clips,
+    IncludesData.description,
+    IncludesData.liveInfo,
+    IncludesData.mentions,
+    IncludesData.refers,
+    IncludesData.simulcasts,
+    IncludesData.songs,
+    IncludesData.sources,
+]);
 print(video.toString());
 ```
 

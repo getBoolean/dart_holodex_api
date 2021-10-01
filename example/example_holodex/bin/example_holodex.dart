@@ -14,7 +14,15 @@ void main(List<String> arguments) async {
 
   // Get one video and print it
   final VideoFull video = await client.getVideo('Gx_GPwpyLxw', includes: [
-    IncludesData.description
+    IncludesData.channelStats,
+    IncludesData.clips,
+    IncludesData.description,
+    IncludesData.liveInfo,
+    IncludesData.mentions,
+    IncludesData.refers,
+    IncludesData.simulcasts,
+    IncludesData.songs,
+    IncludesData.sources,
   ]);
   print(video.toString());
 
