@@ -24,6 +24,13 @@ Use this plugin in your Flutter app to:
 ## Getting started
 
 - Get an API key at [holodex.net](holodex.net), [instructions here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)
+- Add this package to your pubspec.yaml under dependencies
+
+```yaml
+dependencies:
+    dart_holodex_api:
+        git: https://github.com/getBoolean/dart_holodex_api
+```
 
 ## Usage
 
