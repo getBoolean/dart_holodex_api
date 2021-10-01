@@ -1,0 +1,1743 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2.0",
+    "title": "Holodex/HoloAPI V2",
+    "description": "Holodex Public API. Successor to the HoloAPI v1",
+    "contact": {}
+  },
+  "host": "holodex.net",
+  "basePath": "/api/v2",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/live": {
+      "get": {
+        "description": "This is somewhat similar to calling `/videos`. \n\nHowever, this endpoint imposes these default values on the query parameters: You can choose to override them by providing your own values.\n  \n    status: [STATUSES.LIVE, STATUSES.UPCOMING].join(','),\n    type: 'stream',\n    sort: 'available_at',\n    order: 'asc',\n    max_upcoming_hours: 48,\n    limit: 9999,\n    include: live_info + query's include\n  ",
+        "summary": "Query Live and Upcoming Videos",
+        "operationId": "QueryLiveandUpcomingVideos",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "channel_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter by video uploader channel id"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "enum": [
+              "new",
+              "upcoming",
+              "live",
+              "past",
+              "missing"
+            ],
+            "type": "string",
+            "description": "Filter by video status"
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "default": "all",
+            "type": "string",
+            "description": "A comma separated list of language codes to filter channels/clips, official streams do not follow this parameter"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "enum": [
+              "stream",
+              "clip"
+            ],
+            "type": "string",
+            "description": "Filter by type of video"
+          },
+          {
+            "name": "topic",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter by video topic id"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "clips",
+                "refers",
+                "sources",
+                "simulcasts",
+                "mentions",
+                "description",
+                "live_info",
+                "channel_stats",
+                "songs"
+              ]
+            },
+            "description": "Comma separated list of extra info for video"
+          },
+          {
+            "name": "org",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter by clips that feature the org's talent or videos posted by the org's talent"
+          },
+          {
+            "name": "mentioned_channel_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "default": "available_at",
+            "type": "string",
+            "description": "Sort by any returned video field"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "default": "desc",
+            "type": "string",
+            "description": "Order by ascending or descending"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "default": 25,
+            "type": "integer",
+            "format": "int32",
+            "maximum": 50.0,
+            "exclusiveMaximum": false,
+            "description": "Results limit"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "default": 0,
+            "type": "integer",
+            "format": "int32",
+            "description": "Offset results"
+          },
+          {
+            "name": "paginated",
+            "in": "query",
+            "required": false,
+            "default": "<empty>",
+            "type": "string",
+            "description": "If paginated is set to any non-empty value, return an object with total, otherwise returns an array."
+          },
+          {
+            "name": "max_upcoming_hours",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double",
+            "description": "Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "A single Youtube Video ID. If Specified, only this video can be returned (may be filtered out by other conditions though)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "default": ""
+            },
+            "examples": {
+              "application/json": "[{\"available_at\":\"2021-05-13T19:59:59.000Z\",\"channel\":{\"english_name\":\"Ninomae Ina’nis\",\"id\":\"UCMwGHR0BTZuLsmjY_NT5Pwg\",\"name\":\"Ninomae Ina'nis Ch. hololive-EN\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwng37V0l-NwF3bu7QA4XmOP5EZFwk5zJE-78OHP9=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"89rZZO10m0k\",\"live_viewers\":12685,\"published_at\":\"2021-05-13T13:47:09.000Z\",\"start_actual\":\"2021-05-13T19:59:59.000Z\",\"start_scheduled\":\"2021-05-13T20:00:00.000Z\",\"status\":\"live\",\"title\":\"【Minecraft】 waHHHH\",\"topic_id\":\"minecraft\",\"type\":\"stream\"},{\"available_at\":\"2021-05-13T23:00:00.000Z\",\"channel\":{\"english_name\":\"Kishido Temma\",\"id\":\"UCGNI4MENvnsymYjKiZwv9eg\",\"name\":\"Temma Ch. 岸堂天真\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwnjek7CeN83n90k6OaFaezz0vdgXe5RYaxl_nPaX=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"CPD_nW0rcnk\",\"published_at\":\"2021-05-13T16:48:21.000Z\",\"start_scheduled\":\"2021-05-13T23:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"【STUDY】New Studying EN Application!!新しい英語勉強ソフトやってみる【岸堂天真/ホロスターズ】\",\"topic_id\":\"english_only\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T03:00:00.000Z\",\"channel\":{\"english_name\":\"Shirogane Noel\",\"id\":\"UCdyqAaZDKHXg4Ahi7VENThQ\",\"name\":\"Noel Ch. 白銀ノエル\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwnijLF2X1YBVQo3rClt7ub29cYM7OzpmRmliaGbw=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"uAGM8d4-X2U\",\"published_at\":\"2021-05-13T17:17:06.000Z\",\"start_scheduled\":\"2021-05-14T03:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"Let’s study English together📝超絶久々のDuolingo！【白銀ノエル/ホロライブ】\",\"topic_id\":\"english_only\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T10:00:00.000Z\",\"channel\":{\"english_name\":\"Kanade Izuru\",\"id\":\"UCZgOv3YDEs-ZnZWDYVwJdmA\",\"name\":\"Izuru Ch. 奏手イヅル\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwnhNA5NPSYpFiMba_lmeNqYZJ4bVtZKf-5g5YlxGcA=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":197,\"id\":\"d0NXC7POoUs\",\"published_at\":\"2021-05-12T03:04:58.000Z\",\"start_scheduled\":\"2021-05-14T10:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"【歌ってみた】ジャガーノート【奏手イヅル/アステル・レダ】\",\"topic_id\":\"singing\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T10:00:00.000Z\",\"channel\":{\"english_name\":\"Sakura Miko\",\"id\":\"UC-hM6YJuNYVAmUWxeIr9FeA\",\"name\":\"Miko Ch. さくらみこ\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwniR0ijvAPNICEVzF8Pz0kSkuhBLKXd31oc5yO-0AQ=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"BLDvnztpcXM\",\"published_at\":\"2021-05-13T18:04:52.000Z\",\"start_scheduled\":\"2021-05-14T10:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"【  】よていち！【ホロライブ/さくらみこ】\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T11:00:00.000Z\",\"channel\":{\"english_name\":\"Oozora Subaru\",\"id\":\"UCvzGlP9oQwU--Y0r9id_jnA\",\"name\":\"Subaru Ch. 大空スバル\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwniCgko15I_x5bYWm0G2vnf5hZqD5hLOtLEDw0Na=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"pGdQB7nPOi8\",\"published_at\":\"2021-05-13T10:00:39.000Z\",\"start_scheduled\":\"2021-05-14T11:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"【】単発クイズゲー【】\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T12:00:00.000Z\",\"channel\":{\"english_name\":\"Natsuiro Matsuri\",\"id\":\"UCQ0UDLQCjY0rmuxCDE38FGg\",\"name\":\"Matsuri Channel 夏色まつり\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwni8cjtyc08E7rocvO9_gR1b5BhO1O6O1VreDxMW=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"tpVtbVVBnSs\",\"published_at\":\"2021-05-13T20:01:50.000Z\",\"start_scheduled\":\"2021-05-14T12:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"【APEX】うるか幼稚園まゆげ組/CRカスタム#6【ホロライブ/夏色まつり】\",\"topic_id\":\"apex\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T12:00:00.000Z\",\"channel\":{\"english_name\":\"Arurandeisu\",\"id\":\"UCKeAhJvy8zgXWbh9duVjIaQ\",\"name\":\"Aruran Ch. アルランディス\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwnjIqTphTjcWJLTftb3ppGk71CVwCYaH2M5KkmZOAQ=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"wyJTO7CXOHc\",\"published_at\":\"2021-05-13T12:10:17.000Z\",\"start_scheduled\":\"2021-05-14T12:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"【＃アラボ 】その筋トレ目的に合わせて考えてますか!? -ARN's Lab-【アルランディス/ホロスターズ】\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T12:00:00.000Z\",\"channel\":{\"english_name\":\"Shishiro Botan\",\"id\":\"UCUKD-uaobj9jiqB-VXt71mA\",\"name\":\"Botan Ch.獅白ぼたん\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwngRC-JqguPnj9ljVH3UulyfdlyQzLYzLeSrhvD6=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"X1xXG2qIJWg\",\"published_at\":\"2021-05-13T19:21:29.000Z\",\"start_scheduled\":\"2021-05-14T12:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"【バイオハザードヴィレッジ】イーサンと次のステージへ―Resident Evil Village【獅白ぼたん/ホロライブ】\",\"topic_id\":\"residentevil\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T13:00:00.000Z\",\"channel\":{\"english_name\":\"Mori Calliope\",\"id\":\"UCL_qhgtOy0dy1Agp8vkySQg\",\"name\":\"Mori Calliope Ch. hololive-EN\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwniY6zzRc3nUO1zLCBlmaAxeLNDoVWjw0hKGztvJ=s800-c-k-c0x00ffffff-no-rj-mo\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"_F2ITnPX7lg\",\"published_at\":\"2021-05-13T14:01:53.000Z\",\"start_scheduled\":\"2021-05-14T13:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"【MINECRAFT】 Cabin Barbecue Vibes, Dead Beats! #hololiveEnglish #holoMyth\",\"topic_id\":\"minecraft\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T13:00:00.000Z\",\"channel\":{\"english_name\":\"Sakura Miko\",\"id\":\"UC-hM6YJuNYVAmUWxeIr9FeA\",\"name\":\"Miko Ch. さくらみこ\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwniR0ijvAPNICEVzF8Pz0kSkuhBLKXd31oc5yO-0AQ=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"j-Y0xgqNXWc\",\"published_at\":\"2021-05-13T18:10:37.000Z\",\"start_scheduled\":\"2021-05-14T13:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"【 ウマ娘プリティーダービー 】【ホロライブ/さくらみこ】\",\"topic_id\":\"umamusume\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T13:00:00.000Z\",\"channel\":{\"english_name\":\"Rikkaroid\",\"id\":\"UC9mf_ZVpouoILRY9NUIaK-w\",\"name\":\"Rikka ch.律可\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwnghUH22DLP22EHC3PZP7xXzJFd7qS_scK95WhaQ=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"q2s5d8A_pm0\",\"published_at\":\"2021-05-12T10:47:10.000Z\",\"start_scheduled\":\"2021-05-14T13:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"#16【RiTunes Labo】生セッション歌枠：ゲスト『miro』【律可/ホロスターズ 】#りちゅらぼ\",\"topic_id\":\"singing\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T14:00:00.000Z\",\"channel\":{\"english_name\":\"Shiranui Flare\",\"id\":\"UCvInZx9h3jC2JzsIzoOebWg\",\"name\":\"Flare Ch. 不知火フレア\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwngtkUgGkgWTz57Er3GSzuMUR07HISM_yDhKQFnR_A=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"q-pIKINMwig\",\"published_at\":\"2021-05-13T21:58:01.000Z\",\"start_scheduled\":\"2021-05-14T14:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"【GTAV】感動のフィナーレ・・・？The emotional finale...?【ホロライブ/不知火フレア】\",\"topic_id\":\"gta5\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T14:30:00.000Z\",\"channel\":{\"english_name\":\"Tokino Sora\",\"id\":\"UCp6993wxpyDPHUpavwDFqgg\",\"name\":\"SoraCh. ときのそらチャンネル\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwngZmr_qbKhGIvHaHwLRmKhKxdeFfM7ZbK316vFNSw=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"T4FmAguGOI0\",\"published_at\":\"2021-05-13T15:18:16.000Z\",\"start_scheduled\":\"2021-05-14T14:30:00.000Z\",\"status\":\"upcoming\",\"title\":\"【誕生日】カウントダウンするよぬんぬん！！【＃ときのそら誕生日2021】\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T15:00:00.000Z\",\"channel\":{\"english_name\":\"Himemori Luna\",\"id\":\"UCa9Y57gfeY0Zro_noHRVrnw\",\"name\":\"Luna Ch. 姫森ルーナ\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwngV89Ez1--ZzNX3jCA082Mt-JGRZEXZ1lmW876a-w=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"IYhUfwJuGEo\",\"published_at\":\"2021-05-13T17:26:21.000Z\",\"start_scheduled\":\"2021-05-14T15:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"【 酒と肴 】高級クラブルーナ🍸オープンするのらっ！✨(・o・🍬)【姫森ルーナ/ホロライブ】\",\"type\":\"stream\"},{\"available_at\":\"2021-05-14T17:00:00.000Z\",\"channel\":{\"english_name\":\"Natsuiro Matsuri\",\"id\":\"UCQ0UDLQCjY0rmuxCDE38FGg\",\"name\":\"Matsuri Channel 夏色まつり\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwni8cjtyc08E7rocvO9_gR1b5BhO1O6O1VreDxMW=s800-c-k-c0x00ffffff-no-rj\",\"type\":\"vtuber\"},\"duration\":0,\"id\":\"jDANZuw6IDM\",\"published_at\":\"2021-05-12T23:53:59.000Z\",\"start_scheduled\":\"2021-05-14T17:00:00.000Z\",\"status\":\"upcoming\",\"title\":\"【Minecraft】睡眠導入 / ムーンハウス作成！【ホロライブ/夏色まつり】\",\"topic_id\":\"minecraft\",\"type\":\"stream\"}]"
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/videos": {
+      "get": {
+        "description": "Pretty much everything you need. This is the most 'vanilla' variant with almost no preset values, and `/channels/{channelId}/{type}` and `/live` endpoints both use the same query structure but provision default values differently for some of the query params.\n\nNot as powerful at searching arbitrary text as the Search API (currently not documented/available). ",
+        "summary": "Query Videos",
+        "operationId": "QueryVideos",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "channel_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter by video uploader channel id"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "enum": [
+              "new",
+              "upcoming",
+              "live",
+              "past",
+              "missing"
+            ],
+            "type": "string",
+            "description": "Filter by video status"
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "default": "all",
+            "type": "string",
+            "description": "A comma separated list of language codes to filter channels/clips, official streams do not follow this parameter"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "enum": [
+              "stream",
+              "clip"
+            ],
+            "type": "string",
+            "description": "Filter by type of video"
+          },
+          {
+            "name": "topic",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter by video topic id"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "clips",
+                "refers",
+                "sources",
+                "simulcasts",
+                "mentions",
+                "description",
+                "live_info",
+                "channel_stats",
+                "songs"
+              ]
+            },
+            "description": "Comma separated list of extra info for video"
+          },
+          {
+            "name": "org",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter by clips that feature the org's talent or videos posted by the org's talent"
+          },
+          {
+            "name": "mentioned_channel_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "default": "available_at",
+            "type": "string",
+            "description": "Sort by any returned video field"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "default": "desc",
+            "type": "string",
+            "description": "Order by ascending or descending"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "default": 25,
+            "type": "integer",
+            "format": "int32",
+            "maximum": 50.0,
+            "exclusiveMaximum": false,
+            "description": "Results limit"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "default": 0,
+            "type": "integer",
+            "format": "int32",
+            "description": "Offset results"
+          },
+          {
+            "name": "paginated",
+            "in": "query",
+            "required": false,
+            "default": "<empty>",
+            "type": "string",
+            "description": "If paginated is set to any non-empty value, return an object with total, otherwise returns an array."
+          },
+          {
+            "name": "max_upcoming_hours",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double",
+            "description": "Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "A single Youtube Video ID. If Specified, only this video can be returned (may be filtered out by other conditions though)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/VideoFull"
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/channels/{channelId}": {
+      "get": {
+        "description": "Get Channel Information",
+        "summary": "get-v2-channels-channelId",
+        "operationId": "get-v2-channels-channelId",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "channelId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the Youtube Channel that is being queried"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Channel"
+            },
+            "examples": {
+              "application/json": {
+                "banner": "https://yt3.ggpht.com/U2KIthUFXtUHa0j5kosrZ1IHTr2sSRZ0nC7wh3_HrLF4a35Zp4-2TzqRqO8HJE04w5-BwW73fg",
+                "clip_count": null,
+                "comments_crawled_at": null,
+                "crawled_at": "2021-05-13T20:44:14.001Z",
+                "created_at": "2021-04-23T07:21:00.045Z",
+                "description": "I make translated clips from Hololive and Vtubers.\n",
+                "english_name": null,
+                "id": "UC4Fh9OcvIEWK405Cvg25jDw",
+                "inactive": false,
+                "lang": "en",
+                "name": "Sushi [Hololive and Vtubers]",
+                "org": null,
+                "photo": "https://yt3.ggpht.com/ytc/AAUvwnjZ3i5csnFMZqorfAHE7JUuD8VdWJDcJbwt2YiK=s800-c-k-c0x00ffffff-no-rj",
+                "published_at": "2020-05-26T06:35:52.412Z",
+                "suborg": null,
+                "subscriber_count": "163000",
+                "thumbnail": "https://yt3.ggpht.com/ytc/AAUvwnjZ3i5csnFMZqorfAHE7JUuD8VdWJDcJbwt2YiK=s88-c-k-c0x00ffffff-no-rj",
+                "twitter": null,
+                "type": "subber",
+                "updated_at": "2021-05-13T15:00:05.766Z",
+                "video_count": "1586",
+                "view_count": "135584366",
+                "yt_uploads_id": "UU4Fh9OcvIEWK405Cvg25jDw"
+              }
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/channels/{channelId}/{type}": {
+      "get": {
+        "description": "A simplified endpoint for access channel specific data. If you want more customization, the same result can be obtained by calling the `/videos` endpoint.",
+        "summary": "get-v2-channels-channelId-clips",
+        "operationId": "get-v2-channels-channelId-clips",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "channelId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the Youtube Channel that is being queried"
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "enum": [
+              "clips",
+              "videos",
+              "collabs"
+            ],
+            "type": "string",
+            "description": "The type of video resource to fetch. Clips finds clip videos of a `vtuber` channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId`"
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "default": "all",
+            "type": "string",
+            "description": "A comma separated list of language codes to filter channels/clips, official streams do not follow this parameter"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "clips",
+                "refers",
+                "sources",
+                "simulcasts",
+                "mentions",
+                "description",
+                "live_info",
+                "channel_stats",
+                "songs"
+              ]
+            },
+            "description": "Comma separated list of extra info for video"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "default": 25,
+            "type": "integer",
+            "format": "int32",
+            "maximum": 50.0,
+            "exclusiveMaximum": false,
+            "description": "Results limit"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "default": 0,
+            "type": "integer",
+            "format": "int32",
+            "description": "Offset results"
+          },
+          {
+            "name": "paginated",
+            "in": "query",
+            "required": false,
+            "default": "<empty>",
+            "type": "string",
+            "description": "If paginated is set to any non-empty value, return an object with total, otherwise returns an array."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "default": ""
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/users/live": {
+      "get": {
+        "description": "This endpoint is similar to the /live endpoint and usually replies much faster. It is more friendly in general. The cost to execute a lookup is significantly cheaper. It's unfortunately less customizable as a result.\n\nWe recommends using this if you have a fixed set of channel IDs to look up status for.",
+        "summary": "get-cached-live",
+        "operationId": "get-cached-live",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "channels",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "comma separated Youtube Channel IDs"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "default": "",
+              "items": {
+                "$ref": "#/definitions/Video"
+              }
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/videos/{videoId}": {
+      "get": {
+        "description": "Retrieves a video object.\n\nAlso retrieves Comments if query parameter `c` is set.\n\nAlso retrieves Recommendations if query parameter `lang` is set",
+        "summary": "get-videos-videoId",
+        "operationId": "get-videos-videoId",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "videoId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of a Youtube Video"
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "default": "all",
+            "type": "string",
+            "description": "A comma separated list of language codes to filter channels/clips, official streams do not follow this parameter"
+          },
+          {
+            "name": "c",
+            "in": "query",
+            "required": false,
+            "enum": [
+              "1",
+              "0"
+            ],
+            "type": "string",
+            "description": "if `1` then will reply with timestamp comments for this video"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/VideosResponse"
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/channels": {
+      "get": {
+        "description": "List Channels",
+        "summary": "get-channels",
+        "operationId": "get-channels",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "enum": [
+              "vtuber",
+              "subber"
+            ],
+            "type": "string",
+            "description": "Type of Channel, whether it's a vtuber or a subber. Leave unset to query all."
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "default": 0,
+            "type": "integer",
+            "format": "int32",
+            "description": "Offset results"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "default": 25,
+            "type": "integer",
+            "format": "int32",
+            "maximum": 50.0,
+            "exclusiveMaximum": false,
+            "description": "Results limit"
+          },
+          {
+            "name": "org",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "If set, filter for Vtuber belonging to a specific org"
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Comma separated list of languages. Language is a property of Channel, so only Channels satisfying the language will be returned. Leave empty to search for Vtubers and/or all clippers."
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Column to sort on, leave default to use 'org' as sort. Any first level property of channel should work here."
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "type": "string",
+            "description": "ASC or DESC order, default asc."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "default": "",
+              "items": {
+                "$ref": "#/definitions/Channel"
+              }
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/search/videoSearch": {
+      "post": {
+        "description": "Flexible endpoint to search for videos fufilling multiple conditions. Descriptions with \"any\" implies an OR condition, and \"all\" implies a AND condition.\n\nSearching for topics and clips is not supported, because clips do not contain topic_ids ",
+        "summary": "post-search-videoSearch",
+        "operationId": "post-search-videoSearch",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SearchVideoSearchRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "default": ""
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/search/commentSearch": {
+      "post": {
+        "description": "Flexible endpoint to search for comments in videos fufilling multiple conditions. Descriptions with \"any\" implies an OR condition, and \"all\" implies a AND condition.",
+        "summary": "post-search-commentSearch",
+        "operationId": "post-search-commentSearch",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SearchCommentSearchRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "default": ""
+            },
+            "examples": {
+              "application/json": "{\"total\":11,\"items\":[{\"id\":\"3xns3zxYBkY\",\"title\":\"【#おかころ】わんにゃん深夜ライブ【オフコラボ】\",\"type\":\"stream\",\"published_at\":\"2020-10-19T06:02:44.000Z\",\"available_at\":\"2020-10-19T07:01:32.135Z\",\"duration\":4036,\"status\":\"past\",\"songcount\":3,\"channel\":{\"id\":\"UChAnqc_AY5_I3Px5dig3X1Q\",\"name\":\"Korone Ch. 戌神ころね\",\"type\":\"vtuber\",\"photo\":\"https://yt3.ggpht.com/ytc/AAUvwnj7QwmJ9YhyKY-9SkOKhKIzTKDMJp0HX2vAdQUVdw=s800-c-k-c0x00ffffff-no-rj\",\"english_name\":\"Inugami Korone\"},\"comments\":[{\"comment_key\":\"UgzdW0dndnSxBe71_Zp4AaABAg\",\"message\":\"Okayu's solo at 9:05 of Lemon was soooo good that even Korone was taking it all in. This has been a great day to start the week. From Coco & Haachama returning, Sui-chan's magnificent FREE FREE concert, to everyone showing their idol prowess with so many singing streams. This is what Hololive is all about & I'm so proud to be apart of all this right here & now.\"},{\"comment_key\":\"UgwCZ5ywJxmuc1TlniV4AaABAg\",\"message\":\"0:46 KORONE NOISES\\r\\n1:04 1. TOUCH / タッチ\\r\\n4:31 [MC1]\\r\\n6:19 2. Lemon\\r\\n10:36 [MC2]\\r\\n15:54 3. Racing into the Night (YORU NI KAKERU) / 夜に駆ける\\r\\n20:21 [MC3]\\r\\n23:37 4. SHIN TAKARAJIMA / 新宝島\\r\\n28:38 [MC4]\\r\\n33:10 5. ROKI / ロキ\\r\\n37:21 [MC5] & Hakujitsu / 白日\\r\\n43:50 6. Genesis of Aquarion / 創聖のアクエリオン\\r\\n48:32 [MC6]\\r\\n49:40 7. LION / ライオン\\r\\n54:40 [MC7] & Curry-Meshi in Miracle / カレーメシ・イン・ミラクル\\r\\n57:10 8. if... OKAYU SINGING & KORONE RAP\\r\\n1:01:00 9. if... KORONE SINGING & OKAYU RAP\\r\\n1:04:39 10. if... OKAYU SINGING & KORONE RAP\"},{\"comment_key\":\"Ugz0aAkvJ23V2e9AO9h4AaABAg\",\"message\":\"..6:19 lemon\\n39:48 ころママがおかゆ大好きな話\\n42:40 白日\\n57:11 if..おかゆ:歌 ころね:ラップ\"},{\"comment_key\":\"UgzONJ8Et-Br1-MXv-Z4AaABAg\",\"message\":\"9:05 best okayu vocal..  this is third time she stream lemon..  she become more more better.. \"},{\"comment_key\":\"UgwLuffiGjkAqMdAd8F4AaABAg\",\"message\":\"おかころライブ本当に楽しくて最高すぎた...ありがとう....!!\\n\\nmy memo &set list\\n00:47 開始\\r\\n01:05 🎶タッチ / Touch / 岩崎良美\\r\\n06:19 🎶レモン / Lemon / 米津玄師\\r\\n12:33 歌プリの話\\r\\n13:32 ラブライブの話\\r\\n15:38 喉の調節\\r\\n15:52 🎶夜に駆ける / Racing into the Night  / YOASOBI\\r\\n20:45 セトリ作り\\r\\n22:56 歌詞を分けておいてくれたころさん\\r\\n23:38 🎶新宝島 / Shin Takarajima / サカナクション\\r\\n - 26:01 間奏かわいい\\r\\n30:41 それは本当におかゆなのかな?\\r\\n33:10 🎶ロキ / Roki / みきとP\\r\\n - 35:28 きゅーん\\r\\n39:53 おかゆが好きなころねまま\\n42:40 🎵白日 / Hakujitsu / King Gnu(ちょっとだけ)\\r\\n43:50 🎶創聖のアクエリオン / Genesis of Apuarion / AKINO\\r\\n49:36 🎶ライオン / Lion / May'n ・ 中島愛\\r\\n54:40 肩を!?\\r\\n57:10 🎶if... / DA PUMP (ころラップver. / Korone's Rap)\\r\\n-1:01:01 🎶if... / DA PUMP (おかラップver. / Okayu's Rap)\\r\\n-1:04:39 🎶on more!\"},{\"comment_key\":\"UgxFPB8C69GToy0PIMN4AaABAg\",\"message\":\"URU-SETLIST / うるセトリ\\r\\n0:46 KORONE NOISES\\r\\n1:04 1. TOUCH / タッチ\\r\\n4:31 [MC1]\\r\\n6:19 2. Lemon\\r\\n10:36 [MC2]\\r\\n15:54 3. Racing into the Night (YORU NI KAKERU) / 夜に駆ける\\r\\n20:21 [MC3]\\r\\n23:37 4. SHIN TAKARAJIMA / 新宝島\\r\\n28:38 [MC4]\\r\\n33:10 5. ROKI / ロキ\\r\\n37:21 [MC5] & Hakujitsu / 白日\\r\\n43:50 6. Genesis of Aquarion / 創聖のアクエリオン\\r\\n48:32 [MC6]\\r\\n49:40 7. LION / ライオン\\r\\n54:40 [MC7] & Curry-Meshi in Miracle / カレーメシ・イン・ミラクル\\r\\n57:10 8. if... OKAYU SINGING & KORONE RAP\\r\\n1:01:00 9. if... KORONE SINGING & OKAYU RAP\\r\\n1:04:39 10. if... OKAYU SINGING & KORONE RAP\\n\\nAMAIZING RAP DOGGO\"},{\"comment_key\":\"UgwgYxMhWlZ0NYC4v8Z4AaABAg\",\"message\":\"1:00  タッチ\\n\\n6:15  Lemon\\n\\n15:55  夜に駆ける\\n\\n23:35  新宝島\\n\\n33:08  ロキ\\n\\n42:40  白日(アカペラ)\\n\\n43:50  創聖のアクエリオン\\n\\n49:40  ライオン\\n\\n57:09  if…\\n\\n\\n\\n\\n\\n雑だけどタイムスケジュールです!!間違えてたところも直しましたーーー\"},{\"comment_key\":\"Ugxf6cDoACgwv65RoG94AaABAg\",\"message\":\"【俺たちがうるさいので作るセトリ】\\n1.1:05 タッチ/岩崎良美\\n 4:14 音量大丈夫だった?→焚き火ASMR\\n 4:47 今日はオフコラボ\\n2.6:19 Lemon/米津玄師\\n 10:49 おがゆの腕の温もりを感じている\\n 11:38 最後にオフコラボやったのいつ?\\n 12:30 最近一緒にアニメ観るのにハマってる\\n 14:27 ころさんの耳が刺さってる\\n3.15:54 夜に駆ける/YOASOBI\\n 20:05 おがゆすき!→駆け出す音量チェック\\n 20:45 セトリは?(荒ぶる&目隠しおかゆ)\\n 22:22 配信終わったらまたアニメ観るもんね?\\n 23:29 サザエやめろ!→サザエ\\\"さん\\\"だろ!\\n4.23:38 新宝島/サカナクション\\n 28:47 手を繋ぐおかころ(慎太から時ま)\\n 29:21 おかゆところねの身長差\\n 30:46 隣におかゆが居るんだよ→居ません\\n5.33:11 ロキ/みきとP feat.鏡音リン\\n 37:45 ころさんの耳が刺さるのでカバー付けて\\n 38:54 耳の圧迫感がトラウマな戌神ころね\\n 39:53 ころねママはおかゆのことが大好き\\n 41:36 うるセトリ(ころさんの怪しい記憶力)\\n 42:25 なに白目って?(白日)♪\\n6.43:51 創聖のアクエリオン/AKINO\\n 48:49 連続で聴いてくれるかな?→オッケー!\\n7.49:43 ライオン/May'n , 中島愛\\n 54:40 おがゆが肩を組んできた!→組んでﾅｲﾖ\\n 55:06 最後の曲なんだと思う?\\n 55:23 犬のお巡りさん→わんわんわわ~ん♪\\n 55:28 カレーカレー→カレーメシでshow♪\\n 55:46 コメ欄にシオン登場\\n8.57:10 if.../DA PUMP(ころラップ)\\n9.1:01:01 if.../DA PUMP(おかラップ)\\n10.1:04:45 if.../DA PUMP(おかころラップ)\"},{\"comment_key\":\"Ugzm_3I_d-TsEkclr154AaABAg\",\"message\":\"1:04 タッチ / 岩崎良美\\n6:19 Lemon / 米津玄師\\n15:53 夜に駆ける / YOASOBI\\n23:36 新宝島 / サカナクション\\n33:09 ロキ / みきとP\\n42:39 白日 / King Gnu\\n43:50 創聖のアクエリオン / AKINO\\n49:42 ライオン / May'n 中島愛\\n55:29 カレーメシ・イン・ミラクル / スパイスラブ\\n57:10 if… / DA PUMP (ころさんラップver.)\\n┣1:01:00 おかゆラップver.\\n┗1:04:36 ころさんラップver.\\n\\nころさんのラップ好きすぎる\"},{\"comment_key\":\"UgyVojylYdW8LEo_F6F4AaABAg\",\"message\":\"6:16 Super Duper LIT Lemon Cover\"},{\"comment_key\":\"Ugy1P9__oigsxJ5Ilg54AaABAg\",\"message\":\"0:46 KORONE NOISES\\r\\n1:04 1. TOUCH / タッチ\\r\\n4:31 [MC1]\\r\\n6:19 2. Lemon\\r\\n10:36 [MC2]\\r\\n15:54 3. Racing into the Night (YORU NI KAKERU) / 夜に駆ける\\r\\n20:21 [MC3]\\r\\n23:37 4. SHIN TAKARAJIMA / 新宝島\\r\\n28:38 [MC4]\\r\\n33:10 5. ROKI / ロキ\\r\\n37:21 [MC5] & Hakujitsu / 白日\\r\\n43:50 6. Genesis of Aquarion / 創聖のアクエリオン\\r\\n48:32 [MC6]\\r\\n49:40 7. LION / ライオン\\r\\n54:40 [MC7] & Curry-Meshi in Miracle / カレーメシ・イン・ミラクル\\r\\n57:10 8. if... OKAYU SINGING & KORONE RAP\\r\\n1:01:00 9. if... KORONE SINGING & OKAYU RAP\\r\\n1:04:39 10. if... OKAYU SINGING & KORONE RAP\"}]}]}"
+            },
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Comment": {
+      "title": "Comment",
+      "type": "object",
+      "properties": {
+        "comment_key": {
+          "type": "string"
+        },
+        "video_id": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Channel": {
+      "title": "Channel",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "english_name": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Type"
+        },
+        "org": {
+          "type": "string"
+        },
+        "suborg": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string"
+        },
+        "banner": {
+          "type": "string"
+        },
+        "twitter": {
+          "type": "string"
+        },
+        "video_count": {
+          "type": "string"
+        },
+        "subscriber_count": {
+          "type": "string"
+        },
+        "view_count": {
+          "type": "string"
+        },
+        "clip_count": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "inactive": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Video": {
+      "title": "Video",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Type1"
+        },
+        "topic_id": {
+          "description": "corresponds to a Topic ID, Videos of type `clip` cannot not have topic. Streams may or may not have topic.",
+          "example": "minecraft",
+          "type": "string"
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "available_at": {
+          "description": "Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at",
+          "type": "string",
+          "format": "date-time"
+        },
+        "duration": {
+          "description": "Duration of the video in seconds",
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "start_scheduled": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "start_actual": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_actual": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "live_viewers": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "description": "Included when includes contains 'description'",
+          "type": "string"
+        },
+        "songcount": {
+          "description": "Number of tagged songs for this video",
+          "type": "number",
+          "format": "double"
+        },
+        "channel_id": {
+          "type": "string"
+        }
+      }
+    },
+    "ChannelMin": {
+      "title": "ChannelMin",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "english_name": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Type"
+        },
+        "photo": {
+          "type": "string"
+        }
+      }
+    },
+    "VideoWithChannel": {
+      "title": "VideoWithChannel",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Type1"
+        },
+        "topic_id": {
+          "description": "corresponds to a Topic ID, Videos of type `clip` cannot not have topic. Streams may or may not have topic.",
+          "example": "minecraft",
+          "type": "string"
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "available_at": {
+          "description": "Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at",
+          "type": "string",
+          "format": "date-time"
+        },
+        "duration": {
+          "description": "Duration of the video in seconds",
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "start_scheduled": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "start_actual": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_actual": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "live_viewers": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "description": "Included when includes contains 'description'",
+          "type": "string"
+        },
+        "songcount": {
+          "description": "Number of tagged songs for this video",
+          "type": "number",
+          "format": "double"
+        },
+        "channel_id": {
+          "type": "string"
+        },
+        "channel": {
+          "$ref": "#/definitions/ChannelMin"
+        }
+      }
+    },
+    "VideoFull": {
+      "title": "VideoFull",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Type1"
+        },
+        "topic_id": {
+          "description": "corresponds to a Topic ID, Videos of type `clip` cannot not have topic. Streams may or may not have topic.",
+          "example": "minecraft",
+          "type": "string"
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "available_at": {
+          "description": "Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at",
+          "type": "string",
+          "format": "date-time"
+        },
+        "duration": {
+          "description": "Duration of the video in seconds",
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "start_scheduled": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "start_actual": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_actual": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "live_viewers": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "description": "Included when includes contains 'description'",
+          "type": "string"
+        },
+        "songcount": {
+          "description": "Number of tagged songs for this video",
+          "type": "number",
+          "format": "double"
+        },
+        "channel_id": {
+          "type": "string"
+        },
+        "clips": {
+          "description": "Included when 'includes' contains 'clips'",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VideoWithChannel"
+          }
+        },
+        "sources": {
+          "description": "Included when 'includes' contains 'sources'",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VideoWithChannel"
+          }
+        },
+        "refers": {
+          "description": "Included when 'includes' contains 'refers'",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VideoWithChannel"
+          }
+        },
+        "simulcasts": {
+          "description": "Included when 'includes' contains 'simulcasts'",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VideoWithChannel"
+          }
+        },
+        "mentions": {
+          "description": "VTubers mentioned by this video, Included when 'includes' contains 'mentions'",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Mention"
+          }
+        },
+        "songs": {
+          "description": "Number of songs",
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "c": {
+      "title": "c",
+      "example": 1,
+      "type": "integer",
+      "format": "int32",
+      "enum": [
+        "1",
+        "0"
+      ]
+    },
+    "ChannelsResponse": {
+      "title": "ChannelsResponse",
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "number",
+          "format": "double"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VideoFull"
+          }
+        }
+      }
+    },
+    "Condition": {
+      "title": "Condition",
+      "type": "object",
+      "properties": {
+        "text": {
+          "description": "Look for text in video title or description",
+          "example": "Okakoro",
+          "type": "string"
+        }
+      }
+    },
+    "include": {
+      "title": "include",
+      "type": "string",
+      "enum": [
+        "clips",
+        "refers",
+        "sources",
+        "simulcasts",
+        "mentions",
+        "description",
+        "live_info",
+        "channel_stats",
+        "songs"
+      ]
+    },
+    "Item": {
+      "title": "Item",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Type1"
+        },
+        "topic_id": {
+          "description": "corresponds to a Topic ID, Videos of type `clip` cannot not have topic. Streams may or may not have topic.",
+          "example": "minecraft",
+          "type": "string"
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "available_at": {
+          "description": "Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at",
+          "type": "string",
+          "format": "date-time"
+        },
+        "duration": {
+          "description": "Duration of the video in seconds",
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "start_scheduled": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "start_actual": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_actual": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "live_viewers": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "description": "Included when includes contains 'description'",
+          "type": "string"
+        },
+        "songcount": {
+          "description": "Number of tagged songs for this video",
+          "type": "number",
+          "format": "double"
+        },
+        "channel_id": {
+          "type": "string"
+        },
+        "channel": {
+          "$ref": "#/definitions/ChannelMin"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
+        }
+      }
+    },
+    "LiveResponse": {
+      "title": "LiveResponse",
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "number",
+          "format": "double"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Video"
+          }
+        }
+      }
+    },
+    "Mention": {
+      "title": "Mention",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "english_name": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Type"
+        },
+        "photo": {
+          "type": "string"
+        },
+        "org": {
+          "description": "Org of the Mentioned Channel",
+          "type": "string"
+        }
+      }
+    },
+    "order": {
+      "title": "order",
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "SearchCommentSearchRequest": {
+      "title": "SearchCommentSearchRequest",
+      "type": "object",
+      "properties": {
+        "sort": {
+          "$ref": "#/definitions/Sort"
+        },
+        "lang": {
+          "description": "If set, will filter clips to only show clips with these langs + all vtuber streams (provided `target` is not set to filter out streams)",
+          "example": [
+            "en",
+            "ja"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "target": {
+          "description": "Target types of videos",
+          "example": [
+            "clip",
+            "stream"
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Target"
+          }
+        },
+        "comment": {
+          "description": "Find videos with comments containing specified string (case insensitive)",
+          "example": "Lemon",
+          "type": "string"
+        },
+        "topic": {
+          "description": "Return videos that match one of the provided topics",
+          "example": [
+            "singing",
+            "apex"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "vch": {
+          "description": "Videos with all of the specified channel \nids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.",
+          "example": [
+            "UChAnqc_AY5_I3Px5dig3X1Q",
+            "UCvaTdHTWBGv3MKj3KVqJVCw"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "org": {
+          "description": "Videos of channels in any of the specified orgs, or clips that involve a channel in the specified org.",
+          "example": [
+            "Hololive",
+            "Nijisanji"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "paginated": {
+          "description": "If set at all, responds with total and items wrapping the array of objects",
+          "type": "boolean"
+        },
+        "offset": {
+          "type": "number",
+          "format": "double"
+        },
+        "limit": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "sort",
+        "comment",
+        "offset",
+        "limit"
+      ]
+    },
+    "SearchCommentSearchResponse": {
+      "title": "SearchCommentSearchResponse",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Type1"
+        },
+        "topic_id": {
+          "description": "corresponds to a Topic ID, Videos of type `clip` cannot not have topic. Streams may or may not have topic.",
+          "example": "minecraft",
+          "type": "string"
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "available_at": {
+          "description": "Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at",
+          "type": "string",
+          "format": "date-time"
+        },
+        "duration": {
+          "description": "Duration of the video in seconds",
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "start_scheduled": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "start_actual": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_actual": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "live_viewers": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "description": "Included when includes contains 'description'",
+          "type": "string"
+        },
+        "songcount": {
+          "description": "Number of tagged songs for this video",
+          "type": "number",
+          "format": "double"
+        },
+        "channel_id": {
+          "type": "string"
+        },
+        "channel": {
+          "$ref": "#/definitions/ChannelMin"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
+        }
+      }
+    },
+    "SearchCommentSearchResponse1": {
+      "title": "SearchCommentSearchResponse1",
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "number",
+          "format": "double"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        }
+      }
+    },
+    "SearchVideoSearchRequest": {
+      "title": "SearchVideoSearchRequest",
+      "type": "object",
+      "properties": {
+        "sort": {
+          "$ref": "#/definitions/Sort"
+        },
+        "lang": {
+          "description": "If set, will filter clips to only show clips with these langs + all vtuber streams (provided `target` is not set to filter out streams)",
+          "example": [
+            "en",
+            "ja"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "target": {
+          "description": "Target types of videos",
+          "example": [
+            "clip",
+            "stream"
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Target"
+          }
+        },
+        "conditions": {
+          "description": "Match all the following conditions",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Condition"
+          }
+        },
+        "topic": {
+          "description": "Return videos that match one of the provided topics",
+          "example": [
+            "singing",
+            "apex"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "vch": {
+          "description": "Videos with all of the specified channel \nids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.",
+          "example": [
+            "UChAnqc_AY5_I3Px5dig3X1Q",
+            "UCvaTdHTWBGv3MKj3KVqJVCw"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "org": {
+          "description": "Videos of channels in any of the specified orgs, or clips that involve a channel in the specified org.",
+          "example": [
+            "Hololive",
+            "Nijisanji"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "paginated": {
+          "description": "If set at all, responds with total and items wrapping the array of objects",
+          "type": "boolean"
+        },
+        "offset": {
+          "type": "number",
+          "format": "double"
+        },
+        "limit": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "sort",
+        "offset",
+        "limit"
+      ]
+    },
+    "SearchVideoSearchResponse": {
+      "title": "SearchVideoSearchResponse",
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "number",
+          "format": "double"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VideoWithChannel"
+          }
+        }
+      }
+    },
+    "Sort": {
+      "title": "Sort",
+      "type": "string",
+      "enum": [
+        "oldest",
+        "newest"
+      ]
+    },
+    "Status": {
+      "title": "Status",
+      "type": "string",
+      "enum": [
+        "new",
+        "upcoming",
+        "live",
+        "past",
+        "missing"
+      ]
+    },
+    "Target": {
+      "title": "Target",
+      "type": "string",
+      "enum": [
+        "clip",
+        "stream"
+      ]
+    },
+    "Type": {
+      "title": "Type",
+      "type": "string",
+      "enum": [
+        "vtuber",
+        "subber"
+      ]
+    },
+    "Type1": {
+      "title": "Type1",
+      "type": "string",
+      "enum": [
+        "stream",
+        "clip"
+      ]
+    },
+    "type4": {
+      "title": "type4",
+      "type": "string",
+      "enum": [
+        "clips",
+        "videos",
+        "collabs"
+      ]
+    },
+    "VideosResponse": {
+      "title": "VideosResponse",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Type1"
+        },
+        "topic_id": {
+          "description": "corresponds to a Topic ID, Videos of type `clip` cannot not have topic. Streams may or may not have topic.",
+          "example": "minecraft",
+          "type": "string"
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "available_at": {
+          "description": "Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at",
+          "type": "string",
+          "format": "date-time"
+        },
+        "duration": {
+          "description": "Duration of the video in seconds",
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "start_scheduled": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "start_actual": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_actual": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "string",
+          "format": "date-time"
+        },
+        "live_viewers": {
+          "description": "Included when includes contains 'live_info'",
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "description": "Included when includes contains 'description'",
+          "type": "string"
+        },
+        "songcount": {
+          "description": "Number of tagged songs for this video",
+          "type": "number",
+          "format": "double"
+        },
+        "channel_id": {
+          "type": "string"
+        },
+        "clips": {
+          "description": "Included when 'includes' contains 'clips'",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VideoWithChannel"
+          }
+        },
+        "sources": {
+          "description": "Included when 'includes' contains 'sources'",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VideoWithChannel"
+          }
+        },
+        "refers": {
+          "description": "Included when 'includes' contains 'refers'",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VideoWithChannel"
+          }
+        },
+        "simulcasts": {
+          "description": "Included when 'includes' contains 'simulcasts'",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VideoWithChannel"
+          }
+        },
+        "mentions": {
+          "description": "VTubers mentioned by this video, Included when 'includes' contains 'mentions'",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Mention"
+          }
+        },
+        "songs": {
+          "description": "Number of songs",
+          "type": "number",
+          "format": "double"
+        },
+        "comments": {
+          "description": "Comments are only returned if c === '1'",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
+        },
+        "recommendations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Video"
+          }
+        }
+      }
+    }
+  },
+  "tags": []
+}
