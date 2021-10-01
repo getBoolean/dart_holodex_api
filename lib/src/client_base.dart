@@ -113,6 +113,7 @@ abstract class BaseHolodexClient {
     required String path,
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
+    dio.ResponseType responseType = dio.ResponseType.json
   });
 
 
@@ -121,6 +122,7 @@ abstract class BaseHolodexClient {
     required String path,
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
+    dio.ResponseType responseType = dio.ResponseType.json
   });
 
 }

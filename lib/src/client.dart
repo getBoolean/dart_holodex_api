@@ -102,6 +102,7 @@ class HolodexClient extends BaseHolodexClient {
     String path = '',
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
+    dio.ResponseType responseType = dio.ResponseType.json
   }) async {
     return await call('get', path: path, headers: headers, params: params);
   }
@@ -112,6 +113,7 @@ class HolodexClient extends BaseHolodexClient {
     String path = '',
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
+    dio.ResponseType responseType = dio.ResponseType.json
   }) async {
     return await call('post', path: path, headers: headers, params: params);
   }
