@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-A Dart wrapper for the Holodex API v2
+A Dart wrapper for Holodex API v2
 
 ## Features
 
