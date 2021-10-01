@@ -3,7 +3,6 @@ import 'package:dio/dio.dart' as dio;
 
 import 'enums.dart';
 import 'models.dart';
-import 'response.dart';
 
 abstract class BaseHolodexClient {
   /// Extended by [HolodexClient]
@@ -46,12 +45,12 @@ abstract class BaseHolodexClient {
 
   // GetChannel
 
-  /// Returns a single [Video]
+  /// Returns a single [VideoFull]
   /// 
   /// Arguments:
   /// 
   /// - `videoId` The video ID as a string
-  Future<Video> getVideo(String videoId);
+  Future<VideoFull> getVideo(String videoId);
 
   // GetVideosFromChannel
 

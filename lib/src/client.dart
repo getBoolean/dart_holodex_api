@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:dart_holodex_api/src/models.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:enum_to_string/enum_to_string.dart';
@@ -5,7 +7,6 @@ import 'package:enum_to_string/enum_to_string.dart';
 import '../dart_holodex_api.dart';
 import 'client_base.dart';
 import 'enums.dart';
-import 'response.dart';
 
 class HolodexClient extends BaseHolodexClient {
   /// Creates a new instance of [HolodexClient]
@@ -21,18 +22,30 @@ class HolodexClient extends BaseHolodexClient {
     dio.Dio? client,
   }) : super(apiKey: apiKey, basePath: basePath, dioClient: client);
 
-  /// Returns a single [Video]
+  /// Returns a single [VideoFull]
   /// 
   /// Arguments:
   /// 
   /// - `videoId` The video ID as a string
+  /// - `includes` List of strings from the class `IncludesData`
   @override
-  Future<Video> getVideo(String videoId) async {
-    final dio.Response response = await get(path: 'videos', params: {
-      'id': videoId,
-    });
+  Future<VideoFull> getVideo(String videoId, {List<String>? includes}) async {
+    final Map<String, dynamic> params = {'id': videoId};
 
-    return Video.fromMap(response.data);
+    // Add the info the videos must include
+    if (includes != null) {
+      // Add the first item so that there is not a comma in front
+      String includesData = includes[0];
+      // Add the rest of the items
+      for (int i = 1; i < includes.length; i++) {
+        includesData = includesData + ',' + includes[i];
+      }
+      params.addAll({'includes': includesData});
+    }
+
+    final dio.Response response = await get(path: '/videos', params: params);
+
+    return VideoFull.fromMap(response.data.first);
   }
 
   /// Query Videos
@@ -73,7 +86,7 @@ class HolodexClient extends BaseHolodexClient {
     VideoType? type,
   }) async {
     // Create the params list
-    final Map<String, dynamic> params = const {};
+    final Map<String, dynamic> params = {};
 
     // Add the items with default values (they can't be null)
     params.addAll({
@@ -93,7 +106,7 @@ class HolodexClient extends BaseHolodexClient {
       for (int i = 1; i < includes.length; i++) {
         includesData = includesData + ',' + includes[i];
       }
-      params.addAll({'include': includesData});
+      params.addAll({'includes': includesData});
     }
 
     // Add the languages to filter by
@@ -137,10 +150,12 @@ class HolodexClient extends BaseHolodexClient {
       params.addAll({'type': EnumToString.convertToString(type)});
     }
 
-    final dio.Response response = await get(path: 'videos', params: params);
+    final dio.Response response = await get(path: '/videos', params: params);
 
     // TODO: Test if works
-    final List<dynamic> list = List<dynamic>.from(response.data);
+    final List list = response.data['items'];
+    print(response.data['items']);
+    
     return list.map((video) => Video.fromMap(video)).toList(); // Returns as `List<Video>`
   }
   
@@ -177,14 +192,10 @@ class HolodexClient extends BaseHolodexClient {
     dio.ResponseType responseType = dio.ResponseType.json
   }) async {
     try {
-      // return HolodexResponse<T>(data: response.data);
-
       // Prepare request
-      final response = await dioClient.fetch(dio.RequestOptions(baseUrl: basePath, path: path, method: method, queryParameters: params, headers: headers, responseType: responseType));
-      final responseData = response.data;
-      print(responseData);
+      final response = await dioClient.request(basePath + path, queryParameters: params, options: dio.Options(method: method, responseType: responseType, headers: headers));
 
-      // Return repared response
+      // Return response
       return response;
     } catch (e) {
       if (e is HolodexException) {
