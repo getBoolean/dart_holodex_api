@@ -40,7 +40,7 @@ class HolodexClient extends BaseHolodexClient {
       for (int i = 1; i < includes.length; i++) {
         includesData = includesData + ',' + includes[i];
       }
-      params.addAll({'includes': includesData});
+      params.addAll({'include': includesData});
     }
 
     final dio.Response response = await get(path: '/videos', params: params);
@@ -106,7 +106,7 @@ class HolodexClient extends BaseHolodexClient {
       for (int i = 1; i < includes.length; i++) {
         includesData = includesData + ',' + includes[i];
       }
-      params.addAll({'includes': includesData});
+      params.addAll({'include': includesData});
     }
 
     // Add the languages to filter by
