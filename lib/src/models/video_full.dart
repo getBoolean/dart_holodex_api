@@ -17,6 +17,7 @@ class VideoFull extends Equatable {
     this.liveViewers,
     this.description,
     this.channelId,
+    this.channelMin,
     this.clips,
     this.sources,
     this.refers,
@@ -64,6 +65,8 @@ class VideoFull extends Equatable {
 
   final String? channelId;
 
+  final ChannelMin? channelMin;
+
   /// Included when 'includes' contains 'clips'
   final List<VideoWithChannel>? clips;
 
@@ -95,6 +98,7 @@ class VideoFull extends Equatable {
     String? description,
     int? songcount,
     String? channelId,
+    ChannelMin? channelMin,
     List<VideoWithChannel>? clips,
     List<VideoWithChannel>? sources,
     List<VideoWithChannel>? refers,
@@ -117,6 +121,7 @@ class VideoFull extends Equatable {
       description: description ?? this.description,
       songcount: songcount ?? this.songcount,
       channelId: channelId ?? this.channelId,
+      channelMin: channelMin ?? this.channelMin,
       clips: clips ?? this.clips,
       sources: sources ?? this.sources,
       refers: refers ?? this.refers,
@@ -143,6 +148,7 @@ class VideoFull extends Equatable {
       'description': description,
       'songcount': songcount,
       'channel_id': channelId,
+      'channel': channelMin?.toMap(),
       'clips': clips?.map((x) => x.toMap()).toList(),
       'sources': sources?.map((x) => x.toMap()).toList(),
       'refers': refers?.map((x) => x.toMap()).toList(),
@@ -169,6 +175,7 @@ class VideoFull extends Equatable {
       description: map['description'],
       songcount: map['songcount'],
       channelId: map['channel_id'],
+      channelMin: ChannelMin.fromMap(map['channel']),
       clips: List<VideoWithChannel>.from(map['clips']?.map((x) => VideoWithChannel.fromMap(x)) ?? []),
       sources: List<VideoWithChannel>.from(map['sources']?.map((x) => VideoWithChannel.fromMap(x)) ?? []),
       refers: List<VideoWithChannel>.from(map['refers']?.map((x) => VideoWithChannel.fromMap(x)) ?? []),
@@ -202,6 +209,7 @@ class VideoFull extends Equatable {
       description ?? '',
       songcount ?? 0,
       channelId ?? '',
+      channelMin ?? '',
       clips ?? [],
       sources ?? [],
       refers ?? [],
