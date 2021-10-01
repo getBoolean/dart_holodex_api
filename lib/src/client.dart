@@ -19,6 +19,7 @@ class HolodexClient extends BaseHolodexClient {
 
   @override
   Future<HolodexResponse<T>> call<T>(
+    /// Either `HttpMethod.get` or `HttpMethod.post`
     HttpMethod method, {
     String path = '',
     Map<String, String> headers = const {},
@@ -27,7 +28,6 @@ class HolodexClient extends BaseHolodexClient {
     try {
       // final dio.Response response = await dioClient.get(Uri.parse(basePath + path).toString(), queryParameters: params);
       // return HolodexResponse<T>(data: response.data);
-
 
       // Prepare request
 
