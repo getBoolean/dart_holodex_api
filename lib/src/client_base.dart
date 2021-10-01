@@ -46,10 +46,12 @@ abstract class BaseHolodexClient {
 
   // GetChannel
 
-  /// GetVideo
-  /// 
   /// Returns a single [Video]
-  Future<Video> getVideo({required String videoId});
+  /// 
+  /// Arguments:
+  /// 
+  /// - `videoId` The video ID as a string
+  Future<Video> getVideo(String videoId);
 
   // GetVideosFromChannel
 
@@ -57,25 +59,64 @@ abstract class BaseHolodexClient {
 
   // GetLiveVideos
 
-  // GetVideos
+  /// Search for a video
+  /// 
+  /// Returns `List<Video>`
+  /// 
+  /// Arguments:
+  /// 
+  /// - `channelId` Filter by video uploader channel id
+  /// - `includes` List of strings from the class `IncludesData`
+  /// - `lang` List of strings from the class `Language`
+  /// - `limit` Limit the number of results returned
+  /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
+  /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
+  /// - `offset` Offset results
+  /// - `order` Order by ascending or descending
+  /// - `org` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
+  /// - `paginated` If paginated is set to any non-empty value, return an object with total, otherwise returns an array. E.g.: `AllowEmptyValue`
+  /// - `sort` Sort by any returned video field
+  /// - `status` Filter by video status
+  /// - `topic` Filter by video topic id
+  /// - `type` Filter by type of video
+  Future<List<Video>> getVideos({
+    String? channelId,
+    List<String>? includes,
+    List<String> lang = const ['all'],
+    int limit = 25,
+    int? maxUpcomingHours,
+    String? mentionedChannelId,
+    int offset = 0,
+    SortOrder order = SortOrder.descending,
+    String org = Organization.Hololive,
+    String paginated = '<empty>',
+    String sort = 'available_at',
+    VideoStatus? status,
+    String? topic,
+    VideoType? type,
+  });
 
 
 
   // UTILITIES
 
-  Future<dio.Response> call({
-    required String method,
+  Future<dio.Response> call(
+    String method, {
     required String path,
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
   });
 
+
+  /// An alias of HolodexClient.call('get')
   Future<dio.Response> get({
     required String path,
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
   });
 
+
+  /// An alias of HolodexClient.call('post')
   Future<dio.Response> post({
     required String path,
     Map<String, String> headers = const {},

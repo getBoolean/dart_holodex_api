@@ -21,50 +21,116 @@ class HolodexClient extends BaseHolodexClient {
     dio.Dio? client,
   }) : super(apiKey: apiKey, basePath: basePath, dioClient: client);
 
-
-
-
-
-
-  
-
-  /// GetVideo
-  /// 
   /// Returns a single [Video]
+  /// 
+  /// Arguments:
+  /// 
+  /// - `videoId` The video ID as a string
   @override
-  Future<Video> getVideo({required String videoId}) async {
+  Future<Video> getVideo(String videoId) async {
     final dio.Response response = await get(path: 'videos', params: {
       'id': videoId,
     });
 
     return Video.fromMap(response.data);
   }
+
+  /// Query Videos
+  /// 
+  /// Returns `List<Video>`
+  /// 
+  /// Arguments:
+  /// 
+  /// - `channelId` Filter by video uploader channel id
+  /// - `includes` List of strings from the class `IncludesData`
+  /// - `lang` List of strings from the class `Language`
+  /// - `limit` Limit the number of results returned
+  /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
+  /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
+  /// - `offset` Offset results
+  /// - `order` Order by ascending or descending
+  /// - `org` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
+  /// - `paginated` If paginated is set to any non-empty value, return an object with total, otherwise returns an array. E.g.: `AllowEmptyValue`
+  /// - `sort` Sort by any returned video field
+  /// - `status` Filter by video status
+  /// - `topic` Filter by video topic id
+  /// - `type` Filter by type of video
+  @override
+  Future<List<Video>> getVideos({
+    String? channelId,
+    List<String>? includes,
+    List<String> lang = const <String>['all'],
+    int limit = 25,
+    int? maxUpcomingHours,
+    String? mentionedChannelId,
+    int offset = 0,
+    SortOrder order = SortOrder.descending,
+    String org = Organization.Hololive,
+    String paginated = '<empty>',
+    String sort = 'available_at',
+    VideoStatus? status,
+    String? topic,
+    VideoType? type,
+  }) async {
+    // Create the params list
+    final Map<String, dynamic> params = const {};
+
+    // Add the channelId
+    params.addAll({'channel_id': channelId,});
+
+    // Add the info the videos must include
+    if (includes != null) {
+      // Add the first item so that there is not a comma in front
+      String includesData = includes[0];
+      // Add the rest of the items
+      for (int i = 1; i < includes.length; i++) {
+        includesData = includesData + ',' + includes[i];
+      }
+      params.addAll({'include': includesData});
+    }
+
+
+    final dio.Response response = await get(path: 'videos', params: params);
+
+    // TODO: Test if works
+    return response.data.map((video) => Video.fromMap(video) as List<Video>);
+  }
   
+  /// An alias of HolodexClient.call('get')
   @override
   Future<dio.Response> get({
     String path = '',
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
   }) async {
-    return await call(method: 'get', path: path, headers: headers, params: params);
+    return await call('get', path: path, headers: headers, params: params);
   }
 
+  /// An alias of HolodexClient.call('post')
   @override
   Future<dio.Response> post({
     String path = '',
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
   }) async {
-    return await call(method: 'post', path: path, headers: headers, params: params);
+    return await call('post', path: path, headers: headers, params: params);
   }
 
+
+  /// Method to make a http call and return `Response`
   @override
-  Future<dio.Response> call({required String method, required String path, Map<String, String> headers = const {}, Map<String, dynamic> params = const {}}) async {
+  Future<dio.Response> call(
+    String method, { 
+    required String path, 
+    Map<String, String> headers = const {}, 
+    Map<String, dynamic> params = const {},
+    dio.ResponseType responseType = dio.ResponseType.json
+  }) async {
     try {
       // return HolodexResponse<T>(data: response.data);
 
       // Prepare request
-      final response = await dioClient.fetch(dio.RequestOptions(baseUrl: basePath, path: path, method: method, queryParameters: params, headers: headers));
+      final response = await dioClient.fetch(dio.RequestOptions(baseUrl: basePath, path: path, method: method, queryParameters: params, headers: headers, responseType: responseType));
       final responseData = response.data;
       print(responseData);
 
