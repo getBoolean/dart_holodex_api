@@ -8,10 +8,10 @@ class VideoWithChannel extends Equatable {
   /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
 	final String? topicId;
 
-	final DateTime publishedAt;
+	final String publishedAt;
 
   /// Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at
-	final DateTime availableAt;
+	final String availableAt;
 
   /// Duration of the video in seconds
 	final int duration;
@@ -19,13 +19,13 @@ class VideoWithChannel extends Equatable {
 	final VideoStatus status;
 
   /// Included when includes contains 'live_info'
-	final DateTime? startScheduled;
+	final String? startScheduled;
 
   /// Included when includes contains 'live_info'
-	final DateTime? startActual;
+	final String? startActual;
 
   /// Included when includes contains 'live_info'
-	final DateTime? endActual;
+	final String? endActual;
 
   /// Included when includes contains 'live_info'
 	final int? liveViewers;
@@ -36,10 +36,11 @@ class VideoWithChannel extends Equatable {
   /// Number of tagged songs for this video
 	final int songcount;
 
-	final String channelId;
+	final String? channelId;
 
 	final ChannelMin channel;
   
+  /// Returns a new [VideoWithChannel] instance.
   VideoWithChannel({
     required this.id,
     required this.title,
@@ -64,13 +65,13 @@ class VideoWithChannel extends Equatable {
     String? title,
     VideoType? type,
     String? topicId,
-    DateTime? publishedAt,
-    DateTime? availableAt,
+    String? publishedAt,
+    String? availableAt,
     int? duration,
     VideoStatus? status,
-    DateTime? startScheduled,
-    DateTime? startActual,
-    DateTime? endActual,
+    String? startScheduled,
+    String? startActual,
+    String? endActual,
     int? liveViewers,
     String? description,
     int? songcount,
@@ -104,13 +105,13 @@ class VideoWithChannel extends Equatable {
       'title': title,
       'type': EnumToString.convertToString(type),
       'topic_id': topicId,
-      'published_at': publishedAt.millisecondsSinceEpoch,
-      'available_at': availableAt.millisecondsSinceEpoch,
+      'published_at': publishedAt,
+      'available_at': availableAt,
       'duration': duration,
       'status': stringStatus,
-      'start_scheduled': startScheduled?.millisecondsSinceEpoch,
-      'start_actual': startActual?.millisecondsSinceEpoch,
-      'end_actual': endActual?.millisecondsSinceEpoch,
+      'start_scheduled': startScheduled,
+      'start_actual': startActual,
+      'end_actual': endActual,
       'live_viewers': liveViewers,
       'description': description,
       'songcount': songcount,
@@ -126,13 +127,13 @@ class VideoWithChannel extends Equatable {
       title: map['title'],
       type: EnumToString.fromString(VideoType.values, map['type']) ?? VideoType.clip,
       topicId: map['topic_id'],
-      publishedAt: DateTime.fromMillisecondsSinceEpoch(map['published_at']),
-      availableAt: DateTime.fromMillisecondsSinceEpoch(map['available_at']),
+      publishedAt: map['published_at'],
+      availableAt: map['available_at'],
       duration: map['duration'],
       status: EnumToString.fromString(VideoStatus .values, stringStatus) ?? VideoStatus.missing,
-      startScheduled: DateTime.fromMillisecondsSinceEpoch(map['start_scheduled']),
-      startActual: DateTime.fromMillisecondsSinceEpoch(map['start_actual']),
-      endActual: DateTime.fromMillisecondsSinceEpoch(map['end_actual']),
+      startScheduled: map['start_scheduled'],
+      startActual: map['start_actual'],
+      endActual: map['end_actual'],
       liveViewers: map['live_viewers'],
       description: map['description'],
       songcount: map['songcount'],
@@ -165,7 +166,7 @@ class VideoWithChannel extends Equatable {
       liveViewers ?? -1,
       description ?? '',
       songcount,
-      channelId,
+      channelId ?? '',
       channel,
     ];
   }

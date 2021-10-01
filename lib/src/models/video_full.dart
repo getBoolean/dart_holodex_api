@@ -16,14 +16,13 @@ class VideoFull extends Equatable {
     this.endActual,
     this.liveViewers,
     this.description,
-    required this.songcount,
-    required this.channelId,
+    this.channelId,
     this.clips,
     this.sources,
     this.refers,
     this.simulcasts,
     this.mentions,
-    required this.songs,
+    this.songcount,
   });
 
   final String id;
@@ -35,10 +34,10 @@ class VideoFull extends Equatable {
   /// corresponds to a Topic ID, Videos of type `clip` cannot not have topic. Streams may or may not have topic.
   final String? topicId;
 
-  final DateTime publishedAt;
+  final String publishedAt;
 
   /// Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at
-  final DateTime availableAt;
+  final String availableAt;
 
   /// Duration of the video in seconds
   final int duration;
@@ -46,13 +45,13 @@ class VideoFull extends Equatable {
   final VideoStatus status;
 
   /// Included when includes contains 'live_info'
-  final DateTime? startScheduled;
+  final String? startScheduled;
 
   /// Included when includes contains 'live_info'
-  final DateTime? startActual;
+  final String? startActual;
 
   /// Included when includes contains 'live_info'
-  final DateTime? endActual;
+  final String? endActual;
 
   /// Included when includes contains 'live_info'
   final int? liveViewers;
@@ -61,9 +60,9 @@ class VideoFull extends Equatable {
   final String? description;
 
   /// Number of tagged songs for this video
-  final num songcount;
+  final int? songcount;
 
-  final String channelId;
+  final String? channelId;
 
   /// Included when 'includes' contains 'clips'
   final List<VideoWithChannel>? clips;
@@ -80,32 +79,27 @@ class VideoFull extends Equatable {
   /// VTubers mentioned by this video, Included when 'includes' contains 'mentions'
   final List<ChannelMin>? mentions;
 
-  /// Number of songs
-  final num songs;
-
-
   VideoFull copyWith({
     String? id,
     String? title,
     VideoType? type,
     String? topicId,
-    DateTime? publishedAt,
-    DateTime? availableAt,
+    String? publishedAt,
+    String? availableAt,
     int? duration,
     VideoStatus? status,
-    DateTime? startScheduled,
-    DateTime? startActual,
-    DateTime? endActual,
+    String? startScheduled,
+    String? startActual,
+    String? endActual,
     int? liveViewers,
     String? description,
-    num? songcount,
+    int? songcount,
     String? channelId,
     List<VideoWithChannel>? clips,
     List<VideoWithChannel>? sources,
     List<VideoWithChannel>? refers,
     List<VideoWithChannel>? simulcasts,
     List<ChannelMin>? mentions,
-    num? songs,
   }) {
     return VideoFull(
       id: id ?? this.id,
@@ -128,7 +122,6 @@ class VideoFull extends Equatable {
       refers: refers ?? this.refers,
       simulcasts: simulcasts ?? this.simulcasts,
       mentions: mentions ?? this.mentions,
-      songs: songs ?? this.songs,
     );
   }
 
@@ -139,13 +132,13 @@ class VideoFull extends Equatable {
       'title': title,
       'type': EnumToString.convertToString(type),
       'topic_id': topicId,
-      'published_at': publishedAt.millisecondsSinceEpoch,
-      'available_at': availableAt.millisecondsSinceEpoch,
+      'published_at': publishedAt,
+      'available_at': availableAt,
       'duration': duration,
       'status': stringStatus,
-      'start_scheduled': startScheduled?.millisecondsSinceEpoch,
-      'start_actual': startActual?.millisecondsSinceEpoch,
-      'end_actual': endActual?.millisecondsSinceEpoch,
+      'start_scheduled': startScheduled,
+      'start_actual': startActual,
+      'end_actual': endActual,
       'live_viewers': liveViewers,
       'description': description,
       'songcount': songcount,
@@ -155,7 +148,6 @@ class VideoFull extends Equatable {
       'refers': refers?.map((x) => x.toMap()).toList(),
       'simulcasts': simulcasts?.map((x) => x.toMap()).toList(),
       'mentions': mentions?.map((x) => x.toMap()).toList(),
-      'songs': songs,
     };
   }
 
@@ -166,23 +158,22 @@ class VideoFull extends Equatable {
       title: map['title'],
       type: EnumToString.fromString(VideoType.values, map['type']) ?? VideoType.clip,
       topicId: map['topic_id'],
-      publishedAt: DateTime.fromMillisecondsSinceEpoch(map['published_at']),
-      availableAt: DateTime.fromMillisecondsSinceEpoch(map['available_at']),
+      publishedAt: map['published_at'],
+      availableAt: map['available_at'],
       duration: map['duration'],
       status: EnumToString.fromString(VideoStatus.values, stringStatus) ?? VideoStatus.missing,
-      startScheduled: DateTime.fromMillisecondsSinceEpoch(map['start_scheduled']),
-      startActual: DateTime.fromMillisecondsSinceEpoch(map['start_actual']),
-      endActual: DateTime.fromMillisecondsSinceEpoch(map['end_actual']),
+      startScheduled: map['start_scheduled'],
+      startActual: map['start_actual'],
+      endActual: map['end_actual'],
       liveViewers: map['live_viewers'],
       description: map['description'],
       songcount: map['songcount'],
       channelId: map['channel_id'],
-      clips: List<VideoWithChannel>.from(map['clips']?.map((x) => VideoWithChannel.fromMap(x))),
-      sources: List<VideoWithChannel>.from(map['sources']?.map((x) => VideoWithChannel.fromMap(x))),
-      refers: List<VideoWithChannel>.from(map['refers']?.map((x) => VideoWithChannel.fromMap(x))),
-      simulcasts: List<VideoWithChannel>.from(map['simulcasts']?.map((x) => VideoWithChannel.fromMap(x))),
-      mentions: List<ChannelMin>.from(map['mentions']?.map((x) => ChannelMin.fromMap(x))),
-      songs: map['songs'],
+      clips: List<VideoWithChannel>.from(map['clips']?.map((x) => VideoWithChannel.fromMap(x)) ?? []),
+      sources: List<VideoWithChannel>.from(map['sources']?.map((x) => VideoWithChannel.fromMap(x)) ?? []),
+      refers: List<VideoWithChannel>.from(map['refers']?.map((x) => VideoWithChannel.fromMap(x)) ?? []),
+      simulcasts: List<VideoWithChannel>.from(map['simulcasts']?.map((x) => VideoWithChannel.fromMap(x)) ?? []),
+      mentions: List<ChannelMin>.from(map['mentions']?.map((x) => ChannelMin.fromMap(x)) ?? []),
     );
   }
 
@@ -209,14 +200,13 @@ class VideoFull extends Equatable {
       // endActual,
       liveViewers ?? -1,
       description ?? '',
-      songcount,
-      channelId,
+      songcount ?? 0,
+      channelId ?? '',
       clips ?? [],
       sources ?? [],
       refers ?? [],
       simulcasts ?? [],
       mentions ?? [],
-      songs,
     ];
   }
 }
