@@ -23,20 +23,23 @@ Use this plugin in your Flutter app to:
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+- Get an API key at [holodex.net](holodex.net), [instructions here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+[Full example](https://github.com/getBoolean/dart_holodex_api/blob/main/example/example_holodex/bin/example_holodex.dart).
+
+Get an instance of HolodexClient with your API key
 
 ```dart
-// Get an instance of the client, pass in your apiKey
-var client = HolodexClient(apiKey: apiKey);
+var holodexClient = HolodexClient(apiKey: apiKey);
+```
 
+Query a single video by its video id and optionally include other data
+
+```dart
 // Get one video and print it
-final VideoFull video = await client.getVideo('Gx_GPwpyLxw', includes: [
+final VideoFull video = await holodexClient.getVideo('Gx_GPwpyLxw', includes: [
     IncludesData.channelStats,
     IncludesData.clips,
     IncludesData.description,
@@ -48,6 +51,32 @@ final VideoFull video = await client.getVideo('Gx_GPwpyLxw', includes: [
     IncludesData.sources,
 ]);
 print(video.toString());
+```
+
+Query a list of videos and filter them
+
+```dart
+// Get a bunch of videos and print them
+final List<VideoFull> videos = await holodexClient.getVideos(
+    channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
+    includes: <String>[
+        IncludesData.mentions,
+    ],
+    lang: <String>[Language.all],
+    limit: 25,
+    maxUpcomingHours: 1000,
+    mentionedChannelId: 'UCDqI2jOz0weumE8s7paEk6g', // Roboco
+    offset: 0,
+    order: SortOrder.descending,
+    organization: Organization.Hololive,
+    paginated: '<empty>',
+    sort: 'available_at',
+    status: VideoStatus.past,
+    // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
+    // topic: 'minecraft',
+    type: VideoType.clip
+);
+print(videos.toString());
 ```
 
 ## Additional information
