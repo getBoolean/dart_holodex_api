@@ -3,7 +3,7 @@ part of dart_holodex_api.models;
 class ChannelMin extends Equatable {
   final String id;
   final String name;
-  final String englishName;
+  final String? englishName;
   final ChannelType type;
   final String photo;
 
@@ -11,7 +11,7 @@ class ChannelMin extends Equatable {
   ChannelMin({
     required this.id,
     required this.name,
-    required this.englishName,
+    this.englishName,
     required this.type,
     required this.photo,
   });
@@ -64,7 +64,7 @@ class ChannelMin extends Equatable {
     return [
       id,
       name,
-      englishName,
+      englishName ?? '',
       type,
       photo,
     ];
