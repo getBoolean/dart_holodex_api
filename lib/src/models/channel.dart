@@ -19,6 +19,7 @@ class Channel extends Equatable {
   final bool inactive;
   final String description;
 
+  /// Returns a new [Channel] instance.
   Channel({
     required this.id,
     required this.name,

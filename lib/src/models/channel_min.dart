@@ -6,6 +6,8 @@ class ChannelMin extends Equatable {
   final String englishName;
   final ChannelType type;
   final String photo;
+
+  /// Returns a new [ChannelMin] instance.
   ChannelMin({
     required this.id,
     required this.name,

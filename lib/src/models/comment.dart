@@ -5,6 +5,7 @@ class Comment extends Equatable {
   final String videoId;
   final String message;
 
+  /// Returns a new [Comment] instance.
   Comment({
     required this.commentKey,
     required this.videoId,
