@@ -45,7 +45,7 @@ abstract class BaseHolodexClient {
 
   // GetChannel
 
-  /// Returns a single [VideoFull]
+  /// Returns a single `VideoFull`
   /// 
   /// Arguments:
   /// 
@@ -60,7 +60,7 @@ abstract class BaseHolodexClient {
 
   /// Search for a video
   /// 
-  /// Returns `List<Video>`
+  /// Returns `List<VideoFull>`
   /// 
   /// Arguments:
   /// 
@@ -78,7 +78,7 @@ abstract class BaseHolodexClient {
   /// - `status` Filter by video status
   /// - `topic` Filter by video topic id
   /// - `type` Filter by type of video
-  Future<List<Video>> getVideos({
+  Future<List<VideoFull>> getVideos({
     String? channelId,
     List<String>? includes,
     List<String> lang = const ['all'],
@@ -87,7 +87,7 @@ abstract class BaseHolodexClient {
     String? mentionedChannelId,
     int offset = 0,
     SortOrder order = SortOrder.descending,
-    String org = Organization.Hololive,
+    String organization = Organization.Hololive,
     String paginated = '<empty>',
     String sort = 'available_at',
     VideoStatus? status,

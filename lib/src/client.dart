@@ -33,7 +33,7 @@ class HolodexClient extends BaseHolodexClient {
     final Map<String, dynamic> params = {'id': videoId};
 
     // Add the info the videos must include
-    if (includes != null) {
+    if (includes != null && includes.isNotEmpty) {
       // Add the first item so that there is not a comma in front
       String includesData = includes[0];
       // Add the rest of the items
@@ -62,23 +62,23 @@ class HolodexClient extends BaseHolodexClient {
   /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
   /// - `offset` Offset results
   /// - `order` Order by ascending or descending
-  /// - `org` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
+  /// - `organization` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
   /// - `paginated` If paginated is set to any non-empty value, return an object with total, otherwise returns an array. E.g.: `AllowEmptyValue`
   /// - `sort` Sort by any returned video field
   /// - `status` Filter by video status
   /// - `topic` Filter by video topic id
   /// - `type` Filter by type of video
   @override
-  Future<List<Video>> getVideos({
+  Future<List<VideoFull>> getVideos({
     String? channelId,
     List<String>? includes,
-    List<String> lang = const <String>['all'],
+    List<String> lang = const <String>[Language.all],
     int limit = 25,
     int? maxUpcomingHours,
     String? mentionedChannelId,
     int offset = 0,
     SortOrder order = SortOrder.descending,
-    String? org,
+    String? organization,
     String paginated = '<empty>',
     String sort = 'available_at',
     VideoStatus? status,
@@ -129,8 +129,8 @@ class HolodexClient extends BaseHolodexClient {
     }
 
     // Add the organization param
-    if (org != null) {
-      params.addAll({'org': org});
+    if (organization != null) {
+      params.addAll({'org': organization});
     }
 
     // Add the topic param
@@ -156,7 +156,7 @@ class HolodexClient extends BaseHolodexClient {
     final List list = response.data['items'];
     print(response.data['items']);
     
-    return list.map((video) => Video.fromMap(video)).toList(); // Returns as `List<Video>`
+    return list.map((video) => VideoFull.fromMap(video)).toList(); // Returns as `List<Video>`
   }
   
   /// An alias of HolodexClient.call('get')
