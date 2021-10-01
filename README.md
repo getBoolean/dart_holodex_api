@@ -11,12 +11,15 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A Dart wrapper for the Holodex API v2
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Use this plugin in your Flutter app to:
+
+- Get a video's details
+- Get a list of videos and filter them
+- Support for more Holodex API calls is coming
 
 ## Getting started
 
@@ -26,14 +29,19 @@ start using the package.
 ## Usage
 
 TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+to `/example` folder.
 
 ```dart
-const like = 'sample';
+// Get an instance of the client, pass in your apiKey
+var client = HolodexClient(apiKey: apiKey);
+
+// Get one video and print it
+final Video video = await client.getVideo('_1OIrkKLMJM');
+print(video.toString());
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
+TODO: Tell users more about the package: where to find more information, how to
+contribute to the package, how to file issues, what response they can expect
 from the package authors, and more.
