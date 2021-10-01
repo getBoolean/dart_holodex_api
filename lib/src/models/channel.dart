@@ -4,7 +4,7 @@ class Channel extends Equatable {
   final String id;
   final String name;
   final String englishName;
-  final ChannelTypeEnum type;
+  final ChannelType type;
   final String org;
   final String suborg;
   final String photo;
@@ -66,7 +66,7 @@ class Channel extends Equatable {
       id: map['id'],
       name: map['name'],
       englishName: map['english_name'],
-      type: EnumToString.fromString(ChannelTypeEnum.values, map['type']) ?? ChannelTypeEnum.subber,
+      type: EnumToString.fromString(ChannelType.values, map['type']) ?? ChannelType.subber,
       org: map['org'],
       suborg: map['suborg'],
       photo: map['photo'],
@@ -91,7 +91,7 @@ class Channel extends Equatable {
     String? id,
     String? name,
     String? englishName,
-    ChannelTypeEnum? type,
+    ChannelType? type,
     String? org,
     String? suborg,
     String? photo,

@@ -9,5 +9,6 @@ import 'src/enums.dart';
 import 'src/models.dart' as models;
 
 export 'src/dart_holodex_api_base.dart';
+export 'src/enums.dart';
 export 'src/response.dart';
 export 'src/exception.dart';

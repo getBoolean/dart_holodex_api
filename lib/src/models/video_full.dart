@@ -30,7 +30,7 @@ class VideoFull extends Equatable {
 
   final String title;
 
-  final VideoTypeEnum type;
+  final VideoType type;
 
   /// corresponds to a Topic ID, Videos of type `clip` cannot not have topic. Streams may or may not have topic.
   final String? topicId;
@@ -43,7 +43,7 @@ class VideoFull extends Equatable {
   /// Duration of the video in seconds
   final int duration;
 
-  final VideoStatusEnum status;
+  final VideoStatus status;
 
   /// Included when includes contains 'live_info'
   final DateTime? startScheduled;
@@ -87,12 +87,12 @@ class VideoFull extends Equatable {
   VideoFull copyWith({
     String? id,
     String? title,
-    VideoTypeEnum? type,
+    VideoType? type,
     String? topicId,
     DateTime? publishedAt,
     DateTime? availableAt,
     int? duration,
-    VideoStatusEnum? status,
+    VideoStatus? status,
     DateTime? startScheduled,
     DateTime? startActual,
     DateTime? endActual,
@@ -164,12 +164,12 @@ class VideoFull extends Equatable {
     return VideoFull(
       id: map['id'],
       title: map['title'],
-      type: EnumToString.fromString(VideoTypeEnum.values, map['type']) ?? VideoTypeEnum.clip,
+      type: EnumToString.fromString(VideoType.values, map['type']) ?? VideoType.clip,
       topicId: map['topic_id'],
       publishedAt: DateTime.fromMillisecondsSinceEpoch(map['published_at']),
       availableAt: DateTime.fromMillisecondsSinceEpoch(map['available_at']),
       duration: map['duration'],
-      status: EnumToString.fromString(VideoStatusEnum.values, stringStatus) ?? VideoStatusEnum.missing,
+      status: EnumToString.fromString(VideoStatus.values, stringStatus) ?? VideoStatus.missing,
       startScheduled: DateTime.fromMillisecondsSinceEpoch(map['start_scheduled']),
       startActual: DateTime.fromMillisecondsSinceEpoch(map['start_actual']),
       endActual: DateTime.fromMillisecondsSinceEpoch(map['end_actual']),

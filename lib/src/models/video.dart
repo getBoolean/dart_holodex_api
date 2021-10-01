@@ -3,7 +3,7 @@ part of dart_holodex_api.models;
 class Video extends Equatable {
   final String id;
   final String title;
-  final VideoTypeEnum type;
+  final VideoType type;
 
   /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
   final String? topicId;
@@ -16,7 +16,7 @@ class Video extends Equatable {
   /// Duration of the video in seconds
   final int duration;
 
-  final VideoStatusEnum status;
+  final VideoStatus status;
 
   /// Included when includes contains 'live_info'
   final String? startScheduled;
@@ -59,12 +59,12 @@ class Video extends Equatable {
   Video copyWith({
     String? id,
     String? title,
-    VideoTypeEnum? type,
+    VideoType? type,
     String? topicId,
     String? publishedAt,
     String? availableAt,
     int? duration,
-    VideoStatusEnum? status,
+    VideoStatus? status,
     String? startScheduled,
     String? startActual,
     String? endActual,
@@ -118,12 +118,12 @@ class Video extends Equatable {
     return Video(
       id: map['id'],
       title: map['title'],
-      type: EnumToString.fromString(VideoTypeEnum.values, map['type']) ?? VideoTypeEnum.clip,
+      type: EnumToString.fromString(VideoType.values, map['type']) ?? VideoType.clip,
       topicId: map['topic_id'],
       publishedAt: map['published_at'],
       availableAt: map['available_at'],
       duration: map['duration'],
-      status: EnumToString.fromString(VideoStatusEnum.values, stringStatus) ?? VideoStatusEnum.missing,
+      status: EnumToString.fromString(VideoStatus.values, stringStatus) ?? VideoStatus.missing,
       startScheduled: map['start_scheduled'],
       startActual: map['start_actual'],
       endActual: map['end_actual'],

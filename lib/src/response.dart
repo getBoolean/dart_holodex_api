@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-class Response<T> {
-  Response({this.data});
+class HolodexResponse<T> {
+  HolodexResponse({this.data});
 
   T? data;
 
