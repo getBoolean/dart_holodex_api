@@ -92,6 +92,13 @@ final List<VideoFull> videos = await holodexClient.listVideos(
 print(videos.toString());
 ```
 
+Query a list of live videos and streams
+
+```dart
+final List<VideoFull> liveVideos = await holodexClient.listLiveVideos();
+print(liveVideos.toString());
+```
+
 ## Additional information
 
 Read the official API documentation [here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)
