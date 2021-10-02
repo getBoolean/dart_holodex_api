@@ -146,6 +146,12 @@ class HolodexClient extends BaseHolodexClient {
     throw UnimplementedError();
   }
 
+  @override
+  Future<List<Video>> listLiveVideosFromChannel(String channelId) {
+    // TODO: implement listLiveVideosFromChannel
+    throw UnimplementedError();
+  }
+
   /// Get a list of live videos
   /// 
   /// Returns `List<VideoFull>`

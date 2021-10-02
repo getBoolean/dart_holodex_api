@@ -59,6 +59,7 @@ abstract class BaseHolodexClient {
   Future<VideoFull> listVideosFromChannel(String channelId, {VideoType? type});
 
   // GetLiveVideosByChannelId
+  Future<List<Video>> listLiveVideosFromChannel(String channelId);
 
   /// Get a list of live videos
   /// 
