@@ -40,8 +40,10 @@ abstract class BaseHolodexClient {
   // GET REQUESTS
 
   // GetChannels
+  Future<List<Channel>> listChannels();
 
   // GetChannel
+  Future<Channel> getChannel(String channelId);
 
   /// Get a video by its video ID
   /// 

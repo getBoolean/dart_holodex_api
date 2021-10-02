@@ -105,41 +105,65 @@ class HolodexClient extends BaseHolodexClient {
     
 
     // Add the max upcoming hours param
-    if (maxUpcomingHours != null) {
-      params.addAll({'max_upcoming_hours': maxUpcomingHours});
-    }
+    addMaxUpcomingHours(maxUpcomingHours, params);
 
     // Add the mentioned channel id param
-    if (mentionedChannelId != null) {
-      params.addAll({'mentioned_channel_id': mentionedChannelId});
-    }
+    addMentionedChannelId(mentionedChannelId, params);
 
     // Add the organization param
-    if (organization != null) {
-      params.addAll({'org': organization});
-    }
+    addOrganization(organization, params);
 
     // Add the topic param
-    if (topic != null) {
-      params.addAll({'topic': topic});
-    }
+    addTopic(topic, params);
 
     // Add the status param
-    if (status != null) {
-      final stringStatus = EnumToString.convertToString(status).replaceAll('new_', 'new');
-
-      params.addAll({'status': stringStatus});
-    }
+    addStatus(status, params);
 
     // Add the type param
-    if (type != null) {
-      params.addAll({'type': EnumToString.convertToString(type)});
-    }
+    addType(type, params);
 
-    final dio.Response response = await get(path: '/videos', params: params);
+    final response = await get(path: '/videos', params: params);
 
     final List list = response.data['items'];
     return list.map((video) => VideoFull.fromMap(video)).toList(); // Returns as `List<Video>`
+  }
+
+  void addType(VideoType? type, Map<String, dynamic> params) {
+    if (type != null) {
+      params.addAll({'type': EnumToString.convertToString(type)});
+    }
+  }
+
+  void addStatus(VideoStatus? status, Map<String, dynamic> params) {
+    if (status != null) {
+      final stringStatus = EnumToString.convertToString(status).replaceAll('new_', 'new');
+    
+      params.addAll({'status': stringStatus});
+    }
+  }
+
+  void addTopic(String? topic, Map<String, dynamic> params) {
+    if (topic != null) {
+      params.addAll({'topic': topic});
+    }
+  }
+
+  void addOrganization(String? organization, Map<String, dynamic> params) {
+    if (organization != null) {
+      params.addAll({'org': organization});
+    }
+  }
+
+  void addMentionedChannelId(String? mentionedChannelId, Map<String, dynamic> params) {
+    if (mentionedChannelId != null) {
+      params.addAll({'mentioned_channel_id': mentionedChannelId});
+    }
+  }
+
+  void addMaxUpcomingHours(int? maxUpcomingHours, Map<String, dynamic> params) {
+    if (maxUpcomingHours != null) {
+      params.addAll({'max_upcoming_hours': maxUpcomingHours});
+    }
   }
 
   void addIncludes(List<String>? includes, Map<String, dynamic> params) {
@@ -164,6 +188,13 @@ class HolodexClient extends BaseHolodexClient {
       params.addAll({'lang': languages});
     }
   }
+
+
+
+
+
+
+  // Utilities
   
   /// An alias of HolodexClient.call('get')
   @override
