@@ -55,9 +55,9 @@ class VideoWithChannel extends Equatable {
     this.endActual,
     this.liveViewers,
     this.description,
-    required this.songcount,
     required this.channelId,
     required this.channel,
+    required this.songcount,
   });
 
   VideoWithChannel copyWith({
