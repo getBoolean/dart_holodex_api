@@ -129,7 +129,7 @@ class HolodexClient extends BaseHolodexClient {
     addTopic(topic, params);
 
     // Add the status param
-    addListStatus(status, params);
+    addStatusList(status, params);
 
     // Add the type param
     addType(type, params);
@@ -224,7 +224,7 @@ class HolodexClient extends BaseHolodexClient {
     addTopic(topic, params);
 
     // Add the status param
-    addListStatus(status, params);
+    addStatusList(status, params);
 
     // Add the type param
     addType(type, params);
@@ -241,7 +241,7 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void addListStatus(List<VideoStatus>? status, Map<String, dynamic> params) {
+  void addStatusList(List<VideoStatus>? status, Map<String, dynamic> params) {
     if (status != null) {
       // Add the first item so that there is not a comma in front
       String stringStatus = EnumToString.convertToString(status[0]).replaceAll('new_', 'new');
