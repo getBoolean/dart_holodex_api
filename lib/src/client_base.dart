@@ -43,11 +43,14 @@ abstract class BaseHolodexClient {
 
   // GetChannel
 
-  /// Returns a single `VideoFull`
+  /// Get a video by its video ID
+  /// 
+  /// Returns a single [VideoFull]
   /// 
   /// Arguments:
   /// 
   /// - `videoId` The video ID as a string
+  /// - `includes` List of strings from the class `IncludesData`
   Future<VideoFull> getVideo(String videoId);
 
   // GetVideosFromChannel
@@ -56,7 +59,7 @@ abstract class BaseHolodexClient {
 
   // GetLiveVideos
 
-  /// Search for a video
+  /// Get a list of videos
   /// 
   /// Returns `List<VideoFull>`
   /// 
@@ -70,7 +73,7 @@ abstract class BaseHolodexClient {
   /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
   /// - `offset` Offset results
   /// - `order` Order by ascending or descending
-  /// - `org` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
+  /// - `organization` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
   /// - `paginated` If paginated is set to any non-empty value, return an object with total, otherwise returns an array. E.g.: `AllowEmptyValue`
   /// - `sort` Sort by any returned video field
   /// - `status` Filter by video status
