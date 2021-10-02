@@ -18,6 +18,8 @@ class HolodexClient extends BaseHolodexClient {
     dio.Dio? client,
   }) : super(apiKey: apiKey, basePath: basePath, dioClient: client);
 
+  /// Get a video by its video ID
+  /// 
   /// Returns a single [VideoFull]
   /// 
   /// Arguments:
@@ -44,9 +46,9 @@ class HolodexClient extends BaseHolodexClient {
     return VideoFull.fromMap(response.data.first);
   }
 
-  /// Query Videos
+  /// Get a list of videos
   /// 
-  /// Returns `List<Video>`
+  /// Returns `List<VideoFull>`
   /// 
   /// Arguments:
   /// 
