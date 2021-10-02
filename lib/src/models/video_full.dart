@@ -7,7 +7,7 @@ class VideoFull extends Equatable {
     required this.title,
     required this.type,
     this.topicId,
-    required this.publishedAt,
+    this.publishedAt,
     required this.availableAt,
     required this.duration,
     required this.status,
@@ -35,7 +35,7 @@ class VideoFull extends Equatable {
   /// corresponds to a Topic ID, Videos of type `clip` cannot not have topic. Streams may or may not have topic.
   final String? topicId;
 
-  final String publishedAt;
+  final String? publishedAt;
 
   /// Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at
   final String availableAt;
@@ -198,13 +198,13 @@ class VideoFull extends Equatable {
       title,
       type,
       topicId ?? '',
-      publishedAt,
+      publishedAt ?? '',
       availableAt,
       duration,
       status,
-      // startScheduled,
-      // startActual,
-      // endActual,
+      startScheduled ?? '',
+      startActual ?? '',
+      endActual ?? '',
       liveViewers ?? -1,
       description ?? '',
       songcount ?? 0,
