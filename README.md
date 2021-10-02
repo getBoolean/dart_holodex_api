@@ -11,7 +11,11 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
+<!-- markdownlint-disable MD041 -->
+
 A Dart wrapper for Holodex API v2
+
+<!-- markdownlint-enable MD041 -->
 
 ## Features
 
