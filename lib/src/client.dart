@@ -97,26 +97,11 @@ class HolodexClient extends BaseHolodexClient {
     });
 
     // Add the info the videos must include
-    if (includes != null && includes.isNotEmpty) {
-      // Add the first item so that there is not a comma in front
-      String includesData = includes[0];
-      // Add the rest of the items
-      for (int i = 1; i < includes.length; i++) {
-        includesData = includesData + ',' + includes[i];
-      }
-      params.addAll({'include': includesData});
-    }
+    addIncludes(includes, params);
 
     // Add the languages to filter by
     // Add the first item so that there is not a comma in front
-    if ( lang.isNotEmpty ) {
-      String languages = lang[0];
-      // Add the rest of the items
-      for (int i = 1; i < lang.length; i++) {
-        languages = languages + ',' + lang[i];
-      }
-      params.addAll({'lang': languages});
-    }
+    addLanguages(lang, params);
     
 
     // Add the max upcoming hours param
@@ -155,6 +140,29 @@ class HolodexClient extends BaseHolodexClient {
 
     final List list = response.data['items'];
     return list.map((video) => VideoFull.fromMap(video)).toList(); // Returns as `List<Video>`
+  }
+
+  void addIncludes(List<String>? includes, Map<String, dynamic> params) {
+    if (includes != null && includes.isNotEmpty) {
+      // Add the first item so that there is not a comma in front
+      String includesData = includes[0];
+      // Add the rest of the items
+      for (int i = 1; i < includes.length; i++) {
+        includesData = includesData + ',' + includes[i];
+      }
+      params.addAll({'include': includesData});
+    }
+  }
+
+  void addLanguages(List<String> lang, Map<String, dynamic> params) {
+    if ( lang.isNotEmpty ) {
+      String languages = lang[0];
+      // Add the rest of the items
+      for (int i = 1; i < lang.length; i++) {
+        languages = languages + ',' + lang[i];
+      }
+      params.addAll({'lang': languages});
+    }
   }
   
   /// An alias of HolodexClient.call('get')
