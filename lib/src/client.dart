@@ -67,7 +67,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `topic` Filter by video topic id
   /// - `type` Filter by type of video
   @override
-  Future<List<VideoFull>> getVideos({
+  Future<List<VideoFull>> listVideos({
     String? channelId,
     List<String>? includes,
     List<String> lang = const <String>[Language.all],

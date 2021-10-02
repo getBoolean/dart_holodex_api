@@ -27,7 +27,7 @@ void main(List<String> arguments) async {
   print(video.toString());
 
   // Get a bunch of videos and print them
-  final List<VideoFull> videos = await holodexClient.getVideos(
+  final List<VideoFull> videos = await holodexClient.listVideos(
     channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
     includes: <String>[
       IncludesData.mentions,

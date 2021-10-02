@@ -81,7 +81,7 @@ abstract class BaseHolodexClient {
   /// - `status` Filter by video status
   /// - `topic` Filter by video topic id
   /// - `type` Filter by type of video
-  Future<List<VideoFull>> getVideos({
+  Future<List<VideoFull>> listVideos({
     String? channelId,
     List<String>? includes,
     List<String> lang = const [Language.all],

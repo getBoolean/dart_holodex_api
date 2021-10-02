@@ -70,7 +70,7 @@ Query a list of videos and filter them
 
 ```dart
 // Get a bunch of videos and print them
-final List<VideoFull> videos = await holodexClient.getVideos(
+final List<VideoFull> videos = await holodexClient.listVideos(
     channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
     includes: <String>[
         IncludesData.mentions,
