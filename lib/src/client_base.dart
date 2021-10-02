@@ -56,10 +56,46 @@ abstract class BaseHolodexClient {
   Future<VideoFull> getVideo(String videoId);
 
   // GetVideosFromChannel
+  Future<VideoFull> listVideosFromChannel(String channelId, {VideoType? type});
 
   // GetLiveVideosByChannelId
 
-  // GetLiveVideos
+  /// Get a list of live videos
+  /// 
+  /// Returns `List<VideoFull>`
+  /// 
+  /// Arguments:
+  /// 
+  /// - `channelId` Filter by video uploader channel id
+  /// - `includes` List of strings from the class `IncludesData`
+  /// - `lang` List of strings from the class `Language`
+  /// - `limit` Limit the number of results returned
+  /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
+  /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
+  /// - `offset` Offset results
+  /// - `order` Order by ascending or descending
+  /// - `organization` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
+  /// - `paginated` If paginated is set to any non-empty value, return an object with total, otherwise returns an array. E.g.: `AllowEmptyValue`
+  /// - `sort` Sort by any returned video field
+  /// - `status` Array of [VideoStatus] to filter by video status
+  /// - `topic` Filter by video topic id
+  /// - `type` Filter by type of video
+  Future<List<VideoFull>> listLiveVideos({
+    String? channelId,
+    List<String> includes = const [IncludesData.liveInfo],
+    List<String> lang = const [Language.all],
+    int limit = 125,
+    int? maxUpcomingHours = 48,
+    String? mentionedChannelId,
+    int offset = 0,
+    SortOrder order = SortOrder.ascending,
+    String organization = Organization.Hololive,
+    String paginated = '<empty>',
+    String sort = 'available_at',
+    List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
+    String? topic,
+    VideoType? type = VideoType.stream,
+  });
 
   /// Get a list of videos
   /// 
@@ -78,7 +114,7 @@ abstract class BaseHolodexClient {
   /// - `organization` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
   /// - `paginated` If paginated is set to any non-empty value, return an object with total, otherwise returns an array. E.g.: `AllowEmptyValue`
   /// - `sort` Sort by any returned video field
-  /// - `status` Filter by video status
+  /// - `status` Array of [VideoStatus] to filter by video status
   /// - `topic` Filter by video topic id
   /// - `type` Filter by type of video
   Future<List<VideoFull>> listVideos({
@@ -93,7 +129,7 @@ abstract class BaseHolodexClient {
     String organization = Organization.Hololive,
     String paginated = '<empty>',
     String sort = 'available_at',
-    VideoStatus? status,
+    List<VideoStatus>? status,
     String? topic,
     VideoType? type,
   });

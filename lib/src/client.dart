@@ -18,6 +18,18 @@ class HolodexClient extends BaseHolodexClient {
     dio.Dio? client,
   }) : super(apiKey: apiKey, basePath: basePath, dioClient: client);
 
+  @override
+  Future<Channel> getChannel(String channelId) {
+    // TODO: implement getChannel
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<Channel>> listChannels() {
+    // TODO: implement listChannels
+    throw UnimplementedError();
+  }
+
   /// Get a video by its video ID
   /// 
   /// Returns a single [VideoFull]
@@ -63,7 +75,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `organization` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
   /// - `paginated` If paginated is set to any non-empty value, return an object with total, otherwise returns an array. E.g.: `AllowEmptyValue`
   /// - `sort` Sort by any returned video field
-  /// - `status` Filter by video status
+  /// - `status` Array of [VideoStatus] to filter by video status
   /// - `topic` Filter by video topic id
   /// - `type` Filter by type of video
   @override
@@ -79,7 +91,7 @@ class HolodexClient extends BaseHolodexClient {
     String? organization,
     String paginated = '<empty>',
     String sort = 'available_at',
-    VideoStatus? status,
+    List<VideoStatus>? status,
     String? topic,
     VideoType? type,
   }) async {
@@ -88,7 +100,6 @@ class HolodexClient extends BaseHolodexClient {
 
     // Add the items with default values (they can't be null)
     params.addAll({
-      'channel_id': channelId,
       'limit': limit,
       'offset': offset,
       'order': order == SortOrder.ascending ? 'asc' : 'desc',
@@ -96,13 +107,14 @@ class HolodexClient extends BaseHolodexClient {
       'sort': sort,
     });
 
+    addChannelId(channelId, params);
+
     // Add the info the videos must include
     addIncludes(includes, params);
 
     // Add the languages to filter by
     // Add the first item so that there is not a comma in front
     addLanguages(lang, params);
-    
 
     // Add the max upcoming hours param
     addMaxUpcomingHours(maxUpcomingHours, params);
@@ -117,7 +129,7 @@ class HolodexClient extends BaseHolodexClient {
     addTopic(topic, params);
 
     // Add the status param
-    addStatus(status, params);
+    addListStatus(status, params);
 
     // Add the type param
     addType(type, params);
@@ -128,17 +140,122 @@ class HolodexClient extends BaseHolodexClient {
     return list.map((video) => VideoFull.fromMap(video)).toList(); // Returns as `List<Video>`
   }
 
-  void addType(VideoType? type, Map<String, dynamic> params) {
-    if (type != null) {
-      params.addAll({'type': EnumToString.convertToString(type)});
+  @override
+  Future<VideoFull> listVideosFromChannel(String channelId, {VideoType? type}) {
+    // TODO: implement getVideosFromChannel
+    throw UnimplementedError();
+  }
+
+  /// Get a list of live videos
+  /// 
+  /// Returns `List<VideoFull>`
+  /// 
+  /// Arguments:
+  /// 
+  /// - `channelId` Filter by video uploader channel id
+  /// - `includes` List of strings from the class `IncludesData`
+  /// - `lang` List of strings from the class `Language`
+  /// - `limit` Limit the number of results returned
+  /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
+  /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
+  /// - `offset` Offset results
+  /// - `order` Order by ascending or descending
+  /// - `organization` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
+  /// - `paginated` If paginated is set to any non-empty value, return an object with total, otherwise returns an array. E.g.: `AllowEmptyValue`
+  /// - `sort` Sort by any returned video field
+  /// - `status` Array of [VideoStatus] to filter by video status
+  /// - `topic` Filter by video topic id
+  /// - `type` Filter by type of video
+  @override
+  Future<List<VideoFull>> listLiveVideos({
+    String? channelId,
+    List<String>? includes,
+    List<String> lang = const [Language.all],
+    int limit = 125,
+    int? maxUpcomingHours = 48,
+    String? mentionedChannelId,
+    int offset = 0,
+    SortOrder order = SortOrder.ascending,
+    String organization = Organization.Hololive,
+    String paginated = '<empty>',
+    String sort = 'available_at',
+    List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
+    String? topic,
+    VideoType? type = VideoType.stream
+  }) async {
+    // Create the params list
+    final Map<String, dynamic> params = {};
+
+    // Make sure includes is not null
+    includes ??= [];
+    // Make sure liveInfo is in the list and not duplicated
+    includes
+      ..remove(IncludesData.liveInfo)
+      ..add(IncludesData.liveInfo);
+
+    // Add the items with default values (they can't be null)
+    params.addAll({
+      'limit': limit,
+      'offset': offset,
+      'order': order == SortOrder.ascending ? 'asc' : 'desc',
+      'paginated': paginated,
+      'sort': sort,
+    });
+
+    addChannelId(channelId, params);
+
+    // Add the info the videos must include
+    addIncludes(includes, params);
+
+    // Add the languages to filter by
+    // Add the first item so that there is not a comma in front
+    addLanguages(lang, params);
+
+    // Add the max upcoming hours param
+    addMaxUpcomingHours(maxUpcomingHours, params);
+
+    // Add the mentioned channel id param
+    addMentionedChannelId(mentionedChannelId, params);
+
+    // Add the organization param
+    addOrganization(organization, params);
+
+    // Add the topic param
+    addTopic(topic, params);
+
+    // Add the status param
+    addListStatus(status, params);
+
+    // Add the type param
+    addType(type, params);
+
+    final response = await get(path: '/live', params: params);
+
+    final List list = response.data['items'];
+    return list.map((video) => VideoFull.fromMap(video)).toList(); // Returns as `List<Video>`
+  }
+
+  void addChannelId(String? channelId, Map<String, dynamic> params) {
+    if (channelId != null) {
+      params.addAll({'channel_id': channelId});
     }
   }
 
-  void addStatus(VideoStatus? status, Map<String, dynamic> params) {
+  void addListStatus(List<VideoStatus>? status, Map<String, dynamic> params) {
     if (status != null) {
-      final stringStatus = EnumToString.convertToString(status).replaceAll('new_', 'new');
-    
+      // Add the first item so that there is not a comma in front
+      String stringStatus = EnumToString.convertToString(status[0]).replaceAll('new_', 'new');
+      // Add the rest of the items
+      for (int i = 1; i < status.length; i++) {
+        stringStatus = stringStatus + ',' + EnumToString.convertToString(status[i]).replaceAll('new_', 'new');
+      }
       params.addAll({'status': stringStatus});
+    }
+  }
+
+  void addType(VideoType? type, Map<String, dynamic> params) {
+    if (type != null) {
+      params.addAll({'type': EnumToString.convertToString(type)});
     }
   }
 
@@ -168,12 +285,8 @@ class HolodexClient extends BaseHolodexClient {
 
   void addIncludes(List<String>? includes, Map<String, dynamic> params) {
     if (includes != null && includes.isNotEmpty) {
-      // Add the first item so that there is not a comma in front
-      String includesData = includes[0];
-      // Add the rest of the items
-      for (int i = 1; i < includes.length; i++) {
-        includesData = includesData + ',' + includes[i];
-      }
+      // Join the array with commas
+      String includesData = includes.join(',');
       params.addAll({'include': includesData});
     }
   }
