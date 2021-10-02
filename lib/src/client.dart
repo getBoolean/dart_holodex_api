@@ -97,7 +97,7 @@ class HolodexClient extends BaseHolodexClient {
     });
 
     // Add the info the videos must include
-    if (includes != null) {
+    if (includes != null && includes.isNotEmpty) {
       // Add the first item so that there is not a comma in front
       String includesData = includes[0];
       // Add the rest of the items
@@ -109,12 +109,15 @@ class HolodexClient extends BaseHolodexClient {
 
     // Add the languages to filter by
     // Add the first item so that there is not a comma in front
-    String languages = lang[0];
-    // Add the rest of the items
-    for (int i = 1; i < lang.length; i++) {
-      languages = languages + ',' + lang[i];
+    if ( lang.isNotEmpty ) {
+      String languages = lang[0];
+      // Add the rest of the items
+      for (int i = 1; i < lang.length; i++) {
+        languages = languages + ',' + lang[i];
+      }
+      params.addAll({'lang': languages});
     }
-    params.addAll({'lang': languages});
+    
 
     // Add the max upcoming hours param
     if (maxUpcomingHours != null) {

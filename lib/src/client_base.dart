@@ -82,7 +82,7 @@ abstract class BaseHolodexClient {
   Future<List<VideoFull>> getVideos({
     String? channelId,
     List<String>? includes,
-    List<String> lang = const ['all'],
+    List<String> lang = const [Language.all],
     int limit = 25,
     int? maxUpcomingHours,
     String? mentionedChannelId,
