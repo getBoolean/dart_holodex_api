@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-enum VideoType { stream, clip }
+enum VideoType { stream, clip, all }
 
 enum VideoStatus { new_, upcoming, live, past, missing }
 
