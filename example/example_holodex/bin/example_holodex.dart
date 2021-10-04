@@ -27,7 +27,7 @@ void main(List<String> arguments) async {
   print(video.title);
 
   // Get a bunch of videos and print them
-  final List<VideoFull> videos = await holodexClient.listVideos(
+  final VideoList videoList = await holodexClient.listVideos(
     // channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
     includes: <String>[
       Includes.channelStats,
@@ -41,23 +41,23 @@ void main(List<String> arguments) async {
       Includes.sources,
     ],
     lang: <String>[Language.all],
-    limit: 100,
+    limit: 50,
     maxUpcomingHours: 1000,
     // mentionedChannelId: 'UCDqI2jOz0weumE8s7paEk6g', // Roboco
     offset: 0,
     order: SortOrder.ascending,
-    organization: Organization.Hololive,
-    paginated: '<empty>',
+    // organization: Organization.Hololive,
+    paginated: true,
     sort: 'available_at',
     status: [VideoStatus.live],
     // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
     // topic: 'minecraft',
     type: VideoType.stream
   );
-  print(videos.length);
+  print(videoList.videos.length);
 
   // Get live videos
-  final List<VideoFull> liveVideos = await holodexClient.listLiveVideos();
-  print(liveVideos.length);
+  final VideoList liveVideos = await holodexClient.listLiveVideos();
+  print(liveVideos.videos.length);
 
 }

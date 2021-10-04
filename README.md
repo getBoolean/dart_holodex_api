@@ -70,7 +70,7 @@ Query a list of videos and filter them
 
 ```dart
 // Get a bunch of videos and print them
-final List<VideoFull> videos = await holodexClient.listVideos(
+final VideoList videoList = await holodexClient.listVideos(
     channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
     includes: <String>[
         Includes.channelStats,
@@ -90,20 +90,20 @@ final List<VideoFull> videos = await holodexClient.listVideos(
     offset: 0,
     order: SortOrder.descending,
     organization: Organization.Hololive,
-    paginated: '<empty>',
+    paginated: true,
     sort: 'available_at',
     status: VideoStatus.past,
     // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
     // topic: 'minecraft',
     type: VideoType.clip
 );
-print(videos.toString());
+print(videoList.toString());
 ```
 
 Query a list of live videos and streams
 
 ```dart
-final List<VideoFull> liveVideos = await holodexClient.listLiveVideos();
+final VideoList liveVideos = await holodexClient.listLiveVideos();
 print(liveVideos.toString());
 ```
 

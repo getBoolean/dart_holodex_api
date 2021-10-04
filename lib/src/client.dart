@@ -67,19 +67,19 @@ class HolodexClient extends BaseHolodexClient {
   /// - `channelId` Filter by video uploader channel id
   /// - `includes` List of strings from the class `IncludesData`
   /// - `lang` List of strings from the class `Language`
-  /// - `limit` Limit the number of results returned
+  /// - `limit` Limit the number of results returned. Max 50
   /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
   /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
   /// - `offset` Offset results
   /// - `order` Order by ascending or descending
   /// - `organization` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
-  /// - `paginated` If paginated is set to any non-empty value, return an object with total, otherwise returns an array. E.g.: `AllowEmptyValue`
+  /// - `paginated` If paginated is set to true, return an [VideoList] with total, otherwise returns [VideoList] without a total
   /// - `sort` Sort by any returned video field
   /// - `status` Array of [VideoStatus] to filter by video status
   /// - `topic` Filter by video topic id
   /// - `type` Filter by type of video
   @override
-  Future<List<VideoFull>> listVideos({
+  Future<VideoList> listVideos({
     String? channelId,
     List<String>? includes,
     List<String> lang = const <String>[Language.all],
@@ -89,12 +89,14 @@ class HolodexClient extends BaseHolodexClient {
     int offset = 0,
     SortOrder order = SortOrder.descending,
     String? organization,
-    String paginated = '<empty>',
+    bool paginated = false,
     String sort = 'available_at',
     List<VideoStatus>? status,
     String? topic,
     VideoType? type,
   }) async {
+    assert(limit <= 50);
+
     // Create the params list
     final Map<String, dynamic> params = {};
 
@@ -103,9 +105,10 @@ class HolodexClient extends BaseHolodexClient {
       'limit': limit,
       'offset': offset,
       'order': order == SortOrder.ascending ? 'asc' : 'desc',
-      'paginated': paginated,
       'sort': sort,
     });
+
+    addPaginated(paginated, params);
 
     addChannelId(channelId, params);
 
@@ -136,8 +139,16 @@ class HolodexClient extends BaseHolodexClient {
 
     final response = await get(path: '/videos', params: params);
 
-    final List list = response.data['items'];
-    return list.map((video) => VideoFull.fromMap(video)).toList(); // Returns as `List<Video>`
+    if (paginated) {
+      final Map<String, dynamic> map = response.data;
+      // Grab total and return with it
+      final videoList = VideoList.fromMap(map);
+      return videoList.copyWith(paginated: true);
+    }
+    
+    final List list = response.data;
+    return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
+    // Returns as `List<Video>`
   }
 
   @override
@@ -173,7 +184,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `topic` Filter by video topic id
   /// - `type` Filter by type of video
   @override
-  Future<List<VideoFull>> listLiveVideos({
+  Future<VideoList> listLiveVideos({
     String? channelId,
     List<String>? includes,
     List<String> lang = const [Language.all],
@@ -183,7 +194,7 @@ class HolodexClient extends BaseHolodexClient {
     int offset = 0,
     SortOrder order = SortOrder.ascending,
     String organization = Organization.Hololive,
-    String paginated = '<empty>',
+    bool paginated = false,
     String sort = 'available_at',
     List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
     String? topic,
@@ -207,6 +218,8 @@ class HolodexClient extends BaseHolodexClient {
       'paginated': paginated,
       'sort': sort,
     });
+
+    addPaginated(paginated, params);
 
     addChannelId(channelId, params);
 
@@ -237,8 +250,23 @@ class HolodexClient extends BaseHolodexClient {
 
     final response = await get(path: '/live', params: params);
 
-    final List list = response.data['items'];
-    return list.map((video) => VideoFull.fromMap(video)).toList(); // Returns as `List<Video>`
+    if (paginated) {
+      final Map<String, dynamic> map = response.data;
+      // Grab total and return with it
+      final videoList = VideoList.fromMap(map);
+      return videoList.copyWith(paginated: true);
+    }
+    
+    final List list = response.data;
+    return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList()); // Returns as `List<Video>`
+  }
+
+  void addPaginated(bool paginated, Map<String, dynamic> params) {
+    if (paginated) {
+      params.addAll({'paginated': 'yes'});
+    } else {
+      params.addAll({'paginated': ''});
+    }
   }
 
   void addChannelId(String? channelId, Map<String, dynamic> params) {

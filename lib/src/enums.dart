@@ -29,7 +29,9 @@ class Language {
   static const String russian = 'ru';
 }
 
+class VideoSort {
 
+}
 
 /// A class that provides different search types when retrieving videos.
 class VideoSearchType {

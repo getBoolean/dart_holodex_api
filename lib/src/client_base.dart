@@ -81,7 +81,7 @@ abstract class BaseHolodexClient {
   /// - `status` Array of [VideoStatus] to filter by video status
   /// - `topic` Filter by video topic id
   /// - `type` Filter by type of video
-  Future<List<VideoFull>> listLiveVideos({
+  Future<VideoList> listLiveVideos({
     String? channelId,
     List<String> includes = const [Includes.liveInfo],
     List<String> lang = const [Language.all],
@@ -91,7 +91,7 @@ abstract class BaseHolodexClient {
     int offset = 0,
     SortOrder order = SortOrder.ascending,
     String organization = Organization.Hololive,
-    String paginated = '<empty>',
+    bool paginated = false,
     String sort = 'available_at',
     List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
     String? topic,
@@ -118,7 +118,7 @@ abstract class BaseHolodexClient {
   /// - `status` Array of [VideoStatus] to filter by video status
   /// - `topic` Filter by video topic id
   /// - `type` Filter by type of video
-  Future<List<VideoFull>> listVideos({
+  Future<VideoList> listVideos({
     String? channelId,
     List<String>? includes,
     List<String> lang = const [Language.all],
@@ -128,7 +128,7 @@ abstract class BaseHolodexClient {
     int offset = 0,
     SortOrder order = SortOrder.descending,
     String organization = Organization.Hololive,
-    String paginated = '<empty>',
+    bool paginated = false,
     String sort = 'available_at',
     List<VideoStatus>? status,
     String? topic,
