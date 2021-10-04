@@ -47,7 +47,7 @@ class ChannelMin extends Equatable {
       id: map['id'],
       name: map['name'],
       englishName: map['english_name'],
-      type: EnumToString.fromString(ChannelType.values, map['type']) ?? ChannelType.subber,
+      type: EnumToString.fromString(ChannelType.values, map['type'] ?? '') ?? ChannelType.subber,
       photo: map['photo'],
     );
   }
