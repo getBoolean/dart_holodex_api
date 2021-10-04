@@ -37,16 +37,16 @@ void main(List<String> arguments) async {
     lang: <String>[Language.all],
     limit: 100,
     maxUpcomingHours: 1000,
-    mentionedChannelId: 'UCDqI2jOz0weumE8s7paEk6g', // Roboco
+    // mentionedChannelId: 'UCDqI2jOz0weumE8s7paEk6g', // Roboco
     offset: 0,
     order: SortOrder.ascending,
     organization: Organization.Hololive,
     paginated: '<empty>',
     sort: 'available_at',
-    status: [VideoStatus.live, VideoStatus.upcoming],
+    status: [VideoStatus.live],
     // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
     // topic: 'minecraft',
-    type: VideoType.clip
+    type: VideoType.stream
   );
   print(videos.length);
 
