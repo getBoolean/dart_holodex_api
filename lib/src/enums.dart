@@ -38,6 +38,7 @@ enum VideoSort {
   endActual,
 }
 
+// TODO: Change to enum
 /// A class that provides different search types when retrieving videos.
 class VideoSearchType {
   /// Retrieve clips including a VTuber
@@ -52,6 +53,7 @@ class VideoSearchType {
 
 enum Order { ascending, descending }
 
+// TODO: Change to enum
 class Organization {
   static const String inc774 = '774inc';
   static const String AogiriHighschool = 'Aogiri%20Highschool';
@@ -82,6 +84,7 @@ class Organization {
   static const String YuniCreate = 'YuniCreate';
 }
 
+// TODO: Change to enum
 /// A class which contains strings that allow extra data to be returned when requesting videos.
 class Includes {
   /// Include clips using the videos.
@@ -111,3 +114,4 @@ class Includes {
   /// Include any songs used in the videos.
   static const String songs = "songs";
 }
+

@@ -24,12 +24,11 @@ void main(List<String> arguments) async {
     // IncludesData.songs,
     // IncludesData.sources,
   ]);
-  print(video.title);
+  print('Requested Video: ${video.toString()}');
 
   // Get a bunch of videos and print them
   final VideoList videoList = await holodexClient.listVideos(
     // channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
-    // TODO: Make includes take array of enum
     includes: <String>[
       Includes.channelStats,
       Includes.clips,
@@ -41,14 +40,12 @@ void main(List<String> arguments) async {
       Includes.songs,
       Includes.sources,
     ],
-    // TODO: Make lang take enum array
     lang: <String>[Language.all],
     limit: 50,
     maxUpcomingHours: 1000,
     // mentionedChannelId: 'UCDqI2jOz0weumE8s7paEk6g', // Roboco
     offset: 50,
     order: Order.descending,
-    // TODO: Make organization take enum array
     // organization: Organization.Hololive,
     paginated: true,
     sort: [VideoSort.availableAt],
@@ -57,10 +54,10 @@ void main(List<String> arguments) async {
     // topic: 'singing',
     type: VideoType.all
   );
-  print(videoList.videos.length);
+  print('Videos: ${videoList.videos.length}\nTotal Videos: ${videoList.total}\n');
 
   // Get live videos
   final VideoList liveVideos = await holodexClient.listLiveVideos();
-  print(liveVideos.videos.length);
+  print('Live videos: ${liveVideos.videos.length}');
 
 }
