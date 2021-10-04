@@ -29,6 +29,7 @@ void main(List<String> arguments) async {
   // Get a bunch of videos and print them
   final VideoList videoList = await holodexClient.listVideos(
     // channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
+    // TODO: Make includes take array of enum
     includes: <String>[
       Includes.channelStats,
       Includes.clips,
@@ -40,12 +41,14 @@ void main(List<String> arguments) async {
       Includes.songs,
       Includes.sources,
     ],
+    // TODO: Make lang take enum array
     lang: <String>[Language.all],
     limit: 50,
     maxUpcomingHours: 1000,
     // mentionedChannelId: 'UCDqI2jOz0weumE8s7paEk6g', // Roboco
     offset: 50,
     order: Order.descending,
+    // TODO: Make organization take enum array
     // organization: Organization.Hololive,
     paginated: true,
     sort: [VideoSort.availableAt],
