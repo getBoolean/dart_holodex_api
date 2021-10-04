@@ -87,7 +87,7 @@ class HolodexClient extends BaseHolodexClient {
     int? maxUpcomingHours,
     String? mentionedChannelId,
     int offset = 0,
-    SortOrder order = SortOrder.descending,
+    Order order = Order.descending,
     String? organization,
     bool paginated = false,
     String sort = 'available_at',
@@ -104,7 +104,7 @@ class HolodexClient extends BaseHolodexClient {
     params.addAll({
       'limit': limit,
       'offset': offset,
-      'order': order == SortOrder.ascending ? 'asc' : 'desc',
+      'order': order == Order.ascending ? 'asc' : 'desc',
       'sort': sort,
     });
 
@@ -192,7 +192,7 @@ class HolodexClient extends BaseHolodexClient {
     int? maxUpcomingHours = 48,
     String? mentionedChannelId,
     int offset = 0,
-    SortOrder order = SortOrder.ascending,
+    Order order = Order.ascending,
     String organization = Organization.Hololive,
     bool paginated = false,
     String sort = 'available_at',
@@ -214,7 +214,7 @@ class HolodexClient extends BaseHolodexClient {
     params.addAll({
       'limit': limit,
       'offset': offset,
-      'order': order == SortOrder.ascending ? 'asc' : 'desc',
+      'order': order == Order.ascending ? 'asc' : 'desc',
       'paginated': paginated,
       'sort': sort,
     });

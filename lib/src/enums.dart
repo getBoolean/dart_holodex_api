@@ -45,7 +45,7 @@ class VideoSearchType {
   static const String collabs = 'collabs';
 }
 
-enum SortOrder { ascending, descending }
+enum Order { ascending, descending }
 
 class Organization {
   static const String inc774 = '774inc';

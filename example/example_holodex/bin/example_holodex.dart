@@ -45,7 +45,7 @@ void main(List<String> arguments) async {
     maxUpcomingHours: 1000,
     // mentionedChannelId: 'UCDqI2jOz0weumE8s7paEk6g', // Roboco
     offset: 0,
-    order: SortOrder.ascending,
+    order: Order.ascending,
     // organization: Organization.Hololive,
     paginated: true,
     sort: 'available_at',
