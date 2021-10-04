@@ -48,10 +48,11 @@ void main(List<String> arguments) async {
     order: Order.ascending,
     // organization: Organization.Hololive,
     paginated: true,
-    sort: 'available_at',
+    sort: [VideoSort.availableAt],
     status: [VideoStatus.live],
     // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
-    // topic: 'minecraft',
+    topic: 'singing',
+    // TODO: Fix VideoType.all
     type: VideoType.stream
   );
   print(videoList.videos.length);

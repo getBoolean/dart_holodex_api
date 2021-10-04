@@ -90,11 +90,12 @@ class HolodexClient extends BaseHolodexClient {
     Order order = Order.descending,
     String? organization,
     bool paginated = false,
-    String sort = 'available_at',
+    List<VideoSort> sort = const <VideoSort>[VideoSort.availableAt],
     List<VideoStatus>? status,
     String? topic,
     VideoType? type,
   }) async {
+    // The limit cannot be greator than 50, otherwise it will throw an error
     assert(limit <= 50);
 
     // Create the params list
@@ -105,8 +106,9 @@ class HolodexClient extends BaseHolodexClient {
       'limit': limit,
       'offset': offset,
       'order': order == Order.ascending ? 'asc' : 'desc',
-      'sort': sort,
     });
+
+    addSort(sort, params);
 
     addPaginated(paginated, params);
 
@@ -259,6 +261,43 @@ class HolodexClient extends BaseHolodexClient {
     
     final List list = response.data;
     return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList()); // Returns as `List<Video>`
+  }
+
+  void addSort(List<VideoSort> sort, Map<String, dynamic> params) {
+    if (sort.isNotEmpty) {
+      // Join the array with commas
+      final sortList = [];
+      for (final s in sort) {
+        sortList.add(convertVideoSortToString(s));
+      }
+      String sortData = sortList.join(',');
+      params.addAll({'include': sortData});
+    }
+  }
+
+  String convertVideoSortToString(VideoSort sort) {
+    final String sortString;
+    switch (sort) {
+      case VideoSort.title:
+        sortString = 'title';
+        break;
+      case VideoSort.publishedAt:
+        sortString = 'published_at';
+        break;
+      case VideoSort.availableAt:
+        sortString = 'available_at';
+        break;
+      case VideoSort.startScheduled:
+        sortString = 'start_scheduled';
+        break;
+      case VideoSort.startActual:
+        sortString = 'start_actual';
+        break;
+      case VideoSort.endActual:
+        sortString = 'end_actual';
+        break;
+    }
+    return sortString;
   }
 
   void addPaginated(bool paginated, Map<String, dynamic> params) {

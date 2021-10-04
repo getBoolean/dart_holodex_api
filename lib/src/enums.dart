@@ -29,8 +29,13 @@ class Language {
   static const String russian = 'ru';
 }
 
-class VideoSort {
-
+enum VideoSort {
+  title,
+  publishedAt,
+  availableAt,
+  startScheduled,
+  startActual,
+  endActual,
 }
 
 /// A class that provides different search types when retrieving videos.
