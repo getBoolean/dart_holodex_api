@@ -275,31 +275,6 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  String convertVideoSortToString(VideoSort sort) {
-    final String sortString;
-    switch (sort) {
-      case VideoSort.title:
-        sortString = 'title';
-        break;
-      case VideoSort.publishedAt:
-        sortString = 'published_at';
-        break;
-      case VideoSort.availableAt:
-        sortString = 'available_at';
-        break;
-      case VideoSort.startScheduled:
-        sortString = 'start_scheduled';
-        break;
-      case VideoSort.startActual:
-        sortString = 'start_actual';
-        break;
-      case VideoSort.endActual:
-        sortString = 'end_actual';
-        break;
-    }
-    return sortString;
-  }
-
   void addPaginated(bool paginated, Map<String, dynamic> params) {
     if (paginated) {
       params.addAll({'paginated': 'yes'});
@@ -373,6 +348,31 @@ class HolodexClient extends BaseHolodexClient {
       }
       params.addAll({'lang': languages});
     }
+  }
+
+  String convertVideoSortToString(VideoSort sort) {
+    final String sortString;
+    switch (sort) {
+      case VideoSort.title:
+        sortString = 'title';
+        break;
+      case VideoSort.publishedAt:
+        sortString = 'published_at';
+        break;
+      case VideoSort.availableAt:
+        sortString = 'available_at';
+        break;
+      case VideoSort.startScheduled:
+        sortString = 'start_scheduled';
+        break;
+      case VideoSort.startActual:
+        sortString = 'start_actual';
+        break;
+      case VideoSort.endActual:
+        sortString = 'end_actual';
+        break;
+    }
+    return sortString;
   }
 
 
