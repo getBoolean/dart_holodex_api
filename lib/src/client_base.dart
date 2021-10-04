@@ -92,7 +92,7 @@ abstract class BaseHolodexClient {
     Order order = Order.ascending,
     String organization = Organization.Hololive,
     bool paginated = false,
-    String sort = 'available_at',
+    List<VideoSort> sort = const <VideoSort>[VideoSort.availableAt],
     List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
     String? topic,
     VideoType? type = VideoType.stream,

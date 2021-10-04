@@ -32,7 +32,7 @@ void main(List<String> arguments) async {
     includes: <String>[
       Includes.channelStats,
       Includes.clips,
-      Includes.description,
+      // Includes.description,
       Includes.liveInfo,
       Includes.mentions,
       Includes.refers,
@@ -44,16 +44,15 @@ void main(List<String> arguments) async {
     limit: 50,
     maxUpcomingHours: 1000,
     // mentionedChannelId: 'UCDqI2jOz0weumE8s7paEk6g', // Roboco
-    offset: 0,
-    order: Order.ascending,
+    offset: 50,
+    order: Order.descending,
     // organization: Organization.Hololive,
     paginated: true,
     sort: [VideoSort.availableAt],
-    status: [VideoStatus.live],
+    status: [VideoStatus.past],
     // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
-    topic: 'singing',
-    // TODO: Fix VideoType.all
-    type: VideoType.stream
+    // topic: 'singing',
+    type: VideoType.all
   );
   print(videoList.videos.length);
 

@@ -197,7 +197,7 @@ class HolodexClient extends BaseHolodexClient {
     Order order = Order.ascending,
     String organization = Organization.Hololive,
     bool paginated = false,
-    String sort = 'available_at',
+    List<VideoSort> sort = const <VideoSort>[VideoSort.availableAt],
     List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
     String? topic,
     VideoType? type = VideoType.stream
@@ -217,9 +217,9 @@ class HolodexClient extends BaseHolodexClient {
       'limit': limit,
       'offset': offset,
       'order': order == Order.ascending ? 'asc' : 'desc',
-      'paginated': paginated,
-      'sort': sort,
     });
+
+    addSort(sort, params);
 
     addPaginated(paginated, params);
 
@@ -327,7 +327,7 @@ class HolodexClient extends BaseHolodexClient {
   }
 
   void addType(VideoType? type, Map<String, dynamic> params) {
-    if (type != null) {
+    if (type != null && type != VideoType.all) {
       params.addAll({'type': EnumToString.convertToString(type)});
     }
   }

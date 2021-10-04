@@ -88,11 +88,11 @@ final VideoList videoList = await holodexClient.listVideos(
     maxUpcomingHours: 1000,
     mentionedChannelId: 'UCDqI2jOz0weumE8s7paEk6g', // Roboco
     offset: 0,
-    order: SortOrder.descending,
+    order: Order.descending,
     organization: Organization.Hololive,
     paginated: true,
-    sort: 'available_at',
-    status: VideoStatus.past,
+    sort: [VideoSort.availableAt],
+    status: [VideoStatus.past],
     // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
     // topic: 'minecraft',
     type: VideoType.clip
