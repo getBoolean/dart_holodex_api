@@ -196,8 +196,8 @@ class HolodexClient extends BaseHolodexClient {
     includes ??= [];
     // Make sure liveInfo is in the list and not duplicated
     includes
-      ..remove(IncludesData.liveInfo)
-      ..add(IncludesData.liveInfo);
+      ..remove(Includes.liveInfo)
+      ..add(Includes.liveInfo);
 
     // Add the items with default values (they can't be null)
     params.addAll({

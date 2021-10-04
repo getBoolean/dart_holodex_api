@@ -83,7 +83,7 @@ abstract class BaseHolodexClient {
   /// - `type` Filter by type of video
   Future<List<VideoFull>> listLiveVideos({
     String? channelId,
-    List<String> includes = const [IncludesData.liveInfo],
+    List<String> includes = const [Includes.liveInfo],
     List<String> lang = const [Language.all],
     int limit = 125,
     int? maxUpcomingHours = 48,

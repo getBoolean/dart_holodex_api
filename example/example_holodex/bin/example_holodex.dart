@@ -30,8 +30,9 @@ void main(List<String> arguments) async {
   final List<VideoFull> videos = await holodexClient.listVideos(
     // channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
     includes: <String>[
-      IncludesData.mentions,
-      IncludesData.channelStats,
+      Includes.mentions,
+      Includes.channelStats,
+      Includes.liveInfo,
     ],
     lang: <String>[Language.all],
     limit: 100,

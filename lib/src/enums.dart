@@ -76,7 +76,7 @@ class Organization {
 }
 
 /// A class which contains strings that allow extra data to be returned when requesting videos.
-class IncludesData {
+class Includes {
   /// Include clips using the videos.
   static const String clips = "clips";
 
