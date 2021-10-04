@@ -34,7 +34,7 @@ class VideoWithChannel extends Equatable {
 	final String? description;
 
   /// Number of tagged songs for this video
-	final int songcount;
+	final int? songcount;
 
 	final String? channelId;
 
@@ -57,7 +57,7 @@ class VideoWithChannel extends Equatable {
     this.description,
     required this.channelId,
     required this.channel,
-    required this.songcount,
+    this.songcount,
   });
 
   VideoWithChannel copyWith({
@@ -165,7 +165,7 @@ class VideoWithChannel extends Equatable {
       endActual ?? '',
       liveViewers ?? -1,
       description ?? '',
-      songcount,
+      songcount ?? 0,
       channelId ?? '',
       channel,
     ];
