@@ -38,17 +38,16 @@ enum VideoSort {
   endActual,
 }
 
-// TODO: Change to enum
-/// A class that provides different search types when retrieving videos.
-class VideoSearchType {
+/// An enum that provides different search types when retrieving videos.
+enum VideoSearchType {
   /// Retrieve clips including a VTuber
-  static const String clips = 'clips';
+  clips,
 
   /// Retrieve videos uploaded by a Channel
-  static const String videos = 'videos';
+  videos,
 
-   /// Retrieve videos that mention a Channel
-  static const String collabs = 'collabs';
+  /// Retrieve videos that mention a Channel
+  collabs
 }
 
 enum Order { ascending, descending }
@@ -84,34 +83,32 @@ class Organization {
   static const String YuniCreate = 'YuniCreate';
 }
 
-// TODO: Change to enum
-/// A class which contains strings that allow extra data to be returned when requesting videos.
-class Includes {
+/// An enum which contains strings that allow extra data to be returned when requesting videos.
+enum Includes {
   /// Include clips using the videos.
-  static const String clips = "clips";
+  clips,
 
   /// Include videos that refer to other videos.
-  static const String refers = "refers";
+  refers,
 
   /// Include sources for videos created by Subbers.
-  static const String sources = "sources";
+  sources,
 
   /// Include simulcast videos alongside the videos.
-  static const String simulcasts = "simulcasts";
+  simulcasts,
 
   /// Include channels that are mentioned.
-  static const String mentions = "mentions";
+  mentions,
 
   /// Include video descriptions.
-  static const String description = "description";
+  descripiton,
 
   /// Include live streams.
-  static const String liveInfo = "live_info";
+  liveInfo,
 
   /// Include channel stats.
-  static const String channelStats = "channel_stats";
+  channelStats,
 
   /// Include any songs used in the videos.
-  static const String songs = "songs";
+  songs
 }
-

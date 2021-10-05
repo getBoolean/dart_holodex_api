@@ -52,17 +52,20 @@ Query a single video by its video id and optionally include other data
 
 ```dart
 // Get one video and print it
-final VideoFull video = await holodexClient.getVideo('Gx_GPwpyLxw', includes: [
-    Includes.channelStats,
-    Includes.clips,
-    Includes.description,
-    Includes.liveInfo,
-    Includes.mentions,
-    Includes.refers,
-    Includes.simulcasts,
-    Includes.songs,
-    Includes.sources,
-]);
+final VideoFull video = await holodexClient.getVideo(
+    'Gx_GPwpyLxw',
+    includes: <Includes>[
+        Includes.channelStats,
+        Includes.clips,
+        Includes.description,
+        Includes.liveInfo,
+        Includes.mentions,
+        Includes.refers,
+        Includes.simulcasts,
+        Includes.songs,
+        Includes.sources,
+    ],
+);
 print(video.toString());
 ```
 
@@ -72,7 +75,7 @@ Query a list of videos and filter them
 // Get a bunch of videos and print them
 final VideoList videoList = await holodexClient.listVideos(
     channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
-    includes: <String>[
+    includes: <Includes>[
         Includes.channelStats,
         Includes.clips,
         Includes.description,

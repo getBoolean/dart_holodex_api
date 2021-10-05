@@ -65,7 +65,7 @@ class HolodexClient extends BaseHolodexClient {
   /// Arguments:
   /// 
   /// - `channelId` Filter by video uploader channel id
-  /// - `includes` List of strings from the class `IncludesData`
+  /// - `includes` List of `Includes`, determines what data is asked for
   /// - `lang` List of strings from the class `Language`
   /// - `limit` Limit the number of results returned. Max 50
   /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
@@ -81,7 +81,7 @@ class HolodexClient extends BaseHolodexClient {
   @override
   Future<VideoList> listVideos({
     String? channelId,
-    List<String>? includes,
+    List<Includes>? includes,
     List<String> lang = const <String>[Language.all],
     int limit = 25,
     int? maxUpcomingHours,
@@ -172,7 +172,7 @@ class HolodexClient extends BaseHolodexClient {
   /// Arguments:
   /// 
   /// - `channelId` Filter by video uploader channel id
-  /// - `includes` List of strings from the class `IncludesData`
+  /// - `includes` List of `Includes`, determines what data is sent back
   /// - `lang` List of strings from the class `Language`
   /// - `limit` Limit the number of results returned
   /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
@@ -188,7 +188,7 @@ class HolodexClient extends BaseHolodexClient {
   @override
   Future<VideoList> listLiveVideos({
     String? channelId,
-    List<String>? includes,
+    List<Includes> includes = const [Includes.liveInfo],
     List<String> lang = const [Language.all],
     int limit = 125,
     int? maxUpcomingHours = 48,
@@ -205,12 +205,10 @@ class HolodexClient extends BaseHolodexClient {
     // Create the params list
     final Map<String, dynamic> params = {};
 
-    // Make sure includes is not null
-    includes ??= [];
-    // Make sure liveInfo is in the list and not duplicated
-    includes
-      ..remove(Includes.liveInfo)
-      ..add(Includes.liveInfo);
+    // Make sure liveInfo is in the list
+    if (!includes.contains(Includes.liveInfo)) {
+      includes.add(Includes.liveInfo);
+    }
 
     // Add the items with default values (they can't be null)
     params.addAll({
@@ -331,7 +329,7 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void addIncludes(List<String>? includes, Map<String, dynamic> params) {
+  void addIncludes(List<Includes>? includes, Map<String, dynamic> params) {
     if (includes != null && includes.isNotEmpty) {
       // Join the array with commas
       String includesData = includes.join(',');
@@ -350,34 +348,38 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  String convertVideoSortToString(VideoSort sort) {
-    final String sortString;
-    switch (sort) {
-      case VideoSort.title:
-        sortString = 'title';
-        break;
-      case VideoSort.publishedAt:
-        sortString = 'published_at';
-        break;
-      case VideoSort.availableAt:
-        sortString = 'available_at';
-        break;
-      case VideoSort.startScheduled:
-        sortString = 'start_scheduled';
-        break;
-      case VideoSort.startActual:
-        sortString = 'start_actual';
-        break;
-      case VideoSort.endActual:
-        sortString = 'end_actual';
-        break;
-    }
-    return sortString;
+  String convertIncludesToString(Includes i) {
+    final includesMapToString = {
+      Includes.clips: 'clips',
+      Includes.refers: 'refers',
+      Includes.sources: 'sources',
+      Includes.simulcasts: 'simulcasts',
+      Includes.mentions: 'mentions',
+      Includes.descripiton: 'descripiton',
+      Includes.liveInfo: 'live_info',
+      Includes.channelStats: 'channel_stats',
+      Includes.songs: 'songs',
+    };
+    // Force not null because map contains all values for [Includes]
+    final String iString = includesMapToString[i]!;
+    return iString;
   }
 
+  
 
-
-
+  String convertVideoSortToString(VideoSort sort) {
+    final videoSortMapToString = {
+      VideoSort.title: 'title',
+      VideoSort.publishedAt: 'published_at',
+      VideoSort.availableAt: 'available_at',
+      VideoSort.startScheduled: 'start_scheduled',
+      VideoSort.startActual: 'start_actual',
+      VideoSort.endActual: 'end_actual',
+    };
+    // Force not null because map contains all values for [VideoSort]
+    final String sortString = videoSortMapToString[sort]!;
+    return sortString;
+  }
 
 
   // Utilities

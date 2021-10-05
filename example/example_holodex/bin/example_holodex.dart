@@ -29,7 +29,7 @@ void main(List<String> arguments) async {
   // Get a bunch of videos and print them
   final VideoList videoList = await holodexClient.listVideos(
     // channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
-    includes: <String>[
+    includes: <Includes>[
       Includes.channelStats,
       Includes.clips,
       // Includes.description,
@@ -57,7 +57,11 @@ void main(List<String> arguments) async {
   print('Videos: ${videoList.videos.length}\nTotal Videos: ${videoList.total}\n');
 
   // Get live videos
-  final VideoList liveVideos = await holodexClient.listLiveVideos();
+  final VideoList liveVideos = await holodexClient.listLiveVideos(
+    includes: [
+      Includes.channelStats
+    ]
+  );
   print('Live videos: ${liveVideos.videos.length}');
 
 }
