@@ -103,10 +103,14 @@ final VideoList videoList = await holodexClient.listVideos(
 print(videoList.toString());
 ```
 
-Query a list of live videos and streams
+Query a list of live videos and streams, can also filter them
 
 ```dart
-final VideoList liveVideos = await holodexClient.listLiveVideos();
+final VideoList liveVideos = await holodexClient.listLiveVideos(
+    includes: [
+      Includes.channelStats
+    ]
+);
 print(liveVideos.toString());
 ```
 
