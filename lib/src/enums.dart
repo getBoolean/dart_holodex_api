@@ -148,6 +148,11 @@ class Organization {
   static const String YuniCreate = 'YuniCreate';
 }
 
+// TODO: COnvert Organization to Enum
+String convertOrganizationToString(Organization org) {
+  throw UnimplementedError();
+}
+
 /// An enum which contains strings that allow extra data to be returned when requesting videos.
 enum Includes {
   /// Include clips using the videos.
