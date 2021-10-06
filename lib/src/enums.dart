@@ -1,5 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:enum_to_string/enum_to_string.dart';
+
 enum VideoType { stream, clip, all }
 
 enum VideoStatus { new_, upcoming, live, past, missing }
@@ -111,4 +113,61 @@ enum Includes {
 
   /// Include any songs used in the videos.
   songs
+}
+
+
+
+String convertVideoStatusToString(VideoStatus status) {
+  final statusMapToString = {
+    VideoStatus.new_: 'new',
+    VideoStatus.upcoming: 'refers',
+    VideoStatus.live: 'live',
+    VideoStatus.past: 'past',
+    VideoStatus.missing: 'missing',
+  };
+  final String stringStatus = statusMapToString[status]!;
+  return stringStatus;
+}
+
+VideoStatus? convertStringToVideoStatus(String status) {
+  final stringMapToStatus = {
+    'new': VideoStatus.new_,
+    'refers': VideoStatus.upcoming,
+    'live': VideoStatus.live,
+    'past': VideoStatus.past,
+    'missing': VideoStatus.missing,
+  };
+  final VideoStatus? stringStatus = stringMapToStatus[status];
+  return stringStatus;
+}
+
+String convertIncludesToString(Includes i) {
+  final includesMapToString = {
+    Includes.clips: 'clips',
+    Includes.refers: 'refers',
+    Includes.sources: 'sources',
+    Includes.simulcasts: 'simulcasts',
+    Includes.mentions: 'mentions',
+    Includes.descripiton: 'descripiton',
+    Includes.liveInfo: 'live_info',
+    Includes.channelStats: 'channel_stats',
+    Includes.songs: 'songs',
+  };
+  // Force not null because map contains all values for [Includes]
+  final String iString = includesMapToString[i]!;
+  return iString;
+}
+
+String convertVideoSortToString(VideoSort sort) {
+  final videoSortMapToString = {
+    VideoSort.title: 'title',
+    VideoSort.publishedAt: 'published_at',
+    VideoSort.availableAt: 'available_at',
+    VideoSort.startScheduled: 'start_scheduled',
+    VideoSort.startActual: 'start_actual',
+    VideoSort.endActual: 'end_actual',
+  };
+  // Force not null because map contains all values for [VideoSort]
+  final String sortString = videoSortMapToString[sort]!;
+  return sortString;
 }

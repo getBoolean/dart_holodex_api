@@ -99,7 +99,7 @@ class VideoWithChannel extends Equatable {
   }
 
   Map<String, dynamic> toMap() {
-    final stringStatus = EnumToString.convertToString(status).replaceAll('new_', 'new');
+    final stringStatus = convertVideoStatusToString(status);
     return {
       'id': id,
       'title': title,
@@ -121,7 +121,6 @@ class VideoWithChannel extends Equatable {
   }
 
   factory VideoWithChannel.fromMap(Map<String, dynamic> map) {
-    final stringStatus = (map['status'] as String).replaceAll('new', 'new_');
     return VideoWithChannel(
       id: map['id'],
       title: map['title'],
@@ -130,7 +129,7 @@ class VideoWithChannel extends Equatable {
       publishedAt: map['published_at'],
       availableAt: map['available_at'],
       duration: map['duration'],
-      status: EnumToString.fromString(VideoStatus .values, stringStatus) ?? VideoStatus.missing,
+      status: convertStringToVideoStatus(map['status']) ?? VideoStatus.missing,
       startScheduled: map['start_scheduled'],
       startActual: map['start_actual'],
       endActual: map['end_actual'],

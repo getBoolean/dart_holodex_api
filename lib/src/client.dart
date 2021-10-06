@@ -281,16 +281,11 @@ class HolodexClient extends BaseHolodexClient {
   void _addStatusList(List<VideoStatus>? statuses, Map<String, dynamic> params) {
     if (statuses != null) {
       // Make new list with the values as string
-      final List<String> statusesStringList = statuses.map((status) => convertStatusToString(status)).toList();
+      final List<String> statusesStringList = statuses.map((status) => convertVideoStatusToString(status)).toList();
       // Join the array with commas
       String statusesConcatenated = statusesStringList.join(',');
       params.addAll({'status': statusesConcatenated});
     }
-  }
-
-  String convertStatusToString(VideoStatus status) {
-    final String stringStatus = EnumToString.convertToString(status).replaceAll('new_', 'new');
-    return stringStatus;
   }
 
   void _addType(VideoType? type, Map<String, dynamic> params) {
@@ -343,38 +338,6 @@ class HolodexClient extends BaseHolodexClient {
       params.addAll({'lang': languages});
     }
   }
-
-  String convertIncludesToString(Includes i) {
-    final includesMapToString = {
-      Includes.clips: 'clips',
-      Includes.refers: 'refers',
-      Includes.sources: 'sources',
-      Includes.simulcasts: 'simulcasts',
-      Includes.mentions: 'mentions',
-      Includes.descripiton: 'descripiton',
-      Includes.liveInfo: 'live_info',
-      Includes.channelStats: 'channel_stats',
-      Includes.songs: 'songs',
-    };
-    // Force not null because map contains all values for [Includes]
-    final String iString = includesMapToString[i]!;
-    return iString;
-  }
-
-  String convertVideoSortToString(VideoSort sort) {
-    final videoSortMapToString = {
-      VideoSort.title: 'title',
-      VideoSort.publishedAt: 'published_at',
-      VideoSort.availableAt: 'available_at',
-      VideoSort.startScheduled: 'start_scheduled',
-      VideoSort.startActual: 'start_actual',
-      VideoSort.endActual: 'end_actual',
-    };
-    // Force not null because map contains all values for [VideoSort]
-    final String sortString = videoSortMapToString[sort]!;
-    return sortString;
-  }
-
 
   // Utilities
   
