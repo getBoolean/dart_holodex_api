@@ -84,7 +84,7 @@ abstract class BaseHolodexClient {
   Future<VideoList> listLiveVideos({
     String? channelId,
     List<Includes> includes = const [Includes.liveInfo],
-    List<String> lang = const [Language.all],
+    List<Language> lang = const [Language.all],
     int limit = 125,
     int? maxUpcomingHours = 48,
     String? mentionedChannelId,
@@ -121,7 +121,7 @@ abstract class BaseHolodexClient {
   Future<VideoList> listVideos({
     String? channelId,
     List<Includes>? includes,
-    List<String> lang = const [Language.all],
+    List<Language> lang = const [Language.all],
     int limit = 25,
     int? maxUpcomingHours,
     String? mentionedChannelId,

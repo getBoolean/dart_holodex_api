@@ -51,16 +51,21 @@ convertChannelTypeToString(ChannelType type) => EnumToString.convertToString(typ
 
 // Below classes are based off of https://github.com/EBro912/Holodex.NET
 
-class Language {
-  static const String all = 'all';
-  static const String english = 'en';
-  static const String japanese = 'jp';
-  static const String spanish = 'es';
-  static const String chinese = 'zh';
-  static const String korean = 'ko';
-  static const String french = 'fr';
-  static const String indonesian = 'id';
-  static const String russian = 'ru';
+enum Language { all, english, japanese, spanish, chinese, korean, french, indonesian, russian }
+
+String convertLanguageToString(Language lang) {
+  final languageMapToSring = {
+    Language.all: 'all',
+    Language.english: 'en',
+    Language.japanese: 'jp',
+    Language.spanish: 'es',
+    Language.chinese: 'zh',
+    Language.korean: 'ko',
+    Language.french: 'fr',
+    Language.indonesian: 'id',
+    Language.russian: 'ru',
+  };
+  return languageMapToSring[lang]!;
 }
 
 enum VideoSort {
@@ -82,8 +87,7 @@ String convertVideoSortToString(VideoSort sort) {
     VideoSort.endActual: 'end_actual',
   };
   // Force not null because map contains all values for [VideoSort]
-  final String sortString = videoSortMapToString[sort]!;
-  return sortString;
+  return videoSortMapToString[sort]!;
 }
 
 /// An enum that provides different search types when retrieving videos.

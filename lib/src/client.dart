@@ -74,7 +74,7 @@ class HolodexClient extends BaseHolodexClient {
   Future<VideoList> listVideos({
     String? channelId,
     List<Includes>? includes,
-    List<String> lang = const <String>[Language.all],
+    List<Language> lang = const [Language.all],
     int limit = 25,
     int? maxUpcomingHours,
     String? mentionedChannelId,
@@ -181,7 +181,7 @@ class HolodexClient extends BaseHolodexClient {
   Future<VideoList> listLiveVideos({
     String? channelId,
     List<Includes> includes = const [Includes.liveInfo],
-    List<String> lang = const [Language.all],
+    List<Language> lang = const [Language.all],
     int limit = 125,
     int? maxUpcomingHours = 48,
     String? mentionedChannelId,
@@ -328,11 +328,13 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void _addLanguages(List<String> lang, Map<String, dynamic> params) {
+  void _addLanguages(List<Language> lang, Map<String, dynamic> params) {
     if ( lang.isNotEmpty ) {
-
-      String languages = lang.join(',');
-      params.addAll({'lang': languages});
+      // Make new list with the values as string
+      final List<String> langStringList = lang.map((l) => convertLanguageToString(l)).toList();
+      // Join the array with commas
+      String languagesConcat = langStringList.join(',');
+      params.addAll({'lang': languagesConcat});
     }
   }
 
