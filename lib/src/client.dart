@@ -39,19 +39,11 @@ class HolodexClient extends BaseHolodexClient {
   /// - `videoId` The video ID as a string
   /// - `includes` List of strings from the class `IncludesData`
   @override
-  Future<VideoFull> getVideo(String videoId, {List<String>? includes}) async {
+  Future<VideoFull> getVideo(String videoId, {List<Includes>? includes}) async {
     final Map<String, dynamic> params = {'id': videoId};
 
     // Add the info the videos must include
-    if (includes != null && includes.isNotEmpty) {
-      // Add the first item so that there is not a comma in front
-      String includesData = includes[0];
-      // Add the rest of the items
-      for (int i = 1; i < includes.length; i++) {
-        includesData = includesData + ',' + includes[i];
-      }
-      params.addAll({'include': includesData});
-    }
+    _addIncludes(includes, params);
 
     final dio.Response response = await get(path: _Constants.videosPath, params: params);
 
@@ -201,7 +193,8 @@ class HolodexClient extends BaseHolodexClient {
     List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
     String? topic,
     VideoType? type = VideoType.stream
-  }) async {
+  }) 
+  async {
     // Create the params list
     final Map<String, dynamic> params = {};
 
@@ -263,11 +256,9 @@ class HolodexClient extends BaseHolodexClient {
 
   void _addSort(List<VideoSort> sort, Map<String, dynamic> params) {
     if (sort.isNotEmpty) {
+      // Make new list with the values as string
+      final List<String> sortStringList = sort.map((s) => convertVideoSortToString(s)).toList();
       // Join the array with commas
-      final List<String> sortStringList = [];
-      for (final s in sort) {
-        sortStringList.add(convertVideoSortToString(s));
-      }
       String sortConcatenated = sortStringList.join(',');
       params.addAll({'include': sortConcatenated});
     }
@@ -287,15 +278,13 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void _addStatusList(List<VideoStatus>? status, Map<String, dynamic> params) {
-    if (status != null) {
-      // Add the first item so that there is not a comma in front
-      String stringStatus = convertStatusToString(status[0]);
-      // Add the rest of the items
-      for (int i = 1; i < status.length; i++) {
-        stringStatus = stringStatus + ',' + convertStatusToString(status[i]);
-      }
-      params.addAll({'status': stringStatus});
+  void _addStatusList(List<VideoStatus>? statuses, Map<String, dynamic> params) {
+    if (statuses != null) {
+      // Make new list with the values as string
+      final List<String> statusesStringList = statuses.map((status) => convertStatusToString(status)).toList();
+      // Join the array with commas
+      String statusesConcatenated = statusesStringList.join(',');
+      params.addAll({'status': statusesConcatenated});
     }
   }
 
@@ -336,9 +325,11 @@ class HolodexClient extends BaseHolodexClient {
 
   void _addIncludes(List<Includes>? includes, Map<String, dynamic> params) {
     if (includes != null && includes.isNotEmpty) {
+      // Make new list with the values as string
+      final List<String> includesStringList = includes.map((included) => convertIncludesToString(included)).toList();
       // Join the array with commas
-      String includesData = includes.join(',');
-      params.addAll({'include': includesData});
+      String includesConcatenated = includesStringList.join(',');
+      params.addAll({'include': includesConcatenated});
     }
   }
 
@@ -369,8 +360,6 @@ class HolodexClient extends BaseHolodexClient {
     final String iString = includesMapToString[i]!;
     return iString;
   }
-
-  
 
   String convertVideoSortToString(VideoSort sort) {
     final videoSortMapToString = {
