@@ -53,7 +53,7 @@ class HolodexClient extends BaseHolodexClient {
       params.addAll({'include': includesData});
     }
 
-    final dio.Response response = await get(path: '/videos', params: params);
+    final dio.Response response = await get(path: _Constants.videosPath, params: params);
 
     return VideoFull.fromMap(response.data.first);
   }
@@ -139,7 +139,7 @@ class HolodexClient extends BaseHolodexClient {
     // Add the type param
     addType(type, params);
 
-    final response = await get(path: '/videos', params: params);
+    final response = await get(path: _Constants.videosPath, params: params);
 
     if (paginated) {
       final Map<String, dynamic> map = response.data;
@@ -248,7 +248,7 @@ class HolodexClient extends BaseHolodexClient {
     // Add the type param
     addType(type, params);
 
-    final response = await get(path: '/live', params: params);
+    final response = await get(path: _Constants.liveVideosPath, params: params);
 
     if (paginated) {
       final Map<String, dynamic> map = response.data;
@@ -290,13 +290,18 @@ class HolodexClient extends BaseHolodexClient {
   void addStatusList(List<VideoStatus>? status, Map<String, dynamic> params) {
     if (status != null) {
       // Add the first item so that there is not a comma in front
-      String stringStatus = EnumToString.convertToString(status[0]).replaceAll('new_', 'new');
+      String stringStatus = convertStatusToString(status[0]);
       // Add the rest of the items
       for (int i = 1; i < status.length; i++) {
-        stringStatus = stringStatus + ',' + EnumToString.convertToString(status[i]).replaceAll('new_', 'new');
+        stringStatus = stringStatus + ',' + convertStatusToString(status[i]);
       }
       params.addAll({'status': stringStatus});
     }
+  }
+
+  String convertStatusToString(VideoStatus status) {
+    final String stringStatus = EnumToString.convertToString(status).replaceAll('new_', 'new');
+    return stringStatus;
   }
 
   void addType(VideoType? type, Map<String, dynamic> params) {
@@ -429,4 +434,10 @@ class HolodexClient extends BaseHolodexClient {
       throw HolodexException(e.toString());
     }
   }
+}
+
+
+class _Constants {
+  static const String videosPath = '/videos';
+  static const String liveVideosPath = '/live';
 }
