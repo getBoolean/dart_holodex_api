@@ -290,7 +290,7 @@ class HolodexClient extends BaseHolodexClient {
 
   void _addType(VideoType? type, Map<String, dynamic> params) {
     if (type != null && type != VideoType.all) {
-      params.addAll({'type': EnumToString.convertToString(type)});
+      params.addAll({'type': convertVideoTypeToString(type)});
     }
   }
 

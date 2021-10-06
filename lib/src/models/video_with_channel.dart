@@ -99,7 +99,6 @@ class VideoWithChannel extends Equatable {
   }
 
   Map<String, dynamic> toMap() {
-    final stringStatus = convertVideoStatusToString(status);
     return {
       'id': id,
       'title': title,
@@ -108,7 +107,7 @@ class VideoWithChannel extends Equatable {
       'published_at': publishedAt,
       'available_at': availableAt,
       'duration': duration,
-      'status': stringStatus,
+      'status': convertVideoStatusToString(status),
       'start_scheduled': startScheduled,
       'start_actual': startActual,
       'end_actual': endActual,

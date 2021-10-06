@@ -4,7 +4,33 @@ import 'package:enum_to_string/enum_to_string.dart';
 
 enum VideoType { stream, clip, all }
 
+String convertVideoTypeToString(VideoType type) => EnumToString.convertToString(type);
+
 enum VideoStatus { new_, upcoming, live, past, missing }
+
+String convertVideoStatusToString(VideoStatus status) {
+  final statusMapToString = {
+    VideoStatus.new_: 'new',
+    VideoStatus.upcoming: 'refers',
+    VideoStatus.live: 'live',
+    VideoStatus.past: 'past',
+    VideoStatus.missing: 'missing',
+  };
+  final String stringStatus = statusMapToString[status]!;
+  return stringStatus;
+}
+
+VideoStatus? convertStringToVideoStatus(String status) {
+  final stringMapToStatus = {
+    'new': VideoStatus.new_,
+    'refers': VideoStatus.upcoming,
+    'live': VideoStatus.live,
+    'past': VideoStatus.past,
+    'missing': VideoStatus.missing,
+  };
+  final VideoStatus? stringStatus = stringMapToStatus[status];
+  return stringStatus;
+}
 
 // Using an enum instead for convienience for user
 // class VideoStatus {
@@ -38,6 +64,20 @@ enum VideoSort {
   startScheduled,
   startActual,
   endActual,
+}
+
+String convertVideoSortToString(VideoSort sort) {
+  final videoSortMapToString = {
+    VideoSort.title: 'title',
+    VideoSort.publishedAt: 'published_at',
+    VideoSort.availableAt: 'available_at',
+    VideoSort.startScheduled: 'start_scheduled',
+    VideoSort.startActual: 'start_actual',
+    VideoSort.endActual: 'end_actual',
+  };
+  // Force not null because map contains all values for [VideoSort]
+  final String sortString = videoSortMapToString[sort]!;
+  return sortString;
 }
 
 /// An enum that provides different search types when retrieving videos.
@@ -115,32 +155,6 @@ enum Includes {
   songs
 }
 
-
-
-String convertVideoStatusToString(VideoStatus status) {
-  final statusMapToString = {
-    VideoStatus.new_: 'new',
-    VideoStatus.upcoming: 'refers',
-    VideoStatus.live: 'live',
-    VideoStatus.past: 'past',
-    VideoStatus.missing: 'missing',
-  };
-  final String stringStatus = statusMapToString[status]!;
-  return stringStatus;
-}
-
-VideoStatus? convertStringToVideoStatus(String status) {
-  final stringMapToStatus = {
-    'new': VideoStatus.new_,
-    'refers': VideoStatus.upcoming,
-    'live': VideoStatus.live,
-    'past': VideoStatus.past,
-    'missing': VideoStatus.missing,
-  };
-  final VideoStatus? stringStatus = stringMapToStatus[status];
-  return stringStatus;
-}
-
 String convertIncludesToString(Includes i) {
   final includesMapToString = {
     Includes.clips: 'clips',
@@ -156,18 +170,4 @@ String convertIncludesToString(Includes i) {
   // Force not null because map contains all values for [Includes]
   final String iString = includesMapToString[i]!;
   return iString;
-}
-
-String convertVideoSortToString(VideoSort sort) {
-  final videoSortMapToString = {
-    VideoSort.title: 'title',
-    VideoSort.publishedAt: 'published_at',
-    VideoSort.availableAt: 'available_at',
-    VideoSort.startScheduled: 'start_scheduled',
-    VideoSort.startActual: 'start_actual',
-    VideoSort.endActual: 'end_actual',
-  };
-  // Force not null because map contains all values for [VideoSort]
-  final String sortString = videoSortMapToString[sort]!;
-  return sortString;
 }
