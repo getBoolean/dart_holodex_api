@@ -18,8 +18,7 @@ String convertVideoStatusToString(VideoStatus status) {
     VideoStatus.past: 'past',
     VideoStatus.missing: 'missing',
   };
-  final String stringStatus = statusMapToString[status]!;
-  return stringStatus;
+  return statusMapToString[status]!;
 }
 
 VideoStatus? convertStringToVideoStatus(String status) {
@@ -30,18 +29,8 @@ VideoStatus? convertStringToVideoStatus(String status) {
     'past': VideoStatus.past,
     'missing': VideoStatus.missing,
   };
-  final VideoStatus? stringStatus = stringMapToStatus[status];
-  return stringStatus;
+  return stringMapToStatus[status];
 }
-
-// Using an enum instead for convienience for user
-// class VideoStatus {
-//   static const String new_ = "new";
-//   static const String upcoming = "upcoming";
-//   static const String live = "live";
-//   static const String past = "past";
-//   static const String missing = "missing";
-// }
 
 enum ChannelType { vtuber, subber }
 
@@ -50,6 +39,7 @@ convertStringToChannelType(String type) => EnumToString.fromString(ChannelType.v
 convertChannelTypeToString(ChannelType type) => EnumToString.convertToString(type);
 
 // Below classes are based off of https://github.com/EBro912/Holodex.NET
+// These are using enums instead of classes with static strings so that users can see the allowed values in a field instead of any string
 
 enum Language { all, english, japanese, spanish, chinese, korean, french, indonesian, russian }
 
@@ -117,40 +107,67 @@ String convertOrderToString(Order order) {
   return videoOrderMapToString[order]!;
 }
 
-// TODO: Change to enum
-class Organization {
-  static const String inc774 = '774inc';
-  static const String AogiriHighschool = 'Aogiri%20Highschool';
-  static const String AtelierLive = 'Atelier%20Live';
-  static const String Chukorara = 'Chukorara';
-  static const String EileneFamily = 'Eilene%20Family';
-  static const String HanayoriJoshiryo = 'Hanayori%20Joshiryo';
-  static const String Hololive = 'Hololive';
-  static const String Independent = 'Independents';
-  static const String Iridori = 'Iridori';
-  static const String KizunaAI = 'Kizuna%20Ai%20Inc.';
-  static const String dotLIVE = '.LIVE';
-  static const String Marbl_s = 'Marbl_s';
-  static const String Masquerade = 'Masquerade';
-  static const String Nijisanji = 'Nijisanji';
-  static const String NoriPro = 'Nori%20Pro';
-  static const String PRISM = 'PRISM';
-  static const String ReACT = 'ReACT';
-  static const String RiotMusic = 'Riot%20Music';
-  static const String Tsunderia = 'Tsunderia';
-  static const String VDimensionCreators = 'V%20Dimension.Creators';
-  static const String VirtualWitchPhenomenon = 'Virtual%20Witch%20Phenomenon';
-  static const String ViViD = 'ViViD';
-  static const String VOMS = 'VOMS';
-  static const String VShojo = 'VShojo';
-  static const String VSpo = 'VSpo';
-  static const String Xencount = "X%20enc'ount";
-  static const String YuniCreate = 'YuniCreate';
+enum Organization {
+  inc774,
+  AogiriHighschool,
+  AtelierLive,
+  Chukorara,
+  EileneFamily,
+  HanayoriJoshiryo,
+  Hololive,
+  Independent,
+  Iridori,
+  KizunaAI,
+  dotLIVE,
+  Marbl_s,
+  Masquerade,
+  Nijisanji,
+  NoriPro,
+  PRISM,
+  ReACT,
+  RiotMusic,
+  Tsunderia,
+  VDimensionCreators,
+  VirtualWitchPhenomenon,
+  ViViD,
+  VOMS,
+  VShojo,
+  VSpo,
+  Xencount,
+  YuniCreate,
 }
 
-// TODO: COnvert Organization to Enum
 String convertOrganizationToString(Organization org) {
-  throw UnimplementedError();
+  final organizationMapToString = {
+    Organization.inc774: '774inc',
+    Organization.AogiriHighschool: 'Aogiri%20Highschool',
+    Organization.AtelierLive: 'Atelier%20Live',
+    Organization.Chukorara: 'Chukorara',
+    Organization.EileneFamily: 'Eilene%20Family',
+    Organization.HanayoriJoshiryo: 'Hanayori%20Joshiryo',
+    Organization.Hololive: 'Hololive',
+    Organization.Independent: 'Independents',
+    Organization.Iridori: 'Iridori',
+    Organization.KizunaAI: 'Kizuna%20Ai%20Inc.',
+    Organization.dotLIVE: '.LIVE',
+    Organization.Marbl_s: 'Marbl_s',
+    Organization.Masquerade: 'Masquerade',
+    Organization.Nijisanji: 'Nijisanji',
+    Organization.NoriPro: 'Nori%20Pro',
+    Organization.PRISM: 'PRISM',
+    Organization.ReACT: 'ReACT',
+    Organization.RiotMusic: 'Riot%20Music',
+    Organization.Tsunderia: 'Tsunderia',
+    Organization.VDimensionCreators: 'V%20Dimension.Creators',
+    Organization.VirtualWitchPhenomenon: 'Virtual%20Witch%20Phenomenon',
+    Organization.ViViD: 'ViViD',
+    Organization.VOMS: 'VOMS',
+    Organization.VShojo: 'VShojo',
+    Organization.VSpo: 'VSpo',
+    Organization.Xencount: "X%20enc'ount",
+    Organization.YuniCreate: 'YuniCreate',
+  };
+  return organizationMapToString[org]!;
 }
 
 /// An enum which contains strings that allow extra data to be returned when requesting videos.
@@ -196,6 +213,5 @@ String convertIncludesToString(Includes i) {
     Includes.songs: 'songs',
   };
   // Force not null because map contains all values for [Includes]
-  final String iString = includesMapToString[i]!;
-  return iString;
+  return includesMapToString[i]!;
 }

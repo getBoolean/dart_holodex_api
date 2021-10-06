@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart' as dio;
-import 'package:enum_to_string/enum_to_string.dart';
 
 import 'client_base.dart';
 import '../dart_holodex_api.dart';
@@ -80,7 +79,7 @@ class HolodexClient extends BaseHolodexClient {
     String? mentionedChannelId,
     int offset = 0,
     Order order = Order.descending,
-    String? organization,
+    List<Organization>? organization,
     bool paginated = false,
     List<VideoSort> sort = const <VideoSort>[VideoSort.availableAt],
     List<VideoStatus>? status,
@@ -187,7 +186,7 @@ class HolodexClient extends BaseHolodexClient {
     String? mentionedChannelId,
     int offset = 0,
     Order order = Order.ascending,
-    String organization = Organization.Hololive,
+    List<Organization>? organization,
     bool paginated = false,
     List<VideoSort> sort = const <VideoSort>[VideoSort.availableAt],
     List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
@@ -300,9 +299,13 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void _addOrganization(String? organization, Map<String, dynamic> params) {
-    if (organization != null) {
-      params.addAll({'org': organization});
+  void _addOrganization(List<Organization>? organization, Map<String, dynamic> params) {
+    if (organization != null && organization.isNotEmpty) {
+      // Make new list with the values as string
+      final List<String> organizationStringList = organization.map((org) => convertOrganizationToString(org)).toList();
+      // Join the array with commas and add it to the parameters
+      String orgsConcatenated = organizationStringList.join(',');
+      params.addAll({'org': orgsConcatenated});
     }
   }
 
