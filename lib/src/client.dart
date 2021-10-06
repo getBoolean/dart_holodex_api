@@ -108,36 +108,36 @@ class HolodexClient extends BaseHolodexClient {
       'order': order == Order.ascending ? 'asc' : 'desc',
     });
 
-    addSort(sort, params);
+    _addSort(sort, params);
 
-    addPaginated(paginated, params);
+    _addPaginated(paginated, params);
 
-    addChannelId(channelId, params);
+    _addChannelId(channelId, params);
 
     // Add the info the videos must include
-    addIncludes(includes, params);
+    _addIncludes(includes, params);
 
     // Add the languages to filter by
     // Add the first item so that there is not a comma in front
-    addLanguages(lang, params);
+    _addLanguages(lang, params);
 
     // Add the max upcoming hours param
-    addMaxUpcomingHours(maxUpcomingHours, params);
+    _addMaxUpcomingHours(maxUpcomingHours, params);
 
     // Add the mentioned channel id param
-    addMentionedChannelId(mentionedChannelId, params);
+    _addMentionedChannelId(mentionedChannelId, params);
 
     // Add the organization param
-    addOrganization(organization, params);
+    _addOrganization(organization, params);
 
     // Add the topic param
-    addTopic(topic, params);
+    _addTopic(topic, params);
 
     // Add the status param
-    addStatusList(status, params);
+    _addStatusList(status, params);
 
     // Add the type param
-    addType(type, params);
+    _addType(type, params);
 
     final response = await get(path: _Constants.videosPath, params: params);
 
@@ -217,36 +217,36 @@ class HolodexClient extends BaseHolodexClient {
       'order': order == Order.ascending ? 'asc' : 'desc',
     });
 
-    addSort(sort, params);
+    _addSort(sort, params);
 
-    addPaginated(paginated, params);
+    _addPaginated(paginated, params);
 
-    addChannelId(channelId, params);
+    _addChannelId(channelId, params);
 
     // Add the info the videos must include
-    addIncludes(includes, params);
+    _addIncludes(includes, params);
 
     // Add the languages to filter by
     // Add the first item so that there is not a comma in front
-    addLanguages(lang, params);
+    _addLanguages(lang, params);
 
     // Add the max upcoming hours param
-    addMaxUpcomingHours(maxUpcomingHours, params);
+    _addMaxUpcomingHours(maxUpcomingHours, params);
 
     // Add the mentioned channel id param
-    addMentionedChannelId(mentionedChannelId, params);
+    _addMentionedChannelId(mentionedChannelId, params);
 
     // Add the organization param
-    addOrganization(organization, params);
+    _addOrganization(organization, params);
 
     // Add the topic param
-    addTopic(topic, params);
+    _addTopic(topic, params);
 
     // Add the status param
-    addStatusList(status, params);
+    _addStatusList(status, params);
 
     // Add the type param
-    addType(type, params);
+    _addType(type, params);
 
     final response = await get(path: _Constants.liveVideosPath, params: params);
 
@@ -261,19 +261,19 @@ class HolodexClient extends BaseHolodexClient {
     return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList()); // Returns as `List<Video>`
   }
 
-  void addSort(List<VideoSort> sort, Map<String, dynamic> params) {
+  void _addSort(List<VideoSort> sort, Map<String, dynamic> params) {
     if (sort.isNotEmpty) {
       // Join the array with commas
-      final sortList = [];
+      final List<String> sortStringList = [];
       for (final s in sort) {
-        sortList.add(convertVideoSortToString(s));
+        sortStringList.add(convertVideoSortToString(s));
       }
-      String sortData = sortList.join(',');
-      params.addAll({'include': sortData});
+      String sortConcatenated = sortStringList.join(',');
+      params.addAll({'include': sortConcatenated});
     }
   }
 
-  void addPaginated(bool paginated, Map<String, dynamic> params) {
+  void _addPaginated(bool paginated, Map<String, dynamic> params) {
     if (paginated) {
       params.addAll({'paginated': 'yes'});
     } else {
@@ -281,13 +281,13 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void addChannelId(String? channelId, Map<String, dynamic> params) {
+  void _addChannelId(String? channelId, Map<String, dynamic> params) {
     if (channelId != null) {
       params.addAll({'channel_id': channelId});
     }
   }
 
-  void addStatusList(List<VideoStatus>? status, Map<String, dynamic> params) {
+  void _addStatusList(List<VideoStatus>? status, Map<String, dynamic> params) {
     if (status != null) {
       // Add the first item so that there is not a comma in front
       String stringStatus = convertStatusToString(status[0]);
@@ -304,37 +304,37 @@ class HolodexClient extends BaseHolodexClient {
     return stringStatus;
   }
 
-  void addType(VideoType? type, Map<String, dynamic> params) {
+  void _addType(VideoType? type, Map<String, dynamic> params) {
     if (type != null && type != VideoType.all) {
       params.addAll({'type': EnumToString.convertToString(type)});
     }
   }
 
-  void addTopic(String? topic, Map<String, dynamic> params) {
+  void _addTopic(String? topic, Map<String, dynamic> params) {
     if (topic != null) {
       params.addAll({'topic': topic});
     }
   }
 
-  void addOrganization(String? organization, Map<String, dynamic> params) {
+  void _addOrganization(String? organization, Map<String, dynamic> params) {
     if (organization != null) {
       params.addAll({'org': organization});
     }
   }
 
-  void addMentionedChannelId(String? mentionedChannelId, Map<String, dynamic> params) {
+  void _addMentionedChannelId(String? mentionedChannelId, Map<String, dynamic> params) {
     if (mentionedChannelId != null) {
       params.addAll({'mentioned_channel_id': mentionedChannelId});
     }
   }
 
-  void addMaxUpcomingHours(int? maxUpcomingHours, Map<String, dynamic> params) {
+  void _addMaxUpcomingHours(int? maxUpcomingHours, Map<String, dynamic> params) {
     if (maxUpcomingHours != null) {
       params.addAll({'max_upcoming_hours': maxUpcomingHours});
     }
   }
 
-  void addIncludes(List<Includes>? includes, Map<String, dynamic> params) {
+  void _addIncludes(List<Includes>? includes, Map<String, dynamic> params) {
     if (includes != null && includes.isNotEmpty) {
       // Join the array with commas
       String includesData = includes.join(',');
@@ -342,7 +342,7 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void addLanguages(List<String> lang, Map<String, dynamic> params) {
+  void _addLanguages(List<String> lang, Map<String, dynamic> params) {
     if ( lang.isNotEmpty ) {
       String languages = lang[0];
       // Add the rest of the items
