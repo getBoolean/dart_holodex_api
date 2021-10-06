@@ -17,26 +17,14 @@ class HolodexClient extends BaseHolodexClient {
     dio.Dio? client,
   }) : super(apiKey: apiKey, basePath: basePath, dioClient: client);
 
-  @override
-  Future<Channel> getChannel(String channelId) {
-    // TODO: implement getChannel
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<Channel>> listChannels() {
-    // TODO: implement listChannels
-    throw UnimplementedError();
-  }
-
   /// Get a video by its video ID
   /// 
-  /// Returns a single [VideoFull]
+  /// Returns [VideoFull]
   /// 
   /// Arguments:
   /// 
   /// - `videoId` The video ID as a string
-  /// - `includes` List of strings from the class `IncludesData`
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
   @override
   Future<VideoFull> getVideo(String videoId, {List<Includes>? includes}) async {
     final Map<String, dynamic> params = {'id': videoId};
@@ -51,24 +39,24 @@ class HolodexClient extends BaseHolodexClient {
 
   /// Get a list of videos
   /// 
-  /// Returns `List<VideoFull>`
+  /// Returns `VideoList`
   /// 
   /// Arguments:
   /// 
-  /// - `channelId` Filter by video uploader channel id
-  /// - `includes` List of `Includes`, determines what data is asked for
-  /// - `lang` List of strings from the class `Language`
-  /// - `limit` Limit the number of results returned. Max 50
+  /// - `channelId` Filter by video uploader channel ID
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` Filter by the `Language`
+  /// - `limit` Limit the number of results returned. Maximum value of 50
   /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
   /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
-  /// - `offset` Offset results
-  /// - `order` Order by ascending or descending
-  /// - `organization` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
-  /// - `paginated` If paginated is set to true, return an [VideoList] with total, otherwise returns [VideoList] without a total
-  /// - `sort` Sort by any returned video field
-  /// - `status` Array of [VideoStatus] to filter by video status
-  /// - `topic` Filter by video topic id
-  /// - `type` Filter by type of video
+  /// - `offset` Receive results starting at this number in the array from the Holodex API
+  /// - `order` Order results by ascending or descending
+  /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
+  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  /// - `sort` Sort the returned data by this field
+  /// - `status` Filter by the video status
+  /// - `topic` Filter by video topic ID
+  /// - `type` Filter by type of video, either clips or streams
   @override
   Future<VideoList> listVideos({
     String? channelId,
@@ -83,9 +71,10 @@ class HolodexClient extends BaseHolodexClient {
     bool paginated = false,
     List<VideoSort> sort = const <VideoSort>[VideoSort.availableAt],
     List<VideoStatus>? status,
-    String? topic,
+    String? topicId,
     VideoType? type,
-  }) async {
+  }) 
+  async {
     // The limit cannot be greator than 50, otherwise it will throw an error
     assert(limit <= 50);
 
@@ -122,7 +111,7 @@ class HolodexClient extends BaseHolodexClient {
     _addOrganization(organization, params);
 
     // Add the topic param
-    _addTopic(topic, params);
+    _addTopic(topicId, params);
 
     // Add the status param
     _addStatusList(status, params);
@@ -144,44 +133,44 @@ class HolodexClient extends BaseHolodexClient {
     // Returns as `List<Video>`
   }
 
-  @override
-  Future<VideoFull> listVideosFromChannel(String channelId, {VideoType? type}) {
-    // TODO: implement getVideosFromChannel
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<Video>> listLiveVideosFromChannel(String channelId) {
-    // TODO: implement listLiveVideosFromChannel
-    throw UnimplementedError();
-  }
-
   /// Get a list of live videos
   /// 
-  /// Returns `List<VideoFull>`
+  /// Returns `VideoList`
+  /// 
+  /// This is somewhat similar to calling listVideos().
+  ///
+  /// However, this endpoint imposes these default values on the query parameters: You can choose to override them by providing your own values.
+  /// 
+  /// - status: [VideoStatus.live, VideoStatus.upcoming],
+  /// - type: VideoType.stream,
+  /// - sort: [VideoSort.availableAt],
+  /// - order: Order.ascending,
+  /// - max_upcoming_hours: 48,
+  /// - limit: 9999,
+  /// - include: [Includes.liveInfo] + query's include
   /// 
   /// Arguments:
   /// 
-  /// - `channelId` Filter by video uploader channel id
-  /// - `includes` List of `Includes`, determines what data is sent back
-  /// - `lang` List of strings from the class `Language`
-  /// - `limit` Limit the number of results returned
+  /// - `channelId` Filter by video uploader channel ID
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` Filter by the `Language`
+  /// - `limit` Limit the number of results returned.
   /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
   /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
-  /// - `offset` Offset results
+  /// - `offset` Receive results starting at this number in the array from the Holodex API
   /// - `order` Order by ascending or descending
-  /// - `organization` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
-  /// - `paginated` If paginated is set to any non-empty value, return an object with total, otherwise returns an array. E.g.: `AllowEmptyValue`
-  /// - `sort` Sort by any returned video field
-  /// - `status` Array of [VideoStatus] to filter by video status
-  /// - `topic` Filter by video topic id
-  /// - `type` Filter by type of video
+  /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
+  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  /// - `sort` Sort the returned data by this field
+  /// - `status` Filter by the video status
+  /// - `topic` Filter by video topic ID
+  /// - `type` Filter by type of video, either clips or streams
   @override
   Future<VideoList> listLiveVideos({
     String? channelId,
     List<Includes> includes = const [Includes.liveInfo],
     List<Language> lang = const [Language.all],
-    int limit = 125,
+    int limit = 9999,
     int? maxUpcomingHours = 48,
     String? mentionedChannelId,
     int offset = 0,
@@ -253,6 +242,37 @@ class HolodexClient extends BaseHolodexClient {
     return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList()); // Returns as `List<Video>`
   }
 
+  /// Get a channel by its ID
+  /// 
+  /// Returns [Channel]
+  /// 
+  /// Arguments:
+  /// 
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  @override
+  Future<Channel> getChannel(String channelId) async {
+    final dio.Response response = await get(path: '${_Constants.channelsPath}/$channelId');
+
+    return Channel.fromMap(response.data);
+  }
+
+  @override
+  Future<List<Channel>> listChannels() {
+    // TODO: implement listChannels
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<VideoFull> listVideosFromChannel(String channelId, {VideoType? type}) {
+    // TODO: implement getVideosFromChannel
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<Video>> listLiveVideosFromChannel(String channelId) {
+    // TODO: implement listLiveVideosFromChannel
+    throw UnimplementedError();
+  }
   void _addSort(List<VideoSort> sort, Map<String, dynamic> params) {
     if (sort.isNotEmpty) {
       // Make new list with the values as string
@@ -394,4 +414,5 @@ class HolodexClient extends BaseHolodexClient {
 class _Constants {
   static const String videosPath = '/videos';
   static const String liveVideosPath = '/live';
+  static const String channelsPath = '/channels';
 }

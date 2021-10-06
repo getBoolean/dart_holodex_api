@@ -39,102 +39,113 @@ abstract class BaseHolodexClient {
 
   // GET REQUESTS
 
-  // GetChannels
-  Future<List<Channel>> listChannels();
-
-  // GetChannel
-  Future<Channel> getChannel(String channelId);
-
   /// Get a video by its video ID
   /// 
-  /// Returns a single [VideoFull]
+  /// Returns [VideoFull]
   /// 
   /// Arguments:
   /// 
   /// - `videoId` The video ID as a string
-  /// - `includes` List of strings from the class `IncludesData`
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
   Future<VideoFull> getVideo(String videoId);
+
+  /// Get a list of videos
+  /// 
+  /// Returns `VideoList`
+  /// 
+  /// Arguments:
+  /// 
+  /// - `channelId` Filter by video uploader channel ID
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` Filter by the `Language`
+  /// - `limit` Limit the number of results returned. Maximum value of 50
+  /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
+  /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
+  /// - `offset` Receive results starting at this number in the array from the Holodex API
+  /// - `order` Order results by ascending or descending
+  /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
+  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  /// - `sort` Sort the returned data by this field
+  /// - `status` Filter by the video status
+  /// - `topicId` Filter by video topic ID
+  /// - `type` Filter by type of video, either clips or streams
+  Future<VideoList> listVideos({
+    String? channelId,
+    List<Includes>? includes,
+    List<Language> lang,
+    int limit,
+    int? maxUpcomingHours,
+    String? mentionedChannelId,
+    int offset,
+    Order order,
+    List<Organization>? organization,
+    bool paginated,
+    List<VideoSort> sort,
+    List<VideoStatus>? status,
+    String? topicId,
+    VideoType? type,
+  });
+
+  /// Get a list of live videos
+  /// 
+  /// Returns `VideoList`
+  /// 
+  /// This is somewhat similar to calling listVideos().
+  ///
+  /// However, this endpoint imposes these default values on the query parameters: You can choose to override them by providing your own values.
+  /// 
+  /// - status: [VideoStatus.live, VideoStatus.upcoming],
+  /// - type: VideoType.stream,
+  /// - sort: [VideoSort.availableAt],
+  /// - order: Order.ascending,
+  /// - max_upcoming_hours: 48,
+  /// - limit: 9999,
+  /// - include: [Includes.liveInfo] + query's include
+  /// 
+  /// Arguments:
+  /// 
+  /// - `channelId` Filter by video uploader channel ID
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` Filter by the `Language`
+  /// - `limit` Limit the number of results returned.
+  /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
+  /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
+  /// - `offset` Receive results starting at this number in the array from the Holodex API
+  /// - `order` Order by ascending or descending
+  /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
+  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  /// - `sort` Sort the returned data by this field
+  /// - `status` Filter by the video status
+  /// - `topic` Filter by video topic ID
+  /// - `type` Filter by type of video, either clips or streams
+  Future<VideoList> listLiveVideos({
+    String? channelId,
+    List<Includes> includes,
+    List<Language> lang,
+    int limit,
+    int? maxUpcomingHours,
+    String? mentionedChannelId,
+    int offset,
+    Order order,
+    List<Organization>? organization,
+    bool paginated,
+    List<VideoSort> sort,
+    List<VideoStatus>? status,
+    String? topic,
+    VideoType? type,
+  });
+
+  // GetChannel
+  Future<Channel> getChannel(String channelId);
+
+  // GetChannels
+  Future<List<Channel>> listChannels();
 
   // GetVideosFromChannel
   Future<VideoFull> listVideosFromChannel(String channelId, {VideoType? type});
 
   // GetLiveVideosByChannelId
   Future<List<Video>> listLiveVideosFromChannel(String channelId);
-
-  /// Get a list of live videos
-  /// 
-  /// Returns `List<VideoFull>`
-  /// 
-  /// Arguments:
-  /// 
-  /// - `channelId` Filter by video uploader channel id
-  /// - `includes` List of strings from the class `IncludesData`
-  /// - `lang` List of strings from the class `Language`
-  /// - `limit` Limit the number of results returned
-  /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
-  /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
-  /// - `offset` Offset results
-  /// - `order` Order by ascending or descending
-  /// - `organization` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
-  /// - `paginated` If paginated is set to any non-empty value, return an object with total, otherwise returns an array. E.g.: `AllowEmptyValue`
-  /// - `sort` Sort by any returned video field
-  /// - `status` Array of [VideoStatus] to filter by video status
-  /// - `topic` Filter by video topic id
-  /// - `type` Filter by type of video
-  Future<VideoList> listLiveVideos({
-    String? channelId,
-    List<Includes> includes = const [Includes.liveInfo],
-    List<Language> lang = const [Language.all],
-    int limit = 125,
-    int? maxUpcomingHours = 48,
-    String? mentionedChannelId,
-    int offset = 0,
-    Order order = Order.ascending,
-    List<Organization>? organization,
-    bool paginated = false,
-    List<VideoSort> sort = const <VideoSort>[VideoSort.availableAt],
-    List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
-    String? topic,
-    VideoType? type = VideoType.stream,
-  });
-
-  /// Get a list of videos
-  /// 
-  /// Returns `List<VideoFull>`
-  /// 
-  /// Arguments:
-  /// 
-  /// - `channelId` Filter by video uploader channel id
-  /// - `includes` List of strings from the class `IncludesData`
-  /// - `lang` List of strings from the class `Language`
-  /// - `limit` Limit the number of results returned
-  /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
-  /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
-  /// - `offset` Offset results
-  /// - `order` Order by ascending or descending
-  /// - `organization` Must be from the `Organization` class. Filter by clips that feature the org's talent or videos posted by the org's talent.
-  /// - `paginated` If paginated is set to any non-empty value, return an object with total, otherwise returns an array. E.g.: `AllowEmptyValue`
-  /// - `sort` Sort by any returned video field
-  /// - `status` Array of [VideoStatus] to filter by video status
-  /// - `topic` Filter by video topic id
-  /// - `type` Filter by type of video
-  Future<VideoList> listVideos({
-    String? channelId,
-    List<Includes>? includes,
-    List<Language> lang = const [Language.all],
-    int limit = 25,
-    int? maxUpcomingHours,
-    String? mentionedChannelId,
-    int offset = 0,
-    Order order = Order.descending,
-    List<Organization>? organization,
-    bool paginated = false,
-    List<VideoSort> sort = const <VideoSort>[VideoSort.availableAt],
-    List<VideoStatus>? status,
-    String? topic,
-    VideoType? type,
-  });
-
 
 
   // UTILITIES

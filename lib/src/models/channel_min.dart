@@ -5,7 +5,7 @@ class ChannelMin extends Equatable {
   final String name;
   final String? englishName;
   final ChannelType type;
-  final String photo;
+  final String? photo;
 
   /// Returns a new [ChannelMin] instance.
   ChannelMin({
@@ -13,7 +13,7 @@ class ChannelMin extends Equatable {
     required this.name,
     this.englishName,
     required this.type,
-    required this.photo,
+    this.photo,
   });
 
   ChannelMin copyWith({
@@ -66,7 +66,7 @@ class ChannelMin extends Equatable {
       name,
       englishName ?? '',
       type,
-      photo,
+      photo ?? 'No photo found',
     ];
   }
 }

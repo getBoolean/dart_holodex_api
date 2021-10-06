@@ -3,18 +3,18 @@ part of dart_holodex_api.models;
 class Channel extends Equatable {
   final String id;
   final String name;
-  final String englishName;
+  final String? englishName;
   final ChannelType type;
-  final String org;
-  final String suborg;
-  final String photo;
-  final String banner;
-  final String twitter;
-  final String videoCount;
-  final String subscriberCount;
-  final String viewCount;
-  final String clipCount;
-  final String lang;
+  final String? org;
+  final String? suborg;
+  final String? photo;
+  final String? banner;
+  final String? twitter;
+  final String? videoCount;
+  final String? subscriberCount;
+  final String? viewCount;
+  final int? clipCount;
+  final String? lang;
   final String publishedAt;
   final bool inactive;
   final String description;
@@ -23,18 +23,18 @@ class Channel extends Equatable {
   Channel({
     required this.id,
     required this.name,
-    required this.englishName,
+    this.englishName,
     required this.type,
-    required this.org,
-    required this.suborg,
-    required this.photo,
-    required this.banner,
-    required this.twitter,
-    required this.videoCount,
-    required this.subscriberCount,
-    required this.viewCount,
-    required this.clipCount,
-    required this.lang,
+    this.org,
+    this.suborg,
+    this.photo,
+    this.banner,
+    this.twitter,
+    this.videoCount,
+    this.subscriberCount,
+    this.viewCount,
+    this.clipCount,
+    this.lang,
     required this.publishedAt,
     required this.inactive,
     required this.description,
@@ -101,7 +101,7 @@ class Channel extends Equatable {
     String? videoCount,
     String? subscriberCount,
     String? viewCount,
-    String? clipCount,
+    int? clipCount,
     String? lang,
     String? publishedAt,
     bool? inactive,
@@ -136,18 +136,18 @@ class Channel extends Equatable {
     return [
       id,
       name,
-      englishName,
+      englishName ?? 'No english name provided',
       type,
-      org,
-      suborg,
-      photo,
-      banner,
-      twitter,
-      videoCount,
-      subscriberCount,
-      viewCount,
-      clipCount,
-      lang,
+      org ?? 'No organization provided',
+      suborg ?? 'No sub organization provided',
+      photo ?? 'No photo found',
+      banner ?? 'No banner found',
+      twitter ?? 'No twitter linked',
+      videoCount ?? 0,
+      subscriberCount ?? 0,
+      viewCount ?? 0,
+      clipCount ?? 0,
+      lang ?? 'No language provided',
       publishedAt,
       inactive,
       description,

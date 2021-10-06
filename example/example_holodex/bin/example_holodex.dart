@@ -51,7 +51,7 @@ void main(List<String> arguments) async {
     sort: <VideoSort>[VideoSort.availableAt],
     status: <VideoStatus>[VideoStatus.past],
     // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
-    // topic: 'singing',
+    // topicId: 'singing',
     type: VideoType.all
   );
   print('Videos: ${videoList.videos.length}\nTotal Videos: ${videoList.total}\n');
@@ -63,5 +63,8 @@ void main(List<String> arguments) async {
     ]
   );
   print('Live videos: ${liveVideos.videos.length}');
+
+  final ceresFauna = await holodexClient.getChannel('UCO_aKKYxn4tvrqPjcTzZ6EQ');
+  print(ceresFauna.toString());
 
 }
