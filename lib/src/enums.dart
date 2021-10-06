@@ -6,12 +6,14 @@ enum VideoType { stream, clip, all }
 
 String convertVideoTypeToString(VideoType type) => EnumToString.convertToString(type);
 
+VideoType? convertStringToVideoType(String type) => EnumToString.fromString(VideoType.values, type);
+
 enum VideoStatus { new_, upcoming, live, past, missing }
 
 String convertVideoStatusToString(VideoStatus status) {
   final statusMapToString = {
     VideoStatus.new_: 'new',
-    VideoStatus.upcoming: 'refers',
+    VideoStatus.upcoming: 'upcoming',
     VideoStatus.live: 'live',
     VideoStatus.past: 'past',
     VideoStatus.missing: 'missing',
@@ -23,7 +25,7 @@ String convertVideoStatusToString(VideoStatus status) {
 VideoStatus? convertStringToVideoStatus(String status) {
   final stringMapToStatus = {
     'new': VideoStatus.new_,
-    'refers': VideoStatus.upcoming,
+    'upcoming': VideoStatus.upcoming,
     'live': VideoStatus.live,
     'past': VideoStatus.past,
     'missing': VideoStatus.missing,
@@ -42,6 +44,10 @@ VideoStatus? convertStringToVideoStatus(String status) {
 // }
 
 enum ChannelType { vtuber, subber }
+
+convertStringToChannelType(String type) => EnumToString.fromString(ChannelType.values, type);
+
+convertChannelTypeToString(ChannelType type) => EnumToString.convertToString(type);
 
 // Below classes are based off of https://github.com/EBro912/Holodex.NET
 
@@ -92,7 +98,20 @@ enum VideoSearchType {
   collabs
 }
 
+String convertVideoSearchTypeToString(VideoSearchType searchType) {
+  return EnumToString.convertToString(searchType);
+}
+
 enum Order { ascending, descending }
+
+String convertOrderToString(Order order) {
+  final videoOrderMapToString = {
+    Order.ascending: 'asc',
+    Order.descending: 'desc',
+  };
+  // Force not null because map contains all values for [Order]
+  return videoOrderMapToString[order]!;
+}
 
 // TODO: Change to enum
 class Organization {

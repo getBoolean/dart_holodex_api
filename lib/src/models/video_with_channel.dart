@@ -102,7 +102,7 @@ class VideoWithChannel extends Equatable {
     return {
       'id': id,
       'title': title,
-      'type': EnumToString.convertToString(type),
+      'type': convertVideoTypeToString(type),
       'topic_id': topicId,
       'published_at': publishedAt,
       'available_at': availableAt,
@@ -123,7 +123,7 @@ class VideoWithChannel extends Equatable {
     return VideoWithChannel(
       id: map['id'],
       title: map['title'],
-      type: EnumToString.fromString(VideoType.values, map['type']) ?? VideoType.clip,
+      type: convertStringToVideoType(map['type']) ?? VideoType.clip,
       topicId: map['topic_id'],
       publishedAt: map['published_at'],
       availableAt: map['available_at'],

@@ -97,7 +97,7 @@ class HolodexClient extends BaseHolodexClient {
     params.addAll({
       'limit': limit,
       'offset': offset,
-      'order': order == Order.ascending ? 'asc' : 'desc',
+      'order': convertOrderToString(order),
     });
 
     _addSort(sort, params);
@@ -330,11 +330,8 @@ class HolodexClient extends BaseHolodexClient {
 
   void _addLanguages(List<String> lang, Map<String, dynamic> params) {
     if ( lang.isNotEmpty ) {
-      String languages = lang[0];
-      // Add the rest of the items
-      for (int i = 1; i < lang.length; i++) {
-        languages = languages + ',' + lang[i];
-      }
+
+      String languages = lang.join(',');
       params.addAll({'lang': languages});
     }
   }
