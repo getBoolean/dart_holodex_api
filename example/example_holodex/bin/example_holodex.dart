@@ -27,7 +27,7 @@ void main(List<String> arguments) async {
   print('Requested Video: ${video.toString()}');
 
   // Get a bunch of videos and print them
-  final VideoList videoList = await holodexClient.listVideos(
+  final VideoList videoList = await holodexClient.getVideos(
     // channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
     includes: <Includes>[
       Includes.channelStats,
@@ -57,7 +57,7 @@ void main(List<String> arguments) async {
   print('Videos: ${videoList.videos.length}\nTotal Videos: ${videoList.total}\n');
 
   // Get live videos
-  final VideoList liveVideos = await holodexClient.listLiveVideos(
+  final VideoList liveVideos = await holodexClient.getLiveVideos(
     includes: [
       Includes.channelStats
     ]

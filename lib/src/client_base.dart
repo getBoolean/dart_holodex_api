@@ -14,7 +14,8 @@ abstract class BaseHolodexClient {
     required this.apiKey,
     this.basePath = 'https://holodex.net/api/v2',
     dio.Dio? dioClient,
-  }) {
+  })
+  {
     if (dioClient == null) {
       this.dioClient = dio.Dio();
     } else {
@@ -38,6 +39,15 @@ abstract class BaseHolodexClient {
 
 
   // GET REQUESTS
+
+  /// Get a channel by its ID
+  /// 
+  /// Returns [Channel]
+  /// 
+  /// Arguments:
+  /// 
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  Future<Channel> getChannel(String channelId);
 
   /// Get a video by its video ID
   /// 
@@ -69,7 +79,7 @@ abstract class BaseHolodexClient {
   /// - `status` Filter by the video status
   /// - `topicId` Filter by video topic ID
   /// - `type` Filter by type of video, either clips or streams
-  Future<VideoList> listVideos({
+  Future<VideoList> getVideos({
     String? channelId,
     List<Includes>? includes,
     List<Language> lang,
@@ -86,6 +96,10 @@ abstract class BaseHolodexClient {
     VideoType? type,
   });
 
+  /// A simplified method for access channel specific data. 
+  /// If you want more customization, the same result can be obtained by calling the queryVideos() method.
+  Future<VideoList> getVideosRelatedToChannel();
+  
   /// Get a list of live videos
   /// 
   /// Returns `VideoList`
@@ -118,7 +132,7 @@ abstract class BaseHolodexClient {
   /// - `status` Filter by the video status
   /// - `topic` Filter by video topic ID
   /// - `type` Filter by type of video, either clips or streams
-  Future<VideoList> listLiveVideos({
+  Future<VideoList> getLiveVideos({
     String? channelId,
     List<Includes> includes,
     List<Language> lang,
@@ -135,21 +149,55 @@ abstract class BaseHolodexClient {
     VideoType? type,
   });
 
-  // GetChannel
-  Future<Channel> getChannel(String channelId);
+  /// Quickly Access Live / Upcoming for a set of Channels
+  /// 
+  /// This endpoint is similar to the queryLiveVideos() method and usually replies much faster.
+  /// It is more friendly in general. The cost to execute a lookup is significantly cheaper.
+  /// It's unfortunately less customizable as a result.
+  /// 
+  /// We recommends using this if you have a fixed set of channel IDs to look up status for.
+  Future<List<Video>> getLiveVideosFromChannelsQuickly(
+    List<String> channelIds,
+  );
+  
+  /// Get channels
+  Future<List<Channel>> getChannels();
 
-  // GetChannels
-  Future<List<Channel>> listChannels();
+  /// GetVideosFromChannel
+  /// 
+  /// Alias of getVideosRelatedToChannel()
+  Future<List<VideoFull>> getChannelVideos(String channelId, {VideoType? type});
 
-  // GetVideosFromChannel
-  Future<VideoFull> listVideosFromChannel(String channelId, {VideoType? type});
+  /// Get Clips of a VTuber
+  /// 
+  /// Alias of getVideosRelatedToChannel()
+  Future<List<VideoFull>> getVTuberClips();
 
-  // GetLiveVideosByChannelId
-  Future<List<Video>> listLiveVideosFromChannel(String channelId);
+  /// Get Collabs that mention a VTuber
+  /// 
+  /// Alias of getVideosRelatedToChannel()
+  Future<List<VideoFull>> getVTuberCollabs();
 
+  /// Retrieves a video object.
+  ///
+  /// Also retrieves Comments if query parameter c is set.
+  ///
+  /// Also retrieves Recommendations if query parameter lang is set
+  Future<VideoFull> getVideoMetadata();
+
+  /// Flexible endpoint to search for videos fufilling multiple conditions. 
+  /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
+  /// 
+  /// Searching for topics and clips is not supported, because clips do not contain topic_ids
+  Future<List<VideoFull>> searchVideos();
+
+  /// Flexible endpoint to search for comments in videos fufilling multiple conditions. 
+  /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
+  Future<List<Comment>> searchComments();
 
   // UTILITIES
 
+  /// Utility method to create an http call
   Future<dio.Response> call(
     String method, {
     required String path,

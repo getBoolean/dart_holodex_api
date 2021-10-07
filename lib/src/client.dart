@@ -58,7 +58,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `topic` Filter by video topic ID
   /// - `type` Filter by type of video, either clips or streams
   @override
-  Future<VideoList> listVideos({
+  Future<VideoList> getVideos({
     String? channelId,
     List<Includes>? includes,
     List<Language> lang = const [Language.all],
@@ -166,7 +166,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `topic` Filter by video topic ID
   /// - `type` Filter by type of video, either clips or streams
   @override
-  Future<VideoList> listLiveVideos({
+  Future<VideoList> getLiveVideos({
     String? channelId,
     List<Includes> includes = const [Includes.liveInfo],
     List<Language> lang = const [Language.all],
@@ -256,23 +256,6 @@ class HolodexClient extends BaseHolodexClient {
     return Channel.fromMap(response.data);
   }
 
-  @override
-  Future<List<Channel>> listChannels() {
-    // TODO: implement listChannels
-    throw UnimplementedError();
-  }
-  
-  @override
-  Future<VideoFull> listVideosFromChannel(String channelId, {VideoType? type}) {
-    // TODO: implement getVideosFromChannel
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<Video>> listLiveVideosFromChannel(String channelId) {
-    // TODO: implement listLiveVideosFromChannel
-    throw UnimplementedError();
-  }
   void _addSort(List<VideoSort> sort, Map<String, dynamic> params) {
     if (sort.isNotEmpty) {
       // Make new list with the values as string
@@ -407,6 +390,62 @@ class HolodexClient extends BaseHolodexClient {
       }
       throw HolodexException(e.toString());
     }
+  }
+
+  @override
+  Future<List<Channel>> getChannels() {
+    // TODO: implement listChannels
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<List<VideoFull>> getChannelVideos(String channelId, {VideoType? type}) {
+    // TODO: implement getVideosFromChannel
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<VideoFull> getVideoMetadata() {
+    // TODO: implement getVideoMetadata
+    // TODO: Create class to hold video metadata such as comments and recommendations, and a VideoFull
+    throw UnimplementedError();
+  }
+  @override
+  Future<List<VideoFull>> searchVideos() {
+    // TODO: implement searchVideos
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<Comment>> searchComments() {
+    // TODO: implement searchComments
+    // TODO: Create class to hold List<VideoFull>, ChannelMin, and List<Comment>
+    throw UnimplementedError();
+  }
+
+
+  @override
+  Future<List<Video>> getLiveVideosFromChannelsQuickly(List<String> channelIds) {
+    // TODO: implement listLiveVideosFromChannelsQuickly
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<VideoList> getVideosRelatedToChannel() {
+    // TODO: implement queryVideosRelatedToChannel
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<VideoFull>> getVTuberClips() {
+    // TODO: implement getVTuberClips
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<VideoFull>> getVTuberCollabs() {
+    // TODO: implement getVTuberCollabs
+    throw UnimplementedError();
   }
 }
 
