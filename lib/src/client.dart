@@ -26,7 +26,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `videoId` The video ID as a string
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
   @override
-  Future<VideoFull> getVideo(String videoId, {List<Includes>? includes}) async {
+  Future<VideoFull> getVideoFromId(String videoId, {List<Includes>? includes}) async {
     final Map<String, dynamic> params = {'id': videoId};
 
     // Add the info the videos must include

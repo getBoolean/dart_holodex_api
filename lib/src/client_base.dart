@@ -57,7 +57,7 @@ abstract class BaseHolodexClient {
   /// 
   /// - `videoId` The video ID as a string
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  Future<VideoFull> getVideo(String videoId);
+  Future<VideoFull> getVideoFromId(String videoId);
 
   /// Get a list of videos
   /// 

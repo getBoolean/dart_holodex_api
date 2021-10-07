@@ -13,7 +13,7 @@ void main(List<String> arguments) async {
   var holodexClient = HolodexClient(apiKey: dotenv.env['API']);
 
   // Get one video and print it
-  final VideoFull video = await holodexClient.getVideo('Gx_GPwpyLxw', includes: [
+  final VideoFull video = await holodexClient.getVideoFromId('Gx_GPwpyLxw', includes: [
     // IncludesData.channelStats,
     // IncludesData.clips,
     // IncludesData.description,

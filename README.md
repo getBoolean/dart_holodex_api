@@ -52,7 +52,7 @@ Query a single video by its video id and optionally include other data
 
 ```dart
 // Get one video and print it
-final VideoFull video = await holodexClient.getVideo(
+final VideoFull video = await holodexClient.getVideoFromId(
     'Gx_GPwpyLxw',
     includes: <Includes>[
         Includes.channelStats,
