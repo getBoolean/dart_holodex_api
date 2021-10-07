@@ -5,7 +5,7 @@ class Channel extends Equatable {
   final String name;
   final String? englishName;
   final ChannelType type;
-  final String? org;
+  final Organization? org;
   final String? suborg;
   final String? photo;
   final String? banner;
@@ -14,7 +14,7 @@ class Channel extends Equatable {
   final String? subscriberCount;
   final String? viewCount;
   final int? clipCount;
-  final String? lang;
+  final Language? lang;
   final String publishedAt;
   final bool inactive;
   final String description;
@@ -46,7 +46,7 @@ class Channel extends Equatable {
       'name': name,
       'english_name': englishName,
       'type': convertChannelTypeToString(type),
-      'org': org,
+      'org': convertOrganizationToString(org),
       'suborg': suborg,
       'photo': photo,
       'banner': banner,
@@ -55,7 +55,7 @@ class Channel extends Equatable {
       'subscriber_count': subscriberCount,
       'view_count': viewCount,
       'clip_count': clipCount,
-      'lang': lang,
+      'lang': convertLanguageToString(lang),
       'published_at': publishedAt,
       'inactive': inactive,
       'description': description,
@@ -68,7 +68,7 @@ class Channel extends Equatable {
       name: map['name'],
       englishName: map['english_name'],
       type: convertStringToChannelType(map['type'] ?? '') ?? ChannelType.subber,
-      org: map['org'],
+      org: convertStringToOrganization(map['org'] ?? ''),
       suborg: map['suborg'],
       photo: map['photo'],
       banner: map['banner'],
@@ -77,7 +77,7 @@ class Channel extends Equatable {
       subscriberCount: map['subscriber_count'],
       viewCount: map['view_count'],
       clipCount: map['clip_count'],
-      lang: map['lang'],
+      lang: convertStringToLanguage(map['lang'] ?? ''),
       publishedAt: map['published_at'],
       inactive: map['inactive'],
       description: map['description'],
@@ -93,7 +93,7 @@ class Channel extends Equatable {
     String? name,
     String? englishName,
     ChannelType? type,
-    String? org,
+    Organization? org,
     String? suborg,
     String? photo,
     String? banner,
@@ -102,7 +102,7 @@ class Channel extends Equatable {
     String? subscriberCount,
     String? viewCount,
     int? clipCount,
-    String? lang,
+    Language? lang,
     String? publishedAt,
     bool? inactive,
     String? description,

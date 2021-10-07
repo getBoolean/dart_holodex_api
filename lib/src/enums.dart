@@ -38,12 +38,15 @@ convertStringToChannelType(String type) => EnumToString.fromString(ChannelType.v
 
 convertChannelTypeToString(ChannelType type) => EnumToString.convertToString(type);
 
-// Below classes are based off of https://github.com/EBro912/Holodex.NET
+// Some of the below enums are based off of https://github.com/EBro912/Holodex.NET
 // These are using enums instead of classes with static strings so that users can see the allowed values in a field instead of any string
 
 enum Language { all, english, japanese, spanish, chinese, korean, french, indonesian, russian }
 
-String convertLanguageToString(Language lang) {
+String? convertLanguageToString(Language? lang) {
+  if (lang == null) {
+    return null;
+  }
   final languageMapToSring = {
     Language.all: 'all',
     Language.english: 'en',
@@ -55,7 +58,39 @@ String convertLanguageToString(Language lang) {
     Language.indonesian: 'id',
     Language.russian: 'ru',
   };
-  return languageMapToSring[lang]!;
+  return languageMapToSring[lang];
+}
+
+Language? convertStringToLanguage(String lang) {
+  // TODO: Implement convertStringToLanguage
+  throw UnimplementedError();
+}
+
+enum ChannelSort {
+  id,
+  name,
+  englishName,
+  type,
+  organization,
+  suborg,
+  photo,
+  banner,
+  twitter,
+  videoCount,
+  subscriberCount,
+  viewCount,
+  clipCount,
+  lang,
+  publishedAt,
+  inactive,
+  description,
+}
+
+String convertChannelSortToString(ChannelSort sort) {
+  final videoSortMapToString = {
+    ChannelSort.organization: 'org',
+  };
+  return videoSortMapToString[sort]!;
 }
 
 enum VideoSort {
@@ -137,7 +172,10 @@ enum Organization {
   YuniCreate,
 }
 
-String convertOrganizationToString(Organization org) {
+String? convertOrganizationToString(Organization? org) {
+  if (org == null) {
+    return null;
+  }
   final organizationMapToString = {
     Organization.inc774: '774inc',
     Organization.AogiriHighschool: 'Aogiri%20Highschool',
@@ -167,7 +205,12 @@ String convertOrganizationToString(Organization org) {
     Organization.Xencount: "X%20enc'ount",
     Organization.YuniCreate: 'YuniCreate',
   };
-  return organizationMapToString[org]!;
+  return organizationMapToString[org];
+}
+
+Organization? convertStringToOrganization(String org) {
+  // TODO: Implement convertStringToOrganization
+  throw UnimplementedError();
 }
 
 /// An enum which contains strings that allow extra data to be returned when requesting videos.

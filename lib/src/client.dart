@@ -305,7 +305,7 @@ class HolodexClient extends BaseHolodexClient {
   void _addOrganization(List<Organization>? organization, Map<String, dynamic> params) {
     if (organization != null && organization.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> organizationStringList = organization.map((org) => convertOrganizationToString(org)).toList();
+      final List<String> organizationStringList = organization.map((org) => convertOrganizationToString(org)!).toList();
       // Join the array with commas and add it to the parameters
       String orgsConcatenated = organizationStringList.join(',');
       params.addAll({'org': orgsConcatenated});
@@ -337,7 +337,7 @@ class HolodexClient extends BaseHolodexClient {
   void _addLanguages(List<Language> lang, Map<String, dynamic> params) {
     if ( lang.isNotEmpty ) {
       // Make new list with the values as string
-      final List<String> langStringList = lang.map((l) => convertLanguageToString(l)).toList();
+      final List<String> langStringList = lang.map((l) => convertLanguageToString(l)!).toList();
       // Join the array with commas
       String languagesConcat = langStringList.join(',');
       params.addAll({'lang': languagesConcat});
@@ -393,7 +393,14 @@ class HolodexClient extends BaseHolodexClient {
   }
 
   @override
-  Future<List<Channel>> getChannels() {
+  Future<List<Channel>> getChannels({
+    List<Language>? lang,
+    int limit = 25,
+    int offset = 0,
+    Order order = Order.ascending,
+    Organization? organization,
+    ChannelSort sort = ChannelSort.organization,
+  }) {
     // TODO: implement listChannels
     throw UnimplementedError();
   }

@@ -161,7 +161,22 @@ abstract class BaseHolodexClient {
   );
   
   /// Get channels
-  Future<List<Channel>> getChannels();
+  /// 
+  /// Arguments:
+  /// - `lang` List of languages. Language is a property of Channel, so only Channels satisfying the language will be returned. Leave empty to search for Vtubers and/or all clippers.
+  /// - `limit` Results limit
+  /// - `offset` Offset results
+  /// - `order` Order.ascending or Order.descending order, default ascending.
+  /// - `organization` If set, filter for Vtuber belonging to a specific org
+  /// - `sort` Column to sort on, leave default to use 'organization' as sort. Any first level property of channel should work here.
+  Future<List<Channel>> getChannels({
+    List<Language>? lang,
+    int limit = 25,
+    int offset = 0,
+    Order order = Order.ascending,
+    Organization? organization,
+    ChannelSort sort = ChannelSort.organization,
+  });
 
   /// GetVideosFromChannel
   /// 
