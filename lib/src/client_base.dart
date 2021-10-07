@@ -7,7 +7,7 @@ abstract class BaseHolodexClient {
   /// 
   /// `apiKey` - Your personal API key. Be aware that the validity of the key is not checked, so ensure it is correct.
   /// 
-  /// `basePath` - (Optional) The base Holodex API url.
+  /// `basePath` - (Optional) The base Holodex API url. Can be overriden with the mock sever API url: `https://stoplight.io/mocks/holodex/holodex/11620234`
   /// 
   /// `dioClient` - An existing Dio Client, if needed. When left null, an internal client will be created
   BaseHolodexClient({
