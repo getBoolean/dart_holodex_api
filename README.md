@@ -134,6 +134,17 @@ final channels = await holodexClient.getChannels(
 print(channels.toString());
 ```
 
+Query a list of videos from a list of channel ids. This is quicker than getLiveVideos but has less customization.
+
+```dart
+final quickLiveVideos = await holodexClient.getLiveVideosFromChannelsQuickly([
+    'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
+    'UCZlDXzGoo7d44bwdNObFacg', // Kanata
+    'UCqm3BQLlJfvkTsX_hvm0UmA' // Watame
+]);
+print('Requested Live Videos From Channels: ${quickLiveVideos.length}');
+```
+
 ## Additional information
 
 Read the official API documentation [here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)

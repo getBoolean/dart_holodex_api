@@ -422,6 +422,14 @@ class HolodexClient extends BaseHolodexClient {
       params.addAll({'sort': sortConcat});
     }
   }
+  
+  void _addChannels(List<String> channelIds, Map<String, dynamic> params) {
+    if ( channelIds.isNotEmpty ) {
+      // Join the array with commas
+      String channelsConcat = channelIds.join(',');
+      params.addAll({'channels': channelsConcat});
+    }
+  }
 
   // Utilities
   
@@ -469,10 +477,53 @@ class HolodexClient extends BaseHolodexClient {
       throw HolodexException(e.toString());
     }
   }
+
+  /// Quickly Access Live / Upcoming for a set of Channels
+  /// 
+  /// This endpoint is similar to the getLiveVideos() method and usually replies much faster.
+  /// It is more friendly in general. The cost to execute a lookup is significantly cheaper.
+  /// It's unfortunately less customizable as a result.
+  /// 
+  /// We recommends using this if you have a fixed set of channel IDs to look up status for.
+  /// 
+  /// Arguments:
+  /// - `channelIds` List of channel IDs to get the live videos from.
+  @override
+  Future<List<Video>> getLiveVideosFromChannelsQuickly(List<String> channelIds) async {
+    if (channelIds.isEmpty) {
+      return <Video>[];
+    }
+
+    final Map<String, dynamic> params = {};
+
+    _addChannels(channelIds, params);
+
+    final response = await get(path: _Constants.userLivePath, params: params);
+    final List list = response.data;
+    return list.map((video) => Video.fromMap(video)).toList();
+  }
   
   @override
   Future<List<VideoFull>> getChannelVideos(String channelId, {VideoType? type}) {
     // TODO: implement getVideosFromChannel
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<VideoFull>> getVTuberClips() {
+    // TODO: implement getVTuberClips
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<VideoFull>> getVTuberCollabs() {
+    // TODO: implement getVTuberCollabs
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<VideoList> getVideosRelatedToChannel() {
+    // TODO: implement queryVideosRelatedToChannel
     throw UnimplementedError();
   }
 
@@ -494,31 +545,6 @@ class HolodexClient extends BaseHolodexClient {
     // TODO: Create class to hold List<VideoFull>, ChannelMin, and List<Comment>
     throw UnimplementedError();
   }
-
-
-  @override
-  Future<List<Video>> getLiveVideosFromChannelsQuickly(List<String> channelIds) {
-    // TODO: implement listLiveVideosFromChannelsQuickly
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<VideoList> getVideosRelatedToChannel() {
-    // TODO: implement queryVideosRelatedToChannel
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<VideoFull>> getVTuberClips() {
-    // TODO: implement getVTuberClips
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<VideoFull>> getVTuberCollabs() {
-    // TODO: implement getVTuberCollabs
-    throw UnimplementedError();
-  }
 }
 
 
@@ -526,4 +552,5 @@ class _Constants {
   static const String videosPath = '/videos';
   static const String liveVideosPath = '/live';
   static const String channelsPath = '/channels';
+  static const String userLivePath = '/users/live';
 }

@@ -73,7 +73,7 @@ void main(List<String> arguments) async {
   print('Live videos: ${liveVideos.videos.length}');
 
   final ceresFauna = await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');
-  print(ceresFauna.toString());
+  print('Requested Channel Name: ${ceresFauna.name}');
 
   final channels = await holodexClient.getChannels(
     limit: 25,
@@ -82,5 +82,12 @@ void main(List<String> arguments) async {
     organization: Organization.AtelierLive,
     sort: [ChannelSort.organization]
   );
-  print(channels.toString());
+  print('Atelier Live Channels: ${channels.length}');
+  
+  final quickLiveVideos = await holodexClient.getLiveVideosFromChannelsQuickly([
+    'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
+    'UCZlDXzGoo7d44bwdNObFacg', // Kanata
+    'UCqm3BQLlJfvkTsX_hvm0UmA' // Watame
+  ]);
+  print('Requested Live Videos From Channels: ${quickLiveVideos.length}');
 }

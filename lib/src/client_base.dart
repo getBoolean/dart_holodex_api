@@ -64,10 +64,6 @@ abstract class BaseHolodexClient {
     String? topicId,
     VideoType? type,
   });
-
-  /// A simplified method for access channel specific data. 
-  /// If you want more customization, the same result can be obtained by calling the queryVideos() method.
-  Future<VideoList> getVideosRelatedToChannel();
   
   /// Get a list of live videos
   /// 
@@ -117,17 +113,6 @@ abstract class BaseHolodexClient {
     String? topic,
     VideoType? type,
   });
-
-  /// Quickly Access Live / Upcoming for a set of Channels
-  /// 
-  /// This endpoint is similar to the queryLiveVideos() method and usually replies much faster.
-  /// It is more friendly in general. The cost to execute a lookup is significantly cheaper.
-  /// It's unfortunately less customizable as a result.
-  /// 
-  /// We recommends using this if you have a fixed set of channel IDs to look up status for.
-  Future<List<Video>> getLiveVideosFromChannelsQuickly(
-    List<String> channelIds,
-  );
   
   /// Get channels
   /// 
@@ -147,6 +132,17 @@ abstract class BaseHolodexClient {
     List<ChannelSort> sort,
   });
 
+  /// Quickly Access Live / Upcoming for a set of Channels
+  /// 
+  /// This endpoint is similar to the getLiveVideos() method and usually replies much faster.
+  /// It is more friendly in general. The cost to execute a lookup is significantly cheaper.
+  /// It's unfortunately less customizable as a result.
+  /// 
+  /// We recommends using this if you have a fixed set of channel IDs to look up status for.
+  Future<List<Video>> getLiveVideosFromChannelsQuickly(
+    List<String> channelIds,
+  );
+
   /// GetVideosFromChannel
   /// 
   /// Alias of getVideosRelatedToChannel()
@@ -161,6 +157,10 @@ abstract class BaseHolodexClient {
   /// 
   /// Alias of getVideosRelatedToChannel()
   Future<List<VideoFull>> getVTuberCollabs();
+
+  /// A simplified method for access channel specific data. 
+  /// If you want more customization, the same result can be obtained by calling the queryVideos() method.
+  Future<VideoList> getVideosRelatedToChannel();
 
   /// Retrieves a video object.
   ///
