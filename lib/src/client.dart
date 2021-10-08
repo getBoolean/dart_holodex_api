@@ -468,12 +468,34 @@ class HolodexClient extends BaseHolodexClient {
     return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
   }
 
+  /// Retrieves a video
+  ///
+  /// Retrieves Comments if `timestampComments` is set to true
+  ///
+  /// Retrieves Recommendations if query parameter `recommendationLanguages` is set
   @override
-  Future<VideoFull> getVideoMetadata() {
-    // TODO: implement getVideoMetadata
-    // TODO: Create class to hold video metadata such as comments and recommendations, and a VideoFull
-    throw UnimplementedError();
+  Future<VideoMetadata> getVideoMetadata(
+    String videoId, {
+    bool timestampComments = false,
+    List<Language>? recommendationLanguages,
+  }) async {
+    final Map<String, dynamic> params = {};
+
+    _addLanguages(recommendationLanguages, params);
+
+    _addCommentsFlag(timestampComments, params);
+
+    final response = await get(path: '${_Constants.videosPath}/$videoId', params: params);
+    final video = VideoFull.fromMap(response.data);
+    final List? comments = response.data['comments'];
+    final List? recommendations = response.data['recommendations'];
+    return VideoMetadata(
+      video: video,
+      comments: comments?.map((comment) => Comment.fromMap(comment)).toList(),
+      recommendations: recommendations?.map((video) => VideoWithChannel.fromMap(video)).toList(),
+    );
   }
+
   @override
   Future<List<VideoFull>> searchVideos() {
     // TODO: implement searchVideos
@@ -503,6 +525,10 @@ class HolodexClient extends BaseHolodexClient {
     } else {
       params.addAll({'paginated': ''});
     }
+  }
+
+  void _addCommentsFlag(bool comments, Map<String, dynamic> params) {
+    params.addAll({'c': comments ? '1' : '0'});
   }
 
   void _addChannelId(String? channelId, Map<String, dynamic> params) {

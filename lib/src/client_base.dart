@@ -200,12 +200,16 @@ abstract class BaseHolodexClient {
     bool paginated,
   });
 
-  /// Retrieves a video object.
+  /// Retrieves a video
   ///
   /// Also retrieves Comments if query parameter c is set.
   ///
   /// Also retrieves Recommendations if query parameter lang is set
-  Future<VideoFull> getVideoMetadata();
+  Future<VideoMetadata> getVideoMetadata(
+    String videoId, {
+    bool timestampComments,
+    List<Language>? recommendationLanguages,
+  });
 
   /// Flexible endpoint to search for videos fufilling multiple conditions. 
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
