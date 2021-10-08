@@ -60,7 +60,7 @@ class VideoFull extends Video {
   final List<VideoWithChannel>? simulcasts;
 
   /// VTubers mentioned by this video, Included when 'includes' contains 'mentions'
-  final List<ChannelMin>? mentions;
+  final List<Channel>? mentions;
 
   final List<Song>? songs;
 
@@ -87,7 +87,7 @@ class VideoFull extends Video {
     List<VideoWithChannel>? sources,
     List<VideoWithChannel>? refers,
     List<VideoWithChannel>? simulcasts,
-    List<ChannelMin>? mentions,
+    List<Channel>? mentions,
     List<Song>? songs,
   }) {
     return VideoFull(
@@ -169,7 +169,7 @@ class VideoFull extends Video {
       sources: List<VideoWithChannel>.from(map['sources']?.map((source) => VideoWithChannel.fromMap(source)) ?? []),
       refers: List<VideoWithChannel>.from(map['refers']?.map((refer) => VideoWithChannel.fromMap(refer)) ?? []),
       simulcasts: List<VideoWithChannel>.from(map['simulcasts']?.map((simulcast) => VideoWithChannel.fromMap(simulcast)) ?? []),
-      mentions: List<ChannelMin>.from(map['mentions']?.map((mention) => ChannelMin.fromMap(mention)) ?? []),
+      mentions: List<Channel>.from(map['mentions']?.map((mention) => Channel.fromMap(mention)) ?? []),
       songs: List<Song>.from(map['songs']?.map((song) => Song.fromMap(song)) ?? [])
     );
   }
