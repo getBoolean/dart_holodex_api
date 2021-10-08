@@ -32,7 +32,7 @@ class VideoList extends Equatable {
     return {
       'total': total,
       'paginated': paginated,
-      'data': videos.map((x) => x.toMap()).toList(),
+      'items': videos.map((x) => x.toMap()).toList(),
     };
   }
 

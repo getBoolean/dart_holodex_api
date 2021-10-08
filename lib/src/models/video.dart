@@ -14,7 +14,7 @@ class Video extends Equatable {
   final String availableAt;
 
   /// Duration of the video in seconds
-  final int duration;
+  final int? duration;
 
   final VideoStatus status;
 
@@ -156,7 +156,7 @@ class Video extends Equatable {
       topicId ?? 'Topic id not given',
       publishedAt ?? 'Published at not given',
       availableAt,
-      duration,
+      duration ?? 'Duration not provided',
       status,
       startScheduled ?? 'Scheduled start not given',
       startActual ?? 'Actual start not given',
