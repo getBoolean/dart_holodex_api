@@ -222,8 +222,36 @@ String? convertOrganizationToString(Organization? org) {
 }
 
 Organization? convertStringToOrganization(String org) {
-  // TODO: Implement convertStringToOrganization
-  throw UnimplementedError();
+  final stringMapToOrganization = {
+    '774inc': Organization.inc774,
+    'Aogiri%20Highschool': Organization.AogiriHighschool,
+    'Atelier%20Live': Organization.AtelierLive,
+    'Chukorara': Organization.Chukorara,
+    'Eilene%20Family': Organization.EileneFamily,
+    'Hanayori%20Joshiryo': Organization.HanayoriJoshiryo,
+    'Hololive': Organization.Hololive,
+    'Independents': Organization.Independent,
+    'Iridori': Organization.Iridori,
+    'Kizuna%20Ai%20Inc.': Organization.KizunaAI,
+    '.LIVE': Organization.dotLIVE,
+    'Marbl_s': Organization.Marbl_s,
+    'Masquerade': Organization.Masquerade,
+    'Nijisanji': Organization.Nijisanji,
+    'Nori%20Pro': Organization.NoriPro,
+    'PRISM': Organization.PRISM,
+    'ReACT': Organization.ReACT,
+    'Riot%20Music': Organization.RiotMusic,
+    'Tsunderia': Organization.Tsunderia,
+    'V%20Dimension.Creators': Organization.VDimensionCreators,
+    'Virtual%20Witch%20Phenomenon': Organization.VirtualWitchPhenomenon,
+    'ViViD': Organization.ViViD,
+    'VOMS': Organization.VOMS,
+    'VShojo': Organization.VShojo,
+    'VSpo': Organization.VSpo,
+    "X%20enc'ount": Organization.Xencount,
+    'YuniCreate': Organization.YuniCreate,
+  };
+  return stringMapToOrganization[org];
 }
 
 /// An enum which contains strings that allow extra data to be returned when requesting videos.
