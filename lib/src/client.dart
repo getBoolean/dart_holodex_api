@@ -256,6 +256,52 @@ class HolodexClient extends BaseHolodexClient {
     return Channel.fromMap(response.data);
   }
 
+  /// Get channels
+  /// 
+  /// Arguments:
+  /// - `lang` List of languages. Language is a property of Channel, so only Channels satisfying the language will be returned. Leave empty to search for Vtubers and/or all clippers.
+  /// - `limit` Results limit
+  /// - `offset` Offset results
+  /// - `order` Order.ascending or Order.descending order, default ascending.
+  /// - `organization` If set, filter for Vtubers belonging to a specific org
+  /// - `sort` Column to sort on, leave default to use [ChannelSort.organization] as sort. Theoretically any value in ChannelSort should work
+  @override
+  Future<List<Channel>> getChannels({
+    List<Language>? lang,
+    int limit = 25,
+    int offset = 0,
+    Order order = Order.ascending,
+    Organization? organization,
+    List<ChannelSort> sort = const [ChannelSort.organization],
+  }) async {
+    // According to API docs, the maximum accepted value is 50 and anything higher the request will be denied
+    assert(limit <= 50);
+
+    // Create the params list
+    final Map<String, dynamic> params = {};
+
+    // Add the items with default values (they can't be null)
+    params.addAll({
+      'limit': limit,
+      'offset': offset,
+      'order': convertOrderToString(order),
+    });
+
+    _addChannelSort(sort, params);
+
+    // Add the languages to filter by
+    _addLanguages(lang, params);
+
+    // Add the organization param
+    _addSingleOrganization(organization, params);
+
+    final response = await get(path: _Constants.channelsPath, params: params);
+
+    final List list = response.data;
+
+    return list.map((channel) => Channel.fromMap(channel)).toList(); // Returns as `List<Channel>`
+  }
+
   void _addVideoSort(List<VideoSort> sort, Map<String, dynamic> params) {
     if (sort.isNotEmpty) {
       // Make new list with the values as string
@@ -311,6 +357,12 @@ class HolodexClient extends BaseHolodexClient {
       params.addAll({'org': orgsConcatenated});
     }
   }
+  
+  void _addSingleOrganization(Organization? organization, Map<String, dynamic> params) {
+    if (organization != null) {
+      params.addAll({'org': convertOrganizationToString(organization)});
+    }
+  }
 
   void _addMentionedChannelId(String? mentionedChannelId, Map<String, dynamic> params) {
     if (mentionedChannelId != null) {
@@ -353,12 +405,6 @@ class HolodexClient extends BaseHolodexClient {
       params.addAll({'sort': sortConcat});
     }
   }
-  
-  void _addSingleOrganization(Organization? organization, Map<String, dynamic> params) {
-    if (organization != null) {
-      params.addAll({'org': convertOrganizationToString(organization)});
-    }
-  }
 
   // Utilities
   
@@ -392,8 +438,7 @@ class HolodexClient extends BaseHolodexClient {
     Map<String, String> headers = const {}, 
     Map<String, dynamic> params = const {},
     dio.ResponseType responseType = dio.ResponseType.json
-  }) 
-  async {
+  }) async {
     try {
       // Prepare request
       final response = await dioClient.request(basePath + path, queryParameters: params, options: dio.Options(method: method, responseType: responseType, headers: headers));
@@ -406,42 +451,6 @@ class HolodexClient extends BaseHolodexClient {
       }
       throw HolodexException(e.toString());
     }
-  }
-
-  @override
-  Future<List<Channel>> getChannels({
-    List<Language>? lang,
-    int limit = 25,
-    int offset = 0,
-    Order order = Order.ascending,
-    Organization? organization,
-    List<ChannelSort> sort = const [ChannelSort.organization],
-  }) async {
-    assert(limit <= 50);
-
-    // Create the params list
-    final Map<String, dynamic> params = {};
-
-    // Add the items with default values (they can't be null)
-    params.addAll({
-      'limit': limit,
-      'offset': offset,
-      'order': convertOrderToString(order),
-    });
-
-    _addChannelSort(sort, params);
-
-    // Add the languages to filter by
-    _addLanguages(lang, params);
-
-    // Add the organization param
-    _addSingleOrganization(organization, params);
-
-    final response = await get(path: _Constants.channelsPath, params: params);
-
-    final List list = response.data;
-
-    return list.map((channel) => Channel.fromMap(channel)).toList(); // Returns as `List<Channel>`
   }
   
   @override
