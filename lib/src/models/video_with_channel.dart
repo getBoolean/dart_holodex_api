@@ -1,65 +1,45 @@
 part of dart_holodex_api.models;
 
-class VideoWithChannel extends Equatable {
-	final String id;
-	final String title;
-	final VideoType type;
-
-  /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
-	final String? topicId;
-
-	final String? publishedAt;
-
-  /// Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at
-	final String availableAt;
-
-  /// Duration of the video in seconds
-	final int duration;
-
-	final VideoStatus status;
-
-  /// Included when includes contains 'live_info'
-	final String? startScheduled;
-
-  /// Included when includes contains 'live_info'
-	final String? startActual;
-
-  /// Included when includes contains 'live_info'
-	final String? endActual;
-
-  /// Included when includes contains 'live_info'
-	final int? liveViewers;
-
-  ///Included when includes contains 'description'
-	final String? description;
-
-  /// Number of tagged songs for this video
-	final int? songcount;
-
-	final String? channelId;
-
-	final ChannelMin channel;
-  
+class VideoWithChannel extends Video {
   /// Returns a new [VideoWithChannel] instance.
   VideoWithChannel({
-    required this.id,
-    required this.title,
-    required this.type,
-    this.topicId,
-    this.publishedAt,
-    required this.availableAt,
-    required this.duration,
-    required this.status,
-    this.startScheduled,
-    this.startActual,
-    this.endActual,
-    this.liveViewers,
-    this.description,
-    required this.channelId,
+    required String id,
+    required String title,
+    required VideoType type,
+    String? topicId,
+    String? publishedAt,
+    required String availableAt,
+    required int duration,
+    required VideoStatus status,
+    String? startScheduled,
+    String? startActual,
+    String? endActual,
+    int? liveViewers,
+    String? description,
+    String? channelId,
+    int? songcount,
     required this.channel,
-    this.songcount,
-  });
+  }) : super(
+    id: id,
+    title: title,
+    type: type,
+    topicId: topicId,
+    publishedAt: publishedAt,
+    availableAt: availableAt,
+    duration: duration,
+    status: status,
+    startScheduled: startScheduled,
+    startActual: startActual,
+    endActual: endActual,
+    liveViewers: liveViewers,
+    description: description,
+    channelId: channelId,
+    songcount: songcount,
+  );
 
+	final ChannelMin channel;
+
+  @override
   VideoWithChannel copyWith({
     String? id,
     String? title,
@@ -98,6 +78,7 @@ class VideoWithChannel extends Equatable {
     );
   }
 
+  @override
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -140,6 +121,7 @@ class VideoWithChannel extends Equatable {
     );
   }
 
+  @override
   String toJson() => json.encode(toMap());
 
   factory VideoWithChannel.fromJson(String source) => VideoWithChannel.fromMap(json.decode(source));
