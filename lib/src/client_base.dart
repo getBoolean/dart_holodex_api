@@ -146,21 +146,59 @@ abstract class BaseHolodexClient {
   /// GetVideosFromChannel
   /// 
   /// Alias of getVideosRelatedToChannel()
-  Future<List<VideoFull>> getChannelVideos(String channelId, {VideoType? type});
+  Future<VideoList> getChannelVideos(
+    String channelId, {
+    List<Includes>? includes,
+    List<Language> lang,
+    int limit,
+    int offset,
+    bool paginated,
+  });
 
   /// Get Clips of a VTuber
   /// 
   /// Alias of getVideosRelatedToChannel()
-  Future<List<VideoFull>> getVTuberClips();
+  Future<VideoList> getVTuberClips(
+    String channelId, {
+    List<Includes>? includes,
+    List<Language> lang,
+    int limit,
+    int offset,
+    bool paginated,
+  });
 
   /// Get Collabs that mention a VTuber
   /// 
   /// Alias of getVideosRelatedToChannel()
-  Future<List<VideoFull>> getVTuberCollabs();
+  Future<VideoList> getVTuberCollabs(
+    String channelId, {
+    List<Includes>? includes,
+    List<Language> lang,
+    int limit,
+    int offset,
+    bool paginated,
+  });
 
   /// A simplified method for access channel specific data. 
   /// If you want more customization, the same result can be obtained by calling the queryVideos() method.
-  Future<VideoList> getVideosRelatedToChannel();
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `type` The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId`
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  Future<VideoList> getVideosRelatedToChannel(
+    String channelId, {
+    required VideoSearchType type,
+    List<Includes>? includes,
+    List<Language> lang,
+    int limit,
+    int offset,
+    bool paginated,
+  });
 
   /// Retrieves a video object.
   ///

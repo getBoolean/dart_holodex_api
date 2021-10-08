@@ -70,10 +70,10 @@ void main(List<String> arguments) async {
       Includes.channelStats
     ]
   );
-  print('Live videos: ${liveVideos.videos.length}');
+  print('Live videos: ${liveVideos.videos.length}\n');
 
   final ceresFauna = await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');
-  print('Requested Channel Name: ${ceresFauna.name}');
+  print('Requested Channel Name: ${ceresFauna.name}\n');
 
   final channels = await holodexClient.getChannels(
     limit: 25,
@@ -82,12 +82,35 @@ void main(List<String> arguments) async {
     organization: Organization.AtelierLive,
     sort: [ChannelSort.organization]
   );
-  print('Atelier Live Channels: ${channels.length}');
+  print('Atelier Live Channels: ${channels.length}\n');
   
   final quickLiveVideos = await holodexClient.getLiveVideosFromChannelsQuickly([
     'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
     'UCZlDXzGoo7d44bwdNObFacg', // Kanata
     'UCqm3BQLlJfvkTsX_hvm0UmA' // Watame
   ]);
-  print('Requested Live Videos From Channels: ${quickLiveVideos.length}');
+  print('Requested Live Videos From Channels: ${quickLiveVideos.length}\n');
+
+  final matsuriClips = await holodexClient.getVideosRelatedToChannel(
+    'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
+    type: VideoSearchType.clips
+  );
+  print('Clips including Matsuri: ${matsuriClips.total}');
+  print('Returned clips including Matsuri: ${matsuriClips.videos.length}\n');
+
+  final matsuriClips2 = await holodexClient.getVTuberClips(
+    'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
+  );
+  print('Clips including Matsuri: ${matsuriClips2.total}');
+  print('Returned clips including Matsuri: ${matsuriClips2.videos.length}\n');
+
+  final matsuriCollabs = await holodexClient.getVTuberCollabs('UCQ0UDLQCjY0rmuxCDE38FGg');
+  print('Collabs including Matsuri: ${matsuriCollabs.total}');
+  print('Returned collabs including Matsuri: ${matsuriCollabs.videos.length}\n');
+
+  final matsuriUploads = await holodexClient.getChannelVideos('UCQ0UDLQCjY0rmuxCDE38FGg');
+  print('Total Matsuri uploads: ${matsuriUploads.total}');
+  print('Returned uploads: ${matsuriUploads.videos.length}\n');
+
+
 }

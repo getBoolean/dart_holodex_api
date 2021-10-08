@@ -71,7 +71,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `offset` Receive results starting at this number in the array from the Holodex API
   /// - `order` Order results by ascending or descending
   /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
-  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  /// - `paginated` If paginated is set to true, returns [VideoList] with total, otherwise returns [VideoList] without the total.
   /// - `sort` Sort the returned data by this field
   /// - `status` Filter by the video status
   /// - `topic` Filter by video topic ID
@@ -178,7 +178,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `offset` Receive results starting at this number in the array from the Holodex API
   /// - `order` Order by ascending or descending
   /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
-  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  /// - `paginated` If paginated is set to true, returns [VideoList] with total, otherwise returns [VideoList] without the total.
   /// - `sort` Sort the returned data by this field
   /// - `status` Filter by the video status
   /// - `topic` Filter by video topic ID
@@ -194,7 +194,7 @@ class HolodexClient extends BaseHolodexClient {
     int offset = 0,
     Order order = Order.ascending,
     List<Organization>? organization,
-    bool paginated = false,
+    bool paginated = true,
     List<VideoSort> sort = const <VideoSort>[VideoSort.availableAt],
     List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
     String? topic,
@@ -344,28 +344,128 @@ class HolodexClient extends BaseHolodexClient {
     return list.map((video) => Video.fromMap(video)).toList();
   }
   
+  /// Get Videos From Channel
+  /// 
+  /// Alias of getVideosRelatedToChannel()
+  /// 
+  /// Returns [VideoList]
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to true, returns [VideoList] with total, otherwise returns [VideoList] without the total.
   @override
-  Future<List<VideoFull>> getChannelVideos(String channelId, {VideoType? type}) {
-    // TODO: implement getVideosFromChannel
-    throw UnimplementedError();
+  Future<VideoList> getChannelVideos(
+    String channelId, {
+    List<Includes>? includes,
+    List<Language> lang = const [Language.all],
+    int limit = 25,
+    int offset = 0,
+    bool paginated = true,
+  }) async {
+    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.videos, includes: includes, lang: lang, limit: limit, offset: offset, paginated: paginated);
   }
 
+  /// Get Clips of a VTuber
+  /// 
+  /// Alias of getVideosRelatedToChannel()
+  /// 
+  /// Returns [VideoList]
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to true, returns [VideoList] with total, otherwise returns [VideoList] without the total.
   @override
-  Future<List<VideoFull>> getVTuberClips() {
-    // TODO: implement getVTuberClips
-    throw UnimplementedError();
+  Future<VideoList> getVTuberClips(
+    String channelId, {
+    List<Includes>? includes,
+    List<Language> lang = const [Language.all],
+    int limit = 25,
+    int offset = 0,
+    bool paginated = true,
+  }) async {
+    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.clips, includes: includes, lang: lang, limit: limit, offset: offset, paginated: paginated);
   }
 
+  /// Get Collabs that mention a VTuber
+  /// 
+  /// Alias of getVideosRelatedToChannel()
+  /// 
+  /// Returns [VideoList]
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to true, returns [VideoList] with total, otherwise returns [VideoList] without the total.
   @override
-  Future<List<VideoFull>> getVTuberCollabs() {
-    // TODO: implement getVTuberCollabs
-    throw UnimplementedError();
+  Future<VideoList> getVTuberCollabs(
+    String channelId, {
+    List<Includes>? includes,
+    List<Language> lang = const [Language.all],
+    int limit = 25,
+    int offset = 0,
+    bool paginated = true,
+  }) async {
+    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.collabs, includes: includes, lang: lang, limit: limit, offset: offset, paginated: paginated);
   }
 
+  /// A simplified method for access channel specific data. 
+  /// If you want more customization, the same result can be obtained by calling the queryVideos() method.
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `type` The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId`
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to true, returns [VideoList] with total, otherwise returns [VideoList] without the total.
   @override
-  Future<VideoList> getVideosRelatedToChannel() {
-    // TODO: implement queryVideosRelatedToChannel
-    throw UnimplementedError();
+  Future<VideoList> getVideosRelatedToChannel(
+    String channelId, {
+    required VideoSearchType type,
+    List<Includes>? includes,
+    List<Language> lang = const [Language.all],
+    int limit = 25,
+    int offset = 0,
+    bool paginated = true,
+  }) async {
+    // Limit cannot be greater than 50 otherwise request will be denied
+    assert(limit <= 50);
+
+    final Map<String, dynamic> params = {};
+    
+    // Add the items with default values (they can't be null)
+    params.addAll({
+      'limit': limit,
+      'offset': offset,
+    });
+
+    _addIncludes(includes, params);
+    _addLanguages(lang, params);
+    _addPaginated(paginated, params);
+
+    final response = await get(path: '${_Constants.channelsPath}/$channelId/${convertVideoSearchTypeToString(type)}', params: params);
+    
+    if (paginated) {
+      final Map<String, dynamic> map = response.data;
+      // Grab total and return with it
+      final videoList = VideoList.fromMap(map);
+      return videoList.copyWith(paginated: true);
+    }
+    
+    final List list = response.data;
+    return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
   }
 
   @override

@@ -145,6 +145,41 @@ final quickLiveVideos = await holodexClient.getLiveVideosFromChannelsQuickly([
 print('Requested Live Videos From Channels: ${quickLiveVideos.length}');
 ```
 
+Query videos related to a channel. This is a simplified method for access channel specific data. If you want more customization, the same result can be obtained by calling the queryVideos() method.
+
+```dart
+final matsuriClips = await holodexClient.getVideosRelatedToChannel(
+    'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
+    type: VideoSearchType.clips
+);
+print('Clips including Matsuri: ${matsuriClips.total}');
+print('Returned clips including Matsuri: ${matsuriClips.videos.length}');
+```
+
+Query Clips of a VTuber. This is an alias of getVideosRelatedToChannel
+
+```dart
+final matsuriClips = await holodexClient.getVTuberClips('UCQ0UDLQCjY0rmuxCDE38FGg');
+print('Clips including Matsuri: ${matsuriClips.total}');
+print('Returned clips including Matsuri: ${matsuriClips.videos.length}\n');
+```
+
+Query collab videos mentioning a VTuber. This is an alias of getVideosRelatedToChannel
+
+```dart
+final matsuriCollabs = await holodexClient.getVTuberCollabs('UCQ0UDLQCjY0rmuxCDE38FGg');
+print('Collabs including Matsuri: ${matsuriCollabs.total}');
+print('Returned collabs including Matsuri: ${matsuriCollabs.videos.length}\n');
+```
+
+Query a channel's uploads. This is an alias of getVideosRelatedToChannel
+
+```dart
+final matsuriUploads = await holodexClient.getChannelVideos('UCQ0UDLQCjY0rmuxCDE38FGg');
+print('Total Matsuri uploads: ${matsuriUploads.total}');
+print('Returned uploads: ${matsuriUploads.videos.length}\n');
+```
+
 ## Additional information
 
 Read the official API documentation [here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)
