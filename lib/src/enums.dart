@@ -64,10 +64,7 @@ enum Language { all, english, japanese, spanish, chinese, korean, french, indone
 /// Converts a [Language] enum to string.
 /// 
 /// Returns [String]
-String? convertLanguageToString(Language? lang) {
-  if (lang == null) {
-    return null;
-  }
+String convertLanguageToString(Language lang) {
   final languageMapToSring = {
     Language.all: 'all',
     Language.english: 'en',
@@ -79,7 +76,7 @@ String? convertLanguageToString(Language? lang) {
     Language.indonesian: 'id',
     Language.russian: 'ru',
   };
-  return languageMapToSring[lang];
+  return languageMapToSring[lang]!;
 }
 
 /// Converts a string language code to the corresponding Language enum.
@@ -226,7 +223,7 @@ String? convertOrganizationToString(Organization? org) {
   final organizationMapToString = {
     Organization.inc774: '774inc',
     Organization.AogiriHighschool: 'Aogiri%20Highschool',
-    Organization.AtelierLive: 'Atelier%20Live',
+    Organization.AtelierLive: 'Atelier Live',
     Organization.Chukorara: 'Chukorara',
     Organization.EileneFamily: 'Eilene%20Family',
     Organization.HanayoriJoshiryo: 'Hanayori%20Joshiryo',
@@ -262,7 +259,7 @@ Organization? convertStringToOrganization(String org) {
   final stringMapToOrganization = {
     '774inc': Organization.inc774,
     'Aogiri%20Highschool': Organization.AogiriHighschool,
-    'Atelier%20Live': Organization.AtelierLive,
+    'Atelier Live': Organization.AtelierLive,
     'Chukorara': Organization.Chukorara,
     'Eilene%20Family': Organization.EileneFamily,
     'Hanayori%20Joshiryo': Organization.HanayoriJoshiryo,

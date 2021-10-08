@@ -88,7 +88,7 @@ class HolodexClient extends BaseHolodexClient {
       'order': convertOrderToString(order),
     });
 
-    _addSort(sort, params);
+    _addVideoSort(sort, params);
 
     _addPaginated(paginated, params);
 
@@ -195,10 +195,10 @@ class HolodexClient extends BaseHolodexClient {
     params.addAll({
       'limit': limit,
       'offset': offset,
-      'order': order == Order.ascending ? 'asc' : 'desc',
+      'order': convertOrderToString(order),
     });
 
-    _addSort(sort, params);
+    _addVideoSort(sort, params);
 
     _addPaginated(paginated, params);
 
@@ -250,13 +250,13 @@ class HolodexClient extends BaseHolodexClient {
   /// 
   /// - `channelId` ID of the Youtube Channel that is being queried
   @override
-  Future<Channel> getChannel(String channelId) async {
+  Future<Channel> getChannelFromId(String channelId) async {
     final dio.Response response = await get(path: '${_Constants.channelsPath}/$channelId');
 
     return Channel.fromMap(response.data);
   }
 
-  void _addSort(List<VideoSort> sort, Map<String, dynamic> params) {
+  void _addVideoSort(List<VideoSort> sort, Map<String, dynamic> params) {
     if (sort.isNotEmpty) {
       // Make new list with the values as string
       final List<String> sortStringList = sort.map((s) => convertVideoSortToString(s)).toList();
@@ -334,13 +334,29 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void _addLanguages(List<Language> lang, Map<String, dynamic> params) {
-    if ( lang.isNotEmpty ) {
+  void _addLanguages(List<Language>? lang, Map<String, dynamic> params) {
+    if ( lang != null && lang.isNotEmpty ) {
       // Make new list with the values as string
-      final List<String> langStringList = lang.map((l) => convertLanguageToString(l)!).toList();
+      final List<String> langStringList = lang.map((l) => convertLanguageToString(l)).toList();
       // Join the array with commas
       String languagesConcat = langStringList.join(',');
       params.addAll({'lang': languagesConcat});
+    }
+  }
+  
+  void _addChannelSort(List<ChannelSort> sort, Map<String, dynamic> params) {
+    if ( sort.isNotEmpty ) {
+      // Make new list with the values as string
+      final List<String> sortStringList = sort.map((l) => convertChannelSortToString(l)).toList();
+      // Join the array with commas
+      String sortConcat = sortStringList.join(',');
+      params.addAll({'sort': sortConcat});
+    }
+  }
+  
+  void _addSingleOrganization(Organization? organization, Map<String, dynamic> params) {
+    if (organization != null) {
+      params.addAll({'org': convertOrganizationToString(organization)});
     }
   }
 
@@ -368,7 +384,6 @@ class HolodexClient extends BaseHolodexClient {
     return await call('post', path: path, headers: headers, params: params, responseType: responseType);
   }
 
-
   /// Method to make a http call and return `Response`
   @override
   Future<dio.Response> call(
@@ -377,7 +392,8 @@ class HolodexClient extends BaseHolodexClient {
     Map<String, String> headers = const {}, 
     Map<String, dynamic> params = const {},
     dio.ResponseType responseType = dio.ResponseType.json
-  }) async {
+  }) 
+  async {
     try {
       // Prepare request
       final response = await dioClient.request(basePath + path, queryParameters: params, options: dio.Options(method: method, responseType: responseType, headers: headers));
@@ -399,10 +415,33 @@ class HolodexClient extends BaseHolodexClient {
     int offset = 0,
     Order order = Order.ascending,
     Organization? organization,
-    ChannelSort sort = ChannelSort.organization,
-  }) {
-    // TODO: implement listChannels
-    throw UnimplementedError();
+    List<ChannelSort> sort = const [ChannelSort.organization],
+  }) async {
+    assert(limit <= 50);
+
+    // Create the params list
+    final Map<String, dynamic> params = {};
+
+    // Add the items with default values (they can't be null)
+    params.addAll({
+      'limit': limit,
+      'offset': offset,
+      'order': convertOrderToString(order),
+    });
+
+    _addChannelSort(sort, params);
+
+    // Add the languages to filter by
+    _addLanguages(lang, params);
+
+    // Add the organization param
+    _addSingleOrganization(organization, params);
+
+    final response = await get(path: _Constants.channelsPath, params: params);
+
+    final List list = response.data;
+
+    return list.map((channel) => Channel.fromMap(channel)).toList(); // Returns as `List<Channel>`
   }
   
   @override

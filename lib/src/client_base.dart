@@ -47,7 +47,7 @@ abstract class BaseHolodexClient {
   /// Arguments:
   /// 
   /// - `channelId` ID of the Youtube Channel that is being queried
-  Future<Channel> getChannel(String channelId);
+  Future<Channel> getChannelFromId(String channelId);
 
   /// Get a video by its video ID
   /// 
@@ -175,7 +175,7 @@ abstract class BaseHolodexClient {
     int offset = 0,
     Order order = Order.ascending,
     Organization? organization,
-    ChannelSort sort = ChannelSort.organization,
+    List<ChannelSort> sort,
   });
 
   /// GetVideosFromChannel

@@ -14,10 +14,10 @@ class Channel extends Equatable {
   final String? subscriberCount;
   final String? viewCount;
   final int? clipCount;
-  final Language? lang;
-  final String publishedAt;
-  final bool inactive;
-  final String description;
+  final Language lang;
+  final String? publishedAt;
+  final bool? inactive;
+  final String? description;
 
   /// Returns a new [Channel] instance.
   Channel({
@@ -34,10 +34,10 @@ class Channel extends Equatable {
     this.subscriberCount,
     this.viewCount,
     this.clipCount,
-    this.lang,
-    required this.publishedAt,
-    required this.inactive,
-    required this.description,
+    required this.lang,
+    this.publishedAt,
+    this.inactive,
+    this.description,
   });
 
   Map<String, dynamic> toMap() {
@@ -77,7 +77,7 @@ class Channel extends Equatable {
       subscriberCount: map['subscriber_count'],
       viewCount: map['view_count'],
       clipCount: map['clip_count'],
-      lang: convertStringToLanguage(map['lang'] ?? ''),
+      lang: convertStringToLanguage(map['lang'] ?? '') ?? Language.all,
       publishedAt: map['published_at'],
       inactive: map['inactive'],
       description: map['description'],
@@ -147,10 +147,10 @@ class Channel extends Equatable {
       subscriberCount ?? 0,
       viewCount ?? 0,
       clipCount ?? 0,
-      lang ?? 'No language provided',
-      publishedAt,
-      inactive,
-      description,
+      lang,
+      publishedAt ?? 'No publishedAt provided',
+      inactive ?? 'Inactive not provided',
+      description ?? 'Description not provided',
     ];
   }
 }

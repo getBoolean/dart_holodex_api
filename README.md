@@ -117,8 +117,21 @@ print(liveVideos.toString());
 Query a channel by its channel ID
 
 ```dart
-final Channel ceresFauna = await holodexClient.getChannel('UCO_aKKYxn4tvrqPjcTzZ6EQ');
+final Channel ceresFauna = await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');
 print(ceresFauna.toString());
+```
+
+Query a list of channels and filter it
+
+```dart
+final channels = await holodexClient.getChannels(
+    limit: 25,
+    offset: 0,
+    order: Order.ascending,
+    organization: Organization.AtelierLive,
+    sort: [ChannelSort.organization]
+);
+print(channels.toString());
 ```
 
 ## Additional information

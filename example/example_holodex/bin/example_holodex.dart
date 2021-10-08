@@ -64,7 +64,15 @@ void main(List<String> arguments) async {
   );
   print('Live videos: ${liveVideos.videos.length}');
 
-  final ceresFauna = await holodexClient.getChannel('UCO_aKKYxn4tvrqPjcTzZ6EQ');
+  final ceresFauna = await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');
   print(ceresFauna.toString());
 
+  final channels = await holodexClient.getChannels(
+    limit: 25,
+    offset: 0,
+    order: Order.ascending,
+    organization: Organization.AtelierLive,
+    sort: [ChannelSort.organization]
+  );
+  print(channels.toString());
 }
