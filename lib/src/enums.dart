@@ -140,9 +140,7 @@ enum VideoSearchType {
   collabs
 }
 
-String convertVideoSearchTypeToString(VideoSearchType searchType) {
-  return EnumToString.convertToString(searchType);
-}
+String convertVideoSearchTypeToString(VideoSearchType searchType) => EnumToString.convertToString(searchType);
 
 enum Order { ascending, descending }
 
