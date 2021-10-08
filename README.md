@@ -42,7 +42,7 @@ dependencies:
 
 [Full example](https://github.com/getBoolean/dart_holodex_api/blob/main/example/example_holodex/bin/example_holodex.dart).
 
-### Get an instance of HolodexClient with your API key
+Get an instance of HolodexClient with your API key
 
 ```dart
 var holodexClient = HolodexClient(apiKey: apiKey);
@@ -76,7 +76,7 @@ final VideoFull video = await holodexClient.getVideoFromId(
 print(video.toString());
 ```
 
-Get a list of videos
+### Get a list of videos
 
 Returns `VideoList`
 
@@ -129,7 +129,7 @@ final VideoList videoList = await holodexClient.getVideos(
 print(videoList.toString());
 ```
 
-Get a list of live videos
+### Get a list of live videos
 
 Returns `VideoList`
 
@@ -171,7 +171,7 @@ final VideoList liveVideos = await holodexClient.getLiveVideos(
 print(liveVideos.toString());
 ```
 
-Get a channel by its ID
+### Get a channel by its ID
 
 Returns [Channel]
 
@@ -184,7 +184,7 @@ final Channel ceresFauna = await holodexClient.getChannelFromId('UCO_aKKYxn4tvrq
 print(ceresFauna.toString());
 ```
 
-Get channels
+### Get channels
 
 Arguments:
 
@@ -206,7 +206,7 @@ final channels = await holodexClient.getChannels(
 print(channels.toString());
 ```
 
-Quickly Access Live / Upcoming for a set of Channels
+### Quickly Access Live / Upcoming for a set of Channels
 
 This endpoint is similar to the getLiveVideos() method and usually replies much faster.
 It is more friendly in general. The cost to execute a lookup is significantly cheaper.
@@ -227,7 +227,7 @@ final quickLiveVideos = await holodexClient.getLiveVideosFromChannelsQuickly([
 print('Requested Live Videos From Channels: ${quickLiveVideos.length}');
 ```
 
-Get Videos Related To Channel
+### Get Videos Related To Channel
 
 A simplified method for access channel specific data.
 If you want more customization, the same result can be obtained by calling the queryVideos() method.
@@ -251,7 +251,7 @@ print('Clips including Matsuri: ${matsuriClips.total}');
 print('Returned clips including Matsuri: ${matsuriClips.videos.length}');
 ```
 
-Get Clips of a VTuber
+### Get Clips of a VTuber
 
 Alias of getVideosRelatedToChannel()
 
@@ -272,7 +272,7 @@ print('Clips including Matsuri: ${matsuriClips.total}');
 print('Returned clips including Matsuri: ${matsuriClips.videos.length}\n');
 ```
 
-Get Collabs that mention a VTuber
+### Get Collabs that mention a VTuber
 
 Alias of getVideosRelatedToChannel()
 
@@ -291,7 +291,7 @@ print('Collabs including Matsuri: ${matsuriCollabs.total}');
 print('Returned collabs including Matsuri: ${matsuriCollabs.videos.length}\n');
 ```
 
-Get Videos From Channel
+### Get Videos From Channel
 
 Alias of getVideosRelatedToChannel()
 
@@ -312,7 +312,7 @@ print('Total Matsuri uploads: ${matsuriUploads.total}');
 print('Returned uploads: ${matsuriUploads.videos.length}\n');
 ```
 
-Get a single Video's metadata
+### Get a single Video's metadata
 
 Retrieves Comments if `timestampComments` is set to true
 
