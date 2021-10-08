@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart' as dio;
+import 'package:dio/dio.dart';
 
 import 'client_base.dart';
 import '../dart_holodex_api.dart';
@@ -14,16 +14,16 @@ class HolodexClient extends BaseHolodexClient {
   HolodexClient({
     required this.apiKey,
     this.basePath = 'https://holodex.net/api/v2',
-    dio.Dio? client,
+    Dio? client,
   }) {
     if (client == null) {
-      dioClient = dio.Dio();
+      dioClient = Dio();
     } else {
       dioClient = client;
     }
 
     // API requires use of a key, so add it to the headers
-    dioClient.interceptors.add(dio.InterceptorsWrapper(onRequest: (dio.RequestOptions options, dio.RequestInterceptorHandler handler) async {
+    dioClient.interceptors.add(InterceptorsWrapper(onRequest: (RequestOptions options, RequestInterceptorHandler handler) async {
       final customHeaders = {
         'X-APIKEY': apiKey,
       };
@@ -32,7 +32,7 @@ class HolodexClient extends BaseHolodexClient {
     }));
   }
 
-  late final dio.Dio dioClient;
+  late final Dio dioClient;
   final String basePath;
   final String apiKey;
 
@@ -51,7 +51,7 @@ class HolodexClient extends BaseHolodexClient {
     // Add the info the videos must include
     _addIncludes(includes, params);
 
-    final dio.Response response = await get(path: _Constants.videosPath, params: params);
+    final Response response = await get(path: _Constants.videosPath, params: params);
 
     return VideoFull.fromMap(response.data.first);
   }
@@ -268,7 +268,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `channelId` ID of the Youtube Channel that is being queried
   @override
   Future<Channel> getChannelFromId(String channelId) async {
-    final dio.Response response = await get(path: '${_Constants.channelsPath}/$channelId');
+    final Response response = await get(path: '${_Constants.channelsPath}/$channelId');
 
     return Channel.fromMap(response.data);
   }
@@ -427,38 +427,38 @@ class HolodexClient extends BaseHolodexClient {
   
   /// An alias of HolodexClient.call('get')
   @override
-  Future<dio.Response> get({
+  Future<Response> get({
     String path = '',
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
-    dio.ResponseType responseType = dio.ResponseType.json
+    ResponseType responseType = ResponseType.json,
   }) async {
     return await call('get', path: path, headers: headers, params: params, responseType: responseType);
   }
 
   /// An alias of HolodexClient.call('post')
   @override
-  Future<dio.Response> post({
+  Future<Response> post({
     String path = '',
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
-    dio.ResponseType responseType = dio.ResponseType.json
+    ResponseType responseType = ResponseType.json,
   }) async {
     return await call('post', path: path, headers: headers, params: params, responseType: responseType);
   }
 
   /// Method to make a http call and return `Response`
   @override
-  Future<dio.Response> call(
+  Future<Response> call(
     String method, { 
     required String path, 
     Map<String, String> headers = const {}, 
     Map<String, dynamic> params = const {},
-    dio.ResponseType responseType = dio.ResponseType.json
+    ResponseType responseType = ResponseType.json,
   }) async {
     try {
       // Prepare request
-      final response = await dioClient.request(basePath + path, queryParameters: params, options: dio.Options(method: method, responseType: responseType, headers: headers));
+      final response = await dioClient.request(basePath + path, queryParameters: params, options: Options(method: method, responseType: responseType, headers: headers));
 
       // Return response
       return response;
