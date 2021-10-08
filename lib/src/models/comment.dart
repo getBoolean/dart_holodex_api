@@ -2,17 +2,20 @@ part of dart_holodex_api.models;
 
 class Comment extends Equatable {
   final String commentKey;
+  final String? videoId;
   final String message;
 
   /// Returns a new [Comment] instance.
   Comment({
     required this.commentKey,
+    this.videoId,
     required this.message,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'comment_key': commentKey,
+      'video_id': videoId,
       'message': message,
     };
   }
@@ -20,6 +23,7 @@ class Comment extends Equatable {
   factory Comment.fromMap(Map<String, dynamic> map) {
     return Comment(
       commentKey: map['comment_key'],
+      videoId: map['video_id'],
       message: map['message'],
     );
   }
@@ -31,6 +35,7 @@ class Comment extends Equatable {
   }) {
     return Comment(
       commentKey: commentKey ?? this.commentKey,
+      videoId: videoId ?? this.videoId,
       message: message ?? this.message,
     );
   }
@@ -43,5 +48,5 @@ class Comment extends Equatable {
   bool get stringify => true;
 
   @override
-  List<Object> get props => [commentKey, message];
+  List<Object> get props => [commentKey, videoId ?? 'Video ID not given', message];
 }
