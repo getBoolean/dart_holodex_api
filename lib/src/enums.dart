@@ -61,9 +61,22 @@ String? convertLanguageToString(Language? lang) {
   return languageMapToSring[lang];
 }
 
+/// Converts a string language code to the corresponding Language enum.
+/// 
+/// Returns [null] if it is not supported or the language code is incorrect.
 Language? convertStringToLanguage(String lang) {
-  // TODO: Implement convertStringToLanguage
-  throw UnimplementedError();
+  final stringMapToLanguage = {
+    'all': Language.all,
+    'en': Language.english,
+    'jp': Language.japanese,
+    'es': Language.spanish,
+    'zh': Language.chinese,
+    'ko': Language.korean,
+    'fr': Language.french,
+    'id': Language.indonesian,
+    'ru': Language.russian,
+  };
+  return stringMapToLanguage[lang];
 }
 
 enum ChannelSort {
