@@ -42,13 +42,13 @@ dependencies:
 
 [Full example](https://github.com/getBoolean/dart_holodex_api/blob/main/example/example_holodex/bin/example_holodex.dart).
 
-Get an instance of HolodexClient with your API key
+### Get an instance of HolodexClient with your API key
 
 ```dart
 var holodexClient = HolodexClient(apiKey: apiKey);
 ```
 
-Get a video by its video ID
+### Get a video by its video ID
 
 Returns [VideoFull]
 
