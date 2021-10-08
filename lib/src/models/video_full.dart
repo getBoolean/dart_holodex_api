@@ -19,7 +19,7 @@ class VideoFull extends Video {
     String? channelId,
     int? songcount,
     String? language,
-    this.channelMin,
+    this.channel,
     this.clips,
     this.sources,
     this.refers,
@@ -45,7 +45,7 @@ class VideoFull extends Video {
     language: language,
   );
 
-  final ChannelMin? channelMin;
+  final ChannelMin? channel;
 
   /// Included when 'includes' contains 'clips'
   final List<VideoWithChannel>? clips;
@@ -82,7 +82,7 @@ class VideoFull extends Video {
     int? songcount,
     String? language,
     String? channelId,
-    ChannelMin? channelMin,
+    ChannelMin? channel,
     List<VideoWithChannel>? clips,
     List<VideoWithChannel>? sources,
     List<VideoWithChannel>? refers,
@@ -107,7 +107,7 @@ class VideoFull extends Video {
       songcount: songcount ?? this.songcount,
       language: language ?? this.language,
       channelId: channelId ?? this.channelId,
-      channelMin: channelMin ?? this.channelMin,
+      channel: channel ?? this.channel,
       clips: clips ?? this.clips,
       sources: sources ?? this.sources,
       refers: refers ?? this.refers,
@@ -136,7 +136,7 @@ class VideoFull extends Video {
       'songcount': songcount,
       'lang': language,
       'channel_id': channelId,
-      'channel': channelMin?.toMap(),
+      'channel': channel?.toMap(),
       'clips': clips?.map((clip) => clip.toMap()).toList(),
       'sources': sources?.map((source) => source.toMap()).toList(),
       'refers': refers?.map((refer) => refer.toMap()).toList(),
@@ -164,7 +164,7 @@ class VideoFull extends Video {
       songcount: map['songcount'],
       language: map['lang'],
       channelId: map['channel_id'],
-      channelMin: ChannelMin.fromMap(map['channel']),
+      channel: ChannelMin.fromMap(map['channel']),
       clips: List<VideoWithChannel>.from(map['clips']?.map((clip) => VideoWithChannel.fromMap(clip)) ?? []),
       sources: List<VideoWithChannel>.from(map['sources']?.map((source) => VideoWithChannel.fromMap(source)) ?? []),
       refers: List<VideoWithChannel>.from(map['refers']?.map((refer) => VideoWithChannel.fromMap(refer)) ?? []),
@@ -201,7 +201,7 @@ class VideoFull extends Video {
       songcount ?? 'Song count not given',
       language ?? 'Language not given',
       channelId ?? 'Channel id not given',
-      channelMin ?? 'Channel not given',
+      channel ?? 'Channel not given',
       clips ?? 'Clips not given',
       sources ?? 'Sources not given',
       refers ?? 'Refers not given',
