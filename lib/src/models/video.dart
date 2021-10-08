@@ -37,6 +37,8 @@ class Video extends Equatable {
   final int? songcount;
 
   final String? channelId;
+
+  final String? language;
   
   /// Returns a new [Video] instance.
   Video({
@@ -55,6 +57,7 @@ class Video extends Equatable {
     this.description,
     this.songcount,
     this.channelId,
+    this.language,
   });
 
   Video copyWith({
@@ -73,6 +76,7 @@ class Video extends Equatable {
     String? description,
     int? songcount,
     String? channelId,
+    String? language,
   }) {
     return Video(
       id: id ?? this.id,
@@ -90,6 +94,7 @@ class Video extends Equatable {
       description: description ?? this.description,
       songcount: songcount ?? this.songcount,
       channelId: channelId ?? this.channelId,
+      language: language ?? this.language,
     );
   }
 
@@ -110,6 +115,7 @@ class Video extends Equatable {
       'description': description,
       'songcount': songcount,
       'channel_id': channelId,
+      'lang': language,
     };
   }
 
@@ -130,6 +136,7 @@ class Video extends Equatable {
       description: map['description'],
       songcount: map['songcount'],
       channelId: map['channel_id'],
+      language: map['lang'],
     );
   }
 
@@ -158,6 +165,7 @@ class Video extends Equatable {
       description ?? '',
       songcount ?? 0,
       channelId ?? '',
+      language ?? 'Language not given'
     ];
   }
 }

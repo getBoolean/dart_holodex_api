@@ -18,6 +18,7 @@ class VideoWithChannel extends Video {
     String? description,
     String? channelId,
     int? songcount,
+    String? language,
     required this.channel,
   }) : super(
     id: id,
@@ -35,6 +36,7 @@ class VideoWithChannel extends Video {
     description: description,
     channelId: channelId,
     songcount: songcount,
+    language: language,
   );
 
 	final ChannelMin channel;
@@ -55,6 +57,7 @@ class VideoWithChannel extends Video {
     int? liveViewers,
     String? description,
     int? songcount,
+    String? language,
     String? channelId,
     ChannelMin? channel,
   }) {
@@ -73,6 +76,7 @@ class VideoWithChannel extends Video {
       liveViewers: liveViewers ?? this.liveViewers,
       description: description ?? this.description,
       songcount: songcount ?? this.songcount,
+      language: language ?? this.language,
       channelId: channelId ?? this.channelId,
       channel: channel ?? this.channel,
     );
@@ -95,6 +99,7 @@ class VideoWithChannel extends Video {
       'live_viewers': liveViewers,
       'description': description,
       'songcount': songcount,
+      'lang': language,
       'channel_id': channelId,
       'channel': channel.toMap(),
     };
@@ -116,6 +121,7 @@ class VideoWithChannel extends Video {
       liveViewers: map['live_viewers'],
       description: map['description'],
       songcount: map['songcount'],
+      language: map['lang'],
       channelId: map['channel_id'],
       channel: ChannelMin.fromMap(map['channel']),
     );
