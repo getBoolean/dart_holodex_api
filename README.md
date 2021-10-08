@@ -30,11 +30,11 @@ Use this plugin in your Flutter app to:
 1. Get an API key at [holodex.net](holodex.net), [instructions here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)
 2. Add this to your `pubspec.yaml` file
 
-```yaml
-dependencies:
-    dart_holodex_api:
-        git: https://github.com/getBoolean/dart_holodex_api
-```
+    ```yaml
+    dependencies:
+        dart_holodex_api:
+            git: https://github.com/getBoolean/dart_holodex_api
+    ```
 
 3. Then run `dart pub get` or `flutter pub get`.
 
