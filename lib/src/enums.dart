@@ -4,12 +4,21 @@ import 'package:enum_to_string/enum_to_string.dart';
 
 enum VideoType { stream, clip, all }
 
+/// Converts a [VideoType] enum to string.
+/// 
+/// Returns [String]
 String convertVideoTypeToString(VideoType type) => EnumToString.convertToString(type);
 
+/// Converts a string video type to the corresponding VideoType enum.
+/// 
+/// Returns [null] if it is does not exist, otherwise returns [VideoType]
 VideoType? convertStringToVideoType(String type) => EnumToString.fromString(VideoType.values, type);
 
 enum VideoStatus { new_, upcoming, live, past, missing }
 
+/// Converts a [VideoStatus] enum to string.
+/// 
+/// Returns [String]
 String convertVideoStatusToString(VideoStatus status) {
   final statusMapToString = {
     VideoStatus.new_: 'new',
@@ -21,6 +30,9 @@ String convertVideoStatusToString(VideoStatus status) {
   return statusMapToString[status]!;
 }
 
+/// Converts a string video status to the corresponding VideoStatus enum.
+/// 
+/// Returns [null] if it is does not exist, otherwise returns [VideoStatus]
 VideoStatus? convertStringToVideoStatus(String status) {
   final stringMapToStatus = {
     'new': VideoStatus.new_,
@@ -34,15 +46,24 @@ VideoStatus? convertStringToVideoStatus(String status) {
 
 enum ChannelType { vtuber, subber }
 
-convertStringToChannelType(String type) => EnumToString.fromString(ChannelType.values, type);
+/// Converts a [ChannelType] enum to string.
+/// 
+/// Returns [String]
+String convertChannelTypeToString(ChannelType type) => EnumToString.convertToString(type);
 
-convertChannelTypeToString(ChannelType type) => EnumToString.convertToString(type);
+/// Converts a string channel type to the corresponding ChannelType enum.
+/// 
+/// Returns [null] if it is does not exist, otherwise returns [ChannelType]
+ChannelType? convertStringToChannelType(String type) => EnumToString.fromString(ChannelType.values, type);
 
 // Some of the below enums are based off of https://github.com/EBro912/Holodex.NET
 // These are using enums instead of classes with static strings so that users can see the allowed values in a field instead of any string
 
 enum Language { all, english, japanese, spanish, chinese, korean, french, indonesian, russian }
 
+/// Converts a [Language] enum to string.
+/// 
+/// Returns [String]
 String? convertLanguageToString(Language? lang) {
   if (lang == null) {
     return null;
@@ -63,7 +84,7 @@ String? convertLanguageToString(Language? lang) {
 
 /// Converts a string language code to the corresponding Language enum.
 /// 
-/// Returns [null] if it is not supported or the language code is incorrect.
+/// Returns [null] if it is not supported or the language code is incorrect. Otherwise returns [Language]
 Language? convertStringToLanguage(String lang) {
   final stringMapToLanguage = {
     'all': Language.all,
@@ -99,6 +120,9 @@ enum ChannelSort {
   description,
 }
 
+/// Converts a [ChannelSort] enum to string.
+/// 
+/// Returns [String]
 String convertChannelSortToString(ChannelSort sort) {
   final videoSortMapToString = {
     ChannelSort.organization: 'org',
@@ -115,6 +139,9 @@ enum VideoSort {
   endActual,
 }
 
+/// Converts a [VideoSort] enum to string.
+/// 
+/// Returns [String]
 String convertVideoSortToString(VideoSort sort) {
   final videoSortMapToString = {
     VideoSort.title: 'title',
@@ -140,10 +167,16 @@ enum VideoSearchType {
   collabs
 }
 
+/// Converts a [VideoSearchType] enum to string.
+/// 
+/// Returns [String]
 String convertVideoSearchTypeToString(VideoSearchType searchType) => EnumToString.convertToString(searchType);
 
 enum Order { ascending, descending }
 
+/// Converts a [Order] enum to string.
+/// 
+/// Returns [String]
 String convertOrderToString(Order order) {
   final videoOrderMapToString = {
     Order.ascending: 'asc',
@@ -183,6 +216,9 @@ enum Organization {
   YuniCreate,
 }
 
+/// Converts a [Organization] enum to string.
+/// 
+/// Returns [String]
 String? convertOrganizationToString(Organization? org) {
   if (org == null) {
     return null;
@@ -219,6 +255,9 @@ String? convertOrganizationToString(Organization? org) {
   return organizationMapToString[org];
 }
 
+/// Converts a string organization name to the corresponding Orgnization enum.
+/// 
+/// Returns [null] if it is does not exist or was incorrectly typed, otherwise returns [Organization]
 Organization? convertStringToOrganization(String org) {
   final stringMapToOrganization = {
     '774inc': Organization.inc774,
@@ -282,6 +321,9 @@ enum Includes {
   songs
 }
 
+/// Converts a [Includes] enum to string.
+/// 
+/// Returns [String]
 String convertIncludesToString(Includes i) {
   final includesMapToString = {
     Includes.clips: 'clips',
