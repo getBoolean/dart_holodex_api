@@ -180,6 +180,23 @@ print('Total Matsuri uploads: ${matsuriUploads.total}');
 print('Returned uploads: ${matsuriUploads.videos.length}\n');
 ```
 
+Get a single Video's metadata
+
+```dart
+final videoMetadata = await holodexClient.getVideoMetadata(
+    'eJJuy5rY57w', // Shion's singing stream
+    timestampComments: true,
+    recommendationLanguages: [Language.all],
+);
+final VideoFull shionSingingStream = videoMetadata.video;
+final List<Comment>? timestampComments = videoMetadata.comments;
+final List<VideoWithChannel>? recommendations = videoMetadata.recommendations;
+
+print('Songs: ${shionSingingStream.songcount}');
+print('Video Comments With Timestamps: ${timestampComments?.length}');
+print('Video Recommendations: ${recommendations?.length}');
+```
+
 ## Additional information
 
 Read the official API documentation [here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)
