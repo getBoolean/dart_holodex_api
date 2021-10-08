@@ -10,20 +10,28 @@ void main(List<String> arguments) async {
   // Create client with API key from a .env file in the `example_holodex` folder
   // See this page on getting an api key https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started
   // Add the api key to the .env file in the format `API=api_key` with `api_key` being the key you got from the above website
-  var holodexClient = HolodexClient(apiKey: dotenv.env['API']);
+  final String? apiKey = dotenv.env['API'];
+  if (apiKey == null) {
+    print('API key not found, exiting');
+    return;
+  }
+  var holodexClient = HolodexClient(apiKey: apiKey);
 
   // Get one video and print it
-  final VideoFull video = await holodexClient.getVideoFromId('Gx_GPwpyLxw', includes: [
-    // IncludesData.channelStats,
-    // IncludesData.clips,
-    // IncludesData.description,
-    // IncludesData.liveInfo,
-    // IncludesData.mentions,
-    // IncludesData.refers,
-    // IncludesData.simulcasts,
-    // IncludesData.songs,
-    // IncludesData.sources,
-  ]);
+  final VideoFull video = await holodexClient.getVideoFromId(
+    'Gx_GPwpyLxw',
+    includes: [
+      // IncludesData.channelStats,
+      // IncludesData.clips,
+      // IncludesData.description,
+      // IncludesData.liveInfo,
+      // IncludesData.mentions,
+      // IncludesData.refers,
+      // IncludesData.simulcasts,
+      // IncludesData.songs,
+      // IncludesData.sources,
+    ]
+  );
   print('Requested Video: ${video.toString()}');
 
   // Get a bunch of videos and print them

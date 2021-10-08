@@ -12,10 +12,29 @@ class HolodexClient extends BaseHolodexClient {
   /// 
   /// `dioClient` - An existing Dio Client, if needed. When left null, an internal client will be created
   HolodexClient({
-    required apiKey,
-    basePath = 'https://holodex.net/api/v2',
+    required this.apiKey,
+    this.basePath = 'https://holodex.net/api/v2',
     dio.Dio? client,
-  }) : super(apiKey: apiKey, basePath: basePath, dioClient: client);
+  }) {
+    if (client == null) {
+      dioClient = dio.Dio();
+    } else {
+      dioClient = client;
+    }
+
+    // API requires use of a key, so add it to the headers
+    dioClient.interceptors.add(dio.InterceptorsWrapper(onRequest: (dio.RequestOptions options, dio.RequestInterceptorHandler handler) async {
+      final customHeaders = {
+        'X-APIKEY': apiKey,
+      };
+      options.headers.addAll(customHeaders);
+      return handler.next(options);
+    }));
+  }
+
+  late final dio.Dio dioClient;
+  final String basePath;
+  final String apiKey;
 
   /// Get a video by its video ID
   /// 

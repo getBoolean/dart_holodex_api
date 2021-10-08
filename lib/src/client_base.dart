@@ -4,38 +4,7 @@ import '../dart_holodex_api.dart';
 
 abstract class BaseHolodexClient {
   /// Extended by [HolodexClient]
-  /// 
-  /// `apiKey` - Your personal API key. Be aware that the validity of the key is not checked, so ensure it is correct.
-  /// 
-  /// `basePath` - (Optional) The base Holodex API url. Can be overriden with the mock sever API url: `https://stoplight.io/mocks/holodex/holodex/11620234`
-  /// 
-  /// `dioClient` - An existing Dio Client, if needed. When left null, an internal client will be created
-  BaseHolodexClient({
-    required this.apiKey,
-    this.basePath = 'https://holodex.net/api/v2',
-    dio.Dio? dioClient,
-  })
-  {
-    if (dioClient == null) {
-      this.dioClient = dio.Dio();
-    } else {
-      this.dioClient = dioClient;
-    }
-
-    // API requires use of a key, so add it to the headers
-    this.dioClient.interceptors.add(dio.InterceptorsWrapper(onRequest: (dio.RequestOptions options, dio.RequestInterceptorHandler handler) async {
-      final customHeaders = {
-        'X-APIKEY': apiKey,
-      };
-      options.headers.addAll(customHeaders);
-      return handler.next(options);
-    }));
-  }
-
-  final String basePath;
-  final String apiKey;
-
-  late final dio.Dio dioClient;
+  BaseHolodexClient();
 
 
   // GET REQUESTS
