@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart' as dio;
+import 'package:dio/dio.dart';
 
 import '../dart_holodex_api.dart';
 
@@ -239,7 +239,7 @@ abstract class BaseHolodexClient {
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
   /// 
   /// Searching for topics and clips is not supported, because clips do not contain topic_ids
-  Future<List<VideoFull>> searchVideos();
+  Future<VideoList> searchVideos();
 
   /// Flexible endpoint to search for comments in videos fufilling multiple conditions. 
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
@@ -248,7 +248,7 @@ abstract class BaseHolodexClient {
   // UTILITIES
 
   /// Utility method to create an http call
-  Future<dio.Response> call(
+  Future<Response> call(
     String method, {
     required String path,
     Map<String, String> headers = const {},
@@ -257,20 +257,20 @@ abstract class BaseHolodexClient {
 
 
   /// An alias of HolodexClient.call('get')
-  Future<dio.Response> get({
+  Future<Response> get({
     required String path,
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
-    dio.ResponseType responseType = dio.ResponseType.json
+    ResponseType responseType = ResponseType.json
   });
 
 
   /// An alias of HolodexClient.call('post')
-  Future<dio.Response> post({
+  Future<Response> post({
     required String path,
     Map<String, String> headers = const {},
-    Map<String, dynamic> params = const {},
-    dio.ResponseType responseType = dio.ResponseType.json
+    Map<String, dynamic> data = const {},
+    ResponseType responseType = ResponseType.json
   });
 
 }

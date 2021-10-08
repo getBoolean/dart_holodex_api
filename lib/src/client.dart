@@ -498,14 +498,80 @@ class HolodexClient extends BaseHolodexClient {
     );
   }
 
+  // TODO: Fix parameters
+
+  /// Flexible endpoint to search for videos fufilling multiple conditions. 
+  /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
+  /// 
+  /// Searching for topics and clips is not supported, because clips do not contain topic_ids
   @override
-  Future<List<VideoFull>> searchVideos() {
-    // TODO: implement searchVideos
-    throw UnimplementedError();
+  Future<VideoList> searchVideos({
+    SearchSort searchSort = SearchSort.newest,
+    List<Language>? languages,
+    List<SearchTarget>? searchTarget,
+    List<String>? conditions,
+    List<String>? topics,
+    List<String>? vch,
+    List<Organization>? organizations,
+    bool paginated = true,
+    int offset = 0,
+    int limit = 25,
+  }) async {
+    final Map<String, dynamic> data = {};
+
+    data.addAll({
+      'sort': convertSearchSortToString(searchSort),
+      'paginated': paginated,
+      'offset': offset,
+      'limit': limit,
+      'comment': [],
+    });
+
+    if (languages != null) {
+      data.addAll({
+        'lang': languages.map((l) => convertLanguageToString(l)),
+      });
+    }
+
+    if (searchTarget != null) {
+      data.addAll({
+        'target': searchTarget.map((s) => convertSearchTargetToString(s)),
+      });
+    }
+
+    if (conditions != null) {
+      data.addAll({
+        'conditions': conditions,
+      });
+    }
+
+    if (topics != null) {
+      data.addAll({
+        'topic': topics,
+      });
+    }
+
+    if (vch != null) {
+      data.addAll({
+        'vch': vch,
+      });
+    }
+
+    final response = await post(path: _Constants.videoSearch, data: data);
+    
+    // if (paginated) {
+    //   final Map<String, dynamic> map = response.data;
+    //   // Grab total and return with it
+    //   final videoList = VideoList.fromMap(map);
+    //   return videoList.copyWith(paginated: true);
+    // }
+    
+    final List list = response.data;
+    return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
   }
 
   @override
-  Future<List<Comment>> searchComments() {
+  Future<List<Comment>> searchComments() async {
     // TODO: implement searchComments
     // TODO: Create class to hold List<VideoFull>, ChannelMin, and List<Comment>
     throw UnimplementedError();
@@ -633,8 +699,8 @@ class HolodexClient extends BaseHolodexClient {
   @override
   Future<Response> get({
     String path = '',
-    Map<String, String> headers = const {},
-    Map<String, dynamic> params = const {},
+    Map<String, String>? headers,
+    Map<String, dynamic>? params,
     ResponseType responseType = ResponseType.json,
   }) async {
     return await call('get', path: path, headers: headers, params: params, responseType: responseType);
@@ -644,11 +710,11 @@ class HolodexClient extends BaseHolodexClient {
   @override
   Future<Response> post({
     String path = '',
-    Map<String, String> headers = const {},
-    Map<String, dynamic> params = const {},
+    Map<String, String>? headers,
+    Map<String, dynamic>? data,
     ResponseType responseType = ResponseType.json,
   }) async {
-    return await call('post', path: path, headers: headers, params: params, responseType: responseType);
+    return await call('post', path: path, headers: headers, data: data, responseType: responseType);
   }
 
   /// Method to make a http call and return `Response`
@@ -656,14 +722,14 @@ class HolodexClient extends BaseHolodexClient {
   Future<Response> call(
     String method, { 
     required String path, 
-    Map<String, String> headers = const {}, 
-    Map<String, dynamic> params = const {},
+    Map<String, String>? headers, 
+    Map<String, dynamic>? params,
+    Map<String, dynamic>? data,
     ResponseType responseType = ResponseType.json,
   }) async {
     try {
       // Prepare request
-      final response = await dioClient.request(basePath + path, queryParameters: params, options: Options(method: method, responseType: responseType, headers: headers));
-
+      final response = await dioClient.fetch(RequestOptions(method: method, path: basePath + path, queryParameters: params, data: data, responseType: responseType, headers: headers));
       // Return response
       return response;
     } catch (e) {
@@ -681,4 +747,6 @@ class _Constants {
   static const String liveVideosPath = '/live';
   static const String channelsPath = '/channels';
   static const String userLivePath = '/users/live';
+  static const String videoSearch = '/search/videoSearch';
+  static const String commentSearch = '/search/commentSearch';
 }
