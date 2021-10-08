@@ -13,3 +13,5 @@ part 'models/video.dart';
 part 'models/video_full.dart';
 part 'models/video_list.dart';
 part 'models/comment.dart';
+part 'models/video_metadata.dart';
+part 'models/song.dart';

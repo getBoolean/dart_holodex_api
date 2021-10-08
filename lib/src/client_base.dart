@@ -1,41 +1,10 @@
-import 'package:dio/dio.dart' as dio;
+import 'package:dio/dio.dart';
 
 import '../dart_holodex_api.dart';
 
 abstract class BaseHolodexClient {
   /// Extended by [HolodexClient]
-  /// 
-  /// `apiKey` - Your personal API key. Be aware that the validity of the key is not checked, so ensure it is correct.
-  /// 
-  /// `basePath` - (Optional) The base Holodex API url. Can be overriden with the mock sever API url: `https://stoplight.io/mocks/holodex/holodex/11620234`
-  /// 
-  /// `dioClient` - An existing Dio Client, if needed. When left null, an internal client will be created
-  BaseHolodexClient({
-    required this.apiKey,
-    this.basePath = 'https://holodex.net/api/v2',
-    dio.Dio? dioClient,
-  })
-  {
-    if (dioClient == null) {
-      this.dioClient = dio.Dio();
-    } else {
-      this.dioClient = dioClient;
-    }
-
-    // API requires use of a key, so add it to the headers
-    this.dioClient.interceptors.add(dio.InterceptorsWrapper(onRequest: (dio.RequestOptions options, dio.RequestInterceptorHandler handler) async {
-      final customHeaders = {
-        'X-APIKEY': apiKey,
-      };
-      options.headers.addAll(customHeaders);
-      return handler.next(options);
-    }));
-  }
-
-  final String basePath;
-  final String apiKey;
-
-  late final dio.Dio dioClient;
+  BaseHolodexClient();
 
 
   // GET REQUESTS
@@ -95,10 +64,6 @@ abstract class BaseHolodexClient {
     String? topicId,
     VideoType? type,
   });
-
-  /// A simplified method for access channel specific data. 
-  /// If you want more customization, the same result can be obtained by calling the queryVideos() method.
-  Future<VideoList> getVideosRelatedToChannel();
   
   /// Get a list of live videos
   /// 
@@ -148,17 +113,6 @@ abstract class BaseHolodexClient {
     String? topic,
     VideoType? type,
   });
-
-  /// Quickly Access Live / Upcoming for a set of Channels
-  /// 
-  /// This endpoint is similar to the queryLiveVideos() method and usually replies much faster.
-  /// It is more friendly in general. The cost to execute a lookup is significantly cheaper.
-  /// It's unfortunately less customizable as a result.
-  /// 
-  /// We recommends using this if you have a fixed set of channel IDs to look up status for.
-  Future<List<Video>> getLiveVideosFromChannelsQuickly(
-    List<String> channelIds,
-  );
   
   /// Get channels
   /// 
@@ -178,33 +132,114 @@ abstract class BaseHolodexClient {
     List<ChannelSort> sort,
   });
 
+  /// Quickly Access Live / Upcoming for a set of Channels
+  /// 
+  /// This endpoint is similar to the getLiveVideos() method and usually replies much faster.
+  /// It is more friendly in general. The cost to execute a lookup is significantly cheaper.
+  /// It's unfortunately less customizable as a result.
+  /// 
+  /// We recommends using this if you have a fixed set of channel IDs to look up status for.
+  Future<List<Video>> getLiveVideosFromChannelsQuickly(
+    List<String> channelIds,
+  );
+
   /// GetVideosFromChannel
   /// 
   /// Alias of getVideosRelatedToChannel()
-  Future<List<VideoFull>> getChannelVideos(String channelId, {VideoType? type});
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  Future<VideoList> getChannelVideos(
+    String channelId, {
+    List<Includes>? includes,
+    List<Language> lang,
+    int limit,
+    int offset,
+    bool paginated,
+  });
 
   /// Get Clips of a VTuber
   /// 
   /// Alias of getVideosRelatedToChannel()
-  Future<List<VideoFull>> getVTuberClips();
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  Future<VideoList> getVTuberClips(
+    String channelId, {
+    List<Includes>? includes,
+    List<Language> lang,
+    int limit,
+    int offset,
+    bool paginated,
+  });
 
   /// Get Collabs that mention a VTuber
   /// 
   /// Alias of getVideosRelatedToChannel()
-  Future<List<VideoFull>> getVTuberCollabs();
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  Future<VideoList> getVTuberCollabs(
+    String channelId, {
+    List<Includes>? includes,
+    List<Language> lang,
+    int limit,
+    int offset,
+    bool paginated,
+  });
 
-  /// Retrieves a video object.
+  /// A simplified method for access channel specific data. 
+  /// If you want more customization, the same result can be obtained by calling the queryVideos() method.
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `type` The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId`
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  Future<VideoList> getVideosRelatedToChannel(
+    String channelId, {
+    required VideoSearchType type,
+    List<Includes>? includes,
+    List<Language> lang,
+    int limit,
+    int offset,
+    bool paginated,
+  });
+
+  /// Retrieves a video
   ///
-  /// Also retrieves Comments if query parameter c is set.
+  /// Retrieves Comments if `timestampComments` is set to true
   ///
-  /// Also retrieves Recommendations if query parameter lang is set
-  Future<VideoFull> getVideoMetadata();
+  /// Retrieves Recommendations if query parameter `recommendationLanguages` is set
+  Future<VideoMetadata> getVideoMetadata(
+    String videoId, {
+    bool timestampComments,
+    List<Language>? recommendationLanguages,
+  });
 
   /// Flexible endpoint to search for videos fufilling multiple conditions. 
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
   /// 
   /// Searching for topics and clips is not supported, because clips do not contain topic_ids
-  Future<List<VideoFull>> searchVideos();
+  Future<VideoList> searchVideos();
 
   /// Flexible endpoint to search for comments in videos fufilling multiple conditions. 
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
@@ -213,7 +248,7 @@ abstract class BaseHolodexClient {
   // UTILITIES
 
   /// Utility method to create an http call
-  Future<dio.Response> call(
+  Future<Response> call(
     String method, {
     required String path,
     Map<String, String> headers = const {},
@@ -222,20 +257,20 @@ abstract class BaseHolodexClient {
 
 
   /// An alias of HolodexClient.call('get')
-  Future<dio.Response> get({
+  Future<Response> get({
     required String path,
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
-    dio.ResponseType responseType = dio.ResponseType.json
+    ResponseType responseType = ResponseType.json
   });
 
 
   /// An alias of HolodexClient.call('post')
-  Future<dio.Response> post({
+  Future<Response> post({
     required String path,
     Map<String, String> headers = const {},
-    Map<String, dynamic> params = const {},
-    dio.ResponseType responseType = dio.ResponseType.json
+    Map<String, dynamic> data = const {},
+    ResponseType responseType = ResponseType.json
   });
 
 }

@@ -333,3 +333,15 @@ String convertIncludesToString(Includes i) {
   // Force not null because map contains all values for [Includes]
   return includesMapToString[i]!;
 }
+
+enum SearchSort { oldest, newest }
+
+String convertSearchSortToString(SearchSort sort) {
+  return EnumToString.convertToString(sort);
+}
+
+enum SearchTarget { clip, stream }
+
+String convertSearchTargetToString(SearchTarget target) {
+  return EnumToString.convertToString(target);
+}

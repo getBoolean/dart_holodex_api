@@ -2,13 +2,13 @@ part of dart_holodex_api.models;
 
 class Comment extends Equatable {
   final String commentKey;
-  final String videoId;
+  final String? videoId;
   final String message;
 
   /// Returns a new [Comment] instance.
   Comment({
     required this.commentKey,
-    required this.videoId,
+    this.videoId,
     required this.message,
   });
 
@@ -48,5 +48,5 @@ class Comment extends Equatable {
   bool get stringify => true;
 
   @override
-  List<Object> get props => [commentKey, videoId, message];
+  List<Object> get props => [commentKey, videoId ?? 'Video ID not given', message];
 }

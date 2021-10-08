@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart' as dio;
+import 'package:dio/dio.dart';
 
 import 'client_base.dart';
 import '../dart_holodex_api.dart';
@@ -12,10 +12,29 @@ class HolodexClient extends BaseHolodexClient {
   /// 
   /// `dioClient` - An existing Dio Client, if needed. When left null, an internal client will be created
   HolodexClient({
-    required apiKey,
-    basePath = 'https://holodex.net/api/v2',
-    dio.Dio? client,
-  }) : super(apiKey: apiKey, basePath: basePath, dioClient: client);
+    required this.apiKey,
+    this.basePath = 'https://holodex.net/api/v2',
+    Dio? client,
+  }) {
+    if (client == null) {
+      dioClient = Dio();
+    } else {
+      dioClient = client;
+    }
+
+    // API requires use of a key, so add it to the headers
+    dioClient.interceptors.add(InterceptorsWrapper(onRequest: (RequestOptions options, RequestInterceptorHandler handler) async {
+      final customHeaders = {
+        'X-APIKEY': apiKey,
+      };
+      options.headers.addAll(customHeaders);
+      return handler.next(options);
+    }));
+  }
+
+  late final Dio dioClient;
+  final String basePath;
+  final String apiKey;
 
   /// Get a video by its video ID
   /// 
@@ -32,7 +51,7 @@ class HolodexClient extends BaseHolodexClient {
     // Add the info the videos must include
     _addIncludes(includes, params);
 
-    final dio.Response response = await get(path: _Constants.videosPath, params: params);
+    final Response response = await get(path: _Constants.videosPath, params: params);
 
     return VideoFull.fromMap(response.data.first);
   }
@@ -52,7 +71,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `offset` Receive results starting at this number in the array from the Holodex API
   /// - `order` Order results by ascending or descending
   /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
-  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  /// - `paginated` If paginated is set to true, returns [VideoList] with total, otherwise returns [VideoList] without the total.
   /// - `sort` Sort the returned data by this field
   /// - `status` Filter by the video status
   /// - `topic` Filter by video topic ID
@@ -159,7 +178,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `offset` Receive results starting at this number in the array from the Holodex API
   /// - `order` Order by ascending or descending
   /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
-  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  /// - `paginated` If paginated is set to true, returns [VideoList] with total, otherwise returns [VideoList] without the total.
   /// - `sort` Sort the returned data by this field
   /// - `status` Filter by the video status
   /// - `topic` Filter by video topic ID
@@ -175,7 +194,7 @@ class HolodexClient extends BaseHolodexClient {
     int offset = 0,
     Order order = Order.ascending,
     List<Organization>? organization,
-    bool paginated = false,
+    bool paginated = true,
     List<VideoSort> sort = const <VideoSort>[VideoSort.availableAt],
     List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
     String? topic,
@@ -249,7 +268,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `channelId` ID of the Youtube Channel that is being queried
   @override
   Future<Channel> getChannelFromId(String channelId) async {
-    final dio.Response response = await get(path: '${_Constants.channelsPath}/$channelId');
+    final Response response = await get(path: '${_Constants.channelsPath}/$channelId');
 
     return Channel.fromMap(response.data);
   }
@@ -300,6 +319,264 @@ class HolodexClient extends BaseHolodexClient {
     return list.map((channel) => Channel.fromMap(channel)).toList(); // Returns as `List<Channel>`
   }
 
+  /// Quickly Access Live / Upcoming for a set of Channels
+  /// 
+  /// This endpoint is similar to the getLiveVideos() method and usually replies much faster.
+  /// It is more friendly in general. The cost to execute a lookup is significantly cheaper.
+  /// It's unfortunately less customizable as a result.
+  /// 
+  /// We recommend using this if you have a fixed set of channel IDs to look up status for.
+  /// 
+  /// Arguments:
+  /// - `channelIds` List of channel IDs to get the live videos from.
+  @override
+  Future<List<Video>> getLiveVideosFromChannelsQuickly(List<String> channelIds) async {
+    if (channelIds.isEmpty) {
+      return <Video>[];
+    }
+
+    final Map<String, dynamic> params = {};
+
+    _addChannels(channelIds, params);
+
+    final response = await get(path: _Constants.userLivePath, params: params);
+    final List list = response.data;
+    return list.map((video) => Video.fromMap(video)).toList();
+  }
+  
+  /// Get Videos From Channel
+  /// 
+  /// Alias of getVideosRelatedToChannel()
+  /// 
+  /// Returns [VideoList]
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to true, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  @override
+  Future<VideoList> getChannelVideos(
+    String channelId, {
+    List<Includes>? includes,
+    List<Language> lang = const [Language.all],
+    int limit = 25,
+    int offset = 0,
+    bool paginated = true,
+  }) async {
+    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.videos, includes: includes, lang: lang, limit: limit, offset: offset, paginated: paginated);
+  }
+
+  /// Get Clips of a VTuber
+  /// 
+  /// Alias of getVideosRelatedToChannel()
+  /// 
+  /// Returns [VideoList]
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to true, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  @override
+  Future<VideoList> getVTuberClips(
+    String channelId, {
+    List<Includes>? includes,
+    List<Language> lang = const [Language.all],
+    int limit = 25,
+    int offset = 0,
+    bool paginated = true,
+  }) async {
+    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.clips, includes: includes, lang: lang, limit: limit, offset: offset, paginated: paginated);
+  }
+
+  /// Get Collabs that mention a VTuber
+  /// 
+  /// Alias of getVideosRelatedToChannel()
+  /// 
+  /// Returns [VideoList]
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to true, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  @override
+  Future<VideoList> getVTuberCollabs(
+    String channelId, {
+    List<Includes>? includes,
+    List<Language> lang = const [Language.all],
+    int limit = 25,
+    int offset = 0,
+    bool paginated = true,
+  }) async {
+    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.collabs, includes: includes, lang: lang, limit: limit, offset: offset, paginated: paginated);
+  }
+
+  /// Get Videos Related To Channel
+  /// 
+  /// A simplified method for access channel specific data. 
+  /// If you want more customization, the same result can be obtained by calling the queryVideos() method.
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `type` The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId`
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to true, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  @override
+  Future<VideoList> getVideosRelatedToChannel(
+    String channelId, {
+    required VideoSearchType type,
+    List<Includes>? includes,
+    List<Language> lang = const [Language.all],
+    int limit = 25,
+    int offset = 0,
+    bool paginated = true,
+  }) async {
+    // Limit cannot be greater than 50 otherwise request will be denied
+    assert(limit <= 50);
+
+    final Map<String, dynamic> params = {};
+    
+    // Add the items with default values (they can't be null)
+    params.addAll({
+      'limit': limit,
+      'offset': offset,
+    });
+
+    _addIncludes(includes, params);
+    _addLanguages(lang, params);
+    _addPaginated(paginated, params);
+
+    final response = await get(path: '${_Constants.channelsPath}/$channelId/${convertVideoSearchTypeToString(type)}', params: params);
+    
+    if (paginated) {
+      final Map<String, dynamic> map = response.data;
+      // Grab total and return with it
+      final videoList = VideoList.fromMap(map);
+      return videoList.copyWith(paginated: true);
+    }
+    
+    final List list = response.data;
+    return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
+  }
+
+  /// Retrieves a video
+  ///
+  /// Retrieves Comments if `timestampComments` is set to true
+  ///
+  /// Retrieves Recommendations if query parameter `recommendationLanguages` is set
+  @override
+  Future<VideoMetadata> getVideoMetadata(
+    String videoId, {
+    bool timestampComments = false,
+    List<Language>? recommendationLanguages,
+  }) async {
+    final Map<String, dynamic> params = {};
+
+    _addLanguages(recommendationLanguages, params);
+
+    _addCommentsFlag(timestampComments, params);
+
+    final response = await get(path: '${_Constants.videosPath}/$videoId', params: params);
+    final video = VideoFull.fromMap(response.data);
+    final List? comments = response.data['comments'];
+    final List? recommendations = response.data['recommendations'];
+    return VideoMetadata(
+      video: video,
+      comments: comments?.map((comment) => Comment.fromMap(comment)).toList(),
+      recommendations: recommendations?.map((video) => VideoWithChannel.fromMap(video)).toList(),
+    );
+  }
+
+  // TODO: Fix parameters
+
+  /// Flexible endpoint to search for videos fufilling multiple conditions. 
+  /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
+  /// 
+  /// Searching for topics and clips is not supported, because clips do not contain topic_ids
+  @override
+  Future<VideoList> searchVideos({
+    SearchSort searchSort = SearchSort.newest,
+    List<Language>? languages,
+    List<SearchTarget>? searchTarget,
+    List<String>? conditions,
+    List<String>? topics,
+    List<String>? vch,
+    List<Organization>? organizations,
+    bool paginated = true,
+    int offset = 0,
+    int limit = 25,
+  }) async {
+    final Map<String, dynamic> data = {};
+
+    data.addAll({
+      'sort': convertSearchSortToString(searchSort),
+      'paginated': paginated,
+      'offset': offset,
+      'limit': limit,
+      'comment': [],
+    });
+
+    if (languages != null) {
+      data.addAll({
+        'lang': languages.map((l) => convertLanguageToString(l)),
+      });
+    }
+
+    if (searchTarget != null) {
+      data.addAll({
+        'target': searchTarget.map((s) => convertSearchTargetToString(s)),
+      });
+    }
+
+    if (conditions != null) {
+      data.addAll({
+        'conditions': conditions,
+      });
+    }
+
+    if (topics != null) {
+      data.addAll({
+        'topic': topics,
+      });
+    }
+
+    if (vch != null) {
+      data.addAll({
+        'vch': vch,
+      });
+    }
+
+    final response = await post(path: _Constants.videoSearch, data: data);
+    
+    // if (paginated) {
+    //   final Map<String, dynamic> map = response.data;
+    //   // Grab total and return with it
+    //   final videoList = VideoList.fromMap(map);
+    //   return videoList.copyWith(paginated: true);
+    // }
+    
+    final List list = response.data;
+    return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
+  }
+
+  @override
+  Future<List<Comment>> searchComments() async {
+    // TODO: implement searchComments
+    // TODO: Create class to hold List<VideoFull>, ChannelMin, and List<Comment>
+    throw UnimplementedError();
+  }
+
   void _addVideoSort(List<VideoSort> sort, Map<String, dynamic> params) {
     if (sort.isNotEmpty) {
       // Make new list with the values as string
@@ -316,6 +593,10 @@ class HolodexClient extends BaseHolodexClient {
     } else {
       params.addAll({'paginated': ''});
     }
+  }
+
+  void _addCommentsFlag(bool comments, Map<String, dynamic> params) {
+    params.addAll({'c': comments ? '1' : '0'});
   }
 
   void _addChannelId(String? channelId, Map<String, dynamic> params) {
@@ -403,44 +684,52 @@ class HolodexClient extends BaseHolodexClient {
       params.addAll({'sort': sortConcat});
     }
   }
+  
+  void _addChannels(List<String> channelIds, Map<String, dynamic> params) {
+    if ( channelIds.isNotEmpty ) {
+      // Join the array with commas
+      String channelsConcat = channelIds.join(',');
+      params.addAll({'channels': channelsConcat});
+    }
+  }
 
   // Utilities
   
   /// An alias of HolodexClient.call('get')
   @override
-  Future<dio.Response> get({
+  Future<Response> get({
     String path = '',
-    Map<String, String> headers = const {},
-    Map<String, dynamic> params = const {},
-    dio.ResponseType responseType = dio.ResponseType.json
+    Map<String, String>? headers,
+    Map<String, dynamic>? params,
+    ResponseType responseType = ResponseType.json,
   }) async {
     return await call('get', path: path, headers: headers, params: params, responseType: responseType);
   }
 
   /// An alias of HolodexClient.call('post')
   @override
-  Future<dio.Response> post({
+  Future<Response> post({
     String path = '',
-    Map<String, String> headers = const {},
-    Map<String, dynamic> params = const {},
-    dio.ResponseType responseType = dio.ResponseType.json
+    Map<String, String>? headers,
+    Map<String, dynamic>? data,
+    ResponseType responseType = ResponseType.json,
   }) async {
-    return await call('post', path: path, headers: headers, params: params, responseType: responseType);
+    return await call('post', path: path, headers: headers, data: data, responseType: responseType);
   }
 
   /// Method to make a http call and return `Response`
   @override
-  Future<dio.Response> call(
+  Future<Response> call(
     String method, { 
     required String path, 
-    Map<String, String> headers = const {}, 
-    Map<String, dynamic> params = const {},
-    dio.ResponseType responseType = dio.ResponseType.json
+    Map<String, String>? headers, 
+    Map<String, dynamic>? params,
+    Map<String, dynamic>? data,
+    ResponseType responseType = ResponseType.json,
   }) async {
     try {
       // Prepare request
-      final response = await dioClient.request(basePath + path, queryParameters: params, options: dio.Options(method: method, responseType: responseType, headers: headers));
-
+      final response = await dioClient.fetch(RequestOptions(method: method, path: basePath + path, queryParameters: params, data: data, responseType: responseType, headers: headers));
       // Return response
       return response;
     } catch (e) {
@@ -450,56 +739,6 @@ class HolodexClient extends BaseHolodexClient {
       throw HolodexException(e.toString());
     }
   }
-  
-  @override
-  Future<List<VideoFull>> getChannelVideos(String channelId, {VideoType? type}) {
-    // TODO: implement getVideosFromChannel
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<VideoFull> getVideoMetadata() {
-    // TODO: implement getVideoMetadata
-    // TODO: Create class to hold video metadata such as comments and recommendations, and a VideoFull
-    throw UnimplementedError();
-  }
-  @override
-  Future<List<VideoFull>> searchVideos() {
-    // TODO: implement searchVideos
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<Comment>> searchComments() {
-    // TODO: implement searchComments
-    // TODO: Create class to hold List<VideoFull>, ChannelMin, and List<Comment>
-    throw UnimplementedError();
-  }
-
-
-  @override
-  Future<List<Video>> getLiveVideosFromChannelsQuickly(List<String> channelIds) {
-    // TODO: implement listLiveVideosFromChannelsQuickly
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<VideoList> getVideosRelatedToChannel() {
-    // TODO: implement queryVideosRelatedToChannel
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<VideoFull>> getVTuberClips() {
-    // TODO: implement getVTuberClips
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<VideoFull>> getVTuberCollabs() {
-    // TODO: implement getVTuberCollabs
-    throw UnimplementedError();
-  }
 }
 
 
@@ -507,4 +746,7 @@ class _Constants {
   static const String videosPath = '/videos';
   static const String liveVideosPath = '/live';
   static const String channelsPath = '/channels';
+  static const String userLivePath = '/users/live';
+  static const String videoSearch = '/search/videoSearch';
+  static const String commentSearch = '/search/commentSearch';
 }

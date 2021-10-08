@@ -1,71 +1,51 @@
 part of dart_holodex_api.models;
 
-class VideoFull extends Equatable {
+class VideoFull extends Video {
   /// Returns a new [VideoFull] instance.
   VideoFull({
-    required this.id,
-    required this.title,
-    required this.type,
-    this.topicId,
-    this.publishedAt,
-    required this.availableAt,
-    required this.duration,
-    required this.status,
-    this.startScheduled,
-    this.startActual,
-    this.endActual,
-    this.liveViewers,
-    this.description,
-    this.channelId,
-    this.channelMin,
+    required String id,
+    required String title,
+    required VideoType type,
+    String? topicId,
+    String? publishedAt,
+    required String availableAt,
+    int? duration,
+    required VideoStatus status,
+    String? startScheduled,
+    String? startActual,
+    String? endActual,
+    int? liveViewers,
+    String? description,
+    String? channelId,
+    int? songcount,
+    String? language,
+    this.channel,
     this.clips,
     this.sources,
     this.refers,
     this.simulcasts,
     this.mentions,
-    this.songcount,
-  });
+    this.songs,
+  }) : super(
+    id: id,
+    title: title,
+    type: type,
+    topicId: topicId,
+    publishedAt: publishedAt,
+    availableAt: availableAt,
+    duration: duration,
+    status: status,
+    startScheduled: startScheduled,
+    startActual: startActual,
+    endActual: endActual,
+    liveViewers: liveViewers,
+    description: description,
+    channelId: channelId,
+    songcount: songcount,
+    language: language,
+  );
 
-  final String id;
-
-  final String title;
-
-  final VideoType type;
-
-  /// corresponds to a Topic ID, Videos of type `clip` cannot not have topic. Streams may or may not have topic.
-  final String? topicId;
-
-  final String? publishedAt;
-
-  /// Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at
-  final String availableAt;
-
-  /// Duration of the video in seconds
-  final int duration;
-
-  final VideoStatus status;
-
-  /// Included when includes contains 'live_info'
-  final String? startScheduled;
-
-  /// Included when includes contains 'live_info'
-  final String? startActual;
-
-  /// Included when includes contains 'live_info'
-  final String? endActual;
-
-  /// Included when includes contains 'live_info'
-  final int? liveViewers;
-
-  /// Included when includes contains 'description'
-  final String? description;
-
-  /// Number of tagged songs for this video
-  final int? songcount;
-
-  final String? channelId;
-
-  final ChannelMin? channelMin;
+  final ChannelMin? channel;
 
   /// Included when 'includes' contains 'clips'
   final List<VideoWithChannel>? clips;
@@ -80,8 +60,11 @@ class VideoFull extends Equatable {
   final List<VideoWithChannel>? simulcasts;
 
   /// VTubers mentioned by this video, Included when 'includes' contains 'mentions'
-  final List<ChannelMin>? mentions;
+  final List<Channel>? mentions;
 
+  final List<Song>? songs;
+
+  @override
   VideoFull copyWith({
     String? id,
     String? title,
@@ -97,13 +80,15 @@ class VideoFull extends Equatable {
     int? liveViewers,
     String? description,
     int? songcount,
+    String? language,
     String? channelId,
-    ChannelMin? channelMin,
+    ChannelMin? channel,
     List<VideoWithChannel>? clips,
     List<VideoWithChannel>? sources,
     List<VideoWithChannel>? refers,
     List<VideoWithChannel>? simulcasts,
-    List<ChannelMin>? mentions,
+    List<Channel>? mentions,
+    List<Song>? songs,
   }) {
     return VideoFull(
       id: id ?? this.id,
@@ -120,16 +105,19 @@ class VideoFull extends Equatable {
       liveViewers: liveViewers ?? this.liveViewers,
       description: description ?? this.description,
       songcount: songcount ?? this.songcount,
+      language: language ?? this.language,
       channelId: channelId ?? this.channelId,
-      channelMin: channelMin ?? this.channelMin,
+      channel: channel ?? this.channel,
       clips: clips ?? this.clips,
       sources: sources ?? this.sources,
       refers: refers ?? this.refers,
       simulcasts: simulcasts ?? this.simulcasts,
       mentions: mentions ?? this.mentions,
+      songs: songs ?? this.songs,
     );
   }
 
+  @override
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -146,13 +134,15 @@ class VideoFull extends Equatable {
       'live_viewers': liveViewers,
       'description': description,
       'songcount': songcount,
+      'lang': language,
       'channel_id': channelId,
-      'channel': channelMin?.toMap(),
-      'clips': clips?.map((x) => x.toMap()).toList(),
-      'sources': sources?.map((x) => x.toMap()).toList(),
-      'refers': refers?.map((x) => x.toMap()).toList(),
-      'simulcasts': simulcasts?.map((x) => x.toMap()).toList(),
-      'mentions': mentions?.map((x) => x.toMap()).toList(),
+      'channel': channel?.toMap(),
+      'clips': clips?.map((clip) => clip.toMap()).toList(),
+      'sources': sources?.map((source) => source.toMap()).toList(),
+      'refers': refers?.map((refer) => refer.toMap()).toList(),
+      'simulcasts': simulcasts?.map((simulcast) => simulcast.toMap()).toList(),
+      'mentions': mentions?.map((mention) => mention.toMap()).toList(),
+      'songs': songs?.map((song) => song.toMap()).toList(),
     };
   }
 
@@ -172,16 +162,19 @@ class VideoFull extends Equatable {
       liveViewers: map['live_viewers'],
       description: map['description'],
       songcount: map['songcount'],
+      language: map['lang'],
       channelId: map['channel_id'],
-      channelMin: ChannelMin.fromMap(map['channel']),
-      clips: List<VideoWithChannel>.from(map['clips']?.map((x) => VideoWithChannel.fromMap(x)) ?? []),
-      sources: List<VideoWithChannel>.from(map['sources']?.map((x) => VideoWithChannel.fromMap(x)) ?? []),
-      refers: List<VideoWithChannel>.from(map['refers']?.map((x) => VideoWithChannel.fromMap(x)) ?? []),
-      simulcasts: List<VideoWithChannel>.from(map['simulcasts']?.map((x) => VideoWithChannel.fromMap(x)) ?? []),
-      mentions: List<ChannelMin>.from(map['mentions']?.map((x) => ChannelMin.fromMap(x)) ?? []),
+      channel: ChannelMin.fromMap(map['channel']),
+      clips: List<VideoWithChannel>.from(map['clips']?.map((clip) => VideoWithChannel.fromMap(clip)) ?? []),
+      sources: List<VideoWithChannel>.from(map['sources']?.map((source) => VideoWithChannel.fromMap(source)) ?? []),
+      refers: List<VideoWithChannel>.from(map['refers']?.map((refer) => VideoWithChannel.fromMap(refer)) ?? []),
+      simulcasts: List<VideoWithChannel>.from(map['simulcasts']?.map((simulcast) => VideoWithChannel.fromMap(simulcast)) ?? []),
+      mentions: List<Channel>.from(map['mentions']?.map((mention) => Channel.fromMap(mention)) ?? []),
+      songs: List<Song>.from(map['songs']?.map((song) => Song.fromMap(song)) ?? [])
     );
   }
 
+  @override
   String toJson() => json.encode(toMap());
 
   factory VideoFull.fromJson(String source) => VideoFull.fromMap(json.decode(source));
@@ -195,24 +188,25 @@ class VideoFull extends Equatable {
       id,
       title,
       type,
-      topicId ?? '',
-      publishedAt ?? '',
+      topicId ?? 'Topic id not given',
+      publishedAt ?? 'Published at not given',
       availableAt,
-      duration,
+      duration ?? 'Duration not provided',
       status,
-      startScheduled ?? '',
-      startActual ?? '',
-      endActual ?? '',
-      liveViewers ?? -1,
-      description ?? '',
-      songcount ?? 0,
-      channelId ?? '',
-      channelMin ?? '',
-      clips ?? [],
-      sources ?? [],
-      refers ?? [],
-      simulcasts ?? [],
-      mentions ?? [],
+      startScheduled ?? 'Scheduled start not given',
+      startActual ?? 'Actual start not given',
+      endActual ?? 'Actual end not given',
+      liveViewers ?? 'Live viewers not given',
+      description ?? 'Description not given',
+      songcount ?? 'Song count not given',
+      language ?? 'Language not given',
+      channelId ?? 'Channel id not given',
+      channel ?? 'Channel not given',
+      clips ?? 'Clips not given',
+      sources ?? 'Sources not given',
+      refers ?? 'Refers not given',
+      simulcasts ?? 'Simulcasts not given',
+      mentions ?? 'Mentions not given',
     ];
   }
 }

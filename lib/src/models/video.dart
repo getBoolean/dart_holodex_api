@@ -14,7 +14,7 @@ class Video extends Equatable {
   final String availableAt;
 
   /// Duration of the video in seconds
-  final int duration;
+  final int? duration;
 
   final VideoStatus status;
 
@@ -37,6 +37,8 @@ class Video extends Equatable {
   final int? songcount;
 
   final String? channelId;
+
+  final String? language;
   
   /// Returns a new [Video] instance.
   Video({
@@ -55,6 +57,7 @@ class Video extends Equatable {
     this.description,
     this.songcount,
     this.channelId,
+    this.language,
   });
 
   Video copyWith({
@@ -73,6 +76,7 @@ class Video extends Equatable {
     String? description,
     int? songcount,
     String? channelId,
+    String? language,
   }) {
     return Video(
       id: id ?? this.id,
@@ -90,6 +94,7 @@ class Video extends Equatable {
       description: description ?? this.description,
       songcount: songcount ?? this.songcount,
       channelId: channelId ?? this.channelId,
+      language: language ?? this.language,
     );
   }
 
@@ -110,6 +115,7 @@ class Video extends Equatable {
       'description': description,
       'songcount': songcount,
       'channel_id': channelId,
+      'lang': language,
     };
   }
 
@@ -130,6 +136,7 @@ class Video extends Equatable {
       description: map['description'],
       songcount: map['songcount'],
       channelId: map['channel_id'],
+      language: map['lang'],
     );
   }
 
@@ -146,18 +153,19 @@ class Video extends Equatable {
       id,
       title,
       type,
-      topicId ?? '',
-      publishedAt ?? '',
+      topicId ?? 'Topic id not given',
+      publishedAt ?? 'Published at not given',
       availableAt,
-      duration,
+      duration ?? 'Duration not provided',
       status,
-      startScheduled ?? '',
-      startActual ?? '',
-      endActual ?? '',
-      liveViewers ?? -1,
-      description ?? '',
-      songcount ?? 0,
-      channelId ?? '',
+      startScheduled ?? 'Scheduled start not given',
+      startActual ?? 'Actual start not given',
+      endActual ?? 'Actual end not given',
+      liveViewers ?? 'Live viewers not given',
+      description ?? 'Description not given',
+      songcount ?? 'Song count not given',
+      language ?? 'Language not given',
+      channelId ?? 'Channel id not given',
     ];
   }
 }
