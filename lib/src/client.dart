@@ -73,8 +73,7 @@ class HolodexClient extends BaseHolodexClient {
     List<VideoStatus>? status,
     String? topicId,
     VideoType? type,
-  }) 
-  async {
+  }) async {
     // The limit cannot be greator than 50, otherwise it will throw an error
     assert(limit <= 50);
 
@@ -181,8 +180,7 @@ class HolodexClient extends BaseHolodexClient {
     List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
     String? topic,
     VideoType? type = VideoType.stream
-  }) 
-  async {
+  }) async {
     // Create the params list
     final Map<String, dynamic> params = {};
 
