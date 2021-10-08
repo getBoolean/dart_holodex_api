@@ -1,13 +1,8 @@
 part of dart_holodex_api.models;
 
-class Channel extends Equatable {
-  final String id;
-  final String name;
-  final String? englishName;
-  final ChannelType type;
+class Channel extends ChannelMin {
   final Organization? org;
   final String? suborg;
-  final String? photo;
   final String? banner;
   final String? twitter;
   final String? videoCount;
@@ -21,13 +16,13 @@ class Channel extends Equatable {
 
   /// Returns a new [Channel] instance.
   Channel({
-    required this.id,
-    required this.name,
-    this.englishName,
-    required this.type,
+    required String id,
+    required String name,
+    String? englishName,
+    required ChannelType type,
+    String? photo,
     this.org,
     this.suborg,
-    this.photo,
     this.banner,
     this.twitter,
     this.videoCount,
@@ -38,8 +33,14 @@ class Channel extends Equatable {
     this.publishedAt,
     this.inactive,
     this.description,
-  });
+  }) : super(
+    id: id,
+    name: name,
+    type: type,
+    photo: photo,
+  );
 
+  @override
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -84,10 +85,12 @@ class Channel extends Equatable {
     );
   }
 
+  @override
   String toJson() => json.encode(toMap());
 
   factory Channel.fromJson(String source) => Channel.fromMap(json.decode(source));
 
+  @override
   Channel copyWith({
     String? id,
     String? name,
