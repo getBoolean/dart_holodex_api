@@ -17,13 +17,39 @@ A Dart wrapper for Holodex API v2
 
 <!-- markdownlint-enable MD041 -->
 
+## Table of Contents
+
+- [Features](#features)
+- [Getting started](#getting-started)
+- [Usage](#usage)
+  * [Get a video by its ID](#get-a-video-by-its-id)
+  * [Get a list of videos](#get-a-list-of-videos)
+  * [Get a list of live videos](#get-a-list-of-live-videos)
+  * [Get a channel by its ID](#get-a-channel-by-its-id)
+  * [Get a list of channels](#get-a-list-of-channels)
+  * [Quickly Access Live / Upcoming for a set of Channels](#quickly-access-live---upcoming-for-a-set-of-channels)
+  * [Get Videos Related To Channel](#get-videos-related-to-channel)
+  * [Get Clips of a VTuber](#get-clips-of-a-vtuber)
+  * [Get Collabs that mention a VTuber](#get-collabs-that-mention-a-vtuber)
+  * [Get Videos From Channel](#get-videos-from-channel)
+  * [Get a single Video's metadata](#get-a-single-video-s-metadata)
+- [Additional information](#additional-information)
+
 ## Features
 
 Use this plugin in your Flutter app to:
 
-- Get a video's details
-- Get a list of videos and filter them
-- Support for more Holodex API calls is coming
+- Get a video by its ID
+- Get a list of videos
+- Get a list of live videos
+- Get a channel by its ID
+- Get a list of channels
+- Quickly Access Live / Upcoming for a set of Channels
+- Get Videos Related To Channel
+- Get Clips of a VTuber
+- Get Collabs that mention a VTuber
+- Get Videos From Channel
+- Get a single Video's metadata
 
 ## Getting started
 
@@ -48,7 +74,7 @@ Get an instance of HolodexClient with your API key
 var holodexClient = HolodexClient(apiKey: apiKey);
 ```
 
-### Get a video by its video ID
+### Get a video by its ID
 
 Returns [VideoFull]
 
@@ -184,7 +210,7 @@ final Channel ceresFauna = await holodexClient.getChannelFromId('UCO_aKKYxn4tvrq
 print(ceresFauna.toString());
 ```
 
-### Get channels
+### Get a list of channels
 
 Arguments:
 
