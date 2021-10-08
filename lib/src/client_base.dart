@@ -146,6 +146,14 @@ abstract class BaseHolodexClient {
   /// GetVideosFromChannel
   /// 
   /// Alias of getVideosRelatedToChannel()
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
   Future<VideoList> getChannelVideos(
     String channelId, {
     List<Includes>? includes,
@@ -158,6 +166,14 @@ abstract class BaseHolodexClient {
   /// Get Clips of a VTuber
   /// 
   /// Alias of getVideosRelatedToChannel()
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
   Future<VideoList> getVTuberClips(
     String channelId, {
     List<Includes>? includes,
@@ -170,6 +186,14 @@ abstract class BaseHolodexClient {
   /// Get Collabs that mention a VTuber
   /// 
   /// Alias of getVideosRelatedToChannel()
+  /// 
+  /// Arguments
+  /// - `channelId` ID of the Youtube Channel that is being queried
+  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
+  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `limit` Result limit. Max of 50.
+  /// - `offset` Offset results
+  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
   Future<VideoList> getVTuberCollabs(
     String channelId, {
     List<Includes>? includes,
@@ -202,9 +226,9 @@ abstract class BaseHolodexClient {
 
   /// Retrieves a video
   ///
-  /// Also retrieves Comments if query parameter c is set.
+  /// Retrieves Comments if `timestampComments` is set to true
   ///
-  /// Also retrieves Recommendations if query parameter lang is set
+  /// Retrieves Recommendations if query parameter `recommendationLanguages` is set
   Future<VideoMetadata> getVideoMetadata(
     String videoId, {
     bool timestampComments,

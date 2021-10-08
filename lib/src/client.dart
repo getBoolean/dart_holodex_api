@@ -325,7 +325,7 @@ class HolodexClient extends BaseHolodexClient {
   /// It is more friendly in general. The cost to execute a lookup is significantly cheaper.
   /// It's unfortunately less customizable as a result.
   /// 
-  /// We recommends using this if you have a fixed set of channel IDs to look up status for.
+  /// We recommend using this if you have a fixed set of channel IDs to look up status for.
   /// 
   /// Arguments:
   /// - `channelIds` List of channel IDs to get the live videos from.
@@ -419,6 +419,8 @@ class HolodexClient extends BaseHolodexClient {
     return await getVideosRelatedToChannel(channelId, type: VideoSearchType.collabs, includes: includes, lang: lang, limit: limit, offset: offset, paginated: paginated);
   }
 
+  /// Get Videos Related To Channel
+  /// 
   /// A simplified method for access channel specific data. 
   /// If you want more customization, the same result can be obtained by calling the queryVideos() method.
   /// 
