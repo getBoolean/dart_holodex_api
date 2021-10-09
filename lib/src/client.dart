@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 
 import 'client_base.dart';
@@ -23,13 +25,18 @@ class HolodexClient extends BaseHolodexClient {
     }
 
     // API requires use of a key, so add it to the headers
-    dioClient.interceptors.add(InterceptorsWrapper(onRequest: (RequestOptions options, RequestInterceptorHandler handler) async {
-      final customHeaders = {
-        'X-APIKEY': apiKey,
-      };
-      options.headers.addAll(customHeaders);
-      return handler.next(options);
-    }));
+    dioClient.interceptors.add(InterceptorsWrapper(
+      onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
+        final customHeaders = {
+          HttpHeaders.contentTypeHeader: "application/json",
+          'X-APIKEY': apiKey,
+        };
+        options.headers.addAll(customHeaders);
+        return handler.next(options);
+      },
+      // onResponse: (Response<dynamic> response, ResponseInterceptorHandler handler) {
+      // }
+    ));
   }
 
   late final Dio dioClient;
