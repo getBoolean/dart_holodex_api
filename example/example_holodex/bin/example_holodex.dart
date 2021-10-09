@@ -48,7 +48,7 @@ void main(List<String> arguments) async {
       Includes.songs,
       Includes.sources,
     ],
-    lang: <Language>[Language.all],
+    languages: <Language>[Language.all],
     limit: 50,
     maxUpcomingHours: 1000,
     // mentionedChannelId: 'UCDqI2jOz0weumE8s7paEk6g', // Roboco
@@ -56,11 +56,11 @@ void main(List<String> arguments) async {
     order: Order.descending,
     // organization: Organization.Hololive,
     paginated: true,
-    sort: <VideoSort>[VideoSort.availableAt],
-    status: <VideoStatus>[VideoStatus.past],
+    videoSort: <VideoSort>[VideoSort.availableAt],
+    videoStatus: <VideoStatus>[VideoStatus.past],
     // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
     // topicId: 'singing',
-    type: VideoType.all
+    videoType: VideoType.all
   );
   print('Videos: ${videoList.videos.length}\nTotal Videos: ${videoList.total}\n');
 
@@ -80,7 +80,7 @@ void main(List<String> arguments) async {
     offset: 0,
     order: Order.ascending,
     organization: Organization.AtelierLive,
-    sort: [ChannelSort.organization]
+    channelSort: [ChannelSort.organization]
   );
   print('Atelier Live Channels: ${channels.length}\n');
   
@@ -134,7 +134,7 @@ void main(List<String> arguments) async {
     searchTargets: [SearchTarget.clip, SearchTarget.stream],
     conditions: ['karaoke'],
     topics: ['singing'],
-    vch: <String>[],
+    videoChannels: <String>[],
     organizations: [Organization.Hololive],
     paginated: true,
     offset: 0,
@@ -148,7 +148,7 @@ void main(List<String> arguments) async {
     searchTargets: [SearchTarget.clip, SearchTarget.stream],
     comment: 'shion',
     topics: ['singing'],
-    vch: <String>[],
+    videoChannels: <String>[],
     organizations: [Organization.Hololive],
     paginated: true,
     offset: 0,

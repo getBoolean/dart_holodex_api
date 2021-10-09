@@ -63,7 +63,7 @@ class HolodexClient extends BaseHolodexClient {
   /// 
   /// - `channelId` Filter by video uploader channel ID
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  /// - `lang` Filter by the `Language`
+  /// - `languages` Filter by the `Language`
   /// - `limit` Limit the number of results returned. Maximum value of 50
   /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
   /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
@@ -71,15 +71,15 @@ class HolodexClient extends BaseHolodexClient {
   /// - `order` Order results by ascending or descending
   /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  /// - `sort` Sort the returned data by this field
-  /// - `status` Filter by the video status
+  /// - `videoSort` Sort the returned data by this field
+  /// - `videoStatus` Filter by the video status
   /// - `topic` Filter by video topic ID
-  /// - `type` Filter by type of video, either clips or streams
+  /// - `videoType` Filter by type of video, either clips or streams
   @override
   Future<VideoFullList> getVideos({
     String? channelId,
     List<Includes>? includes,
-    List<Language> lang = const [Language.all],
+    List<Language> languages = const [Language.all],
     int limit = 25,
     int? maxUpcomingHours,
     String? mentionedChannelId,
@@ -87,10 +87,10 @@ class HolodexClient extends BaseHolodexClient {
     Order order = Order.descending,
     List<Organization>? organization,
     bool paginated = false,
-    List<VideoSort> sort = const <VideoSort>[VideoSort.availableAt],
-    List<VideoStatus>? status,
-    String? topicId,
-    VideoType? type,
+    List<VideoSort> videoSort = const <VideoSort>[VideoSort.availableAt],
+    List<VideoStatus>? videoStatus,
+    String? topic,
+    VideoType? videoType,
   }) async {
     // The limit cannot be greator than 50, otherwise it will throw an error
     assert(limit <= 50);
@@ -105,7 +105,7 @@ class HolodexClient extends BaseHolodexClient {
       'order': EnumUtil.convertOrderToString(order),
     });
 
-    _addVideoSort(sort, params);
+    _addVideoSort(videoSort, params);
 
     _addPaginated(paginated, params);
 
@@ -116,7 +116,7 @@ class HolodexClient extends BaseHolodexClient {
 
     // Add the languages to filter by
     // Add the first item so that there is not a comma in front
-    _addLanguages(lang, params);
+    _addLanguages(languages, params);
 
     // Add the max upcoming hours param
     _addMaxUpcomingHours(maxUpcomingHours, params);
@@ -128,13 +128,13 @@ class HolodexClient extends BaseHolodexClient {
     _addOrganization(organization, params);
 
     // Add the topic param
-    _addTopic(topicId, params);
+    _addTopic(topic, params);
 
     // Add the status param
-    _addStatusList(status, params);
+    _addStatusList(videoStatus, params);
 
     // Add the type param
-    _addType(type, params);
+    _addType(videoType, params);
 
     final response = await get(path: _Constants.videosPath, params: params);
 
@@ -171,7 +171,7 @@ class HolodexClient extends BaseHolodexClient {
   /// 
   /// - `channelId` Filter by video uploader channel ID
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  /// - `lang` Filter by the `Language`
+  /// - `languages` Filter by the `Language`
   /// - `limit` Limit the number of results returned.
   /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
   /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
@@ -179,15 +179,15 @@ class HolodexClient extends BaseHolodexClient {
   /// - `order` Order by ascending or descending
   /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  /// - `sort` Sort the returned data by this field
-  /// - `status` Filter by the video status
+  /// - `videoSort` Sort the returned data by this field
+  /// - `videoStatus` Filter by the video status
   /// - `topic` Filter by video topic ID
-  /// - `type` Filter by type of video, either clips or streams
+  /// - `videoType` Filter by type of video, either clips or streams
   @override
   Future<VideoFullList> getLiveVideos({
     String? channelId,
     List<Includes> includes = const [Includes.liveInfo],
-    List<Language> lang = const [Language.all],
+    List<Language> languages = const [Language.all],
     int limit = 9999,
     int? maxUpcomingHours = 48,
     String? mentionedChannelId,
@@ -195,10 +195,10 @@ class HolodexClient extends BaseHolodexClient {
     Order order = Order.ascending,
     List<Organization>? organization,
     bool paginated = true,
-    List<VideoSort> sort = const <VideoSort>[VideoSort.availableAt],
-    List<VideoStatus>? status = const [VideoStatus.live, VideoStatus.upcoming],
+    List<VideoSort> videoSort = const <VideoSort>[VideoSort.availableAt],
+    List<VideoStatus>? videoStatus = const [VideoStatus.live, VideoStatus.upcoming],
     String? topic,
-    VideoType? type = VideoType.stream
+    VideoType? videoType = VideoType.stream
   }) async {
     // Create the params list
     final Map<String, dynamic> params = {};
@@ -215,7 +215,7 @@ class HolodexClient extends BaseHolodexClient {
       'order': EnumUtil.convertOrderToString(order),
     });
 
-    _addVideoSort(sort, params);
+    _addVideoSort(videoSort, params);
 
     _addPaginated(paginated, params);
 
@@ -226,7 +226,7 @@ class HolodexClient extends BaseHolodexClient {
 
     // Add the languages to filter by
     // Add the first item so that there is not a comma in front
-    _addLanguages(lang, params);
+    _addLanguages(languages, params);
 
     // Add the max upcoming hours param
     _addMaxUpcomingHours(maxUpcomingHours, params);
@@ -241,10 +241,10 @@ class HolodexClient extends BaseHolodexClient {
     _addTopic(topic, params);
 
     // Add the status param
-    _addStatusList(status, params);
+    _addStatusList(videoStatus, params);
 
     // Add the type param
-    _addType(type, params);
+    _addType(videoType, params);
 
     final response = await get(path: _Constants.liveVideosPath, params: params);
 
@@ -275,20 +275,20 @@ class HolodexClient extends BaseHolodexClient {
   /// Get channels
   /// 
   /// Arguments:
-  /// - `lang` List of languages. Language is a property of Channel, so only Channels satisfying the language will be returned. Leave empty to search for Vtubers and/or all clippers.
+  /// - `languages` List of languages. Language is a property of Channel, so only Channels satisfying the language will be returned. Leave empty to search for Vtubers and/or all clippers.
   /// - `limit` Results limit
   /// - `offset` Offset results
   /// - `order` Order.ascending or Order.descending order, default ascending.
   /// - `organization` If set, filter for Vtubers belonging to a specific org
-  /// - `sort` Column to sort on, leave default to use [ChannelSort.organization] as sort. Theoretically any value in ChannelSort should work
+  /// - `channelSort` Column to sort on, leave default to use [ChannelSort.organization] as sort. Theoretically any value in ChannelSort should work
   @override
   Future<List<Channel>> getChannels({
-    List<Language>? lang,
+    List<Language>? languages,
     int limit = 25,
     int offset = 0,
     Order order = Order.ascending,
     Organization? organization,
-    List<ChannelSort> sort = const [ChannelSort.organization],
+    List<ChannelSort> channelSort = const [ChannelSort.organization],
   }) async {
     // According to API docs, the maximum accepted value is 50 and anything higher the request will be denied
     assert(limit <= 50);
@@ -303,10 +303,10 @@ class HolodexClient extends BaseHolodexClient {
       'order': EnumUtil.convertOrderToString(order),
     });
 
-    _addChannelSort(sort, params);
+    _addChannelSort(channelSort, params);
 
     // Add the languages to filter by
-    _addLanguages(lang, params);
+    _addLanguages(languages, params);
 
     // Add the organization param
     _addSingleOrganization(organization, params);
@@ -352,7 +352,7 @@ class HolodexClient extends BaseHolodexClient {
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `languages` List of Language enum to filter channels/clips. Official streams do not follow this parameter
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
@@ -360,12 +360,12 @@ class HolodexClient extends BaseHolodexClient {
   Future<VideoFullList> getChannelVideos(
     String channelId, {
     List<Includes>? includes,
-    List<Language> lang = const [Language.all],
+    List<Language> languages = const [Language.all],
     int limit = 25,
     int offset = 0,
     bool paginated = true,
   }) async {
-    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.videos, includes: includes, lang: lang, limit: limit, offset: offset, paginated: paginated);
+    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.videos, includes: includes, languages: languages, limit: limit, offset: offset, paginated: paginated);
   }
 
   /// Get Clips of a VTuber
@@ -377,7 +377,7 @@ class HolodexClient extends BaseHolodexClient {
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `languages` List of Language enum to filter channels/clips. Official streams do not follow this parameter
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
@@ -385,12 +385,12 @@ class HolodexClient extends BaseHolodexClient {
   Future<VideoFullList> getVTuberClips(
     String channelId, {
     List<Includes>? includes,
-    List<Language> lang = const [Language.all],
+    List<Language> languages = const [Language.all],
     int limit = 25,
     int offset = 0,
     bool paginated = true,
   }) async {
-    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.clips, includes: includes, lang: lang, limit: limit, offset: offset, paginated: paginated);
+    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.clips, includes: includes, languages: languages, limit: limit, offset: offset, paginated: paginated);
   }
 
   /// Get Collabs that mention a VTuber
@@ -402,7 +402,7 @@ class HolodexClient extends BaseHolodexClient {
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `languages` List of Language enum to filter channels/clips. Official streams do not follow this parameter
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
@@ -410,12 +410,12 @@ class HolodexClient extends BaseHolodexClient {
   Future<VideoFullList> getVTuberCollabs(
     String channelId, {
     List<Includes>? includes,
-    List<Language> lang = const [Language.all],
+    List<Language> languages = const [Language.all],
     int limit = 25,
     int offset = 0,
     bool paginated = true,
   }) async {
-    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.collabs, includes: includes, lang: lang, limit: limit, offset: offset, paginated: paginated);
+    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.collabs, includes: includes, languages: languages, limit: limit, offset: offset, paginated: paginated);
   }
 
   /// Get Videos Related To Channel
@@ -427,7 +427,7 @@ class HolodexClient extends BaseHolodexClient {
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `type` The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId`
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  /// - `languages` List of Language enum to filter channels/clips. Official streams do not follow this parameter
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
@@ -436,7 +436,7 @@ class HolodexClient extends BaseHolodexClient {
     String channelId, {
     required VideoSearchType type,
     List<Includes>? includes,
-    List<Language> lang = const [Language.all],
+    List<Language> languages = const [Language.all],
     int limit = 25,
     int offset = 0,
     bool paginated = true,
@@ -453,7 +453,7 @@ class HolodexClient extends BaseHolodexClient {
     });
 
     _addIncludes(includes, params);
-    _addLanguages(lang, params);
+    _addLanguages(languages, params);
     _addPaginated(paginated, params);
 
     final response = await get(path: '${_Constants.channelsPath}/$channelId/${EnumUtil.convertVideoSearchTypeToString(type)}', params: params);
@@ -473,6 +473,12 @@ class HolodexClient extends BaseHolodexClient {
   /// Retrieves Comments if `timestampComments` is set to true
   ///
   /// Retrieves Recommendations if query parameter `recommendationLanguages` is set
+  /// 
+  /// Arguments
+  /// 
+  /// - `videoId` ID of the video
+  /// - `timestampComments` If set to `true`, comments with timestamps will be returned
+  /// - `recommendationLanguages` If set, videos matching the languages will be returned. Use [Language.all] to get all languages regardless of language
   @override
   Future<VideoMetadata> getVideoMetadata(
     String videoId, {
@@ -507,9 +513,9 @@ class HolodexClient extends BaseHolodexClient {
   /// - `searchSort` Sort by newest or oldest
   /// - `languages` If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)
   /// - `searchTargets` Target types of videos
-  /// - `conditions` Match all of the items. > For each item: Text to look for text in video title or description
+  /// - `conditions` Match all of the items. -> For each item: look for the text in video title or description
   /// - `topics` Return videos that match one of the provided topics
-  /// - `vch` Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.
+  /// - `videoChannels` Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.
   /// - `organizations` Videos of channels in any of the specified organizations, or clips that involve a channel in the specified organization.
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
   /// - `offset` Offset results
@@ -521,7 +527,7 @@ class HolodexClient extends BaseHolodexClient {
     List<SearchTarget>? searchTargets,
     List<String>? conditions,
     List<String>? topics,
-    List<String>? vch,
+    List<String>? videoChannels,
     List<Organization>? organizations,
     bool paginated = true,
     int offset = 0,
@@ -561,9 +567,9 @@ class HolodexClient extends BaseHolodexClient {
       });
     }
 
-    if (vch != null && vch.isNotEmpty) {
+    if (videoChannels != null && videoChannels.isNotEmpty) {
       data.addAll({
-        'vch': vch,
+        'vch': videoChannels,
       });
     }
 
@@ -603,7 +609,7 @@ class HolodexClient extends BaseHolodexClient {
     List<SearchTarget>? searchTargets,
     required String comment,
     List<String>? topics,
-    List<String>? vch,
+    List<String>? videoChannels,
     List<Organization>? organizations,
     bool paginated = true,
     int offset = 0,
@@ -643,9 +649,9 @@ class HolodexClient extends BaseHolodexClient {
       });
     }
 
-    if (vch != null && vch.isNotEmpty) {
+    if (videoChannels != null && videoChannels.isNotEmpty) {
       data.addAll({
-        'vch': vch,
+        'vch': videoChannels,
       });
     }
 

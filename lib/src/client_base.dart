@@ -51,7 +51,7 @@ abstract class BaseHolodexClient {
   Future<VideoFullList> getVideos({
     String? channelId,
     List<Includes>? includes,
-    List<Language> lang,
+    List<Language> languages,
     int limit,
     int? maxUpcomingHours,
     String? mentionedChannelId,
@@ -59,10 +59,10 @@ abstract class BaseHolodexClient {
     Order order,
     List<Organization>? organization,
     bool paginated,
-    List<VideoSort> sort,
-    List<VideoStatus>? status,
-    String? topicId,
-    VideoType? type,
+    List<VideoSort> videoSort,
+    List<VideoStatus>? videoStatus,
+    String? topic,
+    VideoType? videoType,
   });
   
   /// Get a list of live videos
@@ -100,7 +100,7 @@ abstract class BaseHolodexClient {
   Future<VideoFullList> getLiveVideos({
     String? channelId,
     List<Includes> includes,
-    List<Language> lang,
+    List<Language> languages,
     int limit,
     int? maxUpcomingHours,
     String? mentionedChannelId,
@@ -108,10 +108,10 @@ abstract class BaseHolodexClient {
     Order order,
     List<Organization>? organization,
     bool paginated,
-    List<VideoSort> sort,
-    List<VideoStatus>? status,
+    List<VideoSort> videoSort,
+    List<VideoStatus>? videoStatus,
     String? topic,
-    VideoType? type,
+    VideoType? videoType,
   });
   
   /// Get channels
@@ -124,12 +124,12 @@ abstract class BaseHolodexClient {
   /// - `organization` If set, filter for Vtuber belonging to a specific org
   /// - `sort` Column to sort on, leave default to use 'organization' as sort. Any first level property of channel should work here.
   Future<List<Channel>> getChannels({
-    List<Language>? lang,
+    List<Language>? languages,
     int limit = 25,
     int offset = 0,
     Order order = Order.ascending,
     Organization? organization,
-    List<ChannelSort> sort,
+    List<ChannelSort> channelSort,
   });
 
   /// Quickly Access Live / Upcoming for a set of Channels
@@ -157,7 +157,7 @@ abstract class BaseHolodexClient {
   Future<VideoFullList> getChannelVideos(
     String channelId, {
     List<Includes>? includes,
-    List<Language> lang,
+    List<Language> languages,
     int limit,
     int offset,
     bool paginated,
@@ -177,7 +177,7 @@ abstract class BaseHolodexClient {
   Future<VideoFullList> getVTuberClips(
     String channelId, {
     List<Includes>? includes,
-    List<Language> lang,
+    List<Language> languages,
     int limit,
     int offset,
     bool paginated,
@@ -197,7 +197,7 @@ abstract class BaseHolodexClient {
   Future<VideoFullList> getVTuberCollabs(
     String channelId, {
     List<Includes>? includes,
-    List<Language> lang,
+    List<Language> languages,
     int limit,
     int offset,
     bool paginated,
@@ -218,7 +218,7 @@ abstract class BaseHolodexClient {
     String channelId, {
     required VideoSearchType type,
     List<Includes>? includes,
-    List<Language> lang,
+    List<Language> languages,
     int limit,
     int offset,
     bool paginated,
@@ -257,7 +257,7 @@ abstract class BaseHolodexClient {
     List<SearchTarget>? searchTargets,
     List<String>? conditions,
     List<String>? topics,
-    List<String>? vch,
+    List<String>? videoChannels,
     List<Organization>? organizations,
     bool paginated = true,
     int offset = 0,
@@ -286,7 +286,7 @@ abstract class BaseHolodexClient {
     List<SearchTarget>? searchTargets,
     required String comment,
     List<String>? topics,
-    List<String>? vch,
+    List<String>? videoChannels,
     List<Organization>? organizations,
     bool paginated = true,
     int offset = 0,
