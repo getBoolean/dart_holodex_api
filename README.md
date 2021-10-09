@@ -71,7 +71,7 @@ Use this plugin in your Flutter app to:
 
 ## Usage
 
-[Full example](https://github.com/getBoolean/dart_holodex_api/blob/main/example/example_holodex/bin/example_holodex.dart).
+[Full example](https://github.com/getBoolean/dart_holodex_api/blob/main/example/lib/example.dart).
 
 Get an instance of HolodexClient with your API key
 
