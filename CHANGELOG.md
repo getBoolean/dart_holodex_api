@@ -1,5 +1,12 @@
 <!-- markdownlint-disable MD041 -->
 
+## 0.2.1
+
+- Update pubspec description
+- Fix example folder layout
+- Fix compatibility with dart runtime js
+- Fix formatting with `dart format .`
+
 ## 0.2.0
 
 - Variables have been renamed to be consistent across all methods
