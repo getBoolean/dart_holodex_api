@@ -59,7 +59,7 @@ Use this plugin in your Flutter app to:
 
 ## Getting started
 
-1. Get an API key at [holodex.net](holodex.net), [instructions here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)
+1. Get an API key at [holodex.net](https://holodex.net/), [instructions here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)
 2. Add this to your `pubspec.yaml` file
 
     ```yaml
@@ -177,13 +177,15 @@ This is somewhat similar to calling listVideos().
 
 However, this endpoint imposes these default values on the query parameters: You can choose to override them by providing your own values.
 
-- status: [VideoStatus.live, VideoStatus.upcoming],
-- type: VideoType.stream,
-- sort: [VideoSort.availableAt],
-- order: Order.ascending,
-- max_upcoming_hours: 48,
-- limit: 9999,
-- include: [Includes.liveInfo] + query's include
+```dart
+status: [VideoStatus.live, VideoStatus.upcoming],
+type: VideoType.stream,
+sort: [VideoSort.availableAt],
+order: Order.ascending,
+max_upcoming_hours: 48,
+limit: 9999,
+include: [Includes.liveInfo] + query's include
+```
 
 Arguments:
 

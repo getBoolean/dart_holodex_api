@@ -11,7 +11,7 @@ String convertVideoTypeToString(VideoType type) => EnumToString.convertToString(
 
 /// Converts a string video type to the corresponding VideoType enum.
 /// 
-/// Returns [null] if it is does not exist, otherwise returns [VideoType]
+/// Returns `null` if it is does not exist, otherwise returns [VideoType]
 VideoType? convertStringToVideoType(String type) => EnumToString.fromString(VideoType.values, type);
 
 enum VideoStatus { new_, upcoming, live, past, missing }
@@ -32,7 +32,7 @@ String convertVideoStatusToString(VideoStatus status) {
 
 /// Converts a string video status to the corresponding VideoStatus enum.
 /// 
-/// Returns [null] if it is does not exist, otherwise returns [VideoStatus]
+/// Returns `null` if it is does not exist, otherwise returns [VideoStatus]
 VideoStatus? convertStringToVideoStatus(String status) {
   final stringMapToStatus = {
     'new': VideoStatus.new_,
@@ -53,7 +53,7 @@ String convertChannelTypeToString(ChannelType type) => EnumToString.convertToStr
 
 /// Converts a string channel type to the corresponding ChannelType enum.
 /// 
-/// Returns [null] if it is does not exist, otherwise returns [ChannelType]
+/// Returns `null` if it is does not exist, otherwise returns [ChannelType]
 ChannelType? convertStringToChannelType(String type) => EnumToString.fromString(ChannelType.values, type);
 
 // Some of the below enums are based off of https://github.com/EBro912/Holodex.NET
@@ -81,7 +81,7 @@ String convertLanguageToString(Language lang) {
 
 /// Converts a string language code to the corresponding Language enum.
 /// 
-/// Returns [null] if it is not supported or the language code is incorrect. Otherwise returns [Language]
+/// Returns `null` if it is not supported or the language code is incorrect. Otherwise returns [Language]
 Language? convertStringToLanguage(String lang) {
   final stringMapToLanguage = {
     'all': Language.all,
@@ -252,7 +252,7 @@ String? convertOrganizationToString(Organization? org) {
 
 /// Converts a string organization name to the corresponding Orgnization enum.
 /// 
-/// Returns [null] if it is does not exist or was incorrectly typed, otherwise returns [Organization]
+/// Returns `null` if it is does not exist or was incorrectly typed, otherwise returns [Organization]
 Organization? convertStringToOrganization(String org) {
   final stringMapToOrganization = {
     '774inc': Organization.inc774,

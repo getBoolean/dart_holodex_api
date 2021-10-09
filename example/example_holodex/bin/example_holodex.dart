@@ -122,7 +122,7 @@ void main(List<String> arguments) async {
   );
   final VideoFull shionSingingStream = videoMetadata.video;
   final List<Comment>? timestampComments = videoMetadata.comments;
-  final List<VideoWithChannel>? recommendations = videoMetadata.recommendations;
+  final List<Video>? recommendations = videoMetadata.recommendations;
 
   print('Songs: ${shionSingingStream.songcount}');
   print('Video Comments With Timestamps: ${timestampComments?.length}');

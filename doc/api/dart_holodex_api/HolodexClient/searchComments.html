@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the searchComments method from the HolodexClient class, for the Dart programming language.">
+  <title>searchComments method - HolodexClient class - dart_holodex_api library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">dart_holodex_api</a></li>
+    <li><a href="../../dart_holodex_api/dart_holodex_api-library.html">dart_holodex_api</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient-class.html">HolodexClient</a></li>
+    <li class="self-crumb">searchComments method</li>
+  </ol>
+  <div class="self-name">searchComments</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">searchComments</span> method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<div>
+  <ol class="annotation-list">
+    <li>@<a href="https://api.flutter.dev/flutter/dart-core/override-constant.html">override</a></li>
+  </ol>
+</div>
+
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/VideoWithCommentsList-class.html">VideoWithCommentsList</a></span>&gt;</span></span>
+<span class="name ">searchComments</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="searchComments-param-searchSort">{<span class="type-annotation"><a href="../../dart_holodex_api/SearchSort.html">SearchSort</a></span> <span class="parameter-name">searchSort</span> = <span class="default-value">SearchSort.newest</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-languages"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language.html">Language</a></span>&gt;</span>?</span> <span class="parameter-name">languages</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-searchTargets"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/SearchTarget.html">SearchTarget</a></span>&gt;</span>?</span> <span class="parameter-name">searchTargets</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-comment"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">comment</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-topics"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">topics</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-vch"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">vch</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-organizations"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Organization.html">Organization</a></span>&gt;</span>?</span> <span class="parameter-name">organizations</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-paginated"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span> = <span class="default-value">true</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span> = <span class="default-value">0</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">25</span>}</span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Flexible endpoint to search for comments in videos fufilling multiple conditions. 
+Descriptions with "any" implies an OR condition, and "all" implies a AND condition.</p>
+<p>Searching for topics and clips is not supported, because clips do not contain topic_ids</p>
+<p>Arguments</p>
+<ul>
+<li><code>searchSort</code> Sort by newest or oldest</li>
+<li><code>languages</code> If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)</li>
+<li><code>searchTargets</code> Target types of videos</li>
+<li><code>comment</code> Find videos with comments containing specified string (case insensitive)</li>
+<li><code>topics</code> Return videos that match one of the provided topics</li>
+<li><code>vch</code> Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.</li>
+<li><code>organizations</code> Videos of channels in any of the specified organizations, or clips that involve a channel in the specified organization.</li>
+<li><code>paginated</code> If paginated is set to true, returns <code>VideoWithCommentsList</code> with total, otherwise returns <code>VideoWithCommentsList</code> without the total.</li>
+<li><code>offset</code> Offset results</li>
+<li><code>limit</code> Result limit</li>
+</ul>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">@override
+Future&lt;VideoWithCommentsList&gt; searchComments({
+  SearchSort searchSort = SearchSort.newest,
+  List&lt;Language&gt;? languages,
+  List&lt;SearchTarget&gt;? searchTargets,
+  required String comment,
+  List&lt;String&gt;? topics,
+  List&lt;String&gt;? vch,
+  List&lt;Organization&gt;? organizations,
+  bool paginated = true,
+  int offset = 0,
+  int limit = 25,
+}) async {
+  final Map&lt;String, dynamic&gt; data = {};
+
+  data.addAll({
+    &#39;sort&#39;: convertSearchSortToString(searchSort),
+    &#39;comment&#39;: comment,
+    &#39;offset&#39;: offset,
+    &#39;limit&#39;: limit,
+    &#47;&#47; &#39;comment&#39;: [],
+  });
+
+  if (paginated) {
+    data.addAll({
+      &#39;paginated&#39;: paginated,
+    });
+  }
+
+  if (languages != null &amp;&amp; languages.isNotEmpty) {
+    data.addAll({
+      &#39;lang&#39;: languages.map((l) =&gt; convertLanguageToString(l)).toList(),
+    });
+  }
+
+  if (searchTargets != null &amp;&amp; searchTargets.isNotEmpty) {
+    data.addAll({
+      &#39;target&#39;: searchTargets.map((s) =&gt; convertSearchTargetToString(s)).toList(),
+    });
+  }
+
+  if (topics != null &amp;&amp; topics.isNotEmpty) {
+    data.addAll({
+      &#39;topic&#39;: topics,
+    });
+  }
+
+  if (vch != null &amp;&amp; vch.isNotEmpty) {
+    data.addAll({
+      &#39;vch&#39;: vch,
+    });
+  }
+
+  final response = await post(path: _Constants.commentSearch, data: data);
+
+  if (paginated) {
+    &#47;&#47; Grab total and return with it
+    final videoList = VideoWithCommentsList.fromJson(response.body);
+    return videoList.copyWith(paginated: true);
+  }
+
+  final List list = jsonDecode(response.body);
+  return VideoWithCommentsList(videos: list.map((video) =&gt; VideoWithComments.fromMap(video)).toList());
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">dart_holodex_api</a></li>
+  <li><a href="../../dart_holodex_api/dart_holodex_api-library.html">dart_holodex_api</a></li>
+  <li><a href="../../dart_holodex_api/HolodexClient-class.html">HolodexClient</a></li>
+  <li class="self-crumb">searchComments method</li>
+</ol>
+
+
+    <h5>HolodexClient class</h5>
+    <ol>
+
+    <li class="section-title"><a href="../../dart_holodex_api/HolodexClient-class.html#constructors">Constructors</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/HolodexClient.html">HolodexClient</a></li>
+
+
+    <li class="section-title">
+      <a href="../../dart_holodex_api/HolodexClient-class.html#instance-properties">Properties</a>
+    </li>
+    <li><a href="../../dart_holodex_api/HolodexClient/apiKey.html">apiKey</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/basePath.html">basePath</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+
+    <li class="section-title"><a href="../../dart_holodex_api/HolodexClient-class.html#instance-methods">Methods</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/close.html">close</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/get.html">get</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/getChannelFromId.html">getChannelFromId</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/getChannels.html">getChannels</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/getChannelVideos.html">getChannelVideos</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/getLiveVideos.html">getLiveVideos</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/getLiveVideosFromChannelsQuickly.html">getLiveVideosFromChannelsQuickly</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/getVideoFromId.html">getVideoFromId</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/getVideoMetadata.html">getVideoMetadata</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/getVideos.html">getVideos</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/getVideosRelatedToChannel.html">getVideosRelatedToChannel</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/getVTuberClips.html">getVTuberClips</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/getVTuberCollabs.html">getVTuberCollabs</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/post.html">post</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/searchComments.html">searchComments</a></li>
+    <li><a href="../../dart_holodex_api/HolodexClient/searchVideos.html">searchVideos</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+
+    <li class="section-title inherited"><a href="../../dart_holodex_api/HolodexClient-class.html#operators">Operators</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    dart_holodex_api
+      0.1.0
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+

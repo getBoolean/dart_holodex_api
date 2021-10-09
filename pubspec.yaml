@@ -1,6 +1,6 @@
 name: dart_holodex_api
 description: A Dart wrapper for Holodex API v2
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/getBoolean/dart_holodex_api
 environment:
   sdk: ">=2.14.2 <3.0.0"
