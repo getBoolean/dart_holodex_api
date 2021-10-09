@@ -38,6 +38,8 @@ class Video extends Equatable {
 
   final String? channelId;
 
+  final ChannelMin? channel;
+
   final String? language;
   
   /// Returns a new [Video] instance.
@@ -57,6 +59,7 @@ class Video extends Equatable {
     this.description,
     this.songcount,
     this.channelId,
+    this.channel,
     this.language,
   });
 
@@ -76,6 +79,7 @@ class Video extends Equatable {
     String? description,
     int? songcount,
     String? channelId,
+    ChannelMin? channel,
     String? language,
   }) {
     return Video(
@@ -94,6 +98,7 @@ class Video extends Equatable {
       description: description ?? this.description,
       songcount: songcount ?? this.songcount,
       channelId: channelId ?? this.channelId,
+      channel: channel ?? this.channel,
       language: language ?? this.language,
     );
   }
@@ -115,6 +120,7 @@ class Video extends Equatable {
       'description': description,
       'songcount': songcount,
       'channel_id': channelId,
+      'channel': channel,
       'lang': language,
     };
   }
@@ -136,6 +142,7 @@ class Video extends Equatable {
       description: map['description'],
       songcount: map['songcount'],
       channelId: map['channel_id'],
+      channel: ChannelMin.fromMap(map['channel']),
       language: map['lang'],
     );
   }

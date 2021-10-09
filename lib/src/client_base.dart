@@ -30,7 +30,7 @@ abstract class BaseHolodexClient {
 
   /// Get a list of videos
   /// 
-  /// Returns `VideoList`
+  /// Returns `VideoFullList`
   /// 
   /// Arguments:
   /// 
@@ -43,12 +43,12 @@ abstract class BaseHolodexClient {
   /// - `offset` Receive results starting at this number in the array from the Holodex API
   /// - `order` Order results by ascending or descending
   /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
-  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
   /// - `sort` Sort the returned data by this field
   /// - `status` Filter by the video status
   /// - `topicId` Filter by video topic ID
   /// - `type` Filter by type of video, either clips or streams
-  Future<VideoList> getVideos({
+  Future<VideoFullList> getVideos({
     String? channelId,
     List<Includes>? includes,
     List<Language> lang,
@@ -67,7 +67,7 @@ abstract class BaseHolodexClient {
   
   /// Get a list of live videos
   /// 
-  /// Returns `VideoList`
+  /// Returns `VideoFullList`
   /// 
   /// This is somewhat similar to calling listVideos().
   ///
@@ -92,12 +92,12 @@ abstract class BaseHolodexClient {
   /// - `offset` Receive results starting at this number in the array from the Holodex API
   /// - `order` Order by ascending or descending
   /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
-  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
+  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
   /// - `sort` Sort the returned data by this field
   /// - `status` Filter by the video status
   /// - `topic` Filter by video topic ID
   /// - `type` Filter by type of video, either clips or streams
-  Future<VideoList> getLiveVideos({
+  Future<VideoFullList> getLiveVideos({
     String? channelId,
     List<Includes> includes,
     List<Language> lang,
@@ -153,8 +153,8 @@ abstract class BaseHolodexClient {
   /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
-  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
-  Future<VideoList> getChannelVideos(
+  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  Future<VideoFullList> getChannelVideos(
     String channelId, {
     List<Includes>? includes,
     List<Language> lang,
@@ -173,8 +173,8 @@ abstract class BaseHolodexClient {
   /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
-  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
-  Future<VideoList> getVTuberClips(
+  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  Future<VideoFullList> getVTuberClips(
     String channelId, {
     List<Includes>? includes,
     List<Language> lang,
@@ -193,8 +193,8 @@ abstract class BaseHolodexClient {
   /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
-  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
-  Future<VideoList> getVTuberCollabs(
+  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  Future<VideoFullList> getVTuberCollabs(
     String channelId, {
     List<Includes>? includes,
     List<Language> lang,
@@ -213,8 +213,8 @@ abstract class BaseHolodexClient {
   /// - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
-  /// - `paginated` If paginated is set to any non-empty value, returns [VideoList] with total, otherwise returns [VideoList] without the total.
-  Future<VideoList> getVideosRelatedToChannel(
+  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  Future<VideoFullList> getVideosRelatedToChannel(
     String channelId, {
     required VideoSearchType type,
     List<Includes>? includes,
@@ -239,11 +239,59 @@ abstract class BaseHolodexClient {
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
   /// 
   /// Searching for topics and clips is not supported, because clips do not contain topic_ids
-  Future<VideoList> searchVideos();
+  /// 
+  /// Arguments
+  /// - `searchSort` Sort by newest or oldest
+  /// - `languages` If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)
+  /// - `searchTargets` Target types of videos
+  /// - `conditions` Match all of the items. > For each item: Text to look for text in video title or description
+  /// - `topics` Return videos that match one of the provided topics
+  /// - `vch` Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.
+  /// - `organizations` Videos of channels in any of the specified organizations, or clips that involve a channel in the specified organization.
+  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  /// - `offset` Offset results
+  /// - `limit` Result limit
+  Future<VideoFullList> searchVideos({
+    SearchSort searchSort = SearchSort.newest,
+    List<Language>? languages,
+    List<SearchTarget>? searchTargets,
+    List<String>? conditions,
+    List<String>? topics,
+    List<String>? vch,
+    List<Organization>? organizations,
+    bool paginated = true,
+    int offset = 0,
+    int limit = 25,
+  });
 
   /// Flexible endpoint to search for comments in videos fufilling multiple conditions. 
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
-  Future<List<Comment>> searchComments();
+  /// 
+  /// Searching for topics and clips is not supported, because clips do not contain topic_ids
+  /// 
+  /// Arguments
+  /// - `searchSort` Sort by newest or oldest
+  /// - `languages` If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)
+  /// - `searchTargets` Target types of videos
+  /// - `comment` Find videos with comments containing specified string (case insensitive)
+  /// - `topics` Return videos that match one of the provided topics
+  /// - `vch` Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.
+  /// - `organizations` Videos of channels in any of the specified organizations, or clips that involve a channel in the specified organization.
+  /// - `paginated` If paginated is set to true, returns [VideoWithCommentsList] with total, otherwise returns [VideoWithCommentsList] without the total.
+  /// - `offset` Offset results
+  /// - `limit` Result limit
+  Future<VideoWithCommentsList> searchComments({
+    SearchSort searchSort = SearchSort.newest,
+    List<Language>? languages,
+    List<SearchTarget>? searchTargets,
+    required String comment,
+    List<String>? topics,
+    List<String>? vch,
+    List<Organization>? organizations,
+    bool paginated = true,
+    int offset = 0,
+    int limit = 25,
+  });
 
   // UTILITIES
 

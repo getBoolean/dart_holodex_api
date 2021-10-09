@@ -1,6 +1,6 @@
 part of dart_holodex_api.models;
 
-class VideoList extends Equatable {
+class VideoFullList extends Equatable {
   /// All videos available, only included if paginated is true
   final String? total;
 
@@ -10,18 +10,18 @@ class VideoList extends Equatable {
   /// List of videos
   final List<VideoFull> videos;
 
-  VideoList({
+  VideoFullList({
     this.total,
     this.paginated = false,
     required this.videos,
   });
 
-  VideoList copyWith({
+  VideoFullList copyWith({
     String? total,
     bool? paginated,
     List<VideoFull>? videos,
   }) {
-    return VideoList(
+    return VideoFullList(
       total: total ?? this.total,
       paginated: paginated ?? this.paginated,
       videos: videos ?? this.videos,
@@ -36,12 +36,12 @@ class VideoList extends Equatable {
     };
   }
 
-  factory VideoList.fromMap(Map<String, dynamic> map) {
+  factory VideoFullList.fromMap(Map<String, dynamic> map) {
     var total = map['total'];
     if (total is int) {
       total = '$total';
     }
-    return VideoList(
+    return VideoFullList(
       total: total,
       paginated: map['paginated'] ?? false,
       videos: List<VideoFull>.from(map['items']?.map((x) => VideoFull.fromMap(x))),
@@ -50,7 +50,7 @@ class VideoList extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory VideoList.fromJson(String source) => VideoList.fromMap(json.decode(source));
+  factory VideoFullList.fromJson(String source) => VideoFullList.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

@@ -35,7 +35,7 @@ void main(List<String> arguments) async {
   print('Requested Video: ${video.toString()}');
 
   // Get a bunch of videos and print them
-  final VideoList videoList = await holodexClient.getVideos(
+  final VideoFullList videoList = await holodexClient.getVideos(
     // channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
     includes: <Includes>[
       Includes.channelStats,
@@ -65,7 +65,7 @@ void main(List<String> arguments) async {
   print('Videos: ${videoList.videos.length}\nTotal Videos: ${videoList.total}\n');
 
   // // Get live videos
-  final VideoList liveVideos = await holodexClient.getLiveVideos(
+  final VideoFullList liveVideos = await holodexClient.getLiveVideos(
     includes: [
       Includes.channelStats
     ]
@@ -75,7 +75,7 @@ void main(List<String> arguments) async {
   final ceresFauna = await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');
   print('Requested Channel Name: ${ceresFauna.name}\n');
 
-  final channels = await holodexClient.getChannels(
+  final List<Channel> channels = await holodexClient.getChannels(
     limit: 25,
     offset: 0,
     order: Order.ascending,
@@ -84,38 +84,38 @@ void main(List<String> arguments) async {
   );
   print('Atelier Live Channels: ${channels.length}\n');
   
-  final quickLiveVideos = await holodexClient.getLiveVideosFromChannelsQuickly([
+  final List<Video> quickLiveVideos = await holodexClient.getLiveVideosFromChannelsQuickly([
     'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
     'UCZlDXzGoo7d44bwdNObFacg', // Kanata
     'UCqm3BQLlJfvkTsX_hvm0UmA' // Watame
   ]);
   print('Requested Live Videos From Channels: ${quickLiveVideos.length}\n');
 
-  final matsuriClips = await holodexClient.getVideosRelatedToChannel(
+  final VideoFullList matsuriClips = await holodexClient.getVideosRelatedToChannel(
     'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
     type: VideoSearchType.clips
   );
   print('Clips including Matsuri: ${matsuriClips.total}');
   print('Returned clips including Matsuri: ${matsuriClips.videos.length}\n');
 
-  final matsuriClips2 = await holodexClient.getVTuberClips(
+  final VideoFullList matsuriClips2 = await holodexClient.getVTuberClips(
     'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
   );
   print('Clips including Matsuri: ${matsuriClips2.total}');
   print('Returned clips including Matsuri: ${matsuriClips2.videos.length}\n');
 
-  final matsuriCollabs = await holodexClient.getVTuberCollabs('UCQ0UDLQCjY0rmuxCDE38FGg');
+  final VideoFullList matsuriCollabs = await holodexClient.getVTuberCollabs('UCQ0UDLQCjY0rmuxCDE38FGg');
   print('Collabs including Matsuri: ${matsuriCollabs.total}');
   print('Returned collabs including Matsuri: ${matsuriCollabs.videos.length}\n');
 
-  final matsuriUploads = await holodexClient.getChannelVideos('UCQ0UDLQCjY0rmuxCDE38FGg');
+  final VideoFullList matsuriUploads = await holodexClient.getChannelVideos('UCQ0UDLQCjY0rmuxCDE38FGg');
   print('Total Matsuri uploads: ${matsuriUploads.total}');
   print('Returned uploads: ${matsuriUploads.videos.length}\n');
 
 
 
 
-  final videoMetadata = await holodexClient.getVideoMetadata(
+  final VideoMetadata videoMetadata = await holodexClient.getVideoMetadata(
     'eJJuy5rY57w', // Shion's singing stream
     timestampComments: true,
     recommendationLanguages: [Language.all],
@@ -126,19 +126,33 @@ void main(List<String> arguments) async {
 
   print('Songs: ${shionSingingStream.songcount}');
   print('Video Comments With Timestamps: ${timestampComments?.length}');
-  print('Video Recommendations: ${recommendations?.length}');
+  print('Video Recommendations: ${recommendations?.length}\n');
 
-  final searchVideos = await holodexClient.searchVideos(
-    // searchSort: SearchSort.newest,
-    // languages: [Language.all],
-    // searchTarget: [SearchTarget.clip, SearchTarget.stream],
-    // conditions: ['karaoke'],
-    // topics: ['singing'],
-    // vch: <String>[],
-    // organizations: [Organization.Hololive],
-    // paginated: true,
-    // offset: 0,
+  final VideoFullList searchVideos = await holodexClient.searchVideos(
+    searchSort: SearchSort.newest,
+    languages: [Language.all],
+    searchTargets: [SearchTarget.clip, SearchTarget.stream],
+    conditions: ['karaoke'],
+    topics: ['singing'],
+    vch: <String>[],
+    organizations: [Organization.Hololive],
+    paginated: true,
+    offset: 0,
     limit: 25,
   );
-  print(searchVideos.videos.length);
+  print('Videos Found: ${searchVideos.videos.length}\n');
+
+  final VideoWithCommentsList searchComments = await holodexClient.searchComments(
+    searchSort: SearchSort.newest,
+    languages: [Language.all],
+    searchTargets: [SearchTarget.clip, SearchTarget.stream],
+    comment: 'shion',
+    topics: ['singing'],
+    vch: <String>[],
+    organizations: [Organization.Hololive],
+    paginated: true,
+    offset: 0,
+    limit: 25,
+  );
+  print('Videos with Comment: ${searchComments.videos.length}\n');
 }
