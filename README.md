@@ -64,8 +64,7 @@ Use this plugin in your Flutter app to:
 
     ```yaml
     dependencies:
-        dart_holodex_api:
-            git: https://github.com/getBoolean/dart_holodex_api
+        dart_holodex_api: ^0.1.2+1
     ```
 
 3. Then run `dart pub get` or `flutter pub get`.
