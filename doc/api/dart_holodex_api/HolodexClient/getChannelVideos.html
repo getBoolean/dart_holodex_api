@@ -60,7 +60,7 @@
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/VideoFullList-class.html">VideoFullList</a></span>&gt;</span></span>
 <span class="name ">getChannelVideos</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getChannelVideos-param-channelId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">channelId</span>, </span></li>
 <li><span class="parameter" id="getChannelVideos-param-includes">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Includes.html">Includes</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span></li>
-<li><span class="parameter" id="getChannelVideos-param-lang"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language.html">Language</a></span>&gt;</span></span> <span class="parameter-name">lang</span> = <span class="default-value">const [Language.all]</span>, </span></li>
+<li><span class="parameter" id="getChannelVideos-param-languages"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span> = <span class="default-value">const [Language.all]</span>, </span></li>
 <li><span class="parameter" id="getChannelVideos-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">25</span>, </span></li>
 <li><span class="parameter" id="getChannelVideos-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span> = <span class="default-value">0</span>, </span></li>
 <li><span class="parameter" id="getChannelVideos-param-paginated"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span> = <span class="default-value">true</span>}</span></li>
@@ -78,7 +78,7 @@
 <ul>
 <li><code>channelId</code> ID of the Youtube Channel that is being queried</li>
 <li><code>includes</code> Request extra data be included in the results. They are not guarenteed to be returned.</li>
-<li><code>lang</code> List of Language enum to filter channels/clips. Official streams do not follow this parameter</li>
+<li><code>languages</code> List of Language enum to filter channels/clips. Official streams do not follow this parameter</li>
 <li><code>limit</code> Result limit. Max of 50.</li>
 <li><code>offset</code> Offset results</li>
 <li><code>paginated</code> If paginated is set to true, returns <code>VideoFullList</code> with total, otherwise returns <code>VideoFullList</code> without the total.</li>
@@ -93,12 +93,12 @@
 Future&lt;VideoFullList&gt; getChannelVideos(
   String channelId, {
   List&lt;Includes&gt;? includes,
-  List&lt;Language&gt; lang = const [Language.all],
+  List&lt;Language&gt; languages = const [Language.all],
   int limit = 25,
   int offset = 0,
   bool paginated = true,
 }) async {
-  return await getVideosRelatedToChannel(channelId, type: VideoSearchType.videos, includes: includes, lang: lang, limit: limit, offset: offset, paginated: paginated);
+  return await getVideosRelatedToChannel(channelId, type: VideoSearchType.videos, includes: includes, languages: languages, limit: limit, offset: offset, paginated: paginated);
 }</code></pre>
 </section>
 
@@ -173,7 +173,7 @@ Future&lt;VideoFullList&gt; getChannelVideos(
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.2+1
+      0.2.0
   </span>
 
   

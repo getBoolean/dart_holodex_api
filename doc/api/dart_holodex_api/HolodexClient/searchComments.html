@@ -63,7 +63,7 @@
 <li><span class="parameter" id="searchComments-param-searchTargets"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/SearchTarget.html">SearchTarget</a></span>&gt;</span>?</span> <span class="parameter-name">searchTargets</span>, </span></li>
 <li><span class="parameter" id="searchComments-param-comment"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">comment</span>, </span></li>
 <li><span class="parameter" id="searchComments-param-topics"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">topics</span>, </span></li>
-<li><span class="parameter" id="searchComments-param-vch"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">vch</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-videoChannels"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">videoChannels</span>, </span></li>
 <li><span class="parameter" id="searchComments-param-organizations"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Organization.html">Organization</a></span>&gt;</span>?</span> <span class="parameter-name">organizations</span>, </span></li>
 <li><span class="parameter" id="searchComments-param-paginated"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span> = <span class="default-value">true</span>, </span></li>
 <li><span class="parameter" id="searchComments-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span> = <span class="default-value">0</span>, </span></li>
@@ -104,7 +104,7 @@ Future&lt;VideoWithCommentsList&gt; searchComments({
   List&lt;SearchTarget&gt;? searchTargets,
   required String comment,
   List&lt;String&gt;? topics,
-  List&lt;String&gt;? vch,
+  List&lt;String&gt;? videoChannels,
   List&lt;Organization&gt;? organizations,
   bool paginated = true,
   int offset = 0,
@@ -144,9 +144,9 @@ Future&lt;VideoWithCommentsList&gt; searchComments({
     });
   }
 
-  if (vch != null &amp;&amp; vch.isNotEmpty) {
+  if (videoChannels != null &amp;&amp; videoChannels.isNotEmpty) {
     data.addAll({
-      &#39;vch&#39;: vch,
+      &#39;vch&#39;: videoChannels,
     });
   }
 
@@ -234,7 +234,7 @@ Future&lt;VideoWithCommentsList&gt; searchComments({
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.2+1
+      0.2.0
   </span>
 
   

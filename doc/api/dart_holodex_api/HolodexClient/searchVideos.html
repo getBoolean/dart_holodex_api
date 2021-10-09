@@ -63,7 +63,7 @@
 <li><span class="parameter" id="searchVideos-param-searchTargets"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/SearchTarget.html">SearchTarget</a></span>&gt;</span>?</span> <span class="parameter-name">searchTargets</span>, </span></li>
 <li><span class="parameter" id="searchVideos-param-conditions"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">conditions</span>, </span></li>
 <li><span class="parameter" id="searchVideos-param-topics"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">topics</span>, </span></li>
-<li><span class="parameter" id="searchVideos-param-vch"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">vch</span>, </span></li>
+<li><span class="parameter" id="searchVideos-param-videoChannels"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">videoChannels</span>, </span></li>
 <li><span class="parameter" id="searchVideos-param-organizations"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Organization.html">Organization</a></span>&gt;</span>?</span> <span class="parameter-name">organizations</span>, </span></li>
 <li><span class="parameter" id="searchVideos-param-paginated"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span> = <span class="default-value">true</span>, </span></li>
 <li><span class="parameter" id="searchVideos-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span> = <span class="default-value">0</span>, </span></li>
@@ -83,9 +83,9 @@
 <li><code>searchSort</code> Sort by newest or oldest</li>
 <li><code>languages</code> If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)</li>
 <li><code>searchTargets</code> Target types of videos</li>
-<li><code>conditions</code> Match all of the items. &gt; For each item: Text to look for text in video title or description</li>
+<li><code>conditions</code> Match all of the items. -&gt; For each item: look for the text in video title or description</li>
 <li><code>topics</code> Return videos that match one of the provided topics</li>
-<li><code>vch</code> Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.</li>
+<li><code>videoChannels</code> Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.</li>
 <li><code>organizations</code> Videos of channels in any of the specified organizations, or clips that involve a channel in the specified organization.</li>
 <li><code>paginated</code> If paginated is set to true, returns <code>VideoFullList</code> with total, otherwise returns <code>VideoFullList</code> without the total.</li>
 <li><code>offset</code> Offset results</li>
@@ -104,7 +104,7 @@ Future&lt;VideoFullList&gt; searchVideos({
   List&lt;SearchTarget&gt;? searchTargets,
   List&lt;String&gt;? conditions,
   List&lt;String&gt;? topics,
-  List&lt;String&gt;? vch,
+  List&lt;String&gt;? videoChannels,
   List&lt;Organization&gt;? organizations,
   bool paginated = true,
   int offset = 0,
@@ -144,9 +144,9 @@ Future&lt;VideoFullList&gt; searchVideos({
     });
   }
 
-  if (vch != null &amp;&amp; vch.isNotEmpty) {
+  if (videoChannels != null &amp;&amp; videoChannels.isNotEmpty) {
     data.addAll({
-      &#39;vch&#39;: vch,
+      &#39;vch&#39;: videoChannels,
     });
   }
 
@@ -234,7 +234,7 @@ Future&lt;VideoFullList&gt; searchVideos({
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.2+1
+      0.2.0
   </span>
 
   

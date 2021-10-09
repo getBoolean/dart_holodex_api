@@ -71,6 +71,12 @@
   <p>Retrieves a video</p>
 <p>Retrieves Comments if <code>timestampComments</code> is set to true</p>
 <p>Retrieves Recommendations if query parameter <code>recommendationLanguages</code> is set</p>
+<p>Arguments</p>
+<ul>
+<li><code>videoId</code> ID of the video</li>
+<li><code>timestampComments</code> If set to <code>true</code>, comments with timestamps will be returned</li>
+<li><code>recommendationLanguages</code> If set, videos matching the languages will be returned. Use <a href="../../dart_holodex_api/Language.html">Language.all</a> to get all languages regardless of language</li>
+</ul>
 </section>
 
 
@@ -173,7 +179,7 @@ Future&lt;VideoMetadata&gt; getVideoMetadata(
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.2+1
+      0.2.0
   </span>
 
   

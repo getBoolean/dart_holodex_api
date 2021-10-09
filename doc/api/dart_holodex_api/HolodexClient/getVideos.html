@@ -60,7 +60,7 @@
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/VideoFullList-class.html">VideoFullList</a></span>&gt;</span></span>
 <span class="name ">getVideos</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getVideos-param-channelId">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">channelId</span>, </span></li>
 <li><span class="parameter" id="getVideos-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Includes.html">Includes</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span></li>
-<li><span class="parameter" id="getVideos-param-lang"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language.html">Language</a></span>&gt;</span></span> <span class="parameter-name">lang</span> = <span class="default-value">const [Language.all]</span>, </span></li>
+<li><span class="parameter" id="getVideos-param-languages"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span> = <span class="default-value">const [Language.all]</span>, </span></li>
 <li><span class="parameter" id="getVideos-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">25</span>, </span></li>
 <li><span class="parameter" id="getVideos-param-maxUpcomingHours"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">maxUpcomingHours</span>, </span></li>
 <li><span class="parameter" id="getVideos-param-mentionedChannelId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">mentionedChannelId</span>, </span></li>
@@ -68,10 +68,10 @@
 <li><span class="parameter" id="getVideos-param-order"><span class="type-annotation"><a href="../../dart_holodex_api/Order.html">Order</a></span> <span class="parameter-name">order</span> = <span class="default-value">Order.descending</span>, </span></li>
 <li><span class="parameter" id="getVideos-param-organization"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Organization.html">Organization</a></span>&gt;</span>?</span> <span class="parameter-name">organization</span>, </span></li>
 <li><span class="parameter" id="getVideos-param-paginated"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span> = <span class="default-value">false</span>, </span></li>
-<li><span class="parameter" id="getVideos-param-sort"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/VideoSort.html">VideoSort</a></span>&gt;</span></span> <span class="parameter-name">sort</span> = <span class="default-value">const &lt;VideoSort&gt;[VideoSort.availableAt]</span>, </span></li>
-<li><span class="parameter" id="getVideos-param-status"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/VideoStatus.html">VideoStatus</a></span>&gt;</span>?</span> <span class="parameter-name">status</span>, </span></li>
-<li><span class="parameter" id="getVideos-param-topicId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">topicId</span>, </span></li>
-<li><span class="parameter" id="getVideos-param-type"><span class="type-annotation"><a href="../../dart_holodex_api/VideoType.html">VideoType</a>?</span> <span class="parameter-name">type</span>}</span></li>
+<li><span class="parameter" id="getVideos-param-videoSort"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/VideoSort.html">VideoSort</a></span>&gt;</span></span> <span class="parameter-name">videoSort</span> = <span class="default-value">const &lt;VideoSort&gt;[VideoSort.availableAt]</span>, </span></li>
+<li><span class="parameter" id="getVideos-param-videoStatus"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/VideoStatus.html">VideoStatus</a></span>&gt;</span>?</span> <span class="parameter-name">videoStatus</span>, </span></li>
+<li><span class="parameter" id="getVideos-param-topic"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">topic</span>, </span></li>
+<li><span class="parameter" id="getVideos-param-videoType"><span class="type-annotation"><a href="../../dart_holodex_api/VideoType.html">VideoType</a>?</span> <span class="parameter-name">videoType</span>}</span></li>
 </ol>)
 
       
@@ -85,7 +85,7 @@
 <ul>
 <li><code>channelId</code> Filter by video uploader channel ID</li>
 <li><code>includes</code> Request extra data be included in the results. They are not guarenteed to be returned.</li>
-<li><code>lang</code> Filter by the <code>Language</code></li>
+<li><code>languages</code> Filter by the <code>Language</code></li>
 <li><code>limit</code> Limit the number of results returned. Maximum value of 50</li>
 <li><code>maxUpcomingHours</code> Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)</li>
 <li><code>mentionedChannelId</code> Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel</li>
@@ -93,10 +93,10 @@
 <li><code>order</code> Order results by ascending or descending</li>
 <li><code>organization</code> Filter by clips that feature the org's talent or videos posted by the org's talent.</li>
 <li><code>paginated</code> If paginated is set to true, returns <code>VideoFullList</code> with total, otherwise returns <code>VideoFullList</code> without the total.</li>
-<li><code>sort</code> Sort the returned data by this field</li>
-<li><code>status</code> Filter by the video status</li>
+<li><code>videoSort</code> Sort the returned data by this field</li>
+<li><code>videoStatus</code> Filter by the video status</li>
 <li><code>topic</code> Filter by video topic ID</li>
-<li><code>type</code> Filter by type of video, either clips or streams</li>
+<li><code>videoType</code> Filter by type of video, either clips or streams</li>
 </ul>
 </section>
 
@@ -108,7 +108,7 @@
 Future&lt;VideoFullList&gt; getVideos({
   String? channelId,
   List&lt;Includes&gt;? includes,
-  List&lt;Language&gt; lang = const [Language.all],
+  List&lt;Language&gt; languages = const [Language.all],
   int limit = 25,
   int? maxUpcomingHours,
   String? mentionedChannelId,
@@ -116,10 +116,10 @@ Future&lt;VideoFullList&gt; getVideos({
   Order order = Order.descending,
   List&lt;Organization&gt;? organization,
   bool paginated = false,
-  List&lt;VideoSort&gt; sort = const &lt;VideoSort&gt;[VideoSort.availableAt],
-  List&lt;VideoStatus&gt;? status,
-  String? topicId,
-  VideoType? type,
+  List&lt;VideoSort&gt; videoSort = const &lt;VideoSort&gt;[VideoSort.availableAt],
+  List&lt;VideoStatus&gt;? videoStatus,
+  String? topic,
+  VideoType? videoType,
 }) async {
   &#47;&#47; The limit cannot be greator than 50, otherwise it will throw an error
   assert(limit &lt;= 50);
@@ -134,7 +134,7 @@ Future&lt;VideoFullList&gt; getVideos({
     &#39;order&#39;: EnumUtil.convertOrderToString(order),
   });
 
-  _addVideoSort(sort, params);
+  _addVideoSort(videoSort, params);
 
   _addPaginated(paginated, params);
 
@@ -145,7 +145,7 @@ Future&lt;VideoFullList&gt; getVideos({
 
   &#47;&#47; Add the languages to filter by
   &#47;&#47; Add the first item so that there is not a comma in front
-  _addLanguages(lang, params);
+  _addLanguages(languages, params);
 
   &#47;&#47; Add the max upcoming hours param
   _addMaxUpcomingHours(maxUpcomingHours, params);
@@ -157,13 +157,13 @@ Future&lt;VideoFullList&gt; getVideos({
   _addOrganization(organization, params);
 
   &#47;&#47; Add the topic param
-  _addTopic(topicId, params);
+  _addTopic(topic, params);
 
   &#47;&#47; Add the status param
-  _addStatusList(status, params);
+  _addStatusList(videoStatus, params);
 
   &#47;&#47; Add the type param
-  _addType(type, params);
+  _addType(videoType, params);
 
   final response = await get(path: _Constants.videosPath, params: params);
 
@@ -250,7 +250,7 @@ Future&lt;VideoFullList&gt; getVideos({
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.2+1
+      0.2.0
   </span>
 
   
