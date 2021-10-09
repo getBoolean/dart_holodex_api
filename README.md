@@ -33,6 +33,8 @@ A Dart wrapper for Holodex API v2
   - [Get Collabs that mention a VTuber](#get-collabs-that-mention-a-vtuber)
   - [Get Videos From Channel](#get-videos-from-channel)
   - [Get a single Video's metadata](#get-a-single-video-s-metadata)
+  - [Search For Videos](#search-for-videos)
+  - [Search For Videos With a Comment](#search-for-videos-with-a-comment)
 - [Additional information](#additional-information)
 
 ## Features
