@@ -15,7 +15,7 @@ void main(List<String> arguments) async {
     print('API key not found, exiting');
     return;
   }
-  var holodexClient = HolodexClient(apiKey: apiKey);
+  final HolodexClient holodexClient = HolodexClient(apiKey: apiKey);
 
   // Get one video and print it
   final VideoFull video = await holodexClient.getVideoFromId(

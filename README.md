@@ -77,7 +77,7 @@ Use this plugin in your Flutter app to:
 Get an instance of HolodexClient with your API key
 
 ```dart
-var holodexClient = HolodexClient(apiKey: apiKey);
+final HolodexClient holodexClient = HolodexClient(apiKey: apiKey);
 ```
 
 Remember to close the client when you are done with it. This closes the client and cleans up any resources associated with it.
