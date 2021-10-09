@@ -267,8 +267,8 @@ abstract class BaseHolodexClient {
   /// An alias of HolodexClient.call('post')
   Future<Response> post({
     required String path,
-    Map<String, String> headers = const {},
-    Map<String, dynamic> data = const {},
+    Map<String, String>? headers = const {},
+    Map<String, dynamic>? data,
   });
 
 }

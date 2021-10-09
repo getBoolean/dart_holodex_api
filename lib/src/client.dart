@@ -551,12 +551,11 @@ class HolodexClient extends BaseHolodexClient {
 
     final response = await post(path: _Constants.videoSearch, data: data);
     
-    // if (paginated) {
-    //   final Map<String, dynamic> map = response.data;
-    //   // Grab total and return with it
-    //   final videoList = VideoList.fromMap(map);
-    //   return videoList.copyWith(paginated: true);
-    // }
+    if (paginated) {
+      // Grab total and return with it
+      final videoList = VideoList.fromJson(response.body);
+      return videoList.copyWith(paginated: true);
+    }
     
     final List list = jsonDecode(response.body);
     return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
@@ -687,7 +686,7 @@ class HolodexClient extends BaseHolodexClient {
 
   // Utilities
   
-  /// An alias of HolodexClient.call('get')
+  /// Utility method to make http get call
   @override
   Future<Response> get({
     String path = '',
@@ -695,11 +694,24 @@ class HolodexClient extends BaseHolodexClient {
     Map<String, dynamic>? params,
   }) async {
     // return await call('get', path: path, headers: headers, params: params);
-    // TODO: Format params into url
-    return await client.get(Uri.parse(basePath + path), headers: headers);
+    headers ??= {};
+    headers.addAll({
+      HttpHeaders.contentTypeHeader: "application/json",
+      'X-APIKEY': apiKey,
+    });
+    
+    try {
+      // TODO: Format params into url
+      return await client.get(Uri.parse(basePath + path), headers: headers);
+    } catch (e) {
+      if (e is HolodexException) {
+        rethrow;
+      }
+      throw HolodexException(e.toString());
+    }
   }
 
-  /// An alias of HolodexClient.call('post')
+  /// Utility method to make http post call
   @override
   Future<Response> post({
     String path = '',
@@ -707,39 +719,21 @@ class HolodexClient extends BaseHolodexClient {
     Map<String, dynamic>? data,
   }) async {
     // return await call('post', path: path, headers: headers, data: data);
-    return await client.post(Uri.parse(basePath + path), headers: headers, body: json.encode(data));
+    headers ??= {};
+    headers.addAll({
+      HttpHeaders.contentTypeHeader: "application/json",
+      'X-APIKEY': apiKey,
+    });
+    
+    try {
+      return await client.post(Uri.parse(basePath + path), headers: headers, body: json.encode(data));
+    } catch (e) {
+      if (e is HolodexException) {
+        rethrow;
+      }
+      throw HolodexException(e.toString());
+    }
   }
-
-  /// Method to make a http call and return `Response`
-  // @override
-  // Future<Response> call(
-  //   String method, { 
-  //   required String path, 
-  //   Map<String, String>? headers, 
-  //   Map<String, dynamic>? params,
-  //   Map<String, dynamic>? data,
-  // }) async {
-  //   try {
-  //     // Prepare request
-  //     final result = RequestOptions(
-  //       method: method,
-  //       path: basePath + path,
-  //       queryParameters: params,
-  //       data: data,
-  //       responseType: responseType,
-  //       headers: headers,
-  //     );
-  //     final response = await client.fetch(result);
-  //     client.
-  //     // Return response
-  //     return response;
-  //   } catch (e) {
-  //     if (e is HolodexException) {
-  //       rethrow;
-  //     }
-  //     throw HolodexException(e.toString());
-  //   }
-  // }
 }
 
 
