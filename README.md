@@ -14,7 +14,7 @@ and the Flutter guide for
 <!-- markdownlint-disable MD041 -->
 
 [![pub package](https://img.shields.io/pub/v/dart_holodex_api)](https://pub.dev/packages/dart_holodex_api)
-![License](https://img.shields.io/github/license/getBoolean/dart_holodex_api)
+[![License](https://img.shields.io/github/license/getBoolean/dart_holodex_api)](https://github.com/getBoolean/dart_holodex_api/blob/main/LICENSE)
 
 A Dart wrapper for Holodex API v2
 
