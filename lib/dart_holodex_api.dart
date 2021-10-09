@@ -3,7 +3,6 @@
 /// More dartdocs go here.
 library dart_holodex_api;
 
-
 export 'src/client.dart';
 export 'src/exception.dart';
 export 'package:http/http.dart' show Response;

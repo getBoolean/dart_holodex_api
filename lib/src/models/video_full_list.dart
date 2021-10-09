@@ -44,13 +44,15 @@ class VideoFullList extends Equatable {
     return VideoFullList(
       total: total,
       paginated: map['paginated'] ?? false,
-      videos: List<VideoFull>.from(map['items']?.map((x) => VideoFull.fromMap(x))),
+      videos:
+          List<VideoFull>.from(map['items']?.map((x) => VideoFull.fromMap(x))),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory VideoFullList.fromJson(String source) => VideoFullList.fromMap(json.decode(source));
+  factory VideoFullList.fromJson(String source) =>
+      VideoFullList.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

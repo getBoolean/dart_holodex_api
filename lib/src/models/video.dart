@@ -41,7 +41,7 @@ class Video extends Equatable {
   final ChannelMin? channel;
 
   final String? language;
-  
+
   /// Returns a new [Video] instance.
   Video({
     required this.id,
@@ -129,12 +129,14 @@ class Video extends Equatable {
     return Video(
       id: map['id'],
       title: map['title'],
-      type: EnumToString.fromString(VideoType.values, map['type']) ?? VideoType.clip,
+      type: EnumToString.fromString(VideoType.values, map['type']) ??
+          VideoType.clip,
       topicId: map['topic_id'],
       publishedAt: map['published_at'],
       availableAt: map['available_at'],
       duration: map['duration'],
-      status: EnumUtil.convertStringToVideoStatus(map['status']) ?? VideoStatus.missing,
+      status: EnumUtil.convertStringToVideoStatus(map['status']) ??
+          VideoStatus.missing,
       startScheduled: map['start_scheduled'],
       startActual: map['start_actual'],
       endActual: map['end_actual'],

@@ -42,11 +42,13 @@ class Comment extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory Comment.fromJson(String source) => Comment.fromMap(json.decode(source));
+  factory Comment.fromJson(String source) =>
+      Comment.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;
 
   @override
-  List<Object> get props => [commentKey, videoId ?? 'Video ID not given', message];
+  List<Object> get props =>
+      [commentKey, videoId ?? 'Video ID not given', message];
 }

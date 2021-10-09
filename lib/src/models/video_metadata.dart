@@ -26,25 +26,33 @@ class VideoMetadata extends Equatable {
     return {
       'video': video.toMap(),
       'comments': comments?.map((comment) => comment.toMap()).toList(),
-      'recommendations': recommendations?.map((video) => video.toMap()).toList(),
+      'recommendations':
+          recommendations?.map((video) => video.toMap()).toList(),
     };
   }
 
   factory VideoMetadata.fromMap(Map<String, dynamic> map) {
     return VideoMetadata(
       video: VideoFull.fromMap(map['video']),
-      comments: List<Comment>.from(map['comments']?.map((commentMap) => Comment.fromMap(commentMap))),
-      recommendations: List<Video>.from(map['recommendations']?.map((videoMap) => Video.fromMap(videoMap))),
+      comments: List<Comment>.from(
+          map['comments']?.map((commentMap) => Comment.fromMap(commentMap))),
+      recommendations: List<Video>.from(
+          map['recommendations']?.map((videoMap) => Video.fromMap(videoMap))),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory VideoMetadata.fromJson(String source) => VideoMetadata.fromMap(json.decode(source));
+  factory VideoMetadata.fromJson(String source) =>
+      VideoMetadata.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;
 
   @override
-  List<Object> get props => [video, comments ?? 'Comments not included', recommendations ?? 'Recommendations not included'];
+  List<Object> get props => [
+        video,
+        comments ?? 'Comments not included',
+        recommendations ?? 'Recommendations not included'
+      ];
 }

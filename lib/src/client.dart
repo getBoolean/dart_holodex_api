@@ -7,11 +7,11 @@ import '../dart_holodex_api.dart';
 
 class HolodexClient extends BaseHolodexClient {
   /// Creates a new instance of [HolodexClient]
-  /// 
+  ///
   /// `apiKey` - Your personal API key. Be aware that the validity of the key is not checked, so ensure it is correct.
-  /// 
+  ///
   /// `basePath` - (Optional) The base Holodex API url. Can be overriden with the mock sever API url: `https://stoplight.io/mocks/holodex/holodex/11620234`
-  /// 
+  ///
   /// `dioClient` - An existing Dio Client, if needed. When left null, an internal client will be created
   HolodexClient({
     required this.apiKey,
@@ -35,31 +35,33 @@ class HolodexClient extends BaseHolodexClient {
   final String apiKey;
 
   /// Get a video by its video ID
-  /// 
+  ///
   /// Returns [VideoFull]
-  /// 
+  ///
   /// Arguments:
-  /// 
+  ///
   /// - `videoId` The video ID as a string
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
   @override
-  Future<VideoFull> getVideoFromId(String videoId, {List<Includes>? includes}) async {
+  Future<VideoFull> getVideoFromId(String videoId,
+      {List<Includes>? includes}) async {
     final Map<String, dynamic> params = {'id': videoId};
 
     // Add the info the videos must include
     _addIncludes(includes, params);
 
-    final Response response = await get(path: _Constants.videosPath, params: params);
+    final Response response =
+        await get(path: _Constants.videosPath, params: params);
 
     return VideoFull.fromMap(jsonDecode(response.body).first);
   }
 
   /// Get a list of videos
-  /// 
+  ///
   /// Returns `VideoFullList`
-  /// 
+  ///
   /// Arguments:
-  /// 
+  ///
   /// - `channelId` Filter by video uploader channel ID
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
   /// - `languages` Filter by the `Language`
@@ -142,20 +144,21 @@ class HolodexClient extends BaseHolodexClient {
       final videoList = VideoFullList.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
-    
+
     final List list = jsonDecode(response.body);
-    return VideoFullList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
+    return VideoFullList(
+        videos: list.map((video) => VideoFull.fromMap(video)).toList());
     // Returns as `List<Video>`
   }
 
   /// Get a list of live videos
-  /// 
+  ///
   /// Returns `VideoFullList`
-  /// 
+  ///
   /// This is somewhat similar to calling listVideos().
   ///
   /// However, this endpoint imposes these default values on the query parameters: You can choose to override them by providing your own values.
-  /// 
+  ///
   /// ```dart
   /// status: [VideoStatus.live, VideoStatus.upcoming],
   /// type: VideoType.stream,
@@ -165,9 +168,9 @@ class HolodexClient extends BaseHolodexClient {
   /// limit: 9999,
   /// include: [Includes.liveInfo] + query's include
   /// ```
-  /// 
+  ///
   /// Arguments:
-  /// 
+  ///
   /// - `channelId` Filter by video uploader channel ID
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
   /// - `languages` Filter by the `Language`
@@ -183,22 +186,24 @@ class HolodexClient extends BaseHolodexClient {
   /// - `topic` Filter by video topic ID
   /// - `videoType` Filter by type of video, either clips or streams
   @override
-  Future<VideoFullList> getLiveVideos({
-    String? channelId,
-    List<Includes> includes = const [Includes.liveInfo],
-    List<Language> languages = const [Language.all],
-    int limit = 9999,
-    int? maxUpcomingHours = 48,
-    String? mentionedChannelId,
-    int offset = 0,
-    Order order = Order.ascending,
-    List<Organization>? organization,
-    bool paginated = true,
-    List<VideoSort> videoSort = const <VideoSort>[VideoSort.availableAt],
-    List<VideoStatus>? videoStatus = const [VideoStatus.live, VideoStatus.upcoming],
-    String? topic,
-    VideoType? videoType = VideoType.stream
-  }) async {
+  Future<VideoFullList> getLiveVideos(
+      {String? channelId,
+      List<Includes> includes = const [Includes.liveInfo],
+      List<Language> languages = const [Language.all],
+      int limit = 9999,
+      int? maxUpcomingHours = 48,
+      String? mentionedChannelId,
+      int offset = 0,
+      Order order = Order.ascending,
+      List<Organization>? organization,
+      bool paginated = true,
+      List<VideoSort> videoSort = const <VideoSort>[VideoSort.availableAt],
+      List<VideoStatus>? videoStatus = const [
+        VideoStatus.live,
+        VideoStatus.upcoming
+      ],
+      String? topic,
+      VideoType? videoType = VideoType.stream}) async {
     // Create the params list
     final Map<String, dynamic> params = {};
 
@@ -252,27 +257,31 @@ class HolodexClient extends BaseHolodexClient {
       final videoList = VideoFullList.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
-    
+
     final List list = jsonDecode(response.body);
-    return VideoFullList(videos: list.map((video) => VideoFull.fromMap(video)).toList()); // Returns as `List<Video>`
+    return VideoFullList(
+        videos: list
+            .map((video) => VideoFull.fromMap(video))
+            .toList()); // Returns as `List<Video>`
   }
 
   /// Get a channel by its ID
-  /// 
+  ///
   /// Returns [Channel]
-  /// 
+  ///
   /// Arguments:
-  /// 
+  ///
   /// - `channelId` ID of the Youtube Channel that is being queried
   @override
   Future<Channel> getChannelFromId(String channelId) async {
-    final Response response = await get(path: '${_Constants.channelsPath}/$channelId');
+    final Response response =
+        await get(path: '${_Constants.channelsPath}/$channelId');
 
     return Channel.fromJson(response.body);
   }
 
   /// Get channels
-  /// 
+  ///
   /// Arguments:
   /// - `languages` List of languages. Language is a property of Channel, so only Channels satisfying the language will be returned. Leave empty to search for Vtubers and/or all clippers.
   /// - `limit` Results limit
@@ -314,21 +323,24 @@ class HolodexClient extends BaseHolodexClient {
 
     final List list = jsonDecode(response.body);
 
-    return list.map((channel) => Channel.fromMap(channel)).toList(); // Returns as `List<Channel>`
+    return list
+        .map((channel) => Channel.fromMap(channel))
+        .toList(); // Returns as `List<Channel>`
   }
 
   /// Quickly Access Live / Upcoming for a set of Channels
-  /// 
+  ///
   /// This endpoint is similar to the getLiveVideos() method and usually replies much faster.
   /// It is more friendly in general. The cost to execute a lookup is significantly cheaper.
   /// It's unfortunately less customizable as a result.
-  /// 
+  ///
   /// We recommend using this if you have a fixed set of channel IDs to look up status for.
-  /// 
+  ///
   /// Arguments:
   /// - `channelIds` List of channel IDs to get the live videos from.
   @override
-  Future<List<Video>> getLiveVideosFromChannelsQuickly(List<String> channelIds) async {
+  Future<List<Video>> getLiveVideosFromChannelsQuickly(
+      List<String> channelIds) async {
     if (channelIds.isEmpty) {
       return <Video>[];
     }
@@ -341,13 +353,13 @@ class HolodexClient extends BaseHolodexClient {
     final List list = jsonDecode(response.body);
     return list.map((video) => Video.fromMap(video)).toList();
   }
-  
+
   /// Get Videos From Channel
-  /// 
+  ///
   /// Alias of getVideosRelatedToChannel()
-  /// 
+  ///
   /// Returns [VideoFullList]
-  /// 
+  ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
@@ -364,15 +376,21 @@ class HolodexClient extends BaseHolodexClient {
     int offset = 0,
     bool paginated = true,
   }) async {
-    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.videos, includes: includes, languages: languages, limit: limit, offset: offset, paginated: paginated);
+    return await getVideosRelatedToChannel(channelId,
+        type: VideoSearchType.videos,
+        includes: includes,
+        languages: languages,
+        limit: limit,
+        offset: offset,
+        paginated: paginated);
   }
 
   /// Get Clips of a VTuber
-  /// 
+  ///
   /// Alias of getVideosRelatedToChannel()
-  /// 
+  ///
   /// Returns [VideoFullList]
-  /// 
+  ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
@@ -389,15 +407,21 @@ class HolodexClient extends BaseHolodexClient {
     int offset = 0,
     bool paginated = true,
   }) async {
-    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.clips, includes: includes, languages: languages, limit: limit, offset: offset, paginated: paginated);
+    return await getVideosRelatedToChannel(channelId,
+        type: VideoSearchType.clips,
+        includes: includes,
+        languages: languages,
+        limit: limit,
+        offset: offset,
+        paginated: paginated);
   }
 
   /// Get Collabs that mention a VTuber
-  /// 
+  ///
   /// Alias of getVideosRelatedToChannel()
-  /// 
+  ///
   /// Returns [VideoFullList]
-  /// 
+  ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
@@ -414,14 +438,20 @@ class HolodexClient extends BaseHolodexClient {
     int offset = 0,
     bool paginated = true,
   }) async {
-    return await getVideosRelatedToChannel(channelId, type: VideoSearchType.collabs, includes: includes, languages: languages, limit: limit, offset: offset, paginated: paginated);
+    return await getVideosRelatedToChannel(channelId,
+        type: VideoSearchType.collabs,
+        includes: includes,
+        languages: languages,
+        limit: limit,
+        offset: offset,
+        paginated: paginated);
   }
 
   /// Get Videos Related To Channel
-  /// 
-  /// A simplified method for access channel specific data. 
+  ///
+  /// A simplified method for access channel specific data.
   /// If you want more customization, the same result can be obtained by calling the queryVideos() method.
-  /// 
+  ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `type` The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId`
@@ -444,7 +474,7 @@ class HolodexClient extends BaseHolodexClient {
     assert(limit <= 50);
 
     final Map<String, dynamic> params = {};
-    
+
     // Add the items with default values (they can't be null)
     params.addAll({
       'limit': '$limit',
@@ -455,16 +485,20 @@ class HolodexClient extends BaseHolodexClient {
     _addLanguages(languages, params);
     _addPaginated(paginated, params);
 
-    final response = await get(path: '${_Constants.channelsPath}/$channelId/${EnumUtil.convertVideoSearchTypeToString(type)}', params: params);
-    
+    final response = await get(
+        path:
+            '${_Constants.channelsPath}/$channelId/${EnumUtil.convertVideoSearchTypeToString(type)}',
+        params: params);
+
     if (paginated) {
       // Grab total and return with it
       final videoList = VideoFullList.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
-    
+
     final List list = jsonDecode(response.body);
-    return VideoFullList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
+    return VideoFullList(
+        videos: list.map((video) => VideoFull.fromMap(video)).toList());
   }
 
   /// Retrieves a video
@@ -472,9 +506,9 @@ class HolodexClient extends BaseHolodexClient {
   /// Retrieves Comments if `timestampComments` is set to true
   ///
   /// Retrieves Recommendations if query parameter `recommendationLanguages` is set
-  /// 
+  ///
   /// Arguments
-  /// 
+  ///
   /// - `videoId` ID of the video
   /// - `timestampComments` If set to `true`, comments with timestamps will be returned
   /// - `recommendationLanguages` If set, videos matching the languages will be returned. Use [Language.all] to get all languages regardless of language
@@ -490,7 +524,8 @@ class HolodexClient extends BaseHolodexClient {
 
     _addCommentsFlag(timestampComments, params);
 
-    final response = await get(path: '${_Constants.videosPath}/$videoId', params: params);
+    final response =
+        await get(path: '${_Constants.videosPath}/$videoId', params: params);
     final body = jsonDecode(response.body);
     final video = VideoFull.fromMap(body);
     final List? comments = body['comments'];
@@ -498,16 +533,17 @@ class HolodexClient extends BaseHolodexClient {
     return VideoMetadata(
       video: video,
       comments: comments?.map((comment) => Comment.fromMap(comment)).toList(),
-      recommendations: recommendations?.map((video) => Video.fromMap(video)).toList(),
+      recommendations:
+          recommendations?.map((video) => Video.fromMap(video)).toList(),
     );
   }
 
   /// Flexible endpoint to search for videos fufilling multiple conditions.
-  /// 
+  ///
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
-  /// 
+  ///
   /// Searching for topics and clips is not supported, because clips do not contain topics
-  /// 
+  ///
   /// Arguments
   /// - `searchSort` Sort by newest or oldest
   /// - `languages` If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)
@@ -544,13 +580,16 @@ class HolodexClient extends BaseHolodexClient {
 
     if (languages != null && languages.isNotEmpty) {
       data.addAll({
-        'lang': languages.map((l) => EnumUtil.convertLanguageToString(l)).toList(),
+        'lang':
+            languages.map((l) => EnumUtil.convertLanguageToString(l)).toList(),
       });
     }
 
     if (searchTargets != null && searchTargets.isNotEmpty) {
       data.addAll({
-        'target': searchTargets.map((s) => EnumUtil.convertSearchTargetToString(s)).toList(),
+        'target': searchTargets
+            .map((s) => EnumUtil.convertSearchTargetToString(s))
+            .toList(),
       });
     }
 
@@ -573,23 +612,24 @@ class HolodexClient extends BaseHolodexClient {
     }
 
     final response = await post(path: _Constants.videoSearch, data: data);
-    
+
     if (paginated) {
       // Grab total and return with it
       final videoList = VideoFullList.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
-    
+
     final List list = jsonDecode(response.body);
-    return VideoFullList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
+    return VideoFullList(
+        videos: list.map((video) => VideoFull.fromMap(video)).toList());
   }
 
   /// Flexible endpoint to search for comments in videos fufilling multiple conditions.
-  /// 
+  ///
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
-  /// 
+  ///
   /// Searching for topics and clips is not supported, because clips do not contain topics
-  /// 
+  ///
   /// Arguments
   /// - `searchSort` Sort by newest or oldest
   /// - `languages` If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)
@@ -632,13 +672,16 @@ class HolodexClient extends BaseHolodexClient {
 
     if (languages != null && languages.isNotEmpty) {
       data.addAll({
-        'lang': languages.map((l) => EnumUtil.convertLanguageToString(l)).toList(),
+        'lang':
+            languages.map((l) => EnumUtil.convertLanguageToString(l)).toList(),
       });
     }
 
     if (searchTargets != null && searchTargets.isNotEmpty) {
       data.addAll({
-        'target': searchTargets.map((s) => EnumUtil.convertSearchTargetToString(s)).toList(),
+        'target': searchTargets
+            .map((s) => EnumUtil.convertSearchTargetToString(s))
+            .toList(),
       });
     }
 
@@ -655,21 +698,23 @@ class HolodexClient extends BaseHolodexClient {
     }
 
     final response = await post(path: _Constants.commentSearch, data: data);
-    
+
     if (paginated) {
       // Grab total and return with it
       final videoList = VideoWithCommentsList.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
-    
+
     final List list = jsonDecode(response.body);
-    return VideoWithCommentsList(videos: list.map((video) => VideoWithComments.fromMap(video)).toList());
+    return VideoWithCommentsList(
+        videos: list.map((video) => VideoWithComments.fromMap(video)).toList());
   }
 
   void _addVideoSort(List<VideoSort> sort, Map<String, dynamic> params) {
     if (sort.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> sortStringList = sort.map((s) => EnumUtil.convertVideoSortToString(s)).toList();
+      final List<String> sortStringList =
+          sort.map((s) => EnumUtil.convertVideoSortToString(s)).toList();
       // Join the array with commas
       String sortConcatenated = sortStringList.join(',');
       params.addAll({'include': sortConcatenated});
@@ -694,10 +739,13 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void _addStatusList(List<VideoStatus>? statuses, Map<String, dynamic> params) {
+  void _addStatusList(
+      List<VideoStatus>? statuses, Map<String, dynamic> params) {
     if (statuses != null) {
       // Make new list with the values as string
-      final List<String> statusesStringList = statuses.map((status) => EnumUtil.convertVideoStatusToString(status)).toList();
+      final List<String> statusesStringList = statuses
+          .map((status) => EnumUtil.convertVideoStatusToString(status))
+          .toList();
       // Join the array with commas
       String statusesConcatenated = statusesStringList.join(',');
       params.addAll({'status': statusesConcatenated});
@@ -716,29 +764,36 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void _addOrganization(List<Organization>? organization, Map<String, dynamic> params) {
+  void _addOrganization(
+      List<Organization>? organization, Map<String, dynamic> params) {
     if (organization != null && organization.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> organizationStringList = organization.map((org) => EnumUtil.convertOrganizationToString(org)!).toList();
+      final List<String> organizationStringList = organization
+          .map((org) => EnumUtil.convertOrganizationToString(org)!)
+          .toList();
       // Join the array with commas and add it to the parameters
       String orgsConcatenated = organizationStringList.join(',');
       params.addAll({'org': orgsConcatenated});
     }
   }
-  
-  void _addSingleOrganization(Organization? organization, Map<String, dynamic> params) {
+
+  void _addSingleOrganization(
+      Organization? organization, Map<String, dynamic> params) {
     if (organization != null) {
-      params.addAll({'org': EnumUtil.convertOrganizationToString(organization)});
+      params
+          .addAll({'org': EnumUtil.convertOrganizationToString(organization)});
     }
   }
 
-  void _addMentionedChannelId(String? mentionedChannelId, Map<String, dynamic> params) {
+  void _addMentionedChannelId(
+      String? mentionedChannelId, Map<String, dynamic> params) {
     if (mentionedChannelId != null) {
       params.addAll({'mentioned_channel_id': mentionedChannelId});
     }
   }
 
-  void _addMaxUpcomingHours(int? maxUpcomingHours, Map<String, dynamic> params) {
+  void _addMaxUpcomingHours(
+      int? maxUpcomingHours, Map<String, dynamic> params) {
     if (maxUpcomingHours != null) {
       params.addAll({'max_upcoming_hours': '$maxUpcomingHours'});
     }
@@ -747,7 +802,9 @@ class HolodexClient extends BaseHolodexClient {
   void _addIncludes(List<Includes>? includes, Map<String, dynamic> params) {
     if (includes != null && includes.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> includesStringList = includes.map((included) => EnumUtil.convertIncludesToString(included)).toList();
+      final List<String> includesStringList = includes
+          .map((included) => EnumUtil.convertIncludesToString(included))
+          .toList();
       // Join the array with commas
       String includesConcatenated = includesStringList.join(',');
       params.addAll({'include': includesConcatenated});
@@ -755,27 +812,29 @@ class HolodexClient extends BaseHolodexClient {
   }
 
   void _addLanguages(List<Language>? lang, Map<String, dynamic> params) {
-    if ( lang != null && lang.isNotEmpty ) {
+    if (lang != null && lang.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> langStringList = lang.map((l) => EnumUtil.convertLanguageToString(l)).toList();
+      final List<String> langStringList =
+          lang.map((l) => EnumUtil.convertLanguageToString(l)).toList();
       // Join the array with commas
       String languagesConcat = langStringList.join(',');
       params.addAll({'lang': languagesConcat});
     }
   }
-  
+
   void _addChannelSort(List<ChannelSort> sort, Map<String, dynamic> params) {
-    if ( sort.isNotEmpty ) {
+    if (sort.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> sortStringList = sort.map((l) => EnumUtil.convertChannelSortToString(l)).toList();
+      final List<String> sortStringList =
+          sort.map((l) => EnumUtil.convertChannelSortToString(l)).toList();
       // Join the array with commas
       String sortConcat = sortStringList.join(',');
       params.addAll({'sort': sortConcat});
     }
   }
-  
+
   void _addChannels(List<String> channelIds, Map<String, dynamic> params) {
-    if ( channelIds.isNotEmpty ) {
+    if (channelIds.isNotEmpty) {
       // Join the array with commas
       String channelsConcat = channelIds.join(',');
       params.addAll({'channels': channelsConcat});
@@ -783,7 +842,7 @@ class HolodexClient extends BaseHolodexClient {
   }
 
   // Utilities
-  
+
   /// Utility method to make http get call
   @override
   Future<Response> get({
@@ -797,7 +856,7 @@ class HolodexClient extends BaseHolodexClient {
       'content-type': 'application/json',
       'X-APIKEY': apiKey,
     });
-    
+
     try {
       final finalUri = _getUriUrl(basePath + path, params);
       return await _httpClient.get(finalUri, headers: headers);
@@ -823,9 +882,10 @@ class HolodexClient extends BaseHolodexClient {
       'content-type': 'application/json',
       'X-APIKEY': apiKey,
     });
-    
+
     try {
-      return await _httpClient.post(_getUriUrl(basePath + path, params), headers: headers, body: json.encode(data));
+      return await _httpClient.post(_getUriUrl(basePath + path, params),
+          headers: headers, body: json.encode(data));
     } catch (e) {
       if (e is HolodexException) {
         rethrow;
@@ -835,11 +895,7 @@ class HolodexClient extends BaseHolodexClient {
   }
 
   // This method was taken from https://github.com/Ephenodrom/Dart-Basic-Utils/blob/master/lib/src/HttpUtils.dart#L279
-  static Uri _getUriUrl(
-      String url, 
-      Map<String, dynamic>? queryParameters
-    ) {
-
+  static Uri _getUriUrl(String url, Map<String, dynamic>? queryParameters) {
     if (queryParameters == null || queryParameters.isEmpty) {
       return Uri.parse(url);
     }
@@ -848,13 +904,12 @@ class HolodexClient extends BaseHolodexClient {
   }
 
   /// Closes the client and cleans up any resources associated with it.
-  /// 
+  ///
   /// It's important to close each client when it's done being used; failing to do so can cause the Dart process to hang.
   void close() {
     _httpClient.close();
   }
 }
-
 
 class _Constants {
   static const String videosPath = '/videos';

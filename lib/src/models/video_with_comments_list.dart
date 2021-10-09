@@ -44,13 +44,15 @@ class VideoWithCommentsList extends Equatable {
     return VideoWithCommentsList(
       total: total,
       paginated: map['paginated'] ?? false,
-      videos: List<VideoWithComments>.from(map['items']?.map((x) => VideoWithComments.fromMap(x))),
+      videos: List<VideoWithComments>.from(
+          map['items']?.map((x) => VideoWithComments.fromMap(x))),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory VideoWithCommentsList.fromJson(String source) => VideoWithCommentsList.fromMap(json.decode(source));
+  factory VideoWithCommentsList.fromJson(String source) =>
+      VideoWithCommentsList.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

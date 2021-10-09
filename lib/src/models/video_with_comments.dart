@@ -23,24 +23,24 @@ class VideoWithComments extends Video {
     required this.comments,
     ChannelMin? channel,
   }) : super(
-    id: id,
-    title: title,
-    type: type,
-    topicId: topicId,
-    publishedAt: publishedAt,
-    availableAt: availableAt,
-    duration: duration,
-    status: status,
-    startScheduled: startScheduled,
-    startActual: startActual,
-    endActual: endActual,
-    liveViewers: liveViewers,
-    description: description,
-    channelId: channelId,
-    songcount: songcount,
-    language: language,
-    channel: channel,
-  );
+          id: id,
+          title: title,
+          type: type,
+          topicId: topicId,
+          publishedAt: publishedAt,
+          availableAt: availableAt,
+          duration: duration,
+          status: status,
+          startScheduled: startScheduled,
+          startActual: startActual,
+          endActual: endActual,
+          liveViewers: liveViewers,
+          description: description,
+          channelId: channelId,
+          songcount: songcount,
+          language: language,
+          channel: channel,
+        );
 
   @override
   VideoWithComments copyWith({
@@ -113,12 +113,14 @@ class VideoWithComments extends Video {
     return VideoWithComments(
       id: map['id'],
       title: map['title'],
-      type: EnumToString.fromString(VideoType.values, map['type']) ?? VideoType.clip,
+      type: EnumToString.fromString(VideoType.values, map['type']) ??
+          VideoType.clip,
       topicId: map['topic_id'],
       publishedAt: map['published_at'],
       availableAt: map['available_at'],
       duration: map['duration'],
-      status: EnumUtil.convertStringToVideoStatus(map['status']) ?? VideoStatus.missing,
+      status: EnumUtil.convertStringToVideoStatus(map['status']) ??
+          VideoStatus.missing,
       startScheduled: map['start_scheduled'],
       startActual: map['start_actual'],
       endActual: map['end_actual'],
@@ -128,37 +130,39 @@ class VideoWithComments extends Video {
       channelId: map['channel_id'],
       channel: ChannelMin.fromMap(map['channel']),
       language: map['lang'],
-      comments: List<Comment>.from(map['comments']?.map((x) => Comment.fromMap(x))),
+      comments:
+          List<Comment>.from(map['comments']?.map((x) => Comment.fromMap(x))),
     );
   }
 
   @override
   String toJson() => json.encode(toMap());
 
-  factory VideoWithComments.fromJson(String source) => VideoWithComments.fromMap(json.decode(source));
+  factory VideoWithComments.fromJson(String source) =>
+      VideoWithComments.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;
 
   @override
   List<Object> get props => [
-    id,
-    title,
-    type,
-    topicId ?? 'Topic id not given',
-    publishedAt ?? 'Published at not given',
-    availableAt,
-    duration ?? 'Duration not provided',
-    status,
-    startScheduled ?? 'Scheduled start not given',
-    startActual ?? 'Actual start not given',
-    endActual ?? 'Actual end not given',
-    liveViewers ?? 'Live viewers not given',
-    description ?? 'Description not given',
-    songcount ?? 'Song count not given',
-    language ?? 'Language not given',
-    channelId ?? 'Channel id not given',
-    channel ?? 'Channel not given',
-    comments
-  ];
+        id,
+        title,
+        type,
+        topicId ?? 'Topic id not given',
+        publishedAt ?? 'Published at not given',
+        availableAt,
+        duration ?? 'Duration not provided',
+        status,
+        startScheduled ?? 'Scheduled start not given',
+        startActual ?? 'Actual start not given',
+        endActual ?? 'Actual end not given',
+        liveViewers ?? 'Live viewers not given',
+        description ?? 'Description not given',
+        songcount ?? 'Song count not given',
+        language ?? 'Language not given',
+        channelId ?? 'Channel id not given',
+        channel ?? 'Channel not given',
+        comments
+      ];
 }

@@ -47,14 +47,16 @@ class ChannelMin extends Equatable {
       id: map['id'],
       name: map['name'],
       englishName: map['english_name'],
-      type: EnumUtil.convertStringToChannelType(map['type'] ?? '') ?? ChannelType.subber,
+      type: EnumUtil.convertStringToChannelType(map['type'] ?? '') ??
+          ChannelType.subber,
       photo: map['photo'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ChannelMin.fromJson(String source) => ChannelMin.fromMap(json.decode(source));
+  factory ChannelMin.fromJson(String source) =>
+      ChannelMin.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

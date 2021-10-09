@@ -34,11 +34,11 @@ class Channel extends ChannelMin {
     this.inactive,
     this.description,
   }) : super(
-    id: id,
-    name: name,
-    type: type,
-    photo: photo,
-  );
+          id: id,
+          name: name,
+          type: type,
+          photo: photo,
+        );
 
   @override
   Map<String, dynamic> toMap() {
@@ -68,7 +68,8 @@ class Channel extends ChannelMin {
       id: map['id'],
       name: map['name'],
       englishName: map['english_name'],
-      type: EnumUtil.convertStringToChannelType(map['type'] ?? '') ?? ChannelType.subber,
+      type: EnumUtil.convertStringToChannelType(map['type'] ?? '') ??
+          ChannelType.subber,
       org: EnumUtil.convertStringToOrganization(map['org'] ?? ''),
       suborg: map['suborg'],
       photo: map['photo'],
@@ -88,7 +89,8 @@ class Channel extends ChannelMin {
   @override
   String toJson() => json.encode(toMap());
 
-  factory Channel.fromJson(String source) => Channel.fromMap(json.decode(source));
+  factory Channel.fromJson(String source) =>
+      Channel.fromMap(json.decode(source));
 
   @override
   Channel copyWith({

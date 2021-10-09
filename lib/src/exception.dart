@@ -4,7 +4,7 @@ class HolodexException implements Exception {
   final dynamic response;
 
   HolodexException([this.message = "", this.code, this.response]);
-  
+
   @override
   String toString() {
     if (message == null) return "HolodexException";

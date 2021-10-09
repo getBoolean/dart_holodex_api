@@ -6,34 +6,33 @@ abstract class BaseHolodexClient {
   /// Extended by [HolodexClient]
   BaseHolodexClient();
 
-
   // GET REQUESTS
 
   /// Get a channel by its ID
-  /// 
+  ///
   /// Returns [Channel]
-  /// 
+  ///
   /// Arguments:
-  /// 
+  ///
   /// - `channelId` ID of the Youtube Channel that is being queried
   Future<Channel> getChannelFromId(String channelId);
 
   /// Get a video by its video ID
-  /// 
+  ///
   /// Returns [VideoFull]
-  /// 
+  ///
   /// Arguments:
-  /// 
+  ///
   /// - `videoId` The video ID as a string
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
   Future<VideoFull> getVideoFromId(String videoId);
 
   /// Get a list of videos
-  /// 
+  ///
   /// Returns `VideoFullList`
-  /// 
+  ///
   /// Arguments:
-  /// 
+  ///
   /// - `channelId` Filter by video uploader channel ID
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
   /// - `lang` Filter by the `Language`
@@ -64,15 +63,15 @@ abstract class BaseHolodexClient {
     String? topic,
     VideoType? videoType,
   });
-  
+
   /// Get a list of live videos
-  /// 
+  ///
   /// Returns `VideoFullList`
-  /// 
+  ///
   /// This is somewhat similar to calling listVideos().
   ///
   /// However, this endpoint imposes these default values on the query parameters: You can choose to override them by providing your own values.
-  /// 
+  ///
   /// - status: [VideoStatus.live, VideoStatus.upcoming],
   /// - type: VideoType.stream,
   /// - sort: [VideoSort.availableAt],
@@ -80,9 +79,9 @@ abstract class BaseHolodexClient {
   /// - max_upcoming_hours: 48,
   /// - limit: 9999,
   /// - include: [Includes.liveInfo] + query's include
-  /// 
+  ///
   /// Arguments:
-  /// 
+  ///
   /// - `channelId` Filter by video uploader channel ID
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
   /// - `lang` Filter by the `Language`
@@ -113,9 +112,9 @@ abstract class BaseHolodexClient {
     String? topic,
     VideoType? videoType,
   });
-  
+
   /// Get channels
-  /// 
+  ///
   /// Arguments:
   /// - `lang` List of languages. Language is a property of Channel, so only Channels satisfying the language will be returned. Leave empty to search for Vtubers and/or all clippers.
   /// - `limit` Results limit
@@ -133,20 +132,20 @@ abstract class BaseHolodexClient {
   });
 
   /// Quickly Access Live / Upcoming for a set of Channels
-  /// 
+  ///
   /// This endpoint is similar to the getLiveVideos() method and usually replies much faster.
   /// It is more friendly in general. The cost to execute a lookup is significantly cheaper.
   /// It's unfortunately less customizable as a result.
-  /// 
+  ///
   /// We recommends using this if you have a fixed set of channel IDs to look up status for.
   Future<List<Video>> getLiveVideosFromChannelsQuickly(
     List<String> channelIds,
   );
 
   /// GetVideosFromChannel
-  /// 
+  ///
   /// Alias of getVideosRelatedToChannel()
-  /// 
+  ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
@@ -164,9 +163,9 @@ abstract class BaseHolodexClient {
   });
 
   /// Get Clips of a VTuber
-  /// 
+  ///
   /// Alias of getVideosRelatedToChannel()
-  /// 
+  ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
@@ -184,9 +183,9 @@ abstract class BaseHolodexClient {
   });
 
   /// Get Collabs that mention a VTuber
-  /// 
+  ///
   /// Alias of getVideosRelatedToChannel()
-  /// 
+  ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
@@ -203,9 +202,9 @@ abstract class BaseHolodexClient {
     bool paginated,
   });
 
-  /// A simplified method for access channel specific data. 
+  /// A simplified method for access channel specific data.
   /// If you want more customization, the same result can be obtained by calling the queryVideos() method.
-  /// 
+  ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `type` The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId`
@@ -235,11 +234,11 @@ abstract class BaseHolodexClient {
     List<Language>? recommendationLanguages,
   });
 
-  /// Flexible endpoint to search for videos fufilling multiple conditions. 
+  /// Flexible endpoint to search for videos fufilling multiple conditions.
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
-  /// 
+  ///
   /// Searching for topics and clips is not supported, because clips do not contain topic_ids
-  /// 
+  ///
   /// Arguments
   /// - `searchSort` Sort by newest or oldest
   /// - `languages` If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)
@@ -264,11 +263,11 @@ abstract class BaseHolodexClient {
     int limit = 25,
   });
 
-  /// Flexible endpoint to search for comments in videos fufilling multiple conditions. 
+  /// Flexible endpoint to search for comments in videos fufilling multiple conditions.
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
-  /// 
+  ///
   /// Searching for topics and clips is not supported, because clips do not contain topic_ids
-  /// 
+  ///
   /// Arguments
   /// - `searchSort` Sort by newest or oldest
   /// - `languages` If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)
@@ -303,7 +302,6 @@ abstract class BaseHolodexClient {
   //   Map<String, dynamic> params = const {},
   // });
 
-
   /// An alias of HolodexClient.call('get')
   Future<Response> get({
     required String path,
@@ -311,12 +309,10 @@ abstract class BaseHolodexClient {
     Map<String, dynamic> params = const {},
   });
 
-
   /// An alias of HolodexClient.call('post')
   Future<Response> post({
     required String path,
     Map<String, String>? headers = const {},
     Map<String, dynamic>? data,
   });
-
 }

@@ -11,7 +11,17 @@ enum ChannelType { vtuber, subber }
 // Some of the below enums are based off of https://github.com/EBro912/Holodex.NET
 // These are using enums instead of classes with static strings so that users can see the allowed values in a field instead of any string
 
-enum Language { all, english, japanese, spanish, chinese, korean, french, indonesian, russian }
+enum Language {
+  all,
+  english,
+  japanese,
+  spanish,
+  chinese,
+  korean,
+  french,
+  indonesian,
+  russian
+}
 
 enum ChannelSort {
   id,
@@ -119,27 +129,23 @@ enum SearchSort { oldest, newest }
 
 enum SearchTarget { clip, stream }
 
-
-
-
 class EnumUtil {
-
   /// Converts a [SearchTarget] enum to string.
-  /// 
+  ///
   /// Returns [String]
   static String convertSearchTargetToString(SearchTarget target) {
     return EnumToString.convertToString(target);
   }
 
   /// Converts a [SearchSort] enum to string.
-  /// 
+  ///
   /// Returns [String]
   static String convertSearchSortToString(SearchSort sort) {
     return EnumToString.convertToString(sort);
   }
 
   /// Converts a [Includes] enum to string.
-  /// 
+  ///
   /// Returns [String]
   static String convertIncludesToString(Includes i) {
     final includesMapToString = {
@@ -158,7 +164,7 @@ class EnumUtil {
   }
 
   /// Converts a [Organization] enum to string.
-  /// 
+  ///
   /// Returns [String]
   static String? convertOrganizationToString(Organization? org) {
     if (org == null) {
@@ -196,7 +202,7 @@ class EnumUtil {
   }
 
   /// Converts a string organization name to the corresponding [Organization] enum.
-  /// 
+  ///
   /// Returns `null` if it is does not exist or was incorrectly typed, otherwise returns [Organization]
   static Organization? convertStringToOrganization(String org) {
     final stringMapToOrganization = {
@@ -231,7 +237,7 @@ class EnumUtil {
   }
 
   /// Converts a [ChannelSort] enum to string.
-  /// 
+  ///
   /// Returns [String]
   static String convertChannelSortToString(ChannelSort sort) {
     final videoSortMapToString = {
@@ -241,17 +247,19 @@ class EnumUtil {
   }
 
   /// Converts a [ChannelType] enum to string.
-  /// 
+  ///
   /// Returns [String]
-  static String convertChannelTypeToString(ChannelType type) => EnumToString.convertToString(type);
+  static String convertChannelTypeToString(ChannelType type) =>
+      EnumToString.convertToString(type);
 
   /// Converts a string channel type to the corresponding [ChannelType] enum.
-  /// 
+  ///
   /// Returns `null` if it is does not exist, otherwise returns [ChannelType]
-  static ChannelType? convertStringToChannelType(String type) => EnumToString.fromString(ChannelType.values, type);
+  static ChannelType? convertStringToChannelType(String type) =>
+      EnumToString.fromString(ChannelType.values, type);
 
   /// Converts a [Language] enum to string.
-  /// 
+  ///
   /// Returns [String]
   static String convertLanguageToString(Language lang) {
     final languageMapToSring = {
@@ -269,7 +277,7 @@ class EnumUtil {
   }
 
   /// Converts a string language code to the corresponding [Language] enum.
-  /// 
+  ///
   /// Returns `null` if it is not supported or the language code is incorrect. Otherwise returns [Language]
   static Language? convertStringToLanguage(String lang) {
     final stringMapToLanguage = {
@@ -287,7 +295,7 @@ class EnumUtil {
   }
 
   /// Converts a [VideoStatus] enum to string.
-  /// 
+  ///
   /// Returns [String]
   static String convertVideoStatusToString(VideoStatus status) {
     final statusMapToString = {
@@ -301,7 +309,7 @@ class EnumUtil {
   }
 
   /// Converts a string video status to the corresponding [VideoStatus] enum.
-  /// 
+  ///
   /// Returns `null` if it is does not exist, otherwise returns [VideoStatus]
   static VideoStatus? convertStringToVideoStatus(String status) {
     final stringMapToStatus = {
@@ -315,17 +323,19 @@ class EnumUtil {
   }
 
   /// Converts a [VideoType] enum to string.
-  /// 
+  ///
   /// Returns [String]
-  static String convertVideoTypeToString(VideoType type) => EnumToString.convertToString(type);
+  static String convertVideoTypeToString(VideoType type) =>
+      EnumToString.convertToString(type);
 
   /// Converts a string video type to the corresponding [VideoType] enum.
-  /// 
+  ///
   /// Returns `null` if it is does not exist, otherwise returns [VideoType]
-  static VideoType? convertStringToVideoType(String type) => EnumToString.fromString(VideoType.values, type);
+  static VideoType? convertStringToVideoType(String type) =>
+      EnumToString.fromString(VideoType.values, type);
 
   /// Converts a [Order] enum to string.
-  /// 
+  ///
   /// Returns [String]
   static String convertOrderToString(Order order) {
     final videoOrderMapToString = {
@@ -337,12 +347,13 @@ class EnumUtil {
   }
 
   /// Converts a [VideoSearchType] enum to string.
-  /// 
+  ///
   /// Returns [String]
-  static String convertVideoSearchTypeToString(VideoSearchType searchType) => EnumToString.convertToString(searchType);
+  static String convertVideoSearchTypeToString(VideoSearchType searchType) =>
+      EnumToString.convertToString(searchType);
 
   /// Converts a [VideoSort] enum to string.
-  /// 
+  ///
   /// Returns [String]
   static String convertVideoSortToString(VideoSort sort) {
     final videoSortMapToString = {
