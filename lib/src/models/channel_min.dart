@@ -37,7 +37,7 @@ class ChannelMin extends Equatable {
       'id': id,
       'name': name,
       'english_name': englishName,
-      'type': convertChannelTypeToString(type),
+      'type': EnumUtil.convertChannelTypeToString(type),
       'photo': photo,
     };
   }
@@ -47,7 +47,7 @@ class ChannelMin extends Equatable {
       id: map['id'],
       name: map['name'],
       englishName: map['english_name'],
-      type: convertStringToChannelType(map['type'] ?? '') ?? ChannelType.subber,
+      type: EnumUtil.convertStringToChannelType(map['type'] ?? '') ?? ChannelType.subber,
       photo: map['photo'],
     );
   }

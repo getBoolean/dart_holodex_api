@@ -97,7 +97,7 @@ class HolodexClient extends BaseHolodexClient {
     params.addAll({
       'limit': '$limit',
       'offset': '$offset',
-      'order': convertOrderToString(order),
+      'order': EnumUtil.convertOrderToString(order),
     });
 
     _addVideoSort(sort, params);
@@ -207,7 +207,7 @@ class HolodexClient extends BaseHolodexClient {
     params.addAll({
       'limit': '$limit',
       'offset': '$offset',
-      'order': convertOrderToString(order),
+      'order': EnumUtil.convertOrderToString(order),
     });
 
     _addVideoSort(sort, params);
@@ -295,7 +295,7 @@ class HolodexClient extends BaseHolodexClient {
     params.addAll({
       'limit': '$limit',
       'offset': '$offset',
-      'order': convertOrderToString(order),
+      'order': EnumUtil.convertOrderToString(order),
     });
 
     _addChannelSort(sort, params);
@@ -451,7 +451,7 @@ class HolodexClient extends BaseHolodexClient {
     _addLanguages(lang, params);
     _addPaginated(paginated, params);
 
-    final response = await get(path: '${_Constants.channelsPath}/$channelId/${convertVideoSearchTypeToString(type)}', params: params);
+    final response = await get(path: '${_Constants.channelsPath}/$channelId/${EnumUtil.convertVideoSearchTypeToString(type)}', params: params);
     
     if (paginated) {
       // Grab total and return with it
@@ -524,7 +524,7 @@ class HolodexClient extends BaseHolodexClient {
     final Map<String, dynamic> data = {};
 
     data.addAll({
-      'sort': convertSearchSortToString(searchSort),
+      'sort': EnumUtil.convertSearchSortToString(searchSort),
       'paginated': paginated,
       'offset': offset,
       'limit': limit,
@@ -533,13 +533,13 @@ class HolodexClient extends BaseHolodexClient {
 
     if (languages != null && languages.isNotEmpty) {
       data.addAll({
-        'lang': languages.map((l) => convertLanguageToString(l)).toList(),
+        'lang': languages.map((l) => EnumUtil.convertLanguageToString(l)).toList(),
       });
     }
 
     if (searchTargets != null && searchTargets.isNotEmpty) {
       data.addAll({
-        'target': searchTargets.map((s) => convertSearchTargetToString(s)).toList(),
+        'target': searchTargets.map((s) => EnumUtil.convertSearchTargetToString(s)).toList(),
       });
     }
 
@@ -605,7 +605,7 @@ class HolodexClient extends BaseHolodexClient {
     final Map<String, dynamic> data = {};
 
     data.addAll({
-      'sort': convertSearchSortToString(searchSort),
+      'sort': EnumUtil.convertSearchSortToString(searchSort),
       'comment': comment,
       'offset': offset,
       'limit': limit,
@@ -620,13 +620,13 @@ class HolodexClient extends BaseHolodexClient {
 
     if (languages != null && languages.isNotEmpty) {
       data.addAll({
-        'lang': languages.map((l) => convertLanguageToString(l)).toList(),
+        'lang': languages.map((l) => EnumUtil.convertLanguageToString(l)).toList(),
       });
     }
 
     if (searchTargets != null && searchTargets.isNotEmpty) {
       data.addAll({
-        'target': searchTargets.map((s) => convertSearchTargetToString(s)).toList(),
+        'target': searchTargets.map((s) => EnumUtil.convertSearchTargetToString(s)).toList(),
       });
     }
 
@@ -657,7 +657,7 @@ class HolodexClient extends BaseHolodexClient {
   void _addVideoSort(List<VideoSort> sort, Map<String, dynamic> params) {
     if (sort.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> sortStringList = sort.map((s) => convertVideoSortToString(s)).toList();
+      final List<String> sortStringList = sort.map((s) => EnumUtil.convertVideoSortToString(s)).toList();
       // Join the array with commas
       String sortConcatenated = sortStringList.join(',');
       params.addAll({'include': sortConcatenated});
@@ -685,7 +685,7 @@ class HolodexClient extends BaseHolodexClient {
   void _addStatusList(List<VideoStatus>? statuses, Map<String, dynamic> params) {
     if (statuses != null) {
       // Make new list with the values as string
-      final List<String> statusesStringList = statuses.map((status) => convertVideoStatusToString(status)).toList();
+      final List<String> statusesStringList = statuses.map((status) => EnumUtil.convertVideoStatusToString(status)).toList();
       // Join the array with commas
       String statusesConcatenated = statusesStringList.join(',');
       params.addAll({'status': statusesConcatenated});
@@ -694,7 +694,7 @@ class HolodexClient extends BaseHolodexClient {
 
   void _addType(VideoType? type, Map<String, dynamic> params) {
     if (type != null && type != VideoType.all) {
-      params.addAll({'type': convertVideoTypeToString(type)});
+      params.addAll({'type': EnumUtil.convertVideoTypeToString(type)});
     }
   }
 
@@ -707,7 +707,7 @@ class HolodexClient extends BaseHolodexClient {
   void _addOrganization(List<Organization>? organization, Map<String, dynamic> params) {
     if (organization != null && organization.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> organizationStringList = organization.map((org) => convertOrganizationToString(org)!).toList();
+      final List<String> organizationStringList = organization.map((org) => EnumUtil.convertOrganizationToString(org)!).toList();
       // Join the array with commas and add it to the parameters
       String orgsConcatenated = organizationStringList.join(',');
       params.addAll({'org': orgsConcatenated});
@@ -716,7 +716,7 @@ class HolodexClient extends BaseHolodexClient {
   
   void _addSingleOrganization(Organization? organization, Map<String, dynamic> params) {
     if (organization != null) {
-      params.addAll({'org': convertOrganizationToString(organization)});
+      params.addAll({'org': EnumUtil.convertOrganizationToString(organization)});
     }
   }
 
@@ -735,7 +735,7 @@ class HolodexClient extends BaseHolodexClient {
   void _addIncludes(List<Includes>? includes, Map<String, dynamic> params) {
     if (includes != null && includes.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> includesStringList = includes.map((included) => convertIncludesToString(included)).toList();
+      final List<String> includesStringList = includes.map((included) => EnumUtil.convertIncludesToString(included)).toList();
       // Join the array with commas
       String includesConcatenated = includesStringList.join(',');
       params.addAll({'include': includesConcatenated});
@@ -745,7 +745,7 @@ class HolodexClient extends BaseHolodexClient {
   void _addLanguages(List<Language>? lang, Map<String, dynamic> params) {
     if ( lang != null && lang.isNotEmpty ) {
       // Make new list with the values as string
-      final List<String> langStringList = lang.map((l) => convertLanguageToString(l)).toList();
+      final List<String> langStringList = lang.map((l) => EnumUtil.convertLanguageToString(l)).toList();
       // Join the array with commas
       String languagesConcat = langStringList.join(',');
       params.addAll({'lang': languagesConcat});
@@ -755,7 +755,7 @@ class HolodexClient extends BaseHolodexClient {
   void _addChannelSort(List<ChannelSort> sort, Map<String, dynamic> params) {
     if ( sort.isNotEmpty ) {
       // Make new list with the values as string
-      final List<String> sortStringList = sort.map((l) => convertChannelSortToString(l)).toList();
+      final List<String> sortStringList = sort.map((l) => EnumUtil.convertChannelSortToString(l)).toList();
       // Join the array with commas
       String sortConcat = sortStringList.join(',');
       params.addAll({'sort': sortConcat});
