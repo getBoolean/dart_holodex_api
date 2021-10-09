@@ -80,6 +80,14 @@ Get an instance of HolodexClient with your API key
 var holodexClient = HolodexClient(apiKey: apiKey);
 ```
 
+Remember to close the client when you are done with it. This closes the client and cleans up any resources associated with it.
+
+It's important to close the client when it's done being used; failing to do so can cause the Dart process to hang.
+
+```dart
+holodexClient.close();
+```
+
 ### Get a video by its ID
 
 Returns [VideoFull]

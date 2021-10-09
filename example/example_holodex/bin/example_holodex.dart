@@ -155,4 +155,6 @@ void main(List<String> arguments) async {
     limit: 25,
   );
   print('Videos with Comment: ${searchComments.videos.length}\n');
+
+  holodexClient.close();
 }

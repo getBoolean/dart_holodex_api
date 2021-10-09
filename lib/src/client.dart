@@ -20,13 +20,13 @@ class HolodexClient extends BaseHolodexClient {
     Client? httpClient,
   }) {
     if (httpClient == null) {
-      client = Client();
+      _httpClient = Client();
     } else {
-      client = httpClient;
+      _httpClient = httpClient;
     }
   }
 
-  late final Client client;
+  late final Client _httpClient;
   final String basePath;
   final String apiKey;
 
@@ -786,7 +786,7 @@ class HolodexClient extends BaseHolodexClient {
     
     try {
       final finalUri = _getUriUrl(basePath + path, params);
-      return await client.get(finalUri, headers: headers);
+      return await _httpClient.get(finalUri, headers: headers);
     } catch (e) {
       if (e is HolodexException) {
         rethrow;
@@ -811,7 +811,7 @@ class HolodexClient extends BaseHolodexClient {
     });
     
     try {
-      return await client.post(_getUriUrl(basePath + path, params), headers: headers, body: json.encode(data));
+      return await _httpClient.post(_getUriUrl(basePath + path, params), headers: headers, body: json.encode(data));
     } catch (e) {
       if (e is HolodexException) {
         rethrow;
@@ -831,6 +831,13 @@ class HolodexClient extends BaseHolodexClient {
     }
     final uri = Uri.parse(url);
     return uri.replace(queryParameters: queryParameters);
+  }
+
+  /// Closes the client and cleans up any resources associated with it.
+  /// 
+  /// It's important to close each client when it's done being used; failing to do so can cause the Dart process to hang.
+  void close() {
+    _httpClient.close();
   }
 }
 
