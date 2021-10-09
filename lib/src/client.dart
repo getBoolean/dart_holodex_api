@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -536,13 +537,13 @@ class HolodexClient extends BaseHolodexClient {
 
     if (languages != null) {
       data.addAll({
-        'lang': languages.map((l) => convertLanguageToString(l)),
+        'lang': languages.map((l) => convertLanguageToString(l)).toList(),
       });
     }
 
     if (searchTarget != null) {
       data.addAll({
-        'target': searchTarget.map((s) => convertSearchTargetToString(s)),
+        'target': searchTarget.map((s) => convertSearchTargetToString(s)).toList(),
       });
     }
 
@@ -740,8 +741,9 @@ class HolodexClient extends BaseHolodexClient {
         method: method,
         path: basePath + path,
         queryParameters: params,
-        data: data,
+        data: jsonEncode(data),
         responseType: responseType,
+        contentType: 'application/json',
         headers: headers,
       );
       final response = await dioClient.fetch(result);
