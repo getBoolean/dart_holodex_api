@@ -8,7 +8,6 @@ import 'dart:convert';
 
 part 'models/channel.dart';
 part 'models/channel_min.dart';
-part 'models/video_with_channel.dart';
 part 'models/video.dart';
 part 'models/video_full.dart';
 part 'models/video_full_list.dart';

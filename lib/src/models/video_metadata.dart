@@ -3,7 +3,7 @@ part of dart_holodex_api.models;
 class VideoMetadata extends Equatable {
   final VideoFull video;
   final List<Comment>? comments;
-  final List<VideoWithChannel>? recommendations;
+  final List<Video>? recommendations;
   VideoMetadata({
     required this.video,
     this.comments,
@@ -13,7 +13,7 @@ class VideoMetadata extends Equatable {
   VideoMetadata copyWith({
     VideoFull? video,
     List<Comment>? comments,
-    List<VideoWithChannel>? recommendations,
+    List<Video>? recommendations,
   }) {
     return VideoMetadata(
       video: video ?? this.video,
@@ -34,7 +34,7 @@ class VideoMetadata extends Equatable {
     return VideoMetadata(
       video: VideoFull.fromMap(map['video']),
       comments: List<Comment>.from(map['comments']?.map((commentMap) => Comment.fromMap(commentMap))),
-      recommendations: List<VideoWithChannel>.from(map['recommendations']?.map((videoMap) => VideoWithChannel.fromMap(videoMap))),
+      recommendations: List<Video>.from(map['recommendations']?.map((videoMap) => Video.fromMap(videoMap))),
     );
   }
 

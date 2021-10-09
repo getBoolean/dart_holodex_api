@@ -47,16 +47,16 @@ class VideoFull extends Video {
   );
 
   /// Included when 'includes' contains 'clips'
-  final List<VideoWithChannel>? clips;
+  final List<Video>? clips;
 
   /// Included when 'includes' contains 'sources'
-  final List<VideoWithChannel>? sources;
+  final List<Video>? sources;
 
   /// Included when 'includes' contains 'refers'
-  final List<VideoWithChannel>? refers;
+  final List<Video>? refers;
 
   /// Included when 'includes' contains 'simulcasts'
-  final List<VideoWithChannel>? simulcasts;
+  final List<Video>? simulcasts;
 
   /// VTubers mentioned by this video, Included when 'includes' contains 'mentions'
   final List<Channel>? mentions;
@@ -82,10 +82,10 @@ class VideoFull extends Video {
     String? language,
     String? channelId,
     ChannelMin? channel,
-    List<VideoWithChannel>? clips,
-    List<VideoWithChannel>? sources,
-    List<VideoWithChannel>? refers,
-    List<VideoWithChannel>? simulcasts,
+    List<Video>? clips,
+    List<Video>? sources,
+    List<Video>? refers,
+    List<Video>? simulcasts,
     List<Channel>? mentions,
     List<Song>? songs,
   }) {
@@ -164,10 +164,10 @@ class VideoFull extends Video {
       language: map['lang'],
       channelId: map['channel_id'],
       channel: ChannelMin.fromMap(map['channel']),
-      clips: List<VideoWithChannel>.from(map['clips']?.map((clip) => VideoWithChannel.fromMap(clip)) ?? []),
-      sources: List<VideoWithChannel>.from(map['sources']?.map((source) => VideoWithChannel.fromMap(source)) ?? []),
-      refers: List<VideoWithChannel>.from(map['refers']?.map((refer) => VideoWithChannel.fromMap(refer)) ?? []),
-      simulcasts: List<VideoWithChannel>.from(map['simulcasts']?.map((simulcast) => VideoWithChannel.fromMap(simulcast)) ?? []),
+      clips: List<Video>.from(map['clips']?.map((clip) => Video.fromMap(clip)) ?? []),
+      sources: List<Video>.from(map['sources']?.map((source) => Video.fromMap(source)) ?? []),
+      refers: List<Video>.from(map['refers']?.map((refer) => Video.fromMap(refer)) ?? []),
+      simulcasts: List<Video>.from(map['simulcasts']?.map((simulcast) => Video.fromMap(simulcast)) ?? []),
       mentions: List<Channel>.from(map['mentions']?.map((mention) => Channel.fromMap(mention)) ?? []),
       songs: List<Song>.from(map['songs']?.map((song) => Song.fromMap(song)) ?? [])
     );

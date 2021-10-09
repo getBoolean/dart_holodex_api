@@ -486,7 +486,7 @@ class HolodexClient extends BaseHolodexClient {
     return VideoMetadata(
       video: video,
       comments: comments?.map((comment) => Comment.fromMap(comment)).toList(),
-      recommendations: recommendations?.map((video) => VideoWithChannel.fromMap(video)).toList(),
+      recommendations: recommendations?.map((video) => Video.fromMap(video)).toList(),
     );
   }
 
