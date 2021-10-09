@@ -41,6 +41,8 @@ A Dart wrapper for Holodex API v2
 
 Use this plugin in your Flutter app to:
 
+- Built in http client, or you can pass in your own
+- Enum and classes built in so that you don't need to consult the official Holodex API documentation
 - Get a video by its ID
 - Get a list of videos
 - Get a list of live videos
@@ -52,6 +54,8 @@ Use this plugin in your Flutter app to:
 - Get Collabs that mention a VTuber
 - Get Videos From Channel
 - Get a single Video's metadata
+- Search videos
+- Search for videos with comment
 
 ## Getting started
 
