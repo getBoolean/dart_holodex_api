@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:http/http.dart';
 
@@ -795,7 +794,7 @@ class HolodexClient extends BaseHolodexClient {
     // return await call('get', path: path, headers: headers, params: params);
     headers ??= {};
     headers.addAll({
-      HttpHeaders.contentTypeHeader: "application/json",
+      'content-type': 'application/json',
       'X-APIKEY': apiKey,
     });
     
@@ -821,7 +820,7 @@ class HolodexClient extends BaseHolodexClient {
     // return await call('post', path: path, headers: headers, data: data);
     headers ??= {};
     headers.addAll({
-      HttpHeaders.contentTypeHeader: "application/json",
+      'content-type': 'application/json',
       'X-APIKEY': apiKey,
     });
     
