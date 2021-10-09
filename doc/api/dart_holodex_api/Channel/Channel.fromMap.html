@@ -65,8 +65,8 @@
     id: map[&#39;id&#39;],
     name: map[&#39;name&#39;],
     englishName: map[&#39;english_name&#39;],
-    type: convertStringToChannelType(map[&#39;type&#39;] ?? &#39;&#39;) ?? ChannelType.subber,
-    org: convertStringToOrganization(map[&#39;org&#39;] ?? &#39;&#39;),
+    type: EnumUtil.convertStringToChannelType(map[&#39;type&#39;] ?? &#39;&#39;) ?? ChannelType.subber,
+    org: EnumUtil.convertStringToOrganization(map[&#39;org&#39;] ?? &#39;&#39;),
     suborg: map[&#39;suborg&#39;],
     photo: map[&#39;photo&#39;],
     banner: map[&#39;banner&#39;],
@@ -75,7 +75,7 @@
     subscriberCount: map[&#39;subscriber_count&#39;],
     viewCount: map[&#39;view_count&#39;],
     clipCount: map[&#39;clip_count&#39;],
-    lang: convertStringToLanguage(map[&#39;lang&#39;] ?? &#39;&#39;) ?? Language.all,
+    lang: EnumUtil.convertStringToLanguage(map[&#39;lang&#39;] ?? &#39;&#39;) ?? Language.all,
     publishedAt: map[&#39;published_at&#39;],
     inactive: map[&#39;inactive&#39;],
     description: map[&#39;description&#39;],
@@ -160,7 +160,7 @@
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.0
+      0.1.1
   </span>
 
   

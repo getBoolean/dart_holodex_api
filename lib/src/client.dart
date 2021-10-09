@@ -26,8 +26,13 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
+  /// HTTP Client
   late final Client _httpClient;
+
+  /// Base API URL
   final String basePath;
+
+  /// Your API key
   final String apiKey;
 
   /// Get a video by its video ID
@@ -492,10 +497,11 @@ class HolodexClient extends BaseHolodexClient {
     );
   }
 
-  /// Flexible endpoint to search for videos fufilling multiple conditions. 
+  /// Flexible endpoint to search for videos fufilling multiple conditions.
+  /// 
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
   /// 
-  /// Searching for topics and clips is not supported, because clips do not contain topic_ids
+  /// Searching for topics and clips is not supported, because clips do not contain topics
   /// 
   /// Arguments
   /// - `searchSort` Sort by newest or oldest
@@ -573,10 +579,11 @@ class HolodexClient extends BaseHolodexClient {
     return VideoFullList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
   }
 
-  /// Flexible endpoint to search for comments in videos fufilling multiple conditions. 
+  /// Flexible endpoint to search for comments in videos fufilling multiple conditions.
+  /// 
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
   /// 
-  /// Searching for topics and clips is not supported, because clips do not contain topic_ids
+  /// Searching for topics and clips is not supported, because clips do not contain topics
   /// 
   /// Arguments
   /// - `searchSort` Sort by newest or oldest

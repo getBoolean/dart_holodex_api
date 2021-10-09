@@ -106,7 +106,7 @@ Future&lt;List&lt;Channel&gt;&gt; getChannels({
   params.addAll({
     &#39;limit&#39;: &#39;$limit&#39;,
     &#39;offset&#39;: &#39;$offset&#39;,
-    &#39;order&#39;: convertOrderToString(order),
+    &#39;order&#39;: EnumUtil.convertOrderToString(order),
   });
 
   _addChannelSort(sort, params);
@@ -196,7 +196,7 @@ Future&lt;List&lt;Channel&gt;&gt; getChannels({
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.0
+      0.1.1
   </span>
 
   

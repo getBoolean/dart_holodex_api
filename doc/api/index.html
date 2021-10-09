@@ -349,9 +349,9 @@ print('Video Comments With Timestamps: ${timestampComments?.length}');
 print('Video Recommendations: ${recommendations?.length}');
 </code></pre>
 <h3 id="search-for-videos">Search For Videos</h3>
-<p>Flexible endpoint to search for videos fufilling multiple conditions.
-Descriptions with "any" implies an OR condition, and "all" implies a AND condition.</p>
-<p>Searching for topics and clips is not supported, because clips do not contain topic_ids</p>
+<p>Flexible endpoint to search for videos fufilling multiple conditions.</p>
+<p>Descriptions with "any" implies an OR condition, and "all" implies a AND condition.</p>
+<p>Searching for topics and clips is not supported, because clips do not contain topics</p>
 <p>Arguments</p>
 <ul>
 <li><code>searchSort</code> Sort by newest or oldest</li>
@@ -380,9 +380,9 @@ Descriptions with "any" implies an OR condition, and "all" implies a AND conditi
 print('Videos Found: ${searchVideos.videos.length}\n');
 </code></pre>
 <h3 id="search-for-videos-with-a-comment">Search For Videos With a Comment</h3>
-<p>Flexible endpoint to search for comments in videos fufilling multiple conditions.
-Descriptions with "any" implies an OR condition, and "all" implies a AND condition.</p>
-<p>Searching for topics and clips is not supported, because clips do not contain topic_ids</p>
+<p>Flexible endpoint to search for comments in videos fufilling multiple conditions.</p>
+<p>Descriptions with "any" implies an OR condition, and "all" implies a AND condition.</p>
+<p>Searching for topics and clips is not supported, because clips do not contain topics</p>
 <p>Arguments</p>
 <ul>
 <li><code>searchSort</code> Sort by newest or oldest</li>
@@ -460,7 +460,7 @@ print('Videos with Comment: ${searchComments.videos.length}\n');
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.0
+      0.1.1
   </span>
 
   

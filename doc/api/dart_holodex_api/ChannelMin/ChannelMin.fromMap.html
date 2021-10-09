@@ -65,7 +65,7 @@
     id: map[&#39;id&#39;],
     name: map[&#39;name&#39;],
     englishName: map[&#39;english_name&#39;],
-    type: convertStringToChannelType(map[&#39;type&#39;] ?? &#39;&#39;) ?? ChannelType.subber,
+    type: EnumUtil.convertStringToChannelType(map[&#39;type&#39;] ?? &#39;&#39;) ?? ChannelType.subber,
     photo: map[&#39;photo&#39;],
   );
 }</code></pre>
@@ -136,7 +136,7 @@
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.0
+      0.1.1
   </span>
 
   

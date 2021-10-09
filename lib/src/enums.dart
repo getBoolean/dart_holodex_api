@@ -195,7 +195,7 @@ class EnumUtil {
     return organizationMapToString[org];
   }
 
-  /// Converts a string organization name to the corresponding Orgnization enum.
+  /// Converts a string organization name to the corresponding [Organization] enum.
   /// 
   /// Returns `null` if it is does not exist or was incorrectly typed, otherwise returns [Organization]
   static Organization? convertStringToOrganization(String org) {
@@ -245,7 +245,7 @@ class EnumUtil {
   /// Returns [String]
   static String convertChannelTypeToString(ChannelType type) => EnumToString.convertToString(type);
 
-  /// Converts a string channel type to the corresponding ChannelType enum.
+  /// Converts a string channel type to the corresponding [ChannelType] enum.
   /// 
   /// Returns `null` if it is does not exist, otherwise returns [ChannelType]
   static ChannelType? convertStringToChannelType(String type) => EnumToString.fromString(ChannelType.values, type);
@@ -268,7 +268,7 @@ class EnumUtil {
     return languageMapToSring[lang]!;
   }
 
-  /// Converts a string language code to the corresponding Language enum.
+  /// Converts a string language code to the corresponding [Language] enum.
   /// 
   /// Returns `null` if it is not supported or the language code is incorrect. Otherwise returns [Language]
   static Language? convertStringToLanguage(String lang) {
@@ -300,7 +300,7 @@ class EnumUtil {
     return statusMapToString[status]!;
   }
 
-  /// Converts a string video status to the corresponding VideoStatus enum.
+  /// Converts a string video status to the corresponding [VideoStatus] enum.
   /// 
   /// Returns `null` if it is does not exist, otherwise returns [VideoStatus]
   static VideoStatus? convertStringToVideoStatus(String status) {
@@ -319,7 +319,7 @@ class EnumUtil {
   /// Returns [String]
   static String convertVideoTypeToString(VideoType type) => EnumToString.convertToString(type);
 
-  /// Converts a string video type to the corresponding VideoType enum.
+  /// Converts a string video type to the corresponding [VideoType] enum.
   /// 
   /// Returns `null` if it is does not exist, otherwise returns [VideoType]
   static VideoType? convertStringToVideoType(String type) => EnumToString.fromString(VideoType.values, type);

@@ -116,7 +116,7 @@ Future&lt;VideoFullList&gt; getVideosRelatedToChannel(
   _addLanguages(lang, params);
   _addPaginated(paginated, params);
 
-  final response = await get(path: &#39;${_Constants.channelsPath}&#47;$channelId&#47;${convertVideoSearchTypeToString(type)}&#39;, params: params);
+  final response = await get(path: &#39;${_Constants.channelsPath}&#47;$channelId&#47;${EnumUtil.convertVideoSearchTypeToString(type)}&#39;, params: params);
 
   if (paginated) {
     &#47;&#47; Grab total and return with it
@@ -200,7 +200,7 @@ Future&lt;VideoFullList&gt; getVideosRelatedToChannel(
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.0
+      0.1.1
   </span>
 
   

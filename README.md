@@ -378,9 +378,10 @@ print('Video Recommendations: ${recommendations?.length}');
 ### Search For Videos
 
 Flexible endpoint to search for videos fufilling multiple conditions.
+
 Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
 
-Searching for topics and clips is not supported, because clips do not contain topic_ids
+Searching for topics and clips is not supported, because clips do not contain topics
 
 Arguments
 
@@ -414,9 +415,10 @@ print('Videos Found: ${searchVideos.videos.length}\n');
 ### Search For Videos With a Comment
 
 Flexible endpoint to search for comments in videos fufilling multiple conditions.
+
 Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
 
-Searching for topics and clips is not supported, because clips do not contain topic_ids
+Searching for topics and clips is not supported, because clips do not contain topics
 
 Arguments
 

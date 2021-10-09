@@ -75,8 +75,8 @@ Map&lt;String, dynamic&gt; toMap() {
     &#39;id&#39;: id,
     &#39;name&#39;: name,
     &#39;english_name&#39;: englishName,
-    &#39;type&#39;: convertChannelTypeToString(type),
-    &#39;org&#39;: convertOrganizationToString(org),
+    &#39;type&#39;: EnumUtil.convertChannelTypeToString(type),
+    &#39;org&#39;: EnumUtil.convertOrganizationToString(org),
     &#39;suborg&#39;: suborg,
     &#39;photo&#39;: photo,
     &#39;banner&#39;: banner,
@@ -85,7 +85,7 @@ Map&lt;String, dynamic&gt; toMap() {
     &#39;subscriber_count&#39;: subscriberCount,
     &#39;view_count&#39;: viewCount,
     &#39;clip_count&#39;: clipCount,
-    &#39;lang&#39;: convertLanguageToString(lang),
+    &#39;lang&#39;: EnumUtil.convertLanguageToString(lang),
     &#39;published_at&#39;: publishedAt,
     &#39;inactive&#39;: inactive,
     &#39;description&#39;: description,
@@ -170,7 +170,7 @@ Map&lt;String, dynamic&gt; toMap() {
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.0
+      0.1.1
   </span>
 
   

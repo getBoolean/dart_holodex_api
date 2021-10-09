@@ -131,7 +131,7 @@ Future&lt;VideoFullList&gt; getVideos({
   params.addAll({
     &#39;limit&#39;: &#39;$limit&#39;,
     &#39;offset&#39;: &#39;$offset&#39;,
-    &#39;order&#39;: convertOrderToString(order),
+    &#39;order&#39;: EnumUtil.convertOrderToString(order),
   });
 
   _addVideoSort(sort, params);
@@ -250,7 +250,7 @@ Future&lt;VideoFullList&gt; getVideos({
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.0
+      0.1.1
   </span>
 
   

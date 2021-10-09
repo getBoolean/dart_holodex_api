@@ -75,9 +75,9 @@
     </section>
     
 <section class="desc markdown">
-  <p>Flexible endpoint to search for videos fufilling multiple conditions. 
-Descriptions with "any" implies an OR condition, and "all" implies a AND condition.</p>
-<p>Searching for topics and clips is not supported, because clips do not contain topic_ids</p>
+  <p>Flexible endpoint to search for videos fufilling multiple conditions.</p>
+<p>Descriptions with "any" implies an OR condition, and "all" implies a AND condition.</p>
+<p>Searching for topics and clips is not supported, because clips do not contain topics</p>
 <p>Arguments</p>
 <ul>
 <li><code>searchSort</code> Sort by newest or oldest</li>
@@ -113,7 +113,7 @@ Future&lt;VideoFullList&gt; searchVideos({
   final Map&lt;String, dynamic&gt; data = {};
 
   data.addAll({
-    &#39;sort&#39;: convertSearchSortToString(searchSort),
+    &#39;sort&#39;: EnumUtil.convertSearchSortToString(searchSort),
     &#39;paginated&#39;: paginated,
     &#39;offset&#39;: offset,
     &#39;limit&#39;: limit,
@@ -122,13 +122,13 @@ Future&lt;VideoFullList&gt; searchVideos({
 
   if (languages != null &amp;&amp; languages.isNotEmpty) {
     data.addAll({
-      &#39;lang&#39;: languages.map((l) =&gt; convertLanguageToString(l)).toList(),
+      &#39;lang&#39;: languages.map((l) =&gt; EnumUtil.convertLanguageToString(l)).toList(),
     });
   }
 
   if (searchTargets != null &amp;&amp; searchTargets.isNotEmpty) {
     data.addAll({
-      &#39;target&#39;: searchTargets.map((s) =&gt; convertSearchTargetToString(s)).toList(),
+      &#39;target&#39;: searchTargets.map((s) =&gt; EnumUtil.convertSearchTargetToString(s)).toList(),
     });
   }
 
@@ -234,7 +234,7 @@ Future&lt;VideoFullList&gt; searchVideos({
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.1.0
+      0.1.1
   </span>
 
   
