@@ -736,7 +736,15 @@ class HolodexClient extends BaseHolodexClient {
   }) async {
     try {
       // Prepare request
-      final response = await dioClient.fetch(RequestOptions(method: method, path: basePath + path, queryParameters: params, data: data, responseType: responseType, headers: headers));
+      final result = RequestOptions(
+        method: method,
+        path: basePath + path,
+        queryParameters: params,
+        data: data,
+        responseType: responseType,
+        headers: headers,
+      );
+      final response = await dioClient.fetch(result);
       // Return response
       return response;
     } catch (e) {
