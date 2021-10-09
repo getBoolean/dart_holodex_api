@@ -2,7 +2,7 @@ part of dart_holodex_api.models;
 
 class VideoList extends Equatable {
   /// All videos available, only included if paginated is true
-  final int? total;
+  final String? total;
 
   /// Whether the list is paginated
   final bool paginated;
@@ -17,7 +17,7 @@ class VideoList extends Equatable {
   });
 
   VideoList copyWith({
-    int? total,
+    String? total,
     bool? paginated,
     List<VideoFull>? videos,
   }) {
@@ -37,8 +37,12 @@ class VideoList extends Equatable {
   }
 
   factory VideoList.fromMap(Map<String, dynamic> map) {
+    var total = map['total'];
+    if (total is int) {
+      total = '$total';
+    }
     return VideoList(
-      total: map['total'],
+      total: total,
       paginated: map['paginated'] ?? false,
       videos: List<VideoFull>.from(map['items']?.map((x) => VideoFull.fromMap(x))),
     );
