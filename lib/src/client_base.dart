@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:http/http.dart';
 
 import '../dart_holodex_api.dart';
 
@@ -248,12 +248,12 @@ abstract class BaseHolodexClient {
   // UTILITIES
 
   /// Utility method to create an http call
-  Future<Response> call(
-    String method, {
-    required String path,
-    Map<String, String> headers = const {},
-    Map<String, dynamic> params = const {},
-  });
+  // Future<Response> call(
+  //   String method, {
+  //   required String path,
+  //   Map<String, String> headers = const {},
+  //   Map<String, dynamic> params = const {},
+  // });
 
 
   /// An alias of HolodexClient.call('get')
@@ -261,7 +261,6 @@ abstract class BaseHolodexClient {
     required String path,
     Map<String, String> headers = const {},
     Map<String, dynamic> params = const {},
-    ResponseType responseType = ResponseType.json
   });
 
 
@@ -270,7 +269,6 @@ abstract class BaseHolodexClient {
     required String path,
     Map<String, String> headers = const {},
     Map<String, dynamic> data = const {},
-    ResponseType responseType = ResponseType.json
   });
 
 }

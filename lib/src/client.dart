@@ -1,6 +1,7 @@
+import 'dart:convert';
 import 'dart:io';
 
-import 'package:dio/dio.dart';
+import 'package:http/http.dart';
 
 import 'client_base.dart';
 import '../dart_holodex_api.dart';
@@ -16,30 +17,16 @@ class HolodexClient extends BaseHolodexClient {
   HolodexClient({
     required this.apiKey,
     this.basePath = 'https://holodex.net/api/v2',
-    Dio? client,
+    Client? httpClient,
   }) {
-    if (client == null) {
-      dioClient = Dio();
+    if (httpClient == null) {
+      client = Client();
     } else {
-      dioClient = client;
+      client = httpClient;
     }
-
-    // API requires use of a key, so add it to the headers
-    dioClient.interceptors.add(InterceptorsWrapper(
-      onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
-        final customHeaders = {
-          HttpHeaders.contentTypeHeader: "application/json",
-          'X-APIKEY': apiKey,
-        };
-        options.headers.addAll(customHeaders);
-        return handler.next(options);
-      },
-      // onResponse: (Response<dynamic> response, ResponseInterceptorHandler handler) {
-      // }
-    ));
   }
 
-  late final Dio dioClient;
+  late final Client client;
   final String basePath;
   final String apiKey;
 
@@ -60,7 +47,7 @@ class HolodexClient extends BaseHolodexClient {
 
     final Response response = await get(path: _Constants.videosPath, params: params);
 
-    return VideoFull.fromMap(response.data.first);
+    return VideoFull.fromMap(jsonDecode(response.body).first);
   }
 
   /// Get a list of videos
@@ -147,13 +134,12 @@ class HolodexClient extends BaseHolodexClient {
     final response = await get(path: _Constants.videosPath, params: params);
 
     if (paginated) {
-      final Map<String, dynamic> map = response.data;
       // Grab total and return with it
-      final videoList = VideoList.fromMap(map);
+      final videoList = VideoList.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
     
-    final List list = response.data;
+    final List list = jsonDecode(response.body);
     return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
     // Returns as `List<Video>`
   }
@@ -256,13 +242,12 @@ class HolodexClient extends BaseHolodexClient {
     final response = await get(path: _Constants.liveVideosPath, params: params);
 
     if (paginated) {
-      final Map<String, dynamic> map = response.data;
       // Grab total and return with it
-      final videoList = VideoList.fromMap(map);
+      final videoList = VideoList.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
     
-    final List list = response.data;
+    final List list = jsonDecode(response.body);
     return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList()); // Returns as `List<Video>`
   }
 
@@ -277,7 +262,7 @@ class HolodexClient extends BaseHolodexClient {
   Future<Channel> getChannelFromId(String channelId) async {
     final Response response = await get(path: '${_Constants.channelsPath}/$channelId');
 
-    return Channel.fromMap(response.data);
+    return Channel.fromJson(response.body);
   }
 
   /// Get channels
@@ -321,7 +306,7 @@ class HolodexClient extends BaseHolodexClient {
 
     final response = await get(path: _Constants.channelsPath, params: params);
 
-    final List list = response.data;
+    final List list = jsonDecode(response.body);
 
     return list.map((channel) => Channel.fromMap(channel)).toList(); // Returns as `List<Channel>`
   }
@@ -347,7 +332,7 @@ class HolodexClient extends BaseHolodexClient {
     _addChannels(channelIds, params);
 
     final response = await get(path: _Constants.userLivePath, params: params);
-    final List list = response.data;
+    final List list = jsonDecode(response.body);
     return list.map((video) => Video.fromMap(video)).toList();
   }
   
@@ -467,13 +452,12 @@ class HolodexClient extends BaseHolodexClient {
     final response = await get(path: '${_Constants.channelsPath}/$channelId/${convertVideoSearchTypeToString(type)}', params: params);
     
     if (paginated) {
-      final Map<String, dynamic> map = response.data;
       // Grab total and return with it
-      final videoList = VideoList.fromMap(map);
+      final videoList = VideoList.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
     
-    final List list = response.data;
+    final List list = jsonDecode(response.body);
     return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
   }
 
@@ -495,9 +479,10 @@ class HolodexClient extends BaseHolodexClient {
     _addCommentsFlag(timestampComments, params);
 
     final response = await get(path: '${_Constants.videosPath}/$videoId', params: params);
-    final video = VideoFull.fromMap(response.data);
-    final List? comments = response.data['comments'];
-    final List? recommendations = response.data['recommendations'];
+    final body = jsonDecode(response.body);
+    final video = VideoFull.fromMap(body);
+    final List? comments = body['comments'];
+    final List? recommendations = body['recommendations'];
     return VideoMetadata(
       video: video,
       comments: comments?.map((comment) => Comment.fromMap(comment)).toList(),
@@ -531,34 +516,34 @@ class HolodexClient extends BaseHolodexClient {
       'paginated': paginated,
       'offset': offset,
       'limit': limit,
-      'comment': [],
+      // 'comment': [],
     });
 
-    if (languages != null) {
+    if (languages != null && languages.isNotEmpty) {
       data.addAll({
-        'lang': languages.map((l) => convertLanguageToString(l)),
+        'lang': languages.map((l) => convertLanguageToString(l)).toList(),
       });
     }
 
-    if (searchTarget != null) {
+    if (searchTarget != null && searchTarget.isNotEmpty) {
       data.addAll({
-        'target': searchTarget.map((s) => convertSearchTargetToString(s)),
+        'target': searchTarget.map((s) => convertSearchTargetToString(s)).toList(),
       });
     }
 
-    if (conditions != null) {
+    if (conditions != null && conditions.isNotEmpty) {
       data.addAll({
         'conditions': conditions,
       });
     }
 
-    if (topics != null) {
+    if (topics != null && topics.isNotEmpty) {
       data.addAll({
         'topic': topics,
       });
     }
 
-    if (vch != null) {
+    if (vch != null && vch.isNotEmpty) {
       data.addAll({
         'vch': vch,
       });
@@ -573,7 +558,7 @@ class HolodexClient extends BaseHolodexClient {
     //   return videoList.copyWith(paginated: true);
     // }
     
-    final List list = response.data;
+    final List list = jsonDecode(response.body);
     return VideoList(videos: list.map((video) => VideoFull.fromMap(video)).toList());
   }
 
@@ -708,9 +693,10 @@ class HolodexClient extends BaseHolodexClient {
     String path = '',
     Map<String, String>? headers,
     Map<String, dynamic>? params,
-    ResponseType responseType = ResponseType.json,
   }) async {
-    return await call('get', path: path, headers: headers, params: params, responseType: responseType);
+    // return await call('get', path: path, headers: headers, params: params);
+    // TODO: Format params into url
+    return await client.get(Uri.parse(basePath + path), headers: headers);
   }
 
   /// An alias of HolodexClient.call('post')
@@ -719,41 +705,41 @@ class HolodexClient extends BaseHolodexClient {
     String path = '',
     Map<String, String>? headers,
     Map<String, dynamic>? data,
-    ResponseType responseType = ResponseType.json,
   }) async {
-    return await call('post', path: path, headers: headers, data: data, responseType: responseType);
+    // return await call('post', path: path, headers: headers, data: data);
+    return await client.post(Uri.parse(basePath + path), headers: headers, body: json.encode(data));
   }
 
   /// Method to make a http call and return `Response`
-  @override
-  Future<Response> call(
-    String method, { 
-    required String path, 
-    Map<String, String>? headers, 
-    Map<String, dynamic>? params,
-    Map<String, dynamic>? data,
-    ResponseType responseType = ResponseType.json,
-  }) async {
-    try {
-      // Prepare request
-      final result = RequestOptions(
-        method: method,
-        path: basePath + path,
-        queryParameters: params,
-        data: data,
-        responseType: responseType,
-        headers: headers,
-      );
-      final response = await dioClient.fetch(result);
-      // Return response
-      return response;
-    } catch (e) {
-      if (e is HolodexException) {
-        rethrow;
-      }
-      throw HolodexException(e.toString());
-    }
-  }
+  // @override
+  // Future<Response> call(
+  //   String method, { 
+  //   required String path, 
+  //   Map<String, String>? headers, 
+  //   Map<String, dynamic>? params,
+  //   Map<String, dynamic>? data,
+  // }) async {
+  //   try {
+  //     // Prepare request
+  //     final result = RequestOptions(
+  //       method: method,
+  //       path: basePath + path,
+  //       queryParameters: params,
+  //       data: data,
+  //       responseType: responseType,
+  //       headers: headers,
+  //     );
+  //     final response = await client.fetch(result);
+  //     client.
+  //     // Return response
+  //     return response;
+  //   } catch (e) {
+  //     if (e is HolodexException) {
+  //       rethrow;
+  //     }
+  //     throw HolodexException(e.toString());
+  //   }
+  // }
 }
 
 

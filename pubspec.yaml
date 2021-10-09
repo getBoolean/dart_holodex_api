@@ -6,9 +6,9 @@ environment:
   sdk: ">=2.14.2 <3.0.0"
 
 dependencies:
-  dio: ^4.0.0
   enum_to_string: ^2.0.1
   equatable: ^2.0.3
+  http: ^0.13.4
 
 dev_dependencies:
   lints: ^1.0.1
