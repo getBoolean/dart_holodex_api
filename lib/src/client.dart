@@ -95,8 +95,8 @@ class HolodexClient extends BaseHolodexClient {
 
     // Add the items with default values (they can't be null)
     params.addAll({
-      'limit': limit,
-      'offset': offset,
+      'limit': '$limit',
+      'offset': '$offset',
       'order': convertOrderToString(order),
     });
 
@@ -203,8 +203,8 @@ class HolodexClient extends BaseHolodexClient {
 
     // Add the items with default values (they can't be null)
     params.addAll({
-      'limit': limit,
-      'offset': offset,
+      'limit': '$limit',
+      'offset': '$offset',
       'order': convertOrderToString(order),
     });
 
@@ -291,8 +291,8 @@ class HolodexClient extends BaseHolodexClient {
 
     // Add the items with default values (they can't be null)
     params.addAll({
-      'limit': limit,
-      'offset': offset,
+      'limit': '$limit',
+      'offset': '$offset',
       'order': convertOrderToString(order),
     });
 
@@ -441,8 +441,8 @@ class HolodexClient extends BaseHolodexClient {
     
     // Add the items with default values (they can't be null)
     params.addAll({
-      'limit': limit,
-      'offset': offset,
+      'limit': '$limit',
+      'offset': '$offset',
     });
 
     _addIncludes(includes, params);
@@ -489,8 +489,6 @@ class HolodexClient extends BaseHolodexClient {
       recommendations: recommendations?.map((video) => VideoWithChannel.fromMap(video)).toList(),
     );
   }
-
-  // TODO: Fix parameters
 
   /// Flexible endpoint to search for videos fufilling multiple conditions. 
   /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
@@ -642,7 +640,7 @@ class HolodexClient extends BaseHolodexClient {
 
   void _addMaxUpcomingHours(int? maxUpcomingHours, Map<String, dynamic> params) {
     if (maxUpcomingHours != null) {
-      params.addAll({'max_upcoming_hours': maxUpcomingHours});
+      params.addAll({'max_upcoming_hours': '$maxUpcomingHours'});
     }
   }
 
@@ -701,8 +699,8 @@ class HolodexClient extends BaseHolodexClient {
     });
     
     try {
-      // TODO: Format params into url
-      return await client.get(Uri.parse(basePath + path), headers: headers);
+      final finalUri = _getUriUrl(basePath + path, params);
+      return await client.get(finalUri, headers: headers);
     } catch (e) {
       if (e is HolodexException) {
         rethrow;
@@ -716,6 +714,7 @@ class HolodexClient extends BaseHolodexClient {
   Future<Response> post({
     String path = '',
     Map<String, String>? headers,
+    Map<String, dynamic>? params,
     Map<String, dynamic>? data,
   }) async {
     // return await call('post', path: path, headers: headers, data: data);
@@ -726,13 +725,26 @@ class HolodexClient extends BaseHolodexClient {
     });
     
     try {
-      return await client.post(Uri.parse(basePath + path), headers: headers, body: json.encode(data));
+      return await client.post(_getUriUrl(basePath + path, params), headers: headers, body: json.encode(data));
     } catch (e) {
       if (e is HolodexException) {
         rethrow;
       }
       throw HolodexException(e.toString());
     }
+  }
+
+  // This method was taken from https://github.com/Ephenodrom/Dart-Basic-Utils/blob/master/lib/src/HttpUtils.dart#L279
+  static Uri _getUriUrl(
+      String url, 
+      Map<String, dynamic>? queryParameters
+    ) {
+
+    if (queryParameters == null || queryParameters.isEmpty) {
+      return Uri.parse(url);
+    }
+    final uri = Uri.parse(url);
+    return uri.replace(queryParameters: queryParameters);
   }
 }
 
