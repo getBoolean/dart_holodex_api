@@ -217,7 +217,7 @@ print(liveVideos.toString());
 
 ### Get a channel by its ID
 
-Returns [Channel]
+Returns `Channel`
 
 Arguments:
 
@@ -299,7 +299,7 @@ print('Returned clips including Matsuri: ${matsuriClips.videos.length}');
 
 Alias of getVideosRelatedToChannel()
 
-Returns [VideoFullList]
+Returns `VideoFullList`
 
 Arguments
 
