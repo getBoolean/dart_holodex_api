@@ -92,7 +92,7 @@ holodexClient.close();
 
 ### Get a video by its ID
 
-Returns [VideoFull]
+Returns `VideoFull`
 
 Arguments:
 
