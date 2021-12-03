@@ -47,7 +47,7 @@ class Channel extends ChannelMin {
       'name': name,
       'english_name': englishName,
       'type': EnumUtil.convertChannelTypeToString(type),
-      'org': EnumUtil.convertOrganizationToString(org),
+      'org': org,
       'suborg': suborg,
       'photo': photo,
       'banner': banner,
@@ -70,7 +70,7 @@ class Channel extends ChannelMin {
       englishName: map['english_name'],
       type: EnumUtil.convertStringToChannelType(map['type'] ?? '') ??
           ChannelType.subber,
-      org: EnumUtil.convertStringToOrganization(map['org'] ?? ''),
+      org: map['org'],
       suborg: map['suborg'],
       photo: map['photo'],
       banner: map['banner'],

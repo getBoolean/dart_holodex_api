@@ -43,8 +43,10 @@ class HolodexClient extends BaseHolodexClient {
   /// - `videoId` The video ID as a string
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
   @override
-  Future<VideoFull> getVideoFromId(String videoId,
-      {List<Includes>? includes}) async {
+  Future<VideoFull> getVideoFromId(
+    String videoId, {
+    List<Includes>? includes,
+  }) async {
     final Map<String, dynamic> params = {'id': videoId};
 
     // Add the info the videos must include
@@ -86,7 +88,7 @@ class HolodexClient extends BaseHolodexClient {
     String? mentionedChannelId,
     int offset = 0,
     Order order = Order.descending,
-    List<Organization>? organization,
+    List<String>? organization,
     bool paginated = false,
     List<VideoSort> videoSort = const <VideoSort>[VideoSort.availableAt],
     List<VideoStatus>? videoStatus,
@@ -186,24 +188,25 @@ class HolodexClient extends BaseHolodexClient {
   /// - `topic` Filter by video topic ID
   /// - `videoType` Filter by type of video, either clips or streams
   @override
-  Future<VideoFullList> getLiveVideos(
-      {String? channelId,
-      List<Includes> includes = const [Includes.liveInfo],
-      List<Language> languages = const [Language.all],
-      int limit = 9999,
-      int? maxUpcomingHours = 48,
-      String? mentionedChannelId,
-      int offset = 0,
-      Order order = Order.ascending,
-      List<Organization>? organization,
-      bool paginated = true,
-      List<VideoSort> videoSort = const <VideoSort>[VideoSort.availableAt],
-      List<VideoStatus>? videoStatus = const [
-        VideoStatus.live,
-        VideoStatus.upcoming
-      ],
-      String? topic,
-      VideoType? videoType = VideoType.stream}) async {
+  Future<VideoFullList> getLiveVideos({
+    String? channelId,
+    List<Includes> includes = const [Includes.liveInfo],
+    List<Language> languages = const [Language.all],
+    int limit = 9999,
+    int? maxUpcomingHours = 48,
+    String? mentionedChannelId,
+    int offset = 0,
+    Order order = Order.ascending,
+    List<String>? organization,
+    bool paginated = true,
+    List<VideoSort> videoSort = const <VideoSort>[VideoSort.availableAt],
+    List<VideoStatus>? videoStatus = const [
+      VideoStatus.live,
+      VideoStatus.upcoming
+    ],
+    String? topic,
+    VideoType? videoType = VideoType.stream,
+  }) async {
     // Create the params list
     final Map<String, dynamic> params = {};
 
@@ -295,7 +298,7 @@ class HolodexClient extends BaseHolodexClient {
     int limit = 25,
     int offset = 0,
     Order order = Order.ascending,
-    Organization? organization,
+    String? organization,
     List<ChannelSort> channelSort = const [ChannelSort.organization],
   }) async {
     // According to API docs, the maximum accepted value is 50 and anything higher the request will be denied
@@ -340,7 +343,8 @@ class HolodexClient extends BaseHolodexClient {
   /// - `channelIds` List of channel IDs to get the live videos from.
   @override
   Future<List<Video>> getLiveVideosFromChannelsQuickly(
-      List<String> channelIds) async {
+    List<String> channelIds,
+  ) async {
     if (channelIds.isEmpty) {
       return <Video>[];
     }
@@ -563,11 +567,12 @@ class HolodexClient extends BaseHolodexClient {
     List<String>? conditions,
     List<String>? topics,
     List<String>? videoChannels,
-    List<Organization>? organizations,
+    List<String>? organizations,
     bool paginated = true,
     int offset = 0,
     int limit = 25,
   }) async {
+    // TODO(@getBoolean): Fix organizations not added to data
     final Map<String, dynamic> data = {};
 
     data.addAll({
@@ -649,11 +654,12 @@ class HolodexClient extends BaseHolodexClient {
     required String comment,
     List<String>? topics,
     List<String>? videoChannels,
-    List<Organization>? organizations,
+    List<String>? organizations,
     bool paginated = true,
     int offset = 0,
     int limit = 25,
   }) async {
+    // TODO(@getBoolean): Fix organizations not added to data
     final Map<String, dynamic> data = {};
 
     data.addAll({
@@ -765,23 +771,18 @@ class HolodexClient extends BaseHolodexClient {
   }
 
   void _addOrganization(
-      List<Organization>? organization, Map<String, dynamic> params) {
+      List<String>? organization, Map<String, dynamic> params) {
     if (organization != null && organization.isNotEmpty) {
-      // Make new list with the values as string
-      final List<String> organizationStringList = organization
-          .map((org) => EnumUtil.convertOrganizationToString(org)!)
-          .toList();
       // Join the array with commas and add it to the parameters
-      String orgsConcatenated = organizationStringList.join(',');
+      String orgsConcatenated = organization.join(',');
       params.addAll({'org': orgsConcatenated});
     }
   }
 
   void _addSingleOrganization(
-      Organization? organization, Map<String, dynamic> params) {
+      String? organization, Map<String, dynamic> params) {
     if (organization != null) {
-      params
-          .addAll({'org': EnumUtil.convertOrganizationToString(organization)});
+      params.addAll({'org': organization});
     }
   }
 
