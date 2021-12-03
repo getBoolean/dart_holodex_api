@@ -1,7 +1,7 @@
 part of dart_holodex_api.models;
 
 class Channel extends ChannelMin {
-  final Organization? org;
+  final String? org;
   final String? suborg;
   final String? banner;
   final String? twitter;
@@ -98,7 +98,7 @@ class Channel extends ChannelMin {
     String? name,
     String? englishName,
     ChannelType? type,
-    Organization? org,
+    String? org,
     String? suborg,
     String? photo,
     String? banner,

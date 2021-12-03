@@ -130,8 +130,9 @@ class VideoWithComments extends Video {
       channelId: map['channel_id'],
       channel: ChannelMin.fromMap(map['channel']),
       language: map['lang'],
-      comments:
-          List<Comment>.from(map['comments']?.map((x) => Comment.fromMap(x))),
+      comments: List<Comment>.from(
+        map['comments']?.map((x) => Comment.fromMap(x)) ?? [],
+      ),
     );
   }
 
@@ -163,6 +164,6 @@ class VideoWithComments extends Video {
         language ?? 'Language not given',
         channelId ?? 'Channel id not given',
         channel ?? 'Channel not given',
-        comments
+        comments,
       ];
 }

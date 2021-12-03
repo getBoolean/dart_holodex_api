@@ -45,7 +45,11 @@ class VideoWithCommentsList extends Equatable {
       total: total,
       paginated: map['paginated'] ?? false,
       videos: List<VideoWithComments>.from(
-          map['items']?.map((x) => VideoWithComments.fromMap(x))),
+        map['items']?.map(
+              (x) => VideoWithComments.fromMap(x),
+            ) ??
+            [],
+      ),
     );
   }
 

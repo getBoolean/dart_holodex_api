@@ -147,38 +147,46 @@ class VideoFull extends Video {
 
   factory VideoFull.fromMap(Map<String, dynamic> map) {
     return VideoFull(
-        id: map['id'],
-        title: map['title'],
-        type: EnumToString.fromString(VideoType.values, map['type']) ??
-            VideoType.clip,
-        topicId: map['topic_id'],
-        publishedAt: map['published_at'],
-        availableAt: map['available_at'],
-        duration: map['duration'],
-        status: EnumUtil.convertStringToVideoStatus(map['status']) ??
-            VideoStatus.missing,
-        startScheduled: map['start_scheduled'],
-        startActual: map['start_actual'],
-        endActual: map['end_actual'],
-        liveViewers: map['live_viewers'],
-        description: map['description'],
-        songcount: map['songcount'],
-        language: map['lang'],
-        channelId: map['channel_id'],
-        channel: ChannelMin.fromMap(map['channel']),
-        clips: List<Video>.from(
-            map['clips']?.map((clip) => Video.fromMap(clip)) ?? []),
-        sources: List<Video>.from(
-            map['sources']?.map((source) => Video.fromMap(source)) ?? []),
-        refers: List<Video>.from(
-            map['refers']?.map((refer) => Video.fromMap(refer)) ?? []),
-        simulcasts: List<Video>.from(
-            map['simulcasts']?.map((simulcast) => Video.fromMap(simulcast)) ??
-                []),
-        mentions: List<Channel>.from(
-            map['mentions']?.map((mention) => Channel.fromMap(mention)) ?? []),
-        songs: List<Song>.from(
-            map['songs']?.map((song) => Song.fromMap(song)) ?? []));
+      id: map['id'],
+      title: map['title'],
+      type: EnumToString.fromString(VideoType.values, map['type']) ??
+          VideoType.clip,
+      topicId: map['topic_id'],
+      publishedAt: map['published_at'],
+      availableAt: map['available_at'],
+      duration: map['duration'],
+      status: EnumUtil.convertStringToVideoStatus(map['status']) ??
+          VideoStatus.missing,
+      startScheduled: map['start_scheduled'],
+      startActual: map['start_actual'],
+      endActual: map['end_actual'],
+      liveViewers: map['live_viewers'],
+      description: map['description'],
+      songcount: map['songcount'],
+      language: map['lang'],
+      channelId: map['channel_id'],
+      channel: ChannelMin.fromMap(
+        map['channel'],
+      ),
+      clips: List<Video>.from(
+        map['clips']?.map((clip) => Video.fromMap(clip)) ?? [],
+      ),
+      sources: List<Video>.from(
+        map['sources']?.map((source) => Video.fromMap(source)) ?? [],
+      ),
+      refers: List<Video>.from(
+        map['refers']?.map((refer) => Video.fromMap(refer)) ?? [],
+      ),
+      simulcasts: List<Video>.from(
+        map['simulcasts']?.map((simulcast) => Video.fromMap(simulcast)) ?? [],
+      ),
+      mentions: List<Channel>.from(
+        map['mentions']?.map((mention) => Channel.fromMap(mention)) ?? [],
+      ),
+      songs: List<Song>.from(
+        map['songs']?.map((song) => Song.fromMap(song)) ?? [],
+      ),
+    );
   }
 
   @override

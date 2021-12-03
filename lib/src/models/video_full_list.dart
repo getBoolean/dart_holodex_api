@@ -44,8 +44,9 @@ class VideoFullList extends Equatable {
     return VideoFullList(
       total: total,
       paginated: map['paginated'] ?? false,
-      videos:
-          List<VideoFull>.from(map['items']?.map((x) => VideoFull.fromMap(x))),
+      videos: List<VideoFull>.from(
+        map['items']?.map((x) => VideoFull.fromMap(x)) ?? [],
+      ),
     );
   }
 
