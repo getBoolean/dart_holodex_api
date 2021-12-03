@@ -579,7 +579,6 @@ class HolodexClient extends BaseHolodexClient {
       'paginated': paginated,
       'offset': offset,
       'limit': limit,
-      // 'comment': [],
     });
 
     if (organizations != null && organizations.isNotEmpty) {
@@ -669,7 +668,6 @@ class HolodexClient extends BaseHolodexClient {
       'comment': comment,
       'offset': offset,
       'limit': limit,
-      // 'comment': [],
     });
 
     if (organizations != null && organizations.isNotEmpty) {
@@ -751,8 +749,7 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void _addStatusList(
-      List<VideoStatus>? statuses, Map<String, dynamic> map) {
+  void _addStatusList(List<VideoStatus>? statuses, Map<String, dynamic> map) {
     if (statuses != null) {
       // Make new list with the values as string
       final List<String> statusesStringList = statuses
@@ -776,8 +773,7 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void _addOrganizations(
-      List<String>? organization, Map<String, dynamic> map) {
+  void _addOrganizations(List<String>? organization, Map<String, dynamic> map) {
     if (organization != null && organization.isNotEmpty) {
       // Join the array with commas and add it to the parameters
       String orgsConcatenated = organization.join(',');
@@ -785,8 +781,7 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void _addSingleOrganization(
-      String? organization, Map<String, dynamic> map) {
+  void _addSingleOrganization(String? organization, Map<String, dynamic> map) {
     if (organization != null) {
       map.addAll({'org': organization});
     }
@@ -799,8 +794,7 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void _addMaxUpcomingHours(
-      int? maxUpcomingHours, Map<String, dynamic> map) {
+  void _addMaxUpcomingHours(int? maxUpcomingHours, Map<String, dynamic> map) {
     if (maxUpcomingHours != null) {
       map.addAll({'max_upcoming_hours': '$maxUpcomingHours'});
     }
