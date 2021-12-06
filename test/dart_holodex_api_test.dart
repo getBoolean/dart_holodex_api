@@ -1,4 +1,5 @@
 import 'package:dart_holodex_api/dart_holodex_api.dart';
+import 'package:http/http.dart' as http;
 import 'package:test/test.dart';
 import 'package:dotenv/dotenv.dart' show load, isEveryDefined, env;
 
@@ -31,6 +32,9 @@ void main() {
     apiKey = _apiKey;
 
     client = HolodexClient(apiKey: apiKey);
+
+    final tempClient = HolodexClient(apiKey: apiKey, httpClient: http.Client());
+    tempClient.close();
   });
 
   group('Test API Key', () {

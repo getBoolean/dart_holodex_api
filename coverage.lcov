@@ -1,7 +1,7 @@
 SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/client.dart
 DA:16,1
 DA:22,2
-DA:24,0
+DA:24,1
 DA:46,1
 DA:50,1
 DA:54,0
@@ -241,7 +241,7 @@ DA:924,1
 DA:930,1
 DA:931,2
 LF:241
-LH:18
+LH:19
 end_of_record
 SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/exception.dart
 DA:6,0
