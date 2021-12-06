@@ -84,7 +84,7 @@ Future&lt;Response&gt; get({
   &#47;&#47; return await call(&#39;get&#39;, path: path, headers: headers, params: params);
   headers ??= {};
   headers.addAll({
-    HttpHeaders.contentTypeHeader: &quot;application&#47;json&quot;,
+    &#39;content-type&#39;: &#39;application&#47;json&#39;,
     &#39;X-APIKEY&#39;: apiKey,
   });
 
@@ -171,7 +171,7 @@ Future&lt;Response&gt; get({
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

@@ -80,7 +80,8 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 Future&lt;Channel&gt; getChannelFromId(String channelId) async {
-  final Response response = await get(path: &#39;${_Constants.channelsPath}&#47;$channelId&#39;);
+  final Response response =
+      await get(path: &#39;${_Constants.channelsPath}&#47;$channelId&#39;);
 
   return Channel.fromJson(response.body);
 }</code></pre>
@@ -157,7 +158,7 @@ Future&lt;Channel&gt; getChannelFromId(String channelId) async {
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

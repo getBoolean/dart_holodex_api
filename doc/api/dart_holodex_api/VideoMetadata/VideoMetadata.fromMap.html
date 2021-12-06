@@ -63,8 +63,10 @@
   <pre class="language-dart"><code class="language-dart">factory VideoMetadata.fromMap(Map&lt;String, dynamic&gt; map) {
   return VideoMetadata(
     video: VideoFull.fromMap(map[&#39;video&#39;]),
-    comments: List&lt;Comment&gt;.from(map[&#39;comments&#39;]?.map((commentMap) =&gt; Comment.fromMap(commentMap))),
-    recommendations: List&lt;Video&gt;.from(map[&#39;recommendations&#39;]?.map((videoMap) =&gt; Video.fromMap(videoMap))),
+    comments: List&lt;Comment&gt;.from(
+        map[&#39;comments&#39;]?.map((commentMap) =&gt; Comment.fromMap(commentMap))),
+    recommendations: List&lt;Video&gt;.from(
+        map[&#39;recommendations&#39;]?.map((videoMap) =&gt; Video.fromMap(videoMap))),
   );
 }</code></pre>
 </section>
@@ -132,7 +134,7 @@
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

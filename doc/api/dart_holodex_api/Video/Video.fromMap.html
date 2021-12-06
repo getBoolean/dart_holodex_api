@@ -64,12 +64,14 @@
   return Video(
     id: map[&#39;id&#39;],
     title: map[&#39;title&#39;],
-    type: EnumToString.fromString(VideoType.values, map[&#39;type&#39;]) ?? VideoType.clip,
+    type: EnumToString.fromString(VideoType.values, map[&#39;type&#39;]) ??
+        VideoType.clip,
     topicId: map[&#39;topic_id&#39;],
     publishedAt: map[&#39;published_at&#39;],
     availableAt: map[&#39;available_at&#39;],
     duration: map[&#39;duration&#39;],
-    status: EnumUtil.convertStringToVideoStatus(map[&#39;status&#39;]) ?? VideoStatus.missing,
+    status: EnumUtil.convertStringToVideoStatus(map[&#39;status&#39;]) ??
+        VideoStatus.missing,
     startScheduled: map[&#39;start_scheduled&#39;],
     startActual: map[&#39;start_actual&#39;],
     endActual: map[&#39;end_actual&#39;],
@@ -160,7 +162,7 @@
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

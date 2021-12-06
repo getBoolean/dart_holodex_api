@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="generator" content="made with love by dartdoc 4.0.0">
+  <meta name="generator" content="made with love by dartdoc 2.0.0">
   <meta name="description" content="dart_holodex_api API docs, for the Dart programming language.">
   <title>dart_holodex_api - Dart API docs</title>
 
@@ -44,7 +44,9 @@
   <div id="dartdoc-main-content" class="main-content">
       
 <section class="desc markdown">
-  <p>A Dart wrapper for Holodex API v2</p><!-- markdownlint-enable MD041 -->
+  <p><a href="https://pub.dev/packages/dart_holodex_api"><img src="https://img.shields.io/pub/v/dart_holodex_api" alt="pub package"></a>
+<a href="https://github.com/getBoolean/dart_holodex_api/blob/main/LICENSE"><img src="https://img.shields.io/github/license/getBoolean/dart_holodex_api" alt="License"></a></p>
+<p>A Dart wrapper for Holodex API v2</p><!-- markdownlint-enable MD041 -->
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
 <li><a href="#features">Features</a></li>
@@ -95,7 +97,7 @@
 <li>
 <p>Add this to your <code>pubspec.yaml</code> file</p>
 <pre class="language-yaml"><code class="language-yaml"> dependencies:
-     dart_holodex_api: ^0.2.0
+     dart_holodex_api: ^0.2.1
 </code></pre>
 </li>
 <li>
@@ -103,7 +105,7 @@
 </li>
 </ol>
 <h2 id="usage">Usage</h2>
-<p><a href="https://github.com/getBoolean/dart_holodex_api/blob/main/example/example_holodex/bin/example_holodex.dart">Full example</a>.</p>
+<p><a href="https://github.com/getBoolean/dart_holodex_api/blob/main/example/lib/example.dart">Full example</a>.</p>
 <p>Get an instance of HolodexClient with your API key</p>
 <pre class="language-dart"><code class="language-dart">final HolodexClient holodexClient = HolodexClient(apiKey: apiKey);
 </code></pre>
@@ -112,7 +114,7 @@
 <pre class="language-dart"><code class="language-dart">holodexClient.close();
 </code></pre>
 <h3 id="get-a-video-by-its-id">Get a video by its ID</h3>
-<p>Returns <a href="dart_holodex_api/VideoFull-class.html">VideoFull</a></p>
+<p>Returns <code>VideoFull</code></p>
 <p>Arguments:</p>
 <ul>
 <li><code>videoId</code> The video ID as a string</li>
@@ -221,7 +223,7 @@ include: [Includes.liveInfo] + query's include
 print(liveVideos.toString());
 </code></pre>
 <h3 id="get-a-channel-by-its-id">Get a channel by its ID</h3>
-<p>Returns <a href="dart_holodex_api/Channel-class.html">Channel</a></p>
+<p>Returns <code>Channel</code></p>
 <p>Arguments:</p>
 <ul>
 <li><code>channelId</code> ID of the Youtube Channel that is being queried</li>
@@ -237,7 +239,7 @@ print(ceresFauna.toString());
 <li><code>offset</code> Offset results</li>
 <li><code>order</code> Order.ascending or Order.descending order, default ascending.</li>
 <li><code>organization</code> If set, filter for Vtubers belonging to a specific org</li>
-<li><code>sort</code> Column to sort on, leave default to use <a href="dart_holodex_api/ChannelSort.html">ChannelSort.organization</a> as sort. Theoretically any value in ChannelSort should work</li>
+<li><code>sort</code> Column to sort on, leave default to use <a href="dart_holodex_api/ChannelSort-class.html">ChannelSort.organization</a> as sort. Theoretically any value in ChannelSort should work</li>
 </ul>
 <pre class="language-dart"><code class="language-dart">final List&lt;Channel&gt; channels = await holodexClient.getChannels(
     limit: 25,
@@ -286,7 +288,7 @@ print('Returned clips including Matsuri: ${matsuriClips.videos.length}');
 </code></pre>
 <h3 id="get-clips-of-a-vtuber">Get Clips of a VTuber</h3>
 <p>Alias of getVideosRelatedToChannel()</p>
-<p>Returns <a href="dart_holodex_api/VideoFullList-class.html">VideoFullList</a></p>
+<p>Returns <code>VideoFullList</code></p>
 <p>Arguments</p>
 <ul>
 <li><code>channelId</code> ID of the Youtube Channel that is being queried</li>
@@ -459,7 +461,7 @@ print('Videos with Comment: ${searchComments.videos.length}\n');
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

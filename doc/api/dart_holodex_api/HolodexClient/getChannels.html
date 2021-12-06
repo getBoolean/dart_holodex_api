@@ -58,12 +58,12 @@
 </div>
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Channel-class.html">Channel</a></span>&gt;</span></span>&gt;</span></span>
-<span class="name ">getChannels</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getChannels-param-languages">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language.html">Language</a></span>&gt;</span>?</span> <span class="parameter-name">languages</span>, </span></li>
+<span class="name ">getChannels</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getChannels-param-languages">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span>?</span> <span class="parameter-name">languages</span>, </span></li>
 <li><span class="parameter" id="getChannels-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">25</span>, </span></li>
 <li><span class="parameter" id="getChannels-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span> = <span class="default-value">0</span>, </span></li>
-<li><span class="parameter" id="getChannels-param-order"><span class="type-annotation"><a href="../../dart_holodex_api/Order.html">Order</a></span> <span class="parameter-name">order</span> = <span class="default-value">Order.ascending</span>, </span></li>
-<li><span class="parameter" id="getChannels-param-organization"><span class="type-annotation"><a href="../../dart_holodex_api/Organization.html">Organization</a>?</span> <span class="parameter-name">organization</span>, </span></li>
-<li><span class="parameter" id="getChannels-param-channelSort"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/ChannelSort.html">ChannelSort</a></span>&gt;</span></span> <span class="parameter-name">channelSort</span> = <span class="default-value">const [ChannelSort.organization]</span>}</span></li>
+<li><span class="parameter" id="getChannels-param-order"><span class="type-annotation"><a href="../../dart_holodex_api/Order-class.html">Order</a></span> <span class="parameter-name">order</span> = <span class="default-value">Order.ascending</span>, </span></li>
+<li><span class="parameter" id="getChannels-param-organization"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">organization</span>, </span></li>
+<li><span class="parameter" id="getChannels-param-channelSort"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/ChannelSort-class.html">ChannelSort</a></span>&gt;</span></span> <span class="parameter-name">channelSort</span> = <span class="default-value">const [ChannelSort.organization]</span>}</span></li>
 </ol>)
 
       
@@ -79,7 +79,7 @@
 <li><code>offset</code> Offset results</li>
 <li><code>order</code> Order.ascending or Order.descending order, default ascending.</li>
 <li><code>organization</code> If set, filter for Vtubers belonging to a specific org</li>
-<li><code>channelSort</code> Column to sort on, leave default to use <a href="../../dart_holodex_api/ChannelSort.html">ChannelSort.organization</a> as sort. Theoretically any value in ChannelSort should work</li>
+<li><code>channelSort</code> Column to sort on, leave default to use <a href="../../dart_holodex_api/ChannelSort-class.html">ChannelSort.organization</a> as sort. Theoretically any value in ChannelSort should work</li>
 </ul>
 </section>
 
@@ -93,7 +93,7 @@ Future&lt;List&lt;Channel&gt;&gt; getChannels({
   int limit = 25,
   int offset = 0,
   Order order = Order.ascending,
-  Organization? organization,
+  String? organization,
   List&lt;ChannelSort&gt; channelSort = const [ChannelSort.organization],
 }) async {
   &#47;&#47; According to API docs, the maximum accepted value is 50 and anything higher the request will be denied
@@ -121,7 +121,9 @@ Future&lt;List&lt;Channel&gt;&gt; getChannels({
 
   final List list = jsonDecode(response.body);
 
-  return list.map((channel) =&gt; Channel.fromMap(channel)).toList(); &#47;&#47; Returns as `List&lt;Channel&gt;`
+  return list
+      .map((channel) =&gt; Channel.fromMap(channel))
+      .toList(); &#47;&#47; Returns as `List&lt;Channel&gt;`
 }</code></pre>
 </section>
 
@@ -196,7 +198,7 @@ Future&lt;List&lt;Channel&gt;&gt; getChannels({
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

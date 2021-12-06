@@ -70,7 +70,13 @@ two instances are equal.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-List&lt;Object&gt; get props =&gt; [video, comments ?? &#39;Comments not included&#39;, recommendations ?? &#39;Recommendations not included&#39;];</code></pre>
+List&lt;Object&gt; get props {
+  return [
+    &#39;video: $video&#39;,
+    &#39;comments: $comments&#39;,
+    &#39;recommendations: $recommendations&#39;,
+  ];
+}</code></pre>
 </section>
 
 </section>
@@ -138,7 +144,7 @@ List&lt;Object&gt; get props =&gt; [video, comments ?? &#39;Comments not include
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

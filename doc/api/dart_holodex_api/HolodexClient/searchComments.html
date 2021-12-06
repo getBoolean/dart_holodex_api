@@ -58,13 +58,13 @@
 </div>
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/VideoWithCommentsList-class.html">VideoWithCommentsList</a></span>&gt;</span></span>
-<span class="name ">searchComments</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="searchComments-param-searchSort">{<span class="type-annotation"><a href="../../dart_holodex_api/SearchSort.html">SearchSort</a></span> <span class="parameter-name">searchSort</span> = <span class="default-value">SearchSort.newest</span>, </span></li>
-<li><span class="parameter" id="searchComments-param-languages"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language.html">Language</a></span>&gt;</span>?</span> <span class="parameter-name">languages</span>, </span></li>
-<li><span class="parameter" id="searchComments-param-searchTargets"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/SearchTarget.html">SearchTarget</a></span>&gt;</span>?</span> <span class="parameter-name">searchTargets</span>, </span></li>
-<li><span class="parameter" id="searchComments-param-comment"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">comment</span>, </span></li>
+<span class="name ">searchComments</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="searchComments-param-comment">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">comment</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-searchSort"><span class="type-annotation"><a href="../../dart_holodex_api/SearchSort-class.html">SearchSort</a></span> <span class="parameter-name">searchSort</span> = <span class="default-value">SearchSort.newest</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-languages"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span>?</span> <span class="parameter-name">languages</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-searchTargets"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/SearchTarget-class.html">SearchTarget</a></span>&gt;</span>?</span> <span class="parameter-name">searchTargets</span>, </span></li>
 <li><span class="parameter" id="searchComments-param-topics"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">topics</span>, </span></li>
 <li><span class="parameter" id="searchComments-param-videoChannels"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">videoChannels</span>, </span></li>
-<li><span class="parameter" id="searchComments-param-organizations"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Organization.html">Organization</a></span>&gt;</span>?</span> <span class="parameter-name">organizations</span>, </span></li>
+<li><span class="parameter" id="searchComments-param-organizations"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">organizations</span>, </span></li>
 <li><span class="parameter" id="searchComments-param-paginated"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span> = <span class="default-value">true</span>, </span></li>
 <li><span class="parameter" id="searchComments-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span> = <span class="default-value">0</span>, </span></li>
 <li><span class="parameter" id="searchComments-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">25</span>}</span></li>
@@ -99,13 +99,13 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 Future&lt;VideoWithCommentsList&gt; searchComments({
+  required String comment,
   SearchSort searchSort = SearchSort.newest,
   List&lt;Language&gt;? languages,
   List&lt;SearchTarget&gt;? searchTargets,
-  required String comment,
   List&lt;String&gt;? topics,
   List&lt;String&gt;? videoChannels,
-  List&lt;Organization&gt;? organizations,
+  List&lt;String&gt;? organizations,
   bool paginated = true,
   int offset = 0,
   int limit = 25,
@@ -117,8 +117,13 @@ Future&lt;VideoWithCommentsList&gt; searchComments({
     &#39;comment&#39;: comment,
     &#39;offset&#39;: offset,
     &#39;limit&#39;: limit,
-    &#47;&#47; &#39;comment&#39;: [],
   });
+
+  if (organizations != null &amp;&amp; organizations.isNotEmpty) {
+    data.addAll({
+      &#39;org&#39;: organizations,
+    });
+  }
 
   if (paginated) {
     data.addAll({
@@ -128,13 +133,16 @@ Future&lt;VideoWithCommentsList&gt; searchComments({
 
   if (languages != null &amp;&amp; languages.isNotEmpty) {
     data.addAll({
-      &#39;lang&#39;: languages.map((l) =&gt; EnumUtil.convertLanguageToString(l)).toList(),
+      &#39;lang&#39;:
+          languages.map((l) =&gt; EnumUtil.convertLanguageToString(l)).toList(),
     });
   }
 
   if (searchTargets != null &amp;&amp; searchTargets.isNotEmpty) {
     data.addAll({
-      &#39;target&#39;: searchTargets.map((s) =&gt; EnumUtil.convertSearchTargetToString(s)).toList(),
+      &#39;target&#39;: searchTargets
+          .map((s) =&gt; EnumUtil.convertSearchTargetToString(s))
+          .toList(),
     });
   }
 
@@ -159,7 +167,8 @@ Future&lt;VideoWithCommentsList&gt; searchComments({
   }
 
   final List list = jsonDecode(response.body);
-  return VideoWithCommentsList(videos: list.map((video) =&gt; VideoWithComments.fromMap(video)).toList());
+  return VideoWithCommentsList(
+      videos: list.map((video) =&gt; VideoWithComments.fromMap(video)).toList());
 }</code></pre>
 </section>
 
@@ -234,7 +243,7 @@ Future&lt;VideoWithCommentsList&gt; searchComments({
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   
