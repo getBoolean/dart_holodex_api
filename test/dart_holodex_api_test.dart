@@ -2,7 +2,6 @@ import 'package:dart_holodex_api/dart_holodex_api.dart';
 import 'package:test/test.dart';
 import 'package:dotenv/dotenv.dart' show load, isEveryDefined, env;
 
-
 // Generating code coverage:
 // 1. `dart pub global activate coverage`
 // 2. `dart test --coverage="coverage"`
@@ -47,7 +46,6 @@ void main() {
 
     test('Getting a single video', () async {
       final video = await client.getVideoFromId('Gx_GPwpyLxw');
-      print(video);
 
       expect(
         video.type,
