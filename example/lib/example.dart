@@ -22,7 +22,7 @@ void main(List<String> arguments) async {
     includes: [
       Includes.channelStats,
       Includes.clips,
-      Includes.descripiton,
+      Includes.description,
       Includes.liveInfo,
       Includes.mentions,
       Includes.refers,

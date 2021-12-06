@@ -114,7 +114,7 @@ enum Includes {
   mentions,
 
   /// Include video descriptions.
-  descripiton,
+  description,
 
   /// Include live streams.
   liveInfo,
@@ -155,7 +155,7 @@ class EnumUtil {
       Includes.sources: 'sources',
       Includes.simulcasts: 'simulcasts',
       Includes.mentions: 'mentions',
-      Includes.descripiton: 'descripiton',
+      Includes.description: 'descripiton',
       Includes.liveInfo: 'live_info',
       Includes.channelStats: 'channel_stats',
       Includes.songs: 'songs',
