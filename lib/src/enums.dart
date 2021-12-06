@@ -155,7 +155,7 @@ class EnumUtil {
       Includes.sources: 'sources',
       Includes.simulcasts: 'simulcasts',
       Includes.mentions: 'mentions',
-      Includes.description: 'descripiton',
+      Includes.description: 'description',
       Includes.liveInfo: 'live_info',
       Includes.channelStats: 'channel_stats',
       Includes.songs: 'songs',
