@@ -50,7 +50,9 @@ class HolodexClient extends BaseHolodexClient {
     final Map<String, dynamic> params = {'id': videoId};
 
     // Add the info the videos must include
-    _addIncludes(includes, params);
+    if (includes != null) {
+      _addIncludes(includes, params);
+    }
 
     final Response response =
         await get(path: _Constants.videosPath, params: params);
@@ -115,7 +117,9 @@ class HolodexClient extends BaseHolodexClient {
     _addChannelId(channelId, params);
 
     // Add the info the videos must include
-    _addIncludes(includes, params);
+    if (includes != null) {
+      _addIncludes(includes, params);
+    }
 
     // Add the languages to filter by
     // Add the first item so that there is not a comma in front
@@ -317,7 +321,9 @@ class HolodexClient extends BaseHolodexClient {
     _addChannelSort(channelSort, params);
 
     // Add the languages to filter by
-    _addLanguages(languages, params);
+    if (languages != null) {
+       _addLanguages(languages, params);
+    }
 
     // Add the organization param
     _addSingleOrganization(organization, params);
@@ -491,7 +497,9 @@ class HolodexClient extends BaseHolodexClient {
       'offset': '$offset',
     });
 
-    _addIncludes(includes, params);
+    if (includes != null) {
+      _addIncludes(includes, params);
+    }
     _addLanguages(languages, params);
     _addPaginated(paginated, params);
 
@@ -530,7 +538,9 @@ class HolodexClient extends BaseHolodexClient {
   }) async {
     final Map<String, dynamic> params = {};
 
-    _addLanguages(recommendationLanguages, params);
+    if (recommendationLanguages != null) {
+      _addLanguages(recommendationLanguages, params);
+    }
 
     _addCommentsFlag(timestampComments, params);
 
@@ -810,7 +820,7 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void _addIncludes(List<Includes>? includes, Map<String, dynamic> map) {
+  void _addIncludes(List<Includes> includes, Map<String, dynamic> map) {
     if (includes != null && includes.isNotEmpty) {
       // Make new list with the values as string
       final List<String> includesStringList = includes
@@ -822,8 +832,8 @@ class HolodexClient extends BaseHolodexClient {
     }
   }
 
-  void _addLanguages(List<Language>? lang, Map<String, dynamic> map) {
-    if (lang != null && lang.isNotEmpty) {
+  void _addLanguages(List<Language> lang, Map<String, dynamic> map) {
+    if (lang.isNotEmpty) {
       // Make new list with the values as string
       final List<String> langStringList =
           lang.map((l) => EnumUtil.convertLanguageToString(l)).toList();
