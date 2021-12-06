@@ -114,6 +114,83 @@ void main() {
         reason: 'Video language is english',
       );
     });
+
+    test('Getting a single video with included description', () async {
+      final video = await client.getVideoFromId(
+        'Gx_GPwpyLxw',
+        includes: [
+          Includes.description,
+        ],
+      );
+
+      expect(
+        video.type,
+        VideoType.clip,
+        reason: 'Expected video to be a clip',
+      );
+
+      expect(
+        video.duration,
+        205,
+        reason: 'Expected video duration to be 205 seconds',
+      );
+
+      expect(
+        video.status,
+        VideoStatus.past,
+        reason: 'Expected video status to be in the past',
+      );
+
+      expect(
+        video.startScheduled,
+        isNull,
+        reason: 'Video is not a premier or a live stream',
+      );
+
+      expect(
+        video.startActual,
+        isNull,
+        reason: 'Video is not a premier or a live stream',
+      );
+
+      expect(
+        video.endActual,
+        isNull,
+        reason: 'Video is not a premier or a live stream',
+      );
+
+      expect(
+        video.liveViewers,
+        isNull,
+        reason: 'Video is not a premier or a live stream',
+      );
+
+      expect(
+        video.songcount,
+        isNull,
+        reason: 'Video has no songs',
+      );
+
+      expect(
+        video.songs,
+        isEmpty,
+        reason: 'Video has no songs',
+      );
+
+      expect(
+        video.language,
+        'en',
+        reason: 'Video language is english',
+      );
+
+      // Test included data
+
+      expect(
+        video.description,
+        isNotNull,
+        reason: 'Video description should be included',
+      );
+    });
   });
 
   tearDown(() => client.close());
