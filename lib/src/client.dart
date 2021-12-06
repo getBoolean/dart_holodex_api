@@ -652,10 +652,10 @@ class HolodexClient extends BaseHolodexClient {
   /// - `limit` Result limit
   @override
   Future<VideoWithCommentsList> searchComments({
+    required String comment,
     SearchSort searchSort = SearchSort.newest,
     List<Language>? languages,
     List<SearchTarget>? searchTargets,
-    required String comment,
     List<String>? topics,
     List<String>? videoChannels,
     List<String>? organizations,
