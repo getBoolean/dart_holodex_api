@@ -6,6 +6,7 @@
 - **BREAKING** Rename Includes.descripiton to Includes.description
 - Fix possible exception if items is null when searching
 - Fix description not being returned even when included in includes list
+- Fix search returning no videos when organizations are included
 - Updated props for toString() of all models
 
 ## 0.2.1

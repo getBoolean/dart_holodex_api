@@ -582,7 +582,9 @@ class HolodexClient extends BaseHolodexClient {
     });
 
     if (organizations != null && organizations.isNotEmpty) {
-      _addOrganizations(organizations, data);
+      data.addAll({
+        'org': organizations,
+      });
     }
 
     if (languages != null && languages.isNotEmpty) {
@@ -671,7 +673,9 @@ class HolodexClient extends BaseHolodexClient {
     });
 
     if (organizations != null && organizations.isNotEmpty) {
-      _addOrganizations(organizations, data);
+      data.addAll({
+        'org': organizations,
+      });
     }
 
     if (paginated) {
