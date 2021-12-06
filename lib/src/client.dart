@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 import 'client_base.dart';
 import '../dart_holodex_api.dart';
 
-class HolodexClient extends BaseHolodexClient {
+class HolodexClient implements BaseHolodexClient {
   /// Creates a new instance of [HolodexClient]
   ///
   /// `apiKey` - Your personal API key. Be aware that the validity of the key is not checked, so ensure it is correct.
