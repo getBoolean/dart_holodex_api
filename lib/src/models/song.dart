@@ -66,12 +66,12 @@ class Song extends Equatable {
   @override
   List<Object> get props {
     return [
-      name,
-      art ?? 'No art linked',
-      end ?? 'No end given',
-      start ?? 'No start given',
-      itunesid ?? 'No itunes id given',
-      originalArtist ?? 'Original artist not given',
+      'name: $name',
+      'art: $art',
+      'end: $end',
+      'start: $start',
+      'itunesid: $itunesid',
+      'originalArtist: $originalArtist',
     ];
   }
 }

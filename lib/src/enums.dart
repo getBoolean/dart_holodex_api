@@ -1,4 +1,5 @@
 // ignore_for_file: constant_identifier_names
+// ignore_for_file: non_constant_identifier_names
 
 import 'package:enum_to_string/enum_to_string.dart';
 
@@ -66,33 +67,33 @@ enum VideoSearchType {
 
 enum Order { ascending, descending }
 
-enum Organization {
-  inc774,
-  AogiriHighschool,
-  AtelierLive,
-  Chukorara,
-  EileneFamily,
-  Hololive,
-  Independent,
-  Iridori,
-  KizunaAI,
-  dotLIVE,
-  Marbl_s,
-  Masquerade,
-  Nijisanji,
-  NoriPro,
-  PRISM,
-  ReACT,
-  RiotMusic,
-  Tsunderia,
-  VDimensionCreators,
-  VirtualWitchPhenomenon,
-  ViViD,
-  VOMS,
-  VShojo,
-  VSpo,
-  Xencount,
-  YuniCreate,
+class Organization {
+  static final String inc774 = '774inc';
+  static final String AogiriHighschool = 'Aogiri Highschool';
+  static final String AtelierLive = 'Atelier Live';
+  static final String Chukorara = 'Chukorara';
+  static final String EileneFamily = 'Eilene Family';
+  static final String Hololive = 'Hololive';
+  static final String Independent = 'Independents';
+  static final String Iridori = 'Iridori';
+  static final String KizunaAI = 'Kizuna Ai Inc.';
+  static final String dotLIVE = '.LIVE';
+  static final String Marbl_s = 'Marbl_s';
+  static final String Masquerade = 'Masquerade';
+  static final String Nijisanji = 'Nijisanji';
+  static final String NoriPro = 'Nori Pro';
+  static final String PRISM = 'PRISM';
+  static final String ReACT = 'ReACT';
+  static final String RiotMusic = 'Riot Music';
+  static final String Tsunderia = 'Tsunderia';
+  static final String VDimensionCreators = 'V Dimension.Creators';
+  static final String VirtualWitchPhenomenon = 'Virtual Witch Phenomenon';
+  static final String ViViD = 'ViViD';
+  static final String VOMS = 'VOMS';
+  static final String VShojo = 'VShojo';
+  static final String VSpo = 'VSpo';
+  static final String Xencount = "X enc'ount";
+  static final String YuniCreate = 'YuniCreate';
 }
 
 /// An enum which contains strings that allow extra data to be returned when requesting videos.
@@ -113,7 +114,7 @@ enum Includes {
   mentions,
 
   /// Include video descriptions.
-  descripiton,
+  description,
 
   /// Include live streams.
   liveInfo,
@@ -154,86 +155,13 @@ class EnumUtil {
       Includes.sources: 'sources',
       Includes.simulcasts: 'simulcasts',
       Includes.mentions: 'mentions',
-      Includes.descripiton: 'descripiton',
+      Includes.description: 'description',
       Includes.liveInfo: 'live_info',
       Includes.channelStats: 'channel_stats',
       Includes.songs: 'songs',
     };
     // Force not null because map contains all values for [Includes]
     return includesMapToString[i]!;
-  }
-
-  /// Converts a [Organization] enum to string.
-  ///
-  /// Returns [String]
-  static String? convertOrganizationToString(Organization? org) {
-    if (org == null) {
-      return null;
-    }
-    final organizationMapToString = {
-      Organization.inc774: '774inc',
-      Organization.AogiriHighschool: 'Aogiri Highschool',
-      Organization.AtelierLive: 'Atelier Live',
-      Organization.Chukorara: 'Chukorara',
-      Organization.EileneFamily: 'Eilene Family',
-      Organization.Hololive: 'Hololive',
-      Organization.Independent: 'Independents',
-      Organization.Iridori: 'Iridori',
-      Organization.KizunaAI: 'Kizuna Ai Inc.',
-      Organization.dotLIVE: '.LIVE',
-      Organization.Marbl_s: 'Marbl_s',
-      Organization.Masquerade: 'Masquerade',
-      Organization.Nijisanji: 'Nijisanji',
-      Organization.NoriPro: 'Nori Pro',
-      Organization.PRISM: 'PRISM',
-      Organization.ReACT: 'ReACT',
-      Organization.RiotMusic: 'Riot Music',
-      Organization.Tsunderia: 'Tsunderia',
-      Organization.VDimensionCreators: 'V Dimension.Creators',
-      Organization.VirtualWitchPhenomenon: 'Virtual Witch Phenomenon',
-      Organization.ViViD: 'ViViD',
-      Organization.VOMS: 'VOMS',
-      Organization.VShojo: 'VShojo',
-      Organization.VSpo: 'VSpo',
-      Organization.Xencount: "X enc'ount",
-      Organization.YuniCreate: 'YuniCreate',
-    };
-    return organizationMapToString[org];
-  }
-
-  /// Converts a string organization name to the corresponding [Organization] enum.
-  ///
-  /// Returns `null` if it is does not exist or was incorrectly typed, otherwise returns [Organization]
-  static Organization? convertStringToOrganization(String org) {
-    final stringMapToOrganization = {
-      '774inc': Organization.inc774,
-      'Aogiri Highschool': Organization.AogiriHighschool,
-      'Atelier Live': Organization.AtelierLive,
-      'Chukorara': Organization.Chukorara,
-      'Eilene Family': Organization.EileneFamily,
-      'Hololive': Organization.Hololive,
-      'Independents': Organization.Independent,
-      'Iridori': Organization.Iridori,
-      'Kizuna Ai Inc.': Organization.KizunaAI,
-      '.LIVE': Organization.dotLIVE,
-      'Marbl_s': Organization.Marbl_s,
-      'Masquerade': Organization.Masquerade,
-      'Nijisanji': Organization.Nijisanji,
-      'Nori Pro': Organization.NoriPro,
-      'PRISM': Organization.PRISM,
-      'ReACT': Organization.ReACT,
-      'Riot Music': Organization.RiotMusic,
-      'Tsunderia': Organization.Tsunderia,
-      'V Dimension.Creators': Organization.VDimensionCreators,
-      'Virtual Witch Phenomenon': Organization.VirtualWitchPhenomenon,
-      'ViViD': Organization.ViViD,
-      'VOMS': Organization.VOMS,
-      'VShojo': Organization.VShojo,
-      'VSpo': Organization.VSpo,
-      "X enc'ount": Organization.Xencount,
-      'YuniCreate': Organization.YuniCreate,
-    };
-    return stringMapToOrganization[org];
   }
 
   /// Converts a [ChannelSort] enum to string.

@@ -44,8 +44,9 @@ class VideoFullList extends Equatable {
     return VideoFullList(
       total: total,
       paginated: map['paginated'] ?? false,
-      videos:
-          List<VideoFull>.from(map['items']?.map((x) => VideoFull.fromMap(x))),
+      videos: List<VideoFull>.from(
+        map['items']?.map((x) => VideoFull.fromMap(x)) ?? [],
+      ),
     );
   }
 
@@ -58,5 +59,11 @@ class VideoFullList extends Equatable {
   bool get stringify => true;
 
   @override
-  List<Object> get props => [total ?? '', paginated, videos];
+  List<Object> get props {
+    return [
+      'total: $total',
+      'paginated: $paginated',
+      'videos: $videos',
+    ];
+  }
 }

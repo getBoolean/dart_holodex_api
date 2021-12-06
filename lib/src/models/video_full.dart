@@ -147,38 +147,46 @@ class VideoFull extends Video {
 
   factory VideoFull.fromMap(Map<String, dynamic> map) {
     return VideoFull(
-        id: map['id'],
-        title: map['title'],
-        type: EnumToString.fromString(VideoType.values, map['type']) ??
-            VideoType.clip,
-        topicId: map['topic_id'],
-        publishedAt: map['published_at'],
-        availableAt: map['available_at'],
-        duration: map['duration'],
-        status: EnumUtil.convertStringToVideoStatus(map['status']) ??
-            VideoStatus.missing,
-        startScheduled: map['start_scheduled'],
-        startActual: map['start_actual'],
-        endActual: map['end_actual'],
-        liveViewers: map['live_viewers'],
-        description: map['description'],
-        songcount: map['songcount'],
-        language: map['lang'],
-        channelId: map['channel_id'],
-        channel: ChannelMin.fromMap(map['channel']),
-        clips: List<Video>.from(
-            map['clips']?.map((clip) => Video.fromMap(clip)) ?? []),
-        sources: List<Video>.from(
-            map['sources']?.map((source) => Video.fromMap(source)) ?? []),
-        refers: List<Video>.from(
-            map['refers']?.map((refer) => Video.fromMap(refer)) ?? []),
-        simulcasts: List<Video>.from(
-            map['simulcasts']?.map((simulcast) => Video.fromMap(simulcast)) ??
-                []),
-        mentions: List<Channel>.from(
-            map['mentions']?.map((mention) => Channel.fromMap(mention)) ?? []),
-        songs: List<Song>.from(
-            map['songs']?.map((song) => Song.fromMap(song)) ?? []));
+      id: map['id'],
+      title: map['title'],
+      type: EnumToString.fromString(VideoType.values, map['type']) ??
+          VideoType.clip,
+      topicId: map['topic_id'],
+      publishedAt: map['published_at'],
+      availableAt: map['available_at'],
+      duration: map['duration'],
+      status: EnumUtil.convertStringToVideoStatus(map['status']) ??
+          VideoStatus.missing,
+      startScheduled: map['start_scheduled'],
+      startActual: map['start_actual'],
+      endActual: map['end_actual'],
+      liveViewers: map['live_viewers'],
+      description: map['description'],
+      songcount: map['songcount'],
+      language: map['lang'],
+      channelId: map['channel_id'],
+      channel: ChannelMin.fromMap(
+        map['channel'],
+      ),
+      clips: List<Video>.from(
+        map['clips']?.map((clip) => Video.fromMap(clip)) ?? [],
+      ),
+      sources: List<Video>.from(
+        map['sources']?.map((source) => Video.fromMap(source)) ?? [],
+      ),
+      refers: List<Video>.from(
+        map['refers']?.map((refer) => Video.fromMap(refer)) ?? [],
+      ),
+      simulcasts: List<Video>.from(
+        map['simulcasts']?.map((simulcast) => Video.fromMap(simulcast)) ?? [],
+      ),
+      mentions: List<Channel>.from(
+        map['mentions']?.map((mention) => Channel.fromMap(mention)) ?? [],
+      ),
+      songs: List<Song>.from(
+        map['songs']?.map((song) => Song.fromMap(song)) ?? [],
+      ),
+    );
   }
 
   @override
@@ -192,29 +200,16 @@ class VideoFull extends Video {
 
   @override
   List<Object> get props {
-    return [
-      id,
-      title,
-      type,
-      topicId ?? 'Topic id not given',
-      publishedAt ?? 'Published at not given',
-      availableAt,
-      duration ?? 'Duration not provided',
-      status,
-      startScheduled ?? 'Scheduled start not given',
-      startActual ?? 'Actual start not given',
-      endActual ?? 'Actual end not given',
-      liveViewers ?? 'Live viewers not given',
-      description ?? 'Description not given',
-      songcount ?? 'Song count not given',
-      language ?? 'Language not given',
-      channelId ?? 'Channel id not given',
-      channel ?? 'Channel not given',
-      clips ?? 'Clips not given',
-      sources ?? 'Sources not given',
-      refers ?? 'Refers not given',
-      simulcasts ?? 'Simulcasts not given',
-      mentions ?? 'Mentions not given',
-    ];
+    final videoProps = super.props;
+    videoProps.addAll([
+      'clips: $clips',
+      'sources: $sources',
+      'refers: $refers',
+      'simulcasts: $simulcasts',
+      'mentions: $mentions',
+      'songs: $songs',
+    ]);
+
+    return videoProps;
   }
 }

@@ -17,18 +17,20 @@ void main(List<String> arguments) async {
   final HolodexClient holodexClient = HolodexClient(apiKey: apiKey);
 
   // Get one video and print it
-  final VideoFull video =
-      await holodexClient.getVideoFromId('Gx_GPwpyLxw', includes: [
-    // IncludesData.channelStats,
-    // IncludesData.clips,
-    // IncludesData.description,
-    // IncludesData.liveInfo,
-    // IncludesData.mentions,
-    // IncludesData.refers,
-    // IncludesData.simulcasts,
-    // IncludesData.songs,
-    // IncludesData.sources,
-  ]);
+  final VideoFull video = await holodexClient.getVideoFromId(
+    'Gx_GPwpyLxw',
+    includes: [
+      Includes.channelStats,
+      Includes.clips,
+      // Includes.description,
+      Includes.liveInfo,
+      Includes.mentions,
+      Includes.refers,
+      Includes.simulcasts,
+      Includes.songs,
+      Includes.sources,
+    ],
+  );
   print('Requested Video: ${video.toString()}');
 
   // Get a bunch of videos and print them
@@ -129,7 +131,10 @@ void main(List<String> arguments) async {
     conditions: ['karaoke'],
     topics: ['singing'],
     videoChannels: <String>[],
-    organizations: [Organization.Hololive],
+    organizations: [
+      Organization.Hololive,
+      Organization.Nijisanji,
+    ],
     paginated: true,
     offset: 0,
     limit: 25,
@@ -143,7 +148,7 @@ void main(List<String> arguments) async {
     searchTargets: [SearchTarget.clip, SearchTarget.stream],
     comment: 'shion',
     topics: ['singing'],
-    videoChannels: <String>[],
+    // videoChannels: <String>[],
     organizations: [Organization.Hololive],
     paginated: true,
     offset: 0,

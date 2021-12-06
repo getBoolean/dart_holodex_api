@@ -1,5 +1,14 @@
 <!-- markdownlint-disable MD041 -->
 
+## 0.3.0
+
+- **BREAKING**: Convert Organization enum to class with static strings
+- **BREAKING** Rename Includes.descripiton to Includes.description
+- Fix possible exception when returned items is null when searching
+- Fix description not being returned even when included in includes list
+- Fix search returning no videos when organizations are included
+- Updated props for toString() of all models
+
 ## 0.2.1
 
 - Update pubspec description

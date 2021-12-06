@@ -68,7 +68,9 @@
   return VideoFullList(
     total: total,
     paginated: map[&#39;paginated&#39;] ?? false,
-    videos: List&lt;VideoFull&gt;.from(map[&#39;items&#39;]?.map((x) =&gt; VideoFull.fromMap(x))),
+    videos: List&lt;VideoFull&gt;.from(
+      map[&#39;items&#39;]?.map((x) =&gt; VideoFull.fromMap(x)) ?? [],
+    ),
   );
 }</code></pre>
 </section>
@@ -136,7 +138,7 @@
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

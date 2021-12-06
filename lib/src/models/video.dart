@@ -159,22 +159,22 @@ class Video extends Equatable {
   @override
   List<Object> get props {
     return [
-      id,
-      title,
-      type,
-      topicId ?? 'Topic id not given',
-      publishedAt ?? 'Published at not given',
-      availableAt,
-      duration ?? 'Duration not provided',
-      status,
-      startScheduled ?? 'Scheduled start not given',
-      startActual ?? 'Actual start not given',
-      endActual ?? 'Actual end not given',
-      liveViewers ?? 'Live viewers not given',
-      description ?? 'Description not given',
-      songcount ?? 'Song count not given',
-      language ?? 'Language not given',
-      channelId ?? 'Channel id not given',
+      'id: $id',
+      'title: $title',
+      'type: $type',
+      'topicId: $topicId',
+      'publishedAt: $publishedAt',
+      'availableAt: $availableAt',
+      'duration: $duration',
+      'status: $status',
+      'startScheduled: $startScheduled',
+      'startActual: $startActual',
+      'endActual: $endActual',
+      'liveViewers: $liveViewers',
+      'description: $description',
+      'songcount: $songcount',
+      'language: $language',
+      'channelId: $channelId',
     ];
   }
 }

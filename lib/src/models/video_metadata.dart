@@ -50,9 +50,11 @@ class VideoMetadata extends Equatable {
   bool get stringify => true;
 
   @override
-  List<Object> get props => [
-        video,
-        comments ?? 'Comments not included',
-        recommendations ?? 'Recommendations not included'
-      ];
+  List<Object> get props {
+    return [
+      'video: $video',
+      'comments: $comments',
+      'recommendations: $recommendations',
+    ];
+  }
 }

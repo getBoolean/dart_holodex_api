@@ -71,25 +71,23 @@ two instances are equal.</p>
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 List&lt;Object&gt; get props {
-  return [
-    id,
-    name,
-    englishName ?? &#39;No english name provided&#39;,
-    type,
-    org ?? &#39;No organization provided&#39;,
-    suborg ?? &#39;No sub organization provided&#39;,
-    photo ?? &#39;No photo found&#39;,
-    banner ?? &#39;No banner found&#39;,
-    twitter ?? &#39;No twitter linked&#39;,
-    videoCount ?? 0,
-    subscriberCount ?? 0,
-    viewCount ?? 0,
-    clipCount ?? 0,
-    lang,
-    publishedAt ?? &#39;No publishedAt provided&#39;,
-    inactive ?? &#39;Inactive not provided&#39;,
-    description ?? &#39;Description not provided&#39;,
-  ];
+  final channelProps = super.props;
+  channelProps.addAll([
+    &#39;org: $org&#39;,
+    &#39;suborg: $suborg&#39;,
+    &#39;banner: $banner&#39;,
+    &#39;twitter: $twitter&#39;,
+    &#39;videoCount: $videoCount&#39;,
+    &#39;subscriberCount: $subscriberCount&#39;,
+    &#39;viewCount: $viewCount&#39;,
+    &#39;clipCount: $clipCount&#39;,
+    &#39;lang: $lang&#39;,
+    &#39;publishedAt: $publishedAt&#39;,
+    &#39;inactive: $inactive&#39;,
+    &#39;description: $description&#39;,
+  ]);
+
+  return channelProps;
 }</code></pre>
 </section>
 
@@ -172,7 +170,7 @@ List&lt;Object&gt; get props {
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

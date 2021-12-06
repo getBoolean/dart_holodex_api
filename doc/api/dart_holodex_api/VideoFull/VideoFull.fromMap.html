@@ -64,12 +64,14 @@
   return VideoFull(
     id: map[&#39;id&#39;],
     title: map[&#39;title&#39;],
-    type: EnumToString.fromString(VideoType.values, map[&#39;type&#39;]) ?? VideoType.clip,
+    type: EnumToString.fromString(VideoType.values, map[&#39;type&#39;]) ??
+        VideoType.clip,
     topicId: map[&#39;topic_id&#39;],
     publishedAt: map[&#39;published_at&#39;],
     availableAt: map[&#39;available_at&#39;],
     duration: map[&#39;duration&#39;],
-    status: EnumUtil.convertStringToVideoStatus(map[&#39;status&#39;]) ?? VideoStatus.missing,
+    status: EnumUtil.convertStringToVideoStatus(map[&#39;status&#39;]) ??
+        VideoStatus.missing,
     startScheduled: map[&#39;start_scheduled&#39;],
     startActual: map[&#39;start_actual&#39;],
     endActual: map[&#39;end_actual&#39;],
@@ -78,13 +80,27 @@
     songcount: map[&#39;songcount&#39;],
     language: map[&#39;lang&#39;],
     channelId: map[&#39;channel_id&#39;],
-    channel: ChannelMin.fromMap(map[&#39;channel&#39;]),
-    clips: List&lt;Video&gt;.from(map[&#39;clips&#39;]?.map((clip) =&gt; Video.fromMap(clip)) ?? []),
-    sources: List&lt;Video&gt;.from(map[&#39;sources&#39;]?.map((source) =&gt; Video.fromMap(source)) ?? []),
-    refers: List&lt;Video&gt;.from(map[&#39;refers&#39;]?.map((refer) =&gt; Video.fromMap(refer)) ?? []),
-    simulcasts: List&lt;Video&gt;.from(map[&#39;simulcasts&#39;]?.map((simulcast) =&gt; Video.fromMap(simulcast)) ?? []),
-    mentions: List&lt;Channel&gt;.from(map[&#39;mentions&#39;]?.map((mention) =&gt; Channel.fromMap(mention)) ?? []),
-    songs: List&lt;Song&gt;.from(map[&#39;songs&#39;]?.map((song) =&gt; Song.fromMap(song)) ?? [])
+    channel: ChannelMin.fromMap(
+      map[&#39;channel&#39;],
+    ),
+    clips: List&lt;Video&gt;.from(
+      map[&#39;clips&#39;]?.map((clip) =&gt; Video.fromMap(clip)) ?? [],
+    ),
+    sources: List&lt;Video&gt;.from(
+      map[&#39;sources&#39;]?.map((source) =&gt; Video.fromMap(source)) ?? [],
+    ),
+    refers: List&lt;Video&gt;.from(
+      map[&#39;refers&#39;]?.map((refer) =&gt; Video.fromMap(refer)) ?? [],
+    ),
+    simulcasts: List&lt;Video&gt;.from(
+      map[&#39;simulcasts&#39;]?.map((simulcast) =&gt; Video.fromMap(simulcast)) ?? [],
+    ),
+    mentions: List&lt;Channel&gt;.from(
+      map[&#39;mentions&#39;]?.map((mention) =&gt; Channel.fromMap(mention)) ?? [],
+    ),
+    songs: List&lt;Song&gt;.from(
+      map[&#39;songs&#39;]?.map((song) =&gt; Song.fromMap(song)) ?? [],
+    ),
   );
 }</code></pre>
 </section>
@@ -172,7 +188,7 @@
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

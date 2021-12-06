@@ -71,30 +71,17 @@ two instances are equal.</p>
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 List&lt;Object&gt; get props {
-  return [
-    id,
-    title,
-    type,
-    topicId ?? &#39;Topic id not given&#39;,
-    publishedAt ?? &#39;Published at not given&#39;,
-    availableAt,
-    duration ?? &#39;Duration not provided&#39;,
-    status,
-    startScheduled ?? &#39;Scheduled start not given&#39;,
-    startActual ?? &#39;Actual start not given&#39;,
-    endActual ?? &#39;Actual end not given&#39;,
-    liveViewers ?? &#39;Live viewers not given&#39;,
-    description ?? &#39;Description not given&#39;,
-    songcount ?? &#39;Song count not given&#39;,
-    language ?? &#39;Language not given&#39;,
-    channelId ?? &#39;Channel id not given&#39;,
-    channel ?? &#39;Channel not given&#39;,
-    clips ?? &#39;Clips not given&#39;,
-    sources ?? &#39;Sources not given&#39;,
-    refers ?? &#39;Refers not given&#39;,
-    simulcasts ?? &#39;Simulcasts not given&#39;,
-    mentions ?? &#39;Mentions not given&#39;,
-  ];
+  final videoProps = super.props;
+  videoProps.addAll([
+    &#39;clips: $clips&#39;,
+    &#39;sources: $sources&#39;,
+    &#39;refers: $refers&#39;,
+    &#39;simulcasts: $simulcasts&#39;,
+    &#39;mentions: $mentions&#39;,
+    &#39;songs: $songs&#39;,
+  ]);
+
+  return videoProps;
 }</code></pre>
 </section>
 
@@ -183,7 +170,7 @@ List&lt;Object&gt; get props {
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

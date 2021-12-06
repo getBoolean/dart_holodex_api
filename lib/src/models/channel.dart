@@ -1,7 +1,7 @@
 part of dart_holodex_api.models;
 
 class Channel extends ChannelMin {
-  final Organization? org;
+  final String? org;
   final String? suborg;
   final String? banner;
   final String? twitter;
@@ -47,7 +47,7 @@ class Channel extends ChannelMin {
       'name': name,
       'english_name': englishName,
       'type': EnumUtil.convertChannelTypeToString(type),
-      'org': EnumUtil.convertOrganizationToString(org),
+      'org': org,
       'suborg': suborg,
       'photo': photo,
       'banner': banner,
@@ -70,7 +70,7 @@ class Channel extends ChannelMin {
       englishName: map['english_name'],
       type: EnumUtil.convertStringToChannelType(map['type'] ?? '') ??
           ChannelType.subber,
-      org: EnumUtil.convertStringToOrganization(map['org'] ?? ''),
+      org: map['org'],
       suborg: map['suborg'],
       photo: map['photo'],
       banner: map['banner'],
@@ -98,7 +98,7 @@ class Channel extends ChannelMin {
     String? name,
     String? englishName,
     ChannelType? type,
-    Organization? org,
+    String? org,
     String? suborg,
     String? photo,
     String? banner,
@@ -138,24 +138,22 @@ class Channel extends ChannelMin {
 
   @override
   List<Object> get props {
-    return [
-      id,
-      name,
-      englishName ?? 'No english name provided',
-      type,
-      org ?? 'No organization provided',
-      suborg ?? 'No sub organization provided',
-      photo ?? 'No photo found',
-      banner ?? 'No banner found',
-      twitter ?? 'No twitter linked',
-      videoCount ?? 0,
-      subscriberCount ?? 0,
-      viewCount ?? 0,
-      clipCount ?? 0,
-      lang,
-      publishedAt ?? 'No publishedAt provided',
-      inactive ?? 'Inactive not provided',
-      description ?? 'Description not provided',
-    ];
+    final channelProps = super.props;
+    channelProps.addAll([
+      'org: $org',
+      'suborg: $suborg',
+      'banner: $banner',
+      'twitter: $twitter',
+      'videoCount: $videoCount',
+      'subscriberCount: $subscriberCount',
+      'viewCount: $viewCount',
+      'clipCount: $clipCount',
+      'lang: $lang',
+      'publishedAt: $publishedAt',
+      'inactive: $inactive',
+      'description: $description',
+    ]);
+
+    return channelProps;
   }
 }

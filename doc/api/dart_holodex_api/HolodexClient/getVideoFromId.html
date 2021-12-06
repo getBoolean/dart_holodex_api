@@ -59,7 +59,7 @@
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/VideoFull-class.html">VideoFull</a></span>&gt;</span></span>
 <span class="name ">getVideoFromId</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getVideoFromId-param-videoId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">videoId</span>, </span></li>
-<li><span class="parameter" id="getVideoFromId-param-includes">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Includes.html">Includes</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>}</span></li>
+<li><span class="parameter" id="getVideoFromId-param-includes">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Includes-class.html">Includes</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>}</span></li>
 </ol>)
 
       
@@ -81,13 +81,17 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-Future&lt;VideoFull&gt; getVideoFromId(String videoId, {List&lt;Includes&gt;? includes}) async {
+Future&lt;VideoFull&gt; getVideoFromId(
+  String videoId, {
+  List&lt;Includes&gt;? includes,
+}) async {
   final Map&lt;String, dynamic&gt; params = {&#39;id&#39;: videoId};
 
   &#47;&#47; Add the info the videos must include
   _addIncludes(includes, params);
 
-  final Response response = await get(path: _Constants.videosPath, params: params);
+  final Response response =
+      await get(path: _Constants.videosPath, params: params);
 
   return VideoFull.fromMap(jsonDecode(response.body).first);
 }</code></pre>
@@ -164,7 +168,7 @@ Future&lt;VideoFull&gt; getVideoFromId(String videoId, {List&lt;Includes&gt;? in
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

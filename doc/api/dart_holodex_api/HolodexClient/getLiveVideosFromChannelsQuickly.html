@@ -82,7 +82,9 @@ It's unfortunately less customizable as a result.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-Future&lt;List&lt;Video&gt;&gt; getLiveVideosFromChannelsQuickly(List&lt;String&gt; channelIds) async {
+Future&lt;List&lt;Video&gt;&gt; getLiveVideosFromChannelsQuickly(
+  List&lt;String&gt; channelIds,
+) async {
   if (channelIds.isEmpty) {
     return &lt;Video&gt;[];
   }
@@ -168,7 +170,7 @@ Future&lt;List&lt;Video&gt;&gt; getLiveVideosFromChannelsQuickly(List&lt;String&
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   

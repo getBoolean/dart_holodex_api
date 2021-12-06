@@ -86,12 +86,13 @@ Future&lt;Response&gt; post({
   &#47;&#47; return await call(&#39;post&#39;, path: path, headers: headers, data: data);
   headers ??= {};
   headers.addAll({
-    HttpHeaders.contentTypeHeader: &quot;application&#47;json&quot;,
+    &#39;content-type&#39;: &#39;application&#47;json&#39;,
     &#39;X-APIKEY&#39;: apiKey,
   });
 
   try {
-    return await _httpClient.post(_getUriUrl(basePath + path, params), headers: headers, body: json.encode(data));
+    return await _httpClient.post(_getUriUrl(basePath + path, params),
+        headers: headers, body: json.encode(data));
   } catch (e) {
     if (e is HolodexException) {
       rethrow;
@@ -172,7 +173,7 @@ Future&lt;Response&gt; post({
 <footer>
   <span class="no-break">
     dart_holodex_api
-      0.2.0
+      0.3.0
   </span>
 
   
