@@ -14,6 +14,7 @@ and the Flutter guide for
 <!-- markdownlint-disable MD041 -->
 
 [![pub package](https://img.shields.io/pub/v/dart_holodex_api)](https://pub.dev/packages/dart_holodex_api)
+[![codecov](https://codecov.io/gh/getBoolean/dart_holodex_api/branch/main/graph/badge.svg?token=MDG6GG8RCE)](https://codecov.io/gh/getBoolean/dart_holodex_api)
 [![License](https://img.shields.io/github/license/getBoolean/dart_holodex_api)](https://github.com/getBoolean/dart_holodex_api/blob/main/LICENSE)
 
 A Dart wrapper for Holodex API v2
@@ -450,6 +451,18 @@ final VideoWithCommentsList searchComments = await holodexClient.searchComments(
 );
 print('Videos with Comment: ${searchComments.videos.length}\n');
 ```
+
+## Testing
+
+Generating code coverage:
+
+1. `dart pub global activate coverage`
+2. `dart test --coverage="coverage"`
+3. `dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib`
+
+Upload code coverage to codecov.io
+
+- `./codecov -t ${CODECOV_TOKEN}`
 
 ## Additional information
 
