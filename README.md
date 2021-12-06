@@ -457,7 +457,7 @@ Generating code coverage:
 
 1. `dart pub global activate coverage`
 2. `dart test --coverage="coverage"`
-3. `format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib`
+3. `dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib`
 
 ## Additional information
 

@@ -2,6 +2,12 @@ import 'package:dart_holodex_api/dart_holodex_api.dart';
 import 'package:test/test.dart';
 import 'package:dotenv/dotenv.dart' show load, isEveryDefined, env;
 
+
+// Generating code coverage:
+// 1. `dart pub global activate coverage`
+// 2. `dart test --coverage="coverage"`
+// 3. `dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib`
+
 void main() {
   // Load the environment variables into memory
   // I recommend using envify for a production app, this way is just simpler for an example app
