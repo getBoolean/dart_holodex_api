@@ -34,6 +34,9 @@ jobs:
       # Passing '--fatal-infos' for slightly stricter analysis.
       - name: Analyze project source
         run: dart analyze --fatal-infos
+
+      - name: Activate Coverage
+        run: dart pub global activate coverage
         
       - name: Run tests
         run: dart test --coverage="coverage"
