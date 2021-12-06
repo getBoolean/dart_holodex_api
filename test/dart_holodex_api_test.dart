@@ -39,7 +39,7 @@ void main() {
   group('Test HolodexClient.getVideoFromId()', () {
     setUp(() {});
 
-    test('API key should not be empty', () async {
+    test('Getting a single video', () async {
       final video = await client.getVideoFromId('Gx_GPwpyLxw');
       print(video);
 
