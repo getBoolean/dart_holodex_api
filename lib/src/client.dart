@@ -380,13 +380,15 @@ class HolodexClient extends BaseHolodexClient {
     int offset = 0,
     bool paginated = true,
   }) async {
-    return await getVideosRelatedToChannel(channelId,
-        type: VideoSearchType.videos,
-        includes: includes,
-        languages: languages,
-        limit: limit,
-        offset: offset,
-        paginated: paginated);
+    return await getVideosRelatedToChannel(
+      channelId,
+      type: VideoSearchType.videos,
+      includes: includes,
+      languages: languages,
+      limit: limit,
+      offset: offset,
+      paginated: paginated,
+    );
   }
 
   /// Get Clips of a VTuber
@@ -411,13 +413,15 @@ class HolodexClient extends BaseHolodexClient {
     int offset = 0,
     bool paginated = true,
   }) async {
-    return await getVideosRelatedToChannel(channelId,
-        type: VideoSearchType.clips,
-        includes: includes,
-        languages: languages,
-        limit: limit,
-        offset: offset,
-        paginated: paginated);
+    return await getVideosRelatedToChannel(
+      channelId,
+      type: VideoSearchType.clips,
+      includes: includes,
+      languages: languages,
+      limit: limit,
+      offset: offset,
+      paginated: paginated,
+    );
   }
 
   /// Get Collabs that mention a VTuber
@@ -442,13 +446,15 @@ class HolodexClient extends BaseHolodexClient {
     int offset = 0,
     bool paginated = true,
   }) async {
-    return await getVideosRelatedToChannel(channelId,
-        type: VideoSearchType.collabs,
-        includes: includes,
-        languages: languages,
-        limit: limit,
-        offset: offset,
-        paginated: paginated);
+    return await getVideosRelatedToChannel(
+      channelId,
+      type: VideoSearchType.collabs,
+      includes: includes,
+      languages: languages,
+      limit: limit,
+      offset: offset,
+      paginated: paginated,
+    );
   }
 
   /// Get Videos Related To Channel
