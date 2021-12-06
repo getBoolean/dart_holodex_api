@@ -451,6 +451,14 @@ final VideoWithCommentsList searchComments = await holodexClient.searchComments(
 print('Videos with Comment: ${searchComments.videos.length}\n');
 ```
 
+## Testing
+
+Generating code coverage:
+
+1. `dart pub global activate coverage`
+2. `dart test --coverage="coverage"`
+3. `format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib`
+
 ## Additional information
 
 Read the official API documentation [here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)
