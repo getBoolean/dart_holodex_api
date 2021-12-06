@@ -821,7 +821,7 @@ class HolodexClient implements BaseHolodexClient {
   }
 
   void _addIncludes(List<Includes> includes, Map<String, dynamic> map) {
-    if (includes != null && includes.isNotEmpty) {
+    if (includes.isNotEmpty) {
       // Make new list with the values as string
       final List<String> includesStringList = includes
           .map((included) => EnumUtil.convertIncludesToString(included))
