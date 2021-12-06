@@ -1,5 +1,9 @@
 <!-- markdownlint-disable MD041 -->
 
+## 0.3.1
+
+- Fix formatting
+
 ## 0.3.0
 
 - **BREAKING**: Convert Organization enum to class with static strings
