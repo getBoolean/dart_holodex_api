@@ -49,6 +49,11 @@ class Comment extends Equatable {
   bool get stringify => true;
 
   @override
-  List<Object> get props =>
-      [commentKey, videoId ?? 'Video ID not given', message];
+  List<Object> get props {
+    return [
+      'commentKey: $commentKey',
+      'videoId: $videoId',
+      'message: $message',
+    ];
+  }
 }

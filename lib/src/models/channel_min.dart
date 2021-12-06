@@ -64,11 +64,11 @@ class ChannelMin extends Equatable {
   @override
   List<Object> get props {
     return [
-      id,
-      name,
-      englishName ?? '',
-      type,
-      photo ?? 'No photo found',
+      'id: $id',
+      'name" $name',
+      'englishName: $englishName',
+      'type: $type',
+      'photo: $photo',
     ];
   }
 }

@@ -138,24 +138,22 @@ class Channel extends ChannelMin {
 
   @override
   List<Object> get props {
-    return [
-      id,
-      name,
-      englishName ?? 'No english name provided',
-      type,
-      org ?? 'No organization provided',
-      suborg ?? 'No sub organization provided',
-      photo ?? 'No photo found',
-      banner ?? 'No banner found',
-      twitter ?? 'No twitter linked',
-      videoCount ?? 0,
-      subscriberCount ?? 0,
-      viewCount ?? 0,
-      clipCount ?? 0,
-      lang,
-      publishedAt ?? 'No publishedAt provided',
-      inactive ?? 'Inactive not provided',
-      description ?? 'Description not provided',
-    ];
+    final channelProps = super.props;
+    channelProps.addAll([
+      'org: $org',
+      'suborg: $suborg',
+      'banner: $banner',
+      'twitter: $twitter',
+      'videoCount: $videoCount',
+      'subscriberCount: $subscriberCount',
+      'viewCount: $viewCount',
+      'clipCount: $clipCount',
+      'lang: $lang',
+      'publishedAt: $publishedAt',
+      'inactive: $inactive',
+      'description: $description',
+    ]);
+
+    return channelProps;
   }
 }

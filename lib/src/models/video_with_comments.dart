@@ -146,24 +146,12 @@ class VideoWithComments extends Video {
   bool get stringify => true;
 
   @override
-  List<Object> get props => [
-        id,
-        title,
-        type,
-        topicId ?? 'Topic id not given',
-        publishedAt ?? 'Published at not given',
-        availableAt,
-        duration ?? 'Duration not provided',
-        status,
-        startScheduled ?? 'Scheduled start not given',
-        startActual ?? 'Actual start not given',
-        endActual ?? 'Actual end not given',
-        liveViewers ?? 'Live viewers not given',
-        description ?? 'Description not given',
-        songcount ?? 'Song count not given',
-        language ?? 'Language not given',
-        channelId ?? 'Channel id not given',
-        channel ?? 'Channel not given',
-        comments,
-      ];
+  List<Object> get props {
+    final videoProps = super.props;
+    videoProps.addAll([
+      'comments: $comments',
+    ]);
+    
+    return videoProps;
+  }
 }

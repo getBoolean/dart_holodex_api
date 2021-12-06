@@ -62,5 +62,11 @@ class VideoWithCommentsList extends Equatable {
   bool get stringify => true;
 
   @override
-  List<Object> get props => [total ?? '', paginated, videos];
+  List<Object> get props {
+    return [
+      'total: $total',
+      'paginated: $paginated',
+      'videos: $videos',
+    ];
+  }
 }
