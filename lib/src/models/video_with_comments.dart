@@ -151,7 +151,7 @@ class VideoWithComments extends Video {
     videoProps.addAll([
       'comments: $comments',
     ]);
-    
+
     return videoProps;
   }
 }
