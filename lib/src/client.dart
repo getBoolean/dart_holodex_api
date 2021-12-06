@@ -322,7 +322,7 @@ class HolodexClient implements BaseHolodexClient {
 
     // Add the languages to filter by
     if (languages != null) {
-       _addLanguages(languages, params);
+      _addLanguages(languages, params);
     }
 
     // Add the organization param
