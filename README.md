@@ -459,6 +459,10 @@ Generating code coverage:
 2. `dart test --coverage="coverage"`
 3. `dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib`
 
+Upload code coverage to codecov.io
+
+- `./codecov -t ${CODECOV_TOKEN}`
+
 ## Additional information
 
 Read the official API documentation [here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)

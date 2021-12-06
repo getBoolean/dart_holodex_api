@@ -8,6 +8,9 @@ import 'package:dotenv/dotenv.dart' show load, isEveryDefined, env;
 // 2. `dart test --coverage="coverage"`
 // 3. `dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib`
 
+// Upload code coverage to codecov.io
+// `./codecov -t ${CODECOV_TOKEN}`
+
 void main() {
   // Load the environment variables into memory
   // I recommend using envify for a production app, this way is just simpler for an example app
