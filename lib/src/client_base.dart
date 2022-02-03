@@ -1,6 +1,7 @@
 import 'package:http/http.dart';
 
-import '../dart_holodex_api.dart';
+import 'enums.dart';
+import 'models.dart';
 
 abstract class BaseHolodexClient {
   /// Extended by [HolodexClient]
