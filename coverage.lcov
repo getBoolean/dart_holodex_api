@@ -1,4 +1,4 @@
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/client.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\client.dart
 DA:16,1
 DA:22,2
 DA:24,1
@@ -243,7 +243,7 @@ DA:931,2
 LF:241
 LH:19
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/exception.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\exception.dart
 DA:6,0
 DA:8,0
 DA:10,0
@@ -251,7 +251,7 @@ DA:11,0
 LF:4
 LH:0
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/models/channel_min.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\models\channel_min.dart
 DA:11,1
 DA:19,0
 DA:26,0
@@ -288,7 +288,7 @@ DA:71,0
 LF:33
 LH:8
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/models/video_full.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\models\video_full.dart
 DA:5,1
 DA:29,1
 DA:66,0
@@ -390,7 +390,7 @@ DA:210,0
 LF:98
 LH:34
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/models/video.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\models\video.dart
 DA:46,1
 DA:66,0
 DA:85,0
@@ -473,7 +473,7 @@ DA:177,0
 LF:79
 LH:1
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/models/channel.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\models\channel.dart
 DA:18,0
 DA:36,0
 DA:43,0
@@ -556,7 +556,7 @@ DA:154,0
 LF:79
 LH:0
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/models/video_full_list.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\models\video_full_list.dart
 DA:13,0
 DA:19,0
 DA:24,0
@@ -588,7 +588,7 @@ DA:66,0
 LF:28
 LH:0
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/models/comment.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\models\comment.dart
 DA:9,0
 DA:15,0
 DA:16,0
@@ -617,7 +617,7 @@ DA:56,0
 LF:25
 LH:0
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/models/song.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\models\song.dart
 DA:10,0
 DA:19,0
 DA:27,0
@@ -657,7 +657,7 @@ DA:74,0
 LF:36
 LH:0
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/models/video_with_comments.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\models\video_with_comments.dart
 DA:6,0
 DA:25,0
 DA:45,0
@@ -733,7 +733,7 @@ DA:152,0
 LF:72
 LH:0
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/models/video_with_comments_list.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\models\video_with_comments_list.dart
 DA:13,0
 DA:19,0
 DA:24,0
@@ -767,7 +767,7 @@ DA:69,0
 LF:30
 LH:0
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/models/video_metadata.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\models\video_metadata.dart
 DA:7,0
 DA:13,0
 DA:18,0
@@ -798,7 +798,7 @@ DA:57,0
 LF:27
 LH:0
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/enums.dart
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\enums.dart
 DA:6,2
 DA:8,1
 DA:10,2
@@ -851,8 +851,8 @@ DA:296,0
 LF:49
 LH:16
 end_of_record
-SF:/Users/danielnewville/Documents/GitHub/dart_holodex_api/lib/src/client_base.dart
-DA:7,0
+SF:B:\Documents\GitHub\dart_holodex_api\lib\src\client_base.dart
+DA:8,0
 LF:1
 LH:0
 end_of_record
