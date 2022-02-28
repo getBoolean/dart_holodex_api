@@ -1,5 +1,3 @@
-import 'package:http/http.dart';
-
 import '../dart_holodex_api.dart';
 
 abstract class BaseHolodexClient {
