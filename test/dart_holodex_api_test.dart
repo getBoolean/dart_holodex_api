@@ -113,7 +113,8 @@ void main() {
         video.clips,
         null,
         reason: 'Stream clips should be null if it is not a stream',
-        skip: 'Currently video.clips is always an empty list even if clips not requested or it is a stream',
+        skip:
+            'Currently video.clips is always an empty list even if clips not requested or it is a stream',
       );
     });
 
@@ -134,10 +135,10 @@ void main() {
         video.clips,
         isNotNull,
         reason: 'Stream clips should be null if it is not a stream',
-        skip: 'Currently video.clips is always an empty list even if clips not requested or it is a stream',
+        skip:
+            'Currently video.clips is always an empty list even if clips not requested or it is a stream',
       );
     });
-
   });
 
   tearDown(() => client.close());
