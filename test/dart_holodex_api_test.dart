@@ -76,7 +76,7 @@ void main() {
       );
     });
 
-    test('Getting a single video with included description', () async {
+    test('Getting a single video with included channel states', () async {
       final video = await client.getVideoFromId(
         'Gx_GPwpyLxw',
         includes: [
