@@ -54,67 +54,154 @@ void main() {
     test('Getting a single video', () async {
       final video = await client.getVideoFromId('Gx_GPwpyLxw');
 
-      expect(
-        video.type,
-        VideoType.clip,
-        reason: 'Expected video to be a clip',
+      _expectVideoDetails(video);
+    });
+
+    test('Getting a single video with included description', () async {
+      final video = await client.getVideoFromId(
+        'Gx_GPwpyLxw',
+        includes: [
+          Includes.description,
+        ],
       );
 
-      expect(
-        video.duration,
-        205,
-        reason: 'Expected video duration to be 205 seconds',
-      );
+      _expectVideoDetails(video);
+
+      // Test included data
 
       expect(
-        video.status,
-        VideoStatus.past,
-        reason: 'Expected video status to be in the past',
+        video.description,
+        isNotNull,
+        reason: 'Video description should be included',
+      );
+    });
+
+    test('Getting a single video with included channel states', () async {
+      final video = await client.getVideoFromId(
+        'Gx_GPwpyLxw',
+        includes: [
+          Includes.channelStats,
+        ],
       );
 
-      expect(
-        video.startScheduled,
-        isNull,
-        reason: 'Video is not a premier or a live stream',
-      );
+      _expectVideoDetails(video);
+
+      // Test included data
 
       expect(
-        video.startActual,
-        isNull,
-        reason: 'Video is not a premier or a live stream',
+        true,
+        false,
+        reason: 'Channel Stats should be included',
+        skip: 'ChannelStats are not returned yet',
+      );
+    });
+
+    test('Getting a single clip video with included clips', () async {
+      // Clip video
+      final video = await client.getVideoFromId(
+        'Gx_GPwpyLxw',
+        includes: [
+          Includes.clips,
+        ],
       );
 
-      expect(
-        video.endActual,
-        isNull,
-        reason: 'Video is not a premier or a live stream',
-      );
+      _expectVideoDetails(video);
+
+      // Test included data
 
       expect(
-        video.liveViewers,
-        isNull,
-        reason: 'Video is not a premier or a live stream',
+        video.clips,
+        null,
+        reason: 'Stream clips should be null if it is not a stream',
+        skip:
+            'Currently video.clips is always an empty list even if clips not requested or it is a stream',
+      );
+    });
+
+    test('Getting a single stream video with included clips', () async {
+      // Clip video
+      final video = await client.getVideoFromId(
+        'Gx_GPwpyLxw',
+        includes: [
+          Includes.clips,
+        ],
       );
 
-      expect(
-        video.songcount,
-        isNull,
-        reason: 'Video has no songs',
-      );
+      _expectVideoDetails(video);
+
+      // Test included data
 
       expect(
-        video.songs,
-        isEmpty,
-        reason: 'Video has no songs',
-      );
-
-      expect(
-        video.language,
-        'en',
-        reason: 'Video language is english',
+        video.clips,
+        isNotNull,
+        reason: 'Stream clips should be null if it is not a stream',
+        skip:
+            'Currently video.clips is always an empty list even if clips not requested or it is a stream',
       );
     });
   });
 
   tearDown(() => client.close());
+}
+
+void _expectVideoDetails(VideoFull video) {
+  expect(
+    video.type,
+    VideoType.clip,
+    reason: 'Expected video to be a clip',
+  );
+
+  expect(
+    video.duration,
+    205,
+    reason: 'Expected video duration to be 205 seconds',
+  );
+
+  expect(
+    video.status,
+    VideoStatus.past,
+    reason: 'Expected video status to be in the past',
+  );
+
+  expect(
+    video.startScheduled,
+    isNull,
+    reason: 'Video is not a premier or a live stream',
+  );
+
+  expect(
+    video.startActual,
+    isNull,
+    reason: 'Video is not a premier or a live stream',
+  );
+
+  expect(
+    video.endActual,
+    isNull,
+    reason: 'Video is not a premier or a live stream',
+  );
+
+  expect(
+    video.liveViewers,
+    isNull,
+    reason: 'Video is not a premier or a live stream',
+  );
+
+  expect(
+    video.songcount,
+    isNull,
+    reason: 'Video has no songs',
+  );
+
+  expect(
+    video.songs,
+    isEmpty,
+    reason: 'Video has no songs',
+  );
+
+  expect(
+    video.language,
+    'en',
+    reason: 'Video language is english',
+  );
 }

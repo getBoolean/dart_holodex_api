@@ -7,9 +7,9 @@ name: Build & Test Dart
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -37,13 +37,10 @@ jobs:
 
       - name: Activate Coverage
         run: dart pub global activate coverage
-        
-      - name: Run tests
-        run: dart test --coverage="coverage"
-        
-      - name: Format Coverage Results
-        run: dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib
-        
+
+      - name: Test With Coverage Results
+        run: dart pub global run coverage:test_with_coverage --branch-coverage --function-coverage
+
       - name: Upload Coverage Results
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
@@ -62,4 +59,3 @@ jobs:
 
           chmod +x codecov
           ./codecov -t ${CODECOV_TOKEN}
-
