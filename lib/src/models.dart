@@ -8,7 +8,6 @@ part 'models/channel.dart';
 part 'models/channel_min.dart';
 part 'models/video.dart';
 part 'models/video_full.dart';
-part 'models/video_full_list.dart';
 part 'models/comment.dart';
 part 'models/video_metadata.dart';
 part 'models/song.dart';

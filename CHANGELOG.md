@@ -10,6 +10,7 @@
 - **Breaking**: Removed `VideoWithCommentsList`
 - **Breaking**: Renamed `client.dart` to `holodex_client.dart`. Technically a breaking change, but only if
 - **Breaking**: Replace usage of package `EnumToString` with Dart 2.17 enhanced enums.
+- **Breaking**: Removed `VideoFullList`. Use `PaginatedResult<VideoFull>` instead.
 implementation was imported.
 - Changed `Video` constructor parameter `duration` to optional
 have been replaced with `VideoLiveInfo`

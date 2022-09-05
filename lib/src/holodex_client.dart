@@ -79,7 +79,7 @@ class HolodexClient {
   /// - `videoStatus` Filter by the video status
   /// - `topic` Filter by video topic ID
   /// - `videoType` Filter by type of video, either clips or streams
-  Future<VideoFullList> getVideos({
+  Future<PaginatedResult<VideoFull>> getVideos({
     String? channelId,
     List<Includes>? includes,
     List<Language> languages = const [Language.all],
@@ -145,13 +145,13 @@ class HolodexClient {
 
     if (paginated) {
       // Grab total and return with it
-      final videoList = VideoFullList.fromJson(response.body);
+      final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
 
     final List list = jsonDecode(response.body);
-    return VideoFullList(
-        videos: list.map((video) => VideoFull.fromMap(video)).toList());
+    return PaginatedResult<VideoFull>(
+        items: list.map((video) => VideoFull.fromMap(video)).toList());
     // Returns as `List<Video>`
   }
 
@@ -189,7 +189,7 @@ class HolodexClient {
   /// - `videoStatus` Filter by the video status
   /// - `topic` Filter by video topic ID
   /// - `videoType` Filter by type of video, either clips or streams
-  Future<VideoFullList> getLiveVideos({
+  Future<PaginatedResult<VideoFull>> getLiveVideos({
     String? channelId,
     List<Includes> includes = const [Includes.liveInfo],
     List<Language> languages = const [Language.all],
@@ -258,13 +258,13 @@ class HolodexClient {
 
     if (paginated) {
       // Grab total and return with it
-      final videoList = VideoFullList.fromJson(response.body);
+      final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
 
     final List list = jsonDecode(response.body);
-    return VideoFullList(
-        videos: list
+    return PaginatedResult<VideoFull>(
+        items: list
             .map((video) => VideoFull.fromMap(video))
             .toList()); // Returns as `List<Video>`
   }
@@ -371,7 +371,7 @@ class HolodexClient {
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  Future<VideoFullList> getChannelVideos(
+  Future<PaginatedResult<VideoFull>> getChannelVideos(
     String channelId, {
     List<Includes>? includes,
     List<Language> languages = const [Language.all],
@@ -403,7 +403,7 @@ class HolodexClient {
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  Future<VideoFullList> getVTuberClips(
+  Future<PaginatedResult<VideoFull>> getVTuberClips(
     String channelId, {
     List<Includes>? includes,
     List<Language> languages = const [Language.all],
@@ -435,7 +435,7 @@ class HolodexClient {
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  Future<VideoFullList> getVTuberCollabs(
+  Future<PaginatedResult<VideoFull>> getVTuberCollabs(
     String channelId, {
     List<Includes>? includes,
     List<Language> languages = const [Language.all],
@@ -467,7 +467,7 @@ class HolodexClient {
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  Future<VideoFullList> getVideosRelatedToChannel(
+  Future<PaginatedResult<VideoFull>> getVideosRelatedToChannel(
     String channelId, {
     required VideoSearchType type,
     List<Includes>? includes,
@@ -500,13 +500,13 @@ class HolodexClient {
 
     if (paginated) {
       // Grab total and return with it
-      final videoList = VideoFullList.fromJson(response.body);
+      final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
 
     final List list = jsonDecode(response.body);
-    return VideoFullList(
-        videos: list.map((video) => VideoFull.fromMap(video)).toList());
+    return PaginatedResult<VideoFull>(
+        items: list.map((video) => VideoFull.fromMap(video)).toList());
   }
 
   /// Retrieves a video, optionally with comments and recommended videos
@@ -559,7 +559,7 @@ class HolodexClient {
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
   /// - `offset` Offset results
   /// - `limit` Result limit
-  Future<VideoFullList> searchVideos({
+  Future<PaginatedResult<VideoFull>> searchVideos({
     SearchSort searchSort = SearchSort.newest,
     List<Language>? languages,
     List<SearchTarget>? searchTargets,
@@ -623,13 +623,13 @@ class HolodexClient {
 
     if (paginated) {
       // Grab total and return with it
-      final videoList = VideoFullList.fromJson(response.body);
+      final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
 
     final List list = jsonDecode(response.body);
-    return VideoFullList(
-        videos: list.map((video) => VideoFull.fromMap(video)).toList());
+    return PaginatedResult<VideoFull>(
+        items: list.map((video) => VideoFull.fromMap(video)).toList());
   }
 
   /// Flexible endpoint to search for comments in videos fufilling multiple conditions.

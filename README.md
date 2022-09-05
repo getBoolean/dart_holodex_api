@@ -101,7 +101,7 @@ print(video.toString());
 
 ### Get a list of videos
 
-Returns `VideoFullList`
+Returns `PaginatedResult<VideoFull>`
 
 Arguments:
 
@@ -114,7 +114,7 @@ Arguments:
 - `offset` Receive results starting at this number in the array from the Holodex API
 - `order` Order results by ascending or descending
 - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
-- `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+- `paginated` If paginated is set to true, returns `PaginatedResult<VideoFull>` with total, otherwise returns `PaginatedResult<VideoFull>` without the total.
 - `sort` Sort the returned data by this field
 - `status` Filter by the video status
 - `topic` Filter by video topic ID
@@ -122,7 +122,7 @@ Arguments:
 
 ```dart
 // Get a bunch of videos and print them
-final VideoFullList videoList = await holodexClient.getVideos(
+final PaginatedResult<VideoFull> videoList = await holodexClient.getVideos(
     channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
     includes: <Includes>[
         Includes.channelStats,
@@ -154,7 +154,7 @@ print(videoList.toString());
 
 ### Get a list of live videos
 
-Returns `VideoFullList`
+Returns `PaginatedResult<VideoFull>`
 
 This is somewhat similar to calling listVideos().
 
@@ -181,14 +181,14 @@ Arguments:
 - `offset` Receive results starting at this number in the array from the Holodex API
 - `order` Order by ascending or descending
 - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
-- `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+- `paginated` If paginated is set to true, returns `PaginatedResult<VideoFull>` with total, otherwise returns `PaginatedResult<VideoFull>` without the total.
 - `sort` Sort the returned data by this field
 - `status` Filter by the video status
 - `topic` Filter by video topic ID
 - `type` Filter by type of video, either clips or streams
 
 ```dart
-final VideoFullList liveVideos = await holodexClient.getLiveVideos(
+final PaginatedResult<VideoFull> liveVideos = await holodexClient.getLiveVideos(
     includes: [
       Includes.channelStats
     ]
@@ -265,10 +265,10 @@ Arguments
 - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
 - `limit` Result limit. Max of 50.
 - `offset` Offset results
-- `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+- `paginated` If paginated is set to true, returns `PaginatedResult<VideoFull>` with total, otherwise returns `PaginatedResult<VideoFull>` without the total.
 
 ```dart
-final VideoFullList matsuriClips = await holodexClient.getVideosRelatedToChannel(
+final PaginatedResult<VideoFull> matsuriClips = await holodexClient.getVideosRelatedToChannel(
     'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
     type: VideoSearchType.clips
 );
@@ -280,7 +280,7 @@ print('Returned clips including Matsuri: ${matsuriClips.videos.length}');
 
 Alias of getVideosRelatedToChannel()
 
-Returns `VideoFullList`
+Returns `PaginatedResult<VideoFull>`
 
 Arguments
 
@@ -289,12 +289,12 @@ Arguments
 - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
 - `limit` Result limit. Max of 50.
 - `offset` Offset results
-- `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+- `paginated` If paginated is set to true, returns `PaginatedResult<VideoFull>` with total, otherwise returns `PaginatedResult<VideoFull>` without the total.
 
 ```dart
-final VideoFullList matsuriClips = await holodexClient.getVTuberClips('UCQ0UDLQCjY0rmuxCDE38FGg');
+final PaginatedResult<VideoFull> matsuriClips = await holodexClient.getVTuberClips('UCQ0UDLQCjY0rmuxCDE38FGg');
 print('Clips including Matsuri: ${matsuriClips.total}');
-print('Returned clips including Matsuri: ${matsuriClips.videos.length}\n');
+print('Returned clips including Matsuri: ${matsuriClips.items.length}\n');
 ```
 
 ### Get Collabs that mention a VTuber
@@ -308,19 +308,19 @@ Arguments
 - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
 - `limit` Result limit. Max of 50.
 - `offset` Offset results
-- `paginated` If paginated is set to any non-empty value, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+- `paginated` If paginated is set to any non-empty value, returns `PaginatedResult<VideoFull>` with total, otherwise returns `PaginatedResult<VideoFull>` without the total.
 
 ```dart
-final VideoFullList matsuriCollabs = await holodexClient.getVTuberCollabs('UCQ0UDLQCjY0rmuxCDE38FGg');
+final PaginatedResult<VideoFull> matsuriCollabs = await holodexClient.getVTuberCollabs('UCQ0UDLQCjY0rmuxCDE38FGg');
 print('Collabs including Matsuri: ${matsuriCollabs.total}');
-print('Returned collabs including Matsuri: ${matsuriCollabs.videos.length}\n');
+print('Returned collabs including Matsuri: ${matsuriCollabs.items.length}\n');
 ```
 
 ### Get Videos From Channel
 
 Alias of getVideosRelatedToChannel()
 
-Returns [VideoFullList]
+Returns `PaginatedResult<VideoFull>`
 
 Arguments
 
@@ -329,12 +329,12 @@ Arguments
 - `lang` List of Language enum to filter channels/clips. Official streams do not follow this parameter
 - `limit` Result limit. Max of 50.
 - `offset` Offset results
-- `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+- `paginated` If paginated is set to true, returns `PaginatedResult<VideoFull>` with total, otherwise returns `PaginatedResult<VideoFull>` without the total.
 
 ```dart
-final VideoFullList matsuriUploads = await holodexClient.getChannelVideos('UCQ0UDLQCjY0rmuxCDE38FGg');
+final PaginatedResult<VideoFull> matsuriUploads = await holodexClient.getChannelVideos('UCQ0UDLQCjY0rmuxCDE38FGg');
 print('Total Matsuri uploads: ${matsuriUploads.total}');
-print('Returned uploads: ${matsuriUploads.videos.length}\n');
+print('Returned uploads: ${matsuriUploads.items.length}\n');
 ```
 
 ### Get a single Video's metadata
@@ -375,12 +375,12 @@ Arguments
 - `topics` Return videos that match one of the provided topics
 - `vch` Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.
 - `organizations` Videos of channels in any of the specified organizations, or clips that involve a channel in the specified organization.
-- `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+- `paginated` If paginated is set to true, returns `PaginatedResult<VideoFull>` with total, otherwise returns `PaginatedResult<VideoFull>` without the total.
 - `offset` Offset results
 - `limit` Result limit
 
 ```dart
-final VideoFullList searchVideos = await holodexClient.searchVideos(
+final PaginatedResult<VideoFull> searchVideos = await holodexClient.searchVideos(
     searchSort: SearchSort.newest,
     languages: [Language.all],
     searchTargets: [SearchTarget.clip, SearchTarget.stream],
@@ -392,7 +392,7 @@ final VideoFullList searchVideos = await holodexClient.searchVideos(
     offset: 0,
     limit: 25,
 );
-print('Videos Found: ${searchVideos.videos.length}\n');
+print('Videos Found: ${searchVideos.items.length}\n');
 ```
 
 ### Search For Videos With a Comment
@@ -412,7 +412,7 @@ Arguments
 - `topics` Return videos that match one of the provided topics
 - `vch` Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.
 - `organizations` Videos of channels in any of the specified organizations, or clips that involve a channel in the specified organization.
-- `paginated` If paginated is set to true, returns [VideoWithCommentsList] with total, otherwise returns [VideoWithCommentsList] without the total.
+- `paginated` If paginated is set to true, returns `PaginatedResult<VideoWithComments>` with total, otherwise returns `PaginatedResult<VideoWithComments>` without the total.
 - `offset` Offset results
 - `limit` Result limit
 
