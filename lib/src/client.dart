@@ -12,21 +12,21 @@ class HolodexClient {
   ///
   /// - `basePath` (Optional) The base Holodex API url. Can be overriden with the mock sever API url: `https://stoplight.io/mocks/holodex/holodex/11620234`
   ///
-  /// - `httpClient` An existing HTTP Client, if needed. When left null, an internal client will be created
+  /// - `client` An existing HTTP Client, if needed. When left unspecified, an internal client will be created
   HolodexClient({
     required this.apiKey,
     this.basePath = 'https://holodex.net/api/v2',
-    Client? httpClient,
+    Client? client,
   }) {
-    if (httpClient == null) {
-      _httpClient = Client();
+    if (client == null) {
+      _client = Client();
     } else {
-      _httpClient = httpClient;
+      _client = client;
     }
   }
 
   /// HTTP Client
-  late final Client _httpClient;
+  late final Client _client;
 
   /// Base API URL
   final String basePath;
@@ -545,7 +545,7 @@ class HolodexClient {
 
   /// Flexible endpoint to search for videos fufilling multiple conditions.
   /// Descriptions with "any" implies an `OR` condition, and "all" implies an `AND` condition.
-  /// 
+  ///
   /// Note that searching for topics and clips is not supported, because clips do not contain topics.
   ///
   /// Arguments
@@ -860,7 +860,7 @@ class HolodexClient {
 
     try {
       final finalUri = _getUriUrl(basePath + path, params);
-      return await _httpClient.get(finalUri, headers: headers);
+      return await _client.get(finalUri, headers: headers);
     } catch (e) {
       if (e is HolodexException) {
         rethrow;
@@ -884,7 +884,7 @@ class HolodexClient {
     });
 
     try {
-      return await _httpClient.post(_getUriUrl(basePath + path, params),
+      return await _client.post(_getUriUrl(basePath + path, params),
           headers: headers, body: json.encode(data));
     } catch (e) {
       if (e is HolodexException) {
@@ -907,7 +907,7 @@ class HolodexClient {
   ///
   /// It's important to close each client when it's done being used; failing to do so can cause the Dart process to hang.
   void close() {
-    _httpClient.close();
+    _client.close();
   }
 }
 

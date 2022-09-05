@@ -36,7 +36,7 @@ void main() {
 
     client = HolodexClient(apiKey: apiKey);
 
-    final tempClient = HolodexClient(apiKey: apiKey, httpClient: http.Client());
+    final tempClient = HolodexClient(apiKey: apiKey, client: http.Client());
     tempClient.close();
   });
 
