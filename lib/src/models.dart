@@ -1,6 +1,6 @@
 library dart_holodex_api.models;
 
-import 'package:dart_holodex_api/src/utils/enum_util.dart';
+import 'package:intl/locale.dart';
 
 import 'enums.dart';
 import 'package:equatable/equatable.dart';

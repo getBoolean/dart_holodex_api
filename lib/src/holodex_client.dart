@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:dart_holodex_api/src/utils/enum_util.dart';
 import 'package:http/http.dart';
 
 import '../dart_holodex_api.dart';
@@ -110,7 +109,7 @@ class HolodexClient {
     params.addAll({
       'limit': '$limit',
       'offset': '$offset',
-      'order': EnumUtil.convertOrderToString(order),
+      'order': order.code,
     });
 
     _addVideoSort(videoSort, params);
@@ -228,7 +227,7 @@ class HolodexClient {
     params.addAll({
       'limit': '$limit',
       'offset': '$offset',
-      'order': EnumUtil.convertOrderToString(order),
+      'order': order.code,
     });
 
     _addVideoSort(videoSort, params);
@@ -322,7 +321,7 @@ class HolodexClient {
     params.addAll({
       'limit': '$limit',
       'offset': '$offset',
-      'order': EnumUtil.convertOrderToString(order),
+      'order': order.code,
     });
 
     _addChannelSort(channelSort, params);
@@ -516,8 +515,7 @@ class HolodexClient {
     _addPaginated(paginated, params);
 
     final response = await get(
-        path:
-            '${_Constants.channelsPath}/$channelId/${EnumUtil.convertVideoSearchTypeToString(type)}',
+        path: '${_Constants.channelsPath}/$channelId/${type.code}',
         params: params);
 
     if (paginated) {
@@ -596,7 +594,7 @@ class HolodexClient {
     final Map<String, dynamic> data = {};
 
     data.addAll({
-      'sort': EnumUtil.convertSearchSortToString(searchSort),
+      'sort': searchSort.code,
       'paginated': paginated,
       'offset': offset,
       'limit': limit,
@@ -616,9 +614,7 @@ class HolodexClient {
 
     if (searchTargets != null && searchTargets.isNotEmpty) {
       data.addAll({
-        'target': searchTargets
-            .map((s) => EnumUtil.convertSearchTargetToString(s))
-            .toList(),
+        'target': searchTargets.map((target) => target.code).toList(),
       });
     }
 
@@ -684,7 +680,7 @@ class HolodexClient {
     final Map<String, dynamic> data = {};
 
     data.addAll({
-      'sort': EnumUtil.convertSearchSortToString(searchSort),
+      'sort': searchSort.code,
       'comment': comment,
       'offset': offset,
       'limit': limit,
@@ -710,9 +706,7 @@ class HolodexClient {
 
     if (searchTargets != null && searchTargets.isNotEmpty) {
       data.addAll({
-        'target': searchTargets
-            .map((s) => EnumUtil.convertSearchTargetToString(s))
-            .toList(),
+        'target': searchTargets.map((s) => s.code).toList(),
       });
     }
 
@@ -746,8 +740,7 @@ class HolodexClient {
   void _addVideoSort(List<VideoSort> sort, Map<String, dynamic> map) {
     if (sort.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> sortStringList =
-          sort.map((s) => EnumUtil.convertVideoSortToString(s)).toList();
+      final List<String> sortStringList = sort.map((s) => s.code).toList();
       // Join the array with commas
       String sortConcatenated = sortStringList.join(',');
       map.addAll({'include': sortConcatenated});
@@ -775,9 +768,8 @@ class HolodexClient {
   void _addStatusList(List<VideoStatus>? statuses, Map<String, dynamic> map) {
     if (statuses != null) {
       // Make new list with the values as string
-      final List<String> statusesStringList = statuses
-          .map((status) => status.code)
-          .toList();
+      final List<String> statusesStringList =
+          statuses.map((status) => status.code).toList();
       // Join the array with commas
       String statusesConcatenated = statusesStringList.join(',');
       map.addAll({'status': statusesConcatenated});
@@ -786,7 +778,7 @@ class HolodexClient {
 
   void _addType(VideoType? type, Map<String, dynamic> map) {
     if (type != null && type != VideoType.all) {
-      map.addAll({'type': EnumUtil.convertVideoTypeToString(type)});
+      map.addAll({'type': type.code});
     }
   }
 
@@ -827,9 +819,8 @@ class HolodexClient {
   void _addIncludes(List<Includes> includes, Map<String, dynamic> map) {
     if (includes.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> includesStringList = includes
-          .map((included) => included.code)
-          .toList();
+      final List<String> includesStringList =
+          includes.map((included) => included.code).toList();
       // Join the array with commas
       String includesConcatenated = includesStringList.join(',');
       map.addAll({'include': includesConcatenated});
@@ -850,8 +841,7 @@ class HolodexClient {
   void _addChannelSort(List<ChannelSort> sort, Map<String, dynamic> map) {
     if (sort.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> sortStringList =
-          sort.map((l) => EnumUtil.convertChannelSortToString(l)).toList();
+      final List<String> sortStringList = sort.map((s) => s.code).toList();
       // Join the array with commas
       String sortConcat = sortStringList.join(',');
       map.addAll({'sort': sortConcat});

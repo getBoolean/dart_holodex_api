@@ -71,13 +71,12 @@ class VideoWithComments extends Video {
     return VideoWithComments(
       id: map['id'],
       title: map['title'],
-      type: EnumUtil.convertStringToVideoType(map['type']) ?? VideoType.clip,
+      type: VideoType.values.byCode(map['type']) ?? VideoType.clip,
       topicId: map['topic_id'],
       publishedAt: map['published_at'],
       availableAt: map['available_at'],
       duration: map['duration'],
-      status: EnumUtil.convertStringToVideoStatus(map['status']) ??
-          VideoStatus.missing,
+      status: VideoStatus.values.byCode(map['status']) ?? VideoStatus.missing,
       liveInfo: VideoLiveInfo.fromMap(map['live_info']),
       description: map['description'],
       songcount: map['songcount'],

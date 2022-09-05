@@ -41,7 +41,7 @@ class Channel extends ChannelMin {
       'id': id,
       'name': name,
       'english_name': englishName,
-      'type': EnumUtil.convertChannelTypeToString(type),
+      'type': type.code,
       'org': org,
       'suborg': suborg,
       'photo': photo,
@@ -51,7 +51,7 @@ class Channel extends ChannelMin {
       'subscriber_count': subscriberCount,
       'view_count': viewCount,
       'clip_count': clipCount,
-      'lang': EnumUtil.convertLanguageToString(lang),
+      'lang': lang.toLanguageTag(),
       'published_at': publishedAt,
       'inactive': inactive,
       'description': description,
@@ -59,12 +59,12 @@ class Channel extends ChannelMin {
   }
 
   factory Channel.fromMap(Map<String, dynamic> map) {
+    final locale = Locale.tryParse(map['lang'] ?? '');
     return Channel(
       id: map['id'],
       name: map['name'],
       englishName: map['english_name'],
-      type: EnumUtil.convertStringToChannelType(map['type'] ?? '') ??
-          ChannelType.subber,
+      type: ChannelType.values.byCode(map['type'] ?? '') ?? ChannelType.subber,
       org: map['org'],
       suborg: map['suborg'],
       photo: map['photo'],
@@ -74,7 +74,7 @@ class Channel extends ChannelMin {
       subscriberCount: map['subscriber_count'],
       viewCount: map['view_count'],
       clipCount: map['clip_count'],
-      lang: EnumUtil.convertStringToLanguage(map['lang'] ?? '') ?? Language.all,
+      lang: locale != null ? Language.other(locale) : Language.all,
       publishedAt: map['published_at'],
       inactive: map['inactive'],
       description: map['description'],
