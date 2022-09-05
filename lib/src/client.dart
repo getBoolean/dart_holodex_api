@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 
-import 'client_base.dart';
 import '../dart_holodex_api.dart';
 
-class HolodexClient implements BaseHolodexClient {
+/// A client for the Holodex API.
+class HolodexClient {
   /// Creates a new instance of [HolodexClient]
   ///
   /// `apiKey` - Your personal API key. Be aware that the validity of the key is not checked, so ensure it is correct.
@@ -42,7 +42,6 @@ class HolodexClient implements BaseHolodexClient {
   ///
   /// - `videoId` The video ID as a string
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  @override
   Future<VideoFull> getVideoFromId(
     String videoId, {
     List<Includes>? includes,
@@ -80,7 +79,6 @@ class HolodexClient implements BaseHolodexClient {
   /// - `videoStatus` Filter by the video status
   /// - `topic` Filter by video topic ID
   /// - `videoType` Filter by type of video, either clips or streams
-  @override
   Future<VideoFullList> getVideos({
     String? channelId,
     List<Includes>? includes,
@@ -191,7 +189,6 @@ class HolodexClient implements BaseHolodexClient {
   /// - `videoStatus` Filter by the video status
   /// - `topic` Filter by video topic ID
   /// - `videoType` Filter by type of video, either clips or streams
-  @override
   Future<VideoFullList> getLiveVideos({
     String? channelId,
     List<Includes> includes = const [Includes.liveInfo],
@@ -279,7 +276,6 @@ class HolodexClient implements BaseHolodexClient {
   /// Arguments:
   ///
   /// - `channelId` ID of the Youtube Channel that is being queried
-  @override
   Future<Channel> getChannelFromId(String channelId) async {
     final Response response =
         await get(path: '${_Constants.channelsPath}/$channelId');
@@ -296,7 +292,6 @@ class HolodexClient implements BaseHolodexClient {
   /// - `order` Order.ascending or Order.descending order, default ascending.
   /// - `organization` If set, filter for Vtubers belonging to a specific org
   /// - `channelSort` Column to sort on, leave default to use [ChannelSort.organization] as sort. Theoretically any value in ChannelSort should work
-  @override
   Future<List<Channel>> getChannels({
     List<Language>? languages,
     int limit = 25,
@@ -347,7 +342,6 @@ class HolodexClient implements BaseHolodexClient {
   ///
   /// Arguments:
   /// - `channelIds` List of channel IDs to get the live videos from.
-  @override
   Future<List<Video>> getLiveVideosFromChannelsQuickly(
     List<String> channelIds,
   ) async {
@@ -377,7 +371,6 @@ class HolodexClient implements BaseHolodexClient {
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  @override
   Future<VideoFullList> getChannelVideos(
     String channelId, {
     List<Includes>? includes,
@@ -410,7 +403,6 @@ class HolodexClient implements BaseHolodexClient {
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  @override
   Future<VideoFullList> getVTuberClips(
     String channelId, {
     List<Includes>? includes,
@@ -443,7 +435,6 @@ class HolodexClient implements BaseHolodexClient {
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  @override
   Future<VideoFullList> getVTuberCollabs(
     String channelId, {
     List<Includes>? includes,
@@ -476,7 +467,6 @@ class HolodexClient implements BaseHolodexClient {
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  @override
   Future<VideoFullList> getVideosRelatedToChannel(
     String channelId, {
     required VideoSearchType type,
@@ -519,18 +509,13 @@ class HolodexClient implements BaseHolodexClient {
         videos: list.map((video) => VideoFull.fromMap(video)).toList());
   }
 
-  /// Retrieves a video
-  ///
-  /// Retrieves Comments if `timestampComments` is set to true
-  ///
-  /// Retrieves Recommendations if query parameter `recommendationLanguages` is set
+  /// Retrieves a video, optionally with comments and recommended videos
   ///
   /// Arguments
   ///
   /// - `videoId` ID of the video
   /// - `timestampComments` If set to `true`, comments with timestamps will be returned
   /// - `recommendationLanguages` If set, videos matching the languages will be returned. Use [Language.all] to get all languages regardless of language
-  @override
   Future<VideoMetadata> getVideoMetadata(
     String videoId, {
     bool timestampComments = false,
@@ -559,10 +544,9 @@ class HolodexClient implements BaseHolodexClient {
   }
 
   /// Flexible endpoint to search for videos fufilling multiple conditions.
-  ///
-  /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
-  ///
-  /// Searching for topics and clips is not supported, because clips do not contain topics
+  /// Descriptions with "any" implies an `OR` condition, and "all" implies an `AND` condition.
+  /// 
+  /// Note that searching for topics and clips is not supported, because clips do not contain topics.
   ///
   /// Arguments
   /// - `searchSort` Sort by newest or oldest
@@ -575,7 +559,6 @@ class HolodexClient implements BaseHolodexClient {
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
   /// - `offset` Offset results
   /// - `limit` Result limit
-  @override
   Future<VideoFullList> searchVideos({
     SearchSort searchSort = SearchSort.newest,
     List<Language>? languages,
@@ -650,10 +633,9 @@ class HolodexClient implements BaseHolodexClient {
   }
 
   /// Flexible endpoint to search for comments in videos fufilling multiple conditions.
+  /// Descriptions with "any" implies an `OR` condition, and "all" implies an `AND` condition.
   ///
-  /// Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
-  ///
-  /// Searching for topics and clips is not supported, because clips do not contain topics
+  /// Note that searching for topics and clips is not supported, because clips do not contain topics.
   ///
   /// Arguments
   /// - `searchSort` Sort by newest or oldest
@@ -666,7 +648,6 @@ class HolodexClient implements BaseHolodexClient {
   /// - `paginated` If paginated is set to true, returns [VideoWithCommentsList] with total, otherwise returns [VideoWithCommentsList] without the total.
   /// - `offset` Offset results
   /// - `limit` Result limit
-  @override
   Future<VideoWithCommentsList> searchComments({
     required String comment,
     SearchSort searchSort = SearchSort.newest,
@@ -865,7 +846,6 @@ class HolodexClient implements BaseHolodexClient {
   // Utilities
 
   /// Utility method to make http get call
-  @override
   Future<Response> get({
     String path = '',
     Map<String, String>? headers,
@@ -890,7 +870,6 @@ class HolodexClient implements BaseHolodexClient {
   }
 
   /// Utility method to make http post call
-  @override
   Future<Response> post({
     String path = '',
     Map<String, String>? headers,

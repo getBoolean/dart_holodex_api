@@ -1,5 +1,10 @@
 <!-- markdownlint-disable MD041 -->
 
+## 0.4.0
+
+- **Breaking**: `HolodexClient` no longer implements `BaseHolodexClient`
+- **Breaking**: Removed `BaseHolodexClient`
+
 ## 0.3.1
 
 - Fix formatting
