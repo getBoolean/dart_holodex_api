@@ -589,7 +589,7 @@ class HolodexClient {
     if (languages != null && languages.isNotEmpty) {
       data.addAll({
         'lang':
-            languages.map((l) => EnumUtil.convertLanguageToString(l)).toList(),
+            languages.map((l) => l.code).toList(),
       });
     }
 
@@ -684,7 +684,7 @@ class HolodexClient {
     if (languages != null && languages.isNotEmpty) {
       data.addAll({
         'lang':
-            languages.map((l) => EnumUtil.convertLanguageToString(l)).toList(),
+            languages.map((l) => l.code).toList(),
       });
     }
 
@@ -819,7 +819,7 @@ class HolodexClient {
     if (lang.isNotEmpty) {
       // Make new list with the values as string
       final List<String> langStringList =
-          lang.map((l) => EnumUtil.convertLanguageToString(l)).toList();
+          lang.map((l) => l.code).toList();
       // Join the array with commas
       String languagesConcat = langStringList.join(',');
       map.addAll({'lang': languagesConcat});

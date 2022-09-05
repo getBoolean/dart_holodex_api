@@ -11,15 +11,18 @@ enum ChannelType { vtuber, subber }
 // These are using enums instead of classes with static strings so that users can see the allowed values in a field instead of any string
 
 enum Language {
-  all,
-  english,
-  japanese,
-  spanish,
-  chinese,
-  korean,
-  french,
-  indonesian,
-  russian
+  all('all'),
+  english('en'),
+  japanese('jp'),
+  spanish('es'),
+  chinese('zh'),
+  korean('ko'),
+  french('fr'),
+  indonesian('id'),
+  russian('ru');
+
+  final String code;
+  const Language(this.code);
 }
 
 enum ChannelSort {
@@ -67,7 +70,7 @@ enum Order { ascending, descending }
 
 abstract class Organization {
   const Organization._();
-  
+
   static final String inc774 = '774inc';
   static final String AogiriHighschool = 'Aogiri Highschool';
   static final String AtelierLive = 'Atelier Live';
@@ -177,8 +180,7 @@ class EnumUtil {
   /// Converts a [ChannelType] enum to string.
   ///
   /// Returns [String]
-  static String convertChannelTypeToString(ChannelType type) =>
-      type.name;
+  static String convertChannelTypeToString(ChannelType type) => type.name;
 
   /// Converts a string channel type to the corresponding [ChannelType] enum.
   ///
@@ -190,36 +192,14 @@ class EnumUtil {
   ///
   /// Returns [String]
   static String convertLanguageToString(Language lang) {
-    final languageMapToSring = {
-      Language.all: 'all',
-      Language.english: 'en',
-      Language.japanese: 'jp',
-      Language.spanish: 'es',
-      Language.chinese: 'zh',
-      Language.korean: 'ko',
-      Language.french: 'fr',
-      Language.indonesian: 'id',
-      Language.russian: 'ru',
-    };
-    return languageMapToSring[lang]!;
+    return lang.name;
   }
 
   /// Converts a string language code to the corresponding [Language] enum.
   ///
   /// Returns `null` if it is not supported or the language code is incorrect. Otherwise returns [Language]
   static Language? convertStringToLanguage(String lang) {
-    final stringMapToLanguage = {
-      'all': Language.all,
-      'en': Language.english,
-      'jp': Language.japanese,
-      'es': Language.spanish,
-      'zh': Language.chinese,
-      'ko': Language.korean,
-      'fr': Language.french,
-      'id': Language.indonesian,
-      'ru': Language.russian,
-    };
-    return stringMapToLanguage[lang];
+    return Language.values.byName(lang);
   }
 
   /// Converts a [VideoStatus] enum to string.
@@ -253,8 +233,7 @@ class EnumUtil {
   /// Converts a [VideoType] enum to string.
   ///
   /// Returns [String]
-  static String convertVideoTypeToString(VideoType type) =>
-      type.name;
+  static String convertVideoTypeToString(VideoType type) => type.name;
 
   /// Converts a string video type to the corresponding [VideoType] enum.
   ///
