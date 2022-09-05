@@ -12,7 +12,8 @@
 implementation was imported.
 - **Breaking**: Replace usage of package `EnumToString` with Dart 2.17 enhanced enums.
 - **Breaking**: Removed `VideoFullList`. Use `PaginatedResult<VideoFull>` instead.
-- **Breaking**: Changed `Organization` to an enum, and added new organizations added by Holodex.
+- **Breaking**: Changed `Organization` to an enum, added new organizations added by Holodex,
+and added `String` field `code`
 - **Breaking**: Renamed `Organization.VirtualWitchPhenomenon` to `Organization.KAMITSUBAKI`
 - **Breaking**: `EnumUtil` is no longer exported.
 - Changed `Video` constructor parameter `duration` to optional
