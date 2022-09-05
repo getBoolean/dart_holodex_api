@@ -847,7 +847,8 @@ class HolodexClient {
 
   // Utilities
 
-  /// Utility method to make http get call
+  /// Utility method to make a custom http get call with the
+  /// Api Key added to the headers
   Future<Response> get({
     String path = '',
     Map<String, String>? headers,
@@ -871,7 +872,8 @@ class HolodexClient {
     }
   }
 
-  /// Utility method to make http post call
+  /// Utility method to make a custom http post call with the
+  /// Api Key added to the headers
   Future<Response> post({
     String path = '',
     Map<String, String>? headers,
