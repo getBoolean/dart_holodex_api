@@ -61,14 +61,14 @@ abstract class EnumUtil {
   ///
   /// Returns [String]
   static String convertLanguageToString(Language lang) {
-    return lang.name;
+    return lang.toString();
   }
 
   /// Converts a string language code to the corresponding [Language] enum.
   ///
   /// Returns `null` if it is not supported or the language code is incorrect. Otherwise returns [Language]
   static Language? convertStringToLanguage(String lang) {
-    return Language.values.byName(lang);
+    return Language.values.byTag(lang);
   }
 
   /// Converts a [VideoStatus] enum to string.

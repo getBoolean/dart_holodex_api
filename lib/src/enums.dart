@@ -1,35 +1,79 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:intl/locale.dart';
+
 enum VideoType { stream, clip, all }
 
 enum VideoStatus { new_, upcoming, live, past, missing }
 
 enum ChannelType { vtuber, subber }
 
-// Some of the below enums are based off of https://github.com/EBro912/Holodex.NET
-// These are using enums instead of classes with static strings so that users can see the allowed values in a field instead of any string
+extension LanguageValues on List<Language> {
+  Language byLocale(Locale locale) => Language.other(locale);
+
+  /// Throws a [FormatException] if [tag] is syntactically invalid.
+  Language byTag(String tag) {
+    for (var value in this) {
+      if (value.toLanguageTag() == tag) return value;
+    }
+    return Language.other(Locale.parse((tag)));
+  }
+}
 
 /// Holodex uses the BCP47 standard for language codes
 ///
-/// TODO(@getBoolean): Refactor this to follow the BCP47 standard
-enum Language {
-  all('all'),
-  english('en'),
-  japanese('jp'),
-  spanish('es'),
-  chinese('zh'),
-  korean('ko'),
-  french('fr'),
-  indonesian('id'),
-  russian('ru');
+/// Make a Pull Request or GitHub issue to add more language options.
+class Language {
+  Language._internal(this.locale);
 
-  /// The language code used by Holodex
-  final String code;
-  const Language(this.code);
+  final Locale locale;
+
+  factory Language.other(Locale other) => Language._internal(other);
+
+  static final all =
+      Language._internal(Locale.fromSubtags(languageCode: 'all'));
+
+  static final english =
+      Language._internal(Locale.fromSubtags(languageCode: 'en'));
+
+  static final japanese =
+      Language._internal(Locale.fromSubtags(languageCode: 'jp'));
+
+  static final spanish =
+      Language._internal(Locale.fromSubtags(languageCode: 'es'));
+
+  static final chinese =
+      Language._internal(Locale.fromSubtags(languageCode: 'zh'));
+
+  static final korean =
+      Language._internal(Locale.fromSubtags(languageCode: 'ko'));
+
+  static final french =
+      Language._internal(Locale.fromSubtags(languageCode: 'fr'));
+
+  static final indonesian =
+      Language._internal(Locale.fromSubtags(languageCode: 'id'));
+
+  static final russian =
+      Language._internal(Locale.fromSubtags(languageCode: 'ru'));
+
+  static final List<Language> values = [
+    Language.all,
+    Language.english,
+    Language.japanese,
+    Language.spanish,
+    Language.chinese,
+    Language.korean,
+    Language.french,
+    Language.indonesian,
+    Language.russian,
+  ];
+
+  String toLanguageTag() => locale.toLanguageTag();
 
   @override
-  String toString() => code;
+  String toString() => locale.toLanguageTag();
 }
 
 /// Options to sort a list of channels by

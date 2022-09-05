@@ -83,7 +83,7 @@ class HolodexClient {
   Future<PaginatedResult<VideoFull>> getVideos({
     String? channelId,
     List<Includes>? includes,
-    List<Language> languages = const [Language.all],
+    List<Language> languages = const [],
     int limit = 25,
     int? maxUpcomingHours,
     String? mentionedChannelId,
@@ -96,6 +96,10 @@ class HolodexClient {
     String? topic,
     VideoType? videoType,
   }) async {
+    if (languages.isEmpty) {
+      languages = [Language.all];
+    }
+
     // The limit cannot be greator than 50, otherwise it will throw an error
     assert(limit <= 50);
 
@@ -193,7 +197,7 @@ class HolodexClient {
   Future<PaginatedResult<VideoFull>> getLiveVideos({
     String? channelId,
     List<Includes> includes = const [Includes.liveInfo],
-    List<Language> languages = const [Language.all],
+    List<Language> languages = const [],
     int limit = 9999,
     int? maxUpcomingHours = 48,
     String? mentionedChannelId,
@@ -209,6 +213,9 @@ class HolodexClient {
     String? topic,
     VideoType? videoType = VideoType.stream,
   }) async {
+    if (languages.isEmpty) {
+      languages = [Language.all];
+    }
     // Create the params list
     final Map<String, dynamic> params = {};
 
@@ -294,13 +301,17 @@ class HolodexClient {
   /// - `organization` If set, filter for Vtubers belonging to a specific org
   /// - `channelSort` Column to sort on, leave default to use [ChannelSort.organization] as sort. Theoretically any value in ChannelSort should work
   Future<List<Channel>> getChannels({
-    List<Language>? languages,
+    List<Language> languages = const [],
     int limit = 25,
     int offset = 0,
     Order order = Order.ascending,
     Organization? organization,
     List<ChannelSort> channelSort = const [ChannelSort.organization],
   }) async {
+    if (languages.isEmpty) {
+      languages = [Language.all];
+    }
+
     // According to API docs, the maximum accepted value is 50 and anything higher the request will be denied
     assert(limit <= 50);
 
@@ -317,9 +328,7 @@ class HolodexClient {
     _addChannelSort(channelSort, params);
 
     // Add the languages to filter by
-    if (languages != null) {
-      _addLanguages(languages, params);
-    }
+    _addLanguages(languages, params);
 
     // Add the organization param
     _addSingleOrganization(organization, params);
@@ -375,11 +384,14 @@ class HolodexClient {
   Future<PaginatedResult<VideoFull>> getChannelVideos(
     String channelId, {
     List<Includes>? includes,
-    List<Language> languages = const [Language.all],
+    List<Language> languages = const [],
     int limit = 25,
     int offset = 0,
     bool paginated = true,
   }) async {
+    if (languages.isEmpty) {
+      languages = [Language.all];
+    }
     return await getVideosRelatedToChannel(
       channelId,
       type: VideoSearchType.videos,
@@ -407,11 +419,14 @@ class HolodexClient {
   Future<PaginatedResult<VideoFull>> getVTuberClips(
     String channelId, {
     List<Includes>? includes,
-    List<Language> languages = const [Language.all],
+    List<Language> languages = const [],
     int limit = 25,
     int offset = 0,
     bool paginated = true,
   }) async {
+    if (languages.isEmpty) {
+      languages = [Language.all];
+    }
     return await getVideosRelatedToChannel(
       channelId,
       type: VideoSearchType.clips,
@@ -439,11 +454,14 @@ class HolodexClient {
   Future<PaginatedResult<VideoFull>> getVTuberCollabs(
     String channelId, {
     List<Includes>? includes,
-    List<Language> languages = const [Language.all],
+    List<Language> languages = const [],
     int limit = 25,
     int offset = 0,
     bool paginated = true,
   }) async {
+    if (languages.isEmpty) {
+      languages = [Language.all];
+    }
     return await getVideosRelatedToChannel(
       channelId,
       type: VideoSearchType.collabs,
@@ -472,11 +490,14 @@ class HolodexClient {
     String channelId, {
     required VideoSearchType type,
     List<Includes>? includes,
-    List<Language> languages = const [Language.all],
+    List<Language> languages = const [],
     int limit = 25,
     int offset = 0,
     bool paginated = true,
   }) async {
+    if (languages.isEmpty) {
+      languages = [Language.all];
+    }
     // Limit cannot be greater than 50 otherwise request will be denied
     assert(limit <= 50);
 
@@ -583,13 +604,13 @@ class HolodexClient {
 
     if (organizations != null && organizations.isNotEmpty) {
       data.addAll({
-        'org': organizations.map((org) => org.code),
+        'org': organizations.map((org) => org.code).toList(),
       });
     }
 
     if (languages != null && languages.isNotEmpty) {
       data.addAll({
-        'lang': languages.map((l) => l.code).toList(),
+        'lang': languages.map((l) => l.toLanguageTag()).toList(),
       });
     }
 
@@ -671,7 +692,7 @@ class HolodexClient {
 
     if (organizations != null && organizations.isNotEmpty) {
       data.addAll({
-        'org': organizations,
+        'org': organizations.map((org) => org.code).toList(),
       });
     }
 
@@ -683,7 +704,7 @@ class HolodexClient {
 
     if (languages != null && languages.isNotEmpty) {
       data.addAll({
-        'lang': languages.map((l) => l.code).toList(),
+        'lang': languages.map((l) => l.toLanguageTag()).toList(),
       });
     }
 
@@ -818,7 +839,8 @@ class HolodexClient {
   void _addLanguages(List<Language> lang, Map<String, dynamic> map) {
     if (lang.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> langStringList = lang.map((l) => l.code).toList();
+      final List<String> langStringList =
+          lang.map((l) => l.toLanguageTag()).toList();
       // Join the array with commas
       String languagesConcat = langStringList.join(',');
       map.addAll({'lang': languagesConcat});

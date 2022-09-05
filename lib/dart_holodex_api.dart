@@ -8,3 +8,4 @@ export 'src/exception.dart';
 export 'package:http/http.dart' show Response;
 export 'src/models.dart';
 export 'src/enums.dart';
+export 'package:intl/locale.dart' show Locale;

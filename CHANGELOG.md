@@ -16,6 +16,7 @@ implementation was imported.
 and added `String` field `code`
 - **Breaking**: Renamed `Organization.VirtualWitchPhenomenon` to `Organization.KAMITSUBAKI`
 - **Breaking**: `EnumUtil` is no longer exported.
+- **Breaking**: Changed `Language` to a class to support the `BCP47` standard.
 - Changed `Video` constructor parameter `duration` to optional
 have been replaced with `VideoLiveInfo`
 - Added `Serializable`
