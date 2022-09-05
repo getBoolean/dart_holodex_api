@@ -23,7 +23,6 @@ A Dart wrapper for Holodex API v2
 
 ## Table of Contents
 
-- [Features](#features)
 - [Getting started](#getting-started)
 - [Usage](#usage)
   - [Get a video by its ID](#get-a-video-by-its-id)
@@ -31,36 +30,16 @@ A Dart wrapper for Holodex API v2
   - [Get a list of live videos](#get-a-list-of-live-videos)
   - [Get a channel by its ID](#get-a-channel-by-its-id)
   - [Get a list of channels](#get-a-list-of-channels)
-  - [Quickly Access Live / Upcoming for a set of Channels](#quickly-access-live---upcoming-for-a-set-of-channels)
+  - [Quickly Access Live / Upcoming for a set of Channels](#quickly-access-live--upcoming-for-a-set-of-channels)
   - [Get Videos Related To Channel](#get-videos-related-to-channel)
   - [Get Clips of a VTuber](#get-clips-of-a-vtuber)
   - [Get Collabs that mention a VTuber](#get-collabs-that-mention-a-vtuber)
   - [Get Videos From Channel](#get-videos-from-channel)
-  - [Get a single Video's metadata](#get-a-single-video-s-metadata)
+  - [Get a single Video's metadata](#get-a-single-videos-metadata)
   - [Search For Videos](#search-for-videos)
   - [Search For Videos With a Comment](#search-for-videos-with-a-comment)
 - [Testing with Coverage](#testing-with-coverage)
 - [Additional information](#additional-information)
-
-## Features
-
-Use this plugin in your Flutter app to:
-
-- Built in http client, or you can pass in your own
-- Enum and classes built in so that you don't need to consult the official Holodex API documentation
-- Get a video by its ID
-- Get a list of videos
-- Get a list of live videos
-- Get a channel by its ID
-- Get a list of channels
-- Quickly Access Live / Upcoming for a set of Channels
-- Get Videos Related To Channel
-- Get Clips of a VTuber
-- Get Collabs that mention a VTuber
-- Get Videos From Channel
-- Get a single Video's metadata
-- Search videos
-- Search for videos with comment
 
 ## Getting started
 
