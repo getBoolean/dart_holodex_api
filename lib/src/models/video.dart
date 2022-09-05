@@ -1,6 +1,6 @@
 part of dart_holodex_api.models;
 
-class Video extends Equatable {
+class Video extends Serializable {
   final String id;
   final String title;
   final VideoType type;

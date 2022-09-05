@@ -1,6 +1,6 @@
 part of dart_holodex_api.models;
 
-class VideoLiveInfo extends Equatable {
+class VideoLiveInfo extends Serializable {
   final String? startScheduled;
   final String? startActual;
   final String? endActual;
@@ -27,6 +27,7 @@ class VideoLiveInfo extends Equatable {
     );
   }
 
+  @override
   Map<String, dynamic> toMap() {
     return {
       'startScheduled': startScheduled,
@@ -45,6 +46,7 @@ class VideoLiveInfo extends Equatable {
     );
   }
 
+  @override
   String toJson() => json.encode(toMap());
 
   factory VideoLiveInfo.fromJson(String source) =>
