@@ -139,10 +139,17 @@ enum VideoSearchType {
 /// An enum that allows a list to be sorted alphabetically
 enum Order {
   /// Sorts the list in ascending order (A-Z)
-  ascending,
+  ascending('asc'),
 
   /// Sorts the list in descending order (Z-A)
-  descending,
+  descending('desc');
+
+  /// The order code used by Holodex
+  final String code;
+  const Order(this.code);
+
+  @override
+  String toString() => code;
 }
 
 /// Organizations supported by Holodex.
@@ -248,6 +255,7 @@ enum Includes {
   /// Include any songs used in the videos.
   songs('songs');
 
+  /// The code used by Holodex
   final String code;
   const Includes(this.code);
 }
