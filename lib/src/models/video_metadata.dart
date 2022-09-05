@@ -1,6 +1,5 @@
 part of dart_holodex_api.models;
 
-
 class VideoMetadata extends Equatable {
   final VideoFull video;
   final List<Comment>? comments;

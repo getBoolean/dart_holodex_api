@@ -94,7 +94,8 @@ void main(List<String> arguments) async {
   print('Clips including Matsuri: ${matsuriClips.total}');
   print('Returned clips including Matsuri: ${matsuriClips.items.length}\n');
 
-  final PaginatedResult<VideoFull> matsuriClips2 = await holodexClient.getVTuberClips(
+  final PaginatedResult<VideoFull> matsuriClips2 =
+      await holodexClient.getVTuberClips(
     'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
   );
   print('Clips including Matsuri: ${matsuriClips2.total}');
@@ -103,8 +104,7 @@ void main(List<String> arguments) async {
   final PaginatedResult<VideoFull> matsuriCollabs =
       await holodexClient.getVTuberCollabs('UCQ0UDLQCjY0rmuxCDE38FGg');
   print('Collabs including Matsuri: ${matsuriCollabs.total}');
-  print(
-      'Returned collabs including Matsuri: ${matsuriCollabs.items.length}\n');
+  print('Returned collabs including Matsuri: ${matsuriCollabs.items.length}\n');
 
   final PaginatedResult<VideoFull> matsuriUploads =
       await holodexClient.getChannelVideos('UCQ0UDLQCjY0rmuxCDE38FGg');
@@ -124,7 +124,8 @@ void main(List<String> arguments) async {
   print('Video Comments With Timestamps: ${timestampComments?.length}');
   print('Video Recommendations: ${recommendations?.length}\n');
 
-  final PaginatedResult<VideoFull> searchVideos = await holodexClient.searchVideos(
+  final PaginatedResult<VideoFull> searchVideos =
+      await holodexClient.searchVideos(
     searchSort: SearchSort.newest,
     languages: [Language.all],
     searchTargets: [SearchTarget.clip, SearchTarget.stream],

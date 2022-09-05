@@ -110,8 +110,7 @@ class Video extends Serializable {
     return Video(
       id: map['id'],
       title: map['title'],
-      type: EnumUtil.convertStringToVideoType(map['type']) ??
-          VideoType.clip,
+      type: EnumUtil.convertStringToVideoType(map['type']) ?? VideoType.clip,
       topicId: map['topic_id'],
       publishedAt: map['published_at'],
       availableAt: map['available_at'],
