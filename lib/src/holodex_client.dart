@@ -297,7 +297,7 @@ class HolodexClient {
     int limit = 25,
     int offset = 0,
     Order order = Order.ascending,
-    String? organization,
+    Organization? organization,
     List<ChannelSort> channelSort = const [ChannelSort.organization],
   }) async {
     // According to API docs, the maximum accepted value is 50 and anything higher the request will be denied
@@ -566,7 +566,7 @@ class HolodexClient {
     List<String>? conditions,
     List<String>? topics,
     List<String>? videoChannels,
-    List<String>? organizations,
+    List<Organization>? organizations,
     bool paginated = true,
     int offset = 0,
     int limit = 25,
@@ -582,14 +582,13 @@ class HolodexClient {
 
     if (organizations != null && organizations.isNotEmpty) {
       data.addAll({
-        'org': organizations,
+        'org': organizations.map((org) => org.code),
       });
     }
 
     if (languages != null && languages.isNotEmpty) {
       data.addAll({
-        'lang':
-            languages.map((l) => l.code).toList(),
+        'lang': languages.map((l) => l.code).toList(),
       });
     }
 
@@ -655,7 +654,7 @@ class HolodexClient {
     List<SearchTarget>? searchTargets,
     List<String>? topics,
     List<String>? videoChannels,
-    List<String>? organizations,
+    List<Organization>? organizations,
     bool paginated = true,
     int offset = 0,
     int limit = 25,
@@ -683,8 +682,7 @@ class HolodexClient {
 
     if (languages != null && languages.isNotEmpty) {
       data.addAll({
-        'lang':
-            languages.map((l) => l.code).toList(),
+        'lang': languages.map((l) => l.code).toList(),
       });
     }
 
@@ -784,9 +782,10 @@ class HolodexClient {
     }
   }
 
-  void _addSingleOrganization(String? organization, Map<String, dynamic> map) {
+  void _addSingleOrganization(
+      Organization? organization, Map<String, dynamic> map) {
     if (organization != null) {
-      map.addAll({'org': organization});
+      map.addAll({'org': organization.code});
     }
   }
 
@@ -818,8 +817,7 @@ class HolodexClient {
   void _addLanguages(List<Language> lang, Map<String, dynamic> map) {
     if (lang.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> langStringList =
-          lang.map((l) => l.code).toList();
+      final List<String> langStringList = lang.map((l) => l.code).toList();
       // Join the array with commas
       String languagesConcat = langStringList.join(',');
       map.addAll({'lang': languagesConcat});

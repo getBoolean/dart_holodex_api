@@ -11,6 +11,8 @@
 - **Breaking**: Renamed `client.dart` to `holodex_client.dart`. Technically a breaking change, but only if
 - **Breaking**: Replace usage of package `EnumToString` with Dart 2.17 enhanced enums.
 - **Breaking**: Removed `VideoFullList`. Use `PaginatedResult<VideoFull>` instead.
+- **Breaking**: Changed `Organization` to an enum, and added new organizations added by Holodex.
+- **Breaking**: Renamed `Organization.VirtualWitchPhenomenon` to `Organization.KAMITSUBAKI`
 implementation was imported.
 - Changed `Video` constructor parameter `duration` to optional
 have been replaced with `VideoLiveInfo`

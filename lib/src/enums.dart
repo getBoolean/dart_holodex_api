@@ -21,8 +21,12 @@ enum Language {
   indonesian('id'),
   russian('ru');
 
+  /// The language code used by Holodex
   final String code;
   const Language(this.code);
+
+  @override
+  String toString() => code;
 }
 
 enum ChannelSort {
@@ -68,35 +72,75 @@ enum VideoSearchType {
 
 enum Order { ascending, descending }
 
-abstract class Organization {
-  const Organization._();
+enum Organization {
+  dotLIVE('.LIVE'),
+  inc774('774inc'),
+  AogiriHighschool('Aogiri Highschool'),
+  AtelierLive('Atelier Live'),
+  AxelV('Axel-V'),
+  AkioAIR('AkioAIR'),
+  Aetheria('Aetheria'),
+  Chukorara('Chukorara'),
+  CloudHorizon('Cloud Horizon'),
+  EileneFamily('Eilene Family'),
+  Emoechi('Emoechi'),
+  GuildCQ('GuildCQ'),
+  Hololive('Hololive'),
+  HoshimeguriGakuen('Hoshimeguri Gakuen'),
+  HLive('H.Live'),
+  Independents('Independents'),
+  Iridori('Iridori'),
+  idolCorp('Idol Corp'),
+  KAMITSUBAKI('KAMITSUBAKI'),
+  KizunaAI('Kizuna Ai Inc.'),
+  KAWAII_MUSIC('KAWAII MUSIC'),
+  KEMOMIMI_REFLE('KEMOMIMI REFLE'),
+  KemonoFriends('Kemono Friends'),
+  LaPecheParty('La Peche Party'),
+  Marbl_s('Marbl_s'),
+  Masquerade('Masquerade'),
+  MAHA5('MAHA5'),
+  MyHoloTV('MyHolo TV'),
+  Nijisanji('Nijisanji'),
+  NoriPro('Nori Pro'),
+  NIJIGEN('NIJIGEN'),
+  NeoPorte('Neo-Porte'),
+  ProductionKawaii('Production Kawaii'),
+  Polygon('Polygon'),
+  PhaseConnect('Phase Connect'),
+  PixelaProject('Pixela Project'),
+  PRISM('PRISM'),
+  ProPro('ProPro'),
+  PinkPunkPro('Pink Punk Pro'),
+  RiotMusic('Riot Music'),
+  ReACT('ReACT'),
+  ReMemories('ReMemories'),
+  SleepMonster('Sleep Monster'),
+  SquareLive('Square Live'),
+  Snacknili('Snacknili'),
+  Shinsougumi('Shinsougumi'),
+  Tsunderia('Tsunderia'),
+  TwitchIndependents('Twitch Independents'),
+  UnrealNightGirls('Unreal Night Girls'),
+  VDimensionCreators('V Dimension.Creators'),
+  VOICE_ORE('VOICE-ORE'),
+  ViViD('ViViD'),
+  VOMS('VOMS'),
+  VShojo('VShojo'),
+  VSpo('VSpo'),
+  VReverie('VReverie'),
+  WACTOR('WACTOR'),
+  WAKEntertainment('WAK Entertainment'),
+  Xencount("X enc'ount"),
+  YuniCreate('Yuni Create'),
+  YumeReality('Yume Reality');
 
-  static final String inc774 = '774inc';
-  static final String AogiriHighschool = 'Aogiri Highschool';
-  static final String AtelierLive = 'Atelier Live';
-  static final String Chukorara = 'Chukorara';
-  static final String EileneFamily = 'Eilene Family';
-  static final String Hololive = 'Hololive';
-  static final String Independent = 'Independents';
-  static final String Iridori = 'Iridori';
-  static final String KizunaAI = 'Kizuna Ai Inc.';
-  static final String dotLIVE = '.LIVE';
-  static final String Marbl_s = 'Marbl_s';
-  static final String Masquerade = 'Masquerade';
-  static final String Nijisanji = 'Nijisanji';
-  static final String NoriPro = 'Nori Pro';
-  static final String PRISM = 'PRISM';
-  static final String ReACT = 'ReACT';
-  static final String RiotMusic = 'Riot Music';
-  static final String Tsunderia = 'Tsunderia';
-  static final String VDimensionCreators = 'V Dimension.Creators';
-  static final String VirtualWitchPhenomenon = 'Virtual Witch Phenomenon';
-  static final String ViViD = 'ViViD';
-  static final String VOMS = 'VOMS';
-  static final String VShojo = 'VShojo';
-  static final String VSpo = 'VSpo';
-  static final String Xencount = "X enc'ount";
-  static final String YuniCreate = 'YuniCreate';
+  /// The organization's code used by Holodex
+  final String code;
+  const Organization(this.code);
+
+  @override
+  String toString() => code;
 }
 
 /// An enum which contains strings that allow extra data to be returned when requesting videos.
