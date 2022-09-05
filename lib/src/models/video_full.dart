@@ -116,7 +116,9 @@ class VideoFull extends Video {
       duration: map['duration'],
       status: EnumUtil.convertStringToVideoStatus(map['status']) ??
           VideoStatus.missing,
-      liveInfo: VideoLiveInfo.fromMap(map['live_info']),
+      liveInfo: map['live_info'] == null
+          ? VideoLiveInfo()
+          : VideoLiveInfo.fromMap(map['live_info']),
       description: map['description'],
       songcount: map['songcount'],
       language: map['lang'],
