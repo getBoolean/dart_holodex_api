@@ -28,7 +28,7 @@ abstract class EnumUtil {
   ///
   /// Returns [String]
   static String convertChannelSortToString(ChannelSort sort) {
-    return sort.name;
+    return sort.code;
   }
 
   /// Converts a [ChannelType] enum to string.
@@ -60,14 +60,14 @@ abstract class EnumUtil {
   ///
   /// Returns [String]
   static String convertVideoStatusToString(VideoStatus status) {
-    return status.name;
+    return status.code;
   }
 
   /// Converts a string video status to the corresponding [VideoStatus] enum.
   ///
   /// Returns `null` if it is does not exist, otherwise returns [VideoStatus]
   static VideoStatus? convertStringToVideoStatus(String status) {
-    return VideoStatus.values.byName(status);
+    return VideoStatus.values.byCode(status);
   }
 
   /// Converts a [VideoType] enum to string.
@@ -85,12 +85,7 @@ abstract class EnumUtil {
   ///
   /// Returns [String]
   static String convertOrderToString(Order order) {
-    final videoOrderMapToString = {
-      Order.ascending: 'asc',
-      Order.descending: 'desc',
-    };
-    // Force not null because map contains all values for [Order]
-    return videoOrderMapToString[order]!;
+    return order.code;
   }
 
   /// Converts a [VideoSearchType] enum to string.
@@ -103,15 +98,6 @@ abstract class EnumUtil {
   ///
   /// Returns [String]
   static String convertVideoSortToString(VideoSort sort) {
-    final videoSortMapToString = {
-      VideoSort.title: 'title',
-      VideoSort.publishedAt: 'published_at',
-      VideoSort.availableAt: 'available_at',
-      VideoSort.startScheduled: 'start_scheduled',
-      VideoSort.startActual: 'start_actual',
-      VideoSort.endActual: 'end_actual',
-    };
-    // Force not null because map contains all values for [VideoSort]
-    return videoSortMapToString[sort]!;
+    return sort.code;
   }
 }

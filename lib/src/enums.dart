@@ -3,13 +3,31 @@
 
 import 'package:intl/locale.dart';
 
+extension EnumByCode<T extends EnumWithCode> on List<T> {
+  /// Finds the enum value in this list with code [code].
+  ///
+  /// Goes through this collection looking for an enum with
+  /// code [code], as reported by [EnumName.code].
+  /// Returns the first value with the given code. Such a value must be found.
+  T byCode(String code) {
+    for (var value in this) {
+      if (value.code == code) return value;
+    }
+    throw ArgumentError.value(code, "code", "No enum value with that code");
+  }
+}
+
+mixin EnumWithCode {
+  String get code;
+}
+
 enum VideoType {
   stream,
   clip,
   all,
 }
 
-enum VideoStatus {
+enum VideoStatus with EnumWithCode {
   new_('new'),
   upcoming('upcoming'),
   live('live'),
@@ -17,6 +35,7 @@ enum VideoStatus {
   missing('missing');
 
   /// The code used by Holodex
+  @override
   final String code;
   const VideoStatus(this.code);
 }
@@ -94,7 +113,7 @@ class Language {
 }
 
 /// Options to sort a list of channels from the [HolodexClient.getChannels] endpoint.
-enum ChannelSort {
+enum ChannelSort with EnumWithCode {
   id('id'),
   name('name'),
   englishName('enligh_name'),
@@ -114,18 +133,24 @@ enum ChannelSort {
   description('description');
 
   /// The code used by Holodex
+  @override
   final String code;
   const ChannelSort(this.code);
 }
 
 /// Options to sort a lsit of videos by
-enum VideoSort {
-  title,
-  publishedAt,
-  availableAt,
-  startScheduled,
-  startActual,
-  endActual,
+enum VideoSort with EnumWithCode {
+  title('title'),
+  publishedAt('published_at'),
+  availableAt('available_at'),
+  startScheduled('start_scheduled'),
+  startActual('start_actual'),
+  endActual('end_actual');
+
+  /// The code used by Holodex
+  @override
+  final String code;
+  const VideoSort(this.code);
 }
 
 /// An enum that provides different search types when retrieving videos.
@@ -141,7 +166,7 @@ enum VideoSearchType {
 }
 
 /// An enum that allows a list to be sorted alphabetically
-enum Order {
+enum Order with EnumWithCode {
   /// Sorts the list in ascending order (A-Z)
   ascending('asc'),
 
@@ -149,6 +174,7 @@ enum Order {
   descending('desc');
 
   /// The order code used by Holodex
+  @override
   final String code;
   const Order(this.code);
 
@@ -159,7 +185,7 @@ enum Order {
 /// Organizations supported by Holodex.
 ///
 /// Make a Pull Request or GitHub issue to add more organizations.
-enum Organization {
+enum Organization with EnumWithCode {
   dotLIVE('.LIVE'),
   inc774('774inc'),
   AogiriHighschool('Aogiri Highschool'),
@@ -223,6 +249,7 @@ enum Organization {
   YumeReality('Yume Reality');
 
   /// The organization's code used by Holodex
+  @override
   final String code;
   const Organization(this.code);
 
@@ -231,7 +258,7 @@ enum Organization {
 }
 
 /// An enum which contains strings that allow extra data to be returned when requesting videos.
-enum Includes {
+enum Includes with EnumWithCode {
   /// Include clips using the videos.
   clips('clips'),
 
@@ -260,6 +287,7 @@ enum Includes {
   songs('songs');
 
   /// The code used by Holodex
+  @override
   final String code;
   const Includes(this.code);
 }
