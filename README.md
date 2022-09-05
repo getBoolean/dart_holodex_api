@@ -417,7 +417,7 @@ Arguments
 - `limit` Result limit
 
 ```dart
-final VideoWithCommentsList searchComments = await holodexClient.searchComments(
+final PaginatedResult<VideoWithComments> searchComments = await holodexClient.searchComments(
     searchSort: SearchSort.newest,
     languages: [Language.all],
     searchTargets: [SearchTarget.clip, SearchTarget.stream],
