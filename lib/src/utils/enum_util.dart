@@ -21,19 +21,7 @@ abstract class EnumUtil {
   ///
   /// Returns [String]
   static String convertIncludesToString(Includes i) {
-    final includesMapToString = {
-      Includes.clips: 'clips',
-      Includes.refers: 'refers',
-      Includes.sources: 'sources',
-      Includes.simulcasts: 'simulcasts',
-      Includes.mentions: 'mentions',
-      Includes.description: 'description',
-      Includes.liveInfo: 'live_info',
-      Includes.channelStats: 'channel_stats',
-      Includes.songs: 'songs',
-    };
-    // Force not null because map contains all values for [Includes]
-    return includesMapToString[i]!;
+    return i.code;
   }
 
   /// Converts a [ChannelSort] enum to string.

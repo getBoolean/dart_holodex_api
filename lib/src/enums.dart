@@ -3,11 +3,24 @@
 
 import 'package:intl/locale.dart';
 
-enum VideoType { stream, clip, all }
+enum VideoType {
+  stream,
+  clip,
+  all,
+}
 
-enum VideoStatus { new_, upcoming, live, past, missing }
+enum VideoStatus {
+  new_,
+  upcoming,
+  live,
+  past,
+  missing,
+}
 
-enum ChannelType { vtuber, subber }
+enum ChannelType {
+  vtuber,
+  subber,
+}
 
 extension LanguageValues on List<Language> {
   Language byLocale(Locale locale) => Language.other(locale);
@@ -205,31 +218,34 @@ enum Organization {
 /// An enum which contains strings that allow extra data to be returned when requesting videos.
 enum Includes {
   /// Include clips using the videos.
-  clips,
+  clips('clips'),
 
   /// Include videos that refer to other videos.
-  refers,
+  refers('refers'),
 
   /// Include sources for videos created by Subbers.
-  sources,
+  sources('sources'),
 
   /// Include simulcast videos alongside the videos.
-  simulcasts,
+  simulcasts('simulcasts'),
 
   /// Include channels that are mentioned.
-  mentions,
+  mentions('mentions'),
 
   /// Include video descriptions.
-  description,
+  description('description'),
 
   /// Include live streams.
-  liveInfo,
+  liveInfo('live_info'),
 
   /// Include channel stats.
-  channelStats,
+  channelStats('channel_stats'),
 
   /// Include any songs used in the videos.
-  songs
+  songs('songs');
+
+  final String code;
+  const Includes(this.code);
 }
 
 enum SearchSort { oldest, newest }
