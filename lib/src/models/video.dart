@@ -1,5 +1,6 @@
 part of dart_holodex_api.models;
 
+/// A [Video] class with information retrieved from Holodex.
 class Video extends Serializable {
   final String id;
   final String title;
@@ -34,7 +35,7 @@ class Video extends Serializable {
   final String? language;
 
   /// Returns a new [Video] instance.
-  Video({
+  const Video({
     required this.id,
     required this.title,
     required this.type,

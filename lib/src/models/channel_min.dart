@@ -8,7 +8,7 @@ class ChannelMin extends Equatable {
   final String? photo;
 
   /// Returns a new [ChannelMin] instance.
-  ChannelMin({
+  const ChannelMin({
     required this.id,
     required this.name,
     this.englishName,

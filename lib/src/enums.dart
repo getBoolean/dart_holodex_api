@@ -65,7 +65,9 @@ enum VideoSearchType {
 
 enum Order { ascending, descending }
 
-class Organization {
+abstract class Organization {
+  const Organization._();
+  
   static final String inc774 = '774inc';
   static final String AogiriHighschool = 'Aogiri Highschool';
   static final String AtelierLive = 'Atelier Live';

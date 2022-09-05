@@ -16,6 +16,7 @@ implementation was imported.
 have been replaced with `VideoLiveInfo`
 - Added `Serializable`
 - Changed `Video` to extend `Serializable`
+- All models are now const
 
 ## 0.3.1
 

@@ -15,7 +15,7 @@ class Channel extends ChannelMin {
   final String? description;
 
   /// Returns a new [Channel] instance.
-  Channel({
+  const Channel({
     required super.id,
     required super.name,
     String? englishName,

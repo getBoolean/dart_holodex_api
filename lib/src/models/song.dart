@@ -7,7 +7,8 @@ class Song extends Equatable {
   final int? start;
   final int? itunesid;
   final String? originalArtist;
-  Song({
+  
+  const Song({
     required this.name,
     this.art,
     this.end,

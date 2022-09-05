@@ -4,7 +4,7 @@ part of dart_holodex_api.models;
 class VideoWithComments extends Video {
   final List<Comment> comments;
 
-  VideoWithComments({
+  const VideoWithComments({
     required super.id,
     required super.title,
     required super.type,

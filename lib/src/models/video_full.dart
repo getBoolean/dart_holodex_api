@@ -4,7 +4,7 @@ part of dart_holodex_api.models;
 /// [simulcasts], [mentions], and [songs] fields.
 class VideoFull extends Video {
   /// Returns a new [VideoFull] instance.
-  VideoFull({
+  const VideoFull({
     required super.id,
     required super.title,
     required super.type,
