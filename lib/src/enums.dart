@@ -10,6 +10,9 @@ enum ChannelType { vtuber, subber }
 // Some of the below enums are based off of https://github.com/EBro912/Holodex.NET
 // These are using enums instead of classes with static strings so that users can see the allowed values in a field instead of any string
 
+/// Holodex uses the BCP47 standard for language codes
+///
+/// TODO(@getBoolean): Refactor this to follow the BCP47 standard
 enum Language {
   all('all'),
   english('en'),
@@ -29,6 +32,7 @@ enum Language {
   String toString() => code;
 }
 
+/// Options to sort a list of channels by
 enum ChannelSort {
   id,
   name,
@@ -49,6 +53,7 @@ enum ChannelSort {
   description,
 }
 
+/// Options to sort a lsit of videos by
 enum VideoSort {
   title,
   publishedAt,
@@ -70,8 +75,18 @@ enum VideoSearchType {
   collabs
 }
 
-enum Order { ascending, descending }
+/// An enum that allows a list to be sorted alphabetically
+enum Order {
+  /// Sorts the list in ascending order (A-Z)
+  ascending,
 
+  /// Sorts the list in descending order (Z-A)
+  descending,
+}
+
+/// Organizations supported by Holodex.
+///
+/// Make a Pull Request or GitHub issue to add more organizations.
 enum Organization {
   dotLIVE('.LIVE'),
   inc774('774inc'),
