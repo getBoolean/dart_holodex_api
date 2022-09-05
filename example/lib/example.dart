@@ -141,7 +141,7 @@ void main(List<String> arguments) async {
   );
   print('Videos Found: ${searchVideos.videos.length}\n');
 
-  final VideoWithCommentsList searchComments =
+  final PaginatedResult<VideoWithComments> searchComments =
       await holodexClient.searchComments(
     searchSort: SearchSort.newest,
     languages: [Language.all],
@@ -154,7 +154,7 @@ void main(List<String> arguments) async {
     offset: 0,
     limit: 25,
   );
-  print('Videos with Comment: ${searchComments.videos.length}\n');
+  print('Videos with Comment: ${searchComments.items.length}\n');
 
   holodexClient.close();
 }

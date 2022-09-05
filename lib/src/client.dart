@@ -648,7 +648,7 @@ class HolodexClient {
   /// - `paginated` If paginated is set to true, returns [VideoWithCommentsList] with total, otherwise returns [VideoWithCommentsList] without the total.
   /// - `offset` Offset results
   /// - `limit` Result limit
-  Future<VideoWithCommentsList> searchComments({
+  Future<PaginatedResult<VideoWithComments>> searchComments({
     required String comment,
     SearchSort searchSort = SearchSort.newest,
     List<Language>? languages,
@@ -712,13 +712,15 @@ class HolodexClient {
 
     if (paginated) {
       // Grab total and return with it
-      final videoList = VideoWithCommentsList.fromJson(response.body);
+      final videoList =
+          PaginatedResult<VideoWithComments>.fromJson(response.body);
       return videoList.copyWith(paginated: true);
     }
 
     final List list = jsonDecode(response.body);
-    return VideoWithCommentsList(
-        videos: list.map((video) => VideoWithComments.fromMap(video)).toList());
+    return PaginatedResult(
+      items: list.map((video) => VideoWithComments.fromMap(video)).toList(),
+    );
   }
 
   void _addVideoSort(List<VideoSort> sort, Map<String, dynamic> map) {

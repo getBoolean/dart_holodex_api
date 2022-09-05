@@ -5,8 +5,9 @@
 - **Breaking**: `HolodexClient` no longer implements `BaseHolodexClient`
 - **Breaking**: Removed `BaseHolodexClient`
 - **Breaking**: Renamed `HolodexClient` constructor parameter `httpClient` to `client`
-- Changed `Video` constructor parameter `duration` to optional
 - **Breaking**: All uses of `startScheduled`, `startActual`, `endActual`, and `liveViewers`
+- **Breaking**: Changed `HolodexClient::searchComments` return type to `PaginatedResult<VideoWithComments>`
+- Changed `Video` constructor parameter `duration` to optional
 have been replaced with `VideoLiveInfo`
 - Added `Serializable`
 - Changed `Video` to extend `Serializable`

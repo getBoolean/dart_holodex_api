@@ -17,4 +17,5 @@ part 'models/song.dart';
 part 'models/video_with_comments.dart';
 part 'models/video_with_comments_list.dart';
 part 'models/video_live_info.dart';
+part 'models/paginated_result.dart';
 part 'models/serializable.dart';

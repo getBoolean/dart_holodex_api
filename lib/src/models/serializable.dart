@@ -11,6 +11,10 @@ abstract class Serializable extends Equatable {
     switch (T) {
       case Video:
         return Video.fromMap(map) as T;
+      case PaginatedResult:
+        return PaginatedResult.fromMap(map) as T;
+      case PaginatedResult<VideoWithComments>:
+        return PaginatedResult<VideoWithComments>.fromMap(map) as T;
       case VideoLiveInfo:
         return VideoLiveInfo.fromMap(map) as T;
       case VideoWithComments:
@@ -24,6 +28,10 @@ abstract class Serializable extends Equatable {
     switch (T) {
       case Video:
         return Video.fromJson(source) as T;
+      case PaginatedResult:
+        return PaginatedResult.fromJson(source) as T;
+      case PaginatedResult<VideoWithComments>:
+        return PaginatedResult<VideoWithComments>.fromJson(source) as T;
       case VideoLiveInfo:
         return VideoLiveInfo.fromJson(source) as T;
       case VideoWithComments:
