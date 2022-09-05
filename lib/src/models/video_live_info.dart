@@ -47,7 +47,8 @@ class VideoLiveInfo extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory VideoLiveInfo.fromJson(String source) => VideoLiveInfo.fromMap(json.decode(source));
+  factory VideoLiveInfo.fromJson(String source) =>
+      VideoLiveInfo.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -55,5 +56,10 @@ class VideoLiveInfo extends Equatable {
   }
 
   @override
-  List<Object> get props => [startScheduled ?? '', startActual ?? '', endActual ?? '', liveViewers ?? ''];
+  List<Object> get props => [
+        startScheduled ?? '',
+        startActual ?? '',
+        endActual ?? '',
+        liveViewers ?? ''
+      ];
 }
