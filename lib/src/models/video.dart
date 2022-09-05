@@ -19,16 +19,7 @@ class Video extends Equatable {
   final VideoStatus status;
 
   /// Included when includes contains 'live_info'
-  final String? startScheduled;
-
-  /// Included when includes contains 'live_info'
-  final String? startActual;
-
-  /// Included when includes contains 'live_info'
-  final String? endActual;
-
-  /// Included when includes contains 'live_info'
-  final int? liveViewers;
+  final VideoLiveInfo liveInfo;
 
   /// Included when includes contains 'description'
   final String? description;
@@ -52,10 +43,7 @@ class Video extends Equatable {
     required this.availableAt,
     this.duration,
     required this.status,
-    this.startScheduled,
-    this.startActual,
-    this.endActual,
-    this.liveViewers,
+    this.liveInfo = const VideoLiveInfo(),
     this.description,
     this.songcount,
     this.channelId,
@@ -72,10 +60,7 @@ class Video extends Equatable {
     String? availableAt,
     int? duration,
     VideoStatus? status,
-    String? startScheduled,
-    String? startActual,
-    String? endActual,
-    int? liveViewers,
+    VideoLiveInfo? liveInfo,
     String? description,
     int? songcount,
     String? channelId,
@@ -91,10 +76,7 @@ class Video extends Equatable {
       availableAt: availableAt ?? this.availableAt,
       duration: duration ?? this.duration,
       status: status ?? this.status,
-      startScheduled: startScheduled ?? this.startScheduled,
-      startActual: startActual ?? this.startActual,
-      endActual: endActual ?? this.endActual,
-      liveViewers: liveViewers ?? this.liveViewers,
+      liveInfo: liveInfo ?? this.liveInfo,
       description: description ?? this.description,
       songcount: songcount ?? this.songcount,
       channelId: channelId ?? this.channelId,
@@ -113,10 +95,7 @@ class Video extends Equatable {
       'available_at': availableAt,
       'duration': duration,
       'status': EnumUtil.convertVideoStatusToString(status),
-      'start_scheduled': startScheduled,
-      'start_actual': startActual,
-      'end_actual': endActual,
-      'live_viewers': liveViewers,
+      'live_info': liveInfo.toMap(),
       'description': description,
       'songcount': songcount,
       'channel_id': channelId,
@@ -137,10 +116,7 @@ class Video extends Equatable {
       duration: map['duration'],
       status: EnumUtil.convertStringToVideoStatus(map['status']) ??
           VideoStatus.missing,
-      startScheduled: map['start_scheduled'],
-      startActual: map['start_actual'],
-      endActual: map['end_actual'],
-      liveViewers: map['live_viewers'],
+      liveInfo: VideoLiveInfo.fromMap(map['live_info']),
       description: map['description'],
       songcount: map['songcount'],
       channelId: map['channel_id'],
@@ -167,10 +143,7 @@ class Video extends Equatable {
       'availableAt: $availableAt',
       'duration: $duration',
       'status: $status',
-      'startScheduled: $startScheduled',
-      'startActual: $startActual',
-      'endActual: $endActual',
-      'liveViewers: $liveViewers',
+      'liveInfo: $liveInfo',
       'description: $description',
       'songcount: $songcount',
       'language: $language',

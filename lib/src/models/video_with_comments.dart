@@ -12,10 +12,7 @@ class VideoWithComments extends Video {
     required String availableAt,
     int? duration,
     required VideoStatus status,
-    String? startScheduled,
-    String? startActual,
-    String? endActual,
-    int? liveViewers,
+    VideoLiveInfo liveInfo = const VideoLiveInfo(),
     String? description,
     String? channelId,
     int? songcount,
@@ -31,10 +28,7 @@ class VideoWithComments extends Video {
           availableAt: availableAt,
           duration: duration,
           status: status,
-          startScheduled: startScheduled,
-          startActual: startActual,
-          endActual: endActual,
-          liveViewers: liveViewers,
+          liveInfo: liveInfo,
           description: description,
           channelId: channelId,
           songcount: songcount,
@@ -52,10 +46,7 @@ class VideoWithComments extends Video {
     String? availableAt,
     int? duration,
     VideoStatus? status,
-    String? startScheduled,
-    String? startActual,
-    String? endActual,
-    int? liveViewers,
+    VideoLiveInfo? liveInfo,
     String? description,
     int? songcount,
     String? channelId,
@@ -72,10 +63,7 @@ class VideoWithComments extends Video {
       availableAt: availableAt ?? this.availableAt,
       duration: duration ?? this.duration,
       status: status ?? this.status,
-      startScheduled: startScheduled ?? this.startScheduled,
-      startActual: startActual ?? this.startActual,
-      endActual: endActual ?? this.endActual,
-      liveViewers: liveViewers ?? this.liveViewers,
+      liveInfo: liveInfo ?? this.liveInfo,
       description: description ?? this.description,
       songcount: songcount ?? this.songcount,
       channelId: channelId ?? this.channelId,
@@ -87,26 +75,10 @@ class VideoWithComments extends Video {
 
   @override
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'title': title,
-      'type': EnumToString.convertToString(type),
-      'topic_id': topicId,
-      'published_at': publishedAt,
-      'available_at': availableAt,
-      'duration': duration,
-      'status': EnumUtil.convertVideoStatusToString(status),
-      'start_scheduled': startScheduled,
-      'start_actual': startActual,
-      'end_actual': endActual,
-      'live_viewers': liveViewers,
-      'description': description,
-      'songcount': songcount,
-      'channel_id': channelId,
-      'channel': channel?.toMap(),
-      'lang': language,
-      'comments': comments.map((x) => x.toMap()).toList(),
-    };
+    return super.toMap()
+      ..addAll({
+        'comments': comments.map((x) => x.toMap()).toList(),
+      });
   }
 
   factory VideoWithComments.fromMap(Map<String, dynamic> map) {
@@ -121,10 +93,7 @@ class VideoWithComments extends Video {
       duration: map['duration'],
       status: EnumUtil.convertStringToVideoStatus(map['status']) ??
           VideoStatus.missing,
-      startScheduled: map['start_scheduled'],
-      startActual: map['start_actual'],
-      endActual: map['end_actual'],
-      liveViewers: map['live_viewers'],
+      liveInfo: VideoLiveInfo.fromMap(map['live_info']),
       description: map['description'],
       songcount: map['songcount'],
       channelId: map['channel_id'],

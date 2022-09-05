@@ -164,25 +164,25 @@ void _expectVideoDetails(VideoFull video) {
   );
 
   expect(
-    video.startScheduled,
+    video.liveInfo.startScheduled,
     isNull,
     reason: 'Video is not a premier or a live stream',
   );
 
   expect(
-    video.startActual,
+    video.liveInfo.startActual,
     isNull,
     reason: 'Video is not a premier or a live stream',
   );
 
   expect(
-    video.endActual,
+    video.liveInfo.endActual,
     isNull,
     reason: 'Video is not a premier or a live stream',
   );
 
   expect(
-    video.liveViewers,
+    video.liveInfo.liveViewers,
     isNull,
     reason: 'Video is not a premier or a live stream',
   );

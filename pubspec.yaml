@@ -3,7 +3,7 @@ description: A Dart wrapper for Holodex API v2. Holodex is a website dedicated t
 version: 0.3.1
 homepage: https://github.com/getBoolean/dart_holodex_api
 environment:
-  sdk: ">=2.14.2 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   enum_to_string: ^2.0.1

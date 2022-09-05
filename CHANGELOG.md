@@ -6,6 +6,8 @@
 - **Breaking**: Removed `BaseHolodexClient`
 - **Breaking**: Renamed `HolodexClient` constructor parameter `httpClient` to `client`
 - Changed `Video` constructor parameter `duration` to optional
+- **Breaking**: All uses of `startScheduled`, `startActual`, `endActual`, and `liveViewers`
+have been replaced with `VideoLiveInfo`
 
 ## 0.3.1
 
