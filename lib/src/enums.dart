@@ -89,25 +89,29 @@ class Language {
   String toString() => locale.toLanguageTag();
 }
 
-/// Options to sort a list of channels by
+/// Options to sort a list of channels from the [HolodexClient.getChannels] endpoint.
 enum ChannelSort {
-  id,
-  name,
-  englishName,
-  type,
-  organization,
-  suborg,
-  photo,
-  banner,
-  twitter,
-  videoCount,
-  subscriberCount,
-  viewCount,
-  clipCount,
-  lang,
-  publishedAt,
-  inactive,
-  description,
+  id('id'),
+  name('name'),
+  englishName('enligh_name'),
+  type('type'),
+  organization('org'),
+  suborg('suborg'),
+  photo('photo'),
+  banner('banner'),
+  twitter('twitter'),
+  videoCount('video_count'),
+  subscriberCount('subscriber_count'),
+  viewCount('view_count'),
+  clipCount('clip_count'),
+  lang('lang'),
+  publishedAt('published_at'),
+  inactive('inactive'),
+  description('description');
+
+  /// The code used by Holodex
+  final String code;
+  const ChannelSort(this.code);
 }
 
 /// Options to sort a lsit of videos by

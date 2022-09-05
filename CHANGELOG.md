@@ -22,7 +22,7 @@ have been replaced with `VideoLiveInfo`
 - Added `Serializable`
 - Changed `Video` to extend `Serializable`
 - All models are now const
-- Add String field `code` to enum `Language`, `Includes`
+- Add String field `code` to enum `Language`, `Includes`, `Order`, `ChannelSort`
 
 ## 0.3.1
 
