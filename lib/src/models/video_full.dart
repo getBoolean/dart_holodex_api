@@ -1,5 +1,7 @@
 part of dart_holodex_api.models;
 
+/// An extended [Video] class with [comments], [sources], [refers],
+/// [simulcasts], [mentions], and [songs] fields.
 class VideoFull extends Video {
   /// Returns a new [VideoFull] instance.
   VideoFull({

@@ -1,5 +1,6 @@
 part of dart_holodex_api.models;
 
+/// An extended [Video] class with [comments].
 class VideoWithComments extends Video {
   final List<Comment> comments;
 
