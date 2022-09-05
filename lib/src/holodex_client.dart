@@ -828,7 +828,7 @@ class HolodexClient {
     if (includes.isNotEmpty) {
       // Make new list with the values as string
       final List<String> includesStringList = includes
-          .map((included) => EnumUtil.convertIncludesToString(included))
+          .map((included) => included.code)
           .toList();
       // Join the array with commas
       String includesConcatenated = includesStringList.join(',');

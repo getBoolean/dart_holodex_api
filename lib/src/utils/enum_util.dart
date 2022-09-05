@@ -21,17 +21,14 @@ abstract class EnumUtil {
   ///
   /// Returns [String]
   static String convertIncludesToString(Includes i) {
-    return i.code;
+    return i.name;
   }
 
   /// Converts a [ChannelSort] enum to string.
   ///
   /// Returns [String]
   static String convertChannelSortToString(ChannelSort sort) {
-    final videoSortMapToString = {
-      ChannelSort.organization: 'org',
-    };
-    return videoSortMapToString[sort]!;
+    return sort.name;
   }
 
   /// Converts a [ChannelType] enum to string.
@@ -49,7 +46,7 @@ abstract class EnumUtil {
   ///
   /// Returns [String]
   static String convertLanguageToString(Language lang) {
-    return lang.toString();
+    return lang.toLanguageTag();
   }
 
   /// Converts a string language code to the corresponding [Language] enum.
