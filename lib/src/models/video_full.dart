@@ -122,8 +122,7 @@ class VideoFull extends Video {
     return VideoFull(
       id: map['id'],
       title: map['title'],
-      type: EnumToString.fromString(VideoType.values, map['type']) ??
-          VideoType.clip,
+      type: EnumUtil.convertStringToVideoType(map['type']) ?? VideoType.clip,
       topicId: map['topic_id'],
       publishedAt: map['published_at'],
       availableAt: map['available_at'],

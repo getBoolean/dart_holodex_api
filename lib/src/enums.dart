@@ -1,8 +1,6 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:enum_to_string/enum_to_string.dart';
-
 enum VideoType { stream, clip, all }
 
 enum VideoStatus { new_, upcoming, live, past, missing }
@@ -135,14 +133,14 @@ class EnumUtil {
   ///
   /// Returns [String]
   static String convertSearchTargetToString(SearchTarget target) {
-    return EnumToString.convertToString(target);
+    return target.name;
   }
 
   /// Converts a [SearchSort] enum to string.
   ///
   /// Returns [String]
   static String convertSearchSortToString(SearchSort sort) {
-    return EnumToString.convertToString(sort);
+    return sort.name;
   }
 
   /// Converts a [Includes] enum to string.
@@ -178,13 +176,13 @@ class EnumUtil {
   ///
   /// Returns [String]
   static String convertChannelTypeToString(ChannelType type) =>
-      EnumToString.convertToString(type);
+      type.name;
 
   /// Converts a string channel type to the corresponding [ChannelType] enum.
   ///
   /// Returns `null` if it is does not exist, otherwise returns [ChannelType]
   static ChannelType? convertStringToChannelType(String type) =>
-      EnumToString.fromString(ChannelType.values, type);
+      ChannelType.values.byName(type);
 
   /// Converts a [Language] enum to string.
   ///
@@ -254,13 +252,13 @@ class EnumUtil {
   ///
   /// Returns [String]
   static String convertVideoTypeToString(VideoType type) =>
-      EnumToString.convertToString(type);
+      type.name;
 
   /// Converts a string video type to the corresponding [VideoType] enum.
   ///
   /// Returns `null` if it is does not exist, otherwise returns [VideoType]
   static VideoType? convertStringToVideoType(String type) =>
-      EnumToString.fromString(VideoType.values, type);
+      VideoType.values.byName(type);
 
   /// Converts a [Order] enum to string.
   ///
@@ -278,7 +276,7 @@ class EnumUtil {
   ///
   /// Returns [String]
   static String convertVideoSearchTypeToString(VideoSearchType searchType) =>
-      EnumToString.convertToString(searchType);
+      searchType.name;
 
   /// Converts a [VideoSort] enum to string.
   ///

@@ -8,6 +8,7 @@
 - **Breaking**: All uses of `startScheduled`, `startActual`, `endActual`, and `liveViewers`
 - **Breaking**: Changed `HolodexClient::searchComments` return type to `PaginatedResult<VideoWithComments>`
 - **Breaking**: Renamed `client.dart` to `holodex_client.dart`. Technically a breaking change, but only if
+- **Breaking**: Replace usage of package `EnumToString` with Dart 2.17 enhanced enums.
 implementation was imported.
 - Changed `Video` constructor parameter `duration` to optional
 have been replaced with `VideoLiveInfo`

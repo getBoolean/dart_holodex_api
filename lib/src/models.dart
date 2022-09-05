@@ -1,7 +1,5 @@
 library dart_holodex_api.models;
 
-import 'package:enum_to_string/enum_to_string.dart';
-
 import 'enums.dart';
 import 'package:equatable/equatable.dart';
 import 'dart:convert';

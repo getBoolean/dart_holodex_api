@@ -85,8 +85,7 @@ class VideoWithComments extends Video {
     return VideoWithComments(
       id: map['id'],
       title: map['title'],
-      type: EnumToString.fromString(VideoType.values, map['type']) ??
-          VideoType.clip,
+      type: EnumUtil.convertStringToVideoType(map['type']) ?? VideoType.clip,
       topicId: map['topic_id'],
       publishedAt: map['published_at'],
       availableAt: map['available_at'],
