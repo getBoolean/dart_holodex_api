@@ -50,7 +50,7 @@ class Video extends Equatable {
     this.topicId,
     this.publishedAt,
     required this.availableAt,
-    required this.duration,
+    this.duration,
     required this.status,
     this.startScheduled,
     this.startActual,

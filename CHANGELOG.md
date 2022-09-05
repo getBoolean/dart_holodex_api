@@ -5,6 +5,7 @@
 - **Breaking**: `HolodexClient` no longer implements `BaseHolodexClient`
 - **Breaking**: Removed `BaseHolodexClient`
 - **Breaking**: Renamed `HolodexClient` constructor parameter `httpClient` to `client`
+- Changed `Video` constructor parameter `duration` to optional
 
 ## 0.3.1
 
