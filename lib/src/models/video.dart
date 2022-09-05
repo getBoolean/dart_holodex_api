@@ -85,6 +85,7 @@ class Video extends Serializable {
     );
   }
 
+  @override
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -125,6 +126,7 @@ class Video extends Serializable {
     );
   }
 
+  @override
   String toJson() => json.encode(toMap());
 
   factory Video.fromJson(String source) => Video.fromMap(json.decode(source));
