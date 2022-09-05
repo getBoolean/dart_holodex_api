@@ -21,10 +21,15 @@ mixin EnumWithCode {
   String get code;
 }
 
-enum VideoType {
-  stream,
-  clip,
-  all,
+enum VideoType with EnumWithCode {
+  stream('stream'),
+  clip('clip'),
+  all('all');
+
+  /// The code used by Holodex
+  @override
+  final String code;
+  const VideoType(this.code);
 }
 
 enum VideoStatus with EnumWithCode {
@@ -40,9 +45,14 @@ enum VideoStatus with EnumWithCode {
   const VideoStatus(this.code);
 }
 
-enum ChannelType {
-  vtuber,
-  subber,
+enum ChannelType with EnumWithCode {
+  vtuber('vtuber'),
+  subber('subber');
+
+  /// The code used by Holodex
+  @override
+  final String code;
+  const ChannelType(this.code);
 }
 
 extension LanguageValues on List<Language> {
@@ -154,15 +164,20 @@ enum VideoSort with EnumWithCode {
 }
 
 /// An enum that provides different search types when retrieving videos.
-enum VideoSearchType {
+enum VideoSearchType with EnumWithCode {
   /// Retrieve clips including a VTuber
-  clips,
+  clips('clips'),
 
   /// Retrieve videos uploaded by a Channel
-  videos,
+  videos('videos'),
 
   /// Retrieve videos that mention a Channel
-  collabs
+  collabs('collabs');
+
+  /// The code used by Holodex
+  @override
+  final String code;
+  const VideoSearchType(this.code);
 }
 
 /// An enum that allows a list to be sorted alphabetically
@@ -292,6 +307,22 @@ enum Includes with EnumWithCode {
   const Includes(this.code);
 }
 
-enum SearchSort { oldest, newest }
+enum SearchSort with EnumWithCode {
+  oldest('oldest'),
+  newest('newest');
 
-enum SearchTarget { clip, stream }
+  /// The code used by Holodex
+  @override
+  final String code;
+  const SearchSort(this.code);
+}
+
+enum SearchTarget with EnumWithCode {
+  clip('clip'),
+  stream('stream');
+
+  /// The code used by Holodex
+  @override
+  final String code;
+  const SearchTarget(this.code);
+}

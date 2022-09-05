@@ -21,7 +21,7 @@ abstract class EnumUtil {
   ///
   /// Returns [String]
   static String convertIncludesToString(Includes i) {
-    return i.name;
+    return i.code;
   }
 
   /// Converts a [ChannelSort] enum to string.
@@ -34,13 +34,13 @@ abstract class EnumUtil {
   /// Converts a [ChannelType] enum to string.
   ///
   /// Returns [String]
-  static String convertChannelTypeToString(ChannelType type) => type.name;
+  static String convertChannelTypeToString(ChannelType type) => type.code;
 
   /// Converts a string channel type to the corresponding [ChannelType] enum.
   ///
   /// Returns `null` if it is does not exist, otherwise returns [ChannelType]
   static ChannelType? convertStringToChannelType(String type) =>
-      ChannelType.values.byName(type);
+      ChannelType.values.byCode(type);
 
   /// Converts a [Language] enum to string.
   ///
@@ -73,13 +73,13 @@ abstract class EnumUtil {
   /// Converts a [VideoType] enum to string.
   ///
   /// Returns [String]
-  static String convertVideoTypeToString(VideoType type) => type.name;
+  static String convertVideoTypeToString(VideoType type) => type.code;
 
   /// Converts a string video type to the corresponding [VideoType] enum.
   ///
   /// Returns `null` if it is does not exist, otherwise returns [VideoType]
   static VideoType? convertStringToVideoType(String type) =>
-      VideoType.values.byName(type);
+      VideoType.values.byCode(type);
 
   /// Converts a [Order] enum to string.
   ///
@@ -92,7 +92,7 @@ abstract class EnumUtil {
   ///
   /// Returns [String]
   static String convertVideoSearchTypeToString(VideoSearchType searchType) =>
-      searchType.name;
+      searchType.code;
 
   /// Converts a [VideoSort] enum to string.
   ///
