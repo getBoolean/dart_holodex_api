@@ -16,11 +16,11 @@ class Channel extends ChannelMin {
 
   /// Returns a new [Channel] instance.
   Channel({
-    required String id,
-    required String name,
+    required super.id,
+    required super.name,
     String? englishName,
-    required ChannelType type,
-    String? photo,
+    required super.type,
+    super.photo,
     this.org,
     this.suborg,
     this.banner,
@@ -33,12 +33,7 @@ class Channel extends ChannelMin {
     this.publishedAt,
     this.inactive,
     this.description,
-  }) : super(
-          id: id,
-          name: name,
-          type: type,
-          photo: photo,
-        );
+  });
 
   @override
   Map<String, dynamic> toMap() {

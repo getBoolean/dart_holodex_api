@@ -4,37 +4,22 @@ class VideoWithComments extends Video {
   final List<Comment> comments;
 
   VideoWithComments({
-    required String id,
-    required String title,
-    required VideoType type,
-    String? topicId,
-    String? publishedAt,
-    required String availableAt,
-    int? duration,
-    required VideoStatus status,
-    VideoLiveInfo liveInfo = const VideoLiveInfo(),
-    String? description,
-    String? channelId,
-    int? songcount,
-    String? language,
+    required super.id,
+    required super.title,
+    required super.type,
+    super.topicId,
+    super.publishedAt,
+    required super.availableAt,
+    super.duration,
+    required super.status,
+    super.liveInfo,
+    super.description,
+    super.channelId,
+    super.songcount,
+    super.language,
     required this.comments,
-    ChannelMin? channel,
-  }) : super(
-          id: id,
-          title: title,
-          type: type,
-          topicId: topicId,
-          publishedAt: publishedAt,
-          availableAt: availableAt,
-          duration: duration,
-          status: status,
-          liveInfo: liveInfo,
-          description: description,
-          channelId: channelId,
-          songcount: songcount,
-          language: language,
-          channel: channel,
-        );
+    super.channel,
+  });
 
   @override
   VideoWithComments copyWith({
