@@ -776,7 +776,7 @@ class HolodexClient {
     if (statuses != null) {
       // Make new list with the values as string
       final List<String> statusesStringList = statuses
-          .map((status) => EnumUtil.convertVideoStatusToString(status))
+          .map((status) => status.code)
           .toList();
       // Join the array with commas
       String statusesConcatenated = statusesStringList.join(',');

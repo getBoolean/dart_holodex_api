@@ -60,28 +60,14 @@ abstract class EnumUtil {
   ///
   /// Returns [String]
   static String convertVideoStatusToString(VideoStatus status) {
-    final statusMapToString = {
-      VideoStatus.new_: 'new',
-      VideoStatus.upcoming: 'upcoming',
-      VideoStatus.live: 'live',
-      VideoStatus.past: 'past',
-      VideoStatus.missing: 'missing',
-    };
-    return statusMapToString[status]!;
+    return status.name;
   }
 
   /// Converts a string video status to the corresponding [VideoStatus] enum.
   ///
   /// Returns `null` if it is does not exist, otherwise returns [VideoStatus]
   static VideoStatus? convertStringToVideoStatus(String status) {
-    final stringMapToStatus = {
-      'new': VideoStatus.new_,
-      'upcoming': VideoStatus.upcoming,
-      'live': VideoStatus.live,
-      'past': VideoStatus.past,
-      'missing': VideoStatus.missing,
-    };
-    return stringMapToStatus[status];
+    return VideoStatus.values.byName(status);
   }
 
   /// Converts a [VideoType] enum to string.

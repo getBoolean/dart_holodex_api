@@ -10,11 +10,15 @@ enum VideoType {
 }
 
 enum VideoStatus {
-  new_,
-  upcoming,
-  live,
-  past,
-  missing,
+  new_('new'),
+  upcoming('upcoming'),
+  live('live'),
+  past('past'),
+  missing('missing');
+
+  /// The code used by Holodex
+  final String code;
+  const VideoStatus(this.code);
 }
 
 enum ChannelType {
