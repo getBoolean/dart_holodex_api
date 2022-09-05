@@ -39,6 +39,7 @@ A Dart wrapper for Holodex API v2
   - [Get a single Video's metadata](#get-a-single-video-s-metadata)
   - [Search For Videos](#search-for-videos)
   - [Search For Videos With a Comment](#search-for-videos-with-a-comment)
+- [Testing with Coverage](#testing-with-coverage)
 - [Additional information](#additional-information)
 
 ## Features
@@ -452,17 +453,24 @@ final VideoWithCommentsList searchComments = await holodexClient.searchComments(
 print('Videos with Comment: ${searchComments.videos.length}\n');
 ```
 
-## Testing
+## Testing with Coverage
 
 Generating code coverage:
 
-1. `dart pub global activate coverage`
-2. `dart test --coverage="coverage"`
-3. `dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib`
+1. Activate the coverage package
 
-Upload code coverage to codecov.io
+```bash
+dart pub global activate coverage
+```
 
-- `./codecov -t ${CODECOV_TOKEN}`
+1. Run the tests with coverage
+
+```bash
+dart pub global run coverage:test_with_coverage --branch-coverage --function-coverage
+```
+
+1. Visualize the coverage with an extension such as
+[Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters)
 
 ## Additional information
 
