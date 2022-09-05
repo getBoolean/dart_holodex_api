@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dart_holodex_api/src/utils/enum_util.dart';
 import 'package:http/http.dart';
 
 import '../dart_holodex_api.dart';

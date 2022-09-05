@@ -13,6 +13,7 @@
 - **Breaking**: Removed `VideoFullList`. Use `PaginatedResult<VideoFull>` instead.
 - **Breaking**: Changed `Organization` to an enum, and added new organizations added by Holodex.
 - **Breaking**: Renamed `Organization.VirtualWitchPhenomenon` to `Organization.KAMITSUBAKI`
+- **Breaking**: `EnumUtil` is no longer exported.
 implementation was imported.
 - Changed `Video` constructor parameter `duration` to optional
 have been replaced with `VideoLiveInfo`
