@@ -100,7 +100,7 @@ class HolodexClient {
     }
 
     // The limit cannot be greator than 50, otherwise it will throw an error
-    assert(limit <= 50);
+    assert(limit <= 50, 'The limit cannot be greater than 50');
 
     // Create the params list
     final Map<String, dynamic> params = {};
@@ -312,7 +312,7 @@ class HolodexClient {
     }
 
     // According to API docs, the maximum accepted value is 50 and anything higher the request will be denied
-    assert(limit <= 50);
+    assert(limit <= 50, 'The limit cannot be greater than 50');
 
     // Create the params list
     final Map<String, dynamic> params = {};
@@ -498,7 +498,7 @@ class HolodexClient {
       languages = [Language.all];
     }
     // Limit cannot be greater than 50 otherwise request will be denied
-    assert(limit <= 50);
+    assert(limit <= 50, 'The limit cannot be greater than 50');
 
     final Map<String, dynamic> params = {};
 
