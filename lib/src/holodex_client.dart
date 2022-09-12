@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 import '../dart_holodex_api.dart';
 
@@ -16,17 +16,17 @@ class HolodexClient {
   HolodexClient({
     required this.apiKey,
     this.basePath = 'https://holodex.net/api/v2',
-    Client? client,
+    http.Client? client,
   }) {
     if (client == null) {
-      _client = Client();
+      _client = http.Client();
     } else {
       _client = client;
     }
   }
 
   /// HTTP Client
-  late final Client _client;
+  late final http.Client _client;
 
   /// Base API URL
   final String basePath;
