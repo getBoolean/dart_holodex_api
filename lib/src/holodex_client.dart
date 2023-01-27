@@ -38,7 +38,7 @@ class HolodexClient {
   /// Your API key
   final String apiKey;
 
-  /// Get a video by its video ID
+  /// Get a video by its video ID, alias of [getVideos]
   ///
   /// Returns [VideoFull]
   ///
@@ -50,19 +50,19 @@ class HolodexClient {
     String videoId, {
     List<Includes> includes = const [],
   }) async {
-    final Map<String, dynamic> params = {'id': videoId};
+    final paginatedVideos = await getVideos(VideoFilter(
+      ids: [videoId],
+      includes: includes,
+      paginated: false,
+      limit: 1,
+    ));
 
-    // Add the info the videos must include
-    _addIncludes(includes, params);
-
-    final Response response = await get(path: _Constants.videosPath, params: params);
-
-    return VideoFull.fromMap(jsonDecode(response.body).first);
+    return paginatedVideos.first;
   }
 
   /// Get a list of videos
   ///
-  /// Returns `VideoFullList`
+  /// Returns [PaginatedResult]<[VideoFull]>
   Future<PaginatedResult<VideoFull>> getVideos([
     VideoFilter filter = const VideoFilter(
       limit: 25,
@@ -132,11 +132,11 @@ class HolodexClient {
     // Returns as `List<Video>`
   }
 
-  /// Get a list of livestreams
+  /// Get a list of live streams
   ///
-  /// Returns `VideoFullList`
+  /// Returns [VideoFullList]
   ///
-  /// This is somewhat similar to calling listVideos(), except this endpoint imposes default
+  /// This is somewhat similar to calling [getVideos], except this endpoint imposes default
   /// values on the query parameters. You can choose to override them by providing your own values.
   Future<PaginatedResult<VideoFull>> getLiveVideos([
     VideoFilter filter = const VideoFilter(
@@ -300,9 +300,7 @@ class HolodexClient {
     return list.map((video) => Video.fromMap(video)).toList();
   }
 
-  /// Get Videos From Channel
-  ///
-  /// Alias of getVideosRelatedToChannel()
+  /// Get Videos From Channel, alias of [getVideosRelatedToChannel]
   ///
   /// Returns [VideoFullList]
   ///
@@ -326,9 +324,7 @@ class HolodexClient {
     );
   }
 
-  /// Get Clips of a VTuber
-  ///
-  /// Alias of getVideosRelatedToChannel()
+  /// Get Clips of a VTuber, alias of [getVideosRelatedToChannel]
   ///
   /// Returns [VideoFullList]
   ///
@@ -352,9 +348,7 @@ class HolodexClient {
     );
   }
 
-  /// Get Collabs that mention a VTuber
-  ///
-  /// Alias of getVideosRelatedToChannel()
+  /// Get Collabs that mention a VTuber, alias of [getVideosRelatedToChannel]
   ///
   /// Returns [VideoFullList]
   ///

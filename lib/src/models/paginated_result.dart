@@ -7,6 +7,11 @@ class PaginatedResult<T extends Serializable> extends Serializable {
   final List<T> items;
   final bool paginated;
 
+  /// Returns the first element.
+  ///
+  /// Throws a [StateError] if this is empty. Otherwise returns the first element in the iteration order, equivalent to this.elementAt(0)
+  T get first => items.first;
+
   const PaginatedResult({
     this.total,
     required this.items,
@@ -41,8 +46,7 @@ class PaginatedResult<T extends Serializable> extends Serializable {
     }
     return PaginatedResult<T>(
       total: total,
-      items: List<T>.from(
-          map['items']?.map((x) => Serializable.fromMap<T>(x)) ?? []),
+      items: List<T>.from(map['items']?.map((x) => Serializable.fromMap<T>(x)) ?? []),
       paginated: map['paginated'] ?? false,
     );
   }
@@ -50,12 +54,10 @@ class PaginatedResult<T extends Serializable> extends Serializable {
   @override
   String toJson() => json.encode(toMap());
 
-  factory PaginatedResult.fromJson(String source) =>
-      PaginatedResult.fromMap(json.decode(source));
+  factory PaginatedResult.fromJson(String source) => PaginatedResult.fromMap(json.decode(source));
 
   @override
-  String toString() =>
-      'PaginatedResult(total: $total, items: $items, paginated: $paginated)';
+  String toString() => 'PaginatedResult(total: $total, items: $items, paginated: $paginated)';
 
   @override
   List<Object> get props => [total ?? '', items, paginated];
