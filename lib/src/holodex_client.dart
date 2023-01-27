@@ -419,15 +419,17 @@ class HolodexClient {
   /// Arguments:
   /// - `videoId` ID of the video
   /// - `includeTimestampComments` If set to `true`, comments with timestamps will be returned
-  /// - `languages` A list of language codes to filter channels/clips, official streams do not follow this parameter
+  /// - `languages` A list of language codes to filter channels/clips, official streams do not follow this parameter.
+  ///          If empty, all languages will be returned.
   Future<VideoFull> getVideoMetadata(
     String videoId, {
     bool includeTimestampComments = false,
     List<Language> languages = const [],
   }) async {
     final Map<String, dynamic> params = {};
+    final _languages = languages.isEmpty ? [Language.all] : languages;
 
-    _addLanguages(languages, params);
+    _addLanguages(_languages, params);
     _addCommentsFlag(includeTimestampComments, params);
 
     final response = await get(path: '${_Constants.videosPath}/$videoId', params: params);
@@ -441,76 +443,65 @@ class HolodexClient {
   /// Note that searching for topics and clips is not supported, because clips do not contain topics.
   ///
   /// Arguments
-  /// - `searchSort` Sort by newest or oldest
-  /// - `languages` If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)
-  /// - `searchTargets` Target types of videos
   /// - `conditions` Match all of the items. -> For each item: look for the text in video title or description
-  /// - `topics` Return videos that match one of the provided topics
-  /// - `videoChannels` Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.
-  /// - `organizations` Videos of channels in any of the specified organizations, or clips that involve a channel in the specified organization.
-  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  /// - `offset` Offset results
-  /// - `limit` Result limit
+  /// - `filter` Filter video results from the API
   Future<PaginatedResult<VideoFull>> searchVideos({
-    SearchSort searchSort = SearchSort.newest,
-    List<Language>? languages,
-    List<SearchTarget>? searchTargets,
-    List<String>? conditions,
-    List<String>? topics,
-    List<String>? videoChannels,
-    List<Organization>? organizations,
-    bool paginated = true,
-    int offset = 0,
-    int limit = 25,
+    List<String> conditions = const [],
+    SearchFilter filter = const SearchFilter(
+      searchSort: SearchSort.newest,
+      paginated: true,
+      offset: 0,
+      limit: 25,
+    ),
   }) async {
     final Map<String, dynamic> data = {};
 
     data.addAll({
-      'sort': searchSort.code,
-      'paginated': paginated,
-      'offset': offset,
-      'limit': limit,
+      'sort': filter.searchSort.code,
+      'paginated': filter.paginated,
+      'offset': filter.offset,
+      'limit': filter.limit,
     });
 
-    if (organizations != null && organizations.isNotEmpty) {
+    if (filter.organizations.isNotEmpty) {
       data.addAll({
-        'org': organizations.map((org) => org.code).toList(),
+        'org': filter.organizations.map((org) => org.code).toList(),
       });
     }
 
-    if (languages != null && languages.isNotEmpty) {
+    if (filter.languages.isNotEmpty) {
       data.addAll({
-        'lang': languages.map((l) => l.toLanguageTag()).toList(),
+        'lang': filter.languages.map((l) => l.toLanguageTag()).toList(),
       });
     }
 
-    if (searchTargets != null && searchTargets.isNotEmpty) {
+    if (filter.searchTargets.isNotEmpty) {
       data.addAll({
-        'target': searchTargets.map((target) => target.code).toList(),
+        'target': filter.searchTargets.map((target) => target.code).toList(),
       });
     }
 
-    if (conditions != null && conditions.isNotEmpty) {
+    if (conditions.isNotEmpty) {
       data.addAll({
         'conditions': conditions,
       });
     }
 
-    if (topics != null && topics.isNotEmpty) {
+    if (filter.topics.isNotEmpty) {
       data.addAll({
-        'topic': topics,
+        'topic': filter.topics,
       });
     }
 
-    if (videoChannels != null && videoChannels.isNotEmpty) {
+    if (filter.videoChannels.isNotEmpty) {
       data.addAll({
-        'vch': videoChannels,
+        'vch': filter.videoChannels,
       });
     }
 
     final response = await post(path: _Constants.videoSearch, data: data);
 
-    if (paginated) {
+    if (filter.paginated) {
       // Grab total and return with it
       final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
       return videoList.copyWith(paginated: true);
@@ -527,76 +518,65 @@ class HolodexClient {
   /// Note that searching for topics and clips is not supported, because clips do not contain topics.
   ///
   /// Arguments
-  /// - `searchSort` Sort by newest or oldest
-  /// - `languages` If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)
-  /// - `searchTargets` Target types of videos
   /// - `comment` Find videos with comments containing specified string (case insensitive)
-  /// - `topics` Return videos that match one of the provided topics
-  /// - `vch` Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.
-  /// - `organizations` Videos of channels in any of the specified organizations, or clips that involve a channel in the specified organization.
-  /// - `paginated` If paginated is set to true, returns [VideoWithCommentsList] with total, otherwise returns [VideoWithCommentsList] without the total.
-  /// - `offset` Offset results
-  /// - `limit` Result limit
+  /// - `filter` Filter video results from the API
   Future<PaginatedResult<VideoFull>> searchComments({
     required String comment,
-    SearchSort searchSort = SearchSort.newest,
-    List<Language>? languages,
-    List<SearchTarget>? searchTargets,
-    List<String>? topics,
-    List<String>? videoChannels,
-    List<Organization>? organizations,
-    bool paginated = true,
-    int offset = 0,
-    int limit = 25,
+    SearchFilter filter = const SearchFilter(
+      searchSort: SearchSort.newest,
+      paginated: true,
+      offset: 0,
+      limit: 25,
+    ),
   }) async {
     final Map<String, dynamic> data = {};
 
     data.addAll({
-      'sort': searchSort.code,
+      'sort': filter.searchSort.code,
       'comment': comment,
-      'offset': offset,
-      'limit': limit,
+      'offset': filter.offset,
+      'limit': filter.limit,
     });
 
-    if (organizations != null && organizations.isNotEmpty) {
+    if (filter.organizations.isNotEmpty) {
       data.addAll({
-        'org': organizations.map((org) => org.code).toList(),
+        'org': filter.organizations.map((org) => org.code).toList(),
       });
     }
 
-    if (paginated) {
+    if (filter.paginated) {
       data.addAll({
-        'paginated': paginated,
+        'paginated': filter.paginated,
       });
     }
 
-    if (languages != null && languages.isNotEmpty) {
+    if (filter.languages.isNotEmpty) {
       data.addAll({
-        'lang': languages.map((l) => l.toLanguageTag()).toList(),
+        'lang': filter.languages.map((l) => l.toLanguageTag()).toList(),
       });
     }
 
-    if (searchTargets != null && searchTargets.isNotEmpty) {
+    if (filter.searchTargets.isNotEmpty) {
       data.addAll({
-        'target': searchTargets.map((s) => s.code).toList(),
+        'target': filter.searchTargets.map((s) => s.code).toList(),
       });
     }
 
-    if (topics != null && topics.isNotEmpty) {
+    if (filter.topics.isNotEmpty) {
       data.addAll({
-        'topic': topics,
+        'topic': filter.topics,
       });
     }
 
-    if (videoChannels != null && videoChannels.isNotEmpty) {
+    if (filter.videoChannels.isNotEmpty) {
       data.addAll({
-        'vch': videoChannels,
+        'vch': filter.videoChannels,
       });
     }
 
     final response = await post(path: _Constants.commentSearch, data: data);
 
-    if (paginated) {
+    if (filter.paginated) {
       // Grab total and return with it
       final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
       return videoList.copyWith(paginated: true);

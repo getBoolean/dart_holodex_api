@@ -124,11 +124,10 @@ void main(List<String> arguments) async {
   print('Video Comments With Timestamps: ${timestampComments?.length}');
   print('Video Recommendations: ${recommendations?.length}\n');
 
-  final PaginatedResult<VideoFull> searchVideos = await holodexClient.searchVideos(
+  final singingSearchFilter = SearchFilter(
     searchSort: SearchSort.newest,
     languages: [Language.all],
     searchTargets: [SearchTarget.clip, SearchTarget.stream],
-    conditions: ['karaoke'],
     topics: ['singing'],
     videoChannels: <String>[],
     organizations: [
@@ -139,19 +138,16 @@ void main(List<String> arguments) async {
     offset: 0,
     limit: 25,
   );
+  
+  final PaginatedResult<VideoFull> searchVideos = await holodexClient.searchVideos(
+    conditions: ['karaoke'],
+    filter: singingSearchFilter,
+  );
   print('Videos Found: ${searchVideos.items.length}\n');
 
   final PaginatedResult<VideoFull> searchComments = await holodexClient.searchComments(
-    searchSort: SearchSort.newest,
-    languages: [Language.all],
-    searchTargets: [SearchTarget.clip, SearchTarget.stream],
     comment: 'shion',
-    topics: ['singing'],
-    // videoChannels: <String>[],
-    organizations: [Organization.Hololive],
-    paginated: true,
-    offset: 0,
-    limit: 25,
+    filter: singingSearchFilter,
   );
   print('Videos with Comment: ${searchComments.items.length}\n');
 

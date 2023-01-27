@@ -71,7 +71,7 @@ extension LanguageValues on List<Language> {
 ///
 /// Make a Pull Request or GitHub issue to add more language options.
 class Language {
-  Language._internal(this.locale);
+  const Language._internal(this.locale);
 
   final Locale locale;
 
