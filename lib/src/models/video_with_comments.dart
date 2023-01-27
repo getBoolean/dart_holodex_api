@@ -1,4 +1,6 @@
-part of dart_holodex_api.models;
+import 'dart:convert';
+
+import 'package:dart_holodex_api/dart_holodex_api.dart';
 
 /// An extended [Video] class with [comments].
 class VideoWithComments extends Video {

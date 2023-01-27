@@ -1,4 +1,7 @@
-part of dart_holodex_api.models;
+import 'dart:convert';
+
+import 'package:dart_holodex_api/dart_holodex_api.dart';
+import 'package:equatable/equatable.dart';
 
 class ChannelMin extends Equatable {
   final String id;

@@ -1,4 +1,6 @@
-part of dart_holodex_api.models;
+import 'dart:convert';
+
+import 'serializable.dart';
 
 class PaginatedResult<T extends Serializable> extends Serializable {
   final int? total;

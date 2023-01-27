@@ -1,4 +1,6 @@
-part of dart_holodex_api.models;
+import 'dart:convert';
+
+import 'package:dart_holodex_api/dart_holodex_api.dart';
 
 class Channel extends ChannelMin {
   final String? org;

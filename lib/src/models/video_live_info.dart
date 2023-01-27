@@ -1,4 +1,7 @@
-part of dart_holodex_api.models;
+
+import 'dart:convert';
+
+import 'package:dart_holodex_api/src/models/serializable.dart';
 
 class VideoLiveInfo extends Serializable {
   final String? startScheduled;

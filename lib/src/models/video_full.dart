@@ -1,4 +1,6 @@
-part of dart_holodex_api.models;
+import 'dart:convert';
+
+import 'package:dart_holodex_api/dart_holodex_api.dart';
 
 /// An extended [Video] class with [comments], [sources], [refers],
 /// [simulcasts], [mentions], and [songs] fields.
@@ -98,8 +100,7 @@ class VideoFull extends Video {
         'clips': clips?.map((clip) => clip.toMap()).toList(),
         'sources': sources?.map((source) => source.toMap()).toList(),
         'refers': refers?.map((refer) => refer.toMap()).toList(),
-        'simulcasts':
-            simulcasts?.map((simulcast) => simulcast.toMap()).toList(),
+        'simulcasts': simulcasts?.map((simulcast) => simulcast.toMap()).toList(),
         'mentions': mentions?.map((mention) => mention.toMap()).toList(),
         'songs': songs?.map((song) => song.toMap()).toList(),
       });
@@ -115,9 +116,8 @@ class VideoFull extends Video {
       availableAt: map['available_at'],
       duration: map['duration'],
       status: VideoStatus.values.byCode(map['status']) ?? VideoStatus.missing,
-      liveInfo: map['live_info'] == null
-          ? VideoLiveInfo()
-          : VideoLiveInfo.fromMap(map['live_info']),
+      liveInfo:
+          map['live_info'] == null ? VideoLiveInfo() : VideoLiveInfo.fromMap(map['live_info']),
       description: map['description'],
       songcount: map['songcount'],
       language: map['lang'],
@@ -149,8 +149,7 @@ class VideoFull extends Video {
   @override
   String toJson() => json.encode(toMap());
 
-  factory VideoFull.fromJson(String source) =>
-      VideoFull.fromMap(json.decode(source));
+  factory VideoFull.fromJson(String source) => VideoFull.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

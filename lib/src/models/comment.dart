@@ -1,4 +1,6 @@
-part of dart_holodex_api.models;
+import 'dart:convert';
+
+import 'package:equatable/equatable.dart';
 
 class Comment extends Equatable {
   final String commentKey;
