@@ -421,7 +421,7 @@ class HolodexClient {
   /// - `videoId` ID of the video
   /// - `timestampComments` If set to `true`, comments with timestamps will be returned
   /// - `recommendationLanguages` If set, videos matching the languages will be returned. Use [Language.all] to get all languages regardless of language
-  Future<VideoMetadata> getVideoMetadata(
+  Future<VideoFull> getVideoMetadata(
     String videoId, {
     bool timestampComments = false,
     List<Language> recommendationLanguages = const [],
@@ -433,14 +433,7 @@ class HolodexClient {
 
     final response = await get(path: '${_Constants.videosPath}/$videoId', params: params);
     final body = jsonDecode(response.body);
-    final video = VideoFull.fromMap(body);
-    final List? comments = body['comments'];
-    final List? recommendations = body['recommendations'];
-    return VideoMetadata(
-      video: video,
-      comments: comments?.map((comment) => Comment.fromMap(comment)).toList(),
-      recommendations: recommendations?.map((video) => Video.fromMap(video)).toList(),
-    );
+    return VideoFull.fromMap(body);
   }
 
   /// Flexible endpoint to search for videos fufilling multiple conditions.

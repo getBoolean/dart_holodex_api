@@ -46,7 +46,7 @@ class PaginatedResult<T extends Serializable> extends Serializable {
     }
     return PaginatedResult<T>(
       total: total,
-      items: List<T>.from(map['items']?.map((x) => Serializable.fromMap<T>(x)) ?? []),
+      items: List<T>.of(map['items']?.map((x) => Serializable.fromMap<T>(x)) ?? []),
       paginated: map['paginated'] ?? false,
     );
   }

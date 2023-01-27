@@ -22,31 +22,33 @@ class VideoFull extends Video {
     super.language,
     super.channel,
     this.comments = const [],
-    this.clips,
-    this.sources,
-    this.refers,
-    this.simulcasts,
-    this.mentions,
-    this.songs,
+    this.recommendations = const [],
+    this.clips = const [],
+    this.sources = const [],
+    this.refers = const [],
+    this.simulcasts = const [],
+    this.mentions = const [],
+    this.songs = const [],
   });
   final List<Comment> comments;
+  final List<Video> recommendations;
 
   /// Included when 'includes' contains 'clips'
-  final List<Video>? clips;
+  final List<Video> clips;
 
   /// Included when 'includes' contains 'sources'
-  final List<Video>? sources;
+  final List<Video> sources;
 
   /// Included when 'includes' contains 'refers'
-  final List<Video>? refers;
+  final List<Video> refers;
 
   /// Included when 'includes' contains 'simulcasts'
-  final List<Video>? simulcasts;
+  final List<Video> simulcasts;
 
   /// VTubers mentioned by this video, Included when 'includes' contains 'mentions'
-  final List<Channel>? mentions;
+  final List<Channel> mentions;
 
-  final List<Song>? songs;
+  final List<Song> songs;
 
   @override
   VideoFull copyWith({
@@ -65,6 +67,7 @@ class VideoFull extends Video {
     String? channelId,
     ChannelMin? channel,
     List<Comment>? comments,
+    List<Video>? recommendations,
     List<Video>? clips,
     List<Video>? sources,
     List<Video>? refers,
@@ -88,6 +91,7 @@ class VideoFull extends Video {
       channelId: channelId ?? this.channelId,
       channel: channel ?? this.channel,
       comments: comments ?? this.comments,
+      recommendations: recommendations ?? this.recommendations,
       clips: clips ?? this.clips,
       sources: sources ?? this.sources,
       refers: refers ?? this.refers,
@@ -102,12 +106,13 @@ class VideoFull extends Video {
     return super.toMap()
       ..addAll({
         'comments': comments.map((comment) => comment.toMap()).toList(),
-        'clips': clips?.map((clip) => clip.toMap()).toList(),
-        'sources': sources?.map((source) => source.toMap()).toList(),
-        'refers': refers?.map((refer) => refer.toMap()).toList(),
-        'simulcasts': simulcasts?.map((simulcast) => simulcast.toMap()).toList(),
-        'mentions': mentions?.map((mention) => mention.toMap()).toList(),
-        'songs': songs?.map((song) => song.toMap()).toList(),
+        'recommendations': recommendations.map((recommendation) => recommendation.toMap()).toList(),
+        'clips': clips.map((clip) => clip.toMap()).toList(),
+        'sources': sources.map((source) => source.toMap()).toList(),
+        'refers': refers.map((refer) => refer.toMap()).toList(),
+        'simulcasts': simulcasts.map((simulcast) => simulcast.toMap()).toList(),
+        'mentions': mentions.map((mention) => mention.toMap()).toList(),
+        'songs': songs.map((song) => song.toMap()).toList(),
       });
   }
 
@@ -130,25 +135,28 @@ class VideoFull extends Video {
       channel: ChannelMin.fromMap(
         map['channel'],
       ),
-      comments: List<Comment>.from(
+      comments: List<Comment>.of(
         map['comments']?.map((comment) => Comment.fromMap(comment)) ?? [],
       ),
-      clips: List<Video>.from(
+      recommendations: List<Video>.of(
+        map['recommendations']?.map((recommendation) => Video.fromMap(recommendation)) ?? [],
+      ),
+      clips: List<Video>.of(
         map['clips']?.map((clip) => Video.fromMap(clip)) ?? [],
       ),
-      sources: List<Video>.from(
+      sources: List<Video>.of(
         map['sources']?.map((source) => Video.fromMap(source)) ?? [],
       ),
-      refers: List<Video>.from(
+      refers: List<Video>.of(
         map['refers']?.map((refer) => Video.fromMap(refer)) ?? [],
       ),
-      simulcasts: List<Video>.from(
+      simulcasts: List<Video>.of(
         map['simulcasts']?.map((simulcast) => Video.fromMap(simulcast)) ?? [],
       ),
-      mentions: List<Channel>.from(
+      mentions: List<Channel>.of(
         map['mentions']?.map((mention) => Channel.fromMap(mention)) ?? [],
       ),
-      songs: List<Song>.from(
+      songs: List<Song>.of(
         map['songs']?.map((song) => Song.fromMap(song)) ?? [],
       ),
     );
@@ -167,6 +175,7 @@ class VideoFull extends Video {
     final videoProps = super.props;
     videoProps.addAll([
       'comments: $comments',
+      'recommendations: $recommendations',
       'clips: $clips',
       'sources: $sources',
       'refers: $refers',
