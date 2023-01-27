@@ -1,6 +1,6 @@
 import 'package:dart_holodex_api/dart_holodex_api.dart';
 
-/// Filter the results returns by the Holodex API
+/// Filter the results returns by the Holodex API `/videos` endpoint
 class VideoFilter {
   final String? channelId;
   final String? id;
