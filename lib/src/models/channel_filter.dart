@@ -20,14 +20,17 @@ class ChannelFilter {
   /// Column to sort on
   final List<ChannelSort> sort;
 
+  /// If set, filter for Vtuber belonging to a specific org
   final Organization? organization;
 
   /// Arguments
-  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
   /// - `languages` List of Language enum to filter channels/clips. Official streams do not follow this parameter
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
-  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  /// - `type` Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
+  /// - `sort` Column to sort on
+  /// - `order` ASC or DESC order, default asc.
+  /// - `organization` If set, filter for Vtuber belonging to a specific org
   const ChannelFilter({
     this.languages = const [],
     this.limit = 25,
