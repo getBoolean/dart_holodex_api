@@ -6,14 +6,21 @@ class Channel extends ChannelMin {
   final String? suborg;
   final String? banner;
   final String? twitter;
-  final String? videoCount;
-  final String? subscriberCount;
-  final String? viewCount;
-  final int? clipCount;
   final Language lang;
-  final String? publishedAt;
   final bool? inactive;
   final String? description;
+  final String? publishedAt;
+
+  // TODO: add the following fields:
+  //  crawled at
+  //  comments crawled at
+  //  updated at
+  //  yt uploads id
+  //  top topics
+  //  yt_handle
+  //  twitch
+  //  yt_name_history
+  //  group
 
   /// Returns a new [Channel] instance.
   const Channel({
@@ -26,10 +33,7 @@ class Channel extends ChannelMin {
     this.suborg,
     this.banner,
     this.twitter,
-    this.videoCount,
-    this.subscriberCount,
-    this.viewCount,
-    this.clipCount,
+    super.stats,
     required this.lang,
     this.publishedAt,
     this.inactive,
@@ -41,21 +45,22 @@ class Channel extends ChannelMin {
     return {
       'id': id,
       'name': name,
-      'english_name': englishName,
+      'inactive': inactive,
       'type': type.code,
+      'description': description,
+      'lang': lang.toLanguageTag(),
+      'english_name': englishName,
       'org': organization,
       'suborg': suborg,
       'photo': photo,
       'banner': banner,
       'twitter': twitter,
-      'video_count': videoCount,
-      'subscriber_count': subscriberCount,
-      'view_count': viewCount,
-      'clip_count': clipCount,
-      'lang': lang.toLanguageTag(),
       'published_at': publishedAt,
-      'inactive': inactive,
-      'description': description,
+
+      'video_count': stats.videoCount,
+      'subscriber_count': stats.subscriberCount,
+      'view_count': stats.viewCount,
+      'clip_count': stats.clipCount,
     };
   }
 
@@ -71,10 +76,12 @@ class Channel extends ChannelMin {
       photo: map['photo'],
       banner: map['banner'],
       twitter: map['twitter'],
-      videoCount: map['video_count'],
-      subscriberCount: map['subscriber_count'],
-      viewCount: map['view_count'],
-      clipCount: map['clip_count'],
+      stats: ChannelStats(
+        videoCount: map['video_count'],
+        subscriberCount: map['subscriber_count'],
+        viewCount: map['view_count'],
+        clipCount: map['clip_count'],
+      ),
       lang: locale != null ? Language.other(locale) : Language.all,
       publishedAt: map['published_at'],
       inactive: map['inactive'],
@@ -97,10 +104,7 @@ class Channel extends ChannelMin {
     String? photo,
     String? banner,
     String? twitter,
-    String? videoCount,
-    String? subscriberCount,
-    String? viewCount,
-    int? clipCount,
+    ChannelStats? stats,
     Language? lang,
     String? publishedAt,
     bool? inactive,
@@ -116,10 +120,7 @@ class Channel extends ChannelMin {
       photo: photo ?? this.photo,
       banner: banner ?? this.banner,
       twitter: twitter ?? this.twitter,
-      videoCount: videoCount ?? this.videoCount,
-      subscriberCount: subscriberCount ?? this.subscriberCount,
-      viewCount: viewCount ?? this.viewCount,
-      clipCount: clipCount ?? this.clipCount,
+      stats: stats ?? this.stats,
       lang: lang ?? this.lang,
       publishedAt: publishedAt ?? this.publishedAt,
       inactive: inactive ?? this.inactive,
@@ -138,10 +139,10 @@ class Channel extends ChannelMin {
       'suborg: $suborg',
       'banner: $banner',
       'twitter: $twitter',
-      'videoCount: $videoCount',
-      'subscriberCount: $subscriberCount',
-      'viewCount: $viewCount',
-      'clipCount: $clipCount',
+      'videoCount: ${stats.videoCount}',
+      'subscriberCount: ${stats.subscriberCount}',
+      'viewCount: ${stats.viewCount}',
+      'clipCount: ${stats.clipCount}',
       'lang: $lang',
       'publishedAt: $publishedAt',
       'inactive: $inactive',

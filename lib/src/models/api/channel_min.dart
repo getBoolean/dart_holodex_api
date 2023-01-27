@@ -10,6 +10,7 @@ class ChannelMin extends Equatable {
   final ChannelType type;
   final String? photo;
   final String? organization;
+  final ChannelStats stats;
 
   /// Returns a new [ChannelMin] instance.
   const ChannelMin({
@@ -19,6 +20,7 @@ class ChannelMin extends Equatable {
     required this.type,
     this.photo,
     this.organization,
+    this.stats = const ChannelStats(),
   });
 
   ChannelMin copyWith({
@@ -28,6 +30,7 @@ class ChannelMin extends Equatable {
     ChannelType? type,
     String? photo,
     String? organization,
+    ChannelStats? stats,
   }) {
     return ChannelMin(
       id: id ?? this.id,
@@ -36,6 +39,7 @@ class ChannelMin extends Equatable {
       type: type ?? this.type,
       photo: photo ?? this.photo,
       organization: organization ?? this.organization,
+      stats: stats ?? this.stats,
     );
   }
 
@@ -47,6 +51,10 @@ class ChannelMin extends Equatable {
       'type': type.code,
       'photo': photo,
       'org': organization,
+      'video_count': stats.videoCount,
+      'subscriber_count': stats.subscriberCount,
+      'view_count': stats.viewCount,
+      'clip_count': stats.clipCount,
     };
   }
 
@@ -58,6 +66,12 @@ class ChannelMin extends Equatable {
       type: ChannelType.values.byCode(map['type'] ?? '') ?? ChannelType.subber,
       photo: map['photo'],
       organization: map['org'],
+      stats: ChannelStats(
+        videoCount: map['video_count'],
+        subscriberCount: map['subscriber_count'],
+        viewCount: map['view_count'],
+        clipCount: map['clip_count'],
+      ),
     );
   }
 
@@ -77,6 +91,8 @@ class ChannelMin extends Equatable {
       'englishName: $englishName',
       'type: $type',
       'photo: $photo',
+      'organization: $organization',
+      'stats: $stats',
     ];
   }
 }

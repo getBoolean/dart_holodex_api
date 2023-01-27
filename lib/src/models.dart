@@ -12,3 +12,4 @@ export 'models/serializable.dart';
 export 'models/video_filter.dart';
 export 'models/channel_filter.dart';
 export 'models/search_filter.dart';
+export 'models/channel_stats.dart';

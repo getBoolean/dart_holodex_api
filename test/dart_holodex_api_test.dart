@@ -89,10 +89,21 @@ void main() {
       // Test included data
 
       expect(
-        true,
-        false,
-        reason: 'Channel Stats should be included',
-        skip: 'ChannelStats are not returned yet',
+        video.channel?.stats.subscriberCount,
+        isNotNull,
+        reason: 'Channel Stats subscriber count should be included',
+      );
+
+      expect(
+        video.channel?.stats.viewCount,
+        isNotNull,
+        reason: 'Channel Stats view count should be included',
+      );
+
+      expect(
+        video.channel?.stats.videoCount,
+        isNotNull,
+        reason: 'Channel Stats video count should be included',
       );
     });
 
@@ -111,32 +122,32 @@ void main() {
 
       expect(
         video.clips,
-        null,
-        reason: 'Stream clips should be null if it is not a stream',
-        skip:
-            'Currently video.clips is always an empty list even if clips not requested or it is a stream',
+        isEmpty,
+        reason: 'Stream clips should be empty if it is not a stream',
       );
     });
 
     test('Getting a single stream video with included clips', () async {
       // Clip video
       final video = await client.getVideoFromId(
-        'Gx_GPwpyLxw',
+        'Vocmgc93sEg',
         includes: [
           Includes.clips,
         ],
       );
 
-      _expectVideoDetails(video);
+      expect(
+        video.type,
+        VideoType.stream,
+        reason: 'Expected video to be a clip',
+      );
 
       // Test included data
 
       expect(
         video.clips,
-        isNotNull,
-        reason: 'Stream clips should be null if it is not a stream',
-        skip:
-            'Currently video.clips is always an empty list even if clips not requested or it is a stream',
+        isNotEmpty,
+        reason: 'Stream clips should not be empty if it is not a stream',
       );
     });
   });

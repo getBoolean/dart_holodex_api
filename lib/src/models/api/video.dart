@@ -118,11 +118,11 @@ class Video extends Serializable {
       availableAt: map['available_at'],
       duration: map['duration'],
       status: VideoStatus.values.byCode(map['status']) ?? VideoStatus.missing,
-      liveInfo: VideoLiveInfo.fromMap(map['live_info']),
+      liveInfo: map['live_info'] != null ? VideoLiveInfo.fromMap(map['live_info']) : const VideoLiveInfo(),
       description: map['description'],
       songcount: map['songcount'],
       channelId: map['channel_id'],
-      channel: ChannelMin.fromMap(map['channel']),
+      channel: map['channel'] != null ? ChannelMin.fromMap(map['channel']) : null,
       language: map['lang'],
     );
   }

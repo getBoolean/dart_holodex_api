@@ -132,32 +132,35 @@ class VideoFull extends Video {
       songcount: map['songcount'],
       language: map['lang'],
       channelId: map['channel_id'],
-      channel: ChannelMin.fromMap(
-        map['channel'],
-      ),
+      channel: map['channel'] == null
+          ? null
+          : ChannelMin.fromMap(
+              map['channel'],
+            ),
       comments: List<Comment>.of(
-        map['comments']?.map((comment) => Comment.fromMap(comment)) ?? [],
+        List.of(map['comments'] ?? []).map((comment) => Comment.fromMap(comment)),
       ),
       recommendations: List<Video>.of(
-        map['recommendations']?.map((recommendation) => Video.fromMap(recommendation)) ?? [],
+        List.of(map['recommendations'] ?? [])
+            .map((recommendation) => Video.fromMap(recommendation)),
       ),
       clips: List<Video>.of(
-        map['clips']?.map((clip) => Video.fromMap(clip)) ?? [],
+        List.of(map['clips'] ?? []).map((clip) => Video.fromMap(clip)),
       ),
       sources: List<Video>.of(
-        map['sources']?.map((source) => Video.fromMap(source)) ?? [],
+        List.of(map['sources'] ?? []).map((source) => Video.fromMap(source)),
       ),
       refers: List<Video>.of(
-        map['refers']?.map((refer) => Video.fromMap(refer)) ?? [],
+        List.of(map['refers'] ?? []).map((refer) => Video.fromMap(refer)),
       ),
       simulcasts: List<Video>.of(
-        map['simulcasts']?.map((simulcast) => Video.fromMap(simulcast)) ?? [],
+        List.of(map['simulcasts'] ?? []).map((simulcast) => Video.fromMap(simulcast)),
       ),
       mentions: List<Channel>.of(
-        map['mentions']?.map((mention) => Channel.fromMap(mention)) ?? [],
+        List.of(map['mentions'] ?? []).map((mention) => Channel.fromMap(mention)),
       ),
       songs: List<Song>.of(
-        map['songs']?.map((song) => Song.fromMap(song)) ?? [],
+        List.of(map['songs'] ?? []).map((song) => Song.fromMap(song)),
       ),
     );
   }
