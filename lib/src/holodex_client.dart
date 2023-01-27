@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dart_holodex_api/src/models/channel_video_filter.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
@@ -309,30 +310,21 @@ class HolodexClient {
   ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
-  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  /// - `languages` List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  /// - `limit` Result limit. Max of 50.
-  /// - `offset` Offset results
-  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  /// - `filter` Filter the results returns by the API
   Future<PaginatedResult<VideoFull>> getChannelVideos(
     String channelId, {
-    List<Includes>? includes,
-    List<Language> languages = const [],
-    int limit = 25,
-    int offset = 0,
-    bool paginated = true,
+    ChannelVideoFilter filter = const ChannelVideoFilter(
+      includes: [],
+      languages: [],
+      limit: 25,
+      offset: 0,
+      paginated: true,
+    ),
   }) async {
-    if (languages.isEmpty) {
-      languages = [Language.all];
-    }
     return await getVideosRelatedToChannel(
       channelId,
       type: VideoSearchType.videos,
-      includes: includes,
-      languages: languages,
-      limit: limit,
-      offset: offset,
-      paginated: paginated,
+      filter: filter,
     );
   }
 
@@ -344,30 +336,21 @@ class HolodexClient {
   ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
-  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  /// - `languages` List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  /// - `limit` Result limit. Max of 50.
-  /// - `offset` Offset results
-  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  /// - `filter` Filter the results returns by the API
   Future<PaginatedResult<VideoFull>> getVTuberClips(
     String channelId, {
-    List<Includes>? includes,
-    List<Language> languages = const [],
-    int limit = 25,
-    int offset = 0,
-    bool paginated = true,
+    ChannelVideoFilter filter = const ChannelVideoFilter(
+      includes: [],
+      languages: [],
+      limit: 25,
+      offset: 0,
+      paginated: true,
+    ),
   }) async {
-    if (languages.isEmpty) {
-      languages = [Language.all];
-    }
     return await getVideosRelatedToChannel(
       channelId,
       type: VideoSearchType.clips,
-      includes: includes,
-      languages: languages,
-      limit: limit,
-      offset: offset,
-      paginated: paginated,
+      filter: filter,
     );
   }
 
@@ -379,30 +362,21 @@ class HolodexClient {
   ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
-  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  /// - `languages` List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  /// - `limit` Result limit. Max of 50.
-  /// - `offset` Offset results
-  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  /// - `filter` Filter the results returns by the API
   Future<PaginatedResult<VideoFull>> getVTuberCollabs(
     String channelId, {
-    List<Includes>? includes,
-    List<Language> languages = const [],
-    int limit = 25,
-    int offset = 0,
-    bool paginated = true,
+    ChannelVideoFilter filter = const ChannelVideoFilter(
+      includes: [],
+      languages: [],
+      limit: 25,
+      offset: 0,
+      paginated: true,
+    ),
   }) async {
-    if (languages.isEmpty) {
-      languages = [Language.all];
-    }
     return await getVideosRelatedToChannel(
       channelId,
       type: VideoSearchType.collabs,
-      includes: includes,
-      languages: languages,
-      limit: limit,
-      offset: offset,
-      paginated: paginated,
+      filter: filter,
     );
   }
 
@@ -414,42 +388,30 @@ class HolodexClient {
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `type` The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId`
-  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  /// - `languages` List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  /// - `limit` Result limit. Max of 50.
-  /// - `offset` Offset results
-  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  /// - `filter` Filter the results returns by the API
   Future<PaginatedResult<VideoFull>> getVideosRelatedToChannel(
     String channelId, {
     required VideoSearchType type,
-    List<Includes>? includes,
-    List<Language> languages = const [],
-    int limit = 25,
-    int offset = 0,
-    bool paginated = true,
+    ChannelVideoFilter filter = const ChannelVideoFilter(),
   }) async {
-    if (languages.isEmpty) {
-      languages = [Language.all];
-    }
+    final languages = filter.languages.isEmpty ? [Language.all] : filter.languages;
 
     final Map<String, dynamic> params = {};
 
     // Add the items with default values (they can't be null)
     params.addAll({
-      'limit': '$limit',
-      'offset': '$offset',
+      'limit': '${filter.limit}',
+      'offset': '${filter.offset}',
     });
 
-    if (includes != null) {
-      _addIncludes(includes, params);
-    }
+    _addIncludes(filter.includes, params);
     _addLanguages(languages, params);
-    _addPaginated(paginated, params);
+    _addPaginated(filter.paginated, params);
 
     final response =
         await get(path: '${_Constants.channelsPath}/$channelId/${type.code}', params: params);
 
-    if (paginated) {
+    if (filter.paginated) {
       // Grab total and return with it
       final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
       return videoList.copyWith(paginated: true);
