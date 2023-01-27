@@ -141,7 +141,7 @@ void main(List<String> arguments) async {
   );
   print('Videos Found: ${searchVideos.items.length}\n');
 
-  final PaginatedResult<VideoWithComments> searchComments = await holodexClient.searchComments(
+  final PaginatedResult<VideoFull> searchComments = await holodexClient.searchComments(
     searchSort: SearchSort.newest,
     languages: [Language.all],
     searchTargets: [SearchTarget.clip, SearchTarget.stream],
