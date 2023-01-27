@@ -55,11 +55,11 @@ void main(List<String> arguments) async {
     order: Order.descending,
     // organization: Organization.Hololive,
     paginated: true,
-    videoSort: <VideoSort>[VideoSort.availableAt],
-    videoStatus: <VideoStatus>[VideoStatus.past],
+    sort: <VideoSort>[VideoSort.availableAt],
+    status: <VideoStatus>[VideoStatus.past],
     // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
     // topicId: 'singing',
-    videoType: VideoType.all,
+    type: VideoType.all,
   );
 
   final PaginatedResult<VideoFull> videoList = await holodexClient.getVideos(videoFilter);

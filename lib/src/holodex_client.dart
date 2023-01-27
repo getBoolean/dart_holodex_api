@@ -69,7 +69,7 @@ class HolodexClient {
       limit: 25,
       offset: 0,
       order: Order.descending,
-      videoSort: [VideoSort.availableAt],
+      sort: [VideoSort.availableAt],
       paginated: false,
     ),
   ]) async {
@@ -88,7 +88,7 @@ class HolodexClient {
       'order': filter.order.code,
     });
 
-    _addVideoSort(filter.videoSort, params);
+    _addVideoSort(filter.sort, params);
 
     _addPaginated(filter.paginated, params);
 
@@ -117,10 +117,10 @@ class HolodexClient {
     _addTopic(filter.topic, params);
 
     // Add the status param
-    _addStatusList(filter.videoStatus, params);
+    _addStatusList(filter.status, params);
 
     // Add the type param
-    _addType(filter.videoType, params);
+    _addType(filter.type, params);
 
     final response = await get(path: _Constants.videosPath, params: params);
 
@@ -149,9 +149,9 @@ class HolodexClient {
       maxUpcomingHours: 48,
       offset: 0,
       order: Order.ascending,
-      videoSort: [VideoSort.availableAt],
-      videoStatus: [VideoStatus.live, VideoStatus.upcoming],
-      videoType: VideoType.stream,
+      sort: [VideoSort.availableAt],
+      status: [VideoStatus.live, VideoStatus.upcoming],
+      type: VideoType.stream,
       paginated: false,
     ),
   ]) async {
@@ -171,7 +171,7 @@ class HolodexClient {
       'order': filter.order.code,
     });
 
-    _addVideoSort(filter.videoSort, params);
+    _addVideoSort(filter.sort, params);
 
     _addPaginated(filter.paginated, params);
 
@@ -199,10 +199,10 @@ class HolodexClient {
     _addTopic(filter.topic, params);
 
     // Add the status param
-    _addStatusList(filter.videoStatus, params);
+    _addStatusList(filter.status, params);
 
     // Add the type param
-    _addType(filter.videoType, params);
+    _addType(filter.type, params);
 
     final response = await get(path: _Constants.liveVideosPath, params: params);
 
@@ -707,8 +707,8 @@ class HolodexClient {
     }
   }
 
-  void _addStatusList(List<VideoStatus>? statuses, Map<String, dynamic> map) {
-    if (statuses != null) {
+  void _addStatusList(List<VideoStatus> statuses, Map<String, dynamic> map) {
+    if (statuses.isNotEmpty) {
       // Make new list with the values as string
       final List<String> statusesStringList = statuses.map((status) => status.code).toList();
       // Join the array with commas
@@ -729,8 +729,8 @@ class HolodexClient {
     }
   }
 
-  void _addOrganizations(List<String>? organization, Map<String, dynamic> map) {
-    if (organization != null && organization.isNotEmpty) {
+  void _addOrganizations(List<String> organization, Map<String, dynamic> map) {
+    if (organization.isNotEmpty) {
       // Join the array with commas and add it to the parameters
       String orgsConcatenated = organization.join(',');
       map.addAll({'org': orgsConcatenated});

@@ -11,12 +11,12 @@ class VideoFilter {
   final String? mentionedChannelId;
   final int offset;
   final Order order;
-  final List<String>? organization;
+  final List<String> organization;
   final bool paginated;
-  final List<VideoSort> videoSort;
-  final List<VideoStatus>? videoStatus;
+  final List<VideoSort> sort;
+  final List<VideoStatus> status;
   final String? topic;
-  final VideoType? videoType;
+  final VideoType? type;
 
   /// Arguments:
   ///
@@ -31,10 +31,10 @@ class VideoFilter {
   /// - `order` Order results by ascending or descending
   /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  /// - `videoSort` Sort the returned data by this field
-  /// - `videoStatus` Filter by the video status
+  /// - `sort` Sort the returned data by this field
+  /// - `status` Filter by the video status
   /// - `topic` Filter by video topic ID
-  /// - `videoType` Filter by type of video, either clips or streams
+  /// - `type` Filter by type of video, either clips or streams
   const VideoFilter({
     this.channelId,
     this.ids = const [],
@@ -45,11 +45,11 @@ class VideoFilter {
     this.mentionedChannelId,
     this.offset = 0,
     this.order = Order.descending,
-    this.organization,
+    this.organization = const [],
     this.paginated = false,
-    this.videoSort = const <VideoSort>[VideoSort.availableAt],
-    this.videoStatus,
+    this.sort = const <VideoSort>[VideoSort.availableAt],
+    this.status = const [],
     this.topic,
-    this.videoType,
+    this.type,
   });
 }
