@@ -10,6 +10,10 @@
 - **Breaking**: Changed `HolodexClient::getVideos` parameters to an optional `VideoFilter`
 - **Breaking**: Changed `HolodexClient::getLiveVideos` parameters to an optional `VideoFilter`
 - **Breaking**: Changed `HolodexClient::getChannels` parameters to an optional `ChannelFilter`
+- **Breaking**: Changed `HolodexClient::getVideosRelatedToChannel` parameters to an optional `ChannelVideoFilter`
+- **Breaking**: Changed `HolodexClient::getVTuberClips` parameters to an optional `ChannelVideoFilter`
+- **Breaking**: Changed `HolodexClient::getChannelVideos` parameters to an optional `ChannelVideoFilter`
+- **Breaking**: Changed `HolodexClient::getVTuberCollabs` parameters to an optional `ChannelVideoFilter`
 - **Breaking**: Removed `VideoWithCommentsList`
 - **Breaking**: Renamed `client.dart` to `holodex_client.dart`. Technically a breaking change, but only if
 implementation was imported.
