@@ -416,20 +416,19 @@ class HolodexClient {
 
   /// Retrieves a video, optionally with comments and recommended videos
   ///
-  /// Arguments
-  ///
+  /// Arguments:
   /// - `videoId` ID of the video
-  /// - `timestampComments` If set to `true`, comments with timestamps will be returned
-  /// - `recommendationLanguages` If set, videos matching the languages will be returned. Use [Language.all] to get all languages regardless of language
+  /// - `includeTimestampComments` If set to `true`, comments with timestamps will be returned
+  /// - `languages` A list of language codes to filter channels/clips, official streams do not follow this parameter
   Future<VideoFull> getVideoMetadata(
     String videoId, {
-    bool timestampComments = false,
-    List<Language> recommendationLanguages = const [],
+    bool includeTimestampComments = false,
+    List<Language> languages = const [],
   }) async {
     final Map<String, dynamic> params = {};
 
-    _addLanguages(recommendationLanguages, params);
-    _addCommentsFlag(timestampComments, params);
+    _addLanguages(languages, params);
+    _addCommentsFlag(includeTimestampComments, params);
 
     final response = await get(path: '${_Constants.videosPath}/$videoId', params: params);
     final body = jsonDecode(response.body);
