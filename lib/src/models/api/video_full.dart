@@ -21,6 +21,7 @@ class VideoFull extends Video {
     super.songcount,
     super.language,
     super.channel,
+    this.comments = const [],
     this.clips,
     this.sources,
     this.refers,
@@ -28,6 +29,7 @@ class VideoFull extends Video {
     this.mentions,
     this.songs,
   });
+  final List<Comment> comments;
 
   /// Included when 'includes' contains 'clips'
   final List<Video>? clips;
@@ -62,6 +64,7 @@ class VideoFull extends Video {
     String? language,
     String? channelId,
     ChannelMin? channel,
+    List<Comment>? comments,
     List<Video>? clips,
     List<Video>? sources,
     List<Video>? refers,
@@ -84,6 +87,7 @@ class VideoFull extends Video {
       language: language ?? this.language,
       channelId: channelId ?? this.channelId,
       channel: channel ?? this.channel,
+      comments: comments ?? this.comments,
       clips: clips ?? this.clips,
       sources: sources ?? this.sources,
       refers: refers ?? this.refers,
@@ -97,6 +101,7 @@ class VideoFull extends Video {
   Map<String, dynamic> toMap() {
     return super.toMap()
       ..addAll({
+        'comments': comments.map((comment) => comment.toMap()).toList(),
         'clips': clips?.map((clip) => clip.toMap()).toList(),
         'sources': sources?.map((source) => source.toMap()).toList(),
         'refers': refers?.map((refer) => refer.toMap()).toList(),
@@ -124,6 +129,9 @@ class VideoFull extends Video {
       channelId: map['channel_id'],
       channel: ChannelMin.fromMap(
         map['channel'],
+      ),
+      comments: List<Comment>.from(
+        map['comments']?.map((comment) => Comment.fromMap(comment)) ?? [],
       ),
       clips: List<Video>.from(
         map['clips']?.map((clip) => Video.fromMap(clip)) ?? [],
@@ -158,6 +166,7 @@ class VideoFull extends Video {
   List<Object> get props {
     final videoProps = super.props;
     videoProps.addAll([
+      'comments: $comments',
       'clips: $clips',
       'sources: $sources',
       'refers: $refers',
