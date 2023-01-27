@@ -421,7 +421,7 @@ class HolodexClient {
   /// - `videoId` ID of the video
   /// - `timestampComments` If set to `true`, comments with timestamps will be returned
   /// - `recommendationLanguages` If set, videos matching the languages will be returned. Use [Language.all] to get all languages regardless of language
-  Future<VideoFull> getVideo(
+  Future<VideoFull> getVideoMetadata(
     String videoId, {
     bool timestampComments = false,
     List<Language> recommendationLanguages = const [],

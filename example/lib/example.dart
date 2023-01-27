@@ -112,7 +112,7 @@ void main(List<String> arguments) async {
   print('Total Matsuri uploads: ${matsuriUploads.total}');
   print('Returned uploads: ${matsuriUploads.items.length}\n');
 
-  final VideoFull shionSingingStream = await holodexClient.getVideo(
+  final VideoFull shionSingingStream = await holodexClient.getVideoMetadata(
     'eJJuy5rY57w', // Shion's singing stream
     timestampComments: true,
     recommendationLanguages: [Language.all],
