@@ -14,6 +14,7 @@
 - **Breaking**: Changed `HolodexClient::getVTuberClips` parameters to an optional `ChannelVideoFilter`
 - **Breaking**: Changed `HolodexClient::getChannelVideos` parameters to an optional `ChannelVideoFilter`
 - **Breaking**: Changed `HolodexClient::getVTuberCollabs` parameters to an optional `ChannelVideoFilter`
+- **Breaking**: Renamed `HolodexClient::getVideoMetadata` to `getVideo`
 - **Breaking**: Removed `VideoWithCommentsList`
 - **Breaking**: Removed `VideoWithComments`, use `VideoFull` instead
 - **Breaking**: Removed `VideoMetadata`, use `VideoFull` instead
