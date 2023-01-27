@@ -38,6 +38,7 @@ have been replaced with `VideoLiveInfo`
 - All models are now const
 - Add String field `code` to enum `Language`, `Includes`, `Order`, `ChannelSort`, `VideoStatus`, `VideoSort`, `VideoType`,
 `ChannelType`, `SearchSort`, `SearchTarget`, `VideoSearchType`
+- Add String `organization` to `Channel` and `ChannelMin`
 
 ## 0.3.1
 

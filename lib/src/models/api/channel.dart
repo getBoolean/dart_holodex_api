@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:dart_holodex_api/dart_holodex_api.dart';
 
 class Channel extends ChannelMin {
-  final String? org;
   final String? suborg;
   final String? banner;
   final String? twitter;
@@ -22,8 +21,8 @@ class Channel extends ChannelMin {
     required super.name,
     String? englishName,
     required super.type,
+    super.organization,
     super.photo,
-    this.org,
     this.suborg,
     this.banner,
     this.twitter,
@@ -44,7 +43,7 @@ class Channel extends ChannelMin {
       'name': name,
       'english_name': englishName,
       'type': type.code,
-      'org': org,
+      'org': organization,
       'suborg': suborg,
       'photo': photo,
       'banner': banner,
@@ -67,7 +66,7 @@ class Channel extends ChannelMin {
       name: map['name'],
       englishName: map['english_name'],
       type: ChannelType.values.byCode(map['type'] ?? '') ?? ChannelType.subber,
-      org: map['org'],
+      organization: map['org'],
       suborg: map['suborg'],
       photo: map['photo'],
       banner: map['banner'],
@@ -86,8 +85,7 @@ class Channel extends ChannelMin {
   @override
   String toJson() => json.encode(toMap());
 
-  factory Channel.fromJson(String source) =>
-      Channel.fromMap(json.decode(source));
+  factory Channel.fromJson(String source) => Channel.fromMap(json.decode(source));
 
   @override
   Channel copyWith({
@@ -95,7 +93,6 @@ class Channel extends ChannelMin {
     String? name,
     String? englishName,
     ChannelType? type,
-    String? org,
     String? suborg,
     String? photo,
     String? banner,
@@ -108,13 +105,13 @@ class Channel extends ChannelMin {
     String? publishedAt,
     bool? inactive,
     String? description,
+    String? organization,
   }) {
     return Channel(
       id: id ?? this.id,
       name: name ?? this.name,
       englishName: englishName ?? this.englishName,
       type: type ?? this.type,
-      org: org ?? this.org,
       suborg: suborg ?? this.suborg,
       photo: photo ?? this.photo,
       banner: banner ?? this.banner,
@@ -127,6 +124,7 @@ class Channel extends ChannelMin {
       publishedAt: publishedAt ?? this.publishedAt,
       inactive: inactive ?? this.inactive,
       description: description ?? this.description,
+      organization: organization ?? this.organization,
     );
   }
 
@@ -137,7 +135,6 @@ class Channel extends ChannelMin {
   List<Object> get props {
     final channelProps = super.props;
     channelProps.addAll([
-      'org: $org',
       'suborg: $suborg',
       'banner: $banner',
       'twitter: $twitter',
@@ -149,6 +146,7 @@ class Channel extends ChannelMin {
       'publishedAt: $publishedAt',
       'inactive: $inactive',
       'description: $description',
+      'org: $organization'
     ]);
 
     return channelProps;

@@ -9,6 +9,7 @@ class ChannelMin extends Equatable {
   final String? englishName;
   final ChannelType type;
   final String? photo;
+  final String? organization;
 
   /// Returns a new [ChannelMin] instance.
   const ChannelMin({
@@ -17,6 +18,7 @@ class ChannelMin extends Equatable {
     this.englishName,
     required this.type,
     this.photo,
+    this.organization,
   });
 
   ChannelMin copyWith({
@@ -25,6 +27,7 @@ class ChannelMin extends Equatable {
     String? englishName,
     ChannelType? type,
     String? photo,
+    String? organization,
   }) {
     return ChannelMin(
       id: id ?? this.id,
@@ -32,6 +35,7 @@ class ChannelMin extends Equatable {
       englishName: englishName ?? this.englishName,
       type: type ?? this.type,
       photo: photo ?? this.photo,
+      organization: organization ?? this.organization,
     );
   }
 
@@ -42,6 +46,7 @@ class ChannelMin extends Equatable {
       'english_name': englishName,
       'type': type.code,
       'photo': photo,
+      'org': organization,
     };
   }
 
@@ -52,6 +57,7 @@ class ChannelMin extends Equatable {
       englishName: map['english_name'],
       type: ChannelType.values.byCode(map['type'] ?? '') ?? ChannelType.subber,
       photo: map['photo'],
+      organization: map['org'],
     );
   }
 

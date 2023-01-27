@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dart_holodex_api/dart_holodex_api.dart';
-import 'package:equatable/equatable.dart';
 
 /// A [Video] class with information retrieved from Holodex.
 class Video extends Serializable {
