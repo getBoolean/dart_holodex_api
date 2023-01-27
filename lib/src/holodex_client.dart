@@ -94,7 +94,7 @@ class HolodexClient {
 
     _addChannelId(filter.channelId, params);
 
-    _addId(filter.id, params);
+    _addId(filter.ids, params);
 
     // Add the info the videos must include
     final includes = filter.includes;
@@ -177,7 +177,7 @@ class HolodexClient {
 
     _addChannelId(filter.channelId, params);
 
-    _addId(filter.id, params);
+    _addId(filter.ids, params);
 
     // Add the info the videos must include
     _addIncludes(includes, params);
@@ -701,9 +701,9 @@ class HolodexClient {
     }
   }
 
-  void _addId(String? id, Map<String, dynamic> map) {
-    if (id != null) {
-      map.addAll({'id': id});
+  void _addId(List<String> ids, Map<String, dynamic> map) {
+    if (ids.isNotEmpty) {
+      map.addAll({'id': ids.join(',')});
     }
   }
 

@@ -3,7 +3,7 @@ import 'package:dart_holodex_api/dart_holodex_api.dart';
 /// Filter the results returns by the Holodex API `/videos` endpoint
 class VideoFilter {
   final String? channelId;
-  final String? id;
+  final List<String> ids;
   final List<Includes> includes;
   final List<Language> languages;
   final int limit;
@@ -37,7 +37,7 @@ class VideoFilter {
   /// - `videoType` Filter by type of video, either clips or streams
   const VideoFilter({
     this.channelId,
-    this.id,
+    this.ids = const [],
     this.includes = const [],
     this.languages = const [],
     this.limit = 25,
