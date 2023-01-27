@@ -39,5 +39,5 @@ class ChannelFilter {
     this.sort = const <ChannelSort>[ChannelSort.organization],
     this.order = Order.ascending,
     this.organization,
-  });
+  }) : assert(limit <= 50, 'The limit cannot be greater than 50');
 }

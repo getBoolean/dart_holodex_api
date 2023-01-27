@@ -80,5 +80,5 @@ class VideoFilter {
     this.status = const [],
     this.topic,
     this.type,
-  });
+  }) : assert(limit <= 50, 'The limit cannot be greater than 50');
 }

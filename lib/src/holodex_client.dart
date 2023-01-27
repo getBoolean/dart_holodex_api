@@ -75,9 +75,6 @@ class HolodexClient {
   ]) async {
     final languages = filter.languages.isEmpty ? [Language.all] : filter.languages;
 
-    // The limit cannot be greator than 50, otherwise it will throw an error
-    assert(filter.limit <= 50, 'The limit cannot be greater than 50');
-
     // Create the params list
     final Map<String, dynamic> params = {};
 
@@ -145,7 +142,7 @@ class HolodexClient {
   Future<PaginatedResult<VideoFull>> getLiveVideos([
     VideoFilter filter = const VideoFilter(
       includes: [Includes.liveInfo],
-      limit: 9999,
+      limit: 50,
       maxUpcomingHours: 48,
       offset: 0,
       order: Order.ascending,
@@ -249,9 +246,6 @@ class HolodexClient {
     ),
   ]) async {
     final languages = filter.languages.isEmpty ? [Language.all] : filter.languages;
-
-    // According to API docs, the maximum accepted value is 50 and anything higher the request will be denied
-    assert(filter.limit <= 50, 'The limit cannot be greater than 50');
 
     // Create the params list
     final Map<String, dynamic> params = {};
@@ -437,8 +431,6 @@ class HolodexClient {
     if (languages.isEmpty) {
       languages = [Language.all];
     }
-    // Limit cannot be greater than 50 otherwise request will be denied
-    assert(limit <= 50, 'The limit cannot be greater than 50');
 
     final Map<String, dynamic> params = {};
 
