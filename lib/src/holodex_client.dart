@@ -240,38 +240,39 @@ class HolodexClient {
   /// - `order` Order.ascending or Order.descending order, default ascending.
   /// - `organization` If set, filter for Vtubers belonging to a specific org
   /// - `channelSort` Column to sort on, leave default to use [ChannelSort.organization] as sort. Theoretically any value in ChannelSort should work
-  Future<List<Channel>> getChannels({
-    List<Language> languages = const [],
-    int limit = 25,
-    int offset = 0,
-    Order order = Order.ascending,
-    Organization? organization,
-    List<ChannelSort> channelSort = const [ChannelSort.organization],
-  }) async {
-    if (languages.isEmpty) {
-      languages = [Language.all];
-    }
+  Future<List<Channel>> getChannels([
+    ChannelFilter filter = const ChannelFilter(
+      limit: 25,
+      offset: 0,
+      order: Order.ascending,
+      sort: [ChannelSort.organization],
+    ),
+  ]) async {
+    final languages = filter.languages.isEmpty ? [Language.all] : filter.languages;
 
     // According to API docs, the maximum accepted value is 50 and anything higher the request will be denied
-    assert(limit <= 50, 'The limit cannot be greater than 50');
+    assert(filter.limit <= 50, 'The limit cannot be greater than 50');
 
     // Create the params list
     final Map<String, dynamic> params = {};
 
     // Add the items with default values (they can't be null)
     params.addAll({
-      'limit': '$limit',
-      'offset': '$offset',
-      'order': order.code,
+      'limit': '${filter.limit}',
+      'offset': '${filter.offset}',
+      'order': filter.order.code,
     });
 
-    _addChannelSort(channelSort, params);
+    _addChannelSort(filter.sort, params);
 
     // Add the languages to filter by
     _addLanguages(languages, params);
 
     // Add the organization param
-    _addSingleOrganization(organization, params);
+    _addSingleOrganization(filter.organization, params);
+
+    // Add the organization param
+    _addChannelType(filter.type, params);
 
     final response = await get(path: _Constants.channelsPath, params: params);
 
@@ -739,6 +740,12 @@ class HolodexClient {
   void _addSingleOrganization(Organization? organization, Map<String, dynamic> map) {
     if (organization != null) {
       map.addAll({'org': organization.code});
+    }
+  }
+
+  void _addChannelType(ChannelType? channelType, Map<String, dynamic> map) {
+    if (channelType != null) {
+      map.addAll({'type': channelType.code});
     }
   }
 

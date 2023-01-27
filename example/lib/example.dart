@@ -73,12 +73,14 @@ void main(List<String> arguments) async {
   final ceresFauna = await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');
   print('Requested Channel Name: ${ceresFauna.name}\n');
 
-  final List<Channel> channels = await holodexClient.getChannels(
-      limit: 25,
-      offset: 0,
-      order: Order.ascending,
-      organization: Organization.AtelierLive,
-      channelSort: [ChannelSort.organization]);
+  final channelFilter = const ChannelFilter(
+    limit: 25,
+    offset: 0,
+    order: Order.ascending,
+    organization: Organization.AtelierLive,
+    sort: [ChannelSort.organization],
+  );
+  final List<Channel> channels = await holodexClient.getChannels(channelFilter);
   print('Atelier Live Channels: ${channels.length}\n');
 
   final List<Video> quickLiveVideos = await holodexClient.getLiveVideosFromChannelsQuickly([
