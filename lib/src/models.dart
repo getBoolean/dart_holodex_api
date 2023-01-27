@@ -11,3 +11,4 @@ export 'models/api/video_with_comments.dart';
 export 'models/api/video_live_info.dart';
 export 'models/paginated_result.dart';
 export 'models/serializable.dart';
+export 'models/video_filter.dart';
