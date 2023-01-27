@@ -1,8 +1,8 @@
+import 'package:dart_holodex_api/src/models/api/video_with_comments.dart';
 import 'package:dart_holodex_api/src/models/paginated_result.dart';
-import 'package:dart_holodex_api/src/models/video.dart';
-import 'package:dart_holodex_api/src/models/video_full.dart';
-import 'package:dart_holodex_api/src/models/video_live_info.dart';
-import 'package:dart_holodex_api/src/models/video_with_comments.dart';
+import 'package:dart_holodex_api/src/models/api/video.dart';
+import 'package:dart_holodex_api/src/models/api/video_full.dart';
+import 'package:dart_holodex_api/src/models/api/video_live_info.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class Serializable extends Equatable {

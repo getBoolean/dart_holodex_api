@@ -1,8 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
-import '../dart_holodex_api.dart';
+import 'enums.dart';
+import 'exception.dart';
+import 'models.dart';
 
 /// A client for the Holodex API.
 class HolodexClient {
