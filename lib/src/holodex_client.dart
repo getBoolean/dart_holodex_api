@@ -59,8 +59,6 @@ class HolodexClient {
   }
 
   /// Get a list of videos
-  ///
-  /// Returns [PaginatedResult]<[VideoFull]>
   Future<PaginatedResult<VideoFull>> getVideos([
     VideoFilter filter = const VideoFilter(
       limit: 25,
@@ -126,8 +124,8 @@ class HolodexClient {
 
     final List list = jsonDecode(response.body);
     return PaginatedResult<VideoFull>(
-        items: list.map((video) => VideoFull.fromMap(video)).toList());
-    // Returns as `List<Video>`
+      items: list.map((video) => VideoFull.fromMap(video)).toList(),
+    );
   }
 
   /// Get a list of live streams
@@ -207,7 +205,7 @@ class HolodexClient {
     final List list = jsonDecode(response.body);
     return PaginatedResult<VideoFull>(
       items: list.map((video) => VideoFull.fromMap(video)).toList(),
-    ); // Returns as `List<Video>`
+    );
   }
 
   /// Get a channel by its ID
@@ -265,7 +263,7 @@ class HolodexClient {
 
     final List list = jsonDecode(response.body);
 
-    return list.map((channel) => Channel.fromMap(channel)).toList(); // Returns as `List<Channel>`
+    return list.map((channel) => Channel.fromMap(channel)).toList();
   }
 
   /// Quickly Access Live / Upcoming for a set of Channels
