@@ -17,6 +17,7 @@
 - **Breaking**: Removed `VideoWithCommentsList`
 - **Breaking**: Removed `VideoWithComments`, use `VideoFull` instead
 - **Breaking**: Removed `VideoMetadata`, use `VideoFull` instead
+- **Breaking**: `VideoFull` list fields are no longer nullable
 - **Breaking**: Renamed `client.dart` to `holodex_client.dart`. Technically a breaking change, but only if
 implementation was imported.
 - **Breaking**: Replace usage of package `EnumToString` with Dart 2.17 enhanced enums.
