@@ -40,8 +40,6 @@ class HolodexClient {
 
   /// Get a video by its video ID, alias of [getVideos]
   ///
-  /// Returns [VideoFull]
-  ///
   /// Arguments:
   ///
   /// - `videoId` The video ID as a string
@@ -134,8 +132,6 @@ class HolodexClient {
 
   /// Get a list of live streams
   ///
-  /// Returns [VideoFullList]
-  ///
   /// This is somewhat similar to calling [getVideos], except this endpoint imposes default
   /// values on the query parameters. You can choose to override them by providing your own values.
   Future<PaginatedResult<VideoFull>> getLiveVideos([
@@ -215,8 +211,6 @@ class HolodexClient {
   }
 
   /// Get a channel by its ID
-  ///
-  /// Returns [Channel]
   ///
   /// Arguments:
   ///
@@ -302,8 +296,6 @@ class HolodexClient {
 
   /// Get Videos From Channel, alias of [getVideosRelatedToChannel]
   ///
-  /// Returns [VideoFullList]
-  ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `filter` Filter the results returns by the API
@@ -326,8 +318,6 @@ class HolodexClient {
 
   /// Get Clips of a VTuber, alias of [getVideosRelatedToChannel]
   ///
-  /// Returns [VideoFullList]
-  ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `filter` Filter the results returns by the API
@@ -349,8 +339,6 @@ class HolodexClient {
   }
 
   /// Get Collabs that mention a VTuber, alias of [getVideosRelatedToChannel]
-  ///
-  /// Returns [VideoFullList]
   ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
