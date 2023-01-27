@@ -61,13 +61,13 @@ void main(List<String> arguments) async {
     // topicId: 'singing',
     videoType: VideoType.all,
   );
-  
+
   final PaginatedResult<VideoFull> videoList = await holodexClient.getVideos(videoFilter);
   print('Videos: ${videoList.items.length}\nTotal Videos: ${videoList.total}\n');
 
-  // // Get live videos
-  final PaginatedResult<VideoFull> liveVideos =
-      await holodexClient.getLiveVideos(includes: [Includes.channelStats]);
+  // Get live videos
+  final liveVideoFilter = VideoFilter(includes: [Includes.channelStats]);
+  final PaginatedResult<VideoFull> liveVideos = await holodexClient.getLiveVideos(liveVideoFilter);
   print('Live videos: ${liveVideos.items.length}\n');
 
   final ceresFauna = await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');

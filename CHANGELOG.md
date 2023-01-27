@@ -8,6 +8,7 @@
 - **Breaking**: All uses of `startScheduled`, `startActual`, `endActual`, and `liveViewers`
 - **Breaking**: Changed `HolodexClient::searchComments` return type to `PaginatedResult<VideoWithComments>`
 - **Breaking**: Changed `HolodexClient::getVideos` parameters to an optional `VideoFilter`
+- **Breaking**: Changed `HolodexClient::getLiveVideos` parameters to an optional `VideoFilter`
 - **Breaking**: Removed `VideoWithCommentsList`
 - **Breaking**: Renamed `client.dart` to `holodex_client.dart`. Technically a breaking change, but only if
 implementation was imported.

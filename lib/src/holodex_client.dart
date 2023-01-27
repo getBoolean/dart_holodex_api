@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:dart_holodex_api/src/models/video_filter.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
@@ -99,9 +98,7 @@ class HolodexClient {
 
     // Add the info the videos must include
     final includes = filter.includes;
-    if (includes != null) {
-      _addIncludes(includes, params);
-    }
+    _addIncludes(includes, params);
 
     // Add the languages to filter by
     // Add the first item so that there is not a comma in front
@@ -139,83 +136,48 @@ class HolodexClient {
     // Returns as `List<Video>`
   }
 
-  /// Get a list of live videos
+  /// Get a list of livestreams
   ///
   /// Returns `VideoFullList`
   ///
-  /// This is somewhat similar to calling listVideos().
-  ///
-  /// However, this endpoint imposes these default values on the query parameters: You can choose to override them by providing your own values.
-  ///
-  /// ```dart
-  /// status: [VideoStatus.live, VideoStatus.upcoming],
-  /// type: VideoType.stream,
-  /// sort: [VideoSort.availableAt],
-  /// order: Order.ascending,
-  /// max_upcoming_hours: 48,
-  /// limit: 9999,
-  /// include: [Includes.liveInfo] + query's include
-  /// ```
-  ///
-  /// Arguments:
-  ///
-  /// - `channelId` Filter by video uploader channel ID
-  /// - `id` A single Youtube Video ID. If Specified, only this video can be returned (may be filtered out by other conditions though)
-  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  /// - `languages` Filter by the `Language`
-  /// - `limit` Limit the number of results returned.
-  /// - `maxUpcomingHours` Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
-  /// - `mentionedChannelId` Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
-  /// - `offset` Receive results starting at this number in the array from the Holodex API
-  /// - `order` Order by ascending or descending
-  /// - `organization` Filter by clips that feature the org's talent or videos posted by the org's talent.
-  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  /// - `videoSort` Sort the returned data by this field
-  /// - `videoStatus` Filter by the video status
-  /// - `topic` Filter by video topic ID
-  /// - `videoType` Filter by type of video, either clips or streams
-  Future<PaginatedResult<VideoFull>> getLiveVideos({
-    String? channelId,
-    String? id,
-    List<Includes> includes = const [Includes.liveInfo],
-    List<Language> languages = const [],
-    int limit = 9999,
-    int? maxUpcomingHours = 48,
-    String? mentionedChannelId,
-    int offset = 0,
-    Order order = Order.ascending,
-    List<String>? organization,
-    bool paginated = true,
-    List<VideoSort> videoSort = const <VideoSort>[VideoSort.availableAt],
-    List<VideoStatus>? videoStatus = const [VideoStatus.live, VideoStatus.upcoming],
-    String? topic,
-    VideoType? videoType = VideoType.stream,
-  }) async {
-    if (languages.isEmpty) {
-      languages = [Language.all];
-    }
+  /// This is somewhat similar to calling listVideos(), except this endpoint imposes default
+  /// values on the query parameters. You can choose to override them by providing your own values.
+  Future<PaginatedResult<VideoFull>> getLiveVideos([
+    VideoFilter filter = const VideoFilter(
+      includes: [Includes.liveInfo],
+      limit: 9999,
+      maxUpcomingHours: 48,
+      offset: 0,
+      order: Order.ascending,
+      videoSort: [VideoSort.availableAt],
+      videoStatus: [VideoStatus.live, VideoStatus.upcoming],
+      videoType: VideoType.stream,
+      paginated: false,
+    ),
+  ]) async {
+    final languages = filter.languages.isEmpty ? [Language.all] : filter.languages;
     // Create the params list
     final Map<String, dynamic> params = {};
 
     // Make sure liveInfo is in the list
-    if (!includes.contains(Includes.liveInfo)) {
-      includes.add(Includes.liveInfo);
-    }
+    final includes = !filter.includes.contains(Includes.liveInfo)
+        ? [Includes.liveInfo, ...filter.includes]
+        : filter.includes;
 
     // Add the items with default values (they can't be null)
     params.addAll({
-      'limit': '$limit',
-      'offset': '$offset',
-      'order': order.code,
+      'limit': '${filter.limit}',
+      'offset': '${filter.offset}',
+      'order': filter.order.code,
     });
 
-    _addVideoSort(videoSort, params);
+    _addVideoSort(filter.videoSort, params);
 
-    _addPaginated(paginated, params);
+    _addPaginated(filter.paginated, params);
 
-    _addChannelId(channelId, params);
+    _addChannelId(filter.channelId, params);
 
-    _addId(id, params);
+    _addId(filter.id, params);
 
     // Add the info the videos must include
     _addIncludes(includes, params);
@@ -225,26 +187,26 @@ class HolodexClient {
     _addLanguages(languages, params);
 
     // Add the max upcoming hours param
-    _addMaxUpcomingHours(maxUpcomingHours, params);
+    _addMaxUpcomingHours(filter.maxUpcomingHours, params);
 
     // Add the mentioned channel id param
-    _addMentionedChannelId(mentionedChannelId, params);
+    _addMentionedChannelId(filter.mentionedChannelId, params);
 
     // Add the organization param
-    _addOrganizations(organization, params);
+    _addOrganizations(filter.organization, params);
 
     // Add the topic param
-    _addTopic(topic, params);
+    _addTopic(filter.topic, params);
 
     // Add the status param
-    _addStatusList(videoStatus, params);
+    _addStatusList(filter.videoStatus, params);
 
     // Add the type param
-    _addType(videoType, params);
+    _addType(filter.videoType, params);
 
     final response = await get(path: _Constants.liveVideosPath, params: params);
 
-    if (paginated) {
+    if (filter.paginated) {
       // Grab total and return with it
       final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
       return videoList.copyWith(paginated: true);
@@ -252,7 +214,8 @@ class HolodexClient {
 
     final List list = jsonDecode(response.body);
     return PaginatedResult<VideoFull>(
-        items: list.map((video) => VideoFull.fromMap(video)).toList()); // Returns as `List<Video>`
+      items: list.map((video) => VideoFull.fromMap(video)).toList(),
+    ); // Returns as `List<Video>`
   }
 
   /// Get a channel by its ID

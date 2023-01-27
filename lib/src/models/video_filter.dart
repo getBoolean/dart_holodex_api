@@ -4,7 +4,7 @@ import 'package:dart_holodex_api/dart_holodex_api.dart';
 class VideoFilter {
   final String? channelId;
   final String? id;
-  final List<Includes>? includes;
+  final List<Includes> includes;
   final List<Language> languages;
   final int limit;
   final int? maxUpcomingHours;
@@ -38,7 +38,7 @@ class VideoFilter {
   const VideoFilter({
     this.channelId,
     this.id,
-    this.includes,
+    this.includes = const [],
     this.languages = const [],
     this.limit = 25,
     this.maxUpcomingHours,
