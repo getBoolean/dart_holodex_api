@@ -48,14 +48,12 @@ class HolodexClient {
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
   Future<VideoFull> getVideoFromId(
     String videoId, {
-    List<Includes>? includes,
+    List<Includes> includes = const [],
   }) async {
     final Map<String, dynamic> params = {'id': videoId};
 
     // Add the info the videos must include
-    if (includes != null) {
-      _addIncludes(includes, params);
-    }
+    _addIncludes(includes, params);
 
     final Response response = await get(path: _Constants.videosPath, params: params);
 
@@ -432,14 +430,11 @@ class HolodexClient {
   Future<VideoMetadata> getVideoMetadata(
     String videoId, {
     bool timestampComments = false,
-    List<Language>? recommendationLanguages,
+    List<Language> recommendationLanguages = const [],
   }) async {
     final Map<String, dynamic> params = {};
 
-    if (recommendationLanguages != null) {
-      _addLanguages(recommendationLanguages, params);
-    }
-
+    _addLanguages(recommendationLanguages, params);
     _addCommentsFlag(timestampComments, params);
 
     final response = await get(path: '${_Constants.videosPath}/$videoId', params: params);
