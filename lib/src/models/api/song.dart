@@ -1,80 +1,18 @@
-import 'dart:convert';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:equatable/equatable.dart';
+part 'song.freezed.dart';
+part 'song.g.dart';
 
-class Song extends Equatable {
-  final String name;
-  final String? art;
-  final int? end;
-  final int? start;
-  final int? itunesid;
-  final String? originalArtist;
-
-  const Song({
-    required this.name,
-    this.art,
-    this.end,
-    this.start,
-    this.itunesid,
-    this.originalArtist,
-  });
-
-  Song copyWith({
-    String? name,
+@freezed
+class Song with _$Song {
+  const factory Song({
+    required String name,
     String? art,
     int? end,
     int? start,
     int? itunesid,
-    String? originalArtist,
-  }) {
-    return Song(
-      name: name ?? this.name,
-      art: art ?? this.art,
-      end: end ?? this.end,
-      start: start ?? this.start,
-      itunesid: itunesid ?? this.itunesid,
-      originalArtist: originalArtist ?? this.originalArtist,
-    );
-  }
+    @JsonKey(name: 'original_artist') String? originalArtist,
+  }) = _Song;
 
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'art': art,
-      'end': end,
-      'start': start,
-      'itunesid': itunesid,
-      'originalArtist': originalArtist,
-    };
-  }
-
-  factory Song.fromMap(Map<String, dynamic> map) {
-    return Song(
-      name: map['name'],
-      art: map['art'],
-      end: map['end'],
-      start: map['start'],
-      itunesid: map['itunesid'],
-      originalArtist: map['originalArtist'],
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory Song.fromJson(String source) => Song.fromMap(json.decode(source));
-
-  @override
-  bool get stringify => true;
-
-  @override
-  List<Object> get props {
-    return [
-      'name: $name',
-      'art: $art',
-      'end: $end',
-      'start: $start',
-      'itunesid: $itunesid',
-      'originalArtist: $originalArtist',
-    ];
-  }
+  factory Song.fromJson(Map<String, dynamic> json) => _$SongFromJson(json);
 }

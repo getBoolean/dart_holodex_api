@@ -19,9 +19,12 @@ linter:
   rules:
     - use_super_parameters
 
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
+analyzer:
+  errors:
+    invalid_annotation_target: ignore
+  exclude:
+    - '**/*.g.dart'
+    - '**/*.freezed.dart'
 
 # For more information about the core and recommended set of lints, see
 # https://dart.dev/go/core-lints

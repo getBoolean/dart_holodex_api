@@ -112,7 +112,7 @@ class VideoFull extends Video {
         'refers': refers.map((refer) => refer.toMap()).toList(),
         'simulcasts': simulcasts.map((simulcast) => simulcast.toMap()).toList(),
         'mentions': mentions.map((mention) => mention.toMap()).toList(),
-        'songs': songs.map((song) => song.toMap()).toList(),
+        'songs': songs.map((song) => song.toJson()).toList(),
       });
   }
 
@@ -160,7 +160,7 @@ class VideoFull extends Video {
         List.of(map['mentions'] ?? []).map((mention) => Channel.fromMap(mention)),
       ),
       songs: List<Song>.of(
-        List.of(map['songs'] ?? []).map((song) => Song.fromMap(song)),
+        List.of(map['songs'] ?? []).map((song) => Song.fromJson(song)),
       ),
     );
   }
