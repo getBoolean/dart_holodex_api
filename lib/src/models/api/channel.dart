@@ -10,17 +10,15 @@ class Channel extends ChannelMin {
   final bool? inactive;
   final String? description;
   final String? publishedAt;
-
-  // TODO: add the following fields:
-  //  crawled at
-  //  comments crawled at
-  //  updated at
-  //  yt uploads id
-  //  top topics
-  //  yt_handle
-  //  twitch
-  //  yt_name_history
-  //  group
+  final String? crawledAt;
+  final String? commentsCrawledAt;
+  final String? updatedAt;
+  final String? ytUploadsId;
+  final List<String> topTopics;
+  final List<String> ytHandle;
+  final String? twitch;
+  final List<String> ytNameHistory;
+  final String? group;
 
   /// Returns a new [Channel] instance.
   const Channel({
@@ -38,6 +36,15 @@ class Channel extends ChannelMin {
     this.publishedAt,
     this.inactive,
     this.description,
+    this.crawledAt,
+    this.commentsCrawledAt,
+    this.updatedAt,
+    this.ytUploadsId,
+    this.topTopics = const [],
+    this.ytHandle = const [],
+    this.twitch,
+    this.ytNameHistory = const [],
+    this.group,
   });
 
   @override
@@ -56,11 +63,19 @@ class Channel extends ChannelMin {
       'banner': banner,
       'twitter': twitter,
       'published_at': publishedAt,
-
       'video_count': stats.videoCount,
       'subscriber_count': stats.subscriberCount,
       'view_count': stats.viewCount,
       'clip_count': stats.clipCount,
+      'crawled_at': crawledAt,
+      'comments_crawled_at': commentsCrawledAt,
+      'updated_at': updatedAt,
+      'yt_uploads_id': ytUploadsId,
+      'top_topics': topTopics,
+      'yt_handle': ytHandle,
+      'twitch': twitch,
+      'yt_name_history': ytNameHistory,
+      'group': group,
     };
   }
 
@@ -86,6 +101,15 @@ class Channel extends ChannelMin {
       publishedAt: map['published_at'],
       inactive: map['inactive'],
       description: map['description'],
+      crawledAt: map['crawled_at'],
+      commentsCrawledAt: map['comments_crawled_at'],
+      updatedAt: map['updated_at'],
+      ytUploadsId: map['yt_uploads_id'],
+      topTopics: List<String>.of(map['top_topics'] ?? []),
+      ytHandle: List<String>.of(map['yt_handle'] ?? []),
+      twitch: map['twitch'],
+      ytNameHistory: List<String>.of(map['yt_name_history'] ?? []),
+      group: map['group'],
     );
   }
 
@@ -110,6 +134,15 @@ class Channel extends ChannelMin {
     bool? inactive,
     String? description,
     String? organization,
+    String? crawledAt,
+    String? commentsCrawledAt,
+    String? updatedAt,
+    String? ytUploadsId,
+    List<String>? topTopics,
+    List<String>? ytHandle,
+    String? twitch,
+    List<String>? ytNameHistory,
+    String? group,
   }) {
     return Channel(
       id: id ?? this.id,
@@ -126,6 +159,15 @@ class Channel extends ChannelMin {
       inactive: inactive ?? this.inactive,
       description: description ?? this.description,
       organization: organization ?? this.organization,
+      crawledAt: crawledAt ?? this.crawledAt,
+      commentsCrawledAt: commentsCrawledAt ?? this.commentsCrawledAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      ytUploadsId: ytUploadsId ?? this.ytUploadsId,
+      topTopics: topTopics ?? this.topTopics,
+      ytHandle: ytHandle ?? this.ytHandle,
+      twitch: twitch ?? this.twitch,
+      ytNameHistory: ytNameHistory ?? this.ytNameHistory,
+      group: group ?? this.group,
     );
   }
 
@@ -147,7 +189,16 @@ class Channel extends ChannelMin {
       'publishedAt: $publishedAt',
       'inactive: $inactive',
       'description: $description',
-      'org: $organization'
+      'org: $organization',
+      'crawledAt: $crawledAt',
+      'commentsCrawledAt: $commentsCrawledAt',
+      'updatedAt: $updatedAt',
+      'ytUploadsId: $ytUploadsId',
+      'topTopics: $topTopics',
+      'ytHandle: $ytHandle',
+      'twitch: $twitch',
+      'ytNameHistory: $ytNameHistory',
+      'group: $group',
     ]);
 
     return channelProps;

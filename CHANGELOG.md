@@ -5,13 +5,13 @@
 - **Breaking**: `HolodexClient` no longer implements `BaseHolodexClient`
 - **Breaking**: Removed `BaseHolodexClient`
 - **Breaking**: Renamed `HolodexClient` constructor parameter `httpClient` to `client`
-- **Breaking**: All uses of `startScheduled`, `startActual`, `endActual`, and `liveViewers`
+- **Breaking**: All uses of `startScheduled`, `startActual`, `endActual`, and `liveViewers` have been replaced with `VideoLiveInfo`
 - **Breaking**: Changed `HolodexClient::searchComments` return type to `PaginatedResult<VideoWithComments>`
 - **Breaking**: Changed `HolodexClient::getVideos` parameters to an optional `VideoFilter`
 - **Breaking**: Changed `HolodexClient::getLiveVideos` parameters to an optional `VideoFilter`
 - **Breaking**: Changed `HolodexClient::getChannels` parameters to an optional `ChannelFilter`
 - **Breaking**: Changed `HolodexClient::getVideosRelatedToChannel` parameters to an optional `ChannelVideoFilter`
-- **Breaking**: Changed `HolodexClient::getVTuberClips` parameters to an optional `ChannelVideoFilter`
+- **Breaking**: Changed `HolodexClient::getVTuberClips` parameters to an optional `ChannelVideoFilter`π
 - **Breaking**: Changed `HolodexClient::getChannelVideos` parameters to an optional `ChannelVideoFilter`
 - **Breaking**: Changed `HolodexClient::getVTuberCollabs` parameters to an optional `ChannelVideoFilter`
 - **Breaking**: Renamed `HolodexClient::getVideoMetadata` parameter `timestampComments` to `includeTimestampComments`
@@ -37,9 +37,10 @@ have been replaced with `VideoLiveInfo`
 - Added `Serializable`
 - Changed `Video` to extend `Serializable`
 - All models are now const
-- Add String field `code` to enum `Language`, `Includes`, `Order`, `ChannelSort`, `VideoStatus`, `VideoSort`, `VideoType`,
+- Added String field `code` to enum `Language`, `Includes`, `Order`, `ChannelSort`, `VideoStatus`, `VideoSort`, `VideoType`,
 `ChannelType`, `SearchSort`, `SearchTarget`, `VideoSearchType`
-- Add String `organization` to `Channel` and `ChannelMin`
+- Added String `organization` to `Channel` and `ChannelMin`
+- Added more fields to `Channel`
 
 ## 0.3.1
 
