@@ -1,4 +1,5 @@
-import 'package:dart_holodex_api/src/enums.dart';
+import 'package:dart_holodex_api/src/enums/video_status.dart';
+import 'package:dart_holodex_api/src/enums/video_type.dart';
 import 'package:dart_holodex_api/src/models.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

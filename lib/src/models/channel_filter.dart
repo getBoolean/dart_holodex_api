@@ -1,4 +1,8 @@
-import 'package:dart_holodex_api/src/enums.dart';
+import 'package:dart_holodex_api/src/enums/channel_sort.dart';
+import 'package:dart_holodex_api/src/enums/channel_type.dart';
+import 'package:dart_holodex_api/src/enums/language.dart';
+import 'package:dart_holodex_api/src/enums/order.dart';
+import 'package:dart_holodex_api/src/enums/organization.dart';
 
 /// Filter the results returns by the Holodex API channel endpoints
 class ChannelFilter {

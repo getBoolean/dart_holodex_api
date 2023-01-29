@@ -1,4 +1,5 @@
-import 'package:dart_holodex_api/dart_holodex_api.dart';
+import 'package:dart_holodex_api/src/enums/includes.dart';
+import 'package:dart_holodex_api/src/enums/language.dart';
 
 /// Filter the results returns by the Holodex API channel videos endpoints
 class ChannelVideoFilter {

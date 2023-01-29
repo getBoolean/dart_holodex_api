@@ -1,4 +1,4 @@
-import 'package:dart_holodex_api/dart_holodex_api.dart';
+import 'package:dart_holodex_api/src/enums/channel_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'channel_min.freezed.dart';
 part 'channel_min.g.dart';

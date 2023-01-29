@@ -1,10 +1,20 @@
 import 'dart:convert';
 
+import 'package:dart_holodex_api/src/enums/channel_sort.dart';
+import 'package:dart_holodex_api/src/enums/channel_type.dart';
+import 'package:dart_holodex_api/src/enums/includes.dart';
+import 'package:dart_holodex_api/src/enums/language.dart';
+import 'package:dart_holodex_api/src/enums/order.dart';
+import 'package:dart_holodex_api/src/enums/organization.dart';
+import 'package:dart_holodex_api/src/enums/search_sort.dart';
+import 'package:dart_holodex_api/src/enums/video_search_type.dart';
+import 'package:dart_holodex_api/src/enums/video_sort.dart';
+import 'package:dart_holodex_api/src/enums/video_status.dart';
+import 'package:dart_holodex_api/src/enums/video_type.dart';
 import 'package:dart_holodex_api/src/models/channel_video_filter.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
-import 'enums.dart';
 import 'exception.dart';
 import 'models.dart';
 

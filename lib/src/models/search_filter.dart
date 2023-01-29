@@ -1,20 +1,23 @@
-import 'package:dart_holodex_api/src/enums.dart';
+import 'package:dart_holodex_api/src/enums/language.dart';
+import 'package:dart_holodex_api/src/enums/organization.dart';
+import 'package:dart_holodex_api/src/enums/search_sort.dart';
+import 'package:dart_holodex_api/src/enums/search_target.dart';
 import 'package:dart_holodex_api/src/models/api/video_full.dart';
 
 class SearchFilter {
-    // searchSort: SearchSort.newest,
-    // languages: [Language.all],
-    // searchTargets: [SearchTarget.clip, SearchTarget.stream],
-    // topics: ['singing'],
-    // videoChannels: <String>[],
-    // organizations: [
-    //   Organization.Hololive,
-    //   Organization.Nijisanji,
-    // ],
-    // paginated: true,
-    // offset: 0,
-    // limit: 25,
-  
+  // searchSort: SearchSort.newest,
+  // languages: [Language.all],
+  // searchTargets: [SearchTarget.clip, SearchTarget.stream],
+  // topics: ['singing'],
+  // videoChannels: <String>[],
+  // organizations: [
+  //   Organization.Hololive,
+  //   Organization.Nijisanji,
+  // ],
+  // paginated: true,
+  // offset: 0,
+  // limit: 25,
+
   /// Sort by newest or oldest
   final SearchSort searchSort;
 

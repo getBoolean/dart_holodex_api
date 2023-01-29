@@ -9,7 +9,7 @@
 - Added String `organization` to `Channel` and `ChannelMin`.
 - Added more fields to `Channel.
 
-### Renamed
+### Breaking Changes
 
 - **Breaking**: Renamed `HolodexClient` constructor parameter `httpClient` to `client`.
 - **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `timestampComments` to `includeTimestampComments`.
@@ -18,9 +18,6 @@
 implementation was imported.
 - **Breaking**: Renamed `Organization.VirtualWitchPhenomenon` to `Organization.KAMITSUBAKI`.
 - **Breaking**: Renamed `Channel.suborg` to `Channel.subOrganization`.
-
-### Breaking Changes
-
 - **Breaking**: Changed `HolodexClient.searchComments` return type to `PaginatedVideos`.
 - **Breaking**: Changed `HolodexClient.getVideos` parameters to an optional `VideoFilter`.
 - **Breaking**: Changed `HolodexClient.getLiveVideos` parameters to an optional `VideoFilter`.
@@ -37,9 +34,7 @@ and added `String` field `code`.
 - **Breaking**: Replaced usage of package `EnumToString` with Dart 2.17 enhanced enums.
 - **Breaking**: Replaced `VideoFullList` with `PaginatedVideos`.
 - **Breaking**: All API models now const and utilize `freezed` instead of extending `Serializable`.
-
-### Removals
-
+- **Breaking**: Broke up `src/enums.dart` file into multiple files.
 - **Breaking**: Removed `BaseHolodexClient`. `HolodexClient` no longer implements `BaseHolodexClient`.
 - **Breaking**: Removed `VideoWithCommentsList`, use `VideoFull` instead.
 - **Breaking**: Removed `VideoWithComments`, use `VideoFull` instead.

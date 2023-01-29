@@ -1,4 +1,9 @@
-import 'package:dart_holodex_api/dart_holodex_api.dart';
+import 'package:dart_holodex_api/src/enums/includes.dart';
+import 'package:dart_holodex_api/src/enums/language.dart';
+import 'package:dart_holodex_api/src/enums/order.dart';
+import 'package:dart_holodex_api/src/enums/video_sort.dart';
+import 'package:dart_holodex_api/src/enums/video_status.dart';
+import 'package:dart_holodex_api/src/enums/video_type.dart';
 
 /// Filter the results returns by the Holodex API `/videos` endpoint
 class VideoFilter {

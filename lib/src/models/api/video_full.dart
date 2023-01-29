@@ -1,4 +1,10 @@
-import 'package:dart_holodex_api/dart_holodex_api.dart';
+import 'package:dart_holodex_api/src/enums/video_status.dart';
+import 'package:dart_holodex_api/src/enums/video_type.dart';
+import 'package:dart_holodex_api/src/models/api/channel.dart';
+import 'package:dart_holodex_api/src/models/api/channel_min.dart';
+import 'package:dart_holodex_api/src/models/api/comment.dart';
+import 'package:dart_holodex_api/src/models/api/song.dart';
+import 'package:dart_holodex_api/src/models/api/video.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'video_full.freezed.dart';
