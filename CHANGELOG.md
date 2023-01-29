@@ -2,40 +2,50 @@
 
 ## 0.4.0
 
-- **Breaking**: `HolodexClient` no longer implements `BaseHolodexClient`
-- **Breaking**: Removed `BaseHolodexClient`
-- **Breaking**: Renamed `HolodexClient` constructor parameter `httpClient` to `client`
-- **Breaking**: Changed `HolodexClient.searchComments` return type to `PaginatedVideos`
-- **Breaking**: Changed `HolodexClient.getVideos` parameters to an optional `VideoFilter`
-- **Breaking**: Changed `HolodexClient.getLiveVideos` parameters to an optional `VideoFilter`
-- **Breaking**: Changed `HolodexClient.getChannels` parameters to an optional `ChannelFilter`
-- **Breaking**: Changed `HolodexClient.getVideosRelatedToChannel` parameters to an optional `ChannelVideoFilter`
-- **Breaking**: Changed `HolodexClient.getVTuberClips` parameters to an optional `ChannelVideoFilter`
-- **Breaking**: Changed `HolodexClient.getChannelVideos` parameters to an optional `ChannelVideoFilter`
-- **Breaking**: Changed `HolodexClient.getVTuberCollabs` parameters to an optional `ChannelVideoFilter`
-- **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `timestampComments` to `includeTimestampComments`
-- **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `recommendationLanguages` to `languages`
-- **Breaking**: Changed `HolodexClient.searchVideos` parameters to an optional `SearchFilter`
-- **Breaking**: Changed `HolodexClient.searchComments` parameters to an optional `SearchFilter`
-- **Breaking**: Removed `VideoWithCommentsList`
-- **Breaking**: Removed `VideoWithComments`, use `VideoFull` instead
-- **Breaking**: Removed `VideoMetadata`, use `VideoFull` instead
-- **Breaking**: `VideoFull` list fields are no longer nullable
+### Added
+
+- Added String field `code` to enum `Language`, `Includes`, `Order`, `ChannelSort`, `VideoStatus`, `VideoSort`, `VideoType`,
+`ChannelType`, `SearchSort`, `SearchTarget`, `VideoSearchType`.
+- Added String `organization` to `Channel` and `ChannelMin`.
+- Added more fields to `Channel.
+
+### Renamed
+
+- **Breaking**: Renamed `HolodexClient` constructor parameter `httpClient` to `client`.
+- **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `timestampComments` to `includeTimestampComments`.
+- **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `recommendationLanguages` to `languages`.
 - **Breaking**: Renamed `client.dart` to `holodex_client.dart`. Technically a breaking change, but only if
 implementation was imported.
-- **Breaking**: Replace usage of package `EnumToString` with Dart 2.17 enhanced enums.
-- **Breaking**: Replaced `VideoFullList` with `PaginatedVideos`.
-- **Breaking**: Changed `Organization` to an enum, added new organizations added by Holodex,
-and added `String` field `code`
-- **Breaking**: All API models now const and utilize `freezed` instead of extending `Serializable`
-- **Breaking**: Renamed `Organization.VirtualWitchPhenomenon` to `Organization.KAMITSUBAKI`
-- **Breaking**: Removed `EnumUtil`.
+- **Breaking**: Renamed `Organization.VirtualWitchPhenomenon` to `Organization.KAMITSUBAKI`.
+- **Breaking**: Renamed `Channel.suborg` to `Channel.subOrganization`.
+
+### Breaking Changes
+
+- **Breaking**: Changed `HolodexClient.searchComments` return type to `PaginatedVideos`.
+- **Breaking**: Changed `HolodexClient.getVideos` parameters to an optional `VideoFilter`.
+- **Breaking**: Changed `HolodexClient.getLiveVideos` parameters to an optional `VideoFilter`.
+- **Breaking**: Changed `HolodexClient.getChannels` parameters to an optional `ChannelFilter`.
+- **Breaking**: Changed `HolodexClient.getVideosRelatedToChannel` parameters to an optional `ChannelVideoFilter`.
+- **Breaking**: Changed `HolodexClient.getVTuberClips` parameters to an optional `ChannelVideoFilter`.
+- **Breaking**: Changed `HolodexClient.getChannelVideos` parameters to an optional `ChannelVideoFilter`.
+- **Breaking**: Changed `HolodexClient.getVTuberCollabs` parameters to an optional `ChannelVideoFilter`.
+- **Breaking**: Changed `HolodexClient.searchVideos` parameters to an optional `SearchFilter`.
+- **Breaking**: Changed `HolodexClient.searchComments` parameters to an optional `SearchFilter`.
 - **Breaking**: Changed `Language` to a class to support the `BCP47` standard.
-- **Breaking**: Renamed `Channel.suborg` to `Channel.subOrganization`
-- Added String field `code` to enum `Language`, `Includes`, `Order`, `ChannelSort`, `VideoStatus`, `VideoSort`, `VideoType`,
-`ChannelType`, `SearchSort`, `SearchTarget`, `VideoSearchType`
-- Added String `organization` to `Channel` and `ChannelMin`
-- Added more fields to `Channel`
+- **Breaking**: Changed `Organization` to an enum, added new organizations added by Holodex,
+and added `String` field `code`.
+- **Breaking**: Replaced usage of package `EnumToString` with Dart 2.17 enhanced enums.
+- **Breaking**: Replaced `VideoFullList` with `PaginatedVideos`.
+- **Breaking**: All API models now const and utilize `freezed` instead of extending `Serializable`.
+
+### Removals
+
+- **Breaking**: Removed `BaseHolodexClient`. `HolodexClient` no longer implements `BaseHolodexClient`.
+- **Breaking**: Removed `VideoWithCommentsList`, use `VideoFull` instead.
+- **Breaking**: Removed `VideoWithComments`, use `VideoFull` instead.
+- **Breaking**: Removed `VideoMetadata`, use `VideoFull` instead.
+- **Breaking**: `VideoFull` list fields are no longer nullable.
+- **Breaking**: Removed `EnumUtil`.
 
 ## 0.3.1
 
