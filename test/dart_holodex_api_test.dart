@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:test/test.dart';
 import 'package:dotenv/dotenv.dart' show load, isEveryDefined, env;
 
+import 'utils.dart';
+
 // Generating code coverage:
 // 1. `dart pub global activate coverage`
 // 2. `dart test --coverage="coverage"`
@@ -12,32 +14,9 @@ import 'package:dotenv/dotenv.dart' show load, isEveryDefined, env;
 // `./codecov -t ${CODECOV_TOKEN}`
 
 void main() {
-  // Load the environment variables into memory
-  // I recommend using envify for a production app, this way is just simpler for an example app
-  load();
-
-  late String apiKey;
   late HolodexClient client;
   setUp(() {
-    // Create client with API key from a .env file in the root package directory
-    // See this page on getting an api key https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started
-    // Add the api key to the .env file in the format `API=api_key` with `api_key` being the key you got from the above website
-    if (!isEveryDefined(['API'])) {
-      print('API key not provided, can not run tests');
-      return;
-    }
-
-    final String? _apiKey = env['API'];
-    if (_apiKey == null) {
-      print('API key not provided, can not run tests');
-      return;
-    }
-    apiKey = _apiKey;
-
-    client = HolodexClient(apiKey: apiKey);
-
-    final tempClient = HolodexClient(apiKey: apiKey, client: http.Client());
-    tempClient.close();
+    client = setUpHolodexClient();
   });
 
   group('Test API Key', () {
