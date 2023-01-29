@@ -31,6 +31,7 @@ implementation was imported.
 - **Breaking**: Changed `Language` to a class to support the `BCP47` standard.
 - **Breaking**: Changed `Organization` to an enum, added new organizations added by Holodex,
 and added `String` field `code`.
+- **Breaking**: `VideoFull` list fields are no longer nullable.
 - **Breaking**: Replaced usage of package `EnumToString` with Dart 2.17 enhanced enums.
 - **Breaking**: Replaced `VideoFullList` with `PaginatedVideos`.
 - **Breaking**: All API models now const and utilize `freezed` instead of extending `Serializable`.
@@ -39,7 +40,6 @@ and added `String` field `code`.
 - **Breaking**: Removed `VideoWithCommentsList`, use `VideoFull` instead.
 - **Breaking**: Removed `VideoWithComments`, use `VideoFull` instead.
 - **Breaking**: Removed `VideoMetadata`, use `VideoFull` instead.
-- **Breaking**: `VideoFull` list fields are no longer nullable.
 - **Breaking**: Removed `EnumUtil`.
 
 ## 0.3.1
