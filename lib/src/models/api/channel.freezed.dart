@@ -467,7 +467,7 @@ class __$$_ChannelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Channel implements _Channel {
+class _$_Channel extends _Channel {
   const _$_Channel(
       {required this.id,
       required this.name,
@@ -513,7 +513,8 @@ class _$_Channel implements _Channel {
       this.group})
       : _topTopics = topTopics,
         _ytHandle = ytHandle,
-        _ytNameHistory = ytNameHistory;
+        _ytNameHistory = ytNameHistory,
+        super._();
 
   factory _$_Channel.fromJson(Map<String, dynamic> json) =>
       _$$_ChannelFromJson(json);
@@ -705,7 +706,7 @@ class _$_Channel implements _Channel {
   }
 }
 
-abstract class _Channel implements Channel {
+abstract class _Channel extends Channel {
   const factory _Channel(
       {required final String id,
       required final String name,
@@ -749,6 +750,7 @@ abstract class _Channel implements Channel {
       @JsonKey(name: 'yt_name_history')
           final List<String> ytNameHistory,
       final String? group}) = _$_Channel;
+  const _Channel._() : super._();
 
   factory _Channel.fromJson(Map<String, dynamic> json) = _$_Channel.fromJson;
 

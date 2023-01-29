@@ -221,7 +221,7 @@ class __$$_ChannelMinCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ChannelMin implements _ChannelMin {
+class _$_ChannelMin extends _ChannelMin {
   const _$_ChannelMin(
       {required this.id,
       required this.name,
@@ -232,7 +232,8 @@ class _$_ChannelMin implements _ChannelMin {
       @JsonKey(name: 'video_count') this.videoCount,
       @JsonKey(name: 'subscriber_count') this.subscriberCount,
       @JsonKey(name: 'view_count') this.viewCount,
-      @JsonKey(name: 'clip_count') this.clipCount});
+      @JsonKey(name: 'clip_count') this.clipCount})
+      : super._();
 
   factory _$_ChannelMin.fromJson(Map<String, dynamic> json) =>
       _$$_ChannelMinFromJson(json);
@@ -311,7 +312,7 @@ class _$_ChannelMin implements _ChannelMin {
   }
 }
 
-abstract class _ChannelMin implements ChannelMin {
+abstract class _ChannelMin extends ChannelMin {
   const factory _ChannelMin(
       {required final String id,
       required final String name,
@@ -323,6 +324,7 @@ abstract class _ChannelMin implements ChannelMin {
       @JsonKey(name: 'subscriber_count') final String? subscriberCount,
       @JsonKey(name: 'view_count') final String? viewCount,
       @JsonKey(name: 'clip_count') final int? clipCount}) = _$_ChannelMin;
+  const _ChannelMin._() : super._();
 
   factory _ChannelMin.fromJson(Map<String, dynamic> json) =
       _$_ChannelMin.fromJson;

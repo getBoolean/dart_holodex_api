@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dart_holodex_api/src/enums/channel_type.dart';
 import 'package:dart_holodex_api/src/enums/language.dart';
+import 'package:dart_holodex_api/src/models/api/channel_min.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'channel.freezed.dart';
@@ -9,6 +10,8 @@ part 'channel.g.dart';
 
 @freezed
 class Channel with _$Channel {
+  const Channel._();
+
   /// Returns a new [Channel] instance.
   const factory Channel({
     required String id,
@@ -44,4 +47,17 @@ class Channel with _$Channel {
       _$ChannelFromJson(json);
 
   factory Channel.fromString(String json) => Channel.fromJson(jsonDecode(json));
+
+  ChannelMin toChannelMin() => ChannelMin(
+        id: id,
+        name: name,
+        englishName: englishName,
+        type: type,
+        photo: photo,
+        organization: organization,
+        videoCount: videoCount,
+        subscriberCount: subscriberCount,
+        viewCount: viewCount,
+        clipCount: clipCount,
+      );
 }

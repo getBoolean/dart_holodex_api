@@ -1,10 +1,14 @@
 import 'package:dart_holodex_api/src/enums/channel_type.dart';
+import 'package:dart_holodex_api/src/enums/language.dart';
+import 'package:dart_holodex_api/src/models/api/channel.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'channel_min.freezed.dart';
 part 'channel_min.g.dart';
 
 @freezed
 class ChannelMin with _$ChannelMin {
+  const ChannelMin._();
+
   /// Returns a new [ChannelMin] instance.
   const factory ChannelMin({
     required String id,
@@ -21,4 +25,18 @@ class ChannelMin with _$ChannelMin {
 
   factory ChannelMin.fromJson(Map<String, dynamic> json) =>
       _$ChannelMinFromJson(json);
+
+  Channel toChannelMin() => Channel(
+        id: id,
+        name: name,
+        englishName: englishName,
+        type: type,
+        photo: photo,
+        organization: organization,
+        videoCount: videoCount,
+        subscriberCount: subscriberCount,
+        viewCount: viewCount,
+        clipCount: clipCount,
+        lang: Language.all,
+      );
 }
