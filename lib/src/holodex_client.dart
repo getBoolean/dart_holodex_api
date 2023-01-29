@@ -59,7 +59,7 @@ class HolodexClient {
   }
 
   /// Get a list of videos
-  Future<PaginatedResult<VideoFull>> getVideos([
+  Future<PaginatedVideos> getVideos([
     VideoFilter filter = const VideoFilter(
       limit: 25,
       offset: 0,
@@ -118,13 +118,13 @@ class HolodexClient {
 
     if (filter.paginated) {
       // Grab total and return with it
-      final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
+      final videoList = PaginatedVideos.fromString(response.body);
       return videoList.copyWith(paginated: true);
     }
 
-    final List list = jsonDecode(response.body);
-    return PaginatedResult<VideoFull>(
-      items: list.map((video) => VideoFull.fromMap(video)).toList(),
+    final List<dynamic> list = jsonDecode(response.body);
+    return PaginatedVideos(
+      items: list.map((video) => VideoFull.fromJson(video)).toList(),
     );
   }
 
@@ -132,7 +132,7 @@ class HolodexClient {
   ///
   /// This is somewhat similar to calling [getVideos], except this endpoint imposes default
   /// values on the query parameters. You can choose to override them by providing your own values.
-  Future<PaginatedResult<VideoFull>> getLiveVideos([
+  Future<PaginatedVideos> getLiveVideos([
     VideoFilter filter = const VideoFilter(
       includes: [Includes.liveInfo],
       limit: 50,
@@ -198,13 +198,13 @@ class HolodexClient {
 
     if (filter.paginated) {
       // Grab total and return with it
-      final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
+      final videoList = PaginatedVideos.fromString(response.body);
       return videoList.copyWith(paginated: true);
     }
 
-    final List list = jsonDecode(response.body);
-    return PaginatedResult<VideoFull>(
-      items: list.map((video) => VideoFull.fromMap(video)).toList(),
+    final List<dynamic> list = jsonDecode(response.body);
+    return PaginatedVideos(
+      items: list.map((video) => VideoFull.fromJson(video)).toList(),
     );
   }
 
@@ -216,7 +216,7 @@ class HolodexClient {
   Future<Channel> getChannelFromId(String channelId) async {
     final Response response = await get(path: '${_Constants.channelsPath}/$channelId');
 
-    return Channel.fromJson(response.body);
+    return Channel.fromString(response.body);
   }
 
   /// Get channels
@@ -261,9 +261,9 @@ class HolodexClient {
 
     final response = await get(path: _Constants.channelsPath, params: params);
 
-    final List list = jsonDecode(response.body);
+    final List<dynamic> list = jsonDecode(response.body);
 
-    return list.map((channel) => Channel.fromMap(channel)).toList();
+    return list.map((channel) => Channel.fromJson(channel)).toList();
   }
 
   /// Quickly Access Live / Upcoming for a set of Channels
@@ -288,8 +288,8 @@ class HolodexClient {
     _addChannels(channelIds, params);
 
     final response = await get(path: _Constants.userLivePath, params: params);
-    final List list = jsonDecode(response.body);
-    return list.map((video) => Video.fromMap(video)).toList();
+    final List<dynamic> list = jsonDecode(response.body);
+    return list.map((video) => Video.fromJson(video)).toList();
   }
 
   /// Get Videos From Channel, alias of [getVideosRelatedToChannel]
@@ -297,7 +297,7 @@ class HolodexClient {
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `filter` Filter the results returns by the API
-  Future<PaginatedResult<VideoFull>> getChannelVideos(
+  Future<PaginatedVideos> getChannelVideos(
     String channelId, {
     ChannelVideoFilter filter = const ChannelVideoFilter(
       includes: [],
@@ -319,7 +319,7 @@ class HolodexClient {
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `filter` Filter the results returns by the API
-  Future<PaginatedResult<VideoFull>> getVTuberClips(
+  Future<PaginatedVideos> getVTuberClips(
     String channelId, {
     ChannelVideoFilter filter = const ChannelVideoFilter(
       includes: [],
@@ -341,7 +341,7 @@ class HolodexClient {
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `filter` Filter the results returns by the API
-  Future<PaginatedResult<VideoFull>> getVTuberCollabs(
+  Future<PaginatedVideos> getVTuberCollabs(
     String channelId, {
     ChannelVideoFilter filter = const ChannelVideoFilter(
       includes: [],
@@ -367,7 +367,7 @@ class HolodexClient {
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `type` The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId`
   /// - `filter` Filter the results returns by the API
-  Future<PaginatedResult<VideoFull>> getVideosRelatedToChannel(
+  Future<PaginatedVideos> getVideosRelatedToChannel(
     String channelId, {
     required VideoSearchType type,
     ChannelVideoFilter filter = const ChannelVideoFilter(),
@@ -391,13 +391,12 @@ class HolodexClient {
 
     if (filter.paginated) {
       // Grab total and return with it
-      final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
+      final videoList = PaginatedVideos.fromString(response.body);
       return videoList.copyWith(paginated: true);
     }
 
-    final List list = jsonDecode(response.body);
-    return PaginatedResult<VideoFull>(
-        items: list.map((video) => VideoFull.fromMap(video)).toList());
+    final List<dynamic> list = jsonDecode(response.body);
+    return PaginatedVideos(items: list.map((video) => VideoFull.fromJson(video)).toList());
   }
 
   /// Retrieves a video, optionally with comments and recommended videos
@@ -420,7 +419,7 @@ class HolodexClient {
 
     final response = await get(path: '${_Constants.videosPath}/$videoId', params: params);
     final body = jsonDecode(response.body);
-    return VideoFull.fromMap(body);
+    return VideoFull.fromJson(body);
   }
 
   /// Flexible endpoint to search for videos fufilling multiple conditions.
@@ -431,7 +430,7 @@ class HolodexClient {
   /// Arguments
   /// - `conditions` Match all of the items. -> For each item: look for the text in video title or description
   /// - `filter` Filter video results from the API
-  Future<PaginatedResult<VideoFull>> searchVideos({
+  Future<PaginatedVideos> searchVideos({
     List<String> conditions = const [],
     SearchFilter filter = const SearchFilter(
       searchSort: SearchSort.newest,
@@ -489,13 +488,13 @@ class HolodexClient {
 
     if (filter.paginated) {
       // Grab total and return with it
-      final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
+      final videoList = PaginatedVideos.fromString(response.body);
+
       return videoList.copyWith(paginated: true);
     }
 
-    final List list = jsonDecode(response.body);
-    return PaginatedResult<VideoFull>(
-        items: list.map((video) => VideoFull.fromMap(video)).toList());
+    final List<dynamic> list = jsonDecode(response.body);
+    return PaginatedVideos(items: list.map((video) => VideoFull.fromJson(video)).toList());
   }
 
   /// Flexible endpoint to search for comments in videos fufilling multiple conditions.
@@ -506,7 +505,7 @@ class HolodexClient {
   /// Arguments
   /// - `comment` Find videos with comments containing specified string (case insensitive)
   /// - `filter` Filter video results from the API
-  Future<PaginatedResult<VideoFull>> searchComments({
+  Future<PaginatedVideos> searchComments({
     required String comment,
     SearchFilter filter = const SearchFilter(
       searchSort: SearchSort.newest,
@@ -564,13 +563,13 @@ class HolodexClient {
 
     if (filter.paginated) {
       // Grab total and return with it
-      final videoList = PaginatedResult<VideoFull>.fromJson(response.body);
+      final videoList = PaginatedVideos.fromString(response.body);
       return videoList.copyWith(paginated: true);
     }
 
-    final List list = jsonDecode(response.body);
-    return PaginatedResult(
-      items: list.map((video) => VideoFull.fromMap(video)).toList(),
+    final List<dynamic> list = jsonDecode(response.body);
+    return PaginatedVideos(
+      items: list.map((video) => VideoFull.fromJson(video)).toList(),
     );
   }
 

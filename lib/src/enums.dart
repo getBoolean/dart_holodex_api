@@ -77,32 +77,28 @@ class Language {
 
   factory Language.other(Locale other) => Language._internal(other);
 
-  static final all =
-      Language._internal(Locale.fromSubtags(languageCode: 'all'));
+  factory Language.fromString(String source) {
+    final locale = Locale.tryParse(source);
+    return locale != null ? Language.other(locale) : Language.all;
+  }
 
-  static final english =
-      Language._internal(Locale.fromSubtags(languageCode: 'en'));
+  static final all = Language._internal(Locale.fromSubtags(languageCode: 'all'));
 
-  static final japanese =
-      Language._internal(Locale.fromSubtags(languageCode: 'jp'));
+  static final english = Language._internal(Locale.fromSubtags(languageCode: 'en'));
 
-  static final spanish =
-      Language._internal(Locale.fromSubtags(languageCode: 'es'));
+  static final japanese = Language._internal(Locale.fromSubtags(languageCode: 'jp'));
 
-  static final chinese =
-      Language._internal(Locale.fromSubtags(languageCode: 'zh'));
+  static final spanish = Language._internal(Locale.fromSubtags(languageCode: 'es'));
 
-  static final korean =
-      Language._internal(Locale.fromSubtags(languageCode: 'ko'));
+  static final chinese = Language._internal(Locale.fromSubtags(languageCode: 'zh'));
 
-  static final french =
-      Language._internal(Locale.fromSubtags(languageCode: 'fr'));
+  static final korean = Language._internal(Locale.fromSubtags(languageCode: 'ko'));
 
-  static final indonesian =
-      Language._internal(Locale.fromSubtags(languageCode: 'id'));
+  static final french = Language._internal(Locale.fromSubtags(languageCode: 'fr'));
 
-  static final russian =
-      Language._internal(Locale.fromSubtags(languageCode: 'ru'));
+  static final indonesian = Language._internal(Locale.fromSubtags(languageCode: 'id'));
+
+  static final russian = Language._internal(Locale.fromSubtags(languageCode: 'ru'));
 
   static final List<Language> values = [
     Language.all,
@@ -117,6 +113,8 @@ class Language {
   ];
 
   String toLanguageTag() => locale.toLanguageTag();
+
+  static String toStringStatic(Language language) => language.locale.toLanguageTag();
 
   @override
   String toString() => locale.toLanguageTag();

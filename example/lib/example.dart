@@ -62,12 +62,12 @@ void main(List<String> arguments) async {
     type: VideoType.all,
   );
 
-  final PaginatedResult<VideoFull> videoList = await holodexClient.getVideos(videoFilter);
+  final PaginatedVideos videoList = await holodexClient.getVideos(videoFilter);
   print('Videos: ${videoList.items.length}\nTotal Videos: ${videoList.total}\n');
 
   // Get live videos
   final liveVideoFilter = VideoFilter(includes: [Includes.channelStats]);
-  final PaginatedResult<VideoFull> liveVideos = await holodexClient.getLiveVideos(liveVideoFilter);
+  final PaginatedVideos liveVideos = await holodexClient.getLiveVideos(liveVideoFilter);
   print('Live videos: ${liveVideos.items.length}\n');
 
   final ceresFauna = await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');
@@ -90,24 +90,24 @@ void main(List<String> arguments) async {
   ]);
   print('Requested Live Videos From Channels: ${quickLiveVideos.length}\n');
 
-  final PaginatedResult<VideoFull> matsuriClips =
+  final PaginatedVideos matsuriClips =
       await holodexClient.getVideosRelatedToChannel('UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
           type: VideoSearchType.clips);
   print('Clips including Matsuri: ${matsuriClips.total}');
   print('Returned clips including Matsuri: ${matsuriClips.items.length}\n');
 
-  final PaginatedResult<VideoFull> matsuriClips2 = await holodexClient.getVTuberClips(
+  final PaginatedVideos matsuriClips2 = await holodexClient.getVTuberClips(
     'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
   );
   print('Clips including Matsuri: ${matsuriClips2.total}');
   print('Returned clips including Matsuri: ${matsuriClips2.items.length}\n');
 
-  final PaginatedResult<VideoFull> matsuriCollabs =
+  final PaginatedVideos matsuriCollabs =
       await holodexClient.getVTuberCollabs('UCQ0UDLQCjY0rmuxCDE38FGg');
   print('Collabs including Matsuri: ${matsuriCollabs.total}');
   print('Returned collabs including Matsuri: ${matsuriCollabs.items.length}\n');
 
-  final PaginatedResult<VideoFull> matsuriUploads =
+  final PaginatedVideos matsuriUploads =
       await holodexClient.getChannelVideos('UCQ0UDLQCjY0rmuxCDE38FGg');
   print('Total Matsuri uploads: ${matsuriUploads.total}');
   print('Returned uploads: ${matsuriUploads.items.length}\n');
@@ -138,14 +138,14 @@ void main(List<String> arguments) async {
     offset: 0,
     limit: 25,
   );
-  
-  final PaginatedResult<VideoFull> searchVideos = await holodexClient.searchVideos(
+
+  final PaginatedVideos searchVideos = await holodexClient.searchVideos(
     conditions: ['karaoke'],
     filter: singingSearchFilter,
   );
   print('Videos Found: ${searchVideos.items.length}\n');
 
-  final PaginatedResult<VideoFull> searchComments = await holodexClient.searchComments(
+  final PaginatedVideos searchComments = await holodexClient.searchComments(
     comment: 'shion',
     filter: singingSearchFilter,
   );

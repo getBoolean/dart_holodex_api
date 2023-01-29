@@ -89,19 +89,25 @@ void main() {
       // Test included data
 
       expect(
-        video.channel?.stats.subscriberCount,
+        video.channel,
+        isNotNull,
+        reason: 'Channel should be included',
+      );
+
+      expect(
+        video.channel?.subscriberCount,
         isNotNull,
         reason: 'Channel Stats subscriber count should be included',
       );
 
       expect(
-        video.channel?.stats.viewCount,
+        video.channel?.viewCount,
         isNotNull,
         reason: 'Channel Stats view count should be included',
       );
 
       expect(
-        video.channel?.stats.videoCount,
+        video.channel?.videoCount,
         isNotNull,
         reason: 'Channel Stats video count should be included',
       );
@@ -175,25 +181,25 @@ void _expectVideoDetails(VideoFull video) {
   );
 
   expect(
-    video.liveInfo.startScheduled,
+    video.startScheduled,
     isNull,
     reason: 'Video is not a premier or a live stream',
   );
 
   expect(
-    video.liveInfo.startActual,
+    video.startActual,
     isNull,
     reason: 'Video is not a premier or a live stream',
   );
 
   expect(
-    video.liveInfo.endActual,
+    video.endActual,
     isNull,
     reason: 'Video is not a premier or a live stream',
   );
 
   expect(
-    video.liveInfo.liveViewers,
+    video.liveViewers,
     isNull,
     reason: 'Video is not a premier or a live stream',
   );

@@ -1,156 +1,52 @@
-import 'dart:convert';
+import 'package:dart_holodex_api/src/enums.dart';
+import 'package:dart_holodex_api/src/models.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:dart_holodex_api/dart_holodex_api.dart';
+part 'video.freezed.dart';
+part 'video.g.dart';
+
+@freezed
 
 /// A [Video] class with information retrieved from Holodex.
-class Video extends Serializable {
-  final String id;
-  final String title;
-  final VideoType type;
-
-  /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
-  final String? topicId;
-
-  final String? publishedAt;
-
-  /// Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at
-  final String availableAt;
-
-  /// Duration of the video in seconds
-  final int? duration;
-
-  final VideoStatus status;
-
-  /// Included when includes contains 'live_info'
-  final VideoLiveInfo liveInfo;
-
-  /// Included when includes contains 'description'
-  final String? description;
-
-  /// Number of tagged songs for this video
-  final int? songcount;
-
-  final String? channelId;
-
-  final ChannelMin? channel;
-
-  final String? language;
-
+class Video with _$Video {
   /// Returns a new [Video] instance.
-  const Video({
-    required this.id,
-    required this.title,
-    required this.type,
-    this.topicId,
-    this.publishedAt,
-    required this.availableAt,
-    this.duration,
-    required this.status,
-    this.liveInfo = const VideoLiveInfo(),
-    this.description,
-    this.songcount,
-    this.channelId,
-    this.channel,
-    this.language,
-  });
+  const factory Video({
+    required String id,
+    required String title,
+    @Default(VideoType.all) VideoType type,
 
-  Video copyWith({
-    String? id,
-    String? title,
-    VideoType? type,
-    String? topicId,
-    String? publishedAt,
-    String? availableAt,
+    /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
+    @JsonKey(name: 'topic_id') String? topicId,
+    @JsonKey(name: 'published_at') String? publishedAt,
+
+    /// Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at
+    @JsonKey(name: 'available_at') required String availableAt,
+
+    /// Duration of the video in seconds
     int? duration,
-    VideoStatus? status,
-    VideoLiveInfo? liveInfo,
+    required VideoStatus status,
+
+    /// Included when includes contains 'live_info'
+    @JsonKey(name: 'start_scheduled') String? startScheduled,
+
+    /// Included when includes contains 'live_info'
+    @JsonKey(name: 'start_actual') String? startActual,
+
+    /// Included when includes contains 'live_info'
+    @JsonKey(name: 'end_actual') String? endActual,
+
+    /// Included when includes contains 'live_info'
+    @JsonKey(name: 'live_viewers') int? liveViewers,
+
+    /// Included when includes contains 'description'
     String? description,
+
+    /// Number of tagged songs for this video
     int? songcount,
-    String? channelId,
+    @JsonKey(name: 'channel_id') String? channelId,
     ChannelMin? channel,
-    String? language,
-  }) {
-    return Video(
-      id: id ?? this.id,
-      title: title ?? this.title,
-      type: type ?? this.type,
-      topicId: topicId ?? this.topicId,
-      publishedAt: publishedAt ?? this.publishedAt,
-      availableAt: availableAt ?? this.availableAt,
-      duration: duration ?? this.duration,
-      status: status ?? this.status,
-      liveInfo: liveInfo ?? this.liveInfo,
-      description: description ?? this.description,
-      songcount: songcount ?? this.songcount,
-      channelId: channelId ?? this.channelId,
-      channel: channel ?? this.channel,
-      language: language ?? this.language,
-    );
-  }
+    @JsonKey(name: 'lang') String? language,
+  }) = _Video;
 
-  @override
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'title': title,
-      'type': type.code,
-      'topic_id': topicId,
-      'published_at': publishedAt,
-      'available_at': availableAt,
-      'duration': duration,
-      'status': status.code,
-      'live_info': liveInfo.toMap(),
-      'description': description,
-      'songcount': songcount,
-      'channel_id': channelId,
-      'channel': channel,
-      'lang': language,
-    };
-  }
-
-  factory Video.fromMap(Map<String, dynamic> map) {
-    return Video(
-      id: map['id'],
-      title: map['title'],
-      type: VideoType.values.byCode(map['type']) ?? VideoType.clip,
-      topicId: map['topic_id'],
-      publishedAt: map['published_at'],
-      availableAt: map['available_at'],
-      duration: map['duration'],
-      status: VideoStatus.values.byCode(map['status']) ?? VideoStatus.missing,
-      liveInfo: map['live_info'] != null ? VideoLiveInfo.fromMap(map['live_info']) : const VideoLiveInfo(),
-      description: map['description'],
-      songcount: map['songcount'],
-      channelId: map['channel_id'],
-      channel: map['channel'] != null ? ChannelMin.fromMap(map['channel']) : null,
-      language: map['lang'],
-    );
-  }
-
-  @override
-  String toJson() => json.encode(toMap());
-
-  factory Video.fromJson(String source) => Video.fromMap(json.decode(source));
-
-  @override
-  bool get stringify => true;
-
-  @override
-  List<Object> get props {
-    return [
-      'id: $id',
-      'title: $title',
-      'type: $type',
-      'topicId: $topicId',
-      'publishedAt: $publishedAt',
-      'availableAt: $availableAt',
-      'duration: $duration',
-      'status: $status',
-      'liveInfo: $liveInfo',
-      'description: $description',
-      'songcount: $songcount',
-      'language: $language',
-      'channelId: $channelId',
-    ];
-  }
+  factory Video.fromJson(Map<String, dynamic> json) => _$VideoFromJson(json);
 }

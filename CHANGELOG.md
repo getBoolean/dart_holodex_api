@@ -5,13 +5,12 @@
 - **Breaking**: `HolodexClient` no longer implements `BaseHolodexClient`
 - **Breaking**: Removed `BaseHolodexClient`
 - **Breaking**: Renamed `HolodexClient` constructor parameter `httpClient` to `client`
-- **Breaking**: All uses of `startScheduled`, `startActual`, `endActual`, and `liveViewers` have been replaced with `VideoLiveInfo`
-- **Breaking**: Changed `HolodexClient::searchComments` return type to `PaginatedResult<VideoWithComments>`
+- **Breaking**: Changed `HolodexClient::searchComments` return type to `PaginatedVideos`
 - **Breaking**: Changed `HolodexClient::getVideos` parameters to an optional `VideoFilter`
 - **Breaking**: Changed `HolodexClient::getLiveVideos` parameters to an optional `VideoFilter`
 - **Breaking**: Changed `HolodexClient::getChannels` parameters to an optional `ChannelFilter`
 - **Breaking**: Changed `HolodexClient::getVideosRelatedToChannel` parameters to an optional `ChannelVideoFilter`
-- **Breaking**: Changed `HolodexClient::getVTuberClips` parameters to an optional `ChannelVideoFilter`π
+- **Breaking**: Changed `HolodexClient::getVTuberClips` parameters to an optional `ChannelVideoFilter`
 - **Breaking**: Changed `HolodexClient::getChannelVideos` parameters to an optional `ChannelVideoFilter`
 - **Breaking**: Changed `HolodexClient::getVTuberCollabs` parameters to an optional `ChannelVideoFilter`
 - **Breaking**: Renamed `HolodexClient::getVideoMetadata` parameter `timestampComments` to `includeTimestampComments`
@@ -25,17 +24,13 @@
 - **Breaking**: Renamed `client.dart` to `holodex_client.dart`. Technically a breaking change, but only if
 implementation was imported.
 - **Breaking**: Replace usage of package `EnumToString` with Dart 2.17 enhanced enums.
-- **Breaking**: Removed `VideoFullList`. Use `PaginatedResult<VideoFull>` instead.
+- **Breaking**: Replaced `VideoFullList` with `PaginatedVideos`.
 - **Breaking**: Changed `Organization` to an enum, added new organizations added by Holodex,
 and added `String` field `code`
+- **Breaking**: All API models now utilize `freezed` instead of extending `Serializable`
 - **Breaking**: Renamed `Organization.VirtualWitchPhenomenon` to `Organization.KAMITSUBAKI`
-- **Breaking**: `EnumUtil` is no longer exported.
+- **Breaking**: Removed `EnumUtil`.
 - **Breaking**: Changed `Language` to a class to support the `BCP47` standard.
-- **Breaking**: Changed `ChannelMin` to use `ChannelStats` instead of multiple related fields on `Channel`.
-- Changed `Video` constructor parameter `duration` to optional
-have been replaced with `VideoLiveInfo`
-- Added `Serializable`
-- Changed `Video` to extend `Serializable`
 - All models are now const
 - Added String field `code` to enum `Language`, `Includes`, `Order`, `ChannelSort`, `VideoStatus`, `VideoSort`, `VideoType`,
 `ChannelType`, `SearchSort`, `SearchTarget`, `VideoSearchType`
