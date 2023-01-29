@@ -23,6 +23,7 @@ class VideoFull with _$VideoFull {
 
     /// Duration of the video in seconds
     int? duration,
+    @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
     required VideoStatus status,
 
     /// Included when includes contains 'live_info'

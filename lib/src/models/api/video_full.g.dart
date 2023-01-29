@@ -15,7 +15,7 @@ _$_VideoFull _$$_VideoFullFromJson(Map<String, dynamic> json) => _$_VideoFull(
       publishedAt: json['published_at'] as String?,
       availableAt: json['available_at'] as String,
       duration: json['duration'] as int?,
-      status: $enumDecode(_$VideoStatusEnumMap, json['status']),
+      status: VideoStatus.fromJson(json['status'] as String?),
       startScheduled: json['start_scheduled'] as String?,
       startActual: json['start_actual'] as String?,
       endActual: json['end_actual'] as String?,
@@ -28,7 +28,7 @@ _$_VideoFull _$$_VideoFullFromJson(Map<String, dynamic> json) => _$_VideoFull(
           : ChannelMin.fromJson(json['channel'] as Map<String, dynamic>),
       language: json['lang'] as String?,
       comments: (json['comments'] as List<dynamic>?)
-              ?.map((e) => Comment.fromJson(e as String))
+              ?.map((e) => Comment.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       recommendations: (json['recommendations'] as List<dynamic>?)
@@ -70,7 +70,7 @@ Map<String, dynamic> _$$_VideoFullToJson(_$_VideoFull instance) =>
       'published_at': instance.publishedAt,
       'available_at': instance.availableAt,
       'duration': instance.duration,
-      'status': _$VideoStatusEnumMap[instance.status]!,
+      'status': VideoStatus.toJson(instance.status),
       'start_scheduled': instance.startScheduled,
       'start_actual': instance.startActual,
       'end_actual': instance.endActual,
@@ -94,12 +94,4 @@ const _$VideoTypeEnumMap = {
   VideoType.stream: 'stream',
   VideoType.clip: 'clip',
   VideoType.all: 'all',
-};
-
-const _$VideoStatusEnumMap = {
-  VideoStatus.new_: 'new_',
-  VideoStatus.upcoming: 'upcoming',
-  VideoStatus.live: 'live',
-  VideoStatus.past: 'past',
-  VideoStatus.missing: 'missing',
 };

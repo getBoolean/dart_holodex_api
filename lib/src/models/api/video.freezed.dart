@@ -36,6 +36,7 @@ mixin _$Video {
 
   /// Duration of the video in seconds
   int? get duration => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
   VideoStatus get status => throw _privateConstructorUsedError;
 
   /// Included when includes contains 'live_info'
@@ -79,20 +80,30 @@ abstract class $VideoCopyWith<$Res> {
       {String id,
       String title,
       VideoType type,
-      @JsonKey(name: 'topic_id') String? topicId,
-      @JsonKey(name: 'published_at') String? publishedAt,
-      @JsonKey(name: 'available_at') String availableAt,
+      @JsonKey(name: 'topic_id')
+          String? topicId,
+      @JsonKey(name: 'published_at')
+          String? publishedAt,
+      @JsonKey(name: 'available_at')
+          String availableAt,
       int? duration,
-      VideoStatus status,
-      @JsonKey(name: 'start_scheduled') String? startScheduled,
-      @JsonKey(name: 'start_actual') String? startActual,
-      @JsonKey(name: 'end_actual') String? endActual,
-      @JsonKey(name: 'live_viewers') int? liveViewers,
+      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+          VideoStatus status,
+      @JsonKey(name: 'start_scheduled')
+          String? startScheduled,
+      @JsonKey(name: 'start_actual')
+          String? startActual,
+      @JsonKey(name: 'end_actual')
+          String? endActual,
+      @JsonKey(name: 'live_viewers')
+          int? liveViewers,
       String? description,
       int? songcount,
-      @JsonKey(name: 'channel_id') String? channelId,
+      @JsonKey(name: 'channel_id')
+          String? channelId,
       ChannelMin? channel,
-      @JsonKey(name: 'lang') String? language});
+      @JsonKey(name: 'lang')
+          String? language});
 
   $ChannelMinCopyWith<$Res>? get channel;
 }
@@ -223,20 +234,30 @@ abstract class _$$_VideoCopyWith<$Res> implements $VideoCopyWith<$Res> {
       {String id,
       String title,
       VideoType type,
-      @JsonKey(name: 'topic_id') String? topicId,
-      @JsonKey(name: 'published_at') String? publishedAt,
-      @JsonKey(name: 'available_at') String availableAt,
+      @JsonKey(name: 'topic_id')
+          String? topicId,
+      @JsonKey(name: 'published_at')
+          String? publishedAt,
+      @JsonKey(name: 'available_at')
+          String availableAt,
       int? duration,
-      VideoStatus status,
-      @JsonKey(name: 'start_scheduled') String? startScheduled,
-      @JsonKey(name: 'start_actual') String? startActual,
-      @JsonKey(name: 'end_actual') String? endActual,
-      @JsonKey(name: 'live_viewers') int? liveViewers,
+      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+          VideoStatus status,
+      @JsonKey(name: 'start_scheduled')
+          String? startScheduled,
+      @JsonKey(name: 'start_actual')
+          String? startActual,
+      @JsonKey(name: 'end_actual')
+          String? endActual,
+      @JsonKey(name: 'live_viewers')
+          int? liveViewers,
       String? description,
       int? songcount,
-      @JsonKey(name: 'channel_id') String? channelId,
+      @JsonKey(name: 'channel_id')
+          String? channelId,
       ChannelMin? channel,
-      @JsonKey(name: 'lang') String? language});
+      @JsonKey(name: 'lang')
+          String? language});
 
   @override
   $ChannelMinCopyWith<$Res>? get channel;
@@ -349,20 +370,30 @@ class _$_Video implements _Video {
       {required this.id,
       required this.title,
       this.type = VideoType.all,
-      @JsonKey(name: 'topic_id') this.topicId,
-      @JsonKey(name: 'published_at') this.publishedAt,
-      @JsonKey(name: 'available_at') required this.availableAt,
+      @JsonKey(name: 'topic_id')
+          this.topicId,
+      @JsonKey(name: 'published_at')
+          this.publishedAt,
+      @JsonKey(name: 'available_at')
+          required this.availableAt,
       this.duration,
-      required this.status,
-      @JsonKey(name: 'start_scheduled') this.startScheduled,
-      @JsonKey(name: 'start_actual') this.startActual,
-      @JsonKey(name: 'end_actual') this.endActual,
-      @JsonKey(name: 'live_viewers') this.liveViewers,
+      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+          required this.status,
+      @JsonKey(name: 'start_scheduled')
+          this.startScheduled,
+      @JsonKey(name: 'start_actual')
+          this.startActual,
+      @JsonKey(name: 'end_actual')
+          this.endActual,
+      @JsonKey(name: 'live_viewers')
+          this.liveViewers,
       this.description,
       this.songcount,
-      @JsonKey(name: 'channel_id') this.channelId,
+      @JsonKey(name: 'channel_id')
+          this.channelId,
       this.channel,
-      @JsonKey(name: 'lang') this.language});
+      @JsonKey(name: 'lang')
+          this.language});
 
   factory _$_Video.fromJson(Map<String, dynamic> json) =>
       _$$_VideoFromJson(json);
@@ -392,6 +423,7 @@ class _$_Video implements _Video {
   @override
   final int? duration;
   @override
+  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
   final VideoStatus status;
 
   /// Included when includes contains 'live_info'
@@ -511,20 +543,30 @@ abstract class _Video implements Video {
       {required final String id,
       required final String title,
       final VideoType type,
-      @JsonKey(name: 'topic_id') final String? topicId,
-      @JsonKey(name: 'published_at') final String? publishedAt,
-      @JsonKey(name: 'available_at') required final String availableAt,
+      @JsonKey(name: 'topic_id')
+          final String? topicId,
+      @JsonKey(name: 'published_at')
+          final String? publishedAt,
+      @JsonKey(name: 'available_at')
+          required final String availableAt,
       final int? duration,
-      required final VideoStatus status,
-      @JsonKey(name: 'start_scheduled') final String? startScheduled,
-      @JsonKey(name: 'start_actual') final String? startActual,
-      @JsonKey(name: 'end_actual') final String? endActual,
-      @JsonKey(name: 'live_viewers') final int? liveViewers,
+      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+          required final VideoStatus status,
+      @JsonKey(name: 'start_scheduled')
+          final String? startScheduled,
+      @JsonKey(name: 'start_actual')
+          final String? startActual,
+      @JsonKey(name: 'end_actual')
+          final String? endActual,
+      @JsonKey(name: 'live_viewers')
+          final int? liveViewers,
       final String? description,
       final int? songcount,
-      @JsonKey(name: 'channel_id') final String? channelId,
+      @JsonKey(name: 'channel_id')
+          final String? channelId,
       final ChannelMin? channel,
-      @JsonKey(name: 'lang') final String? language}) = _$_Video;
+      @JsonKey(name: 'lang')
+          final String? language}) = _$_Video;
 
   factory _Video.fromJson(Map<String, dynamic> json) = _$_Video.fromJson;
 
@@ -552,6 +594,7 @@ abstract class _Video implements Video {
   /// Duration of the video in seconds
   int? get duration;
   @override
+  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
   VideoStatus get status;
   @override
 
