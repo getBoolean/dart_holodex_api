@@ -14,6 +14,8 @@ part 'video_full.g.dart';
 /// [simulcasts], [mentions], and [songs] fields.
 @freezed
 class VideoFull with _$VideoFull {
+  const VideoFull._();
+
   /// Returns a new [VideoFull] instance.
   const factory VideoFull({
     required String id,
@@ -64,4 +66,24 @@ class VideoFull with _$VideoFull {
 
   factory VideoFull.fromJson(Map<String, dynamic> json) =>
       _$VideoFullFromJson(json);
+
+  Video toVideo() => Video(
+        id: id,
+        title: title,
+        type: type,
+        topicId: topicId,
+        publishedAt: publishedAt,
+        availableAt: availableAt,
+        duration: duration,
+        status: status,
+        startScheduled: startScheduled,
+        startActual: startActual,
+        endActual: endActual,
+        liveViewers: liveViewers,
+        description: description,
+        songcount: songcount,
+        channelId: channelId,
+        channel: channel,
+        language: language,
+      );
 }

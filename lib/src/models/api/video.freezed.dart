@@ -365,7 +365,7 @@ class __$$_VideoCopyWithImpl<$Res> extends _$VideoCopyWithImpl<$Res, _$_Video>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Video implements _Video {
+class _$_Video extends _Video {
   const _$_Video(
       {required this.id,
       required this.title,
@@ -393,7 +393,8 @@ class _$_Video implements _Video {
           this.channelId,
       this.channel,
       @JsonKey(name: 'lang')
-          this.language});
+          this.language})
+      : super._();
 
   factory _$_Video.fromJson(Map<String, dynamic> json) =>
       _$$_VideoFromJson(json);
@@ -538,7 +539,7 @@ class _$_Video implements _Video {
   }
 }
 
-abstract class _Video implements Video {
+abstract class _Video extends Video {
   const factory _Video(
       {required final String id,
       required final String title,
@@ -567,6 +568,7 @@ abstract class _Video implements Video {
       final ChannelMin? channel,
       @JsonKey(name: 'lang')
           final String? language}) = _$_Video;
+  const _Video._() : super._();
 
   factory _Video.fromJson(Map<String, dynamic> json) = _$_Video.fromJson;
 

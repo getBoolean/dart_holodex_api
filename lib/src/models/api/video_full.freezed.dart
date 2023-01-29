@@ -473,7 +473,7 @@ class __$$_VideoFullCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_VideoFull implements _VideoFull {
+class _$_VideoFull extends _VideoFull {
   const _$_VideoFull(
       {required this.id,
       required this.title,
@@ -517,7 +517,8 @@ class _$_VideoFull implements _VideoFull {
         _refers = refers,
         _simulcasts = simulcasts,
         _mentions = mentions,
-        _songs = songs;
+        _songs = songs,
+        super._();
 
   factory _$_VideoFull.fromJson(Map<String, dynamic> json) =>
       _$$_VideoFullFromJson(json);
@@ -752,7 +753,7 @@ class _$_VideoFull implements _VideoFull {
   }
 }
 
-abstract class _VideoFull implements VideoFull {
+abstract class _VideoFull extends VideoFull {
   const factory _VideoFull(
       {required final String id,
       required final String title,
@@ -789,6 +790,7 @@ abstract class _VideoFull implements VideoFull {
       final List<Video> simulcasts,
       final List<Channel> mentions,
       final List<Song> songs}) = _$_VideoFull;
+  const _VideoFull._() : super._();
 
   factory _VideoFull.fromJson(Map<String, dynamic> json) =
       _$_VideoFull.fromJson;

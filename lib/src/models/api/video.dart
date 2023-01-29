@@ -10,6 +10,8 @@ part 'video.g.dart';
 
 /// A [Video] class with information retrieved from Holodex.
 class Video with _$Video {
+  const Video._();
+
   /// Returns a new [Video] instance.
   const factory Video({
     required String id,
@@ -51,4 +53,24 @@ class Video with _$Video {
   }) = _Video;
 
   factory Video.fromJson(Map<String, dynamic> json) => _$VideoFromJson(json);
+
+  VideoFull toVideoFull() => VideoFull(
+        id: id,
+        title: title,
+        type: type,
+        topicId: topicId,
+        publishedAt: publishedAt,
+        availableAt: availableAt,
+        duration: duration,
+        status: status,
+        startScheduled: startScheduled,
+        startActual: startActual,
+        endActual: endActual,
+        liveViewers: liveViewers,
+        description: description,
+        songcount: songcount,
+        channelId: channelId,
+        channel: channel,
+        language: language,
+      );
 }
