@@ -31,6 +31,7 @@ and added `String` field `code`
 - **Breaking**: Renamed `Organization.VirtualWitchPhenomenon` to `Organization.KAMITSUBAKI`
 - **Breaking**: Removed `EnumUtil`.
 - **Breaking**: Changed `Language` to a class to support the `BCP47` standard.
+- **Breaking**: Renamed `Channel.suborg` to `Channel.subOrganization`
 - All models are now const
 - Added String field `code` to enum `Language`, `Includes`, `Order`, `ChannelSort`, `VideoStatus`, `VideoSort`, `VideoType`,
 `ChannelType`, `SearchSort`, `SearchTarget`, `VideoSearchType`

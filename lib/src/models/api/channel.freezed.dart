@@ -36,7 +36,8 @@ mixin _$Channel {
   String? get viewCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'clip_count')
   int? get clipCount => throw _privateConstructorUsedError;
-  String? get suborg => throw _privateConstructorUsedError;
+  @JsonKey(name: 'suborg')
+  String? get subOrganization => throw _privateConstructorUsedError;
   String? get banner => throw _privateConstructorUsedError;
   String? get twitter => throw _privateConstructorUsedError;
   @JsonKey(toJson: Language.toStringStatic, fromJson: Language.fromString)
@@ -89,7 +90,8 @@ abstract class $ChannelCopyWith<$Res> {
           String? viewCount,
       @JsonKey(name: 'clip_count')
           int? clipCount,
-      String? suborg,
+      @JsonKey(name: 'suborg')
+          String? subOrganization,
       String? banner,
       String? twitter,
       @JsonKey(toJson: Language.toStringStatic, fromJson: Language.fromString)
@@ -139,7 +141,7 @@ class _$ChannelCopyWithImpl<$Res, $Val extends Channel>
     Object? subscriberCount = freezed,
     Object? viewCount = freezed,
     Object? clipCount = freezed,
-    Object? suborg = freezed,
+    Object? subOrganization = freezed,
     Object? banner = freezed,
     Object? twitter = freezed,
     Object? lang = null,
@@ -197,9 +199,9 @@ class _$ChannelCopyWithImpl<$Res, $Val extends Channel>
           ? _value.clipCount
           : clipCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      suborg: freezed == suborg
-          ? _value.suborg
-          : suborg // ignore: cast_nullable_to_non_nullable
+      subOrganization: freezed == subOrganization
+          ? _value.subOrganization
+          : subOrganization // ignore: cast_nullable_to_non_nullable
               as String?,
       banner: freezed == banner
           ? _value.banner
@@ -289,7 +291,8 @@ abstract class _$$_ChannelCopyWith<$Res> implements $ChannelCopyWith<$Res> {
           String? viewCount,
       @JsonKey(name: 'clip_count')
           int? clipCount,
-      String? suborg,
+      @JsonKey(name: 'suborg')
+          String? subOrganization,
       String? banner,
       String? twitter,
       @JsonKey(toJson: Language.toStringStatic, fromJson: Language.fromString)
@@ -336,7 +339,7 @@ class __$$_ChannelCopyWithImpl<$Res>
     Object? subscriberCount = freezed,
     Object? viewCount = freezed,
     Object? clipCount = freezed,
-    Object? suborg = freezed,
+    Object? subOrganization = freezed,
     Object? banner = freezed,
     Object? twitter = freezed,
     Object? lang = null,
@@ -394,9 +397,9 @@ class __$$_ChannelCopyWithImpl<$Res>
           ? _value.clipCount
           : clipCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      suborg: freezed == suborg
-          ? _value.suborg
-          : suborg // ignore: cast_nullable_to_non_nullable
+      subOrganization: freezed == subOrganization
+          ? _value.subOrganization
+          : subOrganization // ignore: cast_nullable_to_non_nullable
               as String?,
       banner: freezed == banner
           ? _value.banner
@@ -482,7 +485,8 @@ class _$_Channel implements _Channel {
           this.viewCount,
       @JsonKey(name: 'clip_count')
           this.clipCount,
-      this.suborg,
+      @JsonKey(name: 'suborg')
+          this.subOrganization,
       this.banner,
       this.twitter,
       @JsonKey(toJson: Language.toStringStatic, fromJson: Language.fromString)
@@ -541,7 +545,8 @@ class _$_Channel implements _Channel {
   @JsonKey(name: 'clip_count')
   final int? clipCount;
   @override
-  final String? suborg;
+  @JsonKey(name: 'suborg')
+  final String? subOrganization;
   @override
   final String? banner;
   @override
@@ -602,7 +607,7 @@ class _$_Channel implements _Channel {
 
   @override
   String toString() {
-    return 'Channel(id: $id, name: $name, englishName: $englishName, type: $type, photo: $photo, organization: $organization, videoCount: $videoCount, subscriberCount: $subscriberCount, viewCount: $viewCount, clipCount: $clipCount, suborg: $suborg, banner: $banner, twitter: $twitter, lang: $lang, inactive: $inactive, description: $description, publishedAt: $publishedAt, crawledAt: $crawledAt, commentsCrawledAt: $commentsCrawledAt, updatedAt: $updatedAt, ytUploadsId: $ytUploadsId, topTopics: $topTopics, ytHandle: $ytHandle, twitch: $twitch, ytNameHistory: $ytNameHistory, group: $group)';
+    return 'Channel(id: $id, name: $name, englishName: $englishName, type: $type, photo: $photo, organization: $organization, videoCount: $videoCount, subscriberCount: $subscriberCount, viewCount: $viewCount, clipCount: $clipCount, subOrganization: $subOrganization, banner: $banner, twitter: $twitter, lang: $lang, inactive: $inactive, description: $description, publishedAt: $publishedAt, crawledAt: $crawledAt, commentsCrawledAt: $commentsCrawledAt, updatedAt: $updatedAt, ytUploadsId: $ytUploadsId, topTopics: $topTopics, ytHandle: $ytHandle, twitch: $twitch, ytNameHistory: $ytNameHistory, group: $group)';
   }
 
   @override
@@ -626,7 +631,8 @@ class _$_Channel implements _Channel {
                 other.viewCount == viewCount) &&
             (identical(other.clipCount, clipCount) ||
                 other.clipCount == clipCount) &&
-            (identical(other.suborg, suborg) || other.suborg == suborg) &&
+            (identical(other.subOrganization, subOrganization) ||
+                other.subOrganization == subOrganization) &&
             (identical(other.banner, banner) || other.banner == banner) &&
             (identical(other.twitter, twitter) || other.twitter == twitter) &&
             (identical(other.lang, lang) || other.lang == lang) &&
@@ -667,7 +673,7 @@ class _$_Channel implements _Channel {
         subscriberCount,
         viewCount,
         clipCount,
-        suborg,
+        subOrganization,
         banner,
         twitter,
         lang,
@@ -717,7 +723,8 @@ abstract class _Channel implements Channel {
           final String? viewCount,
       @JsonKey(name: 'clip_count')
           final int? clipCount,
-      final String? suborg,
+      @JsonKey(name: 'suborg')
+          final String? subOrganization,
       final String? banner,
       final String? twitter,
       @JsonKey(toJson: Language.toStringStatic, fromJson: Language.fromString)
@@ -772,7 +779,8 @@ abstract class _Channel implements Channel {
   @JsonKey(name: 'clip_count')
   int? get clipCount;
   @override
-  String? get suborg;
+  @JsonKey(name: 'suborg')
+  String? get subOrganization;
   @override
   String? get banner;
   @override

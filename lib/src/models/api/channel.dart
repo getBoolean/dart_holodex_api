@@ -20,7 +20,7 @@ class Channel with _$Channel {
     @JsonKey(name: 'subscriber_count') String? subscriberCount,
     @JsonKey(name: 'view_count') String? viewCount,
     @JsonKey(name: 'clip_count') int? clipCount,
-    String? suborg,
+    @JsonKey(name: 'suborg') String? subOrganization,
     String? banner,
     String? twitter,
     @JsonKey(toJson: Language.toStringStatic, fromJson: Language.fromString) required Language lang,
