@@ -30,7 +30,7 @@ class VideoFull with _$VideoFull {
     /// Duration of the video in seconds
     int? duration,
     @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
-    required VideoStatus status,
+        required VideoStatus status,
 
     /// Included when includes contains 'live_info'
     @JsonKey(name: 'start_scheduled') String? startScheduled,
@@ -62,5 +62,6 @@ class VideoFull with _$VideoFull {
     @Default([]) List<Song> songs,
   }) = _VideoFull;
 
-  factory VideoFull.fromJson(Map<String, dynamic> json) => _$VideoFullFromJson(json);
+  factory VideoFull.fromJson(Map<String, dynamic> json) =>
+      _$VideoFullFromJson(json);
 }

@@ -63,14 +63,17 @@ void main(List<String> arguments) async {
   );
 
   final PaginatedVideos videoList = await holodexClient.getVideos(videoFilter);
-  print('Videos: ${videoList.items.length}\nTotal Videos: ${videoList.total}\n');
+  print(
+      'Videos: ${videoList.items.length}\nTotal Videos: ${videoList.total}\n');
 
   // Get live videos
   final liveVideoFilter = VideoFilter(includes: [Includes.channelStats]);
-  final PaginatedVideos liveVideos = await holodexClient.getLiveVideos(liveVideoFilter);
+  final PaginatedVideos liveVideos =
+      await holodexClient.getLiveVideos(liveVideoFilter);
   print('Live videos: ${liveVideos.items.length}\n');
 
-  final ceresFauna = await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');
+  final ceresFauna =
+      await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');
   print('Requested Channel Name: ${ceresFauna.name}\n');
 
   final channelFilter = const ChannelFilter(
@@ -83,15 +86,16 @@ void main(List<String> arguments) async {
   final List<Channel> channels = await holodexClient.getChannels(channelFilter);
   print('Atelier Live Channels: ${channels.length}\n');
 
-  final List<Video> quickLiveVideos = await holodexClient.getLiveVideosFromChannelsQuickly([
+  final List<Video> quickLiveVideos =
+      await holodexClient.getLiveVideosFromChannelsQuickly([
     'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
     'UCZlDXzGoo7d44bwdNObFacg', // Kanata
     'UCqm3BQLlJfvkTsX_hvm0UmA' // Watame
   ]);
   print('Requested Live Videos From Channels: ${quickLiveVideos.length}\n');
 
-  final PaginatedVideos matsuriClips =
-      await holodexClient.getVideosRelatedToChannel('UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
+  final PaginatedVideos matsuriClips = await holodexClient
+      .getVideosRelatedToChannel('UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
           type: VideoSearchType.clips);
   print('Clips including Matsuri: ${matsuriClips.total}');
   print('Returned clips including Matsuri: ${matsuriClips.items.length}\n');

@@ -19,5 +19,6 @@ class ChannelMin with _$ChannelMin {
     @JsonKey(name: 'clip_count') int? clipCount,
   }) = _ChannelMin;
 
-  factory ChannelMin.fromJson(Map<String, dynamic> json) => _$ChannelMinFromJson(json);
+  factory ChannelMin.fromJson(Map<String, dynamic> json) =>
+      _$ChannelMinFromJson(json);
 }

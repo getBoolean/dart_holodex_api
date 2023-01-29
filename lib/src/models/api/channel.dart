@@ -24,7 +24,8 @@ class Channel with _$Channel {
     @JsonKey(name: 'suborg') String? subOrganization,
     String? banner,
     String? twitter,
-    @JsonKey(toJson: Language.toStringStatic, fromJson: Language.fromString) required Language lang,
+    @JsonKey(toJson: Language.toStringStatic, fromJson: Language.fromString)
+        required Language lang,
     bool? inactive,
     String? description,
     @JsonKey(name: 'published_at') String? publishedAt,
@@ -39,7 +40,8 @@ class Channel with _$Channel {
     String? group,
   }) = _Channel;
 
-  factory Channel.fromJson(Map<String, dynamic> json) => _$ChannelFromJson(json);
+  factory Channel.fromJson(Map<String, dynamic> json) =>
+      _$ChannelFromJson(json);
 
   factory Channel.fromString(String json) => Channel.fromJson(jsonDecode(json));
 }

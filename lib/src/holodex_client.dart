@@ -78,7 +78,8 @@ class HolodexClient {
       paginated: false,
     ),
   ]) async {
-    final languages = filter.languages.isEmpty ? [Language.all] : filter.languages;
+    final languages =
+        filter.languages.isEmpty ? [Language.all] : filter.languages;
 
     // Create the params list
     final Map<String, dynamic> params = {};
@@ -155,7 +156,8 @@ class HolodexClient {
       paginated: false,
     ),
   ]) async {
-    final languages = filter.languages.isEmpty ? [Language.all] : filter.languages;
+    final languages =
+        filter.languages.isEmpty ? [Language.all] : filter.languages;
     // Create the params list
     final Map<String, dynamic> params = {};
 
@@ -224,7 +226,8 @@ class HolodexClient {
   ///
   /// - `channelId` ID of the Youtube Channel that is being queried
   Future<Channel> getChannelFromId(String channelId) async {
-    final Response response = await get(path: '${_Constants.channelsPath}/$channelId');
+    final Response response =
+        await get(path: '${_Constants.channelsPath}/$channelId');
 
     return Channel.fromString(response.body);
   }
@@ -246,7 +249,8 @@ class HolodexClient {
       sort: [ChannelSort.organization],
     ),
   ]) async {
-    final languages = filter.languages.isEmpty ? [Language.all] : filter.languages;
+    final languages =
+        filter.languages.isEmpty ? [Language.all] : filter.languages;
 
     // Create the params list
     final Map<String, dynamic> params = {};
@@ -382,7 +386,8 @@ class HolodexClient {
     required VideoSearchType type,
     ChannelVideoFilter filter = const ChannelVideoFilter(),
   }) async {
-    final languages = filter.languages.isEmpty ? [Language.all] : filter.languages;
+    final languages =
+        filter.languages.isEmpty ? [Language.all] : filter.languages;
 
     final Map<String, dynamic> params = {};
 
@@ -396,8 +401,9 @@ class HolodexClient {
     _addLanguages(languages, params);
     _addPaginated(filter.paginated, params);
 
-    final response =
-        await get(path: '${_Constants.channelsPath}/$channelId/${type.code}', params: params);
+    final response = await get(
+        path: '${_Constants.channelsPath}/$channelId/${type.code}',
+        params: params);
 
     if (filter.paginated) {
       // Grab total and return with it
@@ -406,7 +412,8 @@ class HolodexClient {
     }
 
     final List<dynamic> list = jsonDecode(response.body);
-    return PaginatedVideos(items: list.map((video) => VideoFull.fromJson(video)).toList());
+    return PaginatedVideos(
+        items: list.map((video) => VideoFull.fromJson(video)).toList());
   }
 
   /// Retrieves a video, optionally with comments and recommended videos
@@ -427,7 +434,8 @@ class HolodexClient {
     _addLanguages(_languages, params);
     _addCommentsFlag(includeTimestampComments, params);
 
-    final response = await get(path: '${_Constants.videosPath}/$videoId', params: params);
+    final response =
+        await get(path: '${_Constants.videosPath}/$videoId', params: params);
     final body = jsonDecode(response.body);
     return VideoFull.fromJson(body);
   }
@@ -504,7 +512,8 @@ class HolodexClient {
     }
 
     final List<dynamic> list = jsonDecode(response.body);
-    return PaginatedVideos(items: list.map((video) => VideoFull.fromJson(video)).toList());
+    return PaginatedVideos(
+        items: list.map((video) => VideoFull.fromJson(video)).toList());
   }
 
   /// Flexible endpoint to search for comments in videos fufilling multiple conditions.
@@ -620,7 +629,8 @@ class HolodexClient {
   void _addStatusList(List<VideoStatus> statuses, Map<String, dynamic> map) {
     if (statuses.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> statusesStringList = statuses.map((status) => status.code).toList();
+      final List<String> statusesStringList =
+          statuses.map((status) => status.code).toList();
       // Join the array with commas
       String statusesConcatenated = statusesStringList.join(',');
       map.addAll({'status': statusesConcatenated});
@@ -647,7 +657,8 @@ class HolodexClient {
     }
   }
 
-  void _addSingleOrganization(Organization? organization, Map<String, dynamic> map) {
+  void _addSingleOrganization(
+      Organization? organization, Map<String, dynamic> map) {
     if (organization != null) {
       map.addAll({'org': organization.code});
     }
@@ -659,7 +670,8 @@ class HolodexClient {
     }
   }
 
-  void _addMentionedChannelId(String? mentionedChannelId, Map<String, dynamic> map) {
+  void _addMentionedChannelId(
+      String? mentionedChannelId, Map<String, dynamic> map) {
     if (mentionedChannelId != null) {
       map.addAll({'mentioned_channel_id': mentionedChannelId});
     }
@@ -674,7 +686,8 @@ class HolodexClient {
   void _addIncludes(List<Includes> includes, Map<String, dynamic> map) {
     if (includes.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> includesStringList = includes.map((included) => included.code).toList();
+      final List<String> includesStringList =
+          includes.map((included) => included.code).toList();
       // Join the array with commas
       String includesConcatenated = includesStringList.join(',');
       map.addAll({'include': includesConcatenated});
@@ -684,7 +697,8 @@ class HolodexClient {
   void _addLanguages(List<Language> lang, Map<String, dynamic> map) {
     if (lang.isNotEmpty) {
       // Make new list with the values as string
-      final List<String> langStringList = lang.map((l) => l.toLanguageTag()).toList();
+      final List<String> langStringList =
+          lang.map((l) => l.toLanguageTag()).toList();
       // Join the array with commas
       String languagesConcat = langStringList.join(',');
       map.addAll({'lang': languagesConcat});
