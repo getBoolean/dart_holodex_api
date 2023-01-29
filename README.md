@@ -17,7 +17,7 @@ and the Flutter guide for
 [![codecov](https://codecov.io/gh/getBoolean/dart_holodex_api/branch/main/graph/badge.svg?token=MDG6GG8RCE)](https://codecov.io/gh/getBoolean/dart_holodex_api)
 [![License](https://img.shields.io/github/license/getBoolean/dart_holodex_api)](https://github.com/getBoolean/dart_holodex_api/blob/main/LICENSE)
 
-A Dart wrapper for Holodex API v2
+A thin unofficial Dart client for Holodex API v2.
 
 <!-- markdownlint-enable MD041 -->
 
