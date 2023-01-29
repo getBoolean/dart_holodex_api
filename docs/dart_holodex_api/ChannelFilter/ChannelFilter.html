@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the ChannelFilter constructor from Class ChannelFilter from the dart_holodex_api library, for the Dart programming language.">
+  <title>ChannelFilter constructor - ChannelFilter - dart_holodex_api library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">dart_holodex_api</a></li>
+    <li><a href="../../dart_holodex_api/dart_holodex_api-library.html">dart_holodex_api</a></li>
+    <li><a href="../../dart_holodex_api/ChannelFilter-class.html">ChannelFilter</a></li>
+    <li class="self-crumb">ChannelFilter const constructor</li>
+  </ol>
+  <div class="self-name">ChannelFilter</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span class="material-symbols-outlined">
+        brightness_4
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-constructor">ChannelFilter</span> constructor 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      const
+      <span class="name ">ChannelFilter</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-languages">{<span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span> = <span class="default-value">const []</span>, </span></li>
+<li><span class="parameter" id="-param-limit"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">25</span>, </span></li>
+<li><span class="parameter" id="-param-offset"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span> = <span class="default-value">0</span>, </span></li>
+<li><span class="parameter" id="-param-type"><span class="type-annotation"><a href="../../dart_holodex_api/ChannelType.html">ChannelType</a>?</span> <span class="parameter-name">type</span>, </span></li>
+<li><span class="parameter" id="-param-sort"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/ChannelSort.html">ChannelSort</a></span>&gt;</span></span> <span class="parameter-name">sort</span> = <span class="default-value">const &lt;ChannelSort&gt;[ChannelSort.organization]</span>, </span></li>
+<li><span class="parameter" id="-param-order"><span class="type-annotation"><a href="../../dart_holodex_api/Order.html">Order</a></span> <span class="parameter-name">order</span> = <span class="default-value">Order.ascending</span>, </span></li>
+<li><span class="parameter" id="-param-organization"><span class="type-annotation"><a href="../../dart_holodex_api/Organization.html">Organization</a>?</span> <span class="parameter-name">organization</span>}</span></li>
+</ol>)
+    </section>
+
+    
+<section class="desc markdown">
+  <p>Arguments</p>
+<ul>
+<li><code>languages</code> List of Language enum to filter channels/clips. Official streams do not follow this parameter</li>
+<li><code>limit</code> Result limit. Max of 50.</li>
+<li><code>offset</code> Offset results</li>
+<li><code>type</code> Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.</li>
+<li><code>sort</code> Column to sort on</li>
+<li><code>order</code> ASC or DESC order, default asc.</li>
+<li><code>organization</code> If set, filter for Vtuber belonging to a specific org</li>
+</ul>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">const ChannelFilter({
+  this.languages = const [],
+  this.limit = 25,
+  this.offset = 0,
+  this.type,
+  this.sort = const &lt;ChannelSort&gt;[ChannelSort.organization],
+  this.order = Order.ascending,
+  this.organization,
+}) : assert(limit &lt;= 50, &#39;The limit cannot be greater than 50&#39;);</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">dart_holodex_api</a></li>
+  <li><a href="../../dart_holodex_api/dart_holodex_api-library.html">dart_holodex_api</a></li>
+  <li><a href="../../dart_holodex_api/ChannelFilter-class.html">ChannelFilter</a></li>
+  <li class="self-crumb">ChannelFilter const constructor</li>
+</ol>
+
+
+    <h5>ChannelFilter class</h5>
+    <ol>
+
+        <li class="section-title"><a href="../../dart_holodex_api/ChannelFilter-class.html#constructors">Constructors</a></li>
+          <li><a href="../../dart_holodex_api/ChannelFilter/ChannelFilter.html">ChannelFilter</a></li>
+
+
+        <li class="section-title">
+          <a href="../../dart_holodex_api/ChannelFilter-class.html#instance-properties">Properties</a>
+        </li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/hashCode.html">hashCode</a></li>
+          <li><a href="../../dart_holodex_api/ChannelFilter/languages.html">languages</a></li>
+          <li><a href="../../dart_holodex_api/ChannelFilter/limit.html">limit</a></li>
+          <li><a href="../../dart_holodex_api/ChannelFilter/offset.html">offset</a></li>
+          <li><a href="../../dart_holodex_api/ChannelFilter/order.html">order</a></li>
+          <li><a href="../../dart_holodex_api/ChannelFilter/organization.html">organization</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/runtimeType.html">runtimeType</a></li>
+          <li><a href="../../dart_holodex_api/ChannelFilter/sort.html">sort</a></li>
+          <li><a href="../../dart_holodex_api/ChannelFilter/type.html">type</a></li>
+
+        <li class="section-title inherited"><a href="../../dart_holodex_api/ChannelFilter-class.html#instance-methods">Methods</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/toString.html">toString</a></li>
+
+        <li class="section-title inherited"><a href="../../dart_holodex_api/ChannelFilter-class.html#operators">Operators</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-left-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    dart_holodex_api
+      0.3.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+
