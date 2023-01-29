@@ -46,17 +46,19 @@ enum VideoStatus with EnumWithCode {
 
   static String toJson(VideoStatus status) => status.code;
 
-  static VideoStatus fromJson(String? status) => VideoStatus.values.byCode(status ?? '') ?? VideoStatus.missing;
+  static VideoStatus fromJson(String? status) =>
+      VideoStatus.values.byCode(status ?? '') ?? VideoStatus.missing;
 }
 
 enum ChannelType with EnumWithCode {
-  vtuber('vtuber'),
-  subber('subber');
+  vtuber,
+  subber;
 
-  /// The code used by Holodex
+  const ChannelType();
+
+  /// Alias for [name]
   @override
-  final String code;
-  const ChannelType(this.code);
+  String get code => name;
 }
 
 extension LanguageValues on List<Language> {

@@ -645,7 +645,7 @@ class HolodexClient {
 
   void _addChannelType(ChannelType? channelType, Map<String, dynamic> map) {
     if (channelType != null) {
-      map.addAll({'type': channelType.code});
+      map.addAll({'type': channelType.name});
     }
   }
 
