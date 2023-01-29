@@ -5,18 +5,18 @@
 - **Breaking**: `HolodexClient` no longer implements `BaseHolodexClient`
 - **Breaking**: Removed `BaseHolodexClient`
 - **Breaking**: Renamed `HolodexClient` constructor parameter `httpClient` to `client`
-- **Breaking**: Changed `HolodexClient::searchComments` return type to `PaginatedVideos`
-- **Breaking**: Changed `HolodexClient::getVideos` parameters to an optional `VideoFilter`
-- **Breaking**: Changed `HolodexClient::getLiveVideos` parameters to an optional `VideoFilter`
-- **Breaking**: Changed `HolodexClient::getChannels` parameters to an optional `ChannelFilter`
-- **Breaking**: Changed `HolodexClient::getVideosRelatedToChannel` parameters to an optional `ChannelVideoFilter`
-- **Breaking**: Changed `HolodexClient::getVTuberClips` parameters to an optional `ChannelVideoFilter`
-- **Breaking**: Changed `HolodexClient::getChannelVideos` parameters to an optional `ChannelVideoFilter`
-- **Breaking**: Changed `HolodexClient::getVTuberCollabs` parameters to an optional `ChannelVideoFilter`
-- **Breaking**: Renamed `HolodexClient::getVideoMetadata` parameter `timestampComments` to `includeTimestampComments`
-- **Breaking**: Renamed `HolodexClient::getVideoMetadata` parameter `recommendationLanguages` to `languages`
-- **Breaking**: Changed `HolodexClient::searchVideos` parameters to an optional `SearchFilter`
-- **Breaking**: Changed `HolodexClient::searchComments` parameters to an optional `SearchFilter`
+- **Breaking**: Changed `HolodexClient.searchComments` return type to `PaginatedVideos`
+- **Breaking**: Changed `HolodexClient.getVideos` parameters to an optional `VideoFilter`
+- **Breaking**: Changed `HolodexClient.getLiveVideos` parameters to an optional `VideoFilter`
+- **Breaking**: Changed `HolodexClient.getChannels` parameters to an optional `ChannelFilter`
+- **Breaking**: Changed `HolodexClient.getVideosRelatedToChannel` parameters to an optional `ChannelVideoFilter`
+- **Breaking**: Changed `HolodexClient.getVTuberClips` parameters to an optional `ChannelVideoFilter`
+- **Breaking**: Changed `HolodexClient.getChannelVideos` parameters to an optional `ChannelVideoFilter`
+- **Breaking**: Changed `HolodexClient.getVTuberCollabs` parameters to an optional `ChannelVideoFilter`
+- **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `timestampComments` to `includeTimestampComments`
+- **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `recommendationLanguages` to `languages`
+- **Breaking**: Changed `HolodexClient.searchVideos` parameters to an optional `SearchFilter`
+- **Breaking**: Changed `HolodexClient.searchComments` parameters to an optional `SearchFilter`
 - **Breaking**: Removed `VideoWithCommentsList`
 - **Breaking**: Removed `VideoWithComments`, use `VideoFull` instead
 - **Breaking**: Removed `VideoMetadata`, use `VideoFull` instead
