@@ -247,32 +247,8 @@ class HolodexClient {
       sort: [ChannelSort.organization],
     ),
   ]) async {
-    final languages =
-        filter.languages.isEmpty ? [Language.all] : filter.languages;
-
-    // Create the params list
-    final Map<String, dynamic> params = {};
-
-    // Add the items with default values (they can't be null)
-    params.addAll({
-      'limit': '${filter.limit}',
-      'offset': '${filter.offset}',
-      'order': filter.order.code,
-    });
-
-    _addChannelSort(filter.sort, params);
-
-    // Add the languages to filter by
-    _addLanguages(languages, params);
-
-    // Add the organization param
-    _addSingleOrganization(filter.organization, params);
-
-    // Add the organization param
-    _addChannelType(filter.type, params);
-
+    final Map<String, dynamic> params = filter.toJson();
     final response = await get(path: _Constants.channelsPath, params: params);
-
     final List<dynamic> list = jsonDecode(response.body);
 
     return list.map((channel) => Channel.fromJson(channel)).toList();
