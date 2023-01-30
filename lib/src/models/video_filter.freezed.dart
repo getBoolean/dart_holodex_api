@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-VideoFilter _$VideoFilterFromJson(Map<String, dynamic> json) {
-  return _VideoFilter.fromJson(json);
-}
-
 /// @nodoc
 mixin _$VideoFilter {
   /// Filter by video uploader channel ID
@@ -31,7 +27,7 @@ mixin _$VideoFilter {
   List<Includes> get includes => throw _privateConstructorUsedError;
 
   /// Filter by the `Language`
-  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+  @JsonKey(toJson: concatLanguageList)
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Limit the number of results returned. Maximum value of 50
@@ -82,17 +78,13 @@ abstract class $VideoFilterCopyWith<$Res> {
       _$VideoFilterCopyWithImpl<$Res, VideoFilter>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'channel_id')
-          String? channelId,
+      {@JsonKey(name: 'channel_id') String? channelId,
       List<String> ids,
       List<Includes> includes,
-      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-          List<Language> languages,
+      @JsonKey(toJson: concatLanguageList) List<Language> languages,
       int limit,
-      @JsonKey(name: 'max_upcoming_hours')
-          int? maxUpcomingHours,
-      @JsonKey(name: 'mentioned_channel_id')
-          String? mentionedChannelId,
+      @JsonKey(name: 'max_upcoming_hours') int? maxUpcomingHours,
+      @JsonKey(name: 'mentioned_channel_id') String? mentionedChannelId,
       int offset,
       Order order,
       List<String> organization,
@@ -206,17 +198,13 @@ abstract class _$$_VideoFilterCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'channel_id')
-          String? channelId,
+      {@JsonKey(name: 'channel_id') String? channelId,
       List<String> ids,
       List<Includes> includes,
-      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-          List<Language> languages,
+      @JsonKey(toJson: concatLanguageList) List<Language> languages,
       int limit,
-      @JsonKey(name: 'max_upcoming_hours')
-          int? maxUpcomingHours,
-      @JsonKey(name: 'mentioned_channel_id')
-          String? mentionedChannelId,
+      @JsonKey(name: 'max_upcoming_hours') int? maxUpcomingHours,
+      @JsonKey(name: 'mentioned_channel_id') String? mentionedChannelId,
       int offset,
       Order order,
       List<String> organization,
@@ -320,14 +308,14 @@ class __$$_VideoFilterCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class _$_VideoFilter extends _VideoFilter {
   const _$_VideoFilter(
       {@JsonKey(name: 'channel_id')
           this.channelId,
       final List<String> ids = const [],
       final List<Includes> includes = const [],
-      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+      @JsonKey(toJson: concatLanguageList)
           final List<Language> languages = const [],
       this.limit = 25,
       @JsonKey(name: 'max_upcoming_hours')
@@ -350,9 +338,6 @@ class _$_VideoFilter extends _VideoFilter {
         _sort = sort,
         _status = status,
         super._();
-
-  factory _$_VideoFilter.fromJson(Map<String, dynamic> json) =>
-      _$$_VideoFilterFromJson(json);
 
   /// Filter by video uploader channel ID
   @override
@@ -388,7 +373,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Filter by the `Language`
   @override
-  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+  @JsonKey(toJson: concatLanguageList)
   List<Language> get languages {
     if (_languages is EqualUnmodifiableListView) return _languages;
     // ignore: implicit_dynamic_type
@@ -538,17 +523,13 @@ class _$_VideoFilter extends _VideoFilter {
 
 abstract class _VideoFilter extends VideoFilter {
   const factory _VideoFilter(
-      {@JsonKey(name: 'channel_id')
-          final String? channelId,
+      {@JsonKey(name: 'channel_id') final String? channelId,
       final List<String> ids,
       final List<Includes> includes,
-      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-          final List<Language> languages,
+      @JsonKey(toJson: concatLanguageList) final List<Language> languages,
       final int limit,
-      @JsonKey(name: 'max_upcoming_hours')
-          final int? maxUpcomingHours,
-      @JsonKey(name: 'mentioned_channel_id')
-          final String? mentionedChannelId,
+      @JsonKey(name: 'max_upcoming_hours') final int? maxUpcomingHours,
+      @JsonKey(name: 'mentioned_channel_id') final String? mentionedChannelId,
       final int offset,
       final Order order,
       final List<String> organization,
@@ -558,9 +539,6 @@ abstract class _VideoFilter extends VideoFilter {
       final String? topic,
       final VideoType? type}) = _$_VideoFilter;
   const _VideoFilter._() : super._();
-
-  factory _VideoFilter.fromJson(Map<String, dynamic> json) =
-      _$_VideoFilter.fromJson;
 
   @override
 
@@ -578,7 +556,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by the `Language`
-  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+  @JsonKey(toJson: concatLanguageList)
   List<Language> get languages;
   @override
 

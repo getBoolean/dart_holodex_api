@@ -697,12 +697,7 @@ class HolodexClient {
 
   void _addLanguages(List<Language> lang, Map<String, dynamic> map) {
     if (lang.isNotEmpty) {
-      // Make new list with the values as string
-      final List<String> langStringList =
-          lang.map((l) => l.toLanguageTag()).toList();
-      // Join the array with commas
-      final languagesConcat = langStringList.join(',');
-      map.addAll({'lang': languagesConcat});
+      map.addAll({'lang': lang.concat});
     }
   }
 

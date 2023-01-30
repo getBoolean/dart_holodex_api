@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-SearchFilter _$SearchFilterFromJson(Map<String, dynamic> json) {
-  return _SearchFilter.fromJson(json);
-}
-
 /// @nodoc
 mixin _$SearchFilter {
   /// Sort by newest or oldest
@@ -25,7 +21,7 @@ mixin _$SearchFilter {
 
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
-  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+  @JsonKey(toJson: concatLanguageList)
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Target types of videos
@@ -66,8 +62,7 @@ abstract class $SearchFilterCopyWith<$Res> {
   @useResult
   $Res call(
       {SearchSort searchSort,
-      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-          List<Language> languages,
+      @JsonKey(toJson: concatLanguageList) List<Language> languages,
       List<SearchTarget> searchTargets,
       List<String> topics,
       List<String> videoChannels,
@@ -151,8 +146,7 @@ abstract class _$$_SearchFilterCopyWith<$Res>
   @useResult
   $Res call(
       {SearchSort searchSort,
-      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-          List<Language> languages,
+      @JsonKey(toJson: concatLanguageList) List<Language> languages,
       List<SearchTarget> searchTargets,
       List<String> topics,
       List<String> videoChannels,
@@ -225,11 +219,11 @@ class __$$_SearchFilterCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class _$_SearchFilter extends _SearchFilter {
   const _$_SearchFilter(
       {this.searchSort = SearchSort.newest,
-      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+      @JsonKey(toJson: concatLanguageList)
           final List<Language> languages = const [],
       final List<SearchTarget> searchTargets = const [
         SearchTarget.clip,
@@ -249,9 +243,6 @@ class _$_SearchFilter extends _SearchFilter {
         _organizations = organizations,
         super._();
 
-  factory _$_SearchFilter.fromJson(Map<String, dynamic> json) =>
-      _$$_SearchFilterFromJson(json);
-
   /// Sort by newest or oldest
   @override
   @JsonKey()
@@ -264,7 +255,7 @@ class _$_SearchFilter extends _SearchFilter {
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
   @override
-  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+  @JsonKey(toJson: concatLanguageList)
   List<Language> get languages {
     if (_languages is EqualUnmodifiableListView) return _languages;
     // ignore: implicit_dynamic_type
@@ -398,8 +389,7 @@ class _$_SearchFilter extends _SearchFilter {
 abstract class _SearchFilter extends SearchFilter {
   const factory _SearchFilter(
       {final SearchSort searchSort,
-      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-          final List<Language> languages,
+      @JsonKey(toJson: concatLanguageList) final List<Language> languages,
       final List<SearchTarget> searchTargets,
       final List<String> topics,
       final List<String> videoChannels,
@@ -409,9 +399,6 @@ abstract class _SearchFilter extends SearchFilter {
       final int limit}) = _$_SearchFilter;
   const _SearchFilter._() : super._();
 
-  factory _SearchFilter.fromJson(Map<String, dynamic> json) =
-      _$_SearchFilter.fromJson;
-
   @override
 
   /// Sort by newest or oldest
@@ -420,7 +407,7 @@ abstract class _SearchFilter extends SearchFilter {
 
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
-  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+  @JsonKey(toJson: concatLanguageList)
   List<Language> get languages;
   @override
 

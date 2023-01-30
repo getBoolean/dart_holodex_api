@@ -14,17 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ChannelVideoFilter _$ChannelVideoFilterFromJson(Map<String, dynamic> json) {
-  return _ChannelVideoFilter.fromJson(json);
-}
-
 /// @nodoc
 mixin _$ChannelVideoFilter {
   /// Request extra data be included in the results. They are not guarenteed to be returned.
   List<Includes> get includes => throw _privateConstructorUsedError;
 
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+  @JsonKey(toJson: concatLanguageList)
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Result limit. Max of 50.
@@ -50,8 +46,7 @@ abstract class $ChannelVideoFilterCopyWith<$Res> {
   @useResult
   $Res call(
       {List<Includes> includes,
-      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-          List<Language> languages,
+      @JsonKey(toJson: concatLanguageList) List<Language> languages,
       int limit,
       int offset,
       bool paginated});
@@ -111,8 +106,7 @@ abstract class _$$_ChannelVideoFilterCopyWith<$Res>
   @useResult
   $Res call(
       {List<Includes> includes,
-      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-          List<Language> languages,
+      @JsonKey(toJson: concatLanguageList) List<Language> languages,
       int limit,
       int offset,
       bool paginated});
@@ -161,11 +155,11 @@ class __$$_ChannelVideoFilterCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class _$_ChannelVideoFilter extends _ChannelVideoFilter {
   const _$_ChannelVideoFilter(
       {final List<Includes> includes = const [],
-      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+      @JsonKey(toJson: concatLanguageList)
           final List<Language> languages = const [],
       this.limit = 25,
       this.offset = 0,
@@ -174,9 +168,6 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
         _includes = includes,
         _languages = languages,
         super._();
-
-  factory _$_ChannelVideoFilter.fromJson(Map<String, dynamic> json) =>
-      _$$_ChannelVideoFilterFromJson(json);
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
   final List<Includes> _includes;
@@ -195,7 +186,7 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
 
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
   @override
-  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+  @JsonKey(toJson: concatLanguageList)
   List<Language> get languages {
     if (_languages is EqualUnmodifiableListView) return _languages;
     // ignore: implicit_dynamic_type
@@ -264,15 +255,11 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
 abstract class _ChannelVideoFilter extends ChannelVideoFilter {
   const factory _ChannelVideoFilter(
       {final List<Includes> includes,
-      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-          final List<Language> languages,
+      @JsonKey(toJson: concatLanguageList) final List<Language> languages,
       final int limit,
       final int offset,
       final bool paginated}) = _$_ChannelVideoFilter;
   const _ChannelVideoFilter._() : super._();
-
-  factory _ChannelVideoFilter.fromJson(Map<String, dynamic> json) =
-      _$_ChannelVideoFilter.fromJson;
 
   @override
 
@@ -281,7 +268,7 @@ abstract class _ChannelVideoFilter extends ChannelVideoFilter {
   @override
 
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+  @JsonKey(toJson: concatLanguageList)
   List<Language> get languages;
   @override
 

@@ -8,7 +8,7 @@ part 'channel_video_filter.freezed.dart';
 part 'channel_video_filter.g.dart';
 
 /// Filter the results returns by the Holodex API channel videos endpoints
-@freezed
+@Freezed(fromJson: false, toJson: true)
 class ChannelVideoFilter with _$ChannelVideoFilter {
   const ChannelVideoFilter._();
 
@@ -24,10 +24,7 @@ class ChannelVideoFilter with _$ChannelVideoFilter {
     @Default([]) List<Includes> includes,
 
     /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
-    @JsonKey(
-        toJson: languageListToStringList, fromJson: stringListToLanguageList)
-    @Default([])
-        List<Language> languages,
+    @JsonKey(toJson: concatLanguageList) @Default([]) List<Language> languages,
 
     /// Result limit. Max of 50.
     @Default(25) int limit,
@@ -38,14 +35,4 @@ class ChannelVideoFilter with _$ChannelVideoFilter {
     /// If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
     @Default(true) bool paginated,
   }) = _ChannelVideoFilter;
-
-  factory ChannelVideoFilter.fromJson(
-    Map<String, dynamic> json,
-  ) =>
-      _$ChannelVideoFilterFromJson(json);
-
-  factory ChannelVideoFilter.fromString(
-    String json,
-  ) =>
-      ChannelVideoFilter.fromJson(jsonDecode(json));
 }

@@ -6,47 +6,12 @@ part of 'video_filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_VideoFilter _$$_VideoFilterFromJson(Map<String, dynamic> json) =>
-    _$_VideoFilter(
-      channelId: json['channel_id'] as String?,
-      ids: (json['ids'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-          const [],
-      includes: (json['includes'] as List<dynamic>?)
-              ?.map((e) => $enumDecode(_$IncludesEnumMap, e))
-              .toList() ??
-          const [],
-      languages: json['languages'] == null
-          ? const []
-          : stringListToLanguageList(json['languages'] as List<String>),
-      limit: json['limit'] as int? ?? 25,
-      maxUpcomingHours: json['max_upcoming_hours'] as int?,
-      mentionedChannelId: json['mentioned_channel_id'] as String?,
-      offset: json['offset'] as int? ?? 0,
-      order: $enumDecodeNullable(_$OrderEnumMap, json['order']) ??
-          Order.descending,
-      organization: (json['organization'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-      paginated: json['paginated'] as bool? ?? false,
-      sort: (json['sort'] as List<dynamic>?)
-              ?.map((e) => $enumDecode(_$VideoSortEnumMap, e))
-              .toList() ??
-          const [VideoSort.availableAt],
-      status: (json['status'] as List<dynamic>?)
-              ?.map((e) => $enumDecode(_$VideoStatusEnumMap, e))
-              .toList() ??
-          const [],
-      topic: json['topic'] as String?,
-      type: $enumDecodeNullable(_$VideoTypeEnumMap, json['type']),
-    );
-
 Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) =>
     <String, dynamic>{
       'channel_id': instance.channelId,
       'ids': instance.ids,
       'includes': instance.includes.map((e) => _$IncludesEnumMap[e]!).toList(),
-      'languages': languageListToStringList(instance.languages),
+      'languages': concatLanguageList(instance.languages),
       'limit': instance.limit,
       'max_upcoming_hours': instance.maxUpcomingHours,
       'mentioned_channel_id': instance.mentionedChannelId,

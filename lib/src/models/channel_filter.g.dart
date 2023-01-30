@@ -6,27 +6,9 @@ part of 'channel_filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ChannelFilter _$$_ChannelFilterFromJson(Map<String, dynamic> json) =>
-    _$_ChannelFilter(
-      languages: json['languages'] == null
-          ? const []
-          : stringListToLanguageList(json['languages'] as List<String>),
-      limit: json['limit'] as int? ?? 25,
-      offset: json['offset'] as int? ?? 0,
-      type: $enumDecodeNullable(_$ChannelTypeEnumMap, json['type']),
-      sort: (json['sort'] as List<dynamic>?)
-              ?.map((e) => $enumDecode(_$ChannelSortEnumMap, e))
-              .toList() ??
-          const [ChannelSort.organization],
-      order:
-          $enumDecodeNullable(_$OrderEnumMap, json['order']) ?? Order.ascending,
-      organization:
-          $enumDecodeNullable(_$OrganizationEnumMap, json['organization']),
-    );
-
 Map<String, dynamic> _$$_ChannelFilterToJson(_$_ChannelFilter instance) =>
     <String, dynamic>{
-      'languages': languageListToStringList(instance.languages),
+      'languages': concatLanguageList(instance.languages),
       'limit': instance.limit,
       'offset': instance.offset,
       'type': _$ChannelTypeEnumMap[instance.type],

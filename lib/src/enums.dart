@@ -3,7 +3,7 @@ export 'enums/channel_type.dart';
 export 'enums/enum_with_code_extension.dart';
 export 'enums/includes.dart';
 export 'enums/language.dart'
-    hide languageListToStringList, stringListToLanguageList;
+    hide languageListToStringList, stringListToLanguageList, concatLanguageList;
 export 'enums/order.dart';
 export 'enums/organization.dart';
 export 'enums/search_sort.dart';

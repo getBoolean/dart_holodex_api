@@ -6,6 +6,9 @@ List<String> languageListToStringList(List<Language> languages) =>
 List<Language> stringListToLanguageList(List<String> languages) =>
     languages.map(Language.fromString).toList();
 
+String concatLanguageList(List<Language> languages) =>
+    languages.map((e) => e.toLanguageTag()).join(',');
+
 extension LanguageValues on List<Language> {
   Language byLocale(Locale locale) => Language.other(locale);
 
@@ -16,6 +19,10 @@ extension LanguageValues on List<Language> {
     }
     return Language.other(Locale.parse((tag)));
   }
+
+  List<String> toStringList() => languageListToStringList(this);
+
+  String get concat => concatLanguageList(this);
 }
 
 /// Holodex uses the BCP47 standard for language codes

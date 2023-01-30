@@ -12,7 +12,7 @@ part 'video_filter.freezed.dart';
 part 'video_filter.g.dart';
 
 /// Filter the results returns by the Holodex API `/videos` endpoint
-@freezed
+@Freezed(fromJson: false, toJson: true)
 class VideoFilter with _$VideoFilter {
   const VideoFilter._();
 
@@ -28,9 +28,7 @@ class VideoFilter with _$VideoFilter {
     @Default([]) List<Includes> includes,
 
     /// Filter by the `Language`
-    @Default([])
-    @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-        List<Language> languages,
+    @Default([]) @JsonKey(toJson: concatLanguageList) List<Language> languages,
 
     /// Limit the number of results returned. Maximum value of 50
     @Default(25) int limit,
@@ -65,14 +63,4 @@ class VideoFilter with _$VideoFilter {
     /// Filter by type of video, either clips or streams
     VideoType? type,
   }) = _VideoFilter;
-
-  factory VideoFilter.fromJson(
-    Map<String, dynamic> json,
-  ) =>
-      _$VideoFilterFromJson(json);
-
-  factory VideoFilter.fromString(
-    String json,
-  ) =>
-      VideoFilter.fromJson(jsonDecode(json));
 }

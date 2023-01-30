@@ -6,39 +6,10 @@ part of 'search_filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SearchFilter _$$_SearchFilterFromJson(Map<String, dynamic> json) =>
-    _$_SearchFilter(
-      searchSort:
-          $enumDecodeNullable(_$SearchSortEnumMap, json['searchSort']) ??
-              SearchSort.newest,
-      languages: json['languages'] == null
-          ? const []
-          : stringListToLanguageList(json['languages'] as List<String>),
-      searchTargets: (json['searchTargets'] as List<dynamic>?)
-              ?.map((e) => $enumDecode(_$SearchTargetEnumMap, e))
-              .toList() ??
-          const [SearchTarget.clip, SearchTarget.stream],
-      topics: (json['topics'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-      videoChannels: (json['videoChannels'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-      organizations: (json['organizations'] as List<dynamic>?)
-              ?.map((e) => $enumDecode(_$OrganizationEnumMap, e))
-              .toList() ??
-          const [],
-      paginated: json['paginated'] as bool? ?? true,
-      offset: json['offset'] as int? ?? 0,
-      limit: json['limit'] as int? ?? 25,
-    );
-
 Map<String, dynamic> _$$_SearchFilterToJson(_$_SearchFilter instance) =>
     <String, dynamic>{
       'searchSort': _$SearchSortEnumMap[instance.searchSort]!,
-      'languages': languageListToStringList(instance.languages),
+      'languages': concatLanguageList(instance.languages),
       'searchTargets':
           instance.searchTargets.map((e) => _$SearchTargetEnumMap[e]!).toList(),
       'topics': instance.topics,

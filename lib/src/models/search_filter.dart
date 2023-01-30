@@ -10,7 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'search_filter.freezed.dart';
 part 'search_filter.g.dart';
 
-@freezed
+@Freezed(fromJson: false, toJson: true)
 class SearchFilter with _$SearchFilter {
   const SearchFilter._();
 
@@ -21,10 +21,7 @@ class SearchFilter with _$SearchFilter {
 
     /// If set, will filter clips to only show clips with these languages + all vtuber streams
     /// (provided searchTargets is not set to filter out streams)
-    @JsonKey(
-        toJson: languageListToStringList, fromJson: stringListToLanguageList)
-    @Default([])
-        List<Language> languages,
+    @JsonKey(toJson: concatLanguageList) @Default([]) List<Language> languages,
 
     /// Target types of videos
     @Default([SearchTarget.clip, SearchTarget.stream])
@@ -51,14 +48,4 @@ class SearchFilter with _$SearchFilter {
     /// Result limit
     @Default(25) int limit,
   }) = _SearchFilter;
-
-  factory SearchFilter.fromJson(
-    Map<String, dynamic> json,
-  ) =>
-      _$SearchFilterFromJson(json);
-
-  factory SearchFilter.fromString(
-    String json,
-  ) =>
-      SearchFilter.fromJson(jsonDecode(json));
 }

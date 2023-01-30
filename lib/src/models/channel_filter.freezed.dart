@@ -14,14 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ChannelFilter _$ChannelFilterFromJson(Map<String, dynamic> json) {
-  return _ChannelFilter.fromJson(json);
-}
-
 /// @nodoc
 mixin _$ChannelFilter {
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+  @JsonKey(toJson: concatLanguageList)
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Result limit. Max of 50.
@@ -55,8 +51,7 @@ abstract class $ChannelFilterCopyWith<$Res> {
       _$ChannelFilterCopyWithImpl<$Res, ChannelFilter>;
   @useResult
   $Res call(
-      {@JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-          List<Language> languages,
+      {@JsonKey(toJson: concatLanguageList) List<Language> languages,
       int limit,
       int offset,
       ChannelType? type,
@@ -128,8 +123,7 @@ abstract class _$$_ChannelFilterCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-          List<Language> languages,
+      {@JsonKey(toJson: concatLanguageList) List<Language> languages,
       int limit,
       int offset,
       ChannelType? type,
@@ -191,10 +185,10 @@ class __$$_ChannelFilterCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class _$_ChannelFilter extends _ChannelFilter {
   const _$_ChannelFilter(
-      {@JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+      {@JsonKey(toJson: concatLanguageList)
           final List<Language> languages = const [],
       this.limit = 25,
       this.offset = 0,
@@ -207,15 +201,12 @@ class _$_ChannelFilter extends _ChannelFilter {
         _sort = sort,
         super._();
 
-  factory _$_ChannelFilter.fromJson(Map<String, dynamic> json) =>
-      _$$_ChannelFilterFromJson(json);
-
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
   final List<Language> _languages;
 
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
   @override
-  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+  @JsonKey(toJson: concatLanguageList)
   List<Language> get languages {
     if (_languages is EqualUnmodifiableListView) return _languages;
     // ignore: implicit_dynamic_type
@@ -306,8 +297,7 @@ class _$_ChannelFilter extends _ChannelFilter {
 
 abstract class _ChannelFilter extends ChannelFilter {
   const factory _ChannelFilter(
-      {@JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
-          final List<Language> languages,
+      {@JsonKey(toJson: concatLanguageList) final List<Language> languages,
       final int limit,
       final int offset,
       final ChannelType? type,
@@ -316,13 +306,10 @@ abstract class _ChannelFilter extends ChannelFilter {
       final Organization? organization}) = _$_ChannelFilter;
   const _ChannelFilter._() : super._();
 
-  factory _ChannelFilter.fromJson(Map<String, dynamic> json) =
-      _$_ChannelFilter.fromJson;
-
   @override
 
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
+  @JsonKey(toJson: concatLanguageList)
   List<Language> get languages;
   @override
 
