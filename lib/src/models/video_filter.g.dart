@@ -6,24 +6,33 @@ part of 'video_filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) =>
-    <String, dynamic>{
-      'channel_id': instance.channelId,
-      'ids': instance.ids,
-      'include': concatIncludesList(instance.includes),
-      'lang': concatLanguageListWithDefault(instance.languages),
-      'limit': instance.limit,
-      'max_upcoming_hours': instance.maxUpcomingHours,
-      'mentioned_channel_id': instance.mentionedChannelId,
-      'offset': instance.offset,
-      'order': _$OrderEnumMap[instance.order]!,
-      'organization': instance.organization,
-      'paginated': paginatedToString(instance.paginated),
-      'sort': instance.sort.map((e) => _$VideoSortEnumMap[e]!).toList(),
-      'status': instance.status.map((e) => _$VideoStatusEnumMap[e]!).toList(),
-      'topic': instance.topic,
-      'type': _$VideoTypeEnumMap[instance.type],
-    };
+Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) {
+  final val = <String, dynamic>{
+    'channel_id': instance.channelId,
+    'ids': instance.ids,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('include', concatIncludesList(instance.includes));
+  val['lang'] = concatLanguageListWithDefault(instance.languages);
+  val['limit'] = intToString(instance.limit);
+  val['max_upcoming_hours'] = instance.maxUpcomingHours;
+  val['mentioned_channel_id'] = instance.mentionedChannelId;
+  val['offset'] = intToString(instance.offset);
+  val['order'] = _$OrderEnumMap[instance.order]!;
+  val['organization'] = instance.organization;
+  val['paginated'] = paginatedToString(instance.paginated);
+  val['sort'] = instance.sort.map((e) => _$VideoSortEnumMap[e]!).toList();
+  val['status'] = instance.status.map((e) => _$VideoStatusEnumMap[e]!).toList();
+  val['topic'] = instance.topic;
+  val['type'] = _$VideoTypeEnumMap[instance.type];
+  return val;
+}
 
 const _$OrderEnumMap = {
   Order.ascending: 'ascending',

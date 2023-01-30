@@ -47,9 +47,11 @@ mixin _$SearchFilter {
   bool get paginated => throw _privateConstructorUsedError;
 
   /// Offset results
+  @JsonKey(toJson: intToString)
   int get offset => throw _privateConstructorUsedError;
 
   /// Result limit
+  @JsonKey(toJson: intToString)
   int get limit => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -77,8 +79,10 @@ abstract class $SearchFilterCopyWith<$Res> {
       List<Organization> organizations,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
-      int offset,
-      int limit});
+      @JsonKey(toJson: intToString)
+          int offset,
+      @JsonKey(toJson: intToString)
+          int limit});
 }
 
 /// @nodoc
@@ -166,8 +170,10 @@ abstract class _$$_SearchFilterCopyWith<$Res>
       List<Organization> organizations,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
-      int offset,
-      int limit});
+      @JsonKey(toJson: intToString)
+          int offset,
+      @JsonKey(toJson: intToString)
+          int limit});
 }
 
 /// @nodoc
@@ -251,8 +257,10 @@ class _$_SearchFilter extends _SearchFilter {
       final List<Organization> organizations = const [],
       @JsonKey(toJson: paginatedToString)
           this.paginated = true,
-      this.offset = 0,
-      this.limit = 25})
+      @JsonKey(toJson: intToString)
+          this.offset = 0,
+      @JsonKey(toJson: intToString)
+          this.limit = 25})
       : assert(limit <= 50, 'The limit cannot be greater than 50'),
         _languages = languages,
         _searchTargets = searchTargets,
@@ -341,12 +349,12 @@ class _$_SearchFilter extends _SearchFilter {
 
   /// Offset results
   @override
-  @JsonKey()
+  @JsonKey(toJson: intToString)
   final int offset;
 
   /// Result limit
   @override
-  @JsonKey()
+  @JsonKey(toJson: intToString)
   final int limit;
 
   @override
@@ -417,8 +425,10 @@ abstract class _SearchFilter extends SearchFilter {
       final List<Organization> organizations,
       @JsonKey(toJson: paginatedToString)
           final bool paginated,
-      final int offset,
-      final int limit}) = _$_SearchFilter;
+      @JsonKey(toJson: intToString)
+          final int offset,
+      @JsonKey(toJson: intToString)
+          final int limit}) = _$_SearchFilter;
   const _SearchFilter._() : super._();
 
   @override
@@ -461,10 +471,12 @@ abstract class _SearchFilter extends SearchFilter {
   @override
 
   /// Offset results
+  @JsonKey(toJson: intToString)
   int get offset;
   @override
 
   /// Result limit
+  @JsonKey(toJson: intToString)
   int get limit;
   @override
   @JsonKey(ignore: true)

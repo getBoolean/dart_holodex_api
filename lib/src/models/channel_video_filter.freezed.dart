@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChannelVideoFilter {
   /// Request extra data be included in the results. They are not guarenteed to be returned.
-  @JsonKey(toJson: concatIncludesList, name: 'include')
+  @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
   List<Includes> get includes => throw _privateConstructorUsedError;
 
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
@@ -25,9 +25,11 @@ mixin _$ChannelVideoFilter {
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Result limit. Max of 50.
+  @JsonKey(toJson: intToString)
   int get limit => throw _privateConstructorUsedError;
 
   /// Offset results
+  @JsonKey(toJson: intToString)
   int get offset => throw _privateConstructorUsedError;
 
   /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
@@ -47,12 +49,14 @@ abstract class $ChannelVideoFilterCopyWith<$Res> {
       _$ChannelVideoFilterCopyWithImpl<$Res, ChannelVideoFilter>;
   @useResult
   $Res call(
-      {@JsonKey(toJson: concatIncludesList, name: 'include')
+      {@JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
           List<Includes> includes,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
-      int limit,
-      int offset,
+      @JsonKey(toJson: intToString)
+          int limit,
+      @JsonKey(toJson: intToString)
+          int offset,
       @JsonKey(toJson: paginatedToString)
           bool paginated});
 }
@@ -110,12 +114,14 @@ abstract class _$$_ChannelVideoFilterCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(toJson: concatIncludesList, name: 'include')
+      {@JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
           List<Includes> includes,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
-      int limit,
-      int offset,
+      @JsonKey(toJson: intToString)
+          int limit,
+      @JsonKey(toJson: intToString)
+          int offset,
       @JsonKey(toJson: paginatedToString)
           bool paginated});
 }
@@ -166,12 +172,14 @@ class __$$_ChannelVideoFilterCopyWithImpl<$Res>
 @JsonSerializable(createFactory: false)
 class _$_ChannelVideoFilter extends _ChannelVideoFilter {
   const _$_ChannelVideoFilter(
-      {@JsonKey(toJson: concatIncludesList, name: 'include')
+      {@JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
           final List<Includes> includes = const [],
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages = const [],
-      this.limit = 25,
-      this.offset = 0,
+      @JsonKey(toJson: intToString)
+          this.limit = 25,
+      @JsonKey(toJson: intToString)
+          this.offset = 0,
       @JsonKey(toJson: paginatedToString)
           this.paginated = true})
       : assert(limit <= 50, 'The limit cannot be greater than 50'),
@@ -184,7 +192,7 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
   @override
-  @JsonKey(toJson: concatIncludesList, name: 'include')
+  @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
   List<Includes> get includes {
     if (_includes is EqualUnmodifiableListView) return _includes;
     // ignore: implicit_dynamic_type
@@ -205,12 +213,12 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
 
   /// Result limit. Max of 50.
   @override
-  @JsonKey()
+  @JsonKey(toJson: intToString)
   final int limit;
 
   /// Offset results
   @override
-  @JsonKey()
+  @JsonKey(toJson: intToString)
   final int offset;
 
   /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
@@ -264,12 +272,14 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
 
 abstract class _ChannelVideoFilter extends ChannelVideoFilter {
   const factory _ChannelVideoFilter(
-      {@JsonKey(toJson: concatIncludesList, name: 'include')
+      {@JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
           final List<Includes> includes,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages,
-      final int limit,
-      final int offset,
+      @JsonKey(toJson: intToString)
+          final int limit,
+      @JsonKey(toJson: intToString)
+          final int offset,
       @JsonKey(toJson: paginatedToString)
           final bool paginated}) = _$_ChannelVideoFilter;
   const _ChannelVideoFilter._() : super._();
@@ -277,7 +287,7 @@ abstract class _ChannelVideoFilter extends ChannelVideoFilter {
   @override
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
-  @JsonKey(toJson: concatIncludesList, name: 'include')
+  @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
   List<Includes> get includes;
   @override
 
@@ -287,10 +297,12 @@ abstract class _ChannelVideoFilter extends ChannelVideoFilter {
   @override
 
   /// Result limit. Max of 50.
+  @JsonKey(toJson: intToString)
   int get limit;
   @override
 
   /// Offset results
+  @JsonKey(toJson: intToString)
   int get offset;
   @override
 

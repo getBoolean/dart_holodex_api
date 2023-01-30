@@ -17,8 +17,8 @@ Map<String, dynamic> _$$_SearchFilterToJson(_$_SearchFilter instance) =>
       'organizations':
           instance.organizations.map((e) => _$OrganizationEnumMap[e]!).toList(),
       'paginated': paginatedToString(instance.paginated),
-      'offset': instance.offset,
-      'limit': instance.limit,
+      'offset': intToString(instance.offset),
+      'limit': intToString(instance.limit),
     };
 
 const _$SearchSortEnumMap = {

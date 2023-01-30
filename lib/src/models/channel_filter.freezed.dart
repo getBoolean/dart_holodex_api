@@ -21,9 +21,11 @@ mixin _$ChannelFilter {
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Result limit. Max of 50.
+  @JsonKey(toJson: intToString)
   int get limit => throw _privateConstructorUsedError;
 
   /// Offset results
+  @JsonKey(toJson: intToString)
   int get offset => throw _privateConstructorUsedError;
 
   /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
@@ -53,8 +55,10 @@ abstract class $ChannelFilterCopyWith<$Res> {
   $Res call(
       {@JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
-      int limit,
-      int offset,
+      @JsonKey(toJson: intToString)
+          int limit,
+      @JsonKey(toJson: intToString)
+          int offset,
       ChannelType? type,
       List<ChannelSort> sort,
       Order order,
@@ -126,8 +130,10 @@ abstract class _$$_ChannelFilterCopyWith<$Res>
   $Res call(
       {@JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
-      int limit,
-      int offset,
+      @JsonKey(toJson: intToString)
+          int limit,
+      @JsonKey(toJson: intToString)
+          int offset,
       ChannelType? type,
       List<ChannelSort> sort,
       Order order,
@@ -192,8 +198,10 @@ class _$_ChannelFilter extends _ChannelFilter {
   const _$_ChannelFilter(
       {@JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages = const [],
-      this.limit = 25,
-      this.offset = 0,
+      @JsonKey(toJson: intToString)
+          this.limit = 25,
+      @JsonKey(toJson: intToString)
+          this.offset = 0,
       this.type,
       final List<ChannelSort> sort = const [ChannelSort.organization],
       this.order = Order.ascending,
@@ -217,12 +225,12 @@ class _$_ChannelFilter extends _ChannelFilter {
 
   /// Result limit. Max of 50.
   @override
-  @JsonKey()
+  @JsonKey(toJson: intToString)
   final int limit;
 
   /// Offset results
   @override
-  @JsonKey()
+  @JsonKey(toJson: intToString)
   final int offset;
 
   /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
@@ -301,8 +309,10 @@ abstract class _ChannelFilter extends ChannelFilter {
   const factory _ChannelFilter(
       {@JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages,
-      final int limit,
-      final int offset,
+      @JsonKey(toJson: intToString)
+          final int limit,
+      @JsonKey(toJson: intToString)
+          final int offset,
       final ChannelType? type,
       final List<ChannelSort> sort,
       final Order order,
@@ -317,10 +327,12 @@ abstract class _ChannelFilter extends ChannelFilter {
   @override
 
   /// Result limit. Max of 50.
+  @JsonKey(toJson: intToString)
   int get limit;
   @override
 
   /// Offset results
+  @JsonKey(toJson: intToString)
   int get offset;
   @override
 

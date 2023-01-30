@@ -24,7 +24,7 @@ mixin _$VideoFilter {
   List<String> get ids => throw _privateConstructorUsedError;
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
-  @JsonKey(toJson: concatIncludesList, name: 'include')
+  @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
   List<Includes> get includes => throw _privateConstructorUsedError;
 
   /// Filter by the `Language`
@@ -32,6 +32,7 @@ mixin _$VideoFilter {
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Limit the number of results returned. Maximum value of 50
+  @JsonKey(toJson: intToString)
   int get limit => throw _privateConstructorUsedError;
 
   /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
@@ -43,6 +44,7 @@ mixin _$VideoFilter {
   String? get mentionedChannelId => throw _privateConstructorUsedError;
 
   /// Receive results starting at this number in the array from the Holodex API
+  @JsonKey(toJson: intToString)
   int get offset => throw _privateConstructorUsedError;
 
   /// Order results by ascending or descending
@@ -83,16 +85,18 @@ abstract class $VideoFilterCopyWith<$Res> {
       {@JsonKey(name: 'channel_id')
           String? channelId,
       List<String> ids,
-      @JsonKey(toJson: concatIncludesList, name: 'include')
+      @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
           List<Includes> includes,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
-      int limit,
+      @JsonKey(toJson: intToString)
+          int limit,
       @JsonKey(name: 'max_upcoming_hours')
           int? maxUpcomingHours,
       @JsonKey(name: 'mentioned_channel_id')
           String? mentionedChannelId,
-      int offset,
+      @JsonKey(toJson: intToString)
+          int offset,
       Order order,
       List<String> organization,
       @JsonKey(toJson: paginatedToString)
@@ -209,16 +213,18 @@ abstract class _$$_VideoFilterCopyWith<$Res>
       {@JsonKey(name: 'channel_id')
           String? channelId,
       List<String> ids,
-      @JsonKey(toJson: concatIncludesList, name: 'include')
+      @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
           List<Includes> includes,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
-      int limit,
+      @JsonKey(toJson: intToString)
+          int limit,
       @JsonKey(name: 'max_upcoming_hours')
           int? maxUpcomingHours,
       @JsonKey(name: 'mentioned_channel_id')
           String? mentionedChannelId,
-      int offset,
+      @JsonKey(toJson: intToString)
+          int offset,
       Order order,
       List<String> organization,
       @JsonKey(toJson: paginatedToString)
@@ -328,16 +334,18 @@ class _$_VideoFilter extends _VideoFilter {
       {@JsonKey(name: 'channel_id')
           this.channelId,
       final List<String> ids = const [],
-      @JsonKey(toJson: concatIncludesList, name: 'include')
+      @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
           final List<Includes> includes = const [],
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages = const [],
-      this.limit = 25,
+      @JsonKey(toJson: intToString)
+          this.limit = 25,
       @JsonKey(name: 'max_upcoming_hours')
           this.maxUpcomingHours,
       @JsonKey(name: 'mentioned_channel_id')
           this.mentionedChannelId,
-      this.offset = 0,
+      @JsonKey(toJson: intToString)
+          this.offset = 0,
       this.order = Order.descending,
       final List<String> organization = const [],
       @JsonKey(toJson: paginatedToString)
@@ -377,7 +385,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
   @override
-  @JsonKey(toJson: concatIncludesList, name: 'include')
+  @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
   List<Includes> get includes {
     if (_includes is EqualUnmodifiableListView) return _includes;
     // ignore: implicit_dynamic_type
@@ -398,7 +406,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Limit the number of results returned. Maximum value of 50
   @override
-  @JsonKey()
+  @JsonKey(toJson: intToString)
   final int limit;
 
   /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
@@ -413,7 +421,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Receive results starting at this number in the array from the Holodex API
   @override
-  @JsonKey()
+  @JsonKey(toJson: intToString)
   final int offset;
 
   /// Order results by ascending or descending
@@ -542,16 +550,18 @@ abstract class _VideoFilter extends VideoFilter {
       {@JsonKey(name: 'channel_id')
           final String? channelId,
       final List<String> ids,
-      @JsonKey(toJson: concatIncludesList, name: 'include')
+      @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
           final List<Includes> includes,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages,
-      final int limit,
+      @JsonKey(toJson: intToString)
+          final int limit,
       @JsonKey(name: 'max_upcoming_hours')
           final int? maxUpcomingHours,
       @JsonKey(name: 'mentioned_channel_id')
           final String? mentionedChannelId,
-      final int offset,
+      @JsonKey(toJson: intToString)
+          final int offset,
       final Order order,
       final List<String> organization,
       @JsonKey(toJson: paginatedToString)
@@ -574,7 +584,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
-  @JsonKey(toJson: concatIncludesList, name: 'include')
+  @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
   List<Includes> get includes;
   @override
 
@@ -584,6 +594,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Limit the number of results returned. Maximum value of 50
+  @JsonKey(toJson: intToString)
   int get limit;
   @override
 
@@ -598,6 +609,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Receive results starting at this number in the array from the Holodex API
+  @JsonKey(toJson: intToString)
   int get offset;
   @override
 

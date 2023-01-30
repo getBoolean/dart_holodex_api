@@ -45,9 +45,11 @@ class SearchFilter with _$SearchFilter {
     @JsonKey(toJson: paginatedToString) @Default(true) bool paginated,
 
     /// Offset results
+    @JsonKey(toJson: intToString)
     @Default(0) int offset,
 
     /// Result limit
+    @JsonKey(toJson: intToString)
     @Default(25) int limit,
   }) = _SearchFilter;
 }

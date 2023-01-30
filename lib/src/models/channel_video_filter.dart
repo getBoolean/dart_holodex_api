@@ -15,7 +15,7 @@ class ChannelVideoFilter with _$ChannelVideoFilter {
   @Assert('limit <= 50', 'The limit cannot be greater than 50')
   const factory ChannelVideoFilter({
     /// Request extra data be included in the results. They are not guarenteed to be returned.
-    @JsonKey(toJson: concatIncludesList, name: 'include')
+    @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
     @Default([])
         List<Includes> includes,
 
@@ -25,9 +25,11 @@ class ChannelVideoFilter with _$ChannelVideoFilter {
         List<Language> languages,
 
     /// Result limit. Max of 50.
+    @JsonKey(toJson: intToString)
     @Default(25) int limit,
 
     /// Offset results
+    @JsonKey(toJson: intToString)
     @Default(0) int offset,
 
     /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.

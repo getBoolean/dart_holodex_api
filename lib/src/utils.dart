@@ -8,9 +8,11 @@ String includeCommentsToString(bool comments) => comments ? '1' : '0';
 
 String concatStringList(List<String> list) => list.join(',');
 
-String concatIncludesList(List<Includes> items) {
-  return concatEnumWithCodeList(items);
+String? concatIncludesList(List<Includes> items) {
+  return items.isEmpty ? null : concatEnumWithCodeList(items);
 }
 
 String concatLanguageListWithDefault(List<Language> languages) =>
     concatLanguageList(languages.isEmpty ? [Language.all] : languages);
+
+String intToString(int value) => value.toString();

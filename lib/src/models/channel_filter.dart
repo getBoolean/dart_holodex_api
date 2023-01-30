@@ -22,9 +22,11 @@ class ChannelFilter with _$ChannelFilter {
         List<Language> languages,
 
     /// Result limit. Max of 50.
+    @JsonKey(toJson: intToString)
     @Default(25) int limit,
 
     /// Offset results
+    @JsonKey(toJson: intToString)
     @Default(0) int offset,
 
     /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.

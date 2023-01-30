@@ -7,11 +7,19 @@ part of 'channel_video_filter.dart';
 // **************************************************************************
 
 Map<String, dynamic> _$$_ChannelVideoFilterToJson(
-        _$_ChannelVideoFilter instance) =>
-    <String, dynamic>{
-      'include': concatIncludesList(instance.includes),
-      'lang': concatLanguageListWithDefault(instance.languages),
-      'limit': instance.limit,
-      'offset': instance.offset,
-      'paginated': paginatedToString(instance.paginated),
-    };
+    _$_ChannelVideoFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('include', concatIncludesList(instance.includes));
+  val['lang'] = concatLanguageListWithDefault(instance.languages);
+  val['limit'] = intToString(instance.limit);
+  val['offset'] = intToString(instance.offset);
+  val['paginated'] = paginatedToString(instance.paginated);
+  return val;
+}

@@ -1,4 +1,3 @@
-import 'package:dart_holodex_api/src/enums/enum_with_code_extension.dart';
 import 'package:dart_holodex_api/src/enums/includes.dart';
 import 'package:dart_holodex_api/src/enums/language.dart';
 import 'package:dart_holodex_api/src/enums/order.dart';
@@ -25,7 +24,7 @@ class VideoFilter with _$VideoFilter {
     @Default([]) List<String> ids,
 
     /// Request extra data be included in the results. They are not guarenteed to be returned.
-    @JsonKey(toJson: concatIncludesList, name: 'include')
+    @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
     @Default([])
         List<Includes> includes,
 
@@ -35,6 +34,7 @@ class VideoFilter with _$VideoFilter {
         List<Language> languages,
 
     /// Limit the number of results returned. Maximum value of 50
+    @JsonKey(toJson: intToString)
     @Default(25) int limit,
 
     /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
@@ -44,6 +44,7 @@ class VideoFilter with _$VideoFilter {
     @JsonKey(name: 'mentioned_channel_id') String? mentionedChannelId,
 
     /// Receive results starting at this number in the array from the Holodex API
+    @JsonKey(toJson: intToString)
     @Default(0) int offset,
 
     /// Order results by ascending or descending
