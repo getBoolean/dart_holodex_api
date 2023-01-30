@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:dart_holodex_api/src/enums/channel_sort.dart';
 import 'package:dart_holodex_api/src/enums/channel_type.dart';
+import 'package:dart_holodex_api/src/enums/enum_with_code_extension.dart';
 import 'package:dart_holodex_api/src/enums/includes.dart';
 import 'package:dart_holodex_api/src/enums/language.dart';
 import 'package:dart_holodex_api/src/enums/order.dart';
@@ -686,12 +687,7 @@ class HolodexClient {
 
   void _addIncludes(List<Includes> includes, Map<String, dynamic> map) {
     if (includes.isNotEmpty) {
-      // Make new list with the values as string
-      final List<String> includesStringList =
-          includes.map((included) => included.code).toList();
-      // Join the array with commas
-      final includesConcatenated = includesStringList.join(',');
-      map.addAll({'include': includesConcatenated});
+      map.addAll({'include': includes.concat});
     }
   }
 

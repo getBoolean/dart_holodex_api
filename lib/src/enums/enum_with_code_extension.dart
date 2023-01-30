@@ -1,3 +1,7 @@
+String concatEnumWithCodeList<T extends EnumWithCode>(List<T> items) {
+  return items.map((e) => e.code).join(',');
+}
+
 mixin EnumWithCode {
   String get code;
 }
@@ -14,4 +18,6 @@ extension EnumByCode<T extends EnumWithCode> on List<T> {
     }
     return null;
   }
+
+  String get concat => concatEnumWithCodeList(this);
 }
