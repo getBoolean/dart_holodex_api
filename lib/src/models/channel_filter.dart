@@ -29,7 +29,8 @@ class ChannelFilter with _$ChannelFilter {
     @JsonKey(toJson: intToString) @Default(0) int offset,
 
     /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
-    @JsonKey(includeIfNull: false) ChannelType? type,
+    @JsonKey(includeIfNull: false, toJson: channelTypeToString)
+        ChannelType? type,
 
     /// Column to sort on
     @Default([ChannelSort.organization]) List<ChannelSort> sort,

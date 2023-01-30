@@ -29,7 +29,7 @@ mixin _$ChannelFilter {
   int get offset => throw _privateConstructorUsedError;
 
   /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, toJson: channelTypeToString)
   ChannelType? get type => throw _privateConstructorUsedError;
 
   /// Column to sort on
@@ -61,7 +61,7 @@ abstract class $ChannelFilterCopyWith<$Res> {
           int limit,
       @JsonKey(toJson: intToString)
           int offset,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, toJson: channelTypeToString)
           ChannelType? type,
       List<ChannelSort> sort,
       Order order,
@@ -138,7 +138,7 @@ abstract class _$$_ChannelFilterCopyWith<$Res>
           int limit,
       @JsonKey(toJson: intToString)
           int offset,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, toJson: channelTypeToString)
           ChannelType? type,
       List<ChannelSort> sort,
       Order order,
@@ -208,7 +208,7 @@ class _$_ChannelFilter extends _ChannelFilter {
           this.limit = 25,
       @JsonKey(toJson: intToString)
           this.offset = 0,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, toJson: channelTypeToString)
           this.type,
       final List<ChannelSort> sort = const [ChannelSort.organization],
       this.order = Order.ascending,
@@ -243,7 +243,7 @@ class _$_ChannelFilter extends _ChannelFilter {
 
   /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, toJson: channelTypeToString)
   final ChannelType? type;
 
   /// Column to sort on
@@ -323,7 +323,7 @@ abstract class _ChannelFilter extends ChannelFilter {
           final int limit,
       @JsonKey(toJson: intToString)
           final int offset,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, toJson: channelTypeToString)
           final ChannelType? type,
       final List<ChannelSort> sort,
       final Order order,
@@ -349,7 +349,7 @@ abstract class _ChannelFilter extends ChannelFilter {
   @override
 
   /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, toJson: channelTypeToString)
   ChannelType? get type;
   @override
 

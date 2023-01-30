@@ -19,17 +19,12 @@ Map<String, dynamic> _$$_ChannelFilterToJson(_$_ChannelFilter instance) {
     }
   }
 
-  writeNotNull('type', _$ChannelTypeEnumMap[instance.type]);
+  writeNotNull('type', channelTypeToString(instance.type));
   val['sort'] = instance.sort.map((e) => _$ChannelSortEnumMap[e]!).toList();
   val['order'] = _$OrderEnumMap[instance.order]!;
   writeNotNull('org', organizationToString(instance.organization));
   return val;
 }
-
-const _$ChannelTypeEnumMap = {
-  ChannelType.vtuber: 'vtuber',
-  ChannelType.subber: 'subber',
-};
 
 const _$ChannelSortEnumMap = {
   ChannelSort.id: 'id',
