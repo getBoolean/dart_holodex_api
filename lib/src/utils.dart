@@ -1,3 +1,4 @@
+import 'package:dart_holodex_api/src/enums/channel_sort.dart';
 import 'package:dart_holodex_api/src/enums/channel_type.dart';
 import 'package:dart_holodex_api/src/enums/enum_with_code_extension.dart';
 import 'package:dart_holodex_api/src/enums/includes.dart';
@@ -37,3 +38,6 @@ String intToString(int value) => value.toString();
 String searchSortToString(SearchSort sort) => sort.code;
 
 String? channelTypeToString(ChannelType? type) => type?.code;
+
+List<String> channelSortToStringList(List<ChannelSort> list) =>
+    list.map((e) => e.code).toList();
