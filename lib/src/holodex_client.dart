@@ -238,12 +238,7 @@ class HolodexClient {
   /// Get channels
   ///
   /// Arguments:
-  /// - `languages` List of languages. Language is a property of Channel, so only Channels satisfying the language will be returned. Leave empty to search for Vtubers and/or all clippers.
-  /// - `limit` Results limit
-  /// - `offset` Offset results
-  /// - `order` Order.ascending or Order.descending order, default ascending.
-  /// - `organization` If set, filter for Vtubers belonging to a specific org
-  /// - `channelSort` Column to sort on, leave default to use [ChannelSort.organization] as sort. Theoretically any value in ChannelSort should work
+  /// - `filter` Filter the results returns by the API
   Future<List<Channel>> getChannels([
     ChannelFilter filter = const ChannelFilter(
       limit: 25,
