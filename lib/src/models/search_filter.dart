@@ -27,7 +27,7 @@ class SearchFilter with _$SearchFilter {
     /// Target types of videos
     @Default([SearchTarget.clip, SearchTarget.stream])
     @JsonKey(name: 'search_targets')
-        List<SearchTarget> searchTargets,
+        List<SearchTarget> targets,
 
     /// Return videos that match one of the provided topics
     @Default([]) List<String> topics,
@@ -45,11 +45,9 @@ class SearchFilter with _$SearchFilter {
     @JsonKey(toJson: paginatedToString) @Default(true) bool paginated,
 
     /// Offset results
-    @JsonKey(toJson: intToString)
-    @Default(0) int offset,
+    @JsonKey(toJson: intToString) @Default(0) int offset,
 
     /// Result limit
-    @JsonKey(toJson: intToString)
-    @Default(25) int limit,
+    @JsonKey(toJson: intToString) @Default(25) int limit,
   }) = _SearchFilter;
 }

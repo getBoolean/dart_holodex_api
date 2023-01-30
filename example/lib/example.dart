@@ -131,7 +131,7 @@ void main(List<String> arguments) async {
   final singingSearchFilter = SearchFilter(
     sort: SearchSort.newest,
     languages: [Language.all],
-    searchTargets: [SearchTarget.clip, SearchTarget.stream],
+    targets: [SearchTarget.clip, SearchTarget.stream],
     topics: ['singing'],
     videoChannels: <String>[],
     organizations: [

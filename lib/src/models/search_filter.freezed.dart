@@ -27,7 +27,7 @@ mixin _$SearchFilter {
 
   /// Target types of videos
   @JsonKey(name: 'search_targets')
-  List<SearchTarget> get searchTargets => throw _privateConstructorUsedError;
+  List<SearchTarget> get targets => throw _privateConstructorUsedError;
 
   /// Return videos that match one of the provided topics
   List<String> get topics => throw _privateConstructorUsedError;
@@ -72,7 +72,7 @@ abstract class $SearchFilterCopyWith<$Res> {
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
       @JsonKey(name: 'search_targets')
-          List<SearchTarget> searchTargets,
+          List<SearchTarget> targets,
       List<String> topics,
       @JsonKey(name: 'video_channels')
           List<String> videoChannels,
@@ -100,7 +100,7 @@ class _$SearchFilterCopyWithImpl<$Res, $Val extends SearchFilter>
   $Res call({
     Object? sort = null,
     Object? languages = null,
-    Object? searchTargets = null,
+    Object? targets = null,
     Object? topics = null,
     Object? videoChannels = null,
     Object? organizations = null,
@@ -117,9 +117,9 @@ class _$SearchFilterCopyWithImpl<$Res, $Val extends SearchFilter>
           ? _value.languages
           : languages // ignore: cast_nullable_to_non_nullable
               as List<Language>,
-      searchTargets: null == searchTargets
-          ? _value.searchTargets
-          : searchTargets // ignore: cast_nullable_to_non_nullable
+      targets: null == targets
+          ? _value.targets
+          : targets // ignore: cast_nullable_to_non_nullable
               as List<SearchTarget>,
       topics: null == topics
           ? _value.topics
@@ -163,7 +163,7 @@ abstract class _$$_SearchFilterCopyWith<$Res>
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
       @JsonKey(name: 'search_targets')
-          List<SearchTarget> searchTargets,
+          List<SearchTarget> targets,
       List<String> topics,
       @JsonKey(name: 'video_channels')
           List<String> videoChannels,
@@ -189,7 +189,7 @@ class __$$_SearchFilterCopyWithImpl<$Res>
   $Res call({
     Object? sort = null,
     Object? languages = null,
-    Object? searchTargets = null,
+    Object? targets = null,
     Object? topics = null,
     Object? videoChannels = null,
     Object? organizations = null,
@@ -206,9 +206,9 @@ class __$$_SearchFilterCopyWithImpl<$Res>
           ? _value._languages
           : languages // ignore: cast_nullable_to_non_nullable
               as List<Language>,
-      searchTargets: null == searchTargets
-          ? _value._searchTargets
-          : searchTargets // ignore: cast_nullable_to_non_nullable
+      targets: null == targets
+          ? _value._targets
+          : targets // ignore: cast_nullable_to_non_nullable
               as List<SearchTarget>,
       topics: null == topics
           ? _value._topics
@@ -247,7 +247,7 @@ class _$_SearchFilter extends _SearchFilter {
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages = const [],
       @JsonKey(name: 'search_targets')
-          final List<SearchTarget> searchTargets = const [
+          final List<SearchTarget> targets = const [
         SearchTarget.clip,
         SearchTarget.stream
       ],
@@ -263,7 +263,7 @@ class _$_SearchFilter extends _SearchFilter {
           this.limit = 25})
       : assert(limit <= 50, 'The limit cannot be greater than 50'),
         _languages = languages,
-        _searchTargets = searchTargets,
+        _targets = targets,
         _topics = topics,
         _videoChannels = videoChannels,
         _organizations = organizations,
@@ -289,15 +289,15 @@ class _$_SearchFilter extends _SearchFilter {
   }
 
   /// Target types of videos
-  final List<SearchTarget> _searchTargets;
+  final List<SearchTarget> _targets;
 
   /// Target types of videos
   @override
   @JsonKey(name: 'search_targets')
-  List<SearchTarget> get searchTargets {
-    if (_searchTargets is EqualUnmodifiableListView) return _searchTargets;
+  List<SearchTarget> get targets {
+    if (_targets is EqualUnmodifiableListView) return _targets;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_searchTargets);
+    return EqualUnmodifiableListView(_targets);
   }
 
   /// Return videos that match one of the provided topics
@@ -359,7 +359,7 @@ class _$_SearchFilter extends _SearchFilter {
 
   @override
   String toString() {
-    return 'SearchFilter(sort: $sort, languages: $languages, searchTargets: $searchTargets, topics: $topics, videoChannels: $videoChannels, organizations: $organizations, paginated: $paginated, offset: $offset, limit: $limit)';
+    return 'SearchFilter(sort: $sort, languages: $languages, targets: $targets, topics: $topics, videoChannels: $videoChannels, organizations: $organizations, paginated: $paginated, offset: $offset, limit: $limit)';
   }
 
   @override
@@ -370,8 +370,7 @@ class _$_SearchFilter extends _SearchFilter {
             (identical(other.sort, sort) || other.sort == sort) &&
             const DeepCollectionEquality()
                 .equals(other._languages, _languages) &&
-            const DeepCollectionEquality()
-                .equals(other._searchTargets, _searchTargets) &&
+            const DeepCollectionEquality().equals(other._targets, _targets) &&
             const DeepCollectionEquality().equals(other._topics, _topics) &&
             const DeepCollectionEquality()
                 .equals(other._videoChannels, _videoChannels) &&
@@ -389,7 +388,7 @@ class _$_SearchFilter extends _SearchFilter {
       runtimeType,
       sort,
       const DeepCollectionEquality().hash(_languages),
-      const DeepCollectionEquality().hash(_searchTargets),
+      const DeepCollectionEquality().hash(_targets),
       const DeepCollectionEquality().hash(_topics),
       const DeepCollectionEquality().hash(_videoChannels),
       const DeepCollectionEquality().hash(_organizations),
@@ -418,7 +417,7 @@ abstract class _SearchFilter extends SearchFilter {
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages,
       @JsonKey(name: 'search_targets')
-          final List<SearchTarget> searchTargets,
+          final List<SearchTarget> targets,
       final List<String> topics,
       @JsonKey(name: 'video_channels')
           final List<String> videoChannels,
@@ -446,7 +445,7 @@ abstract class _SearchFilter extends SearchFilter {
 
   /// Target types of videos
   @JsonKey(name: 'search_targets')
-  List<SearchTarget> get searchTargets;
+  List<SearchTarget> get targets;
   @override
 
   /// Return videos that match one of the provided topics

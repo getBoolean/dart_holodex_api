@@ -469,9 +469,9 @@ class HolodexClient {
       });
     }
 
-    if (filter.searchTargets.isNotEmpty) {
+    if (filter.targets.isNotEmpty) {
       data.addAll({
-        'target': filter.searchTargets.map((target) => target.code).toList(),
+        'target': filter.targets.map((target) => target.code).toList(),
       });
     }
 
@@ -551,9 +551,9 @@ class HolodexClient {
       });
     }
 
-    if (filter.searchTargets.isNotEmpty) {
+    if (filter.targets.isNotEmpty) {
       data.addAll({
-        'target': filter.searchTargets.map((s) => s.code).toList(),
+        'target': filter.targets.map((s) => s.code).toList(),
       });
     }
 

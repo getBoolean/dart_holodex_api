@@ -11,7 +11,7 @@ Map<String, dynamic> _$$_SearchFilterToJson(_$_SearchFilter instance) =>
       'search_sort': _$SearchSortEnumMap[instance.sort]!,
       'lang': concatLanguageListWithDefault(instance.languages),
       'search_targets':
-          instance.searchTargets.map((e) => _$SearchTargetEnumMap[e]!).toList(),
+          instance.targets.map((e) => _$SearchTargetEnumMap[e]!).toList(),
       'topics': instance.topics,
       'video_channels': instance.videoChannels,
       'organizations':
