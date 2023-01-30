@@ -24,7 +24,7 @@ Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) {
   writeNotNull('mentioned_channel_id', instance.mentionedChannelId);
   val['offset'] = intToString(instance.offset);
   val['order'] = orderToString(instance.order);
-  val['org'] = concatOrganizationList(instance.organization);
+  writeNotNull('org', organizationToString(instance.organization));
   val['paginated'] = paginatedToString(instance.paginated);
   val['sort'] = instance.sort.map((e) => _$VideoSortEnumMap[e]!).toList();
   val['status'] = instance.status.map((e) => _$VideoStatusEnumMap[e]!).toList();

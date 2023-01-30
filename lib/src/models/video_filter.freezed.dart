@@ -53,19 +53,21 @@ mixin _$VideoFilter {
   Order get order => throw _privateConstructorUsedError;
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
-  ///
-  /// TODO: Fix toJson to support multiple orgs
-  @JsonKey(name: 'org', toJson: concatOrganizationList)
-  List<Organization> get organization => throw _privateConstructorUsedError;
+  @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
+  Organization? get organization => throw _privateConstructorUsedError;
 
   /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
   @JsonKey(toJson: paginatedToString)
   bool get paginated => throw _privateConstructorUsedError;
 
   /// Sort the returned data by this field
+  ///
+  /// TODO: Implement toJson
   List<VideoSort> get sort => throw _privateConstructorUsedError;
 
   /// Filter by the video status
+  ///
+  /// TODO: Implement toJson
   List<VideoStatus> get status => throw _privateConstructorUsedError;
 
   /// Filter by video topic ID
@@ -73,6 +75,8 @@ mixin _$VideoFilter {
   String? get topic => throw _privateConstructorUsedError;
 
   /// Filter by type of video, either clips or streams
+  ///
+  /// TODO: Implement toJson
   @JsonKey(includeIfNull: false)
   VideoType? get type => throw _privateConstructorUsedError;
 
@@ -107,8 +111,8 @@ abstract class $VideoFilterCopyWith<$Res> {
           int offset,
       @JsonKey(toJson: orderToString)
           Order order,
-      @JsonKey(name: 'org', toJson: concatOrganizationList)
-          List<Organization> organization,
+      @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
+          Organization? organization,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
       List<VideoSort> sort,
@@ -141,7 +145,7 @@ class _$VideoFilterCopyWithImpl<$Res, $Val extends VideoFilter>
     Object? mentionedChannelId = freezed,
     Object? offset = null,
     Object? order = null,
-    Object? organization = null,
+    Object? organization = freezed,
     Object? paginated = null,
     Object? sort = null,
     Object? status = null,
@@ -185,10 +189,10 @@ class _$VideoFilterCopyWithImpl<$Res, $Val extends VideoFilter>
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as Order,
-      organization: null == organization
+      organization: freezed == organization
           ? _value.organization
           : organization // ignore: cast_nullable_to_non_nullable
-              as List<Organization>,
+              as Organization?,
       paginated: null == paginated
           ? _value.paginated
           : paginated // ignore: cast_nullable_to_non_nullable
@@ -240,8 +244,8 @@ abstract class _$$_VideoFilterCopyWith<$Res>
           int offset,
       @JsonKey(toJson: orderToString)
           Order order,
-      @JsonKey(name: 'org', toJson: concatOrganizationList)
-          List<Organization> organization,
+      @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
+          Organization? organization,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
       List<VideoSort> sort,
@@ -272,7 +276,7 @@ class __$$_VideoFilterCopyWithImpl<$Res>
     Object? mentionedChannelId = freezed,
     Object? offset = null,
     Object? order = null,
-    Object? organization = null,
+    Object? organization = freezed,
     Object? paginated = null,
     Object? sort = null,
     Object? status = null,
@@ -316,10 +320,10 @@ class __$$_VideoFilterCopyWithImpl<$Res>
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as Order,
-      organization: null == organization
-          ? _value._organization
+      organization: freezed == organization
+          ? _value.organization
           : organization // ignore: cast_nullable_to_non_nullable
-              as List<Organization>,
+              as Organization?,
       paginated: null == paginated
           ? _value.paginated
           : paginated // ignore: cast_nullable_to_non_nullable
@@ -366,8 +370,8 @@ class _$_VideoFilter extends _VideoFilter {
           this.offset = 0,
       @JsonKey(toJson: orderToString)
           this.order = Order.descending,
-      @JsonKey(name: 'org', toJson: concatOrganizationList)
-          final List<Organization> organization = const [],
+      @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
+          this.organization,
       @JsonKey(toJson: paginatedToString)
           this.paginated = false,
       final List<VideoSort> sort = const [VideoSort.availableAt],
@@ -380,7 +384,6 @@ class _$_VideoFilter extends _VideoFilter {
         _ids = ids,
         _includes = includes,
         _languages = languages,
-        _organization = organization,
         _sort = sort,
         _status = status,
         super._();
@@ -452,20 +455,9 @@ class _$_VideoFilter extends _VideoFilter {
   final Order order;
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
-  ///
-  /// TODO: Fix toJson to support multiple orgs
-  final List<Organization> _organization;
-
-  /// Filter by clips that feature the org's talent or videos posted by the org's talent.
-  ///
-  /// TODO: Fix toJson to support multiple orgs
   @override
-  @JsonKey(name: 'org', toJson: concatOrganizationList)
-  List<Organization> get organization {
-    if (_organization is EqualUnmodifiableListView) return _organization;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_organization);
-  }
+  @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
+  final Organization? organization;
 
   /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
   @override
@@ -473,9 +465,13 @@ class _$_VideoFilter extends _VideoFilter {
   final bool paginated;
 
   /// Sort the returned data by this field
+  ///
+  /// TODO: Implement toJson
   final List<VideoSort> _sort;
 
   /// Sort the returned data by this field
+  ///
+  /// TODO: Implement toJson
   @override
   @JsonKey()
   List<VideoSort> get sort {
@@ -485,9 +481,13 @@ class _$_VideoFilter extends _VideoFilter {
   }
 
   /// Filter by the video status
+  ///
+  /// TODO: Implement toJson
   final List<VideoStatus> _status;
 
   /// Filter by the video status
+  ///
+  /// TODO: Implement toJson
   @override
   @JsonKey()
   List<VideoStatus> get status {
@@ -502,6 +502,8 @@ class _$_VideoFilter extends _VideoFilter {
   final String? topic;
 
   /// Filter by type of video, either clips or streams
+  ///
+  /// TODO: Implement toJson
   @override
   @JsonKey(includeIfNull: false)
   final VideoType? type;
@@ -529,8 +531,8 @@ class _$_VideoFilter extends _VideoFilter {
                 other.mentionedChannelId == mentionedChannelId) &&
             (identical(other.offset, offset) || other.offset == offset) &&
             (identical(other.order, order) || other.order == order) &&
-            const DeepCollectionEquality()
-                .equals(other._organization, _organization) &&
+            (identical(other.organization, organization) ||
+                other.organization == organization) &&
             (identical(other.paginated, paginated) ||
                 other.paginated == paginated) &&
             const DeepCollectionEquality().equals(other._sort, _sort) &&
@@ -552,7 +554,7 @@ class _$_VideoFilter extends _VideoFilter {
       mentionedChannelId,
       offset,
       order,
-      const DeepCollectionEquality().hash(_organization),
+      organization,
       paginated,
       const DeepCollectionEquality().hash(_sort),
       const DeepCollectionEquality().hash(_status),
@@ -593,8 +595,8 @@ abstract class _VideoFilter extends VideoFilter {
           final int offset,
       @JsonKey(toJson: orderToString)
           final Order order,
-      @JsonKey(name: 'org', toJson: concatOrganizationList)
-          final List<Organization> organization,
+      @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
+          final Organization? organization,
       @JsonKey(toJson: paginatedToString)
           final bool paginated,
       final List<VideoSort> sort,
@@ -653,10 +655,8 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
-  ///
-  /// TODO: Fix toJson to support multiple orgs
-  @JsonKey(name: 'org', toJson: concatOrganizationList)
-  List<Organization> get organization;
+  @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
+  Organization? get organization;
   @override
 
   /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
@@ -665,10 +665,14 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Sort the returned data by this field
+  ///
+  /// TODO: Implement toJson
   List<VideoSort> get sort;
   @override
 
   /// Filter by the video status
+  ///
+  /// TODO: Implement toJson
   List<VideoStatus> get status;
   @override
 
@@ -678,6 +682,8 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by type of video, either clips or streams
+  ///
+  /// TODO: Implement toJson
   @JsonKey(includeIfNull: false)
   VideoType? get type;
   @override

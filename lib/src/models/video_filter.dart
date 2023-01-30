@@ -24,7 +24,8 @@ class VideoFilter with _$VideoFilter {
 
     /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
     @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
-    @Default([]) List<String> ids,
+    @Default([])
+        List<String> ids,
 
     /// Request extra data be included in the results. They are not guarenteed to be returned.
     @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
@@ -54,22 +55,19 @@ class VideoFilter with _$VideoFilter {
     @JsonKey(toJson: orderToString) @Default(Order.descending) Order order,
 
     /// Filter by clips that feature the org's talent or videos posted by the org's talent.
-    ///
-    /// TODO: Fix toJson to support multiple orgs
-    @JsonKey(name: 'org', toJson: concatOrganizationList)
-    @Default([])
-        List<Organization> organization,
+    @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
+        Organization? organization,
 
     /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
     @JsonKey(toJson: paginatedToString) @Default(false) bool paginated,
 
     /// Sort the returned data by this field
-    /// 
+    ///
     /// TODO: Implement toJson
     @Default([VideoSort.availableAt]) List<VideoSort> sort,
 
     /// Filter by the video status
-    /// 
+    ///
     /// TODO: Implement toJson
     @Default([]) List<VideoStatus> status,
 
@@ -77,7 +75,7 @@ class VideoFilter with _$VideoFilter {
     @JsonKey(includeIfNull: false) String? topic,
 
     /// Filter by type of video, either clips or streams
-    /// 
+    ///
     /// TODO: Implement toJson
     @JsonKey(includeIfNull: false) VideoType? type,
   }) = _VideoFilter;

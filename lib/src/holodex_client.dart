@@ -85,9 +85,6 @@ class HolodexClient {
 
     _addVideoSort(filter.sort, params);
 
-    // Add the organization param
-    _addOrganizations(filter.organization, params);
-
     // Add the status param
     _addStatusList(filter.status, params);
 
@@ -481,10 +478,9 @@ class HolodexClient {
     }
   }
 
-  void _addOrganizations(
-      List<Organization> organization, Map<String, dynamic> map) {
-    if (organization.isNotEmpty) {
-      map.addAll({'org': organization.concat});
+  void _addOrganizations(Organization? organization, Map<String, dynamic> map) {
+    if (organization != null) {
+      map.addAll({'org': organization.code});
     }
   }
 
