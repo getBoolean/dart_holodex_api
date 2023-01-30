@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$VideoFilter {
   /// Filter by video uploader channel ID
-  @JsonKey(name: 'channel_id')
+  @JsonKey(name: 'channel_id', includeIfNull: false)
   String? get channelId => throw _privateConstructorUsedError;
 
   /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
@@ -36,11 +36,11 @@ mixin _$VideoFilter {
   int get limit => throw _privateConstructorUsedError;
 
   /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
-  @JsonKey(name: 'max_upcoming_hours')
+  @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
   int? get maxUpcomingHours => throw _privateConstructorUsedError;
 
   /// Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
-  @JsonKey(name: 'mentioned_channel_id')
+  @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
   String? get mentionedChannelId => throw _privateConstructorUsedError;
 
   /// Receive results starting at this number in the array from the Holodex API
@@ -51,7 +51,8 @@ mixin _$VideoFilter {
   Order get order => throw _privateConstructorUsedError;
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
-  List<String> get organization => throw _privateConstructorUsedError;
+  @JsonKey(name: 'org', toJson: concatOrganizationList)
+  List<Organization> get organization => throw _privateConstructorUsedError;
 
   /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
   @JsonKey(toJson: paginatedToString)
@@ -64,9 +65,11 @@ mixin _$VideoFilter {
   List<VideoStatus> get status => throw _privateConstructorUsedError;
 
   /// Filter by video topic ID
+  @JsonKey(includeIfNull: false)
   String? get topic => throw _privateConstructorUsedError;
 
   /// Filter by type of video, either clips or streams
+  @JsonKey(includeIfNull: false)
   VideoType? get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -82,7 +85,7 @@ abstract class $VideoFilterCopyWith<$Res> {
       _$VideoFilterCopyWithImpl<$Res, VideoFilter>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'channel_id')
+      {@JsonKey(name: 'channel_id', includeIfNull: false)
           String? channelId,
       List<String> ids,
       @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
@@ -91,20 +94,23 @@ abstract class $VideoFilterCopyWith<$Res> {
           List<Language> languages,
       @JsonKey(toJson: intToString)
           int limit,
-      @JsonKey(name: 'max_upcoming_hours')
+      @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
           int? maxUpcomingHours,
-      @JsonKey(name: 'mentioned_channel_id')
+      @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
           String? mentionedChannelId,
       @JsonKey(toJson: intToString)
           int offset,
       Order order,
-      List<String> organization,
+      @JsonKey(name: 'org', toJson: concatOrganizationList)
+          List<Organization> organization,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
       List<VideoSort> sort,
       List<VideoStatus> status,
-      String? topic,
-      VideoType? type});
+      @JsonKey(includeIfNull: false)
+          String? topic,
+      @JsonKey(includeIfNull: false)
+          VideoType? type});
 }
 
 /// @nodoc
@@ -176,7 +182,7 @@ class _$VideoFilterCopyWithImpl<$Res, $Val extends VideoFilter>
       organization: null == organization
           ? _value.organization
           : organization // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<Organization>,
       paginated: null == paginated
           ? _value.paginated
           : paginated // ignore: cast_nullable_to_non_nullable
@@ -210,7 +216,7 @@ abstract class _$$_VideoFilterCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'channel_id')
+      {@JsonKey(name: 'channel_id', includeIfNull: false)
           String? channelId,
       List<String> ids,
       @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
@@ -219,20 +225,23 @@ abstract class _$$_VideoFilterCopyWith<$Res>
           List<Language> languages,
       @JsonKey(toJson: intToString)
           int limit,
-      @JsonKey(name: 'max_upcoming_hours')
+      @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
           int? maxUpcomingHours,
-      @JsonKey(name: 'mentioned_channel_id')
+      @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
           String? mentionedChannelId,
       @JsonKey(toJson: intToString)
           int offset,
       Order order,
-      List<String> organization,
+      @JsonKey(name: 'org', toJson: concatOrganizationList)
+          List<Organization> organization,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
       List<VideoSort> sort,
       List<VideoStatus> status,
-      String? topic,
-      VideoType? type});
+      @JsonKey(includeIfNull: false)
+          String? topic,
+      @JsonKey(includeIfNull: false)
+          VideoType? type});
 }
 
 /// @nodoc
@@ -302,7 +311,7 @@ class __$$_VideoFilterCopyWithImpl<$Res>
       organization: null == organization
           ? _value._organization
           : organization // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<Organization>,
       paginated: null == paginated
           ? _value.paginated
           : paginated // ignore: cast_nullable_to_non_nullable
@@ -331,7 +340,7 @@ class __$$_VideoFilterCopyWithImpl<$Res>
 @JsonSerializable(createFactory: false)
 class _$_VideoFilter extends _VideoFilter {
   const _$_VideoFilter(
-      {@JsonKey(name: 'channel_id')
+      {@JsonKey(name: 'channel_id', includeIfNull: false)
           this.channelId,
       final List<String> ids = const [],
       @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
@@ -340,20 +349,23 @@ class _$_VideoFilter extends _VideoFilter {
           final List<Language> languages = const [],
       @JsonKey(toJson: intToString)
           this.limit = 25,
-      @JsonKey(name: 'max_upcoming_hours')
+      @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
           this.maxUpcomingHours,
-      @JsonKey(name: 'mentioned_channel_id')
+      @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
           this.mentionedChannelId,
       @JsonKey(toJson: intToString)
           this.offset = 0,
       this.order = Order.descending,
-      final List<String> organization = const [],
+      @JsonKey(name: 'org', toJson: concatOrganizationList)
+          final List<Organization> organization = const [],
       @JsonKey(toJson: paginatedToString)
           this.paginated = false,
       final List<VideoSort> sort = const [VideoSort.availableAt],
       final List<VideoStatus> status = const [],
-      this.topic,
-      this.type})
+      @JsonKey(includeIfNull: false)
+          this.topic,
+      @JsonKey(includeIfNull: false)
+          this.type})
       : assert(limit <= 50, 'Limit cannot be greater than 50'),
         _ids = ids,
         _includes = includes,
@@ -365,7 +377,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Filter by video uploader channel ID
   @override
-  @JsonKey(name: 'channel_id')
+  @JsonKey(name: 'channel_id', includeIfNull: false)
   final String? channelId;
 
   /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
@@ -411,12 +423,12 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
   @override
-  @JsonKey(name: 'max_upcoming_hours')
+  @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
   final int? maxUpcomingHours;
 
   /// Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
   @override
-  @JsonKey(name: 'mentioned_channel_id')
+  @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
   final String? mentionedChannelId;
 
   /// Receive results starting at this number in the array from the Holodex API
@@ -430,12 +442,12 @@ class _$_VideoFilter extends _VideoFilter {
   final Order order;
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
-  final List<String> _organization;
+  final List<Organization> _organization;
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
   @override
-  @JsonKey()
-  List<String> get organization {
+  @JsonKey(name: 'org', toJson: concatOrganizationList)
+  List<Organization> get organization {
     if (_organization is EqualUnmodifiableListView) return _organization;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_organization);
@@ -472,10 +484,12 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Filter by video topic ID
   @override
+  @JsonKey(includeIfNull: false)
   final String? topic;
 
   /// Filter by type of video, either clips or streams
   @override
+  @JsonKey(includeIfNull: false)
   final VideoType? type;
 
   @override
@@ -547,7 +561,7 @@ class _$_VideoFilter extends _VideoFilter {
 
 abstract class _VideoFilter extends VideoFilter {
   const factory _VideoFilter(
-      {@JsonKey(name: 'channel_id')
+      {@JsonKey(name: 'channel_id', includeIfNull: false)
           final String? channelId,
       final List<String> ids,
       @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
@@ -556,26 +570,29 @@ abstract class _VideoFilter extends VideoFilter {
           final List<Language> languages,
       @JsonKey(toJson: intToString)
           final int limit,
-      @JsonKey(name: 'max_upcoming_hours')
+      @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
           final int? maxUpcomingHours,
-      @JsonKey(name: 'mentioned_channel_id')
+      @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
           final String? mentionedChannelId,
       @JsonKey(toJson: intToString)
           final int offset,
       final Order order,
-      final List<String> organization,
+      @JsonKey(name: 'org', toJson: concatOrganizationList)
+          final List<Organization> organization,
       @JsonKey(toJson: paginatedToString)
           final bool paginated,
       final List<VideoSort> sort,
       final List<VideoStatus> status,
-      final String? topic,
-      final VideoType? type}) = _$_VideoFilter;
+      @JsonKey(includeIfNull: false)
+          final String? topic,
+      @JsonKey(includeIfNull: false)
+          final VideoType? type}) = _$_VideoFilter;
   const _VideoFilter._() : super._();
 
   @override
 
   /// Filter by video uploader channel ID
-  @JsonKey(name: 'channel_id')
+  @JsonKey(name: 'channel_id', includeIfNull: false)
   String? get channelId;
   @override
 
@@ -599,12 +616,12 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
-  @JsonKey(name: 'max_upcoming_hours')
+  @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
   int? get maxUpcomingHours;
   @override
 
   /// Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
-  @JsonKey(name: 'mentioned_channel_id')
+  @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
   String? get mentionedChannelId;
   @override
 
@@ -618,7 +635,8 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
-  List<String> get organization;
+  @JsonKey(name: 'org', toJson: concatOrganizationList)
+  List<Organization> get organization;
   @override
 
   /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
@@ -635,10 +653,12 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by video topic ID
+  @JsonKey(includeIfNull: false)
   String? get topic;
   @override
 
   /// Filter by type of video, either clips or streams
+  @JsonKey(includeIfNull: false)
   VideoType? get type;
   @override
   @JsonKey(ignore: true)

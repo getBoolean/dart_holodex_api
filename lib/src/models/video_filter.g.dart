@@ -7,10 +7,7 @@ part of 'video_filter.dart';
 // **************************************************************************
 
 Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) {
-  final val = <String, dynamic>{
-    'channel_id': instance.channelId,
-    'ids': instance.ids,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -18,19 +15,21 @@ Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) {
     }
   }
 
+  writeNotNull('channel_id', instance.channelId);
+  val['ids'] = instance.ids;
   writeNotNull('include', concatIncludesList(instance.includes));
   val['lang'] = concatLanguageListWithDefault(instance.languages);
   val['limit'] = intToString(instance.limit);
-  val['max_upcoming_hours'] = instance.maxUpcomingHours;
-  val['mentioned_channel_id'] = instance.mentionedChannelId;
+  writeNotNull('max_upcoming_hours', instance.maxUpcomingHours);
+  writeNotNull('mentioned_channel_id', instance.mentionedChannelId);
   val['offset'] = intToString(instance.offset);
   val['order'] = _$OrderEnumMap[instance.order]!;
-  val['organization'] = instance.organization;
+  val['org'] = concatOrganizationList(instance.organization);
   val['paginated'] = paginatedToString(instance.paginated);
   val['sort'] = instance.sort.map((e) => _$VideoSortEnumMap[e]!).toList();
   val['status'] = instance.status.map((e) => _$VideoStatusEnumMap[e]!).toList();
-  val['topic'] = instance.topic;
-  val['type'] = _$VideoTypeEnumMap[instance.type];
+  writeNotNull('topic', instance.topic);
+  writeNotNull('type', _$VideoTypeEnumMap[instance.type]);
   return val;
 }
 

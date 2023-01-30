@@ -41,7 +41,7 @@ mixin _$SearchFilter {
 
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
   /// in the specified organization.
-  @JsonKey(name: 'org')
+  @JsonKey(name: 'org', toJson: concatOrganizationList)
   List<Organization> get organizations => throw _privateConstructorUsedError;
 
   /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
@@ -79,7 +79,7 @@ abstract class $SearchFilterCopyWith<$Res> {
           List<String> topics,
       @JsonKey(name: 'vch')
           List<String> videoChannels,
-      @JsonKey(name: 'org')
+      @JsonKey(name: 'org', toJson: concatOrganizationList)
           List<Organization> organizations,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
@@ -172,7 +172,7 @@ abstract class _$$_SearchFilterCopyWith<$Res>
           List<String> topics,
       @JsonKey(name: 'vch')
           List<String> videoChannels,
-      @JsonKey(name: 'org')
+      @JsonKey(name: 'org', toJson: concatOrganizationList)
           List<Organization> organizations,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
@@ -261,7 +261,7 @@ class _$_SearchFilter extends _SearchFilter {
           final List<String> topics = const [],
       @JsonKey(name: 'vch')
           final List<String> videoChannels = const [],
-      @JsonKey(name: 'org')
+      @JsonKey(name: 'org', toJson: concatOrganizationList)
           final List<Organization> organizations = const [],
       @JsonKey(toJson: paginatedToString)
           this.paginated = true,
@@ -343,7 +343,7 @@ class _$_SearchFilter extends _SearchFilter {
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
   /// in the specified organization.
   @override
-  @JsonKey(name: 'org')
+  @JsonKey(name: 'org', toJson: concatOrganizationList)
   List<Organization> get organizations {
     if (_organizations is EqualUnmodifiableListView) return _organizations;
     // ignore: implicit_dynamic_type
@@ -430,7 +430,7 @@ abstract class _SearchFilter extends SearchFilter {
           final List<String> topics,
       @JsonKey(name: 'vch')
           final List<String> videoChannels,
-      @JsonKey(name: 'org')
+      @JsonKey(name: 'org', toJson: concatOrganizationList)
           final List<Organization> organizations,
       @JsonKey(toJson: paginatedToString)
           final bool paginated,
@@ -472,7 +472,7 @@ abstract class _SearchFilter extends SearchFilter {
 
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
   /// in the specified organization.
-  @JsonKey(name: 'org')
+  @JsonKey(name: 'org', toJson: concatOrganizationList)
   List<Organization> get organizations;
   @override
 

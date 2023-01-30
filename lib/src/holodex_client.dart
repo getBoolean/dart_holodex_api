@@ -627,9 +627,9 @@ class HolodexClient {
     }
   }
 
-  void _addOrganizations(List<String> organization, Map<String, dynamic> map) {
+  void _addOrganizations(List<Organization> organization, Map<String, dynamic> map) {
     if (organization.isNotEmpty) {
-      map.addAll({'org': concatStringList(organization)});
+      map.addAll({'org': organization.concat});
     }
   }
 

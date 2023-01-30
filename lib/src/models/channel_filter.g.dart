@@ -6,16 +6,25 @@ part of 'channel_filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$$_ChannelFilterToJson(_$_ChannelFilter instance) =>
-    <String, dynamic>{
-      'lang': concatLanguageListWithDefault(instance.languages),
-      'limit': intToString(instance.limit),
-      'offset': intToString(instance.offset),
-      'type': _$ChannelTypeEnumMap[instance.type],
-      'sort': instance.sort.map((e) => _$ChannelSortEnumMap[e]!).toList(),
-      'order': _$OrderEnumMap[instance.order]!,
-      'org': _$OrganizationEnumMap[instance.organization],
-    };
+Map<String, dynamic> _$$_ChannelFilterToJson(_$_ChannelFilter instance) {
+  final val = <String, dynamic>{
+    'lang': concatLanguageListWithDefault(instance.languages),
+    'limit': intToString(instance.limit),
+    'offset': intToString(instance.offset),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('type', _$ChannelTypeEnumMap[instance.type]);
+  val['sort'] = instance.sort.map((e) => _$ChannelSortEnumMap[e]!).toList();
+  val['order'] = _$OrderEnumMap[instance.order]!;
+  writeNotNull('org', organizationToString(instance.organization));
+  return val;
+}
 
 const _$ChannelTypeEnumMap = {
   ChannelType.vtuber: 'vtuber',
@@ -45,68 +54,4 @@ const _$ChannelSortEnumMap = {
 const _$OrderEnumMap = {
   Order.ascending: 'ascending',
   Order.descending: 'descending',
-};
-
-const _$OrganizationEnumMap = {
-  Organization.dotLIVE: 'dotLIVE',
-  Organization.inc774: 'inc774',
-  Organization.AogiriHighschool: 'AogiriHighschool',
-  Organization.AtelierLive: 'AtelierLive',
-  Organization.AxelV: 'AxelV',
-  Organization.AkioAIR: 'AkioAIR',
-  Organization.Aetheria: 'Aetheria',
-  Organization.Chukorara: 'Chukorara',
-  Organization.CloudHorizon: 'CloudHorizon',
-  Organization.EileneFamily: 'EileneFamily',
-  Organization.Emoechi: 'Emoechi',
-  Organization.GuildCQ: 'GuildCQ',
-  Organization.Hololive: 'Hololive',
-  Organization.HoshimeguriGakuen: 'HoshimeguriGakuen',
-  Organization.HLive: 'HLive',
-  Organization.Independents: 'Independents',
-  Organization.Iridori: 'Iridori',
-  Organization.idolCorp: 'idolCorp',
-  Organization.KAMITSUBAKI: 'KAMITSUBAKI',
-  Organization.KizunaAI: 'KizunaAI',
-  Organization.KAWAII_MUSIC: 'KAWAII_MUSIC',
-  Organization.KEMOMIMI_REFLE: 'KEMOMIMI_REFLE',
-  Organization.KemonoFriends: 'KemonoFriends',
-  Organization.LaPecheParty: 'LaPecheParty',
-  Organization.Marbl_s: 'Marbl_s',
-  Organization.Masquerade: 'Masquerade',
-  Organization.MAHA5: 'MAHA5',
-  Organization.MyHoloTV: 'MyHoloTV',
-  Organization.Nijisanji: 'Nijisanji',
-  Organization.NoriPro: 'NoriPro',
-  Organization.NIJIGEN: 'NIJIGEN',
-  Organization.NeoPorte: 'NeoPorte',
-  Organization.ProductionKawaii: 'ProductionKawaii',
-  Organization.Polygon: 'Polygon',
-  Organization.PhaseConnect: 'PhaseConnect',
-  Organization.PixelaProject: 'PixelaProject',
-  Organization.PRISM: 'PRISM',
-  Organization.ProPro: 'ProPro',
-  Organization.PinkPunkPro: 'PinkPunkPro',
-  Organization.RiotMusic: 'RiotMusic',
-  Organization.ReACT: 'ReACT',
-  Organization.ReMemories: 'ReMemories',
-  Organization.SleepMonster: 'SleepMonster',
-  Organization.SquareLive: 'SquareLive',
-  Organization.Snacknili: 'Snacknili',
-  Organization.Shinsougumi: 'Shinsougumi',
-  Organization.Tsunderia: 'Tsunderia',
-  Organization.TwitchIndependents: 'TwitchIndependents',
-  Organization.UnrealNightGirls: 'UnrealNightGirls',
-  Organization.VDimensionCreators: 'VDimensionCreators',
-  Organization.VOICE_ORE: 'VOICE_ORE',
-  Organization.ViViD: 'ViViD',
-  Organization.VOMS: 'VOMS',
-  Organization.VShojo: 'VShojo',
-  Organization.VSpo: 'VSpo',
-  Organization.VReverie: 'VReverie',
-  Organization.WACTOR: 'WACTOR',
-  Organization.WAKEntertainment: 'WAKEntertainment',
-  Organization.Xencount: 'Xencount',
-  Organization.YuniCreate: 'YuniCreate',
-  Organization.YumeReality: 'YumeReality',
 };

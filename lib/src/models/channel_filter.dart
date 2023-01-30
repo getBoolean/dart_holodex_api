@@ -30,6 +30,7 @@ class ChannelFilter with _$ChannelFilter {
     @Default(0) int offset,
 
     /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
+    @JsonKey(includeIfNull: false)
     ChannelType? type,
 
     /// Column to sort on
@@ -38,8 +39,8 @@ class ChannelFilter with _$ChannelFilter {
     /// ASC or DESC order, default asc.
     @Default(Order.ascending) Order order,
 
-    /// If set, filter for Vtuber belonging to a specific org
-    @JsonKey(name: 'org')
+    /// If set, filter for a Vtuber belonging to a specific org
+    @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
     Organization? organization,
   }) = _ChannelFilter;
 }

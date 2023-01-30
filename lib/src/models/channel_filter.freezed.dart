@@ -29,6 +29,7 @@ mixin _$ChannelFilter {
   int get offset => throw _privateConstructorUsedError;
 
   /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
+  @JsonKey(includeIfNull: false)
   ChannelType? get type => throw _privateConstructorUsedError;
 
   /// Column to sort on
@@ -37,8 +38,8 @@ mixin _$ChannelFilter {
   /// ASC or DESC order, default asc.
   Order get order => throw _privateConstructorUsedError;
 
-  /// If set, filter for Vtuber belonging to a specific org
-  @JsonKey(name: 'org')
+  /// If set, filter for a Vtuber belonging to a specific org
+  @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
   Organization? get organization => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -60,10 +61,11 @@ abstract class $ChannelFilterCopyWith<$Res> {
           int limit,
       @JsonKey(toJson: intToString)
           int offset,
-      ChannelType? type,
+      @JsonKey(includeIfNull: false)
+          ChannelType? type,
       List<ChannelSort> sort,
       Order order,
-      @JsonKey(name: 'org')
+      @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
           Organization? organization});
 }
 
@@ -136,10 +138,11 @@ abstract class _$$_ChannelFilterCopyWith<$Res>
           int limit,
       @JsonKey(toJson: intToString)
           int offset,
-      ChannelType? type,
+      @JsonKey(includeIfNull: false)
+          ChannelType? type,
       List<ChannelSort> sort,
       Order order,
-      @JsonKey(name: 'org')
+      @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
           Organization? organization});
 }
 
@@ -205,10 +208,11 @@ class _$_ChannelFilter extends _ChannelFilter {
           this.limit = 25,
       @JsonKey(toJson: intToString)
           this.offset = 0,
-      this.type,
+      @JsonKey(includeIfNull: false)
+          this.type,
       final List<ChannelSort> sort = const [ChannelSort.organization],
       this.order = Order.ascending,
-      @JsonKey(name: 'org')
+      @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
           this.organization})
       : assert(limit <= 50, 'The limit cannot be greater than 50'),
         _languages = languages,
@@ -239,6 +243,7 @@ class _$_ChannelFilter extends _ChannelFilter {
 
   /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
   @override
+  @JsonKey(includeIfNull: false)
   final ChannelType? type;
 
   /// Column to sort on
@@ -258,9 +263,9 @@ class _$_ChannelFilter extends _ChannelFilter {
   @JsonKey()
   final Order order;
 
-  /// If set, filter for Vtuber belonging to a specific org
+  /// If set, filter for a Vtuber belonging to a specific org
   @override
-  @JsonKey(name: 'org')
+  @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
   final Organization? organization;
 
   @override
@@ -318,10 +323,11 @@ abstract class _ChannelFilter extends ChannelFilter {
           final int limit,
       @JsonKey(toJson: intToString)
           final int offset,
-      final ChannelType? type,
+      @JsonKey(includeIfNull: false)
+          final ChannelType? type,
       final List<ChannelSort> sort,
       final Order order,
-      @JsonKey(name: 'org')
+      @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
           final Organization? organization}) = _$_ChannelFilter;
   const _ChannelFilter._() : super._();
 
@@ -343,6 +349,7 @@ abstract class _ChannelFilter extends ChannelFilter {
   @override
 
   /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
+  @JsonKey(includeIfNull: false)
   ChannelType? get type;
   @override
 
@@ -354,8 +361,8 @@ abstract class _ChannelFilter extends ChannelFilter {
   Order get order;
   @override
 
-  /// If set, filter for Vtuber belonging to a specific org
-  @JsonKey(name: 'org')
+  /// If set, filter for a Vtuber belonging to a specific org
+  @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
   Organization? get organization;
   @override
   @JsonKey(ignore: true)
