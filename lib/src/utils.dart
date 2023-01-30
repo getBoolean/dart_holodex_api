@@ -44,3 +44,5 @@ List<String>? channelSortToStringList(List<ChannelSort> list) =>
     list.isEmpty ? null : list.map((e) => e.code).toList();
 
 String orderToString(Order order) => order.code;
+
+List<String>? nullStringListIfEmpty(List<String> value) => value.isEmpty ? null : value;

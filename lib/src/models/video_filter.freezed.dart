@@ -21,7 +21,7 @@ mixin _$VideoFilter {
   String? get channelId => throw _privateConstructorUsedError;
 
   /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
   List<String> get ids => throw _privateConstructorUsedError;
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
@@ -89,7 +89,7 @@ abstract class $VideoFilterCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'channel_id', includeIfNull: false)
           String? channelId,
-      @JsonKey(name: 'id')
+      @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
           List<String> ids,
       @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
           List<Includes> includes,
@@ -222,7 +222,7 @@ abstract class _$$_VideoFilterCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'channel_id', includeIfNull: false)
           String? channelId,
-      @JsonKey(name: 'id')
+      @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
           List<String> ids,
       @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
           List<Includes> includes,
@@ -348,7 +348,7 @@ class _$_VideoFilter extends _VideoFilter {
   const _$_VideoFilter(
       {@JsonKey(name: 'channel_id', includeIfNull: false)
           this.channelId,
-      @JsonKey(name: 'id')
+      @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
           final List<String> ids = const [],
       @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
           final List<Includes> includes = const [],
@@ -393,7 +393,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
   @override
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
   List<String> get ids {
     if (_ids is EqualUnmodifiableListView) return _ids;
     // ignore: implicit_dynamic_type
@@ -571,7 +571,7 @@ abstract class _VideoFilter extends VideoFilter {
   const factory _VideoFilter(
       {@JsonKey(name: 'channel_id', includeIfNull: false)
           final String? channelId,
-      @JsonKey(name: 'id')
+      @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
           final List<String> ids,
       @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
           final List<Includes> includes,
@@ -607,7 +607,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
   List<String> get ids;
   @override
 

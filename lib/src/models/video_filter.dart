@@ -23,7 +23,7 @@ class VideoFilter with _$VideoFilter {
     @JsonKey(name: 'channel_id', includeIfNull: false) String? channelId,
 
     /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
-    @JsonKey(name: 'id')
+    @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
     @Default([]) List<String> ids,
 
     /// Request extra data be included in the results. They are not guarenteed to be returned.
