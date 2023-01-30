@@ -448,50 +448,10 @@ class HolodexClient {
       limit: 25,
     ),
   }) async {
-    final Map<String, dynamic> data = {};
-
-    data.addAll({
-      'sort': filter.sort.code,
-      'paginated': filter.paginated,
-      'offset': '${filter.offset}',
-      'limit': '${filter.limit}',
-    });
-
-    if (filter.organizations.isNotEmpty) {
-      data.addAll({
-        'org': filter.organizations.map((org) => org.code).toList(),
-      });
-    }
-
-    if (filter.languages.isNotEmpty) {
-      data.addAll({
-        'lang': filter.languages.map((l) => l.toLanguageTag()).toList(),
-      });
-    }
-
-    if (filter.targets.isNotEmpty) {
-      data.addAll({
-        'target': filter.targets.map((target) => target.code).toList(),
-      });
-    }
-
-    if (conditions.isNotEmpty) {
-      data.addAll({
-        'conditions': conditions,
-      });
-    }
-
-    if (filter.topics.isNotEmpty) {
-      data.addAll({
-        'topic': filter.topics,
-      });
-    }
-
-    if (filter.videoChannels.isNotEmpty) {
-      data.addAll({
-        'vch': filter.videoChannels,
-      });
-    }
+    final Map<String, dynamic> data = {
+      'conditions': conditions,
+      ...filter.toJson()
+    };
 
     final response = await post(path: _Constants.videoSearch, data: data);
 
@@ -627,7 +587,8 @@ class HolodexClient {
     }
   }
 
-  void _addOrganizations(List<Organization> organization, Map<String, dynamic> map) {
+  void _addOrganizations(
+      List<Organization> organization, Map<String, dynamic> map) {
     if (organization.isNotEmpty) {
       map.addAll({'org': organization.concat});
     }
