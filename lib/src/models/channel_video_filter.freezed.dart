@@ -31,6 +31,7 @@ mixin _$ChannelVideoFilter {
   int get offset => throw _privateConstructorUsedError;
 
   /// If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  @JsonKey(toJson: paginatedToString)
   bool get paginated => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,7 +53,8 @@ abstract class $ChannelVideoFilterCopyWith<$Res> {
           List<Language> languages,
       int limit,
       int offset,
-      bool paginated});
+      @JsonKey(toJson: paginatedToString)
+          bool paginated});
 }
 
 /// @nodoc
@@ -114,7 +116,8 @@ abstract class _$$_ChannelVideoFilterCopyWith<$Res>
           List<Language> languages,
       int limit,
       int offset,
-      bool paginated});
+      @JsonKey(toJson: paginatedToString)
+          bool paginated});
 }
 
 /// @nodoc
@@ -169,7 +172,8 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
           final List<Language> languages = const [],
       this.limit = 25,
       this.offset = 0,
-      this.paginated = true})
+      @JsonKey(toJson: paginatedToString)
+          this.paginated = true})
       : assert(limit <= 50, 'The limit cannot be greater than 50'),
         _includes = includes,
         _languages = languages,
@@ -211,7 +215,7 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
 
   /// If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
   @override
-  @JsonKey()
+  @JsonKey(toJson: paginatedToString)
   final bool paginated;
 
   @override
@@ -266,7 +270,8 @@ abstract class _ChannelVideoFilter extends ChannelVideoFilter {
           final List<Language> languages,
       final int limit,
       final int offset,
-      final bool paginated}) = _$_ChannelVideoFilter;
+      @JsonKey(toJson: paginatedToString)
+          final bool paginated}) = _$_ChannelVideoFilter;
   const _ChannelVideoFilter._() : super._();
 
   @override
@@ -290,6 +295,7 @@ abstract class _ChannelVideoFilter extends ChannelVideoFilter {
   @override
 
   /// If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  @JsonKey(toJson: paginatedToString)
   bool get paginated;
   @override
   @JsonKey(ignore: true)

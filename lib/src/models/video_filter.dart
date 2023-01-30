@@ -53,7 +53,7 @@ class VideoFilter with _$VideoFilter {
     @Default([]) List<String> organization,
 
     /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
-    @Default(false) bool paginated,
+    @JsonKey(toJson: paginatedToString) @Default(false) bool paginated,
 
     /// Sort the returned data by this field
     @Default([VideoSort.availableAt]) List<VideoSort> sort,

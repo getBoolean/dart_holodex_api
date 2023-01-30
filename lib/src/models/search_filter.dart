@@ -3,6 +3,7 @@ import 'package:dart_holodex_api/src/enums/organization.dart';
 import 'package:dart_holodex_api/src/enums/search_sort.dart';
 import 'package:dart_holodex_api/src/enums/search_target.dart';
 import 'package:dart_holodex_api/src/models/api/video_full.dart';
+import 'package:dart_holodex_api/src/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'search_filter.freezed.dart';
@@ -41,7 +42,7 @@ class SearchFilter with _$SearchFilter {
     @Default([]) List<Organization> organizations,
 
     /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
-    @Default(true) bool paginated,
+    @JsonKey(toJson: paginatedToString) @Default(true) bool paginated,
 
     /// Offset results
     @Default(0) int offset,

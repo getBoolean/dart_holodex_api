@@ -13,5 +13,5 @@ Map<String, dynamic> _$$_ChannelVideoFilterToJson(
       'lang': concatLanguageList(instance.languages),
       'limit': instance.limit,
       'offset': instance.offset,
-      'paginated': instance.paginated,
+      'paginated': paginatedToString(instance.paginated),
     };

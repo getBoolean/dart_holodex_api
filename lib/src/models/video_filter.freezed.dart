@@ -52,6 +52,7 @@ mixin _$VideoFilter {
   List<String> get organization => throw _privateConstructorUsedError;
 
   /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
+  @JsonKey(toJson: paginatedToString)
   bool get paginated => throw _privateConstructorUsedError;
 
   /// Sort the returned data by this field
@@ -94,7 +95,8 @@ abstract class $VideoFilterCopyWith<$Res> {
       int offset,
       Order order,
       List<String> organization,
-      bool paginated,
+      @JsonKey(toJson: paginatedToString)
+          bool paginated,
       List<VideoSort> sort,
       List<VideoStatus> status,
       String? topic,
@@ -219,7 +221,8 @@ abstract class _$$_VideoFilterCopyWith<$Res>
       int offset,
       Order order,
       List<String> organization,
-      bool paginated,
+      @JsonKey(toJson: paginatedToString)
+          bool paginated,
       List<VideoSort> sort,
       List<VideoStatus> status,
       String? topic,
@@ -337,7 +340,8 @@ class _$_VideoFilter extends _VideoFilter {
       this.offset = 0,
       this.order = Order.descending,
       final List<String> organization = const [],
-      this.paginated = false,
+      @JsonKey(toJson: paginatedToString)
+          this.paginated = false,
       final List<VideoSort> sort = const [VideoSort.availableAt],
       final List<VideoStatus> status = const [],
       this.topic,
@@ -431,7 +435,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
   @override
-  @JsonKey()
+  @JsonKey(toJson: paginatedToString)
   final bool paginated;
 
   /// Sort the returned data by this field
@@ -550,7 +554,8 @@ abstract class _VideoFilter extends VideoFilter {
       final int offset,
       final Order order,
       final List<String> organization,
-      final bool paginated,
+      @JsonKey(toJson: paginatedToString)
+          final bool paginated,
       final List<VideoSort> sort,
       final List<VideoStatus> status,
       final String? topic,
@@ -605,6 +610,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
+  @JsonKey(toJson: paginatedToString)
   bool get paginated;
   @override
 

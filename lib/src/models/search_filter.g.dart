@@ -16,7 +16,7 @@ Map<String, dynamic> _$$_SearchFilterToJson(_$_SearchFilter instance) =>
       'video_channels': instance.videoChannels,
       'organizations':
           instance.organizations.map((e) => _$OrganizationEnumMap[e]!).toList(),
-      'paginated': instance.paginated,
+      'paginated': paginatedToString(instance.paginated),
       'offset': instance.offset,
       'limit': instance.limit,
     };

@@ -43,6 +43,7 @@ mixin _$SearchFilter {
   List<Organization> get organizations => throw _privateConstructorUsedError;
 
   /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
+  @JsonKey(toJson: paginatedToString)
   bool get paginated => throw _privateConstructorUsedError;
 
   /// Offset results
@@ -74,7 +75,8 @@ abstract class $SearchFilterCopyWith<$Res> {
       @JsonKey(name: 'video_channels')
           List<String> videoChannels,
       List<Organization> organizations,
-      bool paginated,
+      @JsonKey(toJson: paginatedToString)
+          bool paginated,
       int offset,
       int limit});
 }
@@ -162,7 +164,8 @@ abstract class _$$_SearchFilterCopyWith<$Res>
       @JsonKey(name: 'video_channels')
           List<String> videoChannels,
       List<Organization> organizations,
-      bool paginated,
+      @JsonKey(toJson: paginatedToString)
+          bool paginated,
       int offset,
       int limit});
 }
@@ -246,7 +249,8 @@ class _$_SearchFilter extends _SearchFilter {
       @JsonKey(name: 'video_channels')
           final List<String> videoChannels = const [],
       final List<Organization> organizations = const [],
-      this.paginated = true,
+      @JsonKey(toJson: paginatedToString)
+          this.paginated = true,
       this.offset = 0,
       this.limit = 25})
       : assert(limit <= 50, 'The limit cannot be greater than 50'),
@@ -332,7 +336,7 @@ class _$_SearchFilter extends _SearchFilter {
 
   /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
   @override
-  @JsonKey()
+  @JsonKey(toJson: paginatedToString)
   final bool paginated;
 
   /// Offset results
@@ -411,7 +415,8 @@ abstract class _SearchFilter extends SearchFilter {
       @JsonKey(name: 'video_channels')
           final List<String> videoChannels,
       final List<Organization> organizations,
-      final bool paginated,
+      @JsonKey(toJson: paginatedToString)
+          final bool paginated,
       final int offset,
       final int limit}) = _$_SearchFilter;
   const _SearchFilter._() : super._();
@@ -451,6 +456,7 @@ abstract class _SearchFilter extends SearchFilter {
   @override
 
   /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
+  @JsonKey(toJson: paginatedToString)
   bool get paginated;
   @override
 

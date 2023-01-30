@@ -18,7 +18,7 @@ Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) =>
       'offset': instance.offset,
       'order': _$OrderEnumMap[instance.order]!,
       'organization': instance.organization,
-      'paginated': instance.paginated,
+      'paginated': paginatedToString(instance.paginated),
       'sort': instance.sort.map((e) => _$VideoSortEnumMap[e]!).toList(),
       'status': instance.status.map((e) => _$VideoStatusEnumMap[e]!).toList(),
       'topic': instance.topic,
