@@ -484,50 +484,10 @@ class HolodexClient {
       limit: 25,
     ),
   }) async {
-    final Map<String, dynamic> data = {};
-
-    data.addAll({
-      'sort': filter.sort.code,
+    final Map<String, dynamic> data = {
       'comment': comment,
-      'offset': filter.offset,
-      'limit': filter.limit,
-    });
-
-    if (filter.organizations.isNotEmpty) {
-      data.addAll({
-        'org': filter.organizations.map((org) => org.code).toList(),
-      });
-    }
-
-    if (filter.paginated) {
-      data.addAll({
-        'paginated': filter.paginated,
-      });
-    }
-
-    if (filter.languages.isNotEmpty) {
-      data.addAll({
-        'lang': filter.languages.map((l) => l.toLanguageTag()).toList(),
-      });
-    }
-
-    if (filter.targets.isNotEmpty) {
-      data.addAll({
-        'target': filter.targets.map((s) => s.code).toList(),
-      });
-    }
-
-    if (filter.topics.isNotEmpty) {
-      data.addAll({
-        'topic': filter.topics,
-      });
-    }
-
-    if (filter.videoChannels.isNotEmpty) {
-      data.addAll({
-        'vch': filter.videoChannels,
-      });
-    }
+      ...filter.toJson(),
+    };
 
     final response = await post(path: _Constants.commentSearch, data: data);
 
