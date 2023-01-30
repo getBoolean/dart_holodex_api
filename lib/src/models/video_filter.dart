@@ -16,6 +16,7 @@ part 'video_filter.g.dart';
 class VideoFilter with _$VideoFilter {
   const VideoFilter._();
 
+  /// Filter the results returns by the Holodex API channel endpoints
   @Assert('limit <= 50', 'Limit cannot be greater than 50')
   const factory VideoFilter({
     /// Filter by video uploader channel ID
