@@ -8,7 +8,7 @@ part of 'search_filter.dart';
 
 Map<String, dynamic> _$$_SearchFilterToJson(_$_SearchFilter instance) =>
     <String, dynamic>{
-      'search_sort': searchSortToString(instance.sort),
+      'sort': searchSortToString(instance.sort),
       'lang': languageListToStringList(instance.languages),
       'target': searchTargetToStringList(instance.targets),
       'topic': instance.topics,

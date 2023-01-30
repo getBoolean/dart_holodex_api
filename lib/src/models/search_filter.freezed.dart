@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SearchFilter {
   /// Sort by newest or oldest
-  @JsonKey(name: 'search_sort', toJson: searchSortToString)
+  @JsonKey(name: 'sort', toJson: searchSortToString)
   SearchSort get sort => throw _privateConstructorUsedError;
 
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
@@ -68,7 +68,7 @@ abstract class $SearchFilterCopyWith<$Res> {
       _$SearchFilterCopyWithImpl<$Res, SearchFilter>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'search_sort', toJson: searchSortToString)
+      {@JsonKey(name: 'sort', toJson: searchSortToString)
           SearchSort sort,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
           List<Language> languages,
@@ -160,7 +160,7 @@ abstract class _$$_SearchFilterCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'search_sort', toJson: searchSortToString)
+      {@JsonKey(name: 'sort', toJson: searchSortToString)
           SearchSort sort,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
           List<Language> languages,
@@ -245,7 +245,7 @@ class __$$_SearchFilterCopyWithImpl<$Res>
 @JsonSerializable(createFactory: false)
 class _$_SearchFilter extends _SearchFilter {
   const _$_SearchFilter(
-      {@JsonKey(name: 'search_sort', toJson: searchSortToString)
+      {@JsonKey(name: 'sort', toJson: searchSortToString)
           this.sort = SearchSort.newest,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
           final List<Language> languages = const [],
@@ -275,7 +275,7 @@ class _$_SearchFilter extends _SearchFilter {
 
   /// Sort by newest or oldest
   @override
-  @JsonKey(name: 'search_sort', toJson: searchSortToString)
+  @JsonKey(name: 'sort', toJson: searchSortToString)
   final SearchSort sort;
 
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
@@ -416,7 +416,7 @@ class _$_SearchFilter extends _SearchFilter {
 
 abstract class _SearchFilter extends SearchFilter {
   const factory _SearchFilter(
-      {@JsonKey(name: 'search_sort', toJson: searchSortToString)
+      {@JsonKey(name: 'sort', toJson: searchSortToString)
           final SearchSort sort,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
           final List<Language> languages,
@@ -438,7 +438,7 @@ abstract class _SearchFilter extends SearchFilter {
   @override
 
   /// Sort by newest or oldest
-  @JsonKey(name: 'search_sort', toJson: searchSortToString)
+  @JsonKey(name: 'sort', toJson: searchSortToString)
   SearchSort get sort;
   @override
 

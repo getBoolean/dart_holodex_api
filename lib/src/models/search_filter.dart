@@ -18,7 +18,7 @@ class SearchFilter with _$SearchFilter {
   @Assert('limit <= 50', 'The limit cannot be greater than 50')
   const factory SearchFilter({
     /// Sort by newest or oldest
-    @JsonKey(name: 'search_sort', toJson: searchSortToString)
+    @JsonKey(name: 'sort', toJson: searchSortToString)
     @Default(SearchSort.newest)
         SearchSort sort,
 
