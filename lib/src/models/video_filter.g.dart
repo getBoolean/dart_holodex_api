@@ -23,7 +23,7 @@ Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) {
   writeNotNull('max_upcoming_hours', instance.maxUpcomingHours);
   writeNotNull('mentioned_channel_id', instance.mentionedChannelId);
   val['offset'] = intToString(instance.offset);
-  val['order'] = _$OrderEnumMap[instance.order]!;
+  val['order'] = orderToString(instance.order);
   val['org'] = concatOrganizationList(instance.organization);
   val['paginated'] = paginatedToString(instance.paginated);
   val['sort'] = instance.sort.map((e) => _$VideoSortEnumMap[e]!).toList();
@@ -32,11 +32,6 @@ Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) {
   writeNotNull('type', _$VideoTypeEnumMap[instance.type]);
   return val;
 }
-
-const _$OrderEnumMap = {
-  Order.ascending: 'ascending',
-  Order.descending: 'descending',
-};
 
 const _$VideoSortEnumMap = {
   VideoSort.title: 'title',

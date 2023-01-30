@@ -21,12 +21,7 @@ Map<String, dynamic> _$$_ChannelFilterToJson(_$_ChannelFilter instance) {
 
   writeNotNull('type', channelTypeToString(instance.type));
   val['sort'] = channelSortToStringList(instance.sort);
-  val['order'] = _$OrderEnumMap[instance.order]!;
+  val['order'] = orderToString(instance.order);
   writeNotNull('org', organizationToString(instance.organization));
   return val;
 }
-
-const _$OrderEnumMap = {
-  Order.ascending: 'ascending',
-  Order.descending: 'descending',
-};

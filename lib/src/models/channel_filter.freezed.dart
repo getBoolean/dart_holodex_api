@@ -37,6 +37,7 @@ mixin _$ChannelFilter {
   List<ChannelSort> get sort => throw _privateConstructorUsedError;
 
   /// ASC or DESC order, default asc.
+  @JsonKey(toJson: orderToString)
   Order get order => throw _privateConstructorUsedError;
 
   /// If set, filter for a Vtuber belonging to a specific org
@@ -66,7 +67,8 @@ abstract class $ChannelFilterCopyWith<$Res> {
           ChannelType? type,
       @JsonKey(toJson: channelSortToStringList)
           List<ChannelSort> sort,
-      Order order,
+      @JsonKey(toJson: orderToString)
+          Order order,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
           Organization? organization});
 }
@@ -144,7 +146,8 @@ abstract class _$$_ChannelFilterCopyWith<$Res>
           ChannelType? type,
       @JsonKey(toJson: channelSortToStringList)
           List<ChannelSort> sort,
-      Order order,
+      @JsonKey(toJson: orderToString)
+          Order order,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
           Organization? organization});
 }
@@ -215,7 +218,8 @@ class _$_ChannelFilter extends _ChannelFilter {
           this.type,
       @JsonKey(toJson: channelSortToStringList)
           final List<ChannelSort> sort = const [ChannelSort.organization],
-      this.order = Order.ascending,
+      @JsonKey(toJson: orderToString)
+          this.order = Order.ascending,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
           this.organization})
       : assert(limit <= 50, 'The limit cannot be greater than 50'),
@@ -264,7 +268,7 @@ class _$_ChannelFilter extends _ChannelFilter {
 
   /// ASC or DESC order, default asc.
   @override
-  @JsonKey()
+  @JsonKey(toJson: orderToString)
   final Order order;
 
   /// If set, filter for a Vtuber belonging to a specific org
@@ -331,7 +335,8 @@ abstract class _ChannelFilter extends ChannelFilter {
           final ChannelType? type,
       @JsonKey(toJson: channelSortToStringList)
           final List<ChannelSort> sort,
-      final Order order,
+      @JsonKey(toJson: orderToString)
+          final Order order,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
           final Organization? organization}) = _$_ChannelFilter;
   const _ChannelFilter._() : super._();
@@ -364,6 +369,7 @@ abstract class _ChannelFilter extends ChannelFilter {
   @override
 
   /// ASC or DESC order, default asc.
+  @JsonKey(toJson: orderToString)
   Order get order;
   @override
 

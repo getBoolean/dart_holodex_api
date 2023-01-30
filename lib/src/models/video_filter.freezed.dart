@@ -48,6 +48,7 @@ mixin _$VideoFilter {
   int get offset => throw _privateConstructorUsedError;
 
   /// Order results by ascending or descending
+  @JsonKey(toJson: orderToString)
   Order get order => throw _privateConstructorUsedError;
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
@@ -100,7 +101,8 @@ abstract class $VideoFilterCopyWith<$Res> {
           String? mentionedChannelId,
       @JsonKey(toJson: intToString)
           int offset,
-      Order order,
+      @JsonKey(toJson: orderToString)
+          Order order,
       @JsonKey(name: 'org', toJson: concatOrganizationList)
           List<Organization> organization,
       @JsonKey(toJson: paginatedToString)
@@ -231,7 +233,8 @@ abstract class _$$_VideoFilterCopyWith<$Res>
           String? mentionedChannelId,
       @JsonKey(toJson: intToString)
           int offset,
-      Order order,
+      @JsonKey(toJson: orderToString)
+          Order order,
       @JsonKey(name: 'org', toJson: concatOrganizationList)
           List<Organization> organization,
       @JsonKey(toJson: paginatedToString)
@@ -355,7 +358,8 @@ class _$_VideoFilter extends _VideoFilter {
           this.mentionedChannelId,
       @JsonKey(toJson: intToString)
           this.offset = 0,
-      this.order = Order.descending,
+      @JsonKey(toJson: orderToString)
+          this.order = Order.descending,
       @JsonKey(name: 'org', toJson: concatOrganizationList)
           final List<Organization> organization = const [],
       @JsonKey(toJson: paginatedToString)
@@ -438,7 +442,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Order results by ascending or descending
   @override
-  @JsonKey()
+  @JsonKey(toJson: orderToString)
   final Order order;
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
@@ -576,7 +580,8 @@ abstract class _VideoFilter extends VideoFilter {
           final String? mentionedChannelId,
       @JsonKey(toJson: intToString)
           final int offset,
-      final Order order,
+      @JsonKey(toJson: orderToString)
+          final Order order,
       @JsonKey(name: 'org', toJson: concatOrganizationList)
           final List<Organization> organization,
       @JsonKey(toJson: paginatedToString)
@@ -631,6 +636,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Order results by ascending or descending
+  @JsonKey(toJson: orderToString)
   Order get order;
   @override
 

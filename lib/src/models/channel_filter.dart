@@ -34,10 +34,11 @@ class ChannelFilter with _$ChannelFilter {
 
     /// Column to sort on
     @JsonKey(toJson: channelSortToStringList)
-    @Default([ChannelSort.organization]) List<ChannelSort> sort,
+    @Default([ChannelSort.organization])
+        List<ChannelSort> sort,
 
     /// ASC or DESC order, default asc.
-    @Default(Order.ascending) Order order,
+    @JsonKey(toJson: orderToString) @Default(Order.ascending) Order order,
 
     /// If set, filter for a Vtuber belonging to a specific org
     @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)

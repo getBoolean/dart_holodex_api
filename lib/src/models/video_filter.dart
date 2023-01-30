@@ -50,7 +50,7 @@ class VideoFilter with _$VideoFilter {
     @JsonKey(toJson: intToString) @Default(0) int offset,
 
     /// Order results by ascending or descending
-    @Default(Order.descending) Order order,
+    @JsonKey(toJson: orderToString) @Default(Order.descending) Order order,
 
     /// Filter by clips that feature the org's talent or videos posted by the org's talent.
     @JsonKey(name: 'org', toJson: concatOrganizationList)
