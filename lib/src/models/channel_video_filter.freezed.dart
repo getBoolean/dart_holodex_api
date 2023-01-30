@@ -30,7 +30,7 @@ mixin _$ChannelVideoFilter {
   /// Offset results
   int get offset => throw _privateConstructorUsedError;
 
-  /// If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
   @JsonKey(toJson: paginatedToString)
   bool get paginated => throw _privateConstructorUsedError;
 
@@ -213,7 +213,7 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
   @JsonKey()
   final int offset;
 
-  /// If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
   @override
   @JsonKey(toJson: paginatedToString)
   final bool paginated;
@@ -294,7 +294,7 @@ abstract class _ChannelVideoFilter extends ChannelVideoFilter {
   int get offset;
   @override
 
-  /// If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
   @JsonKey(toJson: paginatedToString)
   bool get paginated;
   @override

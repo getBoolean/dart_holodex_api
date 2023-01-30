@@ -30,7 +30,7 @@ class ChannelVideoFilter with _$ChannelVideoFilter {
     /// Offset results
     @Default(0) int offset,
 
-    /// If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+    /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
     @JsonKey(toJson: paginatedToString) @Default(true) bool paginated,
   }) = _ChannelVideoFilter;
 }
