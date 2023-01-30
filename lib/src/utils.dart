@@ -22,6 +22,12 @@ String concatSearchTargetList(List<SearchTarget> list) =>
 
 String? organizationToString(Organization? organization) => organization?.code;
 
+List<String> organizationToStringList(List<Organization> list) =>
+    list.map((e) => e.code).toList();
+
+List<String> searchTargetToStringList(List<SearchTarget> list) =>
+    list.map((e) => e.code).toList();
+
 String concatLanguageListWithDefault(List<Language> languages) =>
     concatLanguageList(languages.isEmpty ? [Language.all] : languages);
 

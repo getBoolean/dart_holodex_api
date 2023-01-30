@@ -25,12 +25,10 @@ class ChannelVideoFilter with _$ChannelVideoFilter {
         List<Language> languages,
 
     /// Result limit. Max of 50.
-    @JsonKey(toJson: intToString)
-    @Default(25) int limit,
+    @JsonKey(toJson: intToString) @Default(25) int limit,
 
     /// Offset results
-    @JsonKey(toJson: intToString)
-    @Default(0) int offset,
+    @JsonKey(toJson: intToString) @Default(0) int offset,
 
     /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
     @JsonKey(toJson: paginatedToString) @Default(true) bool paginated,

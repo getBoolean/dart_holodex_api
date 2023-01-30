@@ -26,7 +26,7 @@ mixin _$SearchFilter {
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Target types of videos
-  @JsonKey(name: 'target')
+  @JsonKey(name: 'target', toJson: searchTargetToStringList)
   List<SearchTarget> get targets => throw _privateConstructorUsedError;
 
   /// Return videos that match one of the provided topics
@@ -41,11 +41,10 @@ mixin _$SearchFilter {
 
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
   /// in the specified organization.
-  @JsonKey(name: 'org')
+  @JsonKey(name: 'org', toJson: organizationToStringList)
   List<Organization> get organizations => throw _privateConstructorUsedError;
 
   /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
-  @JsonKey(toJson: paginatedToString)
   bool get paginated => throw _privateConstructorUsedError;
 
   /// Offset results
@@ -73,16 +72,15 @@ abstract class $SearchFilterCopyWith<$Res> {
           SearchSort sort,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
           List<Language> languages,
-      @JsonKey(name: 'target')
+      @JsonKey(name: 'target', toJson: searchTargetToStringList)
           List<SearchTarget> targets,
       @JsonKey(name: 'topic')
           List<String> topics,
       @JsonKey(name: 'vch')
           List<String> videoChannels,
-      @JsonKey(name: 'org')
+      @JsonKey(name: 'org', toJson: organizationToStringList)
           List<Organization> organizations,
-      @JsonKey(toJson: paginatedToString)
-          bool paginated,
+      bool paginated,
       @JsonKey(toJson: intToString)
           int offset,
       @JsonKey(toJson: intToString)
@@ -166,16 +164,15 @@ abstract class _$$_SearchFilterCopyWith<$Res>
           SearchSort sort,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
           List<Language> languages,
-      @JsonKey(name: 'target')
+      @JsonKey(name: 'target', toJson: searchTargetToStringList)
           List<SearchTarget> targets,
       @JsonKey(name: 'topic')
           List<String> topics,
       @JsonKey(name: 'vch')
           List<String> videoChannels,
-      @JsonKey(name: 'org')
+      @JsonKey(name: 'org', toJson: organizationToStringList)
           List<Organization> organizations,
-      @JsonKey(toJson: paginatedToString)
-          bool paginated,
+      bool paginated,
       @JsonKey(toJson: intToString)
           int offset,
       @JsonKey(toJson: intToString)
@@ -252,7 +249,7 @@ class _$_SearchFilter extends _SearchFilter {
           this.sort = SearchSort.newest,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
           final List<Language> languages = const [],
-      @JsonKey(name: 'target')
+      @JsonKey(name: 'target', toJson: searchTargetToStringList)
           final List<SearchTarget> targets = const [
         SearchTarget.clip,
         SearchTarget.stream
@@ -261,10 +258,9 @@ class _$_SearchFilter extends _SearchFilter {
           final List<String> topics = const [],
       @JsonKey(name: 'vch')
           final List<String> videoChannels = const [],
-      @JsonKey(name: 'org')
+      @JsonKey(name: 'org', toJson: organizationToStringList)
           final List<Organization> organizations = const [],
-      @JsonKey(toJson: paginatedToString)
-          this.paginated = true,
+      this.paginated = true,
       @JsonKey(toJson: intToString)
           this.offset = 0,
       @JsonKey(toJson: intToString)
@@ -301,7 +297,7 @@ class _$_SearchFilter extends _SearchFilter {
 
   /// Target types of videos
   @override
-  @JsonKey(name: 'target')
+  @JsonKey(name: 'target', toJson: searchTargetToStringList)
   List<SearchTarget> get targets {
     if (_targets is EqualUnmodifiableListView) return _targets;
     // ignore: implicit_dynamic_type
@@ -343,7 +339,7 @@ class _$_SearchFilter extends _SearchFilter {
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
   /// in the specified organization.
   @override
-  @JsonKey(name: 'org')
+  @JsonKey(name: 'org', toJson: organizationToStringList)
   List<Organization> get organizations {
     if (_organizations is EqualUnmodifiableListView) return _organizations;
     // ignore: implicit_dynamic_type
@@ -352,7 +348,7 @@ class _$_SearchFilter extends _SearchFilter {
 
   /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
   @override
-  @JsonKey(toJson: paginatedToString)
+  @JsonKey()
   final bool paginated;
 
   /// Offset results
@@ -424,16 +420,15 @@ abstract class _SearchFilter extends SearchFilter {
           final SearchSort sort,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
           final List<Language> languages,
-      @JsonKey(name: 'target')
+      @JsonKey(name: 'target', toJson: searchTargetToStringList)
           final List<SearchTarget> targets,
       @JsonKey(name: 'topic')
           final List<String> topics,
       @JsonKey(name: 'vch')
           final List<String> videoChannels,
-      @JsonKey(name: 'org')
+      @JsonKey(name: 'org', toJson: organizationToStringList)
           final List<Organization> organizations,
-      @JsonKey(toJson: paginatedToString)
-          final bool paginated,
+      final bool paginated,
       @JsonKey(toJson: intToString)
           final int offset,
       @JsonKey(toJson: intToString)
@@ -454,7 +449,7 @@ abstract class _SearchFilter extends SearchFilter {
   @override
 
   /// Target types of videos
-  @JsonKey(name: 'target')
+  @JsonKey(name: 'target', toJson: searchTargetToStringList)
   List<SearchTarget> get targets;
   @override
 
@@ -472,12 +467,11 @@ abstract class _SearchFilter extends SearchFilter {
 
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
   /// in the specified organization.
-  @JsonKey(name: 'org')
+  @JsonKey(name: 'org', toJson: organizationToStringList)
   List<Organization> get organizations;
   @override
 
   /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
-  @JsonKey(toJson: paginatedToString)
   bool get paginated;
   @override
 

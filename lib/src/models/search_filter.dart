@@ -28,7 +28,7 @@ class SearchFilter with _$SearchFilter {
 
     /// Target types of videos
     @Default([SearchTarget.clip, SearchTarget.stream])
-    @JsonKey(name: 'target')
+    @JsonKey(name: 'target', toJson: searchTargetToStringList)
         List<SearchTarget> targets,
 
     /// Return videos that match one of the provided topics
@@ -41,7 +41,9 @@ class SearchFilter with _$SearchFilter {
 
     /// Videos of channels in any of the specified organizations, or clips that involve a channel
     /// in the specified organization.
-    @JsonKey(name: 'org') @Default([]) List<Organization> organizations,
+    @JsonKey(name: 'org', toJson: organizationToStringList)
+    @Default([])
+        List<Organization> organizations,
 
     /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
     @Default(true) bool paginated,
