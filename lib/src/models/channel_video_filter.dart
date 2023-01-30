@@ -20,7 +20,7 @@ class ChannelVideoFilter with _$ChannelVideoFilter {
   @Assert('limit <= 50', 'The limit cannot be greater than 50')
   const factory ChannelVideoFilter({
     /// Request extra data be included in the results. They are not guarenteed to be returned.
-    @JsonKey(toJson: concatEnumWithCodeList, name: 'include')
+    @JsonKey(toJson: concatIncludesList, name: 'include')
     @Default([])
         List<Includes> includes,
 

@@ -1,5 +1,11 @@
+import 'package:dart_holodex_api/src/enums/includes.dart';
+
 String enumWithCodeToString<T extends EnumWithCode>(T item) {
   return item.code;
+}
+
+String concatIncludesList(List<Includes> items) {
+  return concatEnumWithCodeList(items);
 }
 
 String concatEnumWithCodeList<T extends EnumWithCode>(List<T> items) {

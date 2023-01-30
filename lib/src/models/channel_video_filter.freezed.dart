@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChannelVideoFilter {
   /// Request extra data be included in the results. They are not guarenteed to be returned.
+  @JsonKey(toJson: concatIncludesList, name: 'include')
   List<Includes> get includes => throw _privateConstructorUsedError;
 
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
@@ -45,7 +46,8 @@ abstract class $ChannelVideoFilterCopyWith<$Res> {
       _$ChannelVideoFilterCopyWithImpl<$Res, ChannelVideoFilter>;
   @useResult
   $Res call(
-      {List<Includes> includes,
+      {@JsonKey(toJson: concatIncludesList, name: 'include')
+          List<Includes> includes,
       @JsonKey(toJson: concatLanguageList, name: 'lang')
           List<Language> languages,
       int limit,
@@ -106,7 +108,8 @@ abstract class _$$_ChannelVideoFilterCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Includes> includes,
+      {@JsonKey(toJson: concatIncludesList, name: 'include')
+          List<Includes> includes,
       @JsonKey(toJson: concatLanguageList, name: 'lang')
           List<Language> languages,
       int limit,
@@ -160,7 +163,8 @@ class __$$_ChannelVideoFilterCopyWithImpl<$Res>
 @JsonSerializable(createFactory: false)
 class _$_ChannelVideoFilter extends _ChannelVideoFilter {
   const _$_ChannelVideoFilter(
-      {final List<Includes> includes = const [],
+      {@JsonKey(toJson: concatIncludesList, name: 'include')
+          final List<Includes> includes = const [],
       @JsonKey(toJson: concatLanguageList, name: 'lang')
           final List<Language> languages = const [],
       this.limit = 25,
@@ -176,7 +180,7 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
   @override
-  @JsonKey()
+  @JsonKey(toJson: concatIncludesList, name: 'include')
   List<Includes> get includes {
     if (_includes is EqualUnmodifiableListView) return _includes;
     // ignore: implicit_dynamic_type
@@ -256,7 +260,8 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
 
 abstract class _ChannelVideoFilter extends ChannelVideoFilter {
   const factory _ChannelVideoFilter(
-      {final List<Includes> includes,
+      {@JsonKey(toJson: concatIncludesList, name: 'include')
+          final List<Includes> includes,
       @JsonKey(toJson: concatLanguageList, name: 'lang')
           final List<Language> languages,
       final int limit,
@@ -267,6 +272,7 @@ abstract class _ChannelVideoFilter extends ChannelVideoFilter {
   @override
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
+  @JsonKey(toJson: concatIncludesList, name: 'include')
   List<Includes> get includes;
   @override
 

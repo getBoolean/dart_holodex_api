@@ -10,7 +10,7 @@ Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) =>
     <String, dynamic>{
       'channel_id': instance.channelId,
       'ids': instance.ids,
-      'includes': instance.includes.map((e) => _$IncludesEnumMap[e]!).toList(),
+      'include': concatIncludesList(instance.includes),
       'lang': concatLanguageList(instance.languages),
       'limit': instance.limit,
       'max_upcoming_hours': instance.maxUpcomingHours,
@@ -24,18 +24,6 @@ Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) =>
       'topic': instance.topic,
       'type': _$VideoTypeEnumMap[instance.type],
     };
-
-const _$IncludesEnumMap = {
-  Includes.clips: 'clips',
-  Includes.refers: 'refers',
-  Includes.sources: 'sources',
-  Includes.simulcasts: 'simulcasts',
-  Includes.mentions: 'mentions',
-  Includes.description: 'description',
-  Includes.liveInfo: 'liveInfo',
-  Includes.channelStats: 'channelStats',
-  Includes.songs: 'songs',
-};
 
 const _$OrderEnumMap = {
   Order.ascending: 'ascending',

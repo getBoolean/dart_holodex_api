@@ -24,11 +24,14 @@ class VideoFilter with _$VideoFilter {
     @Default([]) List<String> ids,
 
     /// Request extra data be included in the results. They are not guarenteed to be returned.
-    @JsonKey(toJson: concatEnumWithCodeList, name: 'include')
-    @Default([]) List<Includes> includes,
+    @JsonKey(toJson: concatIncludesList, name: 'include')
+    @Default([])
+        List<Includes> includes,
 
     /// Filter by the `Language`
-    @Default([]) @JsonKey(toJson: concatLanguageList, name: 'lang') List<Language> languages,
+    @Default([])
+    @JsonKey(toJson: concatLanguageList, name: 'lang')
+        List<Language> languages,
 
     /// Limit the number of results returned. Maximum value of 50
     @Default(25) int limit,

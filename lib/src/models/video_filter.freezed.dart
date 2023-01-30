@@ -24,6 +24,7 @@ mixin _$VideoFilter {
   List<String> get ids => throw _privateConstructorUsedError;
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
+  @JsonKey(toJson: concatIncludesList, name: 'include')
   List<Includes> get includes => throw _privateConstructorUsedError;
 
   /// Filter by the `Language`
@@ -81,7 +82,8 @@ abstract class $VideoFilterCopyWith<$Res> {
       {@JsonKey(name: 'channel_id')
           String? channelId,
       List<String> ids,
-      List<Includes> includes,
+      @JsonKey(toJson: concatIncludesList, name: 'include')
+          List<Includes> includes,
       @JsonKey(toJson: concatLanguageList, name: 'lang')
           List<Language> languages,
       int limit,
@@ -205,7 +207,8 @@ abstract class _$$_VideoFilterCopyWith<$Res>
       {@JsonKey(name: 'channel_id')
           String? channelId,
       List<String> ids,
-      List<Includes> includes,
+      @JsonKey(toJson: concatIncludesList, name: 'include')
+          List<Includes> includes,
       @JsonKey(toJson: concatLanguageList, name: 'lang')
           List<Language> languages,
       int limit,
@@ -322,7 +325,8 @@ class _$_VideoFilter extends _VideoFilter {
       {@JsonKey(name: 'channel_id')
           this.channelId,
       final List<String> ids = const [],
-      final List<Includes> includes = const [],
+      @JsonKey(toJson: concatIncludesList, name: 'include')
+          final List<Includes> includes = const [],
       @JsonKey(toJson: concatLanguageList, name: 'lang')
           final List<Language> languages = const [],
       this.limit = 25,
@@ -369,7 +373,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
   @override
-  @JsonKey()
+  @JsonKey(toJson: concatIncludesList, name: 'include')
   List<Includes> get includes {
     if (_includes is EqualUnmodifiableListView) return _includes;
     // ignore: implicit_dynamic_type
@@ -534,7 +538,8 @@ abstract class _VideoFilter extends VideoFilter {
       {@JsonKey(name: 'channel_id')
           final String? channelId,
       final List<String> ids,
-      final List<Includes> includes,
+      @JsonKey(toJson: concatIncludesList, name: 'include')
+          final List<Includes> includes,
       @JsonKey(toJson: concatLanguageList, name: 'lang')
           final List<Language> languages,
       final int limit,
@@ -564,6 +569,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
+  @JsonKey(toJson: concatIncludesList, name: 'include')
   List<Includes> get includes;
   @override
 
