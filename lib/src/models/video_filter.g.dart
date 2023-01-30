@@ -11,7 +11,7 @@ Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) =>
       'channel_id': instance.channelId,
       'ids': instance.ids,
       'includes': instance.includes.map((e) => _$IncludesEnumMap[e]!).toList(),
-      'languages': concatLanguageList(instance.languages),
+      'lang': concatLanguageList(instance.languages),
       'limit': instance.limit,
       'max_upcoming_hours': instance.maxUpcomingHours,
       'mentioned_channel_id': instance.mentionedChannelId,

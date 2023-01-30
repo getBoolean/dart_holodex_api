@@ -10,7 +10,7 @@ Map<String, dynamic> _$$_ChannelVideoFilterToJson(
         _$_ChannelVideoFilter instance) =>
     <String, dynamic>{
       'includes': instance.includes.map((e) => _$IncludesEnumMap[e]!).toList(),
-      'languages': concatLanguageList(instance.languages),
+      'lang': concatLanguageList(instance.languages),
       'limit': instance.limit,
       'offset': instance.offset,
       'paginated': instance.paginated,

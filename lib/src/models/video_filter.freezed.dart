@@ -27,7 +27,7 @@ mixin _$VideoFilter {
   List<Includes> get includes => throw _privateConstructorUsedError;
 
   /// Filter by the `Language`
-  @JsonKey(toJson: concatLanguageList)
+  @JsonKey(toJson: concatLanguageList, name: 'lang')
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Limit the number of results returned. Maximum value of 50
@@ -78,13 +78,17 @@ abstract class $VideoFilterCopyWith<$Res> {
       _$VideoFilterCopyWithImpl<$Res, VideoFilter>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'channel_id') String? channelId,
+      {@JsonKey(name: 'channel_id')
+          String? channelId,
       List<String> ids,
       List<Includes> includes,
-      @JsonKey(toJson: concatLanguageList) List<Language> languages,
+      @JsonKey(toJson: concatLanguageList, name: 'lang')
+          List<Language> languages,
       int limit,
-      @JsonKey(name: 'max_upcoming_hours') int? maxUpcomingHours,
-      @JsonKey(name: 'mentioned_channel_id') String? mentionedChannelId,
+      @JsonKey(name: 'max_upcoming_hours')
+          int? maxUpcomingHours,
+      @JsonKey(name: 'mentioned_channel_id')
+          String? mentionedChannelId,
       int offset,
       Order order,
       List<String> organization,
@@ -198,13 +202,17 @@ abstract class _$$_VideoFilterCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'channel_id') String? channelId,
+      {@JsonKey(name: 'channel_id')
+          String? channelId,
       List<String> ids,
       List<Includes> includes,
-      @JsonKey(toJson: concatLanguageList) List<Language> languages,
+      @JsonKey(toJson: concatLanguageList, name: 'lang')
+          List<Language> languages,
       int limit,
-      @JsonKey(name: 'max_upcoming_hours') int? maxUpcomingHours,
-      @JsonKey(name: 'mentioned_channel_id') String? mentionedChannelId,
+      @JsonKey(name: 'max_upcoming_hours')
+          int? maxUpcomingHours,
+      @JsonKey(name: 'mentioned_channel_id')
+          String? mentionedChannelId,
       int offset,
       Order order,
       List<String> organization,
@@ -315,7 +323,7 @@ class _$_VideoFilter extends _VideoFilter {
           this.channelId,
       final List<String> ids = const [],
       final List<Includes> includes = const [],
-      @JsonKey(toJson: concatLanguageList)
+      @JsonKey(toJson: concatLanguageList, name: 'lang')
           final List<Language> languages = const [],
       this.limit = 25,
       @JsonKey(name: 'max_upcoming_hours')
@@ -373,7 +381,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Filter by the `Language`
   @override
-  @JsonKey(toJson: concatLanguageList)
+  @JsonKey(toJson: concatLanguageList, name: 'lang')
   List<Language> get languages {
     if (_languages is EqualUnmodifiableListView) return _languages;
     // ignore: implicit_dynamic_type
@@ -523,13 +531,17 @@ class _$_VideoFilter extends _VideoFilter {
 
 abstract class _VideoFilter extends VideoFilter {
   const factory _VideoFilter(
-      {@JsonKey(name: 'channel_id') final String? channelId,
+      {@JsonKey(name: 'channel_id')
+          final String? channelId,
       final List<String> ids,
       final List<Includes> includes,
-      @JsonKey(toJson: concatLanguageList) final List<Language> languages,
+      @JsonKey(toJson: concatLanguageList, name: 'lang')
+          final List<Language> languages,
       final int limit,
-      @JsonKey(name: 'max_upcoming_hours') final int? maxUpcomingHours,
-      @JsonKey(name: 'mentioned_channel_id') final String? mentionedChannelId,
+      @JsonKey(name: 'max_upcoming_hours')
+          final int? maxUpcomingHours,
+      @JsonKey(name: 'mentioned_channel_id')
+          final String? mentionedChannelId,
       final int offset,
       final Order order,
       final List<String> organization,
@@ -556,7 +568,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by the `Language`
-  @JsonKey(toJson: concatLanguageList)
+  @JsonKey(toJson: concatLanguageList, name: 'lang')
   List<Language> get languages;
   @override
 

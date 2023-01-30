@@ -16,7 +16,9 @@ class ChannelFilter with _$ChannelFilter {
   @Assert('limit <= 50', 'The limit cannot be greater than 50')
   const factory ChannelFilter({
     /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
-    @JsonKey(toJson: concatLanguageList) @Default([]) List<Language> languages,
+    @JsonKey(toJson: concatLanguageList, name: 'lang')
+    @Default([])
+        List<Language> languages,
 
     /// Result limit. Max of 50.
     @Default(25) int limit,

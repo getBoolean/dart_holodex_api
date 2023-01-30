@@ -26,7 +26,7 @@ class VideoFilter with _$VideoFilter {
     @Default([]) List<Includes> includes,
 
     /// Filter by the `Language`
-    @Default([]) @JsonKey(toJson: concatLanguageList) List<Language> languages,
+    @Default([]) @JsonKey(toJson: concatLanguageList, name: 'lang') List<Language> languages,
 
     /// Limit the number of results returned. Maximum value of 50
     @Default(25) int limit,

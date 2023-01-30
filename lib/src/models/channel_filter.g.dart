@@ -8,7 +8,7 @@ part of 'channel_filter.dart';
 
 Map<String, dynamic> _$$_ChannelFilterToJson(_$_ChannelFilter instance) =>
     <String, dynamic>{
-      'languages': concatLanguageList(instance.languages),
+      'lang': concatLanguageList(instance.languages),
       'limit': instance.limit,
       'offset': instance.offset,
       'type': _$ChannelTypeEnumMap[instance.type],

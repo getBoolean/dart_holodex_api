@@ -22,7 +22,9 @@ class ChannelVideoFilter with _$ChannelVideoFilter {
     @Default([]) List<Includes> includes,
 
     /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
-    @JsonKey(toJson: concatLanguageList) @Default([]) List<Language> languages,
+    @JsonKey(toJson: concatLanguageList, name: 'lang')
+    @Default([])
+        List<Language> languages,
 
     /// Result limit. Max of 50.
     @Default(25) int limit,
