@@ -1,6 +1,6 @@
-import 'package:dart_holodex_api/src/enums/enum_with_code_extension.dart';
 import 'package:dart_holodex_api/src/enums/includes.dart';
 import 'package:dart_holodex_api/src/enums/language.dart';
+import 'package:dart_holodex_api/src/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'channel_video_filter.freezed.dart';

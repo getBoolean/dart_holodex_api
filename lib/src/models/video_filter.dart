@@ -5,6 +5,7 @@ import 'package:dart_holodex_api/src/enums/order.dart';
 import 'package:dart_holodex_api/src/enums/video_sort.dart';
 import 'package:dart_holodex_api/src/enums/video_status.dart';
 import 'package:dart_holodex_api/src/enums/video_type.dart';
+import 'package:dart_holodex_api/src/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'video_filter.freezed.dart';
