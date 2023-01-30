@@ -12,3 +12,6 @@ pubspec.lock
 # Generated coverage files
 coverage/
 *.lcov
+
+# IDE files
+*.code-workspace
