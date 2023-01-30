@@ -20,7 +20,7 @@ _$_Channel _$$_ChannelFromJson(Map<String, dynamic> json) => _$_Channel(
       subOrganization: json['suborg'] as String?,
       banner: json['banner'] as String?,
       twitter: json['twitter'] as String?,
-      lang: Language.fromString(json['lang'] as String),
+      lang: Language.fromString(json['lang'] as String?),
       inactive: json['inactive'] as bool?,
       description: json['description'] as String?,
       publishedAt: json['published_at'] as String?,
