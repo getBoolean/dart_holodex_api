@@ -63,7 +63,7 @@
 <li><span class="parameter" id="-param-publishedAt"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;published_at&#39;)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">publishedAt</span>, </span></li>
 <li><span class="parameter" id="-param-availableAt"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;available_at&#39;)</span> <span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">availableAt</span>, </span></li>
 <li><span class="parameter" id="-param-duration"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">duration</span>, </span></li>
-<li><span class="parameter" id="-param-status"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)</span> <span>required</span> <span class="type-annotation"><a href="../../dart_holodex_api/VideoStatus.html">VideoStatus</a></span> <span class="parameter-name">status</span>, </span></li>
+<li><span class="parameter" id="-param-status"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)</span> <span>required</span> <span class="type-annotation"><a href="../../dart_holodex_api/VideoStatus.html">VideoStatus</a></span> <span class="parameter-name">status</span>, </span></li>
 <li><span class="parameter" id="-param-startScheduled"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;start_scheduled&#39;)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">startScheduled</span>, </span></li>
 <li><span class="parameter" id="-param-startActual"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;start_actual&#39;)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">startActual</span>, </span></li>
 <li><span class="parameter" id="-param-endActual"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;end_actual&#39;)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">endActual</span>, </span></li>
@@ -99,7 +99,7 @@
 
   &#47;&#47;&#47; Duration of the video in seconds
   int? duration,
-  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
       required VideoStatus status,
 
   &#47;&#47;&#47; Included when includes contains &#39;live_info&#39;

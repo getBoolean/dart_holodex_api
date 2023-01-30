@@ -56,7 +56,7 @@
 
     <section class="multi-line-signature">
       const
-      <span class="name ">PaginatedVideos</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-total">{<span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">total</span>, </span></li>
+      <span class="name ">PaginatedVideos</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-total">{<span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(fromJson: _parseTotal)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">total</span>, </span></li>
 <li><span class="parameter" id="-param-items"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/VideoFull-class.html">VideoFull</a></span>&gt;</span></span> <span class="parameter-name">items</span>, </span></li>
 <li><span class="parameter" id="-param-paginated"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span>}</span></li>
 </ol>)
@@ -69,10 +69,10 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">const factory PaginatedVideos({
-  int? total,
+  @JsonKey(fromJson: _parseTotal) int? total,
   @Default([]) List&lt;VideoFull&gt; items,
   @Default(false) bool paginated,
-}) = _PaginatedResult;</code></pre>
+}) = _PaginatedVideos;</code></pre>
 </section>
 
 
