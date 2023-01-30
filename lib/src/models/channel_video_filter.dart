@@ -1,3 +1,4 @@
+import 'package:dart_holodex_api/src/enums/enum_with_code_extension.dart';
 import 'package:dart_holodex_api/src/enums/includes.dart';
 import 'package:dart_holodex_api/src/enums/language.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -19,7 +20,9 @@ class ChannelVideoFilter with _$ChannelVideoFilter {
   @Assert('limit <= 50', 'The limit cannot be greater than 50')
   const factory ChannelVideoFilter({
     /// Request extra data be included in the results. They are not guarenteed to be returned.
-    @Default([]) List<Includes> includes,
+    @JsonKey(toJson: concatEnumWithCodeList, name: 'include')
+    @Default([])
+        List<Includes> includes,
 
     /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
     @JsonKey(toJson: concatLanguageList, name: 'lang')

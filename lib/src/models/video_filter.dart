@@ -1,3 +1,4 @@
+import 'package:dart_holodex_api/src/enums/enum_with_code_extension.dart';
 import 'package:dart_holodex_api/src/enums/includes.dart';
 import 'package:dart_holodex_api/src/enums/language.dart';
 import 'package:dart_holodex_api/src/enums/order.dart';
@@ -23,6 +24,7 @@ class VideoFilter with _$VideoFilter {
     @Default([]) List<String> ids,
 
     /// Request extra data be included in the results. They are not guarenteed to be returned.
+    @JsonKey(toJson: concatEnumWithCodeList, name: 'include')
     @Default([]) List<Includes> includes,
 
     /// Filter by the `Language`
