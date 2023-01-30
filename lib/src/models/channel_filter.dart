@@ -1,47 +1,54 @@
+import 'dart:convert';
+
 import 'package:dart_holodex_api/src/enums/channel_sort.dart';
 import 'package:dart_holodex_api/src/enums/channel_type.dart';
 import 'package:dart_holodex_api/src/enums/language.dart';
 import 'package:dart_holodex_api/src/enums/order.dart';
 import 'package:dart_holodex_api/src/enums/organization.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'channel_filter.freezed.dart';
+part 'channel_filter.g.dart';
 
 /// Filter the results returns by the Holodex API channel endpoints
-class ChannelFilter {
-  /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
-  final ChannelType? type;
+@freezed
+class ChannelFilter with _$ChannelFilter {
+  const ChannelFilter._();
 
-  /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  final List<Language> languages;
+  @Assert('limit <= 50', 'The limit cannot be greater than 50')
+  const factory ChannelFilter({
+    /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
+    @JsonKey(
+        toJson: languageListToStringList, fromJson: stringListToLanguageList)
+    @Default([])
+        List<Language> languages,
 
-  /// Result limit. Max of 50.
-  final int limit;
+    /// Result limit. Max of 50.
+    @Default(25) int limit,
 
-  /// Offset results
-  final int offset;
+    /// Offset results
+    @Default(0) int offset,
 
-  /// ASC or DESC order, default asc.
-  final Order order;
+    /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
+    ChannelType? type,
 
-  /// Column to sort on
-  final List<ChannelSort> sort;
+    /// Column to sort on
+    @Default([ChannelSort.organization]) List<ChannelSort> sort,
 
-  /// If set, filter for Vtuber belonging to a specific org
-  final Organization? organization;
+    /// ASC or DESC order, default asc.
+    @Default(Order.ascending) Order order,
 
-  /// Arguments
-  /// - `languages` List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  /// - `limit` Result limit. Max of 50.
-  /// - `offset` Offset results
-  /// - `type` Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
-  /// - `sort` Column to sort on
-  /// - `order` ASC or DESC order, default asc.
-  /// - `organization` If set, filter for Vtuber belonging to a specific org
-  const ChannelFilter({
-    this.languages = const [],
-    this.limit = 25,
-    this.offset = 0,
-    this.type,
-    this.sort = const <ChannelSort>[ChannelSort.organization],
-    this.order = Order.ascending,
-    this.organization,
-  }) : assert(limit <= 50, 'The limit cannot be greater than 50');
+    /// If set, filter for Vtuber belonging to a specific org
+    Organization? organization,
+  }) = _ChannelFilter;
+
+  factory ChannelFilter.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$ChannelFilterFromJson(json);
+
+  factory ChannelFilter.fromString(
+    String json,
+  ) =>
+      ChannelFilter.fromJson(jsonDecode(json));
 }
