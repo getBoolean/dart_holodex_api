@@ -61,7 +61,7 @@
         <li>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Assert-class.html">Assert</a>(&#39;limit &lt;= 50&#39;, &#39;The limit cannot be greater than 50&#39;)</li>
     </ol>
   </div>const
-      <span class="name ">ChannelFilter</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-languages">{<span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: languageListToStringList, fromJson: stringListToLanguageList)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span>, </span></li>
+      <span class="name ">ChannelFilter</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-languages">{<span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatLanguageList)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span>, </span></li>
 <li><span class="parameter" id="-param-limit"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(25)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span>, </span></li>
 <li><span class="parameter" id="-param-offset"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(0)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span></li>
 <li><span class="parameter" id="-param-type"><span class="type-annotation"><a href="../../dart_holodex_api/ChannelType.html">ChannelType</a>?</span> <span class="parameter-name">type</span>, </span></li>
@@ -80,10 +80,7 @@
   <pre class="language-dart"><code class="language-dart">@Assert(&#39;limit &lt;= 50&#39;, &#39;The limit cannot be greater than 50&#39;)
 const factory ChannelFilter({
   &#47;&#47;&#47; List of Language enum to filter channels&#47;clips. Official streams do not follow this parameter
-  @JsonKey(
-      toJson: languageListToStringList, fromJson: stringListToLanguageList)
-  @Default([])
-      List&lt;Language&gt; languages,
+  @JsonKey(toJson: concatLanguageList) @Default([]) List&lt;Language&gt; languages,
 
   &#47;&#47;&#47; Result limit. Max of 50.
   @Default(25) int limit,
@@ -128,8 +125,6 @@ const factory ChannelFilter({
 
         <li class="section-title"><a href="../../dart_holodex_api/ChannelFilter-class.html#constructors">Constructors</a></li>
           <li><a href="../../dart_holodex_api/ChannelFilter/ChannelFilter.html">ChannelFilter</a></li>
-          <li><a href="../../dart_holodex_api/ChannelFilter/ChannelFilter.fromJson.html">fromJson</a></li>
-          <li><a href="../../dart_holodex_api/ChannelFilter/ChannelFilter.fromString.html">fromString</a></li>
 
 
         <li class="section-title inherited">
