@@ -453,8 +453,8 @@ class HolodexClient {
     data.addAll({
       'sort': filter.sort.code,
       'paginated': filter.paginated,
-      'offset': filter.offset,
-      'limit': filter.limit,
+      'offset': '${filter.offset}',
+      'limit': '${filter.limit}',
     });
 
     if (filter.organizations.isNotEmpty) {
