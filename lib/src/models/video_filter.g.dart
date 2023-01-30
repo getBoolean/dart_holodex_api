@@ -16,7 +16,7 @@ Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) {
   }
 
   writeNotNull('channel_id', instance.channelId);
-  val['ids'] = instance.ids;
+  val['id'] = instance.ids;
   writeNotNull('include', concatIncludesList(instance.includes));
   val['lang'] = concatLanguageListWithDefault(instance.languages);
   val['limit'] = intToString(instance.limit);
