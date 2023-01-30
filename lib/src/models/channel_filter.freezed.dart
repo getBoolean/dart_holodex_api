@@ -33,7 +33,7 @@ mixin _$ChannelFilter {
   ChannelType? get type => throw _privateConstructorUsedError;
 
   /// Column to sort on
-  @JsonKey(toJson: channelSortToStringList)
+  @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
   List<ChannelSort> get sort => throw _privateConstructorUsedError;
 
   /// ASC or DESC order, default asc.
@@ -65,7 +65,7 @@ abstract class $ChannelFilterCopyWith<$Res> {
           int offset,
       @JsonKey(includeIfNull: false, toJson: channelTypeToString)
           ChannelType? type,
-      @JsonKey(toJson: channelSortToStringList)
+      @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
           List<ChannelSort> sort,
       @JsonKey(toJson: orderToString)
           Order order,
@@ -144,7 +144,7 @@ abstract class _$$_ChannelFilterCopyWith<$Res>
           int offset,
       @JsonKey(includeIfNull: false, toJson: channelTypeToString)
           ChannelType? type,
-      @JsonKey(toJson: channelSortToStringList)
+      @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
           List<ChannelSort> sort,
       @JsonKey(toJson: orderToString)
           Order order,
@@ -216,7 +216,7 @@ class _$_ChannelFilter extends _ChannelFilter {
           this.offset = 0,
       @JsonKey(includeIfNull: false, toJson: channelTypeToString)
           this.type,
-      @JsonKey(toJson: channelSortToStringList)
+      @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
           final List<ChannelSort> sort = const [ChannelSort.organization],
       @JsonKey(toJson: orderToString)
           this.order = Order.ascending,
@@ -259,7 +259,7 @@ class _$_ChannelFilter extends _ChannelFilter {
 
   /// Column to sort on
   @override
-  @JsonKey(toJson: channelSortToStringList)
+  @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
   List<ChannelSort> get sort {
     if (_sort is EqualUnmodifiableListView) return _sort;
     // ignore: implicit_dynamic_type
@@ -333,7 +333,7 @@ abstract class _ChannelFilter extends ChannelFilter {
           final int offset,
       @JsonKey(includeIfNull: false, toJson: channelTypeToString)
           final ChannelType? type,
-      @JsonKey(toJson: channelSortToStringList)
+      @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
           final List<ChannelSort> sort,
       @JsonKey(toJson: orderToString)
           final Order order,
@@ -364,7 +364,7 @@ abstract class _ChannelFilter extends ChannelFilter {
   @override
 
   /// Column to sort on
-  @JsonKey(toJson: channelSortToStringList)
+  @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
   List<ChannelSort> get sort;
   @override
 

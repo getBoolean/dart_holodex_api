@@ -40,7 +40,7 @@ String searchSortToString(SearchSort sort) => sort.code;
 
 String? channelTypeToString(ChannelType? type) => type?.code;
 
-List<String> channelSortToStringList(List<ChannelSort> list) =>
-    list.map((e) => e.code).toList();
+List<String>? channelSortToStringList(List<ChannelSort> list) =>
+    list.isEmpty ? null : list.map((e) => e.code).toList();
 
 String orderToString(Order order) => order.code;

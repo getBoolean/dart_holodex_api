@@ -33,7 +33,7 @@ class ChannelFilter with _$ChannelFilter {
         ChannelType? type,
 
     /// Column to sort on
-    @JsonKey(toJson: channelSortToStringList)
+    @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
     @Default([ChannelSort.organization])
         List<ChannelSort> sort,
 
