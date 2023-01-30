@@ -10,11 +10,10 @@ Map<String, dynamic> _$$_SearchFilterToJson(_$_SearchFilter instance) =>
     <String, dynamic>{
       'search_sort': _$SearchSortEnumMap[instance.sort]!,
       'lang': concatLanguageListWithDefault(instance.languages),
-      'search_targets':
-          instance.targets.map((e) => _$SearchTargetEnumMap[e]!).toList(),
-      'topics': instance.topics,
-      'video_channels': instance.videoChannels,
-      'organizations':
+      'target': instance.targets.map((e) => _$SearchTargetEnumMap[e]!).toList(),
+      'topic': instance.topics,
+      'vch': instance.videoChannels,
+      'org':
           instance.organizations.map((e) => _$OrganizationEnumMap[e]!).toList(),
       'paginated': paginatedToString(instance.paginated),
       'offset': intToString(instance.offset),

@@ -14,7 +14,7 @@ Map<String, dynamic> _$$_ChannelFilterToJson(_$_ChannelFilter instance) =>
       'type': _$ChannelTypeEnumMap[instance.type],
       'sort': instance.sort.map((e) => _$ChannelSortEnumMap[e]!).toList(),
       'order': _$OrderEnumMap[instance.order]!,
-      'organization': _$OrganizationEnumMap[instance.organization],
+      'org': _$OrganizationEnumMap[instance.organization],
     };
 
 const _$ChannelTypeEnumMap = {

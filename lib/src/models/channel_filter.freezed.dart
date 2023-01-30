@@ -38,6 +38,7 @@ mixin _$ChannelFilter {
   Order get order => throw _privateConstructorUsedError;
 
   /// If set, filter for Vtuber belonging to a specific org
+  @JsonKey(name: 'org')
   Organization? get organization => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -62,7 +63,8 @@ abstract class $ChannelFilterCopyWith<$Res> {
       ChannelType? type,
       List<ChannelSort> sort,
       Order order,
-      Organization? organization});
+      @JsonKey(name: 'org')
+          Organization? organization});
 }
 
 /// @nodoc
@@ -137,7 +139,8 @@ abstract class _$$_ChannelFilterCopyWith<$Res>
       ChannelType? type,
       List<ChannelSort> sort,
       Order order,
-      Organization? organization});
+      @JsonKey(name: 'org')
+          Organization? organization});
 }
 
 /// @nodoc
@@ -205,7 +208,8 @@ class _$_ChannelFilter extends _ChannelFilter {
       this.type,
       final List<ChannelSort> sort = const [ChannelSort.organization],
       this.order = Order.ascending,
-      this.organization})
+      @JsonKey(name: 'org')
+          this.organization})
       : assert(limit <= 50, 'The limit cannot be greater than 50'),
         _languages = languages,
         _sort = sort,
@@ -256,6 +260,7 @@ class _$_ChannelFilter extends _ChannelFilter {
 
   /// If set, filter for Vtuber belonging to a specific org
   @override
+  @JsonKey(name: 'org')
   final Organization? organization;
 
   @override
@@ -316,7 +321,8 @@ abstract class _ChannelFilter extends ChannelFilter {
       final ChannelType? type,
       final List<ChannelSort> sort,
       final Order order,
-      final Organization? organization}) = _$_ChannelFilter;
+      @JsonKey(name: 'org')
+          final Organization? organization}) = _$_ChannelFilter;
   const _ChannelFilter._() : super._();
 
   @override
@@ -349,6 +355,7 @@ abstract class _ChannelFilter extends ChannelFilter {
   @override
 
   /// If set, filter for Vtuber belonging to a specific org
+  @JsonKey(name: 'org')
   Organization? get organization;
   @override
   @JsonKey(ignore: true)

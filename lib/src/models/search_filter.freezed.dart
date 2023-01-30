@@ -26,20 +26,22 @@ mixin _$SearchFilter {
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Target types of videos
-  @JsonKey(name: 'search_targets')
+  @JsonKey(name: 'target')
   List<SearchTarget> get targets => throw _privateConstructorUsedError;
 
   /// Return videos that match one of the provided topics
+  @JsonKey(name: 'topic')
   List<String> get topics => throw _privateConstructorUsedError;
 
   /// Videos with all of the specified channel ids. If two or more channel IDs are specified,
   /// will only return their collabs, or if one channel is a clipper, it will only show clips
   /// of the other vtubers made by this clipper.
-  @JsonKey(name: 'video_channels')
+  @JsonKey(name: 'vch')
   List<String> get videoChannels => throw _privateConstructorUsedError;
 
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
   /// in the specified organization.
+  @JsonKey(name: 'org')
   List<Organization> get organizations => throw _privateConstructorUsedError;
 
   /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
@@ -71,12 +73,14 @@ abstract class $SearchFilterCopyWith<$Res> {
           SearchSort sort,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
-      @JsonKey(name: 'search_targets')
+      @JsonKey(name: 'target')
           List<SearchTarget> targets,
-      List<String> topics,
-      @JsonKey(name: 'video_channels')
+      @JsonKey(name: 'topic')
+          List<String> topics,
+      @JsonKey(name: 'vch')
           List<String> videoChannels,
-      List<Organization> organizations,
+      @JsonKey(name: 'org')
+          List<Organization> organizations,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
       @JsonKey(toJson: intToString)
@@ -162,12 +166,14 @@ abstract class _$$_SearchFilterCopyWith<$Res>
           SearchSort sort,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
-      @JsonKey(name: 'search_targets')
+      @JsonKey(name: 'target')
           List<SearchTarget> targets,
-      List<String> topics,
-      @JsonKey(name: 'video_channels')
+      @JsonKey(name: 'topic')
+          List<String> topics,
+      @JsonKey(name: 'vch')
           List<String> videoChannels,
-      List<Organization> organizations,
+      @JsonKey(name: 'org')
+          List<Organization> organizations,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
       @JsonKey(toJson: intToString)
@@ -246,15 +252,17 @@ class _$_SearchFilter extends _SearchFilter {
           this.sort = SearchSort.newest,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages = const [],
-      @JsonKey(name: 'search_targets')
+      @JsonKey(name: 'target')
           final List<SearchTarget> targets = const [
         SearchTarget.clip,
         SearchTarget.stream
       ],
-      final List<String> topics = const [],
-      @JsonKey(name: 'video_channels')
+      @JsonKey(name: 'topic')
+          final List<String> topics = const [],
+      @JsonKey(name: 'vch')
           final List<String> videoChannels = const [],
-      final List<Organization> organizations = const [],
+      @JsonKey(name: 'org')
+          final List<Organization> organizations = const [],
       @JsonKey(toJson: paginatedToString)
           this.paginated = true,
       @JsonKey(toJson: intToString)
@@ -293,7 +301,7 @@ class _$_SearchFilter extends _SearchFilter {
 
   /// Target types of videos
   @override
-  @JsonKey(name: 'search_targets')
+  @JsonKey(name: 'target')
   List<SearchTarget> get targets {
     if (_targets is EqualUnmodifiableListView) return _targets;
     // ignore: implicit_dynamic_type
@@ -305,7 +313,7 @@ class _$_SearchFilter extends _SearchFilter {
 
   /// Return videos that match one of the provided topics
   @override
-  @JsonKey()
+  @JsonKey(name: 'topic')
   List<String> get topics {
     if (_topics is EqualUnmodifiableListView) return _topics;
     // ignore: implicit_dynamic_type
@@ -321,7 +329,7 @@ class _$_SearchFilter extends _SearchFilter {
   /// will only return their collabs, or if one channel is a clipper, it will only show clips
   /// of the other vtubers made by this clipper.
   @override
-  @JsonKey(name: 'video_channels')
+  @JsonKey(name: 'vch')
   List<String> get videoChannels {
     if (_videoChannels is EqualUnmodifiableListView) return _videoChannels;
     // ignore: implicit_dynamic_type
@@ -335,7 +343,7 @@ class _$_SearchFilter extends _SearchFilter {
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
   /// in the specified organization.
   @override
-  @JsonKey()
+  @JsonKey(name: 'org')
   List<Organization> get organizations {
     if (_organizations is EqualUnmodifiableListView) return _organizations;
     // ignore: implicit_dynamic_type
@@ -416,12 +424,14 @@ abstract class _SearchFilter extends SearchFilter {
           final SearchSort sort,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages,
-      @JsonKey(name: 'search_targets')
+      @JsonKey(name: 'target')
           final List<SearchTarget> targets,
-      final List<String> topics,
-      @JsonKey(name: 'video_channels')
+      @JsonKey(name: 'topic')
+          final List<String> topics,
+      @JsonKey(name: 'vch')
           final List<String> videoChannels,
-      final List<Organization> organizations,
+      @JsonKey(name: 'org')
+          final List<Organization> organizations,
       @JsonKey(toJson: paginatedToString)
           final bool paginated,
       @JsonKey(toJson: intToString)
@@ -444,23 +454,25 @@ abstract class _SearchFilter extends SearchFilter {
   @override
 
   /// Target types of videos
-  @JsonKey(name: 'search_targets')
+  @JsonKey(name: 'target')
   List<SearchTarget> get targets;
   @override
 
   /// Return videos that match one of the provided topics
+  @JsonKey(name: 'topic')
   List<String> get topics;
   @override
 
   /// Videos with all of the specified channel ids. If two or more channel IDs are specified,
   /// will only return their collabs, or if one channel is a clipper, it will only show clips
   /// of the other vtubers made by this clipper.
-  @JsonKey(name: 'video_channels')
+  @JsonKey(name: 'vch')
   List<String> get videoChannels;
   @override
 
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
   /// in the specified organization.
+  @JsonKey(name: 'org')
   List<Organization> get organizations;
   @override
 

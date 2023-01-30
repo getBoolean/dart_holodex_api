@@ -39,6 +39,7 @@ class ChannelFilter with _$ChannelFilter {
     @Default(Order.ascending) Order order,
 
     /// If set, filter for Vtuber belonging to a specific org
+    @JsonKey(name: 'org')
     Organization? organization,
   }) = _ChannelFilter;
 }

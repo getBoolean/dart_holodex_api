@@ -51,6 +51,7 @@ class VideoFilter with _$VideoFilter {
     @Default(Order.descending) Order order,
 
     /// Filter by clips that feature the org's talent or videos posted by the org's talent.
+    @JsonKey(name: 'org')
     @Default([]) List<String> organization,
 
     /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
