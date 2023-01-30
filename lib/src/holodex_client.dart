@@ -461,7 +461,7 @@ class HolodexClient {
     final Map<String, dynamic> data = {};
 
     data.addAll({
-      'sort': filter.searchSort.code,
+      'sort': filter.sort.code,
       'paginated': filter.paginated,
       'offset': filter.offset,
       'limit': filter.limit,
@@ -537,7 +537,7 @@ class HolodexClient {
     final Map<String, dynamic> data = {};
 
     data.addAll({
-      'sort': filter.searchSort.code,
+      'sort': filter.sort.code,
       'comment': comment,
       'offset': filter.offset,
       'limit': filter.limit,
