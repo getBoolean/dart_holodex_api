@@ -11,12 +11,7 @@ part 'channel_video_filter.g.dart';
 class ChannelVideoFilter with _$ChannelVideoFilter {
   const ChannelVideoFilter._();
 
-  /// Arguments
-  /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  /// - `languages` List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  /// - `limit` Result limit. Max of 50.
-  /// - `offset` Offset results
-  /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+  /// Used to filter the results returns by the Holodex API's `channels` endpoints
   @Assert('limit <= 50', 'The limit cannot be greater than 50')
   const factory ChannelVideoFilter({
     /// Request extra data be included in the results. They are not guarenteed to be returned.
