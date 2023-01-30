@@ -64,15 +64,21 @@ class VideoFilter with _$VideoFilter {
     @JsonKey(toJson: paginatedToString) @Default(false) bool paginated,
 
     /// Sort the returned data by this field
+    /// 
+    /// TODO: Implement toJson
     @Default([VideoSort.availableAt]) List<VideoSort> sort,
 
     /// Filter by the video status
+    /// 
+    /// TODO: Implement toJson
     @Default([]) List<VideoStatus> status,
 
     /// Filter by video topic ID
     @JsonKey(includeIfNull: false) String? topic,
 
     /// Filter by type of video, either clips or streams
+    /// 
+    /// TODO: Implement toJson
     @JsonKey(includeIfNull: false) VideoType? type,
   }) = _VideoFilter;
 }
