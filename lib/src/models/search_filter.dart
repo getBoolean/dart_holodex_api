@@ -16,11 +16,13 @@ class SearchFilter with _$SearchFilter {
   @Assert('limit <= 50', 'The limit cannot be greater than 50')
   const factory SearchFilter({
     /// Sort by newest or oldest
-    @JsonKey(name: 'search_sort') @Default(SearchSort.newest) SearchSort sort,
+    @JsonKey(name: 'search_sort', toJson: searchSortToString)
+    @Default(SearchSort.newest)
+        SearchSort sort,
 
     /// If set, will filter clips to only show clips with these languages + all vtuber streams
     /// (provided searchTargets is not set to filter out streams)
-    @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
+    @JsonKey(toJson: languageListToStringList, name: 'lang')
     @Default([])
         List<Language> languages,
 
@@ -30,8 +32,7 @@ class SearchFilter with _$SearchFilter {
         List<SearchTarget> targets,
 
     /// Return videos that match one of the provided topics
-    @JsonKey(name: 'topic')
-    @Default([]) List<String> topics,
+    @JsonKey(name: 'topic') @Default([]) List<String> topics,
 
     /// Videos with all of the specified channel ids. If two or more channel IDs are specified,
     /// will only return their collabs, or if one channel is a clipper, it will only show clips
@@ -40,8 +41,7 @@ class SearchFilter with _$SearchFilter {
 
     /// Videos of channels in any of the specified organizations, or clips that involve a channel
     /// in the specified organization.
-    @JsonKey(name: 'org', toJson: concatOrganizationList)
-    @Default([]) List<Organization> organizations,
+    @JsonKey(name: 'org') @Default([]) List<Organization> organizations,
 
     /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
     @JsonKey(toJson: paginatedToString) @Default(true) bool paginated,

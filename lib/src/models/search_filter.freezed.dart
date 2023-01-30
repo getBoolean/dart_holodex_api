@@ -17,12 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SearchFilter {
   /// Sort by newest or oldest
-  @JsonKey(name: 'search_sort')
+  @JsonKey(name: 'search_sort', toJson: searchSortToString)
   SearchSort get sort => throw _privateConstructorUsedError;
 
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
-  @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
+  @JsonKey(toJson: languageListToStringList, name: 'lang')
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Target types of videos
@@ -41,7 +41,7 @@ mixin _$SearchFilter {
 
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
   /// in the specified organization.
-  @JsonKey(name: 'org', toJson: concatOrganizationList)
+  @JsonKey(name: 'org')
   List<Organization> get organizations => throw _privateConstructorUsedError;
 
   /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
@@ -69,9 +69,9 @@ abstract class $SearchFilterCopyWith<$Res> {
       _$SearchFilterCopyWithImpl<$Res, SearchFilter>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'search_sort')
+      {@JsonKey(name: 'search_sort', toJson: searchSortToString)
           SearchSort sort,
-      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
+      @JsonKey(toJson: languageListToStringList, name: 'lang')
           List<Language> languages,
       @JsonKey(name: 'target')
           List<SearchTarget> targets,
@@ -79,7 +79,7 @@ abstract class $SearchFilterCopyWith<$Res> {
           List<String> topics,
       @JsonKey(name: 'vch')
           List<String> videoChannels,
-      @JsonKey(name: 'org', toJson: concatOrganizationList)
+      @JsonKey(name: 'org')
           List<Organization> organizations,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
@@ -162,9 +162,9 @@ abstract class _$$_SearchFilterCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'search_sort')
+      {@JsonKey(name: 'search_sort', toJson: searchSortToString)
           SearchSort sort,
-      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
+      @JsonKey(toJson: languageListToStringList, name: 'lang')
           List<Language> languages,
       @JsonKey(name: 'target')
           List<SearchTarget> targets,
@@ -172,7 +172,7 @@ abstract class _$$_SearchFilterCopyWith<$Res>
           List<String> topics,
       @JsonKey(name: 'vch')
           List<String> videoChannels,
-      @JsonKey(name: 'org', toJson: concatOrganizationList)
+      @JsonKey(name: 'org')
           List<Organization> organizations,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
@@ -248,9 +248,9 @@ class __$$_SearchFilterCopyWithImpl<$Res>
 @JsonSerializable(createFactory: false)
 class _$_SearchFilter extends _SearchFilter {
   const _$_SearchFilter(
-      {@JsonKey(name: 'search_sort')
+      {@JsonKey(name: 'search_sort', toJson: searchSortToString)
           this.sort = SearchSort.newest,
-      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
+      @JsonKey(toJson: languageListToStringList, name: 'lang')
           final List<Language> languages = const [],
       @JsonKey(name: 'target')
           final List<SearchTarget> targets = const [
@@ -261,7 +261,7 @@ class _$_SearchFilter extends _SearchFilter {
           final List<String> topics = const [],
       @JsonKey(name: 'vch')
           final List<String> videoChannels = const [],
-      @JsonKey(name: 'org', toJson: concatOrganizationList)
+      @JsonKey(name: 'org')
           final List<Organization> organizations = const [],
       @JsonKey(toJson: paginatedToString)
           this.paginated = true,
@@ -279,7 +279,7 @@ class _$_SearchFilter extends _SearchFilter {
 
   /// Sort by newest or oldest
   @override
-  @JsonKey(name: 'search_sort')
+  @JsonKey(name: 'search_sort', toJson: searchSortToString)
   final SearchSort sort;
 
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
@@ -289,7 +289,7 @@ class _$_SearchFilter extends _SearchFilter {
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
   @override
-  @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
+  @JsonKey(toJson: languageListToStringList, name: 'lang')
   List<Language> get languages {
     if (_languages is EqualUnmodifiableListView) return _languages;
     // ignore: implicit_dynamic_type
@@ -343,7 +343,7 @@ class _$_SearchFilter extends _SearchFilter {
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
   /// in the specified organization.
   @override
-  @JsonKey(name: 'org', toJson: concatOrganizationList)
+  @JsonKey(name: 'org')
   List<Organization> get organizations {
     if (_organizations is EqualUnmodifiableListView) return _organizations;
     // ignore: implicit_dynamic_type
@@ -420,9 +420,9 @@ class _$_SearchFilter extends _SearchFilter {
 
 abstract class _SearchFilter extends SearchFilter {
   const factory _SearchFilter(
-      {@JsonKey(name: 'search_sort')
+      {@JsonKey(name: 'search_sort', toJson: searchSortToString)
           final SearchSort sort,
-      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
+      @JsonKey(toJson: languageListToStringList, name: 'lang')
           final List<Language> languages,
       @JsonKey(name: 'target')
           final List<SearchTarget> targets,
@@ -430,7 +430,7 @@ abstract class _SearchFilter extends SearchFilter {
           final List<String> topics,
       @JsonKey(name: 'vch')
           final List<String> videoChannels,
-      @JsonKey(name: 'org', toJson: concatOrganizationList)
+      @JsonKey(name: 'org')
           final List<Organization> organizations,
       @JsonKey(toJson: paginatedToString)
           final bool paginated,
@@ -443,13 +443,13 @@ abstract class _SearchFilter extends SearchFilter {
   @override
 
   /// Sort by newest or oldest
-  @JsonKey(name: 'search_sort')
+  @JsonKey(name: 'search_sort', toJson: searchSortToString)
   SearchSort get sort;
   @override
 
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
-  @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
+  @JsonKey(toJson: languageListToStringList, name: 'lang')
   List<Language> get languages;
   @override
 
@@ -472,7 +472,7 @@ abstract class _SearchFilter extends SearchFilter {
 
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
   /// in the specified organization.
-  @JsonKey(name: 'org', toJson: concatOrganizationList)
+  @JsonKey(name: 'org')
   List<Organization> get organizations;
   @override
 
