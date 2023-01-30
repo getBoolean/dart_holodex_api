@@ -21,8 +21,7 @@ class PaginatedVideos with _$PaginatedVideos {
   const PaginatedVideos._();
 
   const factory PaginatedVideos({
-    @JsonKey(fromJson: _parseTotal)
-    int? total,
+    @JsonKey(fromJson: _parseTotal) int? total,
     @Default([]) List<VideoFull> items,
     @Default(false) bool paginated,
   }) = _PaginatedVideos;

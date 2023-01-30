@@ -25,8 +25,7 @@ class VideoFull with _$VideoFull {
   const factory VideoFull({
     required String id,
     required String title,
-    @JsonKey(fromJson: _parseVideoType)
-    @Default(VideoType.all) VideoType type,
+    @JsonKey(fromJson: _parseVideoType) @Default(VideoType.all) VideoType type,
 
     /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
     @JsonKey(name: 'topic_id') String? topicId,
@@ -70,7 +69,8 @@ class VideoFull with _$VideoFull {
     @Default([]) List<Song> songs,
   }) = _VideoFull;
 
-  factory VideoFull.fromJson(Map<String, dynamic> json) => _$VideoFullFromJson(json);
+  factory VideoFull.fromJson(Map<String, dynamic> json) =>
+      _$VideoFullFromJson(json);
 
   Video toVideo() => Video(
         id: id,
