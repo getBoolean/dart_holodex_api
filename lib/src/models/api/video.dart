@@ -16,7 +16,7 @@ class Video with _$Video {
   const factory Video({
     required String id,
     required String title,
-    @Default(VideoType.all) VideoType type,
+    VideoType? type,
 
     /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
     @JsonKey(name: 'topic_id') String? topicId,

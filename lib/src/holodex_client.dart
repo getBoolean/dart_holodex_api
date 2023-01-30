@@ -503,7 +503,7 @@ class HolodexClient {
   }
 
   void _addType(VideoType? type, Map<String, dynamic> map) {
-    if (type != null && type != VideoType.all) {
+    if (type != null) {
       map.addAll({'type': enumWithCodeToString(type)});
     }
   }

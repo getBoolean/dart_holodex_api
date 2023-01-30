@@ -9,9 +9,7 @@ part of 'video_full.dart';
 _$_VideoFull _$$_VideoFullFromJson(Map<String, dynamic> json) => _$_VideoFull(
       id: json['id'] as String,
       title: json['title'] as String,
-      type: json['type'] == null
-          ? VideoType.all
-          : _parseVideoType(json['type'] as String?),
+      type: _parseVideoType(json['type'] as String?),
       topicId: json['topic_id'] as String?,
       publishedAt: json['published_at'] as String?,
       availableAt: json['available_at'] as String,
@@ -66,7 +64,7 @@ Map<String, dynamic> _$$_VideoFullToJson(_$_VideoFull instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
-      'type': _$VideoTypeEnumMap[instance.type]!,
+      'type': _$VideoTypeEnumMap[instance.type],
       'topic_id': instance.topicId,
       'published_at': instance.publishedAt,
       'available_at': instance.availableAt,
@@ -94,6 +92,4 @@ Map<String, dynamic> _$$_VideoFullToJson(_$_VideoFull instance) =>
 const _$VideoTypeEnumMap = {
   VideoType.stream: 'stream',
   VideoType.clip: 'clip',
-  VideoType.all: 'all',
-  VideoType.unknown: 'unknown',
 };

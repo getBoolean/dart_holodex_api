@@ -22,7 +22,7 @@ Video _$VideoFromJson(Map<String, dynamic> json) {
 mixin _$Video {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  VideoType get type => throw _privateConstructorUsedError;
+  VideoType? get type => throw _privateConstructorUsedError;
 
   /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
   @JsonKey(name: 'topic_id')
@@ -79,7 +79,7 @@ abstract class $VideoCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
-      VideoType type,
+      VideoType? type,
       @JsonKey(name: 'topic_id')
           String? topicId,
       @JsonKey(name: 'published_at')
@@ -123,7 +123,7 @@ class _$VideoCopyWithImpl<$Res, $Val extends Video>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? type = null,
+    Object? type = freezed,
     Object? topicId = freezed,
     Object? publishedAt = freezed,
     Object? availableAt = null,
@@ -148,10 +148,10 @@ class _$VideoCopyWithImpl<$Res, $Val extends Video>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      type: null == type
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as VideoType,
+              as VideoType?,
       topicId: freezed == topicId
           ? _value.topicId
           : topicId // ignore: cast_nullable_to_non_nullable
@@ -233,7 +233,7 @@ abstract class _$$_VideoCopyWith<$Res> implements $VideoCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
-      VideoType type,
+      VideoType? type,
       @JsonKey(name: 'topic_id')
           String? topicId,
       @JsonKey(name: 'published_at')
@@ -274,7 +274,7 @@ class __$$_VideoCopyWithImpl<$Res> extends _$VideoCopyWithImpl<$Res, _$_Video>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? type = null,
+    Object? type = freezed,
     Object? topicId = freezed,
     Object? publishedAt = freezed,
     Object? availableAt = null,
@@ -299,10 +299,10 @@ class __$$_VideoCopyWithImpl<$Res> extends _$VideoCopyWithImpl<$Res, _$_Video>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      type: null == type
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as VideoType,
+              as VideoType?,
       topicId: freezed == topicId
           ? _value.topicId
           : topicId // ignore: cast_nullable_to_non_nullable
@@ -369,7 +369,7 @@ class _$_Video extends _Video {
   const _$_Video(
       {required this.id,
       required this.title,
-      this.type = VideoType.all,
+      this.type,
       @JsonKey(name: 'topic_id')
           this.topicId,
       @JsonKey(name: 'published_at')
@@ -404,8 +404,7 @@ class _$_Video extends _Video {
   @override
   final String title;
   @override
-  @JsonKey()
-  final VideoType type;
+  final VideoType? type;
 
   /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
   @override
@@ -543,7 +542,7 @@ abstract class _Video extends Video {
   const factory _Video(
       {required final String id,
       required final String title,
-      final VideoType type,
+      final VideoType? type,
       @JsonKey(name: 'topic_id')
           final String? topicId,
       @JsonKey(name: 'published_at')
@@ -577,7 +576,7 @@ abstract class _Video extends Video {
   @override
   String get title;
   @override
-  VideoType get type;
+  VideoType? get type;
   @override
 
   /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.

@@ -59,7 +59,7 @@ void main(List<String> arguments) async {
     status: <VideoStatus>[VideoStatus.past],
     // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
     // topicId: 'singing',
-    type: VideoType.all,
+    // type: VideoType.stream,
   );
 
   final PaginatedVideos videoList = await holodexClient.getVideos(videoFilter);

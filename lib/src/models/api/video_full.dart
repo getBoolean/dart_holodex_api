@@ -11,8 +11,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'video_full.freezed.dart';
 part 'video_full.g.dart';
 
-VideoType _parseVideoType(String? type) {
-  return VideoType.values.byCode(type ?? '') ?? VideoType.unknown;
+VideoType? _parseVideoType(String? type) {
+  return VideoType.values.byCode(type ?? '');
 }
 
 /// An extended [Video] class with [comments], [sources], [refers],
@@ -25,7 +25,7 @@ class VideoFull with _$VideoFull {
   const factory VideoFull({
     required String id,
     required String title,
-    @JsonKey(fromJson: _parseVideoType) @Default(VideoType.all) VideoType type,
+    @JsonKey(fromJson: _parseVideoType) VideoType? type,
 
     /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
     @JsonKey(name: 'topic_id') String? topicId,

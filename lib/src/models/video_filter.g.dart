@@ -53,6 +53,4 @@ const _$VideoStatusEnumMap = {
 const _$VideoTypeEnumMap = {
   VideoType.stream: 'stream',
   VideoType.clip: 'clip',
-  VideoType.all: 'all',
-  VideoType.unknown: 'unknown',
 };

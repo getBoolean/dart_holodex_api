@@ -9,8 +9,7 @@ part of 'video.dart';
 _$_Video _$$_VideoFromJson(Map<String, dynamic> json) => _$_Video(
       id: json['id'] as String,
       title: json['title'] as String,
-      type: $enumDecodeNullable(_$VideoTypeEnumMap, json['type']) ??
-          VideoType.all,
+      type: $enumDecodeNullable(_$VideoTypeEnumMap, json['type']),
       topicId: json['topic_id'] as String?,
       publishedAt: json['published_at'] as String?,
       availableAt: json['available_at'] as String,
@@ -32,7 +31,7 @@ _$_Video _$$_VideoFromJson(Map<String, dynamic> json) => _$_Video(
 Map<String, dynamic> _$$_VideoToJson(_$_Video instance) => <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
-      'type': _$VideoTypeEnumMap[instance.type]!,
+      'type': _$VideoTypeEnumMap[instance.type],
       'topic_id': instance.topicId,
       'published_at': instance.publishedAt,
       'available_at': instance.availableAt,
@@ -52,6 +51,4 @@ Map<String, dynamic> _$$_VideoToJson(_$_Video instance) => <String, dynamic>{
 const _$VideoTypeEnumMap = {
   VideoType.stream: 'stream',
   VideoType.clip: 'clip',
-  VideoType.all: 'all',
-  VideoType.unknown: 'unknown',
 };
