@@ -7,7 +7,8 @@
 - Added String field `code` to enum `Language`, `Includes`, `Order`, `ChannelSort`, `VideoStatus`, `VideoSort`, `VideoType`,
 `ChannelType`, `SearchSort`, `SearchTarget`, `VideoSearchType`.
 - Added String `organization` to `Channel` and `ChannelMin`.
-- Added more fields to `Channel.
+- Added more fields to `Channel`.
+- Added `unknown` to `VideoType`.
 
 ### Breaking Changes
 
