@@ -1,22 +1,16 @@
+import 'dart:convert';
+
 import 'package:dart_holodex_api/src/enums/includes.dart';
 import 'package:dart_holodex_api/src/enums/language.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'channel_video_filter.freezed.dart';
+part 'channel_video_filter.g.dart';
 
 /// Filter the results returns by the Holodex API channel videos endpoints
-class ChannelVideoFilter {
-  /// Request extra data be included in the results. They are not guarenteed to be returned.
-  final List<Includes> includes;
-
-  /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  final List<Language> languages;
-
-  /// Result limit. Max of 50.
-  final int limit;
-
-  /// Offset results
-  final int offset;
-
-  /// If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  final bool paginated;
+@freezed
+class ChannelVideoFilter with _$ChannelVideoFilter {
+  const ChannelVideoFilter._();
 
   /// Arguments
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
@@ -24,11 +18,34 @@ class ChannelVideoFilter {
   /// - `limit` Result limit. Max of 50.
   /// - `offset` Offset results
   /// - `paginated` If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
-  const ChannelVideoFilter({
-    this.includes = const [],
-    this.languages = const [],
-    this.limit = 25,
-    this.offset = 0,
-    this.paginated = true,
-  }) : assert(limit <= 50, 'The limit cannot be greater than 50');
+  @Assert('limit <= 50', 'The limit cannot be greater than 50')
+  const factory ChannelVideoFilter({
+    /// Request extra data be included in the results. They are not guarenteed to be returned.
+    @Default([]) List<Includes> includes,
+
+    /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
+    @JsonKey(
+        toJson: languageListToStringList, fromJson: stringListToLanguageList)
+    @Default([])
+        List<Language> languages,
+
+    /// Result limit. Max of 50.
+    @Default(25) int limit,
+
+    /// Offset results
+    @Default(0) int offset,
+
+    /// If paginated is set to true, returns [VideoFullList] with total, otherwise returns [VideoFullList] without the total.
+    @Default(true) bool paginated,
+  }) = _ChannelVideoFilter;
+
+  factory ChannelVideoFilter.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$ChannelVideoFilterFromJson(json);
+
+  factory ChannelVideoFilter.fromString(
+    String json,
+  ) =>
+      ChannelVideoFilter.fromJson(jsonDecode(json));
 }

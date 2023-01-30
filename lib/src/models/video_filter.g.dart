@@ -8,7 +8,7 @@ part of 'video_filter.dart';
 
 _$_VideoFilter _$$_VideoFilterFromJson(Map<String, dynamic> json) =>
     _$_VideoFilter(
-      channelId: json['channelId'] as String?,
+      channelId: json['channel_id'] as String?,
       ids: (json['ids'] as List<dynamic>?)?.map((e) => e as String).toList() ??
           const [],
       includes: (json['includes'] as List<dynamic>?)
@@ -19,8 +19,8 @@ _$_VideoFilter _$$_VideoFilterFromJson(Map<String, dynamic> json) =>
           ? const []
           : stringListToLanguageList(json['languages'] as List<String>),
       limit: json['limit'] as int? ?? 25,
-      maxUpcomingHours: json['maxUpcomingHours'] as int?,
-      mentionedChannelId: json['mentionedChannelId'] as String?,
+      maxUpcomingHours: json['max_upcoming_hours'] as int?,
+      mentionedChannelId: json['mentioned_channel_id'] as String?,
       offset: json['offset'] as int? ?? 0,
       order: $enumDecodeNullable(_$OrderEnumMap, json['order']) ??
           Order.descending,
@@ -43,13 +43,13 @@ _$_VideoFilter _$$_VideoFilterFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) =>
     <String, dynamic>{
-      'channelId': instance.channelId,
+      'channel_id': instance.channelId,
       'ids': instance.ids,
       'includes': instance.includes.map((e) => _$IncludesEnumMap[e]!).toList(),
       'languages': languageListToStringList(instance.languages),
       'limit': instance.limit,
-      'maxUpcomingHours': instance.maxUpcomingHours,
-      'mentionedChannelId': instance.mentionedChannelId,
+      'max_upcoming_hours': instance.maxUpcomingHours,
+      'mentioned_channel_id': instance.mentionedChannelId,
       'offset': instance.offset,
       'order': _$OrderEnumMap[instance.order]!,
       'organization': instance.organization,

@@ -21,6 +21,7 @@ VideoFilter _$VideoFilterFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$VideoFilter {
   /// Filter by video uploader channel ID
+  @JsonKey(name: 'channel_id')
   String? get channelId => throw _privateConstructorUsedError;
 
   /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
@@ -37,9 +38,11 @@ mixin _$VideoFilter {
   int get limit => throw _privateConstructorUsedError;
 
   /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
+  @JsonKey(name: 'max_upcoming_hours')
   int? get maxUpcomingHours => throw _privateConstructorUsedError;
 
   /// Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
+  @JsonKey(name: 'mentioned_channel_id')
   String? get mentionedChannelId => throw _privateConstructorUsedError;
 
   /// Receive results starting at this number in the array from the Holodex API
@@ -79,14 +82,17 @@ abstract class $VideoFilterCopyWith<$Res> {
       _$VideoFilterCopyWithImpl<$Res, VideoFilter>;
   @useResult
   $Res call(
-      {String? channelId,
+      {@JsonKey(name: 'channel_id')
+          String? channelId,
       List<String> ids,
       List<Includes> includes,
       @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
           List<Language> languages,
       int limit,
-      int? maxUpcomingHours,
-      String? mentionedChannelId,
+      @JsonKey(name: 'max_upcoming_hours')
+          int? maxUpcomingHours,
+      @JsonKey(name: 'mentioned_channel_id')
+          String? mentionedChannelId,
       int offset,
       Order order,
       List<String> organization,
@@ -200,14 +206,17 @@ abstract class _$$_VideoFilterCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? channelId,
+      {@JsonKey(name: 'channel_id')
+          String? channelId,
       List<String> ids,
       List<Includes> includes,
       @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
           List<Language> languages,
       int limit,
-      int? maxUpcomingHours,
-      String? mentionedChannelId,
+      @JsonKey(name: 'max_upcoming_hours')
+          int? maxUpcomingHours,
+      @JsonKey(name: 'mentioned_channel_id')
+          String? mentionedChannelId,
       int offset,
       Order order,
       List<String> organization,
@@ -314,14 +323,17 @@ class __$$_VideoFilterCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_VideoFilter extends _VideoFilter {
   const _$_VideoFilter(
-      {this.channelId,
+      {@JsonKey(name: 'channel_id')
+          this.channelId,
       final List<String> ids = const [],
       final List<Includes> includes = const [],
       @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
           final List<Language> languages = const [],
       this.limit = 25,
-      this.maxUpcomingHours,
-      this.mentionedChannelId,
+      @JsonKey(name: 'max_upcoming_hours')
+          this.maxUpcomingHours,
+      @JsonKey(name: 'mentioned_channel_id')
+          this.mentionedChannelId,
       this.offset = 0,
       this.order = Order.descending,
       final List<String> organization = const [],
@@ -344,6 +356,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Filter by video uploader channel ID
   @override
+  @JsonKey(name: 'channel_id')
   final String? channelId;
 
   /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
@@ -389,10 +402,12 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
   @override
+  @JsonKey(name: 'max_upcoming_hours')
   final int? maxUpcomingHours;
 
   /// Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
   @override
+  @JsonKey(name: 'mentioned_channel_id')
   final String? mentionedChannelId;
 
   /// Receive results starting at this number in the array from the Holodex API
@@ -523,14 +538,17 @@ class _$_VideoFilter extends _VideoFilter {
 
 abstract class _VideoFilter extends VideoFilter {
   const factory _VideoFilter(
-      {final String? channelId,
+      {@JsonKey(name: 'channel_id')
+          final String? channelId,
       final List<String> ids,
       final List<Includes> includes,
       @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
           final List<Language> languages,
       final int limit,
-      final int? maxUpcomingHours,
-      final String? mentionedChannelId,
+      @JsonKey(name: 'max_upcoming_hours')
+          final int? maxUpcomingHours,
+      @JsonKey(name: 'mentioned_channel_id')
+          final String? mentionedChannelId,
       final int offset,
       final Order order,
       final List<String> organization,
@@ -547,6 +565,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by video uploader channel ID
+  @JsonKey(name: 'channel_id')
   String? get channelId;
   @override
 
@@ -568,10 +587,12 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
+  @JsonKey(name: 'max_upcoming_hours')
   int? get maxUpcomingHours;
   @override
 
   /// Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
+  @JsonKey(name: 'mentioned_channel_id')
   String? get mentionedChannelId;
   @override
 

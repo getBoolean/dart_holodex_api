@@ -13,7 +13,7 @@ part 'search_filter.g.dart';
 @freezed
 class SearchFilter with _$SearchFilter {
   const SearchFilter._();
-  
+
   @Assert('limit <= 50', 'The limit cannot be greater than 50')
   const factory SearchFilter({
     /// Sort by newest or oldest

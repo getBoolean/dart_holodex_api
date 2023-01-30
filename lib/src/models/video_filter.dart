@@ -19,8 +19,7 @@ class VideoFilter with _$VideoFilter {
   @Assert('limit <= 50', 'Limit cannot be greater than 50')
   const factory VideoFilter({
     /// Filter by video uploader channel ID
-    @JsonKey(name: 'channel_id')
-    String? channelId,
+    @JsonKey(name: 'channel_id') String? channelId,
 
     /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
     @Default([]) List<String> ids,
