@@ -308,7 +308,7 @@ class HolodexClient {
     return list.map((video) => Video.fromJson(video)).toList();
   }
 
-  /// Get Videos From Channel, alias of [getVideosRelatedToChannel]
+  /// Get Videos From Channel, alias of [getChannelRelatedVideos]
   ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
@@ -323,14 +323,14 @@ class HolodexClient {
       paginated: true,
     ),
   }) async {
-    return await getVideosRelatedToChannel(
+    return await getChannelRelatedVideos(
       channelId,
       type: VideoSearchType.videos,
       filter: filter,
     );
   }
 
-  /// Get Clips of a VTuber, alias of [getVideosRelatedToChannel]
+  /// Get Clips of a VTuber, alias of [getChannelRelatedVideos]
   ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
@@ -345,14 +345,14 @@ class HolodexClient {
       paginated: true,
     ),
   }) async {
-    return await getVideosRelatedToChannel(
+    return await getChannelRelatedVideos(
       channelId,
       type: VideoSearchType.clips,
       filter: filter,
     );
   }
 
-  /// Get Collabs that mention a VTuber, alias of [getVideosRelatedToChannel]
+  /// Get Collabs that mention a VTuber, alias of [getChannelRelatedVideos]
   ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
@@ -367,7 +367,7 @@ class HolodexClient {
       paginated: true,
     ),
   }) async {
-    return await getVideosRelatedToChannel(
+    return await getChannelRelatedVideos(
       channelId,
       type: VideoSearchType.collabs,
       filter: filter,
@@ -383,7 +383,7 @@ class HolodexClient {
   /// - `channelId` ID of the Youtube Channel that is being queried
   /// - `type` The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId`
   /// - `filter` Filter the results returns by the API
-  Future<PaginatedVideos> getVideosRelatedToChannel(
+  Future<PaginatedVideos> getChannelRelatedVideos(
     String channelId, {
     required VideoSearchType type,
     ChannelVideoFilter filter = const ChannelVideoFilter(),

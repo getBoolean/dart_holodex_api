@@ -95,7 +95,7 @@ void main(List<String> arguments) async {
   print('Requested Live Videos From Channels: ${quickLiveVideos.length}\n');
 
   final PaginatedVideos matsuriClips = await holodexClient
-      .getVideosRelatedToChannel('UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
+      .getChannelRelatedVideos('UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
           type: VideoSearchType.clips);
   print('Clips including Matsuri: ${matsuriClips.total}');
   print('Returned clips including Matsuri: ${matsuriClips.items.length}\n');
