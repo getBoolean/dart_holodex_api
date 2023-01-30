@@ -1,7 +1,5 @@
 import 'package:dart_holodex_api/dart_holodex_api.dart';
-import 'package:http/http.dart' as http;
 import 'package:test/test.dart';
-import 'package:dotenv/dotenv.dart' show load, isEveryDefined, env;
 
 import 'utils.dart';
 
