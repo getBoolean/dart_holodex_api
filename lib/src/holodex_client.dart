@@ -596,11 +596,7 @@ class HolodexClient {
 
   void _addVideoSort(List<VideoSort> sort, Map<String, dynamic> map) {
     if (sort.isNotEmpty) {
-      // Make new list with the values as string
-      final List<String> sortStringList = sort.map((s) => s.code).toList();
-      // Join the array with commas
-      final sortConcatenated = sortStringList.join(',');
-      map.addAll({'include': sortConcatenated});
+      map.addAll({'include': sort.concat});
     }
   }
 
@@ -630,12 +626,7 @@ class HolodexClient {
 
   void _addStatusList(List<VideoStatus> statuses, Map<String, dynamic> map) {
     if (statuses.isNotEmpty) {
-      // Make new list with the values as string
-      final List<String> statusesStringList =
-          statuses.map((status) => status.code).toList();
-      // Join the array with commas
-      final statusesConcatenated = statusesStringList.join(',');
-      map.addAll({'status': statusesConcatenated});
+      map.addAll({'status': statuses.concat});
     }
   }
 
@@ -699,11 +690,7 @@ class HolodexClient {
 
   void _addChannelSort(List<ChannelSort> sort, Map<String, dynamic> map) {
     if (sort.isNotEmpty) {
-      // Make new list with the values as string
-      final List<String> sortStringList = sort.map((s) => s.code).toList();
-      // Join the array with commas
-      final sortConcat = sortStringList.join(',');
-      map.addAll({'sort': sortConcat});
+      map.addAll({'sort': sort.concat});
     }
   }
 
