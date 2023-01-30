@@ -11,6 +11,7 @@
 
 ### Breaking Changes
 
+- **Breaking**: Updated minimum Dart SDK version to 2.19.0.
 - **Breaking**: Renamed `HolodexClient` constructor parameter `httpClient` to `client`.
 - **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `timestampComments` to `includeTimestampComments`.
 - **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `recommendationLanguages` to `languages`.

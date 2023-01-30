@@ -44,14 +44,8 @@ A thin unofficial Dart client for Holodex API v2.
 ## Getting started
 
 1. Get an API key at [holodex.net](https://holodex.net/), [instructions here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)
-2. Add this to your `pubspec.yaml` file
-
-    ```yaml
-    dependencies:
-        dart_holodex_api: ^0.2.1
-    ```
-
-3. Then run `dart pub get` or `flutter pub get`.
+2. Add this package your `pubspec.yaml` file
+3. Run `dart pub get` or `flutter pub get`.
 
 ## Usage
 
