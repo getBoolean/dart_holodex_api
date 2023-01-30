@@ -389,13 +389,7 @@ class HolodexClient {
     required VideoSearchType type,
     ChannelVideoFilter filter = const ChannelVideoFilter(),
   }) async {
-    final languages =
-        filter.languages.isEmpty ? [Language.all] : filter.languages;
-
-    final Map<String, dynamic> params = {};
-    _addLanguages(languages, params);
-
-    params.addAll(filter.toJson());
+    final Map<String, dynamic> params = filter.toJson();
 
     final response = await get(
         path: '${_Constants.channelsPath}/$channelId/${type.code}',
