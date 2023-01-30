@@ -393,16 +393,9 @@ class HolodexClient {
         filter.languages.isEmpty ? [Language.all] : filter.languages;
 
     final Map<String, dynamic> params = {};
-
-    // Add the items with default values (they can't be null)
-    params.addAll({
-      'limit': '${filter.limit}',
-      'offset': '${filter.offset}',
-    });
-
-    _addIncludes(filter.includes, params);
     _addLanguages(languages, params);
-    _addPaginated(filter.paginated, params);
+
+    params.addAll(filter.toJson());
 
     final response = await get(
         path: '${_Constants.channelsPath}/$channelId/${type.code}',

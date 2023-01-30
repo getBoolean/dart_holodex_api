@@ -3,6 +3,7 @@ import 'package:dart_holodex_api/src/enums/channel_type.dart';
 import 'package:dart_holodex_api/src/enums/language.dart';
 import 'package:dart_holodex_api/src/enums/order.dart';
 import 'package:dart_holodex_api/src/enums/organization.dart';
+import 'package:dart_holodex_api/src/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'channel_filter.freezed.dart';
@@ -16,7 +17,7 @@ class ChannelFilter with _$ChannelFilter {
   @Assert('limit <= 50', 'The limit cannot be greater than 50')
   const factory ChannelFilter({
     /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
-    @JsonKey(toJson: concatLanguageList, name: 'lang')
+    @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
     @Default([])
         List<Language> languages,
 

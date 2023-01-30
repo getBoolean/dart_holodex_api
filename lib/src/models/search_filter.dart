@@ -20,7 +20,7 @@ class SearchFilter with _$SearchFilter {
 
     /// If set, will filter clips to only show clips with these languages + all vtuber streams
     /// (provided searchTargets is not set to filter out streams)
-    @JsonKey(toJson: concatLanguageList, name: 'lang')
+    @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
     @Default([])
         List<Language> languages,
 

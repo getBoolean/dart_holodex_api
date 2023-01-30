@@ -9,7 +9,7 @@ part of 'search_filter.dart';
 Map<String, dynamic> _$$_SearchFilterToJson(_$_SearchFilter instance) =>
     <String, dynamic>{
       'search_sort': _$SearchSortEnumMap[instance.sort]!,
-      'lang': concatLanguageList(instance.languages),
+      'lang': concatLanguageListWithDefault(instance.languages),
       'search_targets':
           instance.searchTargets.map((e) => _$SearchTargetEnumMap[e]!).toList(),
       'topics': instance.topics,

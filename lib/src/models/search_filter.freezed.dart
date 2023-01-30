@@ -22,7 +22,7 @@ mixin _$SearchFilter {
 
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
-  @JsonKey(toJson: concatLanguageList, name: 'lang')
+  @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Target types of videos
@@ -67,7 +67,7 @@ abstract class $SearchFilterCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'search_sort')
           SearchSort sort,
-      @JsonKey(toJson: concatLanguageList, name: 'lang')
+      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
       @JsonKey(name: 'search_targets')
           List<SearchTarget> searchTargets,
@@ -156,7 +156,7 @@ abstract class _$$_SearchFilterCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'search_sort')
           SearchSort sort,
-      @JsonKey(toJson: concatLanguageList, name: 'lang')
+      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
       @JsonKey(name: 'search_targets')
           List<SearchTarget> searchTargets,
@@ -238,7 +238,7 @@ class _$_SearchFilter extends _SearchFilter {
   const _$_SearchFilter(
       {@JsonKey(name: 'search_sort')
           this.sort = SearchSort.newest,
-      @JsonKey(toJson: concatLanguageList, name: 'lang')
+      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages = const [],
       @JsonKey(name: 'search_targets')
           final List<SearchTarget> searchTargets = const [
@@ -273,7 +273,7 @@ class _$_SearchFilter extends _SearchFilter {
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
   @override
-  @JsonKey(toJson: concatLanguageList, name: 'lang')
+  @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
   List<Language> get languages {
     if (_languages is EqualUnmodifiableListView) return _languages;
     // ignore: implicit_dynamic_type
@@ -407,7 +407,7 @@ abstract class _SearchFilter extends SearchFilter {
   const factory _SearchFilter(
       {@JsonKey(name: 'search_sort')
           final SearchSort sort,
-      @JsonKey(toJson: concatLanguageList, name: 'lang')
+      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages,
       @JsonKey(name: 'search_targets')
           final List<SearchTarget> searchTargets,
@@ -430,7 +430,7 @@ abstract class _SearchFilter extends SearchFilter {
 
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
-  @JsonKey(toJson: concatLanguageList, name: 'lang')
+  @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
   List<Language> get languages;
   @override
 

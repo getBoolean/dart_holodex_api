@@ -28,7 +28,7 @@ mixin _$VideoFilter {
   List<Includes> get includes => throw _privateConstructorUsedError;
 
   /// Filter by the `Language`
-  @JsonKey(toJson: concatLanguageList, name: 'lang')
+  @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Limit the number of results returned. Maximum value of 50
@@ -85,7 +85,7 @@ abstract class $VideoFilterCopyWith<$Res> {
       List<String> ids,
       @JsonKey(toJson: concatIncludesList, name: 'include')
           List<Includes> includes,
-      @JsonKey(toJson: concatLanguageList, name: 'lang')
+      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
       int limit,
       @JsonKey(name: 'max_upcoming_hours')
@@ -211,7 +211,7 @@ abstract class _$$_VideoFilterCopyWith<$Res>
       List<String> ids,
       @JsonKey(toJson: concatIncludesList, name: 'include')
           List<Includes> includes,
-      @JsonKey(toJson: concatLanguageList, name: 'lang')
+      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
       int limit,
       @JsonKey(name: 'max_upcoming_hours')
@@ -330,7 +330,7 @@ class _$_VideoFilter extends _VideoFilter {
       final List<String> ids = const [],
       @JsonKey(toJson: concatIncludesList, name: 'include')
           final List<Includes> includes = const [],
-      @JsonKey(toJson: concatLanguageList, name: 'lang')
+      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages = const [],
       this.limit = 25,
       @JsonKey(name: 'max_upcoming_hours')
@@ -389,7 +389,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Filter by the `Language`
   @override
-  @JsonKey(toJson: concatLanguageList, name: 'lang')
+  @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
   List<Language> get languages {
     if (_languages is EqualUnmodifiableListView) return _languages;
     // ignore: implicit_dynamic_type
@@ -544,7 +544,7 @@ abstract class _VideoFilter extends VideoFilter {
       final List<String> ids,
       @JsonKey(toJson: concatIncludesList, name: 'include')
           final List<Includes> includes,
-      @JsonKey(toJson: concatLanguageList, name: 'lang')
+      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages,
       final int limit,
       @JsonKey(name: 'max_upcoming_hours')
@@ -579,7 +579,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by the `Language`
-  @JsonKey(toJson: concatLanguageList, name: 'lang')
+  @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
   List<Language> get languages;
   @override
 

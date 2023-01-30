@@ -10,7 +10,7 @@ Map<String, dynamic> _$$_ChannelVideoFilterToJson(
         _$_ChannelVideoFilter instance) =>
     <String, dynamic>{
       'include': concatIncludesList(instance.includes),
-      'lang': concatLanguageList(instance.languages),
+      'lang': concatLanguageListWithDefault(instance.languages),
       'limit': instance.limit,
       'offset': instance.offset,
       'paginated': paginatedToString(instance.paginated),

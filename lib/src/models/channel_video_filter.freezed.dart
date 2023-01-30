@@ -21,7 +21,7 @@ mixin _$ChannelVideoFilter {
   List<Includes> get includes => throw _privateConstructorUsedError;
 
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  @JsonKey(toJson: concatLanguageList, name: 'lang')
+  @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Result limit. Max of 50.
@@ -49,7 +49,7 @@ abstract class $ChannelVideoFilterCopyWith<$Res> {
   $Res call(
       {@JsonKey(toJson: concatIncludesList, name: 'include')
           List<Includes> includes,
-      @JsonKey(toJson: concatLanguageList, name: 'lang')
+      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
       int limit,
       int offset,
@@ -112,7 +112,7 @@ abstract class _$$_ChannelVideoFilterCopyWith<$Res>
   $Res call(
       {@JsonKey(toJson: concatIncludesList, name: 'include')
           List<Includes> includes,
-      @JsonKey(toJson: concatLanguageList, name: 'lang')
+      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           List<Language> languages,
       int limit,
       int offset,
@@ -168,7 +168,7 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
   const _$_ChannelVideoFilter(
       {@JsonKey(toJson: concatIncludesList, name: 'include')
           final List<Includes> includes = const [],
-      @JsonKey(toJson: concatLanguageList, name: 'lang')
+      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages = const [],
       this.limit = 25,
       this.offset = 0,
@@ -196,7 +196,7 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
 
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
   @override
-  @JsonKey(toJson: concatLanguageList, name: 'lang')
+  @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
   List<Language> get languages {
     if (_languages is EqualUnmodifiableListView) return _languages;
     // ignore: implicit_dynamic_type
@@ -266,7 +266,7 @@ abstract class _ChannelVideoFilter extends ChannelVideoFilter {
   const factory _ChannelVideoFilter(
       {@JsonKey(toJson: concatIncludesList, name: 'include')
           final List<Includes> includes,
-      @JsonKey(toJson: concatLanguageList, name: 'lang')
+      @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
           final List<Language> languages,
       final int limit,
       final int offset,
@@ -282,7 +282,7 @@ abstract class _ChannelVideoFilter extends ChannelVideoFilter {
   @override
 
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
-  @JsonKey(toJson: concatLanguageList, name: 'lang')
+  @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
   List<Language> get languages;
   @override
 
