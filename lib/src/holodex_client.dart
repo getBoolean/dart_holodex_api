@@ -17,6 +17,7 @@ import 'package:dart_holodex_api/src/enums/video_type.dart';
 import 'package:dart_holodex_api/src/exception.dart';
 import 'package:dart_holodex_api/src/models.dart';
 import 'package:dart_holodex_api/src/models/channel_video_filter.dart';
+import 'package:dart_holodex_api/src/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
@@ -601,15 +602,11 @@ class HolodexClient {
   }
 
   void _addPaginated(bool paginated, Map<String, dynamic> map) {
-    if (paginated) {
-      map.addAll({'paginated': 'yes'});
-    } else {
-      map.addAll({'paginated': ''});
-    }
+    map.addAll({'paginated': paginatedToString(paginated)});
   }
 
   void _addCommentsFlag(bool comments, Map<String, dynamic> map) {
-    map.addAll({'c': comments ? '1' : '0'});
+    map.addAll({'c': includeCommentsToString(comments)});
   }
 
   void _addChannelId(String? channelId, Map<String, dynamic> map) {
@@ -620,7 +617,7 @@ class HolodexClient {
 
   void _addId(List<String> ids, Map<String, dynamic> map) {
     if (ids.isNotEmpty) {
-      map.addAll({'id': ids.join(',')});
+      map.addAll({'id': concatStringList(ids)});
     }
   }
 
@@ -632,7 +629,7 @@ class HolodexClient {
 
   void _addType(VideoType? type, Map<String, dynamic> map) {
     if (type != null && type != VideoType.all) {
-      map.addAll({'type': type.code});
+      map.addAll({'type': enumWithCodeToString(type)});
     }
   }
 
@@ -644,22 +641,20 @@ class HolodexClient {
 
   void _addOrganizations(List<String> organization, Map<String, dynamic> map) {
     if (organization.isNotEmpty) {
-      // Join the array with commas and add it to the parameters
-      final orgsConcatenated = organization.join(',');
-      map.addAll({'org': orgsConcatenated});
+      map.addAll({'org': concatStringList(organization)});
     }
   }
 
   void _addSingleOrganization(
       Organization? organization, Map<String, dynamic> map) {
     if (organization != null) {
-      map.addAll({'org': organization.code});
+      map.addAll({'org': enumWithCodeToString(organization)});
     }
   }
 
   void _addChannelType(ChannelType? channelType, Map<String, dynamic> map) {
     if (channelType != null) {
-      map.addAll({'type': channelType.name});
+      map.addAll({'type': enumWithCodeToString(channelType)});
     }
   }
 
@@ -696,9 +691,7 @@ class HolodexClient {
 
   void _addChannels(List<String> channelIds, Map<String, dynamic> map) {
     if (channelIds.isNotEmpty) {
-      // Join the array with commas
-      final channelsConcat = channelIds.join(',');
-      map.addAll({'channels': channelsConcat});
+      map.addAll({'channels': concatStringList(channelIds)});
     }
   }
 
