@@ -17,7 +17,7 @@ _$_VideoFilter _$$_VideoFilterFromJson(Map<String, dynamic> json) =>
           const [],
       languages: json['languages'] == null
           ? const []
-          : _stringListToLanguageList(json['languages'] as List<String>),
+          : stringListToLanguageList(json['languages'] as List<String>),
       limit: json['limit'] as int? ?? 25,
       maxUpcomingHours: json['maxUpcomingHours'] as int?,
       mentionedChannelId: json['mentionedChannelId'] as String?,
@@ -46,7 +46,7 @@ Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) =>
       'channelId': instance.channelId,
       'ids': instance.ids,
       'includes': instance.includes.map((e) => _$IncludesEnumMap[e]!).toList(),
-      'languages': _languageListToStringList(instance.languages),
+      'languages': languageListToStringList(instance.languages),
       'limit': instance.limit,
       'maxUpcomingHours': instance.maxUpcomingHours,
       'mentionedChannelId': instance.mentionedChannelId,

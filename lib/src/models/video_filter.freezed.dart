@@ -30,8 +30,7 @@ mixin _$VideoFilter {
   List<Includes> get includes => throw _privateConstructorUsedError;
 
   /// Filter by the `Language`
-  @JsonKey(
-      toJson: _languageListToStringList, fromJson: _stringListToLanguageList)
+  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Limit the number of results returned. Maximum value of 50
@@ -83,7 +82,7 @@ abstract class $VideoFilterCopyWith<$Res> {
       {String? channelId,
       List<String> ids,
       List<Includes> includes,
-      @JsonKey(toJson: _languageListToStringList, fromJson: _stringListToLanguageList)
+      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
           List<Language> languages,
       int limit,
       int? maxUpcomingHours,
@@ -204,7 +203,7 @@ abstract class _$$_VideoFilterCopyWith<$Res>
       {String? channelId,
       List<String> ids,
       List<Includes> includes,
-      @JsonKey(toJson: _languageListToStringList, fromJson: _stringListToLanguageList)
+      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
           List<Language> languages,
       int limit,
       int? maxUpcomingHours,
@@ -318,7 +317,7 @@ class _$_VideoFilter extends _VideoFilter {
       {this.channelId,
       final List<String> ids = const [],
       final List<Includes> includes = const [],
-      @JsonKey(toJson: _languageListToStringList, fromJson: _stringListToLanguageList)
+      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
           final List<Language> languages = const [],
       this.limit = 25,
       this.maxUpcomingHours,
@@ -376,8 +375,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Filter by the `Language`
   @override
-  @JsonKey(
-      toJson: _languageListToStringList, fromJson: _stringListToLanguageList)
+  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
   List<Language> get languages {
     if (_languages is EqualUnmodifiableListView) return _languages;
     // ignore: implicit_dynamic_type
@@ -528,7 +526,7 @@ abstract class _VideoFilter extends VideoFilter {
       {final String? channelId,
       final List<String> ids,
       final List<Includes> includes,
-      @JsonKey(toJson: _languageListToStringList, fromJson: _stringListToLanguageList)
+      @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
           final List<Language> languages,
       final int limit,
       final int? maxUpcomingHours,
@@ -561,8 +559,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by the `Language`
-  @JsonKey(
-      toJson: _languageListToStringList, fromJson: _stringListToLanguageList)
+  @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
   List<Language> get languages;
   @override
 

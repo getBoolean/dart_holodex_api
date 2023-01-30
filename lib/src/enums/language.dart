@@ -1,5 +1,11 @@
 import 'package:intl/locale.dart';
 
+List<String> languageListToStringList(List<Language> languages) =>
+    languages.map((e) => e.toLanguageTag()).toList();
+
+List<Language> stringListToLanguageList(List<String> languages) =>
+    languages.map(Language.fromString).toList();
+
 extension LanguageValues on List<Language> {
   Language byLocale(Locale locale) => Language.other(locale);
 

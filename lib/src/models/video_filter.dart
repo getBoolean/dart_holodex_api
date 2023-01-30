@@ -11,12 +11,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'video_filter.freezed.dart';
 part 'video_filter.g.dart';
 
-List<String> _languageListToStringList(List<Language> languages) =>
-    languages.map((e) => e.toLanguageTag()).toList();
-
-List<Language> _stringListToLanguageList(List<String> languages) =>
-    languages.map(Language.fromString).toList();
-
 /// Filter the results returns by the Holodex API `/videos` endpoint
 @freezed
 class VideoFilter with _$VideoFilter {
@@ -25,6 +19,7 @@ class VideoFilter with _$VideoFilter {
   @Assert('limit <= 50', 'Limit cannot be greater than 50')
   const factory VideoFilter({
     /// Filter by video uploader channel ID
+    @JsonKey(name: 'channel_id')
     String? channelId,
 
     /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
@@ -35,17 +30,17 @@ class VideoFilter with _$VideoFilter {
 
     /// Filter by the `Language`
     @Default([])
-    @JsonKey(toJson: _languageListToStringList, fromJson: _stringListToLanguageList)
+    @JsonKey(toJson: languageListToStringList, fromJson: stringListToLanguageList)
         List<Language> languages,
 
     /// Limit the number of results returned. Maximum value of 50
     @Default(25) int limit,
 
     /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
-    int? maxUpcomingHours,
+    @JsonKey(name: 'max_upcoming_hours') int? maxUpcomingHours,
 
     /// Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
-    String? mentionedChannelId,
+    @JsonKey(name: 'mentioned_channel_id') String? mentionedChannelId,
 
     /// Receive results starting at this number in the array from the Holodex API
     @Default(0) int offset,
