@@ -3,11 +3,11 @@ class HolodexException implements Exception {
   final int? code;
   final dynamic response;
 
-  const HolodexException([this.message = "", this.code, this.response]);
+  const HolodexException([this.message = '', this.code, this.response]);
 
   @override
   String toString() {
-    if (message == null) return "HolodexException";
-    return "HolodexException: $message (${code ?? 0})";
+    if (message == null) return 'HolodexException';
+    return 'HolodexException: $message (${code ?? 0})';
   }
 }

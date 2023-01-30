@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_lambdas
+
 import 'dart:convert';
 
 import 'package:dart_holodex_api/src/enums/channel_sort.dart';
@@ -11,12 +13,11 @@ import 'package:dart_holodex_api/src/enums/video_search_type.dart';
 import 'package:dart_holodex_api/src/enums/video_sort.dart';
 import 'package:dart_holodex_api/src/enums/video_status.dart';
 import 'package:dart_holodex_api/src/enums/video_type.dart';
+import 'package:dart_holodex_api/src/exception.dart';
+import 'package:dart_holodex_api/src/models.dart';
 import 'package:dart_holodex_api/src/models/channel_video_filter.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-
-import 'exception.dart';
-import 'models.dart';
 
 /// A client for the Holodex API.
 class HolodexClient {
@@ -597,7 +598,7 @@ class HolodexClient {
       // Make new list with the values as string
       final List<String> sortStringList = sort.map((s) => s.code).toList();
       // Join the array with commas
-      String sortConcatenated = sortStringList.join(',');
+      final sortConcatenated = sortStringList.join(',');
       map.addAll({'include': sortConcatenated});
     }
   }
@@ -632,7 +633,7 @@ class HolodexClient {
       final List<String> statusesStringList =
           statuses.map((status) => status.code).toList();
       // Join the array with commas
-      String statusesConcatenated = statusesStringList.join(',');
+      final statusesConcatenated = statusesStringList.join(',');
       map.addAll({'status': statusesConcatenated});
     }
   }
@@ -652,7 +653,7 @@ class HolodexClient {
   void _addOrganizations(List<String> organization, Map<String, dynamic> map) {
     if (organization.isNotEmpty) {
       // Join the array with commas and add it to the parameters
-      String orgsConcatenated = organization.join(',');
+      final orgsConcatenated = organization.join(',');
       map.addAll({'org': orgsConcatenated});
     }
   }
@@ -689,7 +690,7 @@ class HolodexClient {
       final List<String> includesStringList =
           includes.map((included) => included.code).toList();
       // Join the array with commas
-      String includesConcatenated = includesStringList.join(',');
+      final includesConcatenated = includesStringList.join(',');
       map.addAll({'include': includesConcatenated});
     }
   }
@@ -700,7 +701,7 @@ class HolodexClient {
       final List<String> langStringList =
           lang.map((l) => l.toLanguageTag()).toList();
       // Join the array with commas
-      String languagesConcat = langStringList.join(',');
+      final languagesConcat = langStringList.join(',');
       map.addAll({'lang': languagesConcat});
     }
   }
@@ -710,7 +711,7 @@ class HolodexClient {
       // Make new list with the values as string
       final List<String> sortStringList = sort.map((s) => s.code).toList();
       // Join the array with commas
-      String sortConcat = sortStringList.join(',');
+      final sortConcat = sortStringList.join(',');
       map.addAll({'sort': sortConcat});
     }
   }
@@ -718,7 +719,7 @@ class HolodexClient {
   void _addChannels(List<String> channelIds, Map<String, dynamic> map) {
     if (channelIds.isNotEmpty) {
       // Join the array with commas
-      String channelsConcat = channelIds.join(',');
+      final channelsConcat = channelIds.join(',');
       map.addAll({'channels': channelsConcat});
     }
   }

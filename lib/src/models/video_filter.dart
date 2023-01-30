@@ -15,7 +15,7 @@ List<String> _languageListToStringList(List<Language> languages) =>
     languages.map((e) => e.toLanguageTag()).toList();
 
 List<Language> _stringListToLanguageList(List<String> languages) =>
-    languages.map((e) => Language.fromString(e)).toList();
+    languages.map(Language.fromString).toList();
 
 /// Filter the results returns by the Holodex API `/videos` endpoint
 @freezed

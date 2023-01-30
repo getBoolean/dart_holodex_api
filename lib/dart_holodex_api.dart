@@ -3,9 +3,10 @@
 /// More dartdocs go here.
 library dart_holodex_api;
 
-export 'src/holodex_client.dart';
-export 'src/exception.dart';
 export 'package:http/http.dart' show Response;
-export 'src/models.dart';
-export 'src/enums.dart';
 export 'package:intl/locale.dart' show Locale;
+
+export 'src/enums.dart';
+export 'src/exception.dart';
+export 'src/holodex_client.dart';
+export 'src/models.dart';
