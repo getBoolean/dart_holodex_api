@@ -44,7 +44,7 @@ class SearchFilter with _$SearchFilter {
     @JsonKey(name: 'org') @Default([]) List<Organization> organizations,
 
     /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
-    @JsonKey(toJson: paginatedToString) @Default(true) bool paginated,
+    @Default(true) bool paginated,
 
     /// Offset results
     @JsonKey(toJson: intToString) @Default(0) int offset,
