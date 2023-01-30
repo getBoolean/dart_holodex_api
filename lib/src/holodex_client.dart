@@ -3,7 +3,6 @@
 import 'dart:convert';
 
 import 'package:dart_holodex_api/src/enums/channel_sort.dart';
-import 'package:dart_holodex_api/src/enums/channel_type.dart';
 import 'package:dart_holodex_api/src/enums/enum_with_code_extension.dart';
 import 'package:dart_holodex_api/src/enums/includes.dart';
 import 'package:dart_holodex_api/src/enums/language.dart';
@@ -361,7 +360,6 @@ class HolodexClient {
     ChannelVideoFilter filter = const ChannelVideoFilter(),
   }) async {
     final Map<String, dynamic> params = filter.toJson();
-
     final response = await get(
         path: '${_Constants.channelsPath}/$channelId/${type.code}',
         params: params);
@@ -459,9 +457,7 @@ class HolodexClient {
       'comment': comment,
       ...filter.toJson(),
     };
-
     final response = await post(path: _Constants.commentSearch, data: data);
-
     if (filter.paginated) {
       // Grab total and return with it
       final videoList = PaginatedVideos.fromString(response.body);
@@ -525,19 +521,6 @@ class HolodexClient {
     }
   }
 
-  void _addSingleOrganization(
-      Organization? organization, Map<String, dynamic> map) {
-    if (organization != null) {
-      map.addAll({'org': enumWithCodeToString(organization)});
-    }
-  }
-
-  void _addChannelType(ChannelType? channelType, Map<String, dynamic> map) {
-    if (channelType != null) {
-      map.addAll({'type': enumWithCodeToString(channelType)});
-    }
-  }
-
   void _addMentionedChannelId(
       String? mentionedChannelId, Map<String, dynamic> map) {
     if (mentionedChannelId != null) {
@@ -560,12 +543,6 @@ class HolodexClient {
   void _addLanguages(List<Language> lang, Map<String, dynamic> map) {
     if (lang.isNotEmpty) {
       map.addAll({'lang': lang.concat});
-    }
-  }
-
-  void _addChannelSort(List<ChannelSort> sort, Map<String, dynamic> map) {
-    if (sort.isNotEmpty) {
-      map.addAll({'sort': sort.concat});
     }
   }
 
