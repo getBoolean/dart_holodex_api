@@ -452,7 +452,7 @@ class HolodexClient {
   Future<PaginatedVideos> searchVideos({
     List<String> conditions = const [],
     SearchFilter filter = const SearchFilter(
-      searchSort: SearchSort.newest,
+      sort: SearchSort.newest,
       paginated: true,
       offset: 0,
       limit: 25,
@@ -528,7 +528,7 @@ class HolodexClient {
   Future<PaginatedVideos> searchComments({
     required String comment,
     SearchFilter filter = const SearchFilter(
-      searchSort: SearchSort.newest,
+      sort: SearchSort.newest,
       paginated: true,
       offset: 0,
       limit: 25,

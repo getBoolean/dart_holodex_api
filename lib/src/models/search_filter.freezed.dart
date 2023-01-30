@@ -17,14 +17,16 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SearchFilter {
   /// Sort by newest or oldest
-  SearchSort get searchSort => throw _privateConstructorUsedError;
+  @JsonKey(name: 'search_sort')
+  SearchSort get sort => throw _privateConstructorUsedError;
 
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
-  @JsonKey(toJson: concatLanguageList)
+  @JsonKey(toJson: concatLanguageList, name: 'lang')
   List<Language> get languages => throw _privateConstructorUsedError;
 
   /// Target types of videos
+  @JsonKey(name: 'search_targets')
   List<SearchTarget> get searchTargets => throw _privateConstructorUsedError;
 
   /// Return videos that match one of the provided topics
@@ -33,6 +35,7 @@ mixin _$SearchFilter {
   /// Videos with all of the specified channel ids. If two or more channel IDs are specified,
   /// will only return their collabs, or if one channel is a clipper, it will only show clips
   /// of the other vtubers made by this clipper.
+  @JsonKey(name: 'video_channels')
   List<String> get videoChannels => throw _privateConstructorUsedError;
 
   /// Videos of channels in any of the specified organizations, or clips that involve a channel
@@ -61,11 +64,15 @@ abstract class $SearchFilterCopyWith<$Res> {
       _$SearchFilterCopyWithImpl<$Res, SearchFilter>;
   @useResult
   $Res call(
-      {SearchSort searchSort,
-      @JsonKey(toJson: concatLanguageList) List<Language> languages,
-      List<SearchTarget> searchTargets,
+      {@JsonKey(name: 'search_sort')
+          SearchSort sort,
+      @JsonKey(toJson: concatLanguageList, name: 'lang')
+          List<Language> languages,
+      @JsonKey(name: 'search_targets')
+          List<SearchTarget> searchTargets,
       List<String> topics,
-      List<String> videoChannels,
+      @JsonKey(name: 'video_channels')
+          List<String> videoChannels,
       List<Organization> organizations,
       bool paginated,
       int offset,
@@ -85,7 +92,7 @@ class _$SearchFilterCopyWithImpl<$Res, $Val extends SearchFilter>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? searchSort = null,
+    Object? sort = null,
     Object? languages = null,
     Object? searchTargets = null,
     Object? topics = null,
@@ -96,9 +103,9 @@ class _$SearchFilterCopyWithImpl<$Res, $Val extends SearchFilter>
     Object? limit = null,
   }) {
     return _then(_value.copyWith(
-      searchSort: null == searchSort
-          ? _value.searchSort
-          : searchSort // ignore: cast_nullable_to_non_nullable
+      sort: null == sort
+          ? _value.sort
+          : sort // ignore: cast_nullable_to_non_nullable
               as SearchSort,
       languages: null == languages
           ? _value.languages
@@ -145,11 +152,15 @@ abstract class _$$_SearchFilterCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {SearchSort searchSort,
-      @JsonKey(toJson: concatLanguageList) List<Language> languages,
-      List<SearchTarget> searchTargets,
+      {@JsonKey(name: 'search_sort')
+          SearchSort sort,
+      @JsonKey(toJson: concatLanguageList, name: 'lang')
+          List<Language> languages,
+      @JsonKey(name: 'search_targets')
+          List<SearchTarget> searchTargets,
       List<String> topics,
-      List<String> videoChannels,
+      @JsonKey(name: 'video_channels')
+          List<String> videoChannels,
       List<Organization> organizations,
       bool paginated,
       int offset,
@@ -167,7 +178,7 @@ class __$$_SearchFilterCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? searchSort = null,
+    Object? sort = null,
     Object? languages = null,
     Object? searchTargets = null,
     Object? topics = null,
@@ -178,9 +189,9 @@ class __$$_SearchFilterCopyWithImpl<$Res>
     Object? limit = null,
   }) {
     return _then(_$_SearchFilter(
-      searchSort: null == searchSort
-          ? _value.searchSort
-          : searchSort // ignore: cast_nullable_to_non_nullable
+      sort: null == sort
+          ? _value.sort
+          : sort // ignore: cast_nullable_to_non_nullable
               as SearchSort,
       languages: null == languages
           ? _value._languages
@@ -222,15 +233,18 @@ class __$$_SearchFilterCopyWithImpl<$Res>
 @JsonSerializable(createFactory: false)
 class _$_SearchFilter extends _SearchFilter {
   const _$_SearchFilter(
-      {this.searchSort = SearchSort.newest,
-      @JsonKey(toJson: concatLanguageList)
+      {@JsonKey(name: 'search_sort')
+          this.sort = SearchSort.newest,
+      @JsonKey(toJson: concatLanguageList, name: 'lang')
           final List<Language> languages = const [],
-      final List<SearchTarget> searchTargets = const [
+      @JsonKey(name: 'search_targets')
+          final List<SearchTarget> searchTargets = const [
         SearchTarget.clip,
         SearchTarget.stream
       ],
       final List<String> topics = const [],
-      final List<String> videoChannels = const [],
+      @JsonKey(name: 'video_channels')
+          final List<String> videoChannels = const [],
       final List<Organization> organizations = const [],
       this.paginated = true,
       this.offset = 0,
@@ -245,8 +259,8 @@ class _$_SearchFilter extends _SearchFilter {
 
   /// Sort by newest or oldest
   @override
-  @JsonKey()
-  final SearchSort searchSort;
+  @JsonKey(name: 'search_sort')
+  final SearchSort sort;
 
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
@@ -255,7 +269,7 @@ class _$_SearchFilter extends _SearchFilter {
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
   @override
-  @JsonKey(toJson: concatLanguageList)
+  @JsonKey(toJson: concatLanguageList, name: 'lang')
   List<Language> get languages {
     if (_languages is EqualUnmodifiableListView) return _languages;
     // ignore: implicit_dynamic_type
@@ -267,7 +281,7 @@ class _$_SearchFilter extends _SearchFilter {
 
   /// Target types of videos
   @override
-  @JsonKey()
+  @JsonKey(name: 'search_targets')
   List<SearchTarget> get searchTargets {
     if (_searchTargets is EqualUnmodifiableListView) return _searchTargets;
     // ignore: implicit_dynamic_type
@@ -295,7 +309,7 @@ class _$_SearchFilter extends _SearchFilter {
   /// will only return their collabs, or if one channel is a clipper, it will only show clips
   /// of the other vtubers made by this clipper.
   @override
-  @JsonKey()
+  @JsonKey(name: 'video_channels')
   List<String> get videoChannels {
     if (_videoChannels is EqualUnmodifiableListView) return _videoChannels;
     // ignore: implicit_dynamic_type
@@ -333,7 +347,7 @@ class _$_SearchFilter extends _SearchFilter {
 
   @override
   String toString() {
-    return 'SearchFilter(searchSort: $searchSort, languages: $languages, searchTargets: $searchTargets, topics: $topics, videoChannels: $videoChannels, organizations: $organizations, paginated: $paginated, offset: $offset, limit: $limit)';
+    return 'SearchFilter(sort: $sort, languages: $languages, searchTargets: $searchTargets, topics: $topics, videoChannels: $videoChannels, organizations: $organizations, paginated: $paginated, offset: $offset, limit: $limit)';
   }
 
   @override
@@ -341,8 +355,7 @@ class _$_SearchFilter extends _SearchFilter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SearchFilter &&
-            (identical(other.searchSort, searchSort) ||
-                other.searchSort == searchSort) &&
+            (identical(other.sort, sort) || other.sort == sort) &&
             const DeepCollectionEquality()
                 .equals(other._languages, _languages) &&
             const DeepCollectionEquality()
@@ -362,7 +375,7 @@ class _$_SearchFilter extends _SearchFilter {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      searchSort,
+      sort,
       const DeepCollectionEquality().hash(_languages),
       const DeepCollectionEquality().hash(_searchTargets),
       const DeepCollectionEquality().hash(_topics),
@@ -388,11 +401,15 @@ class _$_SearchFilter extends _SearchFilter {
 
 abstract class _SearchFilter extends SearchFilter {
   const factory _SearchFilter(
-      {final SearchSort searchSort,
-      @JsonKey(toJson: concatLanguageList) final List<Language> languages,
-      final List<SearchTarget> searchTargets,
+      {@JsonKey(name: 'search_sort')
+          final SearchSort sort,
+      @JsonKey(toJson: concatLanguageList, name: 'lang')
+          final List<Language> languages,
+      @JsonKey(name: 'search_targets')
+          final List<SearchTarget> searchTargets,
       final List<String> topics,
-      final List<String> videoChannels,
+      @JsonKey(name: 'video_channels')
+          final List<String> videoChannels,
       final List<Organization> organizations,
       final bool paginated,
       final int offset,
@@ -402,16 +419,18 @@ abstract class _SearchFilter extends SearchFilter {
   @override
 
   /// Sort by newest or oldest
-  SearchSort get searchSort;
+  @JsonKey(name: 'search_sort')
+  SearchSort get sort;
   @override
 
   /// If set, will filter clips to only show clips with these languages + all vtuber streams
   /// (provided searchTargets is not set to filter out streams)
-  @JsonKey(toJson: concatLanguageList)
+  @JsonKey(toJson: concatLanguageList, name: 'lang')
   List<Language> get languages;
   @override
 
   /// Target types of videos
+  @JsonKey(name: 'search_targets')
   List<SearchTarget> get searchTargets;
   @override
 
@@ -422,6 +441,7 @@ abstract class _SearchFilter extends SearchFilter {
   /// Videos with all of the specified channel ids. If two or more channel IDs are specified,
   /// will only return their collabs, or if one channel is a clipper, it will only show clips
   /// of the other vtubers made by this clipper.
+  @JsonKey(name: 'video_channels')
   List<String> get videoChannels;
   @override
 

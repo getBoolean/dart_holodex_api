@@ -129,7 +129,7 @@ void main(List<String> arguments) async {
   print('Video Recommendations: ${recommendations?.length}\n');
 
   final singingSearchFilter = SearchFilter(
-    searchSort: SearchSort.newest,
+    sort: SearchSort.newest,
     languages: [Language.all],
     searchTargets: [SearchTarget.clip, SearchTarget.stream],
     topics: ['singing'],
