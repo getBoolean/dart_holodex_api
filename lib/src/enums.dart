@@ -1,6 +1,6 @@
 export 'enums/channel_sort.dart';
 export 'enums/channel_type.dart';
-export 'enums/enum_with_code_extension.dart' hide concatEnumWithCodeList;
+export 'enums/enum_with_code_extension.dart' hide concatEnumWithCodeList, enumWithCodeToString;
 export 'enums/includes.dart';
 export 'enums/language.dart'
     hide languageListToStringList, stringListToLanguageList, concatLanguageList;
