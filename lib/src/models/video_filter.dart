@@ -54,6 +54,8 @@ class VideoFilter with _$VideoFilter {
     @JsonKey(toJson: orderToString) @Default(Order.descending) Order order,
 
     /// Filter by clips that feature the org's talent or videos posted by the org's talent.
+    ///
+    /// TODO: Fix toJson to support multiple orgs
     @JsonKey(name: 'org', toJson: concatOrganizationList)
     @Default([])
         List<Organization> organization,

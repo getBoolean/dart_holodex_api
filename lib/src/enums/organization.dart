@@ -2,6 +2,8 @@
 // ignore_for_file: non_constant_identifier_names
 import 'package:dart_holodex_api/src/enums/enum_with_code_extension.dart';
 
+// TODO: Convert to class similar to `Language`
+
 /// Organizations supported by Holodex.
 ///
 /// Make a Pull Request or GitHub issue to add more organizations.

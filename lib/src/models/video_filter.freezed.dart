@@ -53,6 +53,8 @@ mixin _$VideoFilter {
   Order get order => throw _privateConstructorUsedError;
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
+  ///
+  /// TODO: Fix toJson to support multiple orgs
   @JsonKey(name: 'org', toJson: concatOrganizationList)
   List<Organization> get organization => throw _privateConstructorUsedError;
 
@@ -450,9 +452,13 @@ class _$_VideoFilter extends _VideoFilter {
   final Order order;
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
+  ///
+  /// TODO: Fix toJson to support multiple orgs
   final List<Organization> _organization;
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
+  ///
+  /// TODO: Fix toJson to support multiple orgs
   @override
   @JsonKey(name: 'org', toJson: concatOrganizationList)
   List<Organization> get organization {
@@ -647,6 +653,8 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
+  ///
+  /// TODO: Fix toJson to support multiple orgs
   @JsonKey(name: 'org', toJson: concatOrganizationList)
   List<Organization> get organization;
   @override
