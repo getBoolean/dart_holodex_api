@@ -403,7 +403,8 @@ class HolodexClient {
 
     final List<dynamic> list = jsonDecode(response.body);
     return PaginatedVideos(
-        items: list.map((video) => VideoFull.fromJson(video)).toList());
+      items: list.map((video) => VideoFull.fromJson(video)).toList(),
+    );
   }
 
   /// Retrieves a video, optionally with comments and recommended videos
