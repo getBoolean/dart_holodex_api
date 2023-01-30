@@ -1,3 +1,4 @@
+import 'package:dart_holodex_api/src/enums/enum_with_code_extension.dart';
 import 'package:dart_holodex_api/src/enums/video_status.dart';
 import 'package:dart_holodex_api/src/enums/video_type.dart';
 import 'package:dart_holodex_api/src/models/api/channel.dart';
@@ -10,6 +11,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'video_full.freezed.dart';
 part 'video_full.g.dart';
 
+VideoType _parseVideoType(String? type) {
+  return VideoType.values.byCode(type ?? '') ?? VideoType.unknown;
+}
+
 /// An extended [Video] class with [comments], [sources], [refers],
 /// [simulcasts], [mentions], and [songs] fields.
 @freezed
@@ -20,6 +25,7 @@ class VideoFull with _$VideoFull {
   const factory VideoFull({
     required String id,
     required String title,
+    @JsonKey(fromJson: _parseVideoType)
     @Default(VideoType.all) VideoType type,
 
     /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
@@ -31,7 +37,7 @@ class VideoFull with _$VideoFull {
 
     /// Duration of the video in seconds
     int? duration,
-    @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+    @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
         required VideoStatus status,
 
     /// Included when includes contains 'live_info'
@@ -64,8 +70,7 @@ class VideoFull with _$VideoFull {
     @Default([]) List<Song> songs,
   }) = _VideoFull;
 
-  factory VideoFull.fromJson(Map<String, dynamic> json) =>
-      _$VideoFullFromJson(json);
+  factory VideoFull.fromJson(Map<String, dynamic> json) => _$VideoFullFromJson(json);
 
   Video toVideo() => Video(
         id: id,

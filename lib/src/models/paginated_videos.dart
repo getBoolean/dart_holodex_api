@@ -6,15 +6,26 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'paginated_videos.freezed.dart';
 part 'paginated_videos.g.dart';
 
+int? _parseTotal(dynamic value) {
+  if (value is int) {
+    return value;
+  } else if (value is String) {
+    return int.tryParse(value);
+  }
+
+  return null;
+}
+
 @freezed
 class PaginatedVideos with _$PaginatedVideos {
   const PaginatedVideos._();
 
   const factory PaginatedVideos({
+    @JsonKey(fromJson: _parseTotal)
     int? total,
     @Default([]) List<VideoFull> items,
     @Default(false) bool paginated,
-  }) = _PaginatedResult;
+  }) = _PaginatedVideos;
 
   factory PaginatedVideos.fromJson(
     Map<String, dynamic> json,

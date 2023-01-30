@@ -15,11 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PaginatedVideos _$PaginatedVideosFromJson(Map<String, dynamic> json) {
-  return _PaginatedResult.fromJson(json);
+  return _PaginatedVideos.fromJson(json);
 }
 
 /// @nodoc
 mixin _$PaginatedVideos {
+  @JsonKey(fromJson: _parseTotal)
   int? get total => throw _privateConstructorUsedError;
   List<VideoFull> get items => throw _privateConstructorUsedError;
   bool get paginated => throw _privateConstructorUsedError;
@@ -36,7 +37,10 @@ abstract class $PaginatedVideosCopyWith<$Res> {
           PaginatedVideos value, $Res Function(PaginatedVideos) then) =
       _$PaginatedVideosCopyWithImpl<$Res, PaginatedVideos>;
   @useResult
-  $Res call({int? total, List<VideoFull> items, bool paginated});
+  $Res call(
+      {@JsonKey(fromJson: _parseTotal) int? total,
+      List<VideoFull> items,
+      bool paginated});
 }
 
 /// @nodoc
@@ -74,22 +78,25 @@ class _$PaginatedVideosCopyWithImpl<$Res, $Val extends PaginatedVideos>
 }
 
 /// @nodoc
-abstract class _$$_PaginatedResultCopyWith<$Res>
+abstract class _$$_PaginatedVideosCopyWith<$Res>
     implements $PaginatedVideosCopyWith<$Res> {
-  factory _$$_PaginatedResultCopyWith(
-          _$_PaginatedResult value, $Res Function(_$_PaginatedResult) then) =
-      __$$_PaginatedResultCopyWithImpl<$Res>;
+  factory _$$_PaginatedVideosCopyWith(
+          _$_PaginatedVideos value, $Res Function(_$_PaginatedVideos) then) =
+      __$$_PaginatedVideosCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? total, List<VideoFull> items, bool paginated});
+  $Res call(
+      {@JsonKey(fromJson: _parseTotal) int? total,
+      List<VideoFull> items,
+      bool paginated});
 }
 
 /// @nodoc
-class __$$_PaginatedResultCopyWithImpl<$Res>
-    extends _$PaginatedVideosCopyWithImpl<$Res, _$_PaginatedResult>
-    implements _$$_PaginatedResultCopyWith<$Res> {
-  __$$_PaginatedResultCopyWithImpl(
-      _$_PaginatedResult _value, $Res Function(_$_PaginatedResult) _then)
+class __$$_PaginatedVideosCopyWithImpl<$Res>
+    extends _$PaginatedVideosCopyWithImpl<$Res, _$_PaginatedVideos>
+    implements _$$_PaginatedVideosCopyWith<$Res> {
+  __$$_PaginatedVideosCopyWithImpl(
+      _$_PaginatedVideos _value, $Res Function(_$_PaginatedVideos) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +106,7 @@ class __$$_PaginatedResultCopyWithImpl<$Res>
     Object? items = null,
     Object? paginated = null,
   }) {
-    return _then(_$_PaginatedResult(
+    return _then(_$_PaginatedVideos(
       total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -118,18 +125,19 @@ class __$$_PaginatedResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaginatedResult extends _PaginatedResult {
-  const _$_PaginatedResult(
-      {this.total,
+class _$_PaginatedVideos extends _PaginatedVideos {
+  const _$_PaginatedVideos(
+      {@JsonKey(fromJson: _parseTotal) this.total,
       final List<VideoFull> items = const [],
       this.paginated = false})
       : _items = items,
         super._();
 
-  factory _$_PaginatedResult.fromJson(Map<String, dynamic> json) =>
-      _$$_PaginatedResultFromJson(json);
+  factory _$_PaginatedVideos.fromJson(Map<String, dynamic> json) =>
+      _$$_PaginatedVideosFromJson(json);
 
   @override
+  @JsonKey(fromJson: _parseTotal)
   final int? total;
   final List<VideoFull> _items;
   @override
@@ -153,7 +161,7 @@ class _$_PaginatedResult extends _PaginatedResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaginatedResult &&
+            other is _$_PaginatedVideos &&
             (identical(other.total, total) || other.total == total) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.paginated, paginated) ||
@@ -168,28 +176,29 @@ class _$_PaginatedResult extends _PaginatedResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaginatedResultCopyWith<_$_PaginatedResult> get copyWith =>
-      __$$_PaginatedResultCopyWithImpl<_$_PaginatedResult>(this, _$identity);
+  _$$_PaginatedVideosCopyWith<_$_PaginatedVideos> get copyWith =>
+      __$$_PaginatedVideosCopyWithImpl<_$_PaginatedVideos>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaginatedResultToJson(
+    return _$$_PaginatedVideosToJson(
       this,
     );
   }
 }
 
-abstract class _PaginatedResult extends PaginatedVideos {
-  const factory _PaginatedResult(
-      {final int? total,
+abstract class _PaginatedVideos extends PaginatedVideos {
+  const factory _PaginatedVideos(
+      {@JsonKey(fromJson: _parseTotal) final int? total,
       final List<VideoFull> items,
-      final bool paginated}) = _$_PaginatedResult;
-  const _PaginatedResult._() : super._();
+      final bool paginated}) = _$_PaginatedVideos;
+  const _PaginatedVideos._() : super._();
 
-  factory _PaginatedResult.fromJson(Map<String, dynamic> json) =
-      _$_PaginatedResult.fromJson;
+  factory _PaginatedVideos.fromJson(Map<String, dynamic> json) =
+      _$_PaginatedVideos.fromJson;
 
   @override
+  @JsonKey(fromJson: _parseTotal)
   int? get total;
   @override
   List<VideoFull> get items;
@@ -197,6 +206,6 @@ abstract class _PaginatedResult extends PaginatedVideos {
   bool get paginated;
   @override
   @JsonKey(ignore: true)
-  _$$_PaginatedResultCopyWith<_$_PaginatedResult> get copyWith =>
+  _$$_PaginatedVideosCopyWith<_$_PaginatedVideos> get copyWith =>
       throw _privateConstructorUsedError;
 }

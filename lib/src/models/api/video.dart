@@ -27,7 +27,7 @@ class Video with _$Video {
 
     /// Duration of the video in seconds
     int? duration,
-    @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+    @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
         required VideoStatus status,
 
     /// Included when includes contains 'live_info'

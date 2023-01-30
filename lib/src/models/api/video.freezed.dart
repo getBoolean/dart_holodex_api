@@ -36,7 +36,7 @@ mixin _$Video {
 
   /// Duration of the video in seconds
   int? get duration => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
   VideoStatus get status => throw _privateConstructorUsedError;
 
   /// Included when includes contains 'live_info'
@@ -87,7 +87,7 @@ abstract class $VideoCopyWith<$Res> {
       @JsonKey(name: 'available_at')
           String availableAt,
       int? duration,
-      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
           VideoStatus status,
       @JsonKey(name: 'start_scheduled')
           String? startScheduled,
@@ -241,7 +241,7 @@ abstract class _$$_VideoCopyWith<$Res> implements $VideoCopyWith<$Res> {
       @JsonKey(name: 'available_at')
           String availableAt,
       int? duration,
-      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
           VideoStatus status,
       @JsonKey(name: 'start_scheduled')
           String? startScheduled,
@@ -377,7 +377,7 @@ class _$_Video extends _Video {
       @JsonKey(name: 'available_at')
           required this.availableAt,
       this.duration,
-      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
           required this.status,
       @JsonKey(name: 'start_scheduled')
           this.startScheduled,
@@ -424,7 +424,7 @@ class _$_Video extends _Video {
   @override
   final int? duration;
   @override
-  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
   final VideoStatus status;
 
   /// Included when includes contains 'live_info'
@@ -551,7 +551,7 @@ abstract class _Video extends Video {
       @JsonKey(name: 'available_at')
           required final String availableAt,
       final int? duration,
-      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
           required final VideoStatus status,
       @JsonKey(name: 'start_scheduled')
           final String? startScheduled,
@@ -596,7 +596,7 @@ abstract class _Video extends Video {
   /// Duration of the video in seconds
   int? get duration;
   @override
-  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
   VideoStatus get status;
   @override
 

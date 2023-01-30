@@ -22,6 +22,7 @@ VideoFull _$VideoFullFromJson(Map<String, dynamic> json) {
 mixin _$VideoFull {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _parseVideoType)
   VideoType get type => throw _privateConstructorUsedError;
 
   /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
@@ -36,7 +37,7 @@ mixin _$VideoFull {
 
   /// Duration of the video in seconds
   int? get duration => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
   VideoStatus get status => throw _privateConstructorUsedError;
 
   /// Included when includes contains 'live_info'
@@ -88,7 +89,8 @@ abstract class $VideoFullCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
-      VideoType type,
+      @JsonKey(fromJson: _parseVideoType)
+          VideoType type,
       @JsonKey(name: 'topic_id')
           String? topicId,
       @JsonKey(name: 'published_at')
@@ -96,7 +98,7 @@ abstract class $VideoFullCopyWith<$Res> {
       @JsonKey(name: 'available_at')
           String availableAt,
       int? duration,
-      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
           VideoStatus status,
       @JsonKey(name: 'start_scheduled')
           String? startScheduled,
@@ -291,7 +293,8 @@ abstract class _$$_VideoFullCopyWith<$Res> implements $VideoFullCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
-      VideoType type,
+      @JsonKey(fromJson: _parseVideoType)
+          VideoType type,
       @JsonKey(name: 'topic_id')
           String? topicId,
       @JsonKey(name: 'published_at')
@@ -299,7 +302,7 @@ abstract class _$$_VideoFullCopyWith<$Res> implements $VideoFullCopyWith<$Res> {
       @JsonKey(name: 'available_at')
           String availableAt,
       int? duration,
-      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
           VideoStatus status,
       @JsonKey(name: 'start_scheduled')
           String? startScheduled,
@@ -477,7 +480,8 @@ class _$_VideoFull extends _VideoFull {
   const _$_VideoFull(
       {required this.id,
       required this.title,
-      this.type = VideoType.all,
+      @JsonKey(fromJson: _parseVideoType)
+          this.type = VideoType.all,
       @JsonKey(name: 'topic_id')
           this.topicId,
       @JsonKey(name: 'published_at')
@@ -485,7 +489,7 @@ class _$_VideoFull extends _VideoFull {
       @JsonKey(name: 'available_at')
           required this.availableAt,
       this.duration,
-      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
           required this.status,
       @JsonKey(name: 'start_scheduled')
           this.startScheduled,
@@ -528,7 +532,7 @@ class _$_VideoFull extends _VideoFull {
   @override
   final String title;
   @override
-  @JsonKey()
+  @JsonKey(fromJson: _parseVideoType)
   final VideoType type;
 
   /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
@@ -548,7 +552,7 @@ class _$_VideoFull extends _VideoFull {
   @override
   final int? duration;
   @override
-  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
   final VideoStatus status;
 
   /// Included when includes contains 'live_info'
@@ -757,7 +761,8 @@ abstract class _VideoFull extends VideoFull {
   const factory _VideoFull(
       {required final String id,
       required final String title,
-      final VideoType type,
+      @JsonKey(fromJson: _parseVideoType)
+          final VideoType type,
       @JsonKey(name: 'topic_id')
           final String? topicId,
       @JsonKey(name: 'published_at')
@@ -765,7 +770,7 @@ abstract class _VideoFull extends VideoFull {
       @JsonKey(name: 'available_at')
           required final String availableAt,
       final int? duration,
-      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+      @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
           required final VideoStatus status,
       @JsonKey(name: 'start_scheduled')
           final String? startScheduled,
@@ -800,6 +805,7 @@ abstract class _VideoFull extends VideoFull {
   @override
   String get title;
   @override
+  @JsonKey(fromJson: _parseVideoType)
   VideoType get type;
   @override
 
@@ -819,7 +825,7 @@ abstract class _VideoFull extends VideoFull {
   /// Duration of the video in seconds
   int? get duration;
   @override
-  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJson)
+  @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
   VideoStatus get status;
   @override
 

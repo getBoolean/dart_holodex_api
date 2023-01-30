@@ -12,7 +12,7 @@ enum VideoStatus with EnumWithCode {
   final String code;
   const VideoStatus(this.code);
 
-  static String toJson(VideoStatus status) => status.code;
+  static String toJsonStatic(VideoStatus status) => status.code;
 
   static VideoStatus fromJson(String? status) =>
       VideoStatus.values.byCode(status ?? '') ?? VideoStatus.missing;

@@ -37,7 +37,7 @@ Map<String, dynamic> _$$_VideoToJson(_$_Video instance) => <String, dynamic>{
       'published_at': instance.publishedAt,
       'available_at': instance.availableAt,
       'duration': instance.duration,
-      'status': VideoStatus.toJson(instance.status),
+      'status': VideoStatus.toJsonStatic(instance.status),
       'start_scheduled': instance.startScheduled,
       'start_actual': instance.startActual,
       'end_actual': instance.endActual,
@@ -53,4 +53,5 @@ const _$VideoTypeEnumMap = {
   VideoType.stream: 'stream',
   VideoType.clip: 'clip',
   VideoType.all: 'all',
+  VideoType.unknown: 'unknown',
 };
