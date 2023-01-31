@@ -114,56 +114,7 @@ class HolodexClient {
       paginated: false,
     ),
   ]) async {
-    final languages =
-        filter.languages.isEmpty ? [Language.all] : filter.languages;
-    // Create the params list
-    final Map<String, dynamic> params = {};
-
-    // Make sure liveInfo is in the list
-    final includes = !filter.includes.contains(Includes.liveInfo)
-        ? [Includes.liveInfo, ...filter.includes]
-        : filter.includes;
-
-    // Add the items with default values (they can't be null)
-    params.addAll({
-      'limit': '${filter.limit}',
-      'offset': '${filter.offset}',
-      'order': filter.order.code,
-    });
-
-    _addVideoSort(filter.sort, params);
-
-    _addPaginated(filter.paginated, params);
-
-    _addChannelId(filter.channelId, params);
-
-    _addId(filter.ids, params);
-
-    // Add the info the videos must include
-    _addIncludes(includes, params);
-
-    // Add the languages to filter by
-    // Add the first item so that there is not a comma in front
-    _addLanguages(languages, params);
-
-    // Add the max upcoming hours param
-    _addMaxUpcomingHours(filter.maxUpcomingHours, params);
-
-    // Add the mentioned channel id param
-    _addMentionedChannelId(filter.mentionedChannelId, params);
-
-    // Add the organization param
-    _addOrganizations(filter.organization, params);
-
-    // Add the topic param
-    _addTopic(filter.topic, params);
-
-    // Add the status param
-    _addStatusList(filter.status, params);
-
-    // Add the type param
-    _addType(filter.type, params);
-
+    final Map<String, dynamic> params = filter.toJson();
     final response =
         await getEndpoint(HolodexEndpoint.live, params: params);
 
