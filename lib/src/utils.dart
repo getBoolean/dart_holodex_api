@@ -23,10 +23,10 @@ String? concatIncludesList(List<Includes> items) =>
 String concatOrganizationList(List<Organization> list) =>
     concatEnumWithCodeList(list);
 
-String concatVideoSortList(List<VideoSort> list) =>
+String? concatVideoSortList(List<VideoSort> list) => list.isEmpty ? null :
     concatEnumWithCodeList(list);
 
-String concatVideoStatusList(List<VideoStatus> list) =>
+String? concatVideoStatusList(List<VideoStatus> list) => list.isEmpty ? null :
     concatEnumWithCodeList(list);
 
 String concatSearchTargetList(List<SearchTarget> list) =>
@@ -44,6 +44,8 @@ String concatLanguageListWithDefault(List<Language> languages) =>
     concatLanguageList(languages.isEmpty ? [Language.all] : languages);
 
 String intToString(int value) => value.toString();
+
+String? intToStringNullable(int? value) => value?.toString();
 
 String searchSortToString(SearchSort sort) => sort.code;
 

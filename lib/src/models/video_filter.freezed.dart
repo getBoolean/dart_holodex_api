@@ -37,7 +37,10 @@ mixin _$VideoFilter {
   int get limit => throw _privateConstructorUsedError;
 
   /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
-  @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
+  @JsonKey(
+      name: 'max_upcoming_hours',
+      toJson: intToStringNullable,
+      includeIfNull: false)
   int? get maxUpcomingHours => throw _privateConstructorUsedError;
 
   /// Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
@@ -61,11 +64,11 @@ mixin _$VideoFilter {
   bool get paginated => throw _privateConstructorUsedError;
 
   /// Sort the returned data by this field
-  @JsonKey(toJson: concatVideoSortList)
+  @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
   List<VideoSort> get sort => throw _privateConstructorUsedError;
 
   /// Filter by the video status
-  @JsonKey(toJson: concatVideoStatusList)
+  @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
   List<VideoStatus> get status => throw _privateConstructorUsedError;
 
   /// Filter by video topic ID
@@ -73,7 +76,7 @@ mixin _$VideoFilter {
   String? get topic => throw _privateConstructorUsedError;
 
   /// Filter by type of video, either clips or streams
-  @JsonKey(toJson: videoTypeToString)
+  @JsonKey(toJson: videoTypeToString, includeIfNull: false)
   @JsonKey(includeIfNull: false)
   VideoType? get type => throw _privateConstructorUsedError;
 
@@ -100,7 +103,7 @@ abstract class $VideoFilterCopyWith<$Res> {
           List<Language> languages,
       @JsonKey(toJson: intToString)
           int limit,
-      @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
+      @JsonKey(name: 'max_upcoming_hours', toJson: intToStringNullable, includeIfNull: false)
           int? maxUpcomingHours,
       @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
           String? mentionedChannelId,
@@ -112,13 +115,13 @@ abstract class $VideoFilterCopyWith<$Res> {
           Organization? organization,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
-      @JsonKey(toJson: concatVideoSortList)
+      @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
           List<VideoSort> sort,
-      @JsonKey(toJson: concatVideoStatusList)
+      @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
           List<VideoStatus> status,
       @JsonKey(includeIfNull: false)
           String? topic,
-      @JsonKey(toJson: videoTypeToString)
+      @JsonKey(toJson: videoTypeToString, includeIfNull: false)
       @JsonKey(includeIfNull: false)
           VideoType? type});
 }
@@ -236,7 +239,7 @@ abstract class _$$_VideoFilterCopyWith<$Res>
           List<Language> languages,
       @JsonKey(toJson: intToString)
           int limit,
-      @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
+      @JsonKey(name: 'max_upcoming_hours', toJson: intToStringNullable, includeIfNull: false)
           int? maxUpcomingHours,
       @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
           String? mentionedChannelId,
@@ -248,13 +251,13 @@ abstract class _$$_VideoFilterCopyWith<$Res>
           Organization? organization,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
-      @JsonKey(toJson: concatVideoSortList)
+      @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
           List<VideoSort> sort,
-      @JsonKey(toJson: concatVideoStatusList)
+      @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
           List<VideoStatus> status,
       @JsonKey(includeIfNull: false)
           String? topic,
-      @JsonKey(toJson: videoTypeToString)
+      @JsonKey(toJson: videoTypeToString, includeIfNull: false)
       @JsonKey(includeIfNull: false)
           VideoType? type});
 }
@@ -365,7 +368,7 @@ class _$_VideoFilter extends _VideoFilter {
           final List<Language> languages = const [],
       @JsonKey(toJson: intToString)
           this.limit = 25,
-      @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
+      @JsonKey(name: 'max_upcoming_hours', toJson: intToStringNullable, includeIfNull: false)
           this.maxUpcomingHours,
       @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
           this.mentionedChannelId,
@@ -377,13 +380,13 @@ class _$_VideoFilter extends _VideoFilter {
           this.organization,
       @JsonKey(toJson: paginatedToString)
           this.paginated = false,
-      @JsonKey(toJson: concatVideoSortList)
+      @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
           final List<VideoSort> sort = const [VideoSort.availableAt],
-      @JsonKey(toJson: concatVideoStatusList)
+      @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
           final List<VideoStatus> status = const [],
       @JsonKey(includeIfNull: false)
           this.topic,
-      @JsonKey(toJson: videoTypeToString)
+      @JsonKey(toJson: videoTypeToString, includeIfNull: false)
       @JsonKey(includeIfNull: false)
           this.type})
       : assert(limit <= 50, 'Limit cannot be greater than 50'),
@@ -442,7 +445,10 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
   @override
-  @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
+  @JsonKey(
+      name: 'max_upcoming_hours',
+      toJson: intToStringNullable,
+      includeIfNull: false)
   final int? maxUpcomingHours;
 
   /// Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
@@ -475,7 +481,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Sort the returned data by this field
   @override
-  @JsonKey(toJson: concatVideoSortList)
+  @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
   List<VideoSort> get sort {
     if (_sort is EqualUnmodifiableListView) return _sort;
     // ignore: implicit_dynamic_type
@@ -487,7 +493,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Filter by the video status
   @override
-  @JsonKey(toJson: concatVideoStatusList)
+  @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
   List<VideoStatus> get status {
     if (_status is EqualUnmodifiableListView) return _status;
     // ignore: implicit_dynamic_type
@@ -501,7 +507,7 @@ class _$_VideoFilter extends _VideoFilter {
 
   /// Filter by type of video, either clips or streams
   @override
-  @JsonKey(toJson: videoTypeToString)
+  @JsonKey(toJson: videoTypeToString, includeIfNull: false)
   @JsonKey(includeIfNull: false)
   final VideoType? type;
 
@@ -584,7 +590,7 @@ abstract class _VideoFilter extends VideoFilter {
           final List<Language> languages,
       @JsonKey(toJson: intToString)
           final int limit,
-      @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
+      @JsonKey(name: 'max_upcoming_hours', toJson: intToStringNullable, includeIfNull: false)
           final int? maxUpcomingHours,
       @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
           final String? mentionedChannelId,
@@ -596,13 +602,13 @@ abstract class _VideoFilter extends VideoFilter {
           final Organization? organization,
       @JsonKey(toJson: paginatedToString)
           final bool paginated,
-      @JsonKey(toJson: concatVideoSortList)
+      @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
           final List<VideoSort> sort,
-      @JsonKey(toJson: concatVideoStatusList)
+      @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
           final List<VideoStatus> status,
       @JsonKey(includeIfNull: false)
           final String? topic,
-      @JsonKey(toJson: videoTypeToString)
+      @JsonKey(toJson: videoTypeToString, includeIfNull: false)
       @JsonKey(includeIfNull: false)
           final VideoType? type}) = _$_VideoFilter;
   const _VideoFilter._() : super._();
@@ -635,7 +641,10 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
-  @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
+  @JsonKey(
+      name: 'max_upcoming_hours',
+      toJson: intToStringNullable,
+      includeIfNull: false)
   int? get maxUpcomingHours;
   @override
 
@@ -665,12 +674,12 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Sort the returned data by this field
-  @JsonKey(toJson: concatVideoSortList)
+  @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
   List<VideoSort> get sort;
   @override
 
   /// Filter by the video status
-  @JsonKey(toJson: concatVideoStatusList)
+  @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
   List<VideoStatus> get status;
   @override
 
@@ -680,7 +689,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by type of video, either clips or streams
-  @JsonKey(toJson: videoTypeToString)
+  @JsonKey(toJson: videoTypeToString, includeIfNull: false)
   @JsonKey(includeIfNull: false)
   VideoType? get type;
   @override

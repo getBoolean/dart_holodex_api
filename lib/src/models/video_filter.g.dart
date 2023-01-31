@@ -20,15 +20,16 @@ Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) {
   writeNotNull('include', concatIncludesList(instance.includes));
   val['lang'] = concatLanguageListWithDefault(instance.languages);
   val['limit'] = intToString(instance.limit);
-  writeNotNull('max_upcoming_hours', instance.maxUpcomingHours);
+  writeNotNull(
+      'max_upcoming_hours', intToStringNullable(instance.maxUpcomingHours));
   writeNotNull('mentioned_channel_id', instance.mentionedChannelId);
   val['offset'] = intToString(instance.offset);
   val['order'] = orderToString(instance.order);
   writeNotNull('org', organizationToString(instance.organization));
   val['paginated'] = paginatedToString(instance.paginated);
-  val['sort'] = concatVideoSortList(instance.sort);
-  val['status'] = concatVideoStatusList(instance.status);
+  writeNotNull('sort', concatVideoSortList(instance.sort));
+  writeNotNull('status', concatVideoStatusList(instance.status));
   writeNotNull('topic', instance.topic);
-  val['type'] = videoTypeToString(instance.type);
+  writeNotNull('type', videoTypeToString(instance.type));
   return val;
 }

@@ -41,7 +41,7 @@ class VideoFilter with _$VideoFilter {
     @JsonKey(toJson: intToString) @Default(25) int limit,
 
     /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
-    @JsonKey(name: 'max_upcoming_hours', includeIfNull: false)
+    @JsonKey(name: 'max_upcoming_hours', toJson: intToStringNullable, includeIfNull: false)
         int? maxUpcomingHours,
 
     /// Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
@@ -62,18 +62,18 @@ class VideoFilter with _$VideoFilter {
     @JsonKey(toJson: paginatedToString) @Default(false) bool paginated,
 
     /// Sort the returned data by this field
-    @JsonKey(toJson: concatVideoSortList)
+    @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
     @Default([VideoSort.availableAt]) List<VideoSort> sort,
 
     /// Filter by the video status
-    @JsonKey(toJson: concatVideoStatusList)
+    @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
     @Default([]) List<VideoStatus> status,
 
     /// Filter by video topic ID
     @JsonKey(includeIfNull: false) String? topic,
 
     /// Filter by type of video, either clips or streams
-    @JsonKey(toJson: videoTypeToString)
+    @JsonKey(toJson: videoTypeToString, includeIfNull: false)
     @JsonKey(includeIfNull: false) VideoType? type,
   }) = _VideoFilter;
 }
