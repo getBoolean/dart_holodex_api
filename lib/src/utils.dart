@@ -7,6 +7,7 @@ import 'package:dart_holodex_api/src/enums/order.dart';
 import 'package:dart_holodex_api/src/enums/organization.dart';
 import 'package:dart_holodex_api/src/enums/search_sort.dart';
 import 'package:dart_holodex_api/src/enums/search_target.dart';
+import 'package:dart_holodex_api/src/enums/video_sort.dart';
 
 String paginatedToString(bool paginated) => paginated ? 'yes' : '';
 
@@ -18,6 +19,9 @@ String? concatIncludesList(List<Includes> items) =>
     items.isEmpty ? null : concatEnumWithCodeList(items);
 
 String concatOrganizationList(List<Organization> list) =>
+    concatEnumWithCodeList(list);
+
+String concatVideoSortList(List<VideoSort> list) =>
     concatEnumWithCodeList(list);
 
 String concatSearchTargetList(List<SearchTarget> list) =>

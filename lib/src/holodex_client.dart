@@ -83,8 +83,6 @@ class HolodexClient {
     // Create the params list
     final Map<String, dynamic> params = filter.toJson();
 
-    _addVideoSort(filter.sort, params);
-
     // Add the status param
     _addStatusList(filter.status, params);
 

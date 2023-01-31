@@ -61,8 +61,7 @@ mixin _$VideoFilter {
   bool get paginated => throw _privateConstructorUsedError;
 
   /// Sort the returned data by this field
-  ///
-  /// TODO: Implement toJson
+  @JsonKey(toJson: concatVideoSortList)
   List<VideoSort> get sort => throw _privateConstructorUsedError;
 
   /// Filter by the video status
@@ -115,7 +114,8 @@ abstract class $VideoFilterCopyWith<$Res> {
           Organization? organization,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
-      List<VideoSort> sort,
+      @JsonKey(toJson: concatVideoSortList)
+          List<VideoSort> sort,
       List<VideoStatus> status,
       @JsonKey(includeIfNull: false)
           String? topic,
@@ -248,7 +248,8 @@ abstract class _$$_VideoFilterCopyWith<$Res>
           Organization? organization,
       @JsonKey(toJson: paginatedToString)
           bool paginated,
-      List<VideoSort> sort,
+      @JsonKey(toJson: concatVideoSortList)
+          List<VideoSort> sort,
       List<VideoStatus> status,
       @JsonKey(includeIfNull: false)
           String? topic,
@@ -374,7 +375,8 @@ class _$_VideoFilter extends _VideoFilter {
           this.organization,
       @JsonKey(toJson: paginatedToString)
           this.paginated = false,
-      final List<VideoSort> sort = const [VideoSort.availableAt],
+      @JsonKey(toJson: concatVideoSortList)
+          final List<VideoSort> sort = const [VideoSort.availableAt],
       final List<VideoStatus> status = const [],
       @JsonKey(includeIfNull: false)
           this.topic,
@@ -465,15 +467,11 @@ class _$_VideoFilter extends _VideoFilter {
   final bool paginated;
 
   /// Sort the returned data by this field
-  ///
-  /// TODO: Implement toJson
   final List<VideoSort> _sort;
 
   /// Sort the returned data by this field
-  ///
-  /// TODO: Implement toJson
   @override
-  @JsonKey()
+  @JsonKey(toJson: concatVideoSortList)
   List<VideoSort> get sort {
     if (_sort is EqualUnmodifiableListView) return _sort;
     // ignore: implicit_dynamic_type
@@ -599,7 +597,8 @@ abstract class _VideoFilter extends VideoFilter {
           final Organization? organization,
       @JsonKey(toJson: paginatedToString)
           final bool paginated,
-      final List<VideoSort> sort,
+      @JsonKey(toJson: concatVideoSortList)
+          final List<VideoSort> sort,
       final List<VideoStatus> status,
       @JsonKey(includeIfNull: false)
           final String? topic,
@@ -665,8 +664,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Sort the returned data by this field
-  ///
-  /// TODO: Implement toJson
+  @JsonKey(toJson: concatVideoSortList)
   List<VideoSort> get sort;
   @override
 

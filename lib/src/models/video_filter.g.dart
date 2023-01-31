@@ -26,21 +26,12 @@ Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) {
   val['order'] = orderToString(instance.order);
   writeNotNull('org', organizationToString(instance.organization));
   val['paginated'] = paginatedToString(instance.paginated);
-  val['sort'] = instance.sort.map((e) => _$VideoSortEnumMap[e]!).toList();
+  val['sort'] = concatVideoSortList(instance.sort);
   val['status'] = instance.status.map((e) => _$VideoStatusEnumMap[e]!).toList();
   writeNotNull('topic', instance.topic);
   writeNotNull('type', _$VideoTypeEnumMap[instance.type]);
   return val;
 }
-
-const _$VideoSortEnumMap = {
-  VideoSort.title: 'title',
-  VideoSort.publishedAt: 'publishedAt',
-  VideoSort.availableAt: 'availableAt',
-  VideoSort.startScheduled: 'startScheduled',
-  VideoSort.startActual: 'startActual',
-  VideoSort.endActual: 'endActual',
-};
 
 const _$VideoStatusEnumMap = {
   VideoStatus.new_: 'new_',
