@@ -65,8 +65,7 @@ mixin _$VideoFilter {
   List<VideoSort> get sort => throw _privateConstructorUsedError;
 
   /// Filter by the video status
-  ///
-  /// TODO: Implement toJson
+  @JsonKey(toJson: concatVideoStatusList)
   List<VideoStatus> get status => throw _privateConstructorUsedError;
 
   /// Filter by video topic ID
@@ -74,8 +73,7 @@ mixin _$VideoFilter {
   String? get topic => throw _privateConstructorUsedError;
 
   /// Filter by type of video, either clips or streams
-  ///
-  /// TODO: Implement toJson
+  @JsonKey(toJson: videoTypeToString)
   @JsonKey(includeIfNull: false)
   VideoType? get type => throw _privateConstructorUsedError;
 
@@ -116,9 +114,11 @@ abstract class $VideoFilterCopyWith<$Res> {
           bool paginated,
       @JsonKey(toJson: concatVideoSortList)
           List<VideoSort> sort,
-      List<VideoStatus> status,
+      @JsonKey(toJson: concatVideoStatusList)
+          List<VideoStatus> status,
       @JsonKey(includeIfNull: false)
           String? topic,
+      @JsonKey(toJson: videoTypeToString)
       @JsonKey(includeIfNull: false)
           VideoType? type});
 }
@@ -250,9 +250,11 @@ abstract class _$$_VideoFilterCopyWith<$Res>
           bool paginated,
       @JsonKey(toJson: concatVideoSortList)
           List<VideoSort> sort,
-      List<VideoStatus> status,
+      @JsonKey(toJson: concatVideoStatusList)
+          List<VideoStatus> status,
       @JsonKey(includeIfNull: false)
           String? topic,
+      @JsonKey(toJson: videoTypeToString)
       @JsonKey(includeIfNull: false)
           VideoType? type});
 }
@@ -377,9 +379,11 @@ class _$_VideoFilter extends _VideoFilter {
           this.paginated = false,
       @JsonKey(toJson: concatVideoSortList)
           final List<VideoSort> sort = const [VideoSort.availableAt],
-      final List<VideoStatus> status = const [],
+      @JsonKey(toJson: concatVideoStatusList)
+          final List<VideoStatus> status = const [],
       @JsonKey(includeIfNull: false)
           this.topic,
+      @JsonKey(toJson: videoTypeToString)
       @JsonKey(includeIfNull: false)
           this.type})
       : assert(limit <= 50, 'Limit cannot be greater than 50'),
@@ -479,15 +483,11 @@ class _$_VideoFilter extends _VideoFilter {
   }
 
   /// Filter by the video status
-  ///
-  /// TODO: Implement toJson
   final List<VideoStatus> _status;
 
   /// Filter by the video status
-  ///
-  /// TODO: Implement toJson
   @override
-  @JsonKey()
+  @JsonKey(toJson: concatVideoStatusList)
   List<VideoStatus> get status {
     if (_status is EqualUnmodifiableListView) return _status;
     // ignore: implicit_dynamic_type
@@ -500,9 +500,8 @@ class _$_VideoFilter extends _VideoFilter {
   final String? topic;
 
   /// Filter by type of video, either clips or streams
-  ///
-  /// TODO: Implement toJson
   @override
+  @JsonKey(toJson: videoTypeToString)
   @JsonKey(includeIfNull: false)
   final VideoType? type;
 
@@ -599,9 +598,11 @@ abstract class _VideoFilter extends VideoFilter {
           final bool paginated,
       @JsonKey(toJson: concatVideoSortList)
           final List<VideoSort> sort,
-      final List<VideoStatus> status,
+      @JsonKey(toJson: concatVideoStatusList)
+          final List<VideoStatus> status,
       @JsonKey(includeIfNull: false)
           final String? topic,
+      @JsonKey(toJson: videoTypeToString)
       @JsonKey(includeIfNull: false)
           final VideoType? type}) = _$_VideoFilter;
   const _VideoFilter._() : super._();
@@ -669,8 +670,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by the video status
-  ///
-  /// TODO: Implement toJson
+  @JsonKey(toJson: concatVideoStatusList)
   List<VideoStatus> get status;
   @override
 
@@ -680,8 +680,7 @@ abstract class _VideoFilter extends VideoFilter {
   @override
 
   /// Filter by type of video, either clips or streams
-  ///
-  /// TODO: Implement toJson
+  @JsonKey(toJson: videoTypeToString)
   @JsonKey(includeIfNull: false)
   VideoType? get type;
   @override

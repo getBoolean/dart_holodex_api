@@ -8,6 +8,8 @@ import 'package:dart_holodex_api/src/enums/organization.dart';
 import 'package:dart_holodex_api/src/enums/search_sort.dart';
 import 'package:dart_holodex_api/src/enums/search_target.dart';
 import 'package:dart_holodex_api/src/enums/video_sort.dart';
+import 'package:dart_holodex_api/src/enums/video_status.dart';
+import 'package:dart_holodex_api/src/enums/video_type.dart';
 
 String paginatedToString(bool paginated) => paginated ? 'yes' : '';
 
@@ -22,6 +24,9 @@ String concatOrganizationList(List<Organization> list) =>
     concatEnumWithCodeList(list);
 
 String concatVideoSortList(List<VideoSort> list) =>
+    concatEnumWithCodeList(list);
+
+String concatVideoStatusList(List<VideoStatus> list) =>
     concatEnumWithCodeList(list);
 
 String concatSearchTargetList(List<SearchTarget> list) =>
@@ -50,3 +55,5 @@ List<String>? channelSortToStringList(List<ChannelSort> list) =>
 String orderToString(Order order) => order.code;
 
 List<String>? nullStringListIfEmpty(List<String> value) => value.isEmpty ? null : value;
+
+String? videoTypeToString(VideoType? type) => type?.code;

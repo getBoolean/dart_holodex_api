@@ -82,15 +82,7 @@ class HolodexClient {
   ]) async {
     // Create the params list
     final Map<String, dynamic> params = filter.toJson();
-
-    // Add the status param
-    _addStatusList(filter.status, params);
-
-    // Add the type param
-    _addType(filter.type, params);
-
     final response = await get(path: _Constants.videosPath, params: params);
-
     if (filter.paginated) {
       // Grab total and return with it
       final videoList = PaginatedVideos.fromString(response.body);

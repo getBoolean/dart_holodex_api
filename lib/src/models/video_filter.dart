@@ -66,16 +66,14 @@ class VideoFilter with _$VideoFilter {
     @Default([VideoSort.availableAt]) List<VideoSort> sort,
 
     /// Filter by the video status
-    ///
-    /// TODO: Implement toJson
+    @JsonKey(toJson: concatVideoStatusList)
     @Default([]) List<VideoStatus> status,
 
     /// Filter by video topic ID
     @JsonKey(includeIfNull: false) String? topic,
 
     /// Filter by type of video, either clips or streams
-    ///
-    /// TODO: Implement toJson
+    @JsonKey(toJson: videoTypeToString)
     @JsonKey(includeIfNull: false) VideoType? type,
   }) = _VideoFilter;
 }
