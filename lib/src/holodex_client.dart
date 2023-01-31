@@ -3,11 +3,9 @@
 import 'dart:convert';
 
 import 'package:dart_holodex_api/src/enums/channel_sort.dart';
-import 'package:dart_holodex_api/src/enums/enum_with_code_extension.dart';
 import 'package:dart_holodex_api/src/enums/includes.dart';
 import 'package:dart_holodex_api/src/enums/language.dart';
 import 'package:dart_holodex_api/src/enums/order.dart';
-import 'package:dart_holodex_api/src/enums/organization.dart';
 import 'package:dart_holodex_api/src/enums/search_sort.dart';
 import 'package:dart_holodex_api/src/enums/video_search_type.dart';
 import 'package:dart_holodex_api/src/enums/video_sort.dart';
@@ -83,8 +81,7 @@ class HolodexClient {
   ]) async {
     // Create the params list
     final Map<String, dynamic> params = filter.toJson();
-    final response =
-        await getEndpoint(HolodexEndpoint.videos, params: params);
+    final response = await getEndpoint(HolodexEndpoint.videos, params: params);
     if (filter.paginated) {
       // Grab total and return with it
       final videoList = PaginatedVideos.fromString(response.body);
@@ -115,8 +112,7 @@ class HolodexClient {
     ),
   ]) async {
     final Map<String, dynamic> params = filter.toJson();
-    final response =
-        await getEndpoint(HolodexEndpoint.live, params: params);
+    final response = await getEndpoint(HolodexEndpoint.live, params: params);
 
     if (filter.paginated) {
       // Grab total and return with it
@@ -180,13 +176,18 @@ class HolodexClient {
     }
 
     final Map<String, dynamic> params = {};
-
     _addChannels(channelIds, params);
 
     final response =
         await getEndpoint(HolodexEndpoint.userLive, params: params);
     final List<dynamic> list = jsonDecode(response.body);
     return list.map((video) => Video.fromJson(video)).toList();
+  }
+
+  void _addChannels(List<String> channelIds, Map<String, dynamic> map) {
+    if (channelIds.isNotEmpty) {
+      map.addAll({'channels': concatStringList(channelIds)});
+    }
   }
 
   /// Get Videos From Channel, alias of [getChannelRelatedVideos]
@@ -300,7 +301,6 @@ class HolodexClient {
   }) async {
     final Map<String, dynamic> params = {};
     final _languages = languages.isEmpty ? [Language.all] : languages;
-
     _addLanguages(_languages, params);
     _addCommentsFlag(includeTimestampComments, params);
 
@@ -308,6 +308,16 @@ class HolodexClient {
         await get(path: '${HolodexEndpoint.videos}/$videoId', params: params);
     final body = jsonDecode(response.body);
     return VideoFull.fromJson(body);
+  }
+
+  void _addCommentsFlag(bool comments, Map<String, dynamic> map) {
+    map.addAll({'c': includeCommentsToString(comments)});
+  }
+
+  void _addLanguages(List<Language> lang, Map<String, dynamic> map) {
+    if (lang.isNotEmpty) {
+      map.addAll({'lang': lang.concat});
+    }
   }
 
   /// Flexible endpoint to search for videos fufilling multiple conditions.
@@ -380,87 +390,6 @@ class HolodexClient {
     return PaginatedVideos(
       items: list.map((video) => VideoFull.fromJson(video)).toList(),
     );
-  }
-
-  void _addVideoSort(List<VideoSort> sort, Map<String, dynamic> map) {
-    if (sort.isNotEmpty) {
-      map.addAll({'include': sort.concat});
-    }
-  }
-
-  void _addPaginated(bool paginated, Map<String, dynamic> map) {
-    map.addAll({'paginated': paginatedToString(paginated)});
-  }
-
-  void _addCommentsFlag(bool comments, Map<String, dynamic> map) {
-    map.addAll({'c': includeCommentsToString(comments)});
-  }
-
-  void _addChannelId(String? channelId, Map<String, dynamic> map) {
-    if (channelId != null) {
-      map.addAll({'channel_id': channelId});
-    }
-  }
-
-  void _addId(List<String> ids, Map<String, dynamic> map) {
-    if (ids.isNotEmpty) {
-      map.addAll({'id': concatStringList(ids)});
-    }
-  }
-
-  void _addStatusList(List<VideoStatus> statuses, Map<String, dynamic> map) {
-    if (statuses.isNotEmpty) {
-      map.addAll({'status': statuses.concat});
-    }
-  }
-
-  void _addType(VideoType? type, Map<String, dynamic> map) {
-    if (type != null) {
-      map.addAll({'type': enumWithCodeToString(type)});
-    }
-  }
-
-  void _addTopic(String? topic, Map<String, dynamic> map) {
-    if (topic != null) {
-      map.addAll({'topic': topic});
-    }
-  }
-
-  void _addOrganizations(Organization? organization, Map<String, dynamic> map) {
-    if (organization != null) {
-      map.addAll({'org': organization.code});
-    }
-  }
-
-  void _addMentionedChannelId(
-      String? mentionedChannelId, Map<String, dynamic> map) {
-    if (mentionedChannelId != null) {
-      map.addAll({'mentioned_channel_id': mentionedChannelId});
-    }
-  }
-
-  void _addMaxUpcomingHours(int? maxUpcomingHours, Map<String, dynamic> map) {
-    if (maxUpcomingHours != null) {
-      map.addAll({'max_upcoming_hours': '$maxUpcomingHours'});
-    }
-  }
-
-  void _addIncludes(List<Includes> includes, Map<String, dynamic> map) {
-    if (includes.isNotEmpty) {
-      map.addAll({'include': includes.concat});
-    }
-  }
-
-  void _addLanguages(List<Language> lang, Map<String, dynamic> map) {
-    if (lang.isNotEmpty) {
-      map.addAll({'lang': lang.concat});
-    }
-  }
-
-  void _addChannels(List<String> channelIds, Map<String, dynamic> map) {
-    if (channelIds.isNotEmpty) {
-      map.addAll({'channels': concatStringList(channelIds)});
-    }
   }
 
   // Utilities
