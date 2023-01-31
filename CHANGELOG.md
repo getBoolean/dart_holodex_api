@@ -8,6 +8,8 @@
 `ChannelType`, `SearchSort`, `SearchTarget`, `VideoSearchType`.
 - Added String `organization` to `Channel` and `ChannelMin`.
 - Added more fields to `Channel`.
+- Exported `HolodexEndpoint` enum.
+- Added `HolodexClient.getEndpoint` and `HolodexClient.postEndpoint` method.
 
 ### Breaking Changes
 
