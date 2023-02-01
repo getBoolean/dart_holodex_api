@@ -9,7 +9,7 @@ enum HolodexEndpoint {
   final String path;
 
   const HolodexEndpoint(this.path);
-  
+
   @override
   String toString() {
     return path;
