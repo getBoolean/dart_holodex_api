@@ -67,7 +67,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>Get Collabs that mention a VTuber, alias of <a href="../../dart_holodex_api/HolodexClient/getVideosRelatedToChannel.html">getVideosRelatedToChannel</a></p>
+  <p>Get Collabs that mention a VTuber, alias of <a href="../../dart_holodex_api/HolodexClient/getChannelRelatedVideos.html">getChannelRelatedVideos</a></p>
 <p>Arguments</p>
 <ul>
 <li><code>channelId</code> ID of the Youtube Channel that is being queried</li>
@@ -89,7 +89,7 @@
     paginated: true,
   ),
 }) async {
-  return await getVideosRelatedToChannel(
+  return await getChannelRelatedVideos(
     channelId,
     type: VideoSearchType.collabs,
     filter: filter,
@@ -134,18 +134,20 @@
           <li><a href="../../dart_holodex_api/HolodexClient/close.html">close</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/get.html">get</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getChannelFromId.html">getChannelFromId</a></li>
+          <li><a href="../../dart_holodex_api/HolodexClient/getChannelRelatedVideos.html">getChannelRelatedVideos</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getChannels.html">getChannels</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getChannelVideos.html">getChannelVideos</a></li>
+          <li><a href="../../dart_holodex_api/HolodexClient/getEndpoint.html">getEndpoint</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getLiveVideos.html">getLiveVideos</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getLiveVideosFromChannelsQuickly.html">getLiveVideosFromChannelsQuickly</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVideoFromId.html">getVideoFromId</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVideoMetadata.html">getVideoMetadata</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVideos.html">getVideos</a></li>
-          <li><a href="../../dart_holodex_api/HolodexClient/getVideosRelatedToChannel.html">getVideosRelatedToChannel</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVTuberClips.html">getVTuberClips</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVTuberCollabs.html">getVTuberCollabs</a></li>
           <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/post.html">post</a></li>
+          <li><a href="../../dart_holodex_api/HolodexClient/postEndpoint.html">postEndpoint</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/searchComments.html">searchComments</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/searchVideos.html">searchVideos</a></li>
           <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/toString.html">toString</a></li>

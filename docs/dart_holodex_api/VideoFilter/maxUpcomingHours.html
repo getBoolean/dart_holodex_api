@@ -62,7 +62,7 @@
   
   <div>
     <ol class="annotation-list">
-        <li>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;max_upcoming_hours&#39;)</li>
+        <li>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;max_upcoming_hours&#39;, toJson: intToStringNullable, includeIfNull: false)</li>
     </ol>
   </div>
   <span class="returntype"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a>?</span>
@@ -79,7 +79,10 @@
 
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">@JsonKey(name: &#39;max_upcoming_hours&#39;)
+  <pre class="language-dart"><code class="language-dart">@JsonKey(
+    name: &#39;max_upcoming_hours&#39;,
+    toJson: intToStringNullable,
+    includeIfNull: false)
 int? get maxUpcomingHours =&gt; throw _privateConstructorUsedError;</code></pre>
 </section>
 

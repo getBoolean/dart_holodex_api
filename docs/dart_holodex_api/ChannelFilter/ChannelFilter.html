@@ -61,17 +61,20 @@
         <li>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Assert-class.html">Assert</a>(&#39;limit &lt;= 50&#39;, &#39;The limit cannot be greater than 50&#39;)</li>
     </ol>
   </div>const
-      <span class="name ">ChannelFilter</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-languages">{<span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatLanguageList)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span>, </span></li>
-<li><span class="parameter" id="-param-limit"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(25)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span>, </span></li>
-<li><span class="parameter" id="-param-offset"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(0)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span></li>
-<li><span class="parameter" id="-param-type"><span class="type-annotation"><a href="../../dart_holodex_api/ChannelType.html">ChannelType</a>?</span> <span class="parameter-name">type</span>, </span></li>
-<li><span class="parameter" id="-param-sort"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([ChannelSort.organization])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/ChannelSort.html">ChannelSort</a></span>&gt;</span></span> <span class="parameter-name">sort</span>, </span></li>
-<li><span class="parameter" id="-param-order"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(Order.ascending)</span> <span class="type-annotation"><a href="../../dart_holodex_api/Order.html">Order</a></span> <span class="parameter-name">order</span>, </span></li>
-<li><span class="parameter" id="-param-organization"><span class="type-annotation"><a href="../../dart_holodex_api/Organization.html">Organization</a>?</span> <span class="parameter-name">organization</span>}</span></li>
+      <span class="name ">ChannelFilter</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-languages">{<span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatLanguageListWithDefault, name: &#39;lang&#39;)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span>, </span></li>
+<li><span class="parameter" id="-param-limit"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: intToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(25)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span>, </span></li>
+<li><span class="parameter" id="-param-offset"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: intToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(0)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span></li>
+<li><span class="parameter" id="-param-type"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(includeIfNull: false, toJson: channelTypeToString)</span> <span class="type-annotation"><a href="../../dart_holodex_api/ChannelType.html">ChannelType</a>?</span> <span class="parameter-name">type</span>, </span></li>
+<li><span class="parameter" id="-param-sort"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: channelSortToStringList, includeIfNull: false)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([ChannelSort.organization])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/ChannelSort.html">ChannelSort</a></span>&gt;</span></span> <span class="parameter-name">sort</span>, </span></li>
+<li><span class="parameter" id="-param-order"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: orderToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(Order.ascending)</span> <span class="type-annotation"><a href="../../dart_holodex_api/Order.html">Order</a></span> <span class="parameter-name">order</span>, </span></li>
+<li><span class="parameter" id="-param-organization"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;org&#39;, toJson: organizationToString, includeIfNull: false)</span> <span class="type-annotation"><a href="../../dart_holodex_api/Organization-class.html">Organization</a>?</span> <span class="parameter-name">organization</span>}</span></li>
 </ol>)
     </section>
 
     
+<section class="desc markdown">
+  <p>Filter the results returns by the Holodex API channel endpoints</p>
+</section>
 
 
     
@@ -80,25 +83,31 @@
   <pre class="language-dart"><code class="language-dart">@Assert(&#39;limit &lt;= 50&#39;, &#39;The limit cannot be greater than 50&#39;)
 const factory ChannelFilter({
   &#47;&#47;&#47; List of Language enum to filter channels&#47;clips. Official streams do not follow this parameter
-  @JsonKey(toJson: concatLanguageList) @Default([]) List&lt;Language&gt; languages,
+  @JsonKey(toJson: concatLanguageListWithDefault, name: &#39;lang&#39;)
+  @Default([])
+      List&lt;Language&gt; languages,
 
   &#47;&#47;&#47; Result limit. Max of 50.
-  @Default(25) int limit,
+  @JsonKey(toJson: intToString) @Default(25) int limit,
 
   &#47;&#47;&#47; Offset results
-  @Default(0) int offset,
+  @JsonKey(toJson: intToString) @Default(0) int offset,
 
   &#47;&#47;&#47; Type of Channel, whether it&#39;s a vtuber or a subber. Leave unset to query all.
-  ChannelType? type,
+  @JsonKey(includeIfNull: false, toJson: channelTypeToString)
+      ChannelType? type,
 
   &#47;&#47;&#47; Column to sort on
-  @Default([ChannelSort.organization]) List&lt;ChannelSort&gt; sort,
+  @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
+  @Default([ChannelSort.organization])
+      List&lt;ChannelSort&gt; sort,
 
   &#47;&#47;&#47; ASC or DESC order, default asc.
-  @Default(Order.ascending) Order order,
+  @JsonKey(toJson: orderToString) @Default(Order.ascending) Order order,
 
-  &#47;&#47;&#47; If set, filter for Vtuber belonging to a specific org
-  Organization? organization,
+  &#47;&#47;&#47; If set, filter for a Vtuber belonging to a specific org
+  @JsonKey(name: &#39;org&#39;, toJson: organizationToString, includeIfNull: false)
+      Organization? organization,
 }) = _ChannelFilter;</code></pre>
 </section>
 

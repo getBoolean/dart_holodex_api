@@ -60,7 +60,12 @@
 
 <section class="multi-line-signature">
   
-  <span class="returntype"><a href="../../dart_holodex_api/Organization.html">Organization</a>?</span>
+  <div>
+    <ol class="annotation-list">
+        <li>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;org&#39;, toJson: organizationToString, includeIfNull: false)</li>
+    </ol>
+  </div>
+  <span class="returntype"><a href="../../dart_holodex_api/Organization-class.html">Organization</a>?</span>
   <span class="name ">organization</span>
   <div class="features"><span class="feature">inherited</span></div>
 
@@ -68,13 +73,14 @@
 
 
 <section class="desc markdown">
-  <p>If set, filter for Vtuber belonging to a specific org</p>
+  <p>If set, filter for a Vtuber belonging to a specific org</p>
 </section>
 
 
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Organization? get organization =&gt; throw _privateConstructorUsedError;</code></pre>
+  <pre class="language-dart"><code class="language-dart">@JsonKey(name: &#39;org&#39;, toJson: organizationToString, includeIfNull: false)
+Organization? get organization =&gt; throw _privateConstructorUsedError;</code></pre>
 </section>
 
 </section>

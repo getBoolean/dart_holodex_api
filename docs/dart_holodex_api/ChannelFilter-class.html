@@ -87,10 +87,10 @@
 
     <dl class="constructor-summary-list">
         <dt id="ChannelFilter" class="callable">
-          <span class="name"><a href="../dart_holodex_api/ChannelFilter/ChannelFilter.html">ChannelFilter</a></span><span class="signature">(<span class="parameter" id="-param-languages">{<span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatLanguageList)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span>, </span><span class="parameter" id="-param-limit"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(25)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="-param-offset"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(0)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="-param-type"><span class="type-annotation"><a href="../dart_holodex_api/ChannelType.html">ChannelType</a>?</span> <span class="parameter-name">type</span>, </span><span class="parameter" id="-param-sort"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([ChannelSort.organization])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/ChannelSort.html">ChannelSort</a></span>&gt;</span></span> <span class="parameter-name">sort</span>, </span><span class="parameter" id="-param-order"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(Order.ascending)</span> <span class="type-annotation"><a href="../dart_holodex_api/Order.html">Order</a></span> <span class="parameter-name">order</span>, </span><span class="parameter" id="-param-organization"><span class="type-annotation"><a href="../dart_holodex_api/Organization.html">Organization</a>?</span> <span class="parameter-name">organization</span>}</span>)</span>
+          <span class="name"><a href="../dart_holodex_api/ChannelFilter/ChannelFilter.html">ChannelFilter</a></span><span class="signature">(<span class="parameter" id="-param-languages">{<span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatLanguageListWithDefault, name: &#39;lang&#39;)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span>, </span><span class="parameter" id="-param-limit"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: intToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(25)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="-param-offset"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: intToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(0)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="-param-type"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(includeIfNull: false, toJson: channelTypeToString)</span> <span class="type-annotation"><a href="../dart_holodex_api/ChannelType.html">ChannelType</a>?</span> <span class="parameter-name">type</span>, </span><span class="parameter" id="-param-sort"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: channelSortToStringList, includeIfNull: false)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([ChannelSort.organization])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/ChannelSort.html">ChannelSort</a></span>&gt;</span></span> <span class="parameter-name">sort</span>, </span><span class="parameter" id="-param-order"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: orderToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(Order.ascending)</span> <span class="type-annotation"><a href="../dart_holodex_api/Order.html">Order</a></span> <span class="parameter-name">order</span>, </span><span class="parameter" id="-param-organization"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;org&#39;, toJson: organizationToString, includeIfNull: false)</span> <span class="type-annotation"><a href="../dart_holodex_api/Organization-class.html">Organization</a>?</span> <span class="parameter-name">organization</span>}</span>)</span>
         </dt>
         <dd>
-          
+          Filter the results returns by the Holodex API channel endpoints
             <div class="constructor-modifier features">const</div>
             <div class="constructor-modifier features">factory</div>
         </dd>
@@ -169,11 +169,11 @@
 
         <dt id="organization" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/ChannelFilter/organization.html">organization</a></span>
-  <span class="signature">&#8594; <a href="../dart_holodex_api/Organization.html">Organization</a>?</span> 
+  <span class="signature">&#8594; <a href="../dart_holodex_api/Organization-class.html">Organization</a>?</span> 
 
 </dt>
 <dd class="inherited">
-  If set, filter for Vtuber belonging to a specific org
+  If set, filter for a Vtuber belonging to a specific org
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -313,6 +313,7 @@
         <li><a href="../dart_holodex_api/HolodexClient-class.html">HolodexClient</a></li>
         <li><a href="../dart_holodex_api/Language-class.html">Language</a></li>
         <li><a href="https://pub.dev/documentation/intl/0.17.0/locale/Locale-class.html">Locale</a></li>
+        <li><a href="../dart_holodex_api/Organization-class.html">Organization</a></li>
         <li><a href="../dart_holodex_api/PaginatedVideos-class.html">PaginatedVideos</a></li>
         <li><a href="https://pub.dev/documentation/http/0.13.5/http/Response-class.html">Response</a></li>
         <li><a href="../dart_holodex_api/SearchFilter-class.html">SearchFilter</a></li>
@@ -324,6 +325,7 @@
       <li class="section-title"><a href="../dart_holodex_api/dart_holodex_api-library.html#extensions">Extensions</a></li>
         <li><a href="../dart_holodex_api/EnumByCode.html">EnumByCode</a></li>
         <li><a href="../dart_holodex_api/LanguageValues.html">LanguageValues</a></li>
+        <li><a href="../dart_holodex_api/OrganizationValues.html">OrganizationValues</a></li>
 
       <li class="section-title"><a href="../dart_holodex_api/dart_holodex_api-library.html#mixins">Mixins</a></li>
         <li><a href="../dart_holodex_api/EnumWithCode-mixin.html">EnumWithCode</a></li>
@@ -334,9 +336,9 @@
       <li class="section-title"><a href="../dart_holodex_api/dart_holodex_api-library.html#enums">Enums</a></li>
         <li><a href="../dart_holodex_api/ChannelSort.html">ChannelSort</a></li>
         <li><a href="../dart_holodex_api/ChannelType.html">ChannelType</a></li>
+        <li><a href="../dart_holodex_api/HolodexEndpoint.html">HolodexEndpoint</a></li>
         <li><a href="../dart_holodex_api/Includes.html">Includes</a></li>
         <li><a href="../dart_holodex_api/Order.html">Order</a></li>
-        <li><a href="../dart_holodex_api/Organization.html">Organization</a></li>
         <li><a href="../dart_holodex_api/SearchSort.html">SearchSort</a></li>
         <li><a href="../dart_holodex_api/SearchTarget.html">SearchTarget</a></li>
         <li><a href="../dart_holodex_api/VideoSearchType.html">VideoSearchType</a></li>

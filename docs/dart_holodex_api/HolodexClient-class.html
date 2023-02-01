@@ -172,6 +172,19 @@ Api Key added to the headers
 
 </dd>
 
+        <dt id="getChannelRelatedVideos" class="callable">
+  <span class="name"><a href="../dart_holodex_api/HolodexClient/getChannelRelatedVideos.html">getChannelRelatedVideos</a></span><span class="signature">(<wbr><span class="parameter" id="getChannelRelatedVideos-param-channelId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">channelId</span>, </span><span class="parameter" id="getChannelRelatedVideos-param-type">{<span>required</span> <span class="type-annotation"><a href="../dart_holodex_api/VideoSearchType.html">VideoSearchType</a></span> <span class="parameter-name">type</span>, </span><span class="parameter" id="getChannelRelatedVideos-param-filter"><span class="type-annotation">ChannelVideoFilter</span> <span class="parameter-name">filter</span> = <span class="default-value">const ChannelVideoFilter()</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.19.0/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/PaginatedVideos-class.html">PaginatedVideos</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Get Videos Related To Channel
+  
+
+</dd>
+
         <dt id="getChannels" class="callable">
   <span class="name"><a href="../dart_holodex_api/HolodexClient/getChannels.html">getChannels</a></span><span class="signature">(<wbr><span class="parameter" id="getChannels-param-filter">[<span class="type-annotation"><a href="../dart_holodex_api/ChannelFilter-class.html">ChannelFilter</a></span> <span class="parameter-name">filter</span> = <span class="default-value">const ChannelFilter(limit: 25, offset: 0, order: Order.ascending, sort: [ChannelSort.organization])</span>]</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.19.0/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/Channel-class.html">Channel</a></span>&gt;</span></span>&gt;</span></span>
@@ -193,7 +206,21 @@ Api Key added to the headers
 
 </dt>
 <dd>
-  Get Videos From Channel, alias of <a href="../dart_holodex_api/HolodexClient/getVideosRelatedToChannel.html">getVideosRelatedToChannel</a>
+  Get Videos From Channel, alias of <a href="../dart_holodex_api/HolodexClient/getChannelRelatedVideos.html">getChannelRelatedVideos</a>
+  
+
+</dd>
+
+        <dt id="getEndpoint" class="callable">
+  <span class="name"><a href="../dart_holodex_api/HolodexClient/getEndpoint.html">getEndpoint</a></span><span class="signature">(<wbr><span class="parameter" id="getEndpoint-param-endpoint"><span class="type-annotation"><a href="../dart_holodex_api/HolodexEndpoint.html">HolodexEndpoint</a></span> <span class="parameter-name">endpoint</span>, </span><span class="parameter" id="getEndpoint-param-headers">{<span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">headers</span>, </span><span class="parameter" id="getEndpoint-param-params"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> <span class="parameter-name">params</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.19.0/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.5/http/Response-class.html">Response</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Utility method to make a custom http get call with the
+Api Key added to the headers
   
 
 </dd>
@@ -263,19 +290,6 @@ Api Key added to the headers
 
 </dd>
 
-        <dt id="getVideosRelatedToChannel" class="callable">
-  <span class="name"><a href="../dart_holodex_api/HolodexClient/getVideosRelatedToChannel.html">getVideosRelatedToChannel</a></span><span class="signature">(<wbr><span class="parameter" id="getVideosRelatedToChannel-param-channelId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">channelId</span>, </span><span class="parameter" id="getVideosRelatedToChannel-param-type">{<span>required</span> <span class="type-annotation"><a href="../dart_holodex_api/VideoSearchType.html">VideoSearchType</a></span> <span class="parameter-name">type</span>, </span><span class="parameter" id="getVideosRelatedToChannel-param-filter"><span class="type-annotation">ChannelVideoFilter</span> <span class="parameter-name">filter</span> = <span class="default-value">const ChannelVideoFilter()</span>}</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.19.0/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/PaginatedVideos-class.html">PaginatedVideos</a></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Get Videos Related To Channel
-  
-
-</dd>
-
         <dt id="getVTuberClips" class="callable">
   <span class="name"><a href="../dart_holodex_api/HolodexClient/getVTuberClips.html">getVTuberClips</a></span><span class="signature">(<wbr><span class="parameter" id="getVTuberClips-param-channelId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">channelId</span>, </span><span class="parameter" id="getVTuberClips-param-filter">{<span class="type-annotation">ChannelVideoFilter</span> <span class="parameter-name">filter</span> = <span class="default-value">const ChannelVideoFilter(includes: [], languages: [], limit: 25, offset: 0, paginated: true)</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.19.0/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/PaginatedVideos-class.html">PaginatedVideos</a></span>&gt;</span></span>
@@ -284,7 +298,7 @@ Api Key added to the headers
 
 </dt>
 <dd>
-  Get Clips of a VTuber, alias of <a href="../dart_holodex_api/HolodexClient/getVideosRelatedToChannel.html">getVideosRelatedToChannel</a>
+  Get Clips of a VTuber, alias of <a href="../dart_holodex_api/HolodexClient/getChannelRelatedVideos.html">getChannelRelatedVideos</a>
   
 
 </dd>
@@ -297,7 +311,7 @@ Api Key added to the headers
 
 </dt>
 <dd>
-  Get Collabs that mention a VTuber, alias of <a href="../dart_holodex_api/HolodexClient/getVideosRelatedToChannel.html">getVideosRelatedToChannel</a>
+  Get Collabs that mention a VTuber, alias of <a href="../dart_holodex_api/HolodexClient/getChannelRelatedVideos.html">getChannelRelatedVideos</a>
   
 
 </dd>
@@ -324,6 +338,20 @@ Api Key added to the headers
 </dt>
 <dd>
   Utility method to make a custom http post call with the
+Api Key added to the headers
+  
+
+</dd>
+
+        <dt id="postEndpoint" class="callable">
+  <span class="name"><a href="../dart_holodex_api/HolodexClient/postEndpoint.html">postEndpoint</a></span><span class="signature">(<wbr><span class="parameter" id="postEndpoint-param-endpoint"><span class="type-annotation"><a href="../dart_holodex_api/HolodexEndpoint.html">HolodexEndpoint</a></span> <span class="parameter-name">endpoint</span>, </span><span class="parameter" id="postEndpoint-param-headers">{<span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">headers</span>, </span><span class="parameter" id="postEndpoint-param-params"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> <span class="parameter-name">params</span>, </span><span class="parameter" id="postEndpoint-param-data"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.19.0/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> <span class="parameter-name">data</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.19.0/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.5/http/Response-class.html">Response</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Utility method to make a custom http get call with the
 Api Key added to the headers
   
 
@@ -424,6 +452,7 @@ Descriptions with "any" implies an <code>OR</code> condition, and "all" implies 
         <li><a href="../dart_holodex_api/HolodexClient-class.html">HolodexClient</a></li>
         <li><a href="../dart_holodex_api/Language-class.html">Language</a></li>
         <li><a href="https://pub.dev/documentation/intl/0.17.0/locale/Locale-class.html">Locale</a></li>
+        <li><a href="../dart_holodex_api/Organization-class.html">Organization</a></li>
         <li><a href="../dart_holodex_api/PaginatedVideos-class.html">PaginatedVideos</a></li>
         <li><a href="https://pub.dev/documentation/http/0.13.5/http/Response-class.html">Response</a></li>
         <li><a href="../dart_holodex_api/SearchFilter-class.html">SearchFilter</a></li>
@@ -435,6 +464,7 @@ Descriptions with "any" implies an <code>OR</code> condition, and "all" implies 
       <li class="section-title"><a href="../dart_holodex_api/dart_holodex_api-library.html#extensions">Extensions</a></li>
         <li><a href="../dart_holodex_api/EnumByCode.html">EnumByCode</a></li>
         <li><a href="../dart_holodex_api/LanguageValues.html">LanguageValues</a></li>
+        <li><a href="../dart_holodex_api/OrganizationValues.html">OrganizationValues</a></li>
 
       <li class="section-title"><a href="../dart_holodex_api/dart_holodex_api-library.html#mixins">Mixins</a></li>
         <li><a href="../dart_holodex_api/EnumWithCode-mixin.html">EnumWithCode</a></li>
@@ -445,9 +475,9 @@ Descriptions with "any" implies an <code>OR</code> condition, and "all" implies 
       <li class="section-title"><a href="../dart_holodex_api/dart_holodex_api-library.html#enums">Enums</a></li>
         <li><a href="../dart_holodex_api/ChannelSort.html">ChannelSort</a></li>
         <li><a href="../dart_holodex_api/ChannelType.html">ChannelType</a></li>
+        <li><a href="../dart_holodex_api/HolodexEndpoint.html">HolodexEndpoint</a></li>
         <li><a href="../dart_holodex_api/Includes.html">Includes</a></li>
         <li><a href="../dart_holodex_api/Order.html">Order</a></li>
-        <li><a href="../dart_holodex_api/Organization.html">Organization</a></li>
         <li><a href="../dart_holodex_api/SearchSort.html">SearchSort</a></li>
         <li><a href="../dart_holodex_api/SearchTarget.html">SearchTarget</a></li>
         <li><a href="../dart_holodex_api/VideoSearchType.html">VideoSearchType</a></li>
@@ -481,18 +511,20 @@ Descriptions with "any" implies an <code>OR</code> condition, and "all" implies 
           <li><a href="../dart_holodex_api/HolodexClient/close.html">close</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/get.html">get</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/getChannelFromId.html">getChannelFromId</a></li>
+          <li><a href="../dart_holodex_api/HolodexClient/getChannelRelatedVideos.html">getChannelRelatedVideos</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/getChannels.html">getChannels</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/getChannelVideos.html">getChannelVideos</a></li>
+          <li><a href="../dart_holodex_api/HolodexClient/getEndpoint.html">getEndpoint</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/getLiveVideos.html">getLiveVideos</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/getLiveVideosFromChannelsQuickly.html">getLiveVideosFromChannelsQuickly</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/getVideoFromId.html">getVideoFromId</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/getVideoMetadata.html">getVideoMetadata</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/getVideos.html">getVideos</a></li>
-          <li><a href="../dart_holodex_api/HolodexClient/getVideosRelatedToChannel.html">getVideosRelatedToChannel</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/getVTuberClips.html">getVTuberClips</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/getVTuberCollabs.html">getVTuberCollabs</a></li>
           <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/post.html">post</a></li>
+          <li><a href="../dart_holodex_api/HolodexClient/postEndpoint.html">postEndpoint</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/searchComments.html">searchComments</a></li>
           <li><a href="../dart_holodex_api/HolodexClient/searchVideos.html">searchVideos</a></li>
           <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/toString.html">toString</a></li>

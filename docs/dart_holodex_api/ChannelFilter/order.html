@@ -60,6 +60,11 @@
 
 <section class="multi-line-signature">
   
+  <div>
+    <ol class="annotation-list">
+        <li>@<a href="https://pub.dev/documentation/json_annotation/4.8.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: orderToString)</li>
+    </ol>
+  </div>
   <span class="returntype"><a href="../../dart_holodex_api/Order.html">Order</a></span>
   <span class="name ">order</span>
   <div class="features"><span class="feature">inherited</span></div>
@@ -74,7 +79,8 @@
 
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Order get order =&gt; throw _privateConstructorUsedError;</code></pre>
+  <pre class="language-dart"><code class="language-dart">@JsonKey(toJson: orderToString)
+Order get order =&gt; throw _privateConstructorUsedError;</code></pre>
 </section>
 
 </section>

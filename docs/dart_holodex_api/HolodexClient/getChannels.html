@@ -69,12 +69,7 @@
   <p>Get channels</p>
 <p>Arguments:</p>
 <ul>
-<li><code>languages</code> List of languages. Language is a property of Channel, so only Channels satisfying the language will be returned. Leave empty to search for Vtubers and/or all clippers.</li>
-<li><code>limit</code> Results limit</li>
-<li><code>offset</code> Offset results</li>
-<li><code>order</code> Order.ascending or Order.descending order, default ascending.</li>
-<li><code>organization</code> If set, filter for Vtubers belonging to a specific org</li>
-<li><code>channelSort</code> Column to sort on, leave default to use <a href="../../dart_holodex_api/ChannelSort.html">ChannelSort.organization</a> as sort. Theoretically any value in ChannelSort should work</li>
+<li><code>filter</code> Filter the results returns by the API</li>
 </ul>
 </section>
 
@@ -90,32 +85,9 @@
     sort: [ChannelSort.organization],
   ),
 ]) async {
-  final languages =
-      filter.languages.isEmpty ? [Language.all] : filter.languages;
-
-  &#47;&#47; Create the params list
-  final Map&lt;String, dynamic&gt; params = {};
-
-  &#47;&#47; Add the items with default values (they can&#39;t be null)
-  params.addAll({
-    &#39;limit&#39;: &#39;${filter.limit}&#39;,
-    &#39;offset&#39;: &#39;${filter.offset}&#39;,
-    &#39;order&#39;: filter.order.code,
-  });
-
-  _addChannelSort(filter.sort, params);
-
-  &#47;&#47; Add the languages to filter by
-  _addLanguages(languages, params);
-
-  &#47;&#47; Add the organization param
-  _addSingleOrganization(filter.organization, params);
-
-  &#47;&#47; Add the organization param
-  _addChannelType(filter.type, params);
-
-  final response = await get(path: _Constants.channelsPath, params: params);
-
+  final Map&lt;String, dynamic&gt; params = filter.toJson();
+  final response =
+      await getEndpoint(HolodexEndpoint.channels, params: params);
   final List&lt;dynamic&gt; list = jsonDecode(response.body);
 
   return list.map((channel) =&gt; Channel.fromJson(channel)).toList();
@@ -159,18 +131,20 @@
           <li><a href="../../dart_holodex_api/HolodexClient/close.html">close</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/get.html">get</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getChannelFromId.html">getChannelFromId</a></li>
+          <li><a href="../../dart_holodex_api/HolodexClient/getChannelRelatedVideos.html">getChannelRelatedVideos</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getChannels.html">getChannels</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getChannelVideos.html">getChannelVideos</a></li>
+          <li><a href="../../dart_holodex_api/HolodexClient/getEndpoint.html">getEndpoint</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getLiveVideos.html">getLiveVideos</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getLiveVideosFromChannelsQuickly.html">getLiveVideosFromChannelsQuickly</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVideoFromId.html">getVideoFromId</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVideoMetadata.html">getVideoMetadata</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVideos.html">getVideos</a></li>
-          <li><a href="../../dart_holodex_api/HolodexClient/getVideosRelatedToChannel.html">getVideosRelatedToChannel</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVTuberClips.html">getVTuberClips</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVTuberCollabs.html">getVTuberCollabs</a></li>
           <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/post.html">post</a></li>
+          <li><a href="../../dart_holodex_api/HolodexClient/postEndpoint.html">postEndpoint</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/searchComments.html">searchComments</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/searchVideos.html">searchVideos</a></li>
           <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/toString.html">toString</a></li>

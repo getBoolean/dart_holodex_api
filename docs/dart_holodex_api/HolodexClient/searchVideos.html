@@ -90,52 +90,13 @@ Descriptions with "any" implies an <code>OR</code> condition, and "all" implies 
     limit: 25,
   ),
 }) async {
-  final Map&lt;String, dynamic&gt; data = {};
+  final Map&lt;String, dynamic&gt; data = {
+    &#39;conditions&#39;: conditions,
+    ...filter.toJson()
+  };
 
-  data.addAll({
-    &#39;sort&#39;: filter.sort.code,
-    &#39;paginated&#39;: filter.paginated,
-    &#39;offset&#39;: filter.offset,
-    &#39;limit&#39;: filter.limit,
-  });
-
-  if (filter.organizations.isNotEmpty) {
-    data.addAll({
-      &#39;org&#39;: filter.organizations.map((org) =&gt; org.code).toList(),
-    });
-  }
-
-  if (filter.languages.isNotEmpty) {
-    data.addAll({
-      &#39;lang&#39;: filter.languages.map((l) =&gt; l.toLanguageTag()).toList(),
-    });
-  }
-
-  if (filter.searchTargets.isNotEmpty) {
-    data.addAll({
-      &#39;target&#39;: filter.searchTargets.map((target) =&gt; target.code).toList(),
-    });
-  }
-
-  if (conditions.isNotEmpty) {
-    data.addAll({
-      &#39;conditions&#39;: conditions,
-    });
-  }
-
-  if (filter.topics.isNotEmpty) {
-    data.addAll({
-      &#39;topic&#39;: filter.topics,
-    });
-  }
-
-  if (filter.videoChannels.isNotEmpty) {
-    data.addAll({
-      &#39;vch&#39;: filter.videoChannels,
-    });
-  }
-
-  final response = await post(path: _Constants.videoSearch, data: data);
+  final response =
+      await postEndpoint(HolodexEndpoint.videoSearch, data: data);
 
   if (filter.paginated) {
     &#47;&#47; Grab total and return with it
@@ -187,18 +148,20 @@ Descriptions with "any" implies an <code>OR</code> condition, and "all" implies 
           <li><a href="../../dart_holodex_api/HolodexClient/close.html">close</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/get.html">get</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getChannelFromId.html">getChannelFromId</a></li>
+          <li><a href="../../dart_holodex_api/HolodexClient/getChannelRelatedVideos.html">getChannelRelatedVideos</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getChannels.html">getChannels</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getChannelVideos.html">getChannelVideos</a></li>
+          <li><a href="../../dart_holodex_api/HolodexClient/getEndpoint.html">getEndpoint</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getLiveVideos.html">getLiveVideos</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getLiveVideosFromChannelsQuickly.html">getLiveVideosFromChannelsQuickly</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVideoFromId.html">getVideoFromId</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVideoMetadata.html">getVideoMetadata</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVideos.html">getVideos</a></li>
-          <li><a href="../../dart_holodex_api/HolodexClient/getVideosRelatedToChannel.html">getVideosRelatedToChannel</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVTuberClips.html">getVTuberClips</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/getVTuberCollabs.html">getVTuberCollabs</a></li>
           <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/post.html">post</a></li>
+          <li><a href="../../dart_holodex_api/HolodexClient/postEndpoint.html">postEndpoint</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/searchComments.html">searchComments</a></li>
           <li><a href="../../dart_holodex_api/HolodexClient/searchVideos.html">searchVideos</a></li>
           <li class="inherited"><a href="https://api.dart.dev/stable/2.19.0/dart-core/Object/toString.html">toString</a></li>
