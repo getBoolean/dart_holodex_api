@@ -34,8 +34,8 @@ String concatSearchTargetList(List<SearchTarget> list) =>
 
 String? organizationToString(Organization? organization) => organization?.code;
 
-List<String> organizationToStringList(List<Organization> list) =>
     list.map((e) => e.code).toList();
+List<String> organizationListToStringList(List<Organization> list) =>
 
 List<String> searchTargetToStringList(List<SearchTarget> list) =>
     list.map((e) => e.code).toList();

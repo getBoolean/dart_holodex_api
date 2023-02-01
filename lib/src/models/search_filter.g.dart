@@ -13,7 +13,7 @@ Map<String, dynamic> _$$_SearchFilterToJson(_$_SearchFilter instance) =>
       'target': searchTargetToStringList(instance.targets),
       'topic': instance.topics,
       'vch': instance.videoChannels,
-      'org': organizationToStringList(instance.organizations),
+      'org': organizationListToStringList(instance.organizations),
       'paginated': instance.paginated,
       'offset': intToString(instance.offset),
       'limit': intToString(instance.limit),

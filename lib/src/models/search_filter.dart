@@ -43,7 +43,7 @@ class SearchFilter with _$SearchFilter {
 
     /// Videos of channels in any of the specified organizations, or clips that involve a channel
     /// in the specified organization.
-    @JsonKey(name: 'org', toJson: organizationToStringList)
+    @JsonKey(name: 'org', toJson: organizationListToStringList)
     @Default([])
         List<Organization> organizations,
 
