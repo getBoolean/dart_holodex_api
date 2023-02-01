@@ -16,6 +16,12 @@ void main(List<String> arguments) async {
   }
   final HolodexClient holodexClient = HolodexClient(apiKey: apiKey);
 
+  await example(holodexClient);
+
+  holodexClient.close();
+}
+
+Future<void> example(HolodexClient holodexClient) async {
   // Get one video and print it
   final VideoFull video = await holodexClient.getVideoFromId(
     'Gx_GPwpyLxw',
@@ -154,6 +160,4 @@ void main(List<String> arguments) async {
     filter: singingSearchFilter,
   );
   print('Videos with Comment: ${searchComments.items.length}\n');
-
-  holodexClient.close();
 }
