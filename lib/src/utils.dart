@@ -20,22 +20,22 @@ String concatStringList(List<String> list) => list.join(',');
 String? concatIncludesList(List<Includes> items) =>
     items.isEmpty ? null : concatEnumWithCodeList(items);
 
-String concatOrganizationList(List<Organization> list) =>
-    concatEnumWithCodeList(list);
+String? concatVideoSortList(List<VideoSort> list) =>
+    list.isEmpty ? null : concatEnumWithCodeList(list);
 
-String? concatVideoSortList(List<VideoSort> list) => list.isEmpty ? null :
-    concatEnumWithCodeList(list);
-
-String? concatVideoStatusList(List<VideoStatus> list) => list.isEmpty ? null :
-    concatEnumWithCodeList(list);
+String? concatVideoStatusList(List<VideoStatus> list) =>
+    list.isEmpty ? null : concatEnumWithCodeList(list);
 
 String concatSearchTargetList(List<SearchTarget> list) =>
     concatEnumWithCodeList(list);
 
-String? organizationToString(Organization? organization) => organization?.code;
+String concatOrganizationList(List<Organization> list) =>
+    list.map((e) => e.name).join(',');
 
-    list.map((e) => e.code).toList();
+String? organizationToString(Organization? organization) => organization?.name;
+
 List<String> organizationListToStringList(List<Organization> list) =>
+    list.map((e) => e.name).toList();
 
 List<String> searchTargetToStringList(List<SearchTarget> list) =>
     list.map((e) => e.code).toList();
@@ -56,6 +56,16 @@ List<String>? channelSortToStringList(List<ChannelSort> list) =>
 
 String orderToString(Order order) => order.code;
 
-List<String>? nullStringListIfEmpty(List<String> value) => value.isEmpty ? null : value;
+List<String>? nullStringListIfEmpty(List<String> value) =>
+    value.isEmpty ? null : value;
 
 String? videoTypeToString(VideoType? type) => type?.code;
+
+List<String> languageListToStringList(List<Language> languages) =>
+    languages.map((e) => e.toLanguageTag()).toList();
+
+List<Language> stringListToLanguageList(List<String> languages) =>
+    languages.map(Language.fromString).toList();
+
+String concatLanguageList(List<Language> languages) =>
+    languages.map((e) => e.toLanguageTag()).join(',');

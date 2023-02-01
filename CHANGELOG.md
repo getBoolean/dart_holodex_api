@@ -46,6 +46,9 @@ and added `String` field `code`.
 - **Breaking**: Removed `VideoMetadata`, use `VideoFull` instead.
 - **Breaking**: Removed `EnumUtil`.
 - **Breaking**: Removed `all` from `VideoType`.
+- **Breaking**: `Organization` is now a class with static const strings, instead of an enum. This
+    allows for the addition of a factory `other` constructor.
+- **Breaking**: Renamed `Organization.YumeReality` to `YumeLive`.
 
 ## 0.3.1
 

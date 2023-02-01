@@ -1,13 +1,5 @@
+import 'package:dart_holodex_api/src/utils.dart';
 import 'package:intl/locale.dart';
-
-List<String> languageListToStringList(List<Language> languages) =>
-    languages.map((e) => e.toLanguageTag()).toList();
-
-List<Language> stringListToLanguageList(List<String> languages) =>
-    languages.map(Language.fromString).toList();
-
-String concatLanguageList(List<Language> languages) =>
-    languages.map((e) => e.toLanguageTag()).join(',');
 
 extension LanguageValues on List<Language> {
   Language byLocale(Locale locale) => Language.other(locale);
