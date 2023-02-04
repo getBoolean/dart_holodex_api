@@ -18,6 +18,7 @@
 - **Breaking**: Renamed `HolodexClient.getVideosRelatedToChannel` to `getChannelRelatedVideos`.
 - **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `timestampComments` to `includeTimestampComments`.
 - **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `recommendationLanguages` to `languages`.
+- **Breaking**: Renamed `HolodexClient.getVideoFromId` to `getVideoById`.
 - **Breaking**: Renamed `client.dart` to `holodex_client.dart`. Technically a breaking change, but only if
 implementation was imported.
 - **Breaking**: Renamed `Organization.VirtualWitchPhenomenon` to `Organization.KAMITSUBAKI`.
@@ -49,7 +50,6 @@ and added `String` field `code`.
 - **Breaking**: `Organization` is now a class with static const strings, instead of an enum. This
     allows for the addition of a factory `other` constructor.
 - **Breaking**: Renamed `Organization.YumeReality` to `YumeLive`.
-- **Breaking**: Renamed `HolodexClient.getVideoFromId` to `getVideoById`.
 
 ## 0.3.1
 
