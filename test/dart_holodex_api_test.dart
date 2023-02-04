@@ -16,6 +16,9 @@ void main() {
   setUp(() {
     client = setUpHolodexClient();
   });
+  tearDown(() {
+    client.close();
+  });
 
   group('Test API Key', () {
     setUp(() {});
