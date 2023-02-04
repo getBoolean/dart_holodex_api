@@ -23,7 +23,7 @@ void main(List<String> arguments) async {
 
 Future<void> example(HolodexClient holodexClient) async {
   // Get one video and print it
-  final VideoFull video = await holodexClient.getVideoFromId(
+  final VideoFull video = await holodexClient.getVideoById(
     'Gx_GPwpyLxw',
     includes: [
       Includes.channelStats,

@@ -49,6 +49,7 @@ and added `String` field `code`.
 - **Breaking**: `Organization` is now a class with static const strings, instead of an enum. This
     allows for the addition of a factory `other` constructor.
 - **Breaking**: Renamed `Organization.YumeReality` to `YumeLive`.
+- **Breaking**: Renamed `HolodexClient.getVideoFromId` to `getVideoById`.
 
 ## 0.3.1
 

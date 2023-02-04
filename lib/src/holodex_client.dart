@@ -55,7 +55,7 @@ class HolodexClient {
   ///
   /// - `videoId` The video ID as a string
   /// - `includes` Request extra data be included in the results. They are not guarenteed to be returned.
-  Future<VideoFull> getVideoFromId(
+  Future<VideoFull> getVideoById(
     String videoId, {
     List<Includes> includes = const [],
   }) async {

@@ -15,7 +15,7 @@ void main() {
       // Setup
 
       // Test
-      final video = await client.getVideoFromId('Gx_GPwpyLxw');
+      final video = await client.getVideoById('Gx_GPwpyLxw');
 
       // Expect
       expectVideoDetails(video);
@@ -38,7 +38,7 @@ void main() {
       expect(video.total, isNotNull,
           reason: 'Total should be included if paginated');
     });
-    
+
     test('Getting videos not paginated', () async {
       // Setup
       final filter = VideoFilter(
