@@ -79,7 +79,7 @@ Future<void> example(HolodexClient holodexClient) async {
   print('Live videos: ${liveVideos.items.length}\n');
 
   final ceresFauna =
-      await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');
+      await holodexClient.getChannelById('UCO_aKKYxn4tvrqPjcTzZ6EQ');
   print('Requested Channel Name: ${ceresFauna.name}\n');
 
   final channelFilter = const ChannelFilter(

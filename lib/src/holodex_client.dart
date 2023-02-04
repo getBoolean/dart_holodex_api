@@ -131,7 +131,7 @@ class HolodexClient {
   /// Arguments:
   ///
   /// - `channelId` ID of the Youtube Channel that is being queried
-  Future<Channel> getChannelFromId(String channelId) async {
+  Future<Channel> getChannelById(String channelId) async {
     final Response response =
         await get(path: '${HolodexEndpoint.channels}/$channelId');
 

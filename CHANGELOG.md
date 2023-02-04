@@ -19,6 +19,7 @@
 - **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `timestampComments` to `includeTimestampComments`.
 - **Breaking**: Renamed `HolodexClient.getVideoMetadata` parameter `recommendationLanguages` to `languages`.
 - **Breaking**: Renamed `HolodexClient.getVideoFromId` to `getVideoById`.
+- **Breaking**: Renamed `HolodexClient.getChannelFromId` to `getChannelById`.
 - **Breaking**: Renamed `client.dart` to `holodex_client.dart`. Technically a breaking change, but only if
 implementation was imported.
 - **Breaking**: Renamed `Organization.VirtualWitchPhenomenon` to `Organization.KAMITSUBAKI`.
