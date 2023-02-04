@@ -2,7 +2,9 @@ import 'package:dart_holodex_api/dart_holodex_api.dart';
 import 'package:dotenv/dotenv.dart';
 import 'package:test/test.dart';
 
-HolodexClient setUpHolodexClient() {
+HolodexClient setUpHolodexClient({
+  String basePath = 'https://holodex.net/api/v2',
+}) {
   // Load the environment variables into memory
   // I recommend using envify for a production app, this way is just simpler for an example app
   load();
@@ -21,7 +23,7 @@ HolodexClient setUpHolodexClient() {
     throw Exception('API key not provided, can not run tests');
   }
 
-  return HolodexClient(apiKey: apiKey);
+  return HolodexClient(apiKey: apiKey, basePath: basePath);
 }
 
 void expectVideoDetails(VideoFull video) {
