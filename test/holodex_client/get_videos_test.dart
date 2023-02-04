@@ -10,7 +10,7 @@ void main() {
   });
   tearDown(() => client.close());
 
-  group('HolodexClient.getVideoFromId', () {
+  group('HolodexClient.getVideoById', () {
     test('Getting a single video "Gx_GPwpyLxw"', () async {
       // Setup
 
