@@ -127,12 +127,12 @@ Future<void> example(HolodexClient holodexClient) async {
     includeTimestampComments: true,
     filterRecommendationLanguages: [Language.all],
   );
-  final List<Comment>? timestampComments = shionSingingStream.comments;
-  final List<Video>? recommendations = shionSingingStream.recommendations;
+  final List<Comment> timestampComments = shionSingingStream.comments;
+  final List<Video> recommendations = shionSingingStream.recommendations;
 
   print('Songs: ${shionSingingStream.songcount}');
-  print('Video Comments With Timestamps: ${timestampComments?.length}');
-  print('Video Recommendations: ${recommendations?.length}\n');
+  print('Video Comments With Timestamps: ${timestampComments.length}');
+  print('Video Recommendations: ${recommendations.length}\n');
 
   final singingSearchFilter = SearchFilter(
     sort: SearchSort.newest,
