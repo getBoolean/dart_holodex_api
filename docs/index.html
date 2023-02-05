@@ -98,154 +98,107 @@ and the Flutter guide for
 <h2 id="usage">Usage</h2>
 <p><a href="https://github.com/getBoolean/dart_holodex_api/blob/main/example/lib/example.dart">Full example</a>.</p>
 <p>Get an instance of HolodexClient with your API key</p>
-<pre class="language-dart"><code class="language-dart">final HolodexClient holodexClient = HolodexClient(apiKey: apiKey);
+<pre class="language-dart"><code class="language-dart">final holodexClient = HolodexClient(apiKey: apiKey);
 </code></pre>
-<p>Remember to close the client when you are done with it. This closes the client and cleans up any resources associated with it.</p>
-<p>It's important to close the client when it's done being used; failing to do so can cause the Dart process to hang.</p>
+<p>Remember to close the client when you are done with it, this closes the internal http client.
+Failing to close it can cause the Dart process to hang.</p>
 <pre class="language-dart"><code class="language-dart">holodexClient.close();
 </code></pre>
 <h3 id="get-a-video-by-its-id">Get a video by its ID</h3>
-<p>Returns <code>VideoFull</code></p>
+<p>Get a video by its video ID, alias of <code>getVideos</code></p>
 <p>Arguments:</p>
 <ul>
 <li><code>videoId</code> The video ID as a string</li>
 <li><code>includes</code> Request extra data be included in the results. They are not guarenteed to be returned.</li>
 </ul>
 <pre class="language-dart"><code class="language-dart">// Get one video and print it
-final VideoFull video = await holodexClient.getVideoFromId(
-    'Gx_GPwpyLxw',
-    includes: &lt;Includes&gt;[
-        Includes.channelStats,
-        Includes.clips,
-        Includes.description,
-        Includes.liveInfo,
-        Includes.mentions,
-        Includes.refers,
-        Includes.simulcasts,
-        Includes.songs,
-        Includes.sources,
-    ],
+final VideoFull video = await holodexClient.getVideoById(
+  'Gx_GPwpyLxw',
+  includes: [
+    Includes.channelStats,
+    Includes.clips,
+    // Includes.description,
+    Includes.liveInfo,
+    Includes.mentions,
+    Includes.refers,
+    Includes.simulcasts,
+    Includes.songs,
+    Includes.sources,
+  ],
 );
-print(video.toString());
+print('Requested Video: ${video.toString()}');
 </code></pre>
 <h3 id="get-a-list-of-videos">Get a list of videos</h3>
-<p>Returns <code>PaginatedResult&lt;VideoFull&gt;</code></p>
 <p>Arguments:</p>
 <ul>
-<li><code>channelId</code> Filter by video uploader channel ID</li>
-<li><code>includes</code> Request extra data be included in the results. They are not guarenteed to be returned.</li>
-<li><code>lang</code> Filter by the <code>Language</code></li>
-<li><code>limit</code> Limit the number of results returned. Maximum value of 50</li>
-<li><code>maxUpcomingHours</code> Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)</li>
-<li><code>mentionedChannelId</code> Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel</li>
-<li><code>offset</code> Receive results starting at this number in the array from the Holodex API</li>
-<li><code>order</code> Order results by ascending or descending</li>
-<li><code>organization</code> Filter by clips that feature the org's talent or videos posted by the org's talent.</li>
-<li><code>paginated</code> If paginated is set to true, returns <code>PaginatedResult&lt;VideoFull&gt;</code> with total, otherwise returns <code>PaginatedResult&lt;VideoFull&gt;</code> without the total.</li>
-<li><code>sort</code> Sort the returned data by this field</li>
-<li><code>status</code> Filter by the video status</li>
-<li><code>topic</code> Filter by video topic ID</li>
-<li><code>type</code> Filter by type of video, either clips or streams</li>
+<li><code>filter</code> Filter the results returns by the Holodex API <code>/videos</code> endpoint</li>
 </ul>
 <pre class="language-dart"><code class="language-dart">// Get a bunch of videos and print them
-final PaginatedResult&lt;VideoFull&gt; videoList = await holodexClient.getVideos(
-    channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
-    includes: &lt;Includes&gt;[
-        Includes.channelStats,
-        Includes.clips,
-        Includes.description,
-        Includes.liveInfo,
-        Includes.mentions,
-        Includes.refers,
-        Includes.simulcasts,
-        Includes.songs,
-        Includes.sources,
-    ],
-    lang: &lt;Language&gt;[Language.all],
-    limit: 25,
-    maxUpcomingHours: 1000,
-    mentionedChannelId: 'UCDqI2jOz0weumE8s7paEk6g', // Roboco
-    offset: 0,
-    order: Order.descending,
-    organization: Organization.Hololive,
-    paginated: true,
-    sort: &lt;VideoSort&gt;[VideoSort.availableAt],
-    status: &lt;VideoStatus&gt;[VideoStatus.past],
-    // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
-    // topic: 'minecraft',
-    type: VideoType.clip
+final videoFilter = VideoFilter(
+  // channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
+  includes: &lt;Includes&gt;[
+    Includes.channelStats,
+    Includes.clips,
+    // Includes.description,
+    Includes.liveInfo,
+    Includes.mentions,
+    Includes.refers,
+    Includes.simulcasts,
+    Includes.songs,
+    Includes.sources,
+  ],
+  languages: &lt;Language&gt;[Language.all],
+  limit: 50,
+  maxUpcomingHours: 1000,
+  // mentionedChannelId: 'UCDqI2jOz0weumE8s7paEk6g', // Roboco
+  offset: 50,
+  order: Order.descending,
+  // organization: Organization.Hololive,
+  paginated: true,
+  sort: &lt;VideoSort&gt;[VideoSort.availableAt],
+  status: &lt;VideoStatus&gt;[VideoStatus.past],
+  // Videos of type VideoType.clip cannot not have topic. Streams may or may not have topic.
+  // topicId: 'singing',
+  // type: VideoType.stream,
 );
-print(videoList.toString());
+
+final PaginatedVideos videoList = await holodexClient.getVideos(videoFilter);
+print('Videos: ${videoList.items.length}');
+print('Total Videos: ${videoList.total}');
 </code></pre>
 <h3 id="get-a-list-of-live-videos">Get a list of live videos</h3>
-<p>Returns <code>PaginatedResult&lt;VideoFull&gt;</code></p>
-<p>This is somewhat similar to calling listVideos().</p>
-<p>However, this endpoint imposes these default values on the query parameters: You can choose to override them by providing your own values.</p>
-<pre class="language-dart"><code class="language-dart">status: [VideoStatus.live, VideoStatus.upcoming],
-type: VideoType.stream,
-sort: [VideoSort.availableAt],
-order: Order.ascending,
-max_upcoming_hours: 48,
-limit: 9999,
-include: [Includes.liveInfo] + query's include
-</code></pre>
-<p>Arguments:</p>
-<ul>
-<li><code>channelId</code> Filter by video uploader channel ID</li>
-<li><code>includes</code> Request extra data be included in the results. They are not guarenteed to be returned.</li>
-<li><code>lang</code> Filter by the <code>Language</code></li>
-<li><code>limit</code> Limit the number of results returned.</li>
-<li><code>maxUpcomingHours</code> Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)</li>
-<li><code>mentionedChannelId</code> Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel</li>
-<li><code>offset</code> Receive results starting at this number in the array from the Holodex API</li>
-<li><code>order</code> Order by ascending or descending</li>
-<li><code>organization</code> Filter by clips that feature the org's talent or videos posted by the org's talent.</li>
-<li><code>paginated</code> If paginated is set to true, returns <code>PaginatedResult&lt;VideoFull&gt;</code> with total, otherwise returns <code>PaginatedResult&lt;VideoFull&gt;</code> without the total.</li>
-<li><code>sort</code> Sort the returned data by this field</li>
-<li><code>status</code> Filter by the video status</li>
-<li><code>topic</code> Filter by video topic ID</li>
-<li><code>type</code> Filter by type of video, either clips or streams</li>
-</ul>
-<pre class="language-dart"><code class="language-dart">final PaginatedResult&lt;VideoFull&gt; liveVideos = await holodexClient.getLiveVideos(
-    includes: [
-      Includes.channelStats
-    ]
-);
-print(liveVideos.toString());
+<p>This is somewhat similar to calling <code>getVideos</code>, except this endpoint imposes default values on the query parameters. You can choose to override them by providing your own values.</p>
+<pre class="language-dart"><code class="language-dart">final liveVideoFilter = VideoFilter(includes: [Includes.channelStats]);
+final PaginatedVideos liveVideos = await holodexClient.getLiveVideos(liveVideoFilter);
+print('Live videos: ${liveVideos.items.length}\n');
 </code></pre>
 <h3 id="get-a-channel-by-its-id">Get a channel by its ID</h3>
 <p>Returns <code>Channel</code></p>
 <p>Arguments:</p>
 <ul>
-<li><code>channelId</code> ID of the Youtube Channel that is being queried</li>
+<li><code>filter</code> Filter the results returns by the API</li>
 </ul>
-<pre class="language-dart"><code class="language-dart">final Channel ceresFauna = await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');
-print(ceresFauna.toString());
+<pre class="language-dart"><code class="language-dart">final Channel ceresFauna = await holodexClient.getChannelById('UCO_aKKYxn4tvrqPjcTzZ6EQ');
+print('Requested Channel Name: ${ceresFauna.name}\n');
 </code></pre>
 <h3 id="get-a-list-of-channels">Get a list of channels</h3>
 <p>Arguments:</p>
 <ul>
-<li><code>lang</code> List of languages. Language is a property of Channel, so only Channels satisfying the language will be returned. Leave empty to search for Vtubers and/or all clippers.</li>
-<li><code>limit</code> Results limit</li>
-<li><code>offset</code> Offset results</li>
-<li><code>order</code> Order.ascending or Order.descending order, default ascending.</li>
-<li><code>organization</code> If set, filter for Vtubers belonging to a specific org</li>
-<li><code>sort</code> Column to sort on, leave default to use <a href="dart_holodex_api/ChannelSort.html">ChannelSort.organization</a> as sort. Theoretically any value in ChannelSort should work</li>
+<li><code>filter</code> Filter the results returns by the API</li>
 </ul>
-<pre class="language-dart"><code class="language-dart">final List&lt;Channel&gt; channels = await holodexClient.getChannels(
-    limit: 25,
-    offset: 0,
-    order: Order.ascending,
-    organization: Organization.AtelierLive,
-    sort: [ChannelSort.organization]
+<pre class="language-dart"><code class="language-dart">final channelFilter = const ChannelFilter(
+  limit: 25,
+  offset: 0,
+  order: Order.ascending,
+  organization: Organization.AtelierLive,
+  sort: [ChannelSort.organization],
 );
-print(channels.toString());
+final List&lt;Channel&gt; channels = await holodexClient.getChannels(channelFilter);
+print('Atelier Live Channels: ${channels.length}\n');
 </code></pre>
 <h3 id="quickly-access-live--upcoming-for-a-set-of-channels">Quickly Access Live / Upcoming for a set of Channels</h3>
-<p>This endpoint is similar to the getLiveVideos() method and usually replies much faster.
-It is more friendly in general. The cost to execute a lookup is significantly cheaper.
-It's unfortunately less customizable as a result.</p>
-<p>We recommend using this if you have a fixed set of channel IDs to look up status for.</p>
+<p>This endpoint is similar to the <code>getLiveVideos</code> method and usually replies much faster. It is more friendly in general. The cost to execute a lookup is significantly cheaper. It's unfortunately less customizable as a result.</p>
+<p>Holodex recommends using this if you have a fixed set of channel IDs to look up status for.</p>
 <p>Arguments:</p>
 <ul>
 <li><code>channelIds</code> List of channel IDs to get the live videos from.</li>
@@ -255,20 +208,15 @@ It's unfortunately less customizable as a result.</p>
     'UCZlDXzGoo7d44bwdNObFacg', // Kanata
     'UCqm3BQLlJfvkTsX_hvm0UmA' // Watame
 ]);
-print('Requested Live Videos From Channels: ${quickLiveVideos.length}');
+print('Requested Live Videos From Channels: ${quickLiveVideos.length}\n');
 </code></pre>
 <h3 id="get-videos-related-to-channel">Get Videos Related To Channel</h3>
-<p>A simplified method for access channel specific data.
-If you want more customization, the same result can be obtained by calling the queryVideos() method.</p>
+<p>A simplified method for access channel specific data. If you want more customization, the same result can be obtained by calling the <code>getVideos</code> method.</p>
 <p>Arguments</p>
 <ul>
 <li><code>channelId</code> ID of the Youtube Channel that is being queried</li>
-<li><code>type</code> The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the <code>channelId</code> channel's uploads, and collabs finds videos uploaded by other channels that mention this <code>channelId</code></li>
-<li><code>includes</code> Request extra data be included in the results. They are not guarenteed to be returned.</li>
-<li><code>lang</code> List of Language enum to filter channels/clips. Official streams do not follow this parameter</li>
-<li><code>limit</code> Result limit. Max of 50.</li>
-<li><code>offset</code> Offset results</li>
-<li><code>paginated</code> If paginated is set to true, returns <code>PaginatedResult&lt;VideoFull&gt;</code> with total, otherwise returns <code>PaginatedResult&lt;VideoFull&gt;</code> without the total.</li>
+<li><code>type</code> The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the <code>channelId</code> channel's uploads, and collabs finds videos uploaded by other channels that mention the <code>channelId</code></li>
+<li><code>filter</code> Filter the results returns by the API</li>
 </ul>
 <pre class="language-dart"><code class="language-dart">final PaginatedResult&lt;VideoFull&gt; matsuriClips = await holodexClient.getVideosRelatedToChannel(
     'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
@@ -278,129 +226,116 @@ print('Clips including Matsuri: ${matsuriClips.total}');
 print('Returned clips including Matsuri: ${matsuriClips.videos.length}');
 </code></pre>
 <h3 id="get-clips-of-a-vtuber">Get Clips of a VTuber</h3>
-<p>Alias of getVideosRelatedToChannel()</p>
-<p>Returns <code>PaginatedResult&lt;VideoFull&gt;</code></p>
-<p>Arguments</p>
+<p>Alias of <code>getChannelRelatedVideos</code></p>
+<p>Arguments:</p>
 <ul>
 <li><code>channelId</code> ID of the Youtube Channel that is being queried</li>
-<li><code>includes</code> Request extra data be included in the results. They are not guarenteed to be returned.</li>
-<li><code>lang</code> List of Language enum to filter channels/clips. Official streams do not follow this parameter</li>
-<li><code>limit</code> Result limit. Max of 50.</li>
-<li><code>offset</code> Offset results</li>
-<li><code>paginated</code> If paginated is set to true, returns <code>PaginatedResult&lt;VideoFull&gt;</code> with total, otherwise returns <code>PaginatedResult&lt;VideoFull&gt;</code> without the total.</li>
+<li><code>filter</code> Filter the results returns by the API</li>
 </ul>
-<pre class="language-dart"><code class="language-dart">final PaginatedResult&lt;VideoFull&gt; matsuriClips = await holodexClient.getVTuberClips('UCQ0UDLQCjY0rmuxCDE38FGg');
-print('Clips including Matsuri: ${matsuriClips.total}');
-print('Returned clips including Matsuri: ${matsuriClips.items.length}\n');
+<pre class="language-dart"><code class="language-dart">final PaginatedVideos matsuriClips2 = await holodexClient.getVTuberClips(
+    'UCQ0UDLQCjY0rmuxCDE38FGg', // Matsuri
+);
+print('Clips including Matsuri: ${matsuriClips2.total}');
+print('Returned clips including Matsuri: ${matsuriClips2.items.length}\n');
 </code></pre>
 <h3 id="get-collabs-that-mention-a-vtuber">Get Collabs that mention a VTuber</h3>
-<p>Alias of getVideosRelatedToChannel()</p>
-<p>Arguments</p>
+<p>Alias of <code>getChannelRelatedVideos</code></p>
+<p>Arguments:</p>
 <ul>
 <li><code>channelId</code> ID of the Youtube Channel that is being queried</li>
-<li><code>includes</code> Request extra data be included in the results. They are not guarenteed to be returned.</li>
-<li><code>lang</code> List of Language enum to filter channels/clips. Official streams do not follow this parameter</li>
-<li><code>limit</code> Result limit. Max of 50.</li>
-<li><code>offset</code> Offset results</li>
-<li><code>paginated</code> If paginated is set to any non-empty value, returns <code>PaginatedResult&lt;VideoFull&gt;</code> with total, otherwise returns <code>PaginatedResult&lt;VideoFull&gt;</code> without the total.</li>
+<li><code>filter</code> Filter the results returns by the API</li>
 </ul>
-<pre class="language-dart"><code class="language-dart">final PaginatedResult&lt;VideoFull&gt; matsuriCollabs = await holodexClient.getVTuberCollabs('UCQ0UDLQCjY0rmuxCDE38FGg');
+<pre class="language-dart"><code class="language-dart">final PaginatedVideos matsuriCollabs = await holodexClient.getVTuberCollabs('UCQ0UDLQCjY0rmuxCDE38FGg');
 print('Collabs including Matsuri: ${matsuriCollabs.total}');
 print('Returned collabs including Matsuri: ${matsuriCollabs.items.length}\n');
 </code></pre>
 <h3 id="get-videos-from-channel">Get Videos From Channel</h3>
-<p>Alias of getVideosRelatedToChannel()</p>
-<p>Returns <code>PaginatedResult&lt;VideoFull&gt;</code></p>
-<p>Arguments</p>
+<p>Alias of <code>getChannelRelatedVideos</code></p>
+<p>Arguments:</p>
 <ul>
 <li><code>channelId</code> ID of the Youtube Channel that is being queried</li>
-<li><code>includes</code> Request extra data be included in the results. They are not guarenteed to be returned.</li>
-<li><code>lang</code> List of Language enum to filter channels/clips. Official streams do not follow this parameter</li>
-<li><code>limit</code> Result limit. Max of 50.</li>
-<li><code>offset</code> Offset results</li>
-<li><code>paginated</code> If paginated is set to true, returns <code>PaginatedResult&lt;VideoFull&gt;</code> with total, otherwise returns <code>PaginatedResult&lt;VideoFull&gt;</code> without the total.</li>
+<li><code>filter</code> Filter the results returns by the API</li>
 </ul>
-<pre class="language-dart"><code class="language-dart">final PaginatedResult&lt;VideoFull&gt; matsuriUploads = await holodexClient.getChannelVideos('UCQ0UDLQCjY0rmuxCDE38FGg');
+<pre class="language-dart"><code class="language-dart">final PaginatedVideos matsuriUploads = await holodexClient.getChannelVideos('UCQ0UDLQCjY0rmuxCDE38FGg');
 print('Total Matsuri uploads: ${matsuriUploads.total}');
 print('Returned uploads: ${matsuriUploads.items.length}\n');
 </code></pre>
 <h3 id="get-a-single-videos-metadata">Get a single Video's metadata</h3>
-<p>Retrieves Comments if <code>timestampComments</code> is set to true</p>
-<p>Retrieves Recommendations if query parameter <code>recommendationLanguages</code> is set</p>
-<pre class="language-dart"><code class="language-dart">final VideoMetadata videoMetadata = await holodexClient.getVideoMetadata(
-    'eJJuy5rY57w', // Shion's singing stream
-    timestampComments: true,
-    recommendationLanguages: [Language.all],
+<p>Retrieves a video, optionally with comments and recommended videos.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>videoId</code> ID of the video</li>
+<li><code>includeTimestampComments</code> If set to <code>true</code>, comments with timestamps will be returned</li>
+<li><code>filterRecommendationLanguages</code> Retrieves recommended videos if not empty. This is a list of language codes to filter channels/clips, official streams do not follow this parameter.</li>
+</ul>
+<pre class="language-dart"><code class="language-dart">final VideoFull shionSingingStream = await holodexClient.getVideoMetadata(
+  'eJJuy5rY57w', // Shion's singing stream
+  includeTimestampComments: true,
+  filterRecommendationLanguages: [Language.all],
 );
-final VideoFull shionSingingStream = videoMetadata.video;
-final List&lt;Comment&gt;? timestampComments = videoMetadata.comments;
-final List&lt;Video&gt;? recommendations = videoMetadata.recommendations;
+final List&lt;Comment&gt; timestampComments = shionSingingStream.comments;
+final List&lt;Video&gt; recommendations = shionSingingStream.recommendations;
 
 print('Songs: ${shionSingingStream.songcount}');
-print('Video Comments With Timestamps: ${timestampComments?.length}');
-print('Video Recommendations: ${recommendations?.length}');
+print('Video Comments With Timestamps: ${timestampComments.length}');
+print('Video Recommendations: ${recommendations.length}\n');
 </code></pre>
 <h3 id="search-for-videos">Search For Videos</h3>
-<p>Flexible endpoint to search for videos fufilling multiple conditions.</p>
-<p>Descriptions with "any" implies an OR condition, and "all" implies a AND condition.</p>
-<p>Searching for topics and clips is not supported, because clips do not contain topics</p>
-<p>Arguments</p>
+<p>Flexible endpoint to search for videos fulfilling multiple conditions.
+Descriptions with "any" implies an <code>OR</code> condition, and "all" implies an <code>AND</code> condition. Note that searching for topics and clips is not supported, because clips do not contain topics.</p>
+<p>Arguments:</p>
 <ul>
-<li><code>searchSort</code> Sort by newest or oldest</li>
-<li><code>languages</code> If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)</li>
-<li><code>searchTargets</code> Target types of videos</li>
-<li><code>conditions</code> Match all of the items. &gt; For each item: Text to look for text in video title or description</li>
-<li><code>topics</code> Return videos that match one of the provided topics</li>
-<li><code>vch</code> Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.</li>
-<li><code>organizations</code> Videos of channels in any of the specified organizations, or clips that involve a channel in the specified organization.</li>
-<li><code>paginated</code> If paginated is set to true, returns <code>PaginatedResult&lt;VideoFull&gt;</code> with total, otherwise returns <code>PaginatedResult&lt;VideoFull&gt;</code> without the total.</li>
-<li><code>offset</code> Offset results</li>
-<li><code>limit</code> Result limit</li>
+<li><code>conditions</code> Match all of the items. -&gt; For each item: look for the text in video title or description</li>
+<li><code>filter</code> Filter video results from the API</li>
 </ul>
-<pre class="language-dart"><code class="language-dart">final PaginatedResult&lt;VideoFull&gt; searchVideos = await holodexClient.searchVideos(
-    searchSort: SearchSort.newest,
-    languages: [Language.all],
-    searchTargets: [SearchTarget.clip, SearchTarget.stream],
-    conditions: ['karaoke'],
-    topics: ['singing'],
-    vch: &lt;String&gt;[],
-    organizations: [Organization.Hololive],
-    paginated: true,
-    offset: 0,
-    limit: 25,
+<pre class="language-dart"><code class="language-dart">final singingSearchFilter = SearchFilter(
+  sort: SearchSort.newest,
+  languages: [Language.all],
+  targets: [SearchTarget.clip, SearchTarget.stream],
+  topics: ['singing'],
+  videoChannels: &lt;String&gt;[],
+  organizations: [
+    Organization.Hololive,
+    Organization.Nijisanji,
+  ],
+  paginated: true,
+  offset: 0,
+  limit: 25,
+);
+
+final PaginatedVideos searchVideos = await holodexClient.searchVideos(
+  conditions: ['karaoke'],
+  filter: singingSearchFilter,
 );
 print('Videos Found: ${searchVideos.items.length}\n');
 </code></pre>
 <h3 id="search-for-videos-with-a-comment">Search For Videos With a Comment</h3>
-<p>Flexible endpoint to search for comments in videos fufilling multiple conditions.</p>
-<p>Descriptions with "any" implies an OR condition, and "all" implies a AND condition.</p>
-<p>Searching for topics and clips is not supported, because clips do not contain topics</p>
-<p>Arguments</p>
+<p>Flexible endpoint to search for comments in videos fulfilling multiple conditions. Descriptions with "any" implies an <code>OR</code> condition, and "all" implies an <code>AND</code> condition. Note that searching for topics and clips is not supported, because clips do not contain topics.</p>
+<p>Arguments:</p>
 <ul>
-<li><code>searchSort</code> Sort by newest or oldest</li>
-<li><code>languages</code> If set, will filter clips to only show clips with these languages + all vtuber streams (provided searchTargets is not set to filter out streams)</li>
-<li><code>searchTargets</code> Target types of videos</li>
 <li><code>comment</code> Find videos with comments containing specified string (case insensitive)</li>
-<li><code>topics</code> Return videos that match one of the provided topics</li>
-<li><code>vch</code> Videos with all of the specified channel ids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.</li>
-<li><code>organizations</code> Videos of channels in any of the specified organizations, or clips that involve a channel in the specified organization.</li>
-<li><code>paginated</code> If paginated is set to true, returns <code>PaginatedResult&lt;VideoWithComments&gt;</code> with total, otherwise returns <code>PaginatedResult&lt;VideoWithComments&gt;</code> without the total.</li>
-<li><code>offset</code> Offset results</li>
-<li><code>limit</code> Result limit</li>
+<li><code>filter</code> Filter video results from the API</li>
 </ul>
-<pre class="language-dart"><code class="language-dart">final PaginatedResult&lt;VideoWithComments&gt; searchComments = await holodexClient.searchComments(
-    searchSort: SearchSort.newest,
-    languages: [Language.all],
-    searchTargets: [SearchTarget.clip, SearchTarget.stream],
-    comment: 'shion',
-    topics: ['singing'],
-    vch: &lt;String&gt;[],
-    organizations: [Organization.Hololive],
-    paginated: true,
-    offset: 0,
-    limit: 25,
+<pre class="language-dart"><code class="language-dart">final singingSearchFilter = SearchFilter(
+  sort: SearchSort.newest,
+  languages: [Language.all],
+  targets: [SearchTarget.clip, SearchTarget.stream],
+  topics: ['singing'],
+  videoChannels: &lt;String&gt;[],
+  organizations: [
+    Organization.Hololive,
+    Organization.Nijisanji,
+  ],
+  paginated: true,
+  offset: 0,
+  limit: 25,
 );
-print('Videos with Comment: ${searchComments.videos.length}\n');
+
+final PaginatedVideos searchComments = await holodexClient.searchComments(
+  comment: 'shion',
+  filter: singingSearchFilter,
+);
+print('Videos with Comment: ${searchComments.items.length}\n');
 </code></pre>
 <h2 id="testing-with-coverage">Testing with Coverage</h2>
 <p>Generating code coverage:</p>
