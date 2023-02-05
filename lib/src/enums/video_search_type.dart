@@ -14,5 +14,7 @@ enum VideoSearchType with EnumWithCode {
   /// The code used by Holodex
   @override
   String get code => name;
+
+  /// Returns a [VideoSearchType] from a [code].
   const VideoSearchType();
 }

@@ -16,21 +16,25 @@ int? _parseTotal(dynamic value) {
   return null;
 }
 
+/// A paginated list of [VideoFull]s.
 @freezed
 class PaginatedVideos with _$PaginatedVideos {
   const PaginatedVideos._();
 
+  /// Creates a paginated list of [VideoFull]s.
   const factory PaginatedVideos({
     @JsonKey(fromJson: _parseTotal) int? total,
     @Default([]) List<VideoFull> items,
     @Default(false) bool paginated,
   }) = _PaginatedVideos;
 
+  /// Creates a paginated list of [VideoFull]s from a JSON object.
   factory PaginatedVideos.fromJson(
     Map<String, dynamic> json,
   ) =>
       _$PaginatedVideosFromJson(json);
 
+  /// Creates a paginated list of [VideoFull]s from a JSON string.
   factory PaginatedVideos.fromString(
     String json,
   ) =>

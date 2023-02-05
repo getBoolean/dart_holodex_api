@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'channel_min.freezed.dart';
 part 'channel_min.g.dart';
 
+/// A [ChannelMin] class with information retrieved from Holodex.
 @freezed
 class ChannelMin with _$ChannelMin {
   const ChannelMin._();
@@ -23,6 +24,7 @@ class ChannelMin with _$ChannelMin {
     @JsonKey(name: 'clip_count') int? clipCount,
   }) = _ChannelMin;
 
+  /// Returns a new [ChannelMin] instance from a JSON object.
   factory ChannelMin.fromJson(Map<String, dynamic> json) =>
       _$ChannelMinFromJson(json);
 

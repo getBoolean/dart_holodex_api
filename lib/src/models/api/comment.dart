@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'comment.freezed.dart';
 part 'comment.g.dart';
 
+/// A [Comment] class with information retrieved from Holodex.
 @freezed
 class Comment with _$Comment {
   /// Returns a new [Comment] instance.
@@ -12,6 +13,7 @@ class Comment with _$Comment {
     @Default('') String message,
   }) = _Comment;
 
+  /// Returns a new [Comment] instance from a JSON map.
   factory Comment.fromJson(Map<String, dynamic> json) =>
       _$CommentFromJson(json);
 }

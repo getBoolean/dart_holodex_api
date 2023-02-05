@@ -52,8 +52,10 @@ class Video with _$Video {
     @JsonKey(name: 'lang') String? language,
   }) = _Video;
 
+  /// Returns a new [Video] instance from a JSON object.
   factory Video.fromJson(Map<String, dynamic> json) => _$VideoFromJson(json);
 
+  /// Converts this [Video] instance to a [VideoFull] instance.
   VideoFull toVideoFull() => VideoFull(
         id: id,
         title: title,

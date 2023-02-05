@@ -1,15 +1,20 @@
+/// Method to convert enums that have a code to string
 String enumWithCodeToString<T extends EnumWithCode>(T item) {
   return item.code;
 }
 
+/// Concatenates the codes of the given [items] with a comma.
 String concatEnumWithCodeList<T extends EnumWithCode>(List<T> items) {
   return items.map((e) => e.code).join(',');
 }
 
+/// Mixin for enums that have a code.
 mixin EnumWithCode {
+  /// The code of this enum value.
   String get code;
 }
 
+/// Extension methods for enums that have a code.
 extension EnumByCode<T extends EnumWithCode> on List<T> {
   /// Finds the enum value in this list with code [code].
   ///
@@ -23,5 +28,6 @@ extension EnumByCode<T extends EnumWithCode> on List<T> {
     return null;
   }
 
+  /// Returns a string with the codes of the given [items] separated by a comma.
   String get concat => concatEnumWithCodeList(this);
 }

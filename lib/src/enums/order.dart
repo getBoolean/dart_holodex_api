@@ -11,6 +11,8 @@ enum Order with EnumWithCode {
   /// The order code used by Holodex
   @override
   final String code;
+
+  /// Creates a new [Order]
   const Order(this.code);
 
   @override

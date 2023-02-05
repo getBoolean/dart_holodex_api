@@ -32,5 +32,7 @@ enum Includes with EnumWithCode {
   /// The code used by Holodex
   @override
   final String code;
+
+  /// Creates a new [Includes] enum.
   const Includes(this.code);
 }

@@ -53,6 +53,8 @@ linter:
     # public_member_api_docs: true
     slash_for_doc_comments: true
 
+    public_member_api_docs: true
+
 analyzer:
   errors:
     invalid_annotation_target: ignore

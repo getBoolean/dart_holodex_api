@@ -72,9 +72,11 @@ class VideoFull with _$VideoFull {
         List<Video> sameSourceClips,
   }) = _VideoFull;
 
+  /// Returns a new [VideoFull] instance from a JSON map.
   factory VideoFull.fromJson(Map<String, dynamic> json) =>
       _$VideoFullFromJson(json);
 
+  /// Converts this [VideoFull] instance to a [Video] instance.
   Video toVideo() => Video(
         id: id,
         title: title,

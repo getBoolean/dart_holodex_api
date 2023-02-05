@@ -8,6 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'channel.freezed.dart';
 part 'channel.g.dart';
 
+/// A [Channel] class with information retrieved from Holodex.
 @freezed
 class Channel with _$Channel {
   const Channel._();
@@ -43,11 +44,14 @@ class Channel with _$Channel {
     String? group,
   }) = _Channel;
 
+  /// Returns a new [Channel] instance from a JSON object.
   factory Channel.fromJson(Map<String, dynamic> json) =>
       _$ChannelFromJson(json);
 
+  /// Returns a new [Channel] instance from a JSON string.
   factory Channel.fromString(String json) => Channel.fromJson(jsonDecode(json));
 
+  /// Converts this [Channel] instance to a [ChannelMin] instance.
   ChannelMin toChannelMin() => ChannelMin(
         id: id,
         name: name,
