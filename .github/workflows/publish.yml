@@ -26,5 +26,4 @@ jobs:
       - name: Analyze project source
         run: dart analyze --fatal-infos
 
-      - name: Publish to pub.dev
-        uses: dart-lang/setup-dart/.github/workflows/publish.yml
+      - uses: dart-lang/setup-dart/.github/workflows/publish.yml
