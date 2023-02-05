@@ -1,5 +1,9 @@
 <!-- markdownlint-disable MD041 -->
 
+## 1.0.0+1
+
+- Update readme "Additional information" section
+
 ## 1.0.0
 
 ### Added

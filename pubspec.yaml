@@ -2,7 +2,7 @@ name: dart_holodex_api
 description: A Dart wrapper for Holodex API v2. Holodex is a website dedicated
   towards your favorite vtubers, with features like clips management, and
   music-centric playback.
-version: 1.0.0
+version: 1.0.0+1
 homepage: https://github.com/getBoolean/dart_holodex_api
 environment:
   sdk: ">=2.19.0 <3.0.0"
