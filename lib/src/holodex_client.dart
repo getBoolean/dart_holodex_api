@@ -159,7 +159,7 @@ class HolodexClient {
 
   /// Quickly Access Live / Upcoming for a set of Channels
   ///
-  /// This endpoint is similar to the getLiveVideos() method and usually replies much faster.
+  /// This endpoint is similar to the [getLiveVideos] method and usually replies much faster.
   /// It is more friendly in general. The cost to execute a lookup is significantly cheaper.
   /// It's unfortunately less customizable as a result.
   ///
@@ -258,11 +258,11 @@ class HolodexClient {
   /// Get Videos Related To Channel
   ///
   /// A simplified method for access channel specific data.
-  /// If you want more customization, the same result can be obtained by calling the queryVideos() method.
+  /// If you want more customization, the same result can be obtained by calling the [getVideos] method.
   ///
   /// Arguments
   /// - `channelId` ID of the Youtube Channel that is being queried
-  /// - `type` The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId`
+  /// - `type` The type of video resource to fetch. Clips finds clip videos of a vtuber channel, Video finds the [channelId] channel's uploads, and collabs finds videos uploaded by other channels that mention this [channelId]
   /// - `filter` Filter the results returns by the API
   Future<PaginatedVideos> getChannelRelatedVideos(
     String channelId, {
@@ -291,7 +291,7 @@ class HolodexClient {
   /// Arguments:
   /// - `videoId` ID of the video
   /// - `includeTimestampComments` If set to `true`, comments with timestamps will be returned
-  /// - `recommendationLanguages` Retrieves recommended videos if not empty. This is a list of language codes
+  /// - `filterRecommendationLanguages` Retrieves recommended videos if not empty. This is a list of language codes
   ///       to filter channels/clips, official streams do not follow this parameter.
   Future<VideoFull> getVideoMetadata(
     String videoId, {
@@ -318,7 +318,7 @@ class HolodexClient {
     }
   }
 
-  /// Flexible endpoint to search for videos fufilling multiple conditions.
+  /// Flexible endpoint to search for videos fulfilling multiple conditions.
   /// Descriptions with "any" implies an `OR` condition, and "all" implies an `AND` condition.
   ///
   /// Note that searching for topics and clips is not supported, because clips do not contain topics.
@@ -355,7 +355,7 @@ class HolodexClient {
         items: list.map((video) => VideoFull.fromJson(video)).toList());
   }
 
-  /// Flexible endpoint to search for comments in videos fufilling multiple conditions.
+  /// Flexible endpoint to search for comments in videos fulfilling multiple conditions.
   /// Descriptions with "any" implies an `OR` condition, and "all" implies an `AND` condition.
   ///
   /// Note that searching for topics and clips is not supported, because clips do not contain topics.

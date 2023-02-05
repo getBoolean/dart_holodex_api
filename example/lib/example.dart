@@ -43,7 +43,7 @@ Future<void> example(HolodexClient holodexClient) async {
 
   // Get a bunch of videos and print them
   final videoFilter = VideoFilter(
-    // channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
+    channelId: 'UCsYcCwDqv6Sg8KMIIMF54SA', // Kiriku Translation
     includes: <Includes>[
       Includes.channelStats,
       Includes.clips,
@@ -80,7 +80,7 @@ Future<void> example(HolodexClient holodexClient) async {
       await holodexClient.getLiveVideos(liveVideoFilter);
   print('Live videos: ${liveVideos.items.length}\n');
 
-  final ceresFauna =
+  final Channel ceresFauna =
       await holodexClient.getChannelById('UCO_aKKYxn4tvrqPjcTzZ6EQ');
   print('Requested Channel Name: ${ceresFauna.name}\n');
 
