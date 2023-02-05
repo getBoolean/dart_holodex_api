@@ -7,21 +7,21 @@ HolodexClient setUpHolodexClient({
 }) {
   // Load the environment variables into memory
   // I recommend using envify for a production app, this way is just simpler for an example app
-  load();
+  final dotenv = DotEnv();
+  dotenv.load();
 
   // Create client with API key from a .env file in the root package directory
   // See this page on getting an api key https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started
   // Add the api key to the .env file in the format `API=api_key` with `api_key` being the key you got from the above website
-  if (!isEveryDefined(['API'])) {
+  if (!dotenv.isEveryDefined(['API'])) {
     print('API key not provided, can not run tests');
     throw Exception('API key not provided, can not run tests');
   }
-
-  final String? apiKey = env['API'];
-  if (apiKey == null) {
+  
+  final String apiKey = dotenv.getOrElse('API', () {
     print('API key not provided, can not run tests');
     throw Exception('API key not provided, can not run tests');
-  }
+  });
 
   return HolodexClient(apiKey: apiKey, basePath: basePath);
 }
