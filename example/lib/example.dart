@@ -1,19 +1,20 @@
 import 'package:dart_holodex_api/dart_holodex_api.dart';
-import 'package:dotenv/dotenv.dart' as dotenv show load, env;
+import 'package:dotenv/dotenv.dart';
 
 void main(List<String> arguments) async {
   // Load the environment variables into memory
   // I recommend using envify for a production app, this way is just simpler for an example app
+  final dotenv = DotEnv();
   dotenv.load();
 
   // Create client with API key from a .env file in the `example` folder
   // See this page on getting an api key https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started
   // Add the api key to the .env file in the format `API=api_key` with `api_key` being the key you got from the above website
-  final String? apiKey = dotenv.env['API'];
-  if (apiKey == null) {
+  final String apiKey = dotenv.getOrElse('API', () {
     print('API key not found, exiting');
-    return;
-  }
+    throw Exception('API key not provided, can not run example');
+  });
+
   final HolodexClient holodexClient = HolodexClient(apiKey: apiKey);
 
   await example(holodexClient);
