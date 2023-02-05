@@ -22,6 +22,7 @@ void main(List<String> arguments) async {
   holodexClient.close();
 }
 
+/// An example of how to use the Holodex API
 Future<void> example(HolodexClient holodexClient) async {
   // Get one video and print it
   final VideoFull video = await holodexClient.getVideoById(
