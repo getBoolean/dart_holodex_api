@@ -21,7 +21,8 @@ void main() {
       );
 
       // Test
-      final videos = await client.searchComments(filter: filter, comment: 'shion');
+      final videos =
+          await client.searchComments(filter: filter, comment: 'shion');
 
       // Expect
       expect(videos.total, isNotNull,
@@ -38,7 +39,8 @@ void main() {
       );
 
       // Test
-      final videos = await client.searchComments(filter: filter, comment: 'shion');
+      final videos =
+          await client.searchComments(filter: filter, comment: 'shion');
 
       // Expect
       expect(videos.total, isNull,
