@@ -26,7 +26,8 @@ class ChannelMin with _$ChannelMin {
   factory ChannelMin.fromJson(Map<String, dynamic> json) =>
       _$ChannelMinFromJson(json);
 
-  Channel toChannelMin() => Channel(
+  /// Convert this [ChannelMin] instance to a [Channel] instance.
+  Channel toChannel() => Channel(
         id: id,
         name: name,
         englishName: englishName,
