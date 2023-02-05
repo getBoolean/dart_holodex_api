@@ -74,6 +74,8 @@ mixin _$VideoFull {
   List<Video> get simulcasts => throw _privateConstructorUsedError;
   List<Channel> get mentions => throw _privateConstructorUsedError;
   List<Song> get songs => throw _privateConstructorUsedError;
+  @JsonKey(name: 'same_source_clips')
+  List<Video> get sameSourceClips => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -122,7 +124,9 @@ abstract class $VideoFullCopyWith<$Res> {
       List<Video> refers,
       List<Video> simulcasts,
       List<Channel> mentions,
-      List<Song> songs});
+      List<Song> songs,
+      @JsonKey(name: 'same_source_clips')
+          List<Video> sameSourceClips});
 
   $ChannelMinCopyWith<$Res>? get channel;
 }
@@ -165,6 +169,7 @@ class _$VideoFullCopyWithImpl<$Res, $Val extends VideoFull>
     Object? simulcasts = null,
     Object? mentions = null,
     Object? songs = null,
+    Object? sameSourceClips = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -267,6 +272,10 @@ class _$VideoFullCopyWithImpl<$Res, $Val extends VideoFull>
           ? _value.songs
           : songs // ignore: cast_nullable_to_non_nullable
               as List<Song>,
+      sameSourceClips: null == sameSourceClips
+          ? _value.sameSourceClips
+          : sameSourceClips // ignore: cast_nullable_to_non_nullable
+              as List<Video>,
     ) as $Val);
   }
 
@@ -326,7 +335,9 @@ abstract class _$$_VideoFullCopyWith<$Res> implements $VideoFullCopyWith<$Res> {
       List<Video> refers,
       List<Video> simulcasts,
       List<Channel> mentions,
-      List<Song> songs});
+      List<Song> songs,
+      @JsonKey(name: 'same_source_clips')
+          List<Video> sameSourceClips});
 
   @override
   $ChannelMinCopyWith<$Res>? get channel;
@@ -368,6 +379,7 @@ class __$$_VideoFullCopyWithImpl<$Res>
     Object? simulcasts = null,
     Object? mentions = null,
     Object? songs = null,
+    Object? sameSourceClips = null,
   }) {
     return _then(_$_VideoFull(
       id: null == id
@@ -470,6 +482,10 @@ class __$$_VideoFullCopyWithImpl<$Res>
           ? _value._songs
           : songs // ignore: cast_nullable_to_non_nullable
               as List<Song>,
+      sameSourceClips: null == sameSourceClips
+          ? _value._sameSourceClips
+          : sameSourceClips // ignore: cast_nullable_to_non_nullable
+              as List<Video>,
     ));
   }
 }
@@ -513,7 +529,9 @@ class _$_VideoFull extends _VideoFull {
       final List<Video> refers = const [],
       final List<Video> simulcasts = const [],
       final List<Channel> mentions = const [],
-      final List<Song> songs = const []})
+      final List<Song> songs = const [],
+      @JsonKey(name: 'same_source_clips')
+          final List<Video> sameSourceClips = const []})
       : _comments = comments,
         _recommendations = recommendations,
         _clips = clips,
@@ -522,6 +540,7 @@ class _$_VideoFull extends _VideoFull {
         _simulcasts = simulcasts,
         _mentions = mentions,
         _songs = songs,
+        _sameSourceClips = sameSourceClips,
         super._();
 
   factory _$_VideoFull.fromJson(Map<String, dynamic> json) =>
@@ -662,9 +681,18 @@ class _$_VideoFull extends _VideoFull {
     return EqualUnmodifiableListView(_songs);
   }
 
+  final List<Video> _sameSourceClips;
+  @override
+  @JsonKey(name: 'same_source_clips')
+  List<Video> get sameSourceClips {
+    if (_sameSourceClips is EqualUnmodifiableListView) return _sameSourceClips;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sameSourceClips);
+  }
+
   @override
   String toString() {
-    return 'VideoFull(id: $id, title: $title, type: $type, topicId: $topicId, publishedAt: $publishedAt, availableAt: $availableAt, duration: $duration, status: $status, startScheduled: $startScheduled, startActual: $startActual, endActual: $endActual, liveViewers: $liveViewers, description: $description, songcount: $songcount, channelId: $channelId, channel: $channel, language: $language, comments: $comments, recommendations: $recommendations, clips: $clips, sources: $sources, refers: $refers, simulcasts: $simulcasts, mentions: $mentions, songs: $songs)';
+    return 'VideoFull(id: $id, title: $title, type: $type, topicId: $topicId, publishedAt: $publishedAt, availableAt: $availableAt, duration: $duration, status: $status, startScheduled: $startScheduled, startActual: $startActual, endActual: $endActual, liveViewers: $liveViewers, description: $description, songcount: $songcount, channelId: $channelId, channel: $channel, language: $language, comments: $comments, recommendations: $recommendations, clips: $clips, sources: $sources, refers: $refers, simulcasts: $simulcasts, mentions: $mentions, songs: $songs, sameSourceClips: $sameSourceClips)';
   }
 
   @override
@@ -709,7 +737,9 @@ class _$_VideoFull extends _VideoFull {
             const DeepCollectionEquality()
                 .equals(other._simulcasts, _simulcasts) &&
             const DeepCollectionEquality().equals(other._mentions, _mentions) &&
-            const DeepCollectionEquality().equals(other._songs, _songs));
+            const DeepCollectionEquality().equals(other._songs, _songs) &&
+            const DeepCollectionEquality()
+                .equals(other._sameSourceClips, _sameSourceClips));
   }
 
   @JsonKey(ignore: true)
@@ -740,7 +770,8 @@ class _$_VideoFull extends _VideoFull {
         const DeepCollectionEquality().hash(_refers),
         const DeepCollectionEquality().hash(_simulcasts),
         const DeepCollectionEquality().hash(_mentions),
-        const DeepCollectionEquality().hash(_songs)
+        const DeepCollectionEquality().hash(_songs),
+        const DeepCollectionEquality().hash(_sameSourceClips)
       ]);
 
   @JsonKey(ignore: true)
@@ -794,7 +825,9 @@ abstract class _VideoFull extends VideoFull {
       final List<Video> refers,
       final List<Video> simulcasts,
       final List<Channel> mentions,
-      final List<Song> songs}) = _$_VideoFull;
+      final List<Song> songs,
+      @JsonKey(name: 'same_source_clips')
+          final List<Video> sameSourceClips}) = _$_VideoFull;
   const _VideoFull._() : super._();
 
   factory _VideoFull.fromJson(Map<String, dynamic> json) =
@@ -879,6 +912,9 @@ abstract class _VideoFull extends VideoFull {
   List<Channel> get mentions;
   @override
   List<Song> get songs;
+  @override
+  @JsonKey(name: 'same_source_clips')
+  List<Video> get sameSourceClips;
   @override
   @JsonKey(ignore: true)
   _$$_VideoFullCopyWith<_$_VideoFull> get copyWith =>
