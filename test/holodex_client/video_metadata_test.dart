@@ -22,8 +22,10 @@ void main() {
 
       // Expect
       expect(video.type, VideoType.stream, reason: 'Video type is stream');
-      expect(video.comments, isEmpty, reason: 'Timestamp comments are not included');
-      expect(video.recommendations, isEmpty, reason: 'Recommendations are not included');
+      expect(video.comments, isEmpty,
+          reason: 'Timestamp comments are not included');
+      expect(video.recommendations, isEmpty,
+          reason: 'Recommendations are not included');
     });
 
     test('Getting video metadata for "eJJuy5rY57w" with timestamps', () async {
@@ -38,11 +40,15 @@ void main() {
 
       // Expect
       expect(video.type, VideoType.stream, reason: 'Video type is stream');
-      expect(video.comments, isNotEmpty, reason: 'Timestamp comments are included');
-      expect(video.recommendations, isEmpty, reason: 'Recommendations are not included');
+      expect(video.comments, isNotEmpty,
+          reason: 'Timestamp comments are included');
+      expect(video.recommendations, isEmpty,
+          reason: 'Recommendations are not included');
     });
 
-    test(skip: true, 'Getting video metadata for "eJJuy5rY57w" with recommendations',
+    test(
+        skip: true,
+        'Getting video metadata for "eJJuy5rY57w" with recommendations',
         () async {
       // Setup
       final shionSingingStream = 'eJJuy5rY57w';
@@ -55,11 +61,15 @@ void main() {
 
       // Expect
       expect(video.type, VideoType.stream, reason: 'Video type is stream');
-      expect(video.comments, isEmpty, reason: 'Timestamp comments are not included');
-      expect(video.recommendations, isNotEmpty, reason: 'Recommendations are included');
+      expect(video.comments, isEmpty,
+          reason: 'Timestamp comments are not included');
+      expect(video.recommendations, isNotEmpty,
+          reason: 'Recommendations are included');
     });
 
-    test(skip: true, 'Getting video metadata for "eJJuy5rY57w" with recommendations and timestamps',
+    test(
+        skip: true,
+        'Getting video metadata for "eJJuy5rY57w" with recommendations and timestamps',
         () async {
       // Setup
       final shionSingingStream = 'eJJuy5rY57w';
@@ -73,8 +83,10 @@ void main() {
 
       // Expect
       expect(video.type, VideoType.stream, reason: 'Video type is stream');
-      expect(video.comments, isNotEmpty, reason: 'Timestamp comments are included');
-      expect(video.recommendations, isNotEmpty, reason: 'Recommendations are included');
+      expect(video.comments, isNotEmpty,
+          reason: 'Timestamp comments are included');
+      expect(video.recommendations, isNotEmpty,
+          reason: 'Recommendations are included');
     });
   });
 }

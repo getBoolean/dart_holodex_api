@@ -68,7 +68,8 @@ class VideoFull with _$VideoFull {
     @Default([]) List<Channel> mentions,
     @Default([]) List<Song> songs,
     @JsonKey(name: 'same_source_clips')
-    @Default([]) List<Video> sameSourceClips,
+    @Default([])
+        List<Video> sameSourceClips,
   }) = _VideoFull;
 
   factory VideoFull.fromJson(Map<String, dynamic> json) =>

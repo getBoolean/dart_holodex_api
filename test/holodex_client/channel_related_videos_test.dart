@@ -96,7 +96,6 @@ void main() {
     });
   });
 
-
   group('HolodexClient.getChannelVideos', () {
     test('Getting channel videos paginated', () async {
       // Setup
