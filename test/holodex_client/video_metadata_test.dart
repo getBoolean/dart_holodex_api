@@ -46,6 +46,7 @@ void main() {
           reason: 'Recommendations are not included');
     });
 
+    // TODO: Skipped until I find video with "recommendations"
     test(
         skip: true,
         'Getting video metadata for "eJJuy5rY57w" with recommendations',
@@ -67,6 +68,7 @@ void main() {
           reason: 'Recommendations are included');
     });
 
+    // TODO: Skipped until I find video with "recommendations"
     test(
         skip: true,
         'Getting video metadata for "eJJuy5rY57w" with recommendations and timestamps',
