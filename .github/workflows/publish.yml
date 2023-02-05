@@ -1,6 +1,7 @@
 on:
   push:
-    tags: ["*"] # trigger on: git tag 1.2.3 && git push origin 1.2.3
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*' # trigger on: git tag v1.2.3 && git push origin v1.2.3
 
 jobs:
   publish:
@@ -26,4 +27,4 @@ jobs:
         run: dart analyze --fatal-infos
 
       - name: Publish to pub.dev
-        run: dart pub publish --force
+        uses: dart-lang/setup-dart/.github/workflows/publish.yml
