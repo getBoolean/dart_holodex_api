@@ -1,7 +1,10 @@
 import 'package:dart_holodex_api/dart_holodex_api.dart';
 import 'package:dotenv/dotenv.dart';
+import 'package:test/test.dart';
 
-HolodexClient setUpHolodexClient() {
+HolodexClient setUpHolodexClient({
+  String basePath = 'https://holodex.net/api/v2',
+}) {
   // Load the environment variables into memory
   // I recommend using envify for a production app, this way is just simpler for an example app
   load();
@@ -20,5 +23,67 @@ HolodexClient setUpHolodexClient() {
     throw Exception('API key not provided, can not run tests');
   }
 
-  return HolodexClient(apiKey: apiKey);
+  return HolodexClient(apiKey: apiKey, basePath: basePath);
+}
+
+void expectVideoDetails(VideoFull video) {
+  expect(
+    video.type,
+    VideoType.clip,
+    reason: 'Expected video to be a clip',
+  );
+
+  expect(
+    video.duration,
+    205,
+    reason: 'Expected video duration to be 205 seconds',
+  );
+
+  expect(
+    video.status,
+    VideoStatus.past,
+    reason: 'Expected video status to be in the past',
+  );
+
+  expect(
+    video.startScheduled,
+    isNull,
+    reason: 'Video is not a premier or a live stream',
+  );
+
+  expect(
+    video.startActual,
+    isNull,
+    reason: 'Video is not a premier or a live stream',
+  );
+
+  expect(
+    video.endActual,
+    isNull,
+    reason: 'Video is not a premier or a live stream',
+  );
+
+  expect(
+    video.liveViewers,
+    isNull,
+    reason: 'Video is not a premier or a live stream',
+  );
+
+  expect(
+    video.songcount,
+    isNull,
+    reason: 'Video has no songs',
+  );
+
+  expect(
+    video.songs,
+    isEmpty,
+    reason: 'Video has no songs',
+  );
+
+  expect(
+    video.language,
+    'en',
+    reason: 'Video language is english',
+  );
 }

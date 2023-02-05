@@ -23,7 +23,7 @@ void main(List<String> arguments) async {
 
 Future<void> example(HolodexClient holodexClient) async {
   // Get one video and print it
-  final VideoFull video = await holodexClient.getVideoFromId(
+  final VideoFull video = await holodexClient.getVideoById(
     'Gx_GPwpyLxw',
     includes: [
       Includes.channelStats,
@@ -79,7 +79,7 @@ Future<void> example(HolodexClient holodexClient) async {
   print('Live videos: ${liveVideos.items.length}\n');
 
   final ceresFauna =
-      await holodexClient.getChannelFromId('UCO_aKKYxn4tvrqPjcTzZ6EQ');
+      await holodexClient.getChannelById('UCO_aKKYxn4tvrqPjcTzZ6EQ');
   print('Requested Channel Name: ${ceresFauna.name}\n');
 
   final channelFilter = const ChannelFilter(
@@ -125,7 +125,7 @@ Future<void> example(HolodexClient holodexClient) async {
   final VideoFull shionSingingStream = await holodexClient.getVideoMetadata(
     'eJJuy5rY57w', // Shion's singing stream
     includeTimestampComments: true,
-    languages: [Language.all],
+    filterRecommendationLanguages: [Language.all],
   );
   final List<Comment>? timestampComments = shionSingingStream.comments;
   final List<Video>? recommendations = shionSingingStream.recommendations;

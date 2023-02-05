@@ -58,6 +58,10 @@ _$_VideoFull _$$_VideoFullFromJson(Map<String, dynamic> json) => _$_VideoFull(
               ?.map((e) => Song.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      sameSourceClips: (json['same_source_clips'] as List<dynamic>?)
+              ?.map((e) => Video.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_VideoFullToJson(_$_VideoFull instance) =>
@@ -87,6 +91,7 @@ Map<String, dynamic> _$$_VideoFullToJson(_$_VideoFull instance) =>
       'simulcasts': instance.simulcasts,
       'mentions': instance.mentions,
       'songs': instance.songs,
+      'same_source_clips': instance.sameSourceClips,
     };
 
 const _$VideoTypeEnumMap = {

@@ -243,7 +243,7 @@ class __$$_SearchFilterCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable(createFactory: false)
-class _$_SearchFilter extends _SearchFilter {
+class _$_SearchFilter implements _SearchFilter {
   const _$_SearchFilter(
       {@JsonKey(name: 'sort', toJson: searchSortToString)
           this.sort = SearchSort.newest,
@@ -270,8 +270,7 @@ class _$_SearchFilter extends _SearchFilter {
         _targets = targets,
         _topics = topics,
         _videoChannels = videoChannels,
-        _organizations = organizations,
-        super._();
+        _organizations = organizations;
 
   /// Sort by newest or oldest
   @override
@@ -414,7 +413,7 @@ class _$_SearchFilter extends _SearchFilter {
   }
 }
 
-abstract class _SearchFilter extends SearchFilter {
+abstract class _SearchFilter implements SearchFilter {
   const factory _SearchFilter(
       {@JsonKey(name: 'sort', toJson: searchSortToString)
           final SearchSort sort,
@@ -433,7 +432,6 @@ abstract class _SearchFilter extends SearchFilter {
           final int offset,
       @JsonKey(toJson: intToString)
           final int limit}) = _$_SearchFilter;
-  const _SearchFilter._() : super._();
 
   @override
 
