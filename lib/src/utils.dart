@@ -25,7 +25,7 @@ String? concatVideoSortList(List<VideoSort> list) =>
 
 String? concatVideoStatusList(List<VideoStatus> list) =>
     list.isEmpty ? null : concatEnumWithCodeList(list);
-    
+
 String concatOrganizationList(List<Organization> list) =>
     list.map((e) => e.name).join(',');
 
