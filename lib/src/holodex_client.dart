@@ -14,7 +14,6 @@ import 'package:dart_holodex_api/src/enums/video_type.dart';
 import 'package:dart_holodex_api/src/exception.dart';
 import 'package:dart_holodex_api/src/holodex_endpoint.dart';
 import 'package:dart_holodex_api/src/models.dart';
-import 'package:dart_holodex_api/src/models/channel_video_filter.dart';
 import 'package:dart_holodex_api/src/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -292,16 +291,15 @@ class HolodexClient {
   /// Arguments:
   /// - `videoId` ID of the video
   /// - `includeTimestampComments` If set to `true`, comments with timestamps will be returned
-  /// - `languages` A list of language codes to filter channels/clips, official streams do not follow this parameter.
-  ///          If empty, all languages will be returned.
+  /// - `recommendationLanguages` Retrieves recommended videos if not empty. This is a list of language codes
+  ///       to filter channels/clips, official streams do not follow this parameter.
   Future<VideoFull> getVideoMetadata(
     String videoId, {
     bool includeTimestampComments = false,
-    List<Language> languages = const [],
+    List<Language> filterRecommendationLanguages = const [],
   }) async {
     final Map<String, dynamic> params = {};
-    final _languages = languages.isEmpty ? [Language.all] : languages;
-    _addLanguages(_languages, params);
+    _addLanguages(filterRecommendationLanguages, params);
     _addCommentsFlag(includeTimestampComments, params);
 
     final response =

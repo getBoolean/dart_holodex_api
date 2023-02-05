@@ -125,7 +125,7 @@ Future<void> example(HolodexClient holodexClient) async {
   final VideoFull shionSingingStream = await holodexClient.getVideoMetadata(
     'eJJuy5rY57w', // Shion's singing stream
     includeTimestampComments: true,
-    languages: [Language.all],
+    filterRecommendationLanguages: [Language.all],
   );
   final List<Comment>? timestampComments = shionSingingStream.comments;
   final List<Video>? recommendations = shionSingingStream.recommendations;
