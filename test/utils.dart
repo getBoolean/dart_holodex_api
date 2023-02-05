@@ -17,7 +17,7 @@ HolodexClient setUpHolodexClient({
     print('API key not provided, can not run tests');
     throw Exception('API key not provided, can not run tests');
   }
-  
+
   final String apiKey = dotenv.getOrElse('API', () {
     print('API key not provided, can not run tests');
     throw Exception('API key not provided, can not run tests');
