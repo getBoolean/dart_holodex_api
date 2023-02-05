@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD041 -->
 
-## 0.4.0
+## 1.0.0
 
 ### Added
 
