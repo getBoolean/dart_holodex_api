@@ -369,8 +369,7 @@ dart pub global run coverage:test_with_coverage --branch-coverage --function-cov
 
 ## Additional information
 
-Read the official API documentation [here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)
-
-Visit [Holodex.net](https://holodex.net/)
-
-Some of this package was based off of the [C# version](https://github.com/EBro912/Holodex.NET)
+- Read the official API documentation [here](https://holodex.stoplight.io/docs/holodex/ZG9jOjQ2Nzk1-getting-started)
+- Visit [Holodex.net](https://holodex.net/)
+- Some parts of this package was inspired by the [C#](https://github.com/EBro912/Holodex.NET)
+and [Rust](https://docs.rs/crate/holodex/latest) implementations of the API.
