@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: non_constant_identifier_names
+
 part of 'channel_min.dart';
 
 // **************************************************************************
@@ -7,17 +9,34 @@ part of 'channel_min.dart';
 // **************************************************************************
 
 _$_ChannelMin _$$_ChannelMinFromJson(Map<String, dynamic> json) =>
-    _$_ChannelMin(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      englishName: json['english_name'] as String?,
-      type: $enumDecodeNullable(_$ChannelTypeEnumMap, json['type']),
-      photo: json['photo'] as String?,
-      organization: json['org'] as String?,
-      videoCount: json['video_count'] as String?,
-      subscriberCount: json['subscriber_count'] as String?,
-      viewCount: json['view_count'] as String?,
-      clipCount: json['clip_count'] as int?,
+    $checkedCreate(
+      r'_$_ChannelMin',
+      json,
+      ($checkedConvert) {
+        final val = _$_ChannelMin(
+          id: $checkedConvert('id', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          englishName: $checkedConvert('english_name', (v) => v as String?),
+          type: $checkedConvert(
+              'type', (v) => $enumDecodeNullable(_$ChannelTypeEnumMap, v)),
+          photo: $checkedConvert('photo', (v) => v as String?),
+          organization: $checkedConvert('org', (v) => v as String?),
+          videoCount: $checkedConvert('video_count', (v) => v as String?),
+          subscriberCount:
+              $checkedConvert('subscriber_count', (v) => v as String?),
+          viewCount: $checkedConvert('view_count', (v) => v as String?),
+          clipCount: $checkedConvert('clip_count', (v) => v as int?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'englishName': 'english_name',
+        'organization': 'org',
+        'videoCount': 'video_count',
+        'subscriberCount': 'subscriber_count',
+        'viewCount': 'view_count',
+        'clipCount': 'clip_count'
+      },
     );
 
 Map<String, dynamic> _$$_ChannelMinToJson(_$_ChannelMin instance) =>

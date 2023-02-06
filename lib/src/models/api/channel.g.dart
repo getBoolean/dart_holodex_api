@@ -1,47 +1,80 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: non_constant_identifier_names
+
 part of 'channel.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Channel _$$_ChannelFromJson(Map<String, dynamic> json) => _$_Channel(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      englishName: json['english_name'] as String?,
-      type: $enumDecodeNullable(_$ChannelTypeEnumMap, json['type']),
-      photo: json['photo'] as String?,
-      organization: json['org'] as String?,
-      videoCount: json['video_count'] as String?,
-      subscriberCount: json['subscriber_count'] as String?,
-      viewCount: json['view_count'] as String?,
-      clipCount: json['clip_count'] as int?,
-      subOrganization: json['suborg'] as String?,
-      banner: json['banner'] as String?,
-      twitter: json['twitter'] as String?,
-      lang: Language.fromString(json['lang'] as String?),
-      inactive: json['inactive'] as bool?,
-      description: json['description'] as String?,
-      publishedAt: json['published_at'] as String?,
-      crawledAt: json['crawled_at'] as String?,
-      commentsCrawledAt: json['comments_crawled_at'] as String?,
-      updatedAt: json['updated_at'] as String?,
-      ytUploadsId: json['yt_uploads_id'] as String?,
-      topTopics: (json['top_topics'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-      ytHandle: (json['yt_handle'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-      twitch: json['twitch'] as String?,
-      ytNameHistory: (json['yt_name_history'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-      group: json['group'] as String?,
+_$_Channel _$$_ChannelFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$_Channel',
+      json,
+      ($checkedConvert) {
+        final val = _$_Channel(
+          id: $checkedConvert('id', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          englishName: $checkedConvert('english_name', (v) => v as String?),
+          type: $checkedConvert(
+              'type', (v) => $enumDecodeNullable(_$ChannelTypeEnumMap, v)),
+          photo: $checkedConvert('photo', (v) => v as String?),
+          organization: $checkedConvert('org', (v) => v as String?),
+          videoCount: $checkedConvert('video_count', (v) => v as String?),
+          subscriberCount:
+              $checkedConvert('subscriber_count', (v) => v as String?),
+          viewCount: $checkedConvert('view_count', (v) => v as String?),
+          clipCount: $checkedConvert('clip_count', (v) => v as int?),
+          subOrganization: $checkedConvert('suborg', (v) => v as String?),
+          banner: $checkedConvert('banner', (v) => v as String?),
+          twitter: $checkedConvert('twitter', (v) => v as String?),
+          lang:
+              $checkedConvert('lang', (v) => Language.fromString(v as String?)),
+          inactive: $checkedConvert('inactive', (v) => v as bool?),
+          description: $checkedConvert('description', (v) => v as String?),
+          publishedAt: $checkedConvert('published_at', (v) => v as String?),
+          crawledAt: $checkedConvert('crawled_at', (v) => v as String?),
+          commentsCrawledAt:
+              $checkedConvert('comments_crawled_at', (v) => v as String?),
+          updatedAt: $checkedConvert('updated_at', (v) => v as String?),
+          ytUploadsId: $checkedConvert('yt_uploads_id', (v) => v as String?),
+          topTopics: $checkedConvert(
+              'top_topics',
+              (v) =>
+                  (v as List<dynamic>?)?.map((e) => e as String).toList() ??
+                  const []),
+          ytHandle: $checkedConvert(
+              'yt_handle',
+              (v) =>
+                  (v as List<dynamic>?)?.map((e) => e as String).toList() ??
+                  const []),
+          twitch: $checkedConvert('twitch', (v) => v as String?),
+          ytNameHistory: $checkedConvert(
+              'yt_name_history',
+              (v) =>
+                  (v as List<dynamic>?)?.map((e) => e as String).toList() ??
+                  const []),
+          group: $checkedConvert('group', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'englishName': 'english_name',
+        'organization': 'org',
+        'videoCount': 'video_count',
+        'subscriberCount': 'subscriber_count',
+        'viewCount': 'view_count',
+        'clipCount': 'clip_count',
+        'subOrganization': 'suborg',
+        'publishedAt': 'published_at',
+        'crawledAt': 'crawled_at',
+        'commentsCrawledAt': 'comments_crawled_at',
+        'updatedAt': 'updated_at',
+        'ytUploadsId': 'yt_uploads_id',
+        'topTopics': 'top_topics',
+        'ytHandle': 'yt_handle',
+        'ytNameHistory': 'yt_name_history'
+      },
     );
 
 Map<String, dynamic> _$$_ChannelToJson(_$_Channel instance) =>
