@@ -1,5 +1,9 @@
 <!-- markdownlint-disable MD041 -->
 
+## 1.0.0+3
+
+- **Fixed:** `non_constant_identifier_names` lint
+
 ## 1.0.0+2
 
 - **Fixed:** `invalid_annotation_target` lint
