@@ -1,8 +1,12 @@
 <!-- markdownlint-disable MD041 -->
 
+## 1.0.0+2
+
+Fix `invalid_annotation_target` lint
+
 ## 1.0.0+1
 
-- Update readme "Additional information" section
+Update readme "Additional information" section
 
 ## 1.0.0
 
