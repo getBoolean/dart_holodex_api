@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:dart_holodex_api/src/enums/video_status.dart';
 import 'package:dart_holodex_api/src/enums/video_type.dart';
 import 'package:dart_holodex_api/src/models.dart';

@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:dart_holodex_api/src/enums/language.dart';
 import 'package:dart_holodex_api/src/enums/organization.dart';
 import 'package:dart_holodex_api/src/enums/search_sort.dart';
