@@ -25,10 +25,14 @@ class ChannelFilter with _$ChannelFilter {
         List<Language> languages,
 
     /// Result limit. Max of 50.
-    @JsonKey(toJson: intToString) @Default(25) int limit,
+    @JsonKey(toJson: intToString)
+    @Default(25)
+        int limit,
 
     /// Offset results
-    @JsonKey(toJson: intToString) @Default(0) int offset,
+    @JsonKey(toJson: intToString)
+    @Default(0)
+        int offset,
 
     /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
     @JsonKey(includeIfNull: false, toJson: channelTypeToString)
@@ -40,7 +44,9 @@ class ChannelFilter with _$ChannelFilter {
         List<ChannelSort> sort,
 
     /// ASC or DESC order, default asc.
-    @JsonKey(toJson: orderToString) @Default(Order.ascending) Order order,
+    @JsonKey(toJson: orderToString)
+    @Default(Order.ascending)
+        Order order,
 
     /// If set, filter for a Vtuber belonging to a specific org
     @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
