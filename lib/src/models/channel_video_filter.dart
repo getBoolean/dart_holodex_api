@@ -19,26 +19,20 @@ class ChannelVideoFilter with _$ChannelVideoFilter {
     /// Request extra data be included in the results. They are not guarenteed to be returned.
     @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
     @Default([])
-        List<Includes> includes,
+    List<Includes> includes,
 
     /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
     @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
     @Default([])
-        List<Language> languages,
+    List<Language> languages,
 
     /// Result limit. Max of 50.
-    @JsonKey(toJson: intToString)
-    @Default(25)
-        int limit,
+    @JsonKey(toJson: intToString) @Default(25) int limit,
 
     /// Offset results
-    @JsonKey(toJson: intToString)
-    @Default(0)
-        int offset,
+    @JsonKey(toJson: intToString) @Default(0) int offset,
 
     /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
-    @JsonKey(toJson: paginatedToString)
-    @Default(true)
-        bool paginated,
+    @JsonKey(toJson: paginatedToString) @Default(true) bool paginated,
   }) = _ChannelVideoFilter;
 }
