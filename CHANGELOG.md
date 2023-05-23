@@ -1,5 +1,9 @@
 <!-- markdownlint-disable MD041 -->
 
+## 1.0.0+4
+
+- **Fixed:** Dart formatting
+
 ## 1.0.0+3
 
 - **Fixed:** `non_constant_identifier_names` lint

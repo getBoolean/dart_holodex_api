@@ -34,12 +34,16 @@ class SearchFilter with _$SearchFilter {
         List<SearchTarget> targets,
 
     /// Return videos that match one of the provided topics
-    @JsonKey(name: 'topic') @Default([]) List<String> topics,
+    @JsonKey(name: 'topic')
+    @Default([])
+        List<String> topics,
 
     /// Videos with all of the specified channel ids. If two or more channel IDs are specified,
     /// will only return their collabs, or if one channel is a clipper, it will only show clips
     /// of the other vtubers made by this clipper.
-    @JsonKey(name: 'vch') @Default([]) List<String> videoChannels,
+    @JsonKey(name: 'vch')
+    @Default([])
+        List<String> videoChannels,
 
     /// Videos of channels in any of the specified organizations, or clips that involve a channel
     /// in the specified organization.
@@ -48,12 +52,17 @@ class SearchFilter with _$SearchFilter {
         List<Organization> organizations,
 
     /// If paginated is set to true, returns [List]<[VideoFull]> with total, otherwise returns [List]<[VideoFull]> without the total.
-    @Default(true) bool paginated,
+    @Default(true)
+        bool paginated,
 
     /// Offset results
-    @JsonKey(toJson: intToString) @Default(0) int offset,
+    @JsonKey(toJson: intToString)
+    @Default(0)
+        int offset,
 
     /// Result limit
-    @JsonKey(toJson: intToString) @Default(25) int limit,
+    @JsonKey(toJson: intToString)
+    @Default(25)
+        int limit,
   }) = _SearchFilter;
 }

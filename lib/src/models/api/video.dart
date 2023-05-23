@@ -21,11 +21,14 @@ class Video with _$Video {
     VideoType? type,
 
     /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
-    @JsonKey(name: 'topic_id') String? topicId,
-    @JsonKey(name: 'published_at') String? publishedAt,
+    @JsonKey(name: 'topic_id')
+        String? topicId,
+    @JsonKey(name: 'published_at')
+        String? publishedAt,
 
     /// Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at
-    @JsonKey(name: 'available_at') required String availableAt,
+    @JsonKey(name: 'available_at')
+        required String availableAt,
 
     /// Duration of the video in seconds
     int? duration,
@@ -33,25 +36,31 @@ class Video with _$Video {
         required VideoStatus status,
 
     /// Included when includes contains 'live_info'
-    @JsonKey(name: 'start_scheduled') String? startScheduled,
+    @JsonKey(name: 'start_scheduled')
+        String? startScheduled,
 
     /// Included when includes contains 'live_info'
-    @JsonKey(name: 'start_actual') String? startActual,
+    @JsonKey(name: 'start_actual')
+        String? startActual,
 
     /// Included when includes contains 'live_info'
-    @JsonKey(name: 'end_actual') String? endActual,
+    @JsonKey(name: 'end_actual')
+        String? endActual,
 
     /// Included when includes contains 'live_info'
-    @JsonKey(name: 'live_viewers') int? liveViewers,
+    @JsonKey(name: 'live_viewers')
+        int? liveViewers,
 
     /// Included when includes contains 'description'
     String? description,
 
     /// Number of tagged songs for this video
     int? songcount,
-    @JsonKey(name: 'channel_id') String? channelId,
+    @JsonKey(name: 'channel_id')
+        String? channelId,
     ChannelMin? channel,
-    @JsonKey(name: 'lang') String? language,
+    @JsonKey(name: 'lang')
+        String? language,
   }) = _Video;
 
   /// Returns a new [Video] instance from a JSON object.

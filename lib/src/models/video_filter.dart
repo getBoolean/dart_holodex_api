@@ -22,7 +22,8 @@ class VideoFilter with _$VideoFilter {
   @Assert('limit <= 50', 'Limit cannot be greater than 50')
   const factory VideoFilter({
     /// Filter by video uploader channel ID
-    @JsonKey(name: 'channel_id', includeIfNull: false) String? channelId,
+    @JsonKey(name: 'channel_id', includeIfNull: false)
+        String? channelId,
 
     /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
     @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
@@ -40,7 +41,9 @@ class VideoFilter with _$VideoFilter {
         List<Language> languages,
 
     /// Limit the number of results returned. Maximum value of 50
-    @JsonKey(toJson: intToString) @Default(25) int limit,
+    @JsonKey(toJson: intToString)
+    @Default(25)
+        int limit,
 
     /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
     @JsonKey(name: 'max_upcoming_hours', toJson: intToStringNullable, includeIfNull: false)
@@ -51,17 +54,23 @@ class VideoFilter with _$VideoFilter {
         String? mentionedChannelId,
 
     /// Receive results starting at this number in the array from the Holodex API
-    @JsonKey(toJson: intToString) @Default(0) int offset,
+    @JsonKey(toJson: intToString)
+    @Default(0)
+        int offset,
 
     /// Order results by ascending or descending
-    @JsonKey(toJson: orderToString) @Default(Order.descending) Order order,
+    @JsonKey(toJson: orderToString)
+    @Default(Order.descending)
+        Order order,
 
     /// Filter by clips that feature the org's talent or videos posted by the org's talent.
     @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
         Organization? organization,
 
     /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
-    @JsonKey(toJson: paginatedToString) @Default(false) bool paginated,
+    @JsonKey(toJson: paginatedToString)
+    @Default(false)
+        bool paginated,
 
     /// Sort the returned data by this field
     @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
@@ -74,7 +83,8 @@ class VideoFilter with _$VideoFilter {
         List<VideoStatus> status,
 
     /// Filter by video topic ID
-    @JsonKey(includeIfNull: false) String? topic,
+    @JsonKey(includeIfNull: false)
+        String? topic,
 
     /// Filter by type of video, either clips or streams
     @JsonKey(toJson: videoTypeToString, includeIfNull: false)
