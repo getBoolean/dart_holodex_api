@@ -58,19 +58,16 @@ abstract class $ChannelFilterCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
-          List<Language> languages,
-      @JsonKey(toJson: intToString)
-          int limit,
-      @JsonKey(toJson: intToString)
-          int offset,
+      List<Language> languages,
+      @JsonKey(toJson: intToString) int limit,
+      @JsonKey(toJson: intToString) int offset,
       @JsonKey(includeIfNull: false, toJson: channelTypeToString)
-          ChannelType? type,
+      ChannelType? type,
       @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
-          List<ChannelSort> sort,
-      @JsonKey(toJson: orderToString)
-          Order order,
+      List<ChannelSort> sort,
+      @JsonKey(toJson: orderToString) Order order,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
-          Organization? organization});
+      Organization? organization});
 }
 
 /// @nodoc
@@ -137,19 +134,16 @@ abstract class _$$_ChannelFilterCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
-          List<Language> languages,
-      @JsonKey(toJson: intToString)
-          int limit,
-      @JsonKey(toJson: intToString)
-          int offset,
+      List<Language> languages,
+      @JsonKey(toJson: intToString) int limit,
+      @JsonKey(toJson: intToString) int offset,
       @JsonKey(includeIfNull: false, toJson: channelTypeToString)
-          ChannelType? type,
+      ChannelType? type,
       @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
-          List<ChannelSort> sort,
-      @JsonKey(toJson: orderToString)
-          Order order,
+      List<ChannelSort> sort,
+      @JsonKey(toJson: orderToString) Order order,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
-          Organization? organization});
+      Organization? organization});
 }
 
 /// @nodoc
@@ -209,19 +203,15 @@ class __$$_ChannelFilterCopyWithImpl<$Res>
 class _$_ChannelFilter extends _ChannelFilter {
   const _$_ChannelFilter(
       {@JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
-          final List<Language> languages = const [],
-      @JsonKey(toJson: intToString)
-          this.limit = 25,
-      @JsonKey(toJson: intToString)
-          this.offset = 0,
-      @JsonKey(includeIfNull: false, toJson: channelTypeToString)
-          this.type,
+      final List<Language> languages = const [],
+      @JsonKey(toJson: intToString) this.limit = 25,
+      @JsonKey(toJson: intToString) this.offset = 0,
+      @JsonKey(includeIfNull: false, toJson: channelTypeToString) this.type,
       @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
-          final List<ChannelSort> sort = const [ChannelSort.organization],
-      @JsonKey(toJson: orderToString)
-          this.order = Order.ascending,
+      final List<ChannelSort> sort = const [ChannelSort.organization],
+      @JsonKey(toJson: orderToString) this.order = Order.ascending,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
-          this.organization})
+      this.organization})
       : assert(limit <= 50, 'The limit cannot be greater than 50'),
         _languages = languages,
         _sort = sort,
@@ -326,19 +316,16 @@ class _$_ChannelFilter extends _ChannelFilter {
 abstract class _ChannelFilter extends ChannelFilter {
   const factory _ChannelFilter(
       {@JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
-          final List<Language> languages,
-      @JsonKey(toJson: intToString)
-          final int limit,
-      @JsonKey(toJson: intToString)
-          final int offset,
+      final List<Language> languages,
+      @JsonKey(toJson: intToString) final int limit,
+      @JsonKey(toJson: intToString) final int offset,
       @JsonKey(includeIfNull: false, toJson: channelTypeToString)
-          final ChannelType? type,
+      final ChannelType? type,
       @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
-          final List<ChannelSort> sort,
-      @JsonKey(toJson: orderToString)
-          final Order order,
+      final List<ChannelSort> sort,
+      @JsonKey(toJson: orderToString) final Order order,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
-          final Organization? organization}) = _$_ChannelFilter;
+      final Organization? organization}) = _$_ChannelFilter;
   const _ChannelFilter._() : super._();
 
   @override

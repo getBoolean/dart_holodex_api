@@ -22,34 +22,28 @@ class ChannelFilter with _$ChannelFilter {
     /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
     @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
     @Default([])
-        List<Language> languages,
+    List<Language> languages,
 
     /// Result limit. Max of 50.
-    @JsonKey(toJson: intToString)
-    @Default(25)
-        int limit,
+    @JsonKey(toJson: intToString) @Default(25) int limit,
 
     /// Offset results
-    @JsonKey(toJson: intToString)
-    @Default(0)
-        int offset,
+    @JsonKey(toJson: intToString) @Default(0) int offset,
 
     /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
     @JsonKey(includeIfNull: false, toJson: channelTypeToString)
-        ChannelType? type,
+    ChannelType? type,
 
     /// Column to sort on
     @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
     @Default([ChannelSort.organization])
-        List<ChannelSort> sort,
+    List<ChannelSort> sort,
 
     /// ASC or DESC order, default asc.
-    @JsonKey(toJson: orderToString)
-    @Default(Order.ascending)
-        Order order,
+    @JsonKey(toJson: orderToString) @Default(Order.ascending) Order order,
 
     /// If set, filter for a Vtuber belonging to a specific org
     @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
-        Organization? organization,
+    Organization? organization,
   }) = _ChannelFilter;
 }

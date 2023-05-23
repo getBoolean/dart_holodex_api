@@ -68,23 +68,18 @@ abstract class $SearchFilterCopyWith<$Res> {
       _$SearchFilterCopyWithImpl<$Res, SearchFilter>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'sort', toJson: searchSortToString)
-          SearchSort sort,
+      {@JsonKey(name: 'sort', toJson: searchSortToString) SearchSort sort,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
-          List<Language> languages,
+      List<Language> languages,
       @JsonKey(name: 'target', toJson: searchTargetToStringList)
-          List<SearchTarget> targets,
-      @JsonKey(name: 'topic')
-          List<String> topics,
-      @JsonKey(name: 'vch')
-          List<String> videoChannels,
+      List<SearchTarget> targets,
+      @JsonKey(name: 'topic') List<String> topics,
+      @JsonKey(name: 'vch') List<String> videoChannels,
       @JsonKey(name: 'org', toJson: organizationListToStringList)
-          List<Organization> organizations,
+      List<Organization> organizations,
       bool paginated,
-      @JsonKey(toJson: intToString)
-          int offset,
-      @JsonKey(toJson: intToString)
-          int limit});
+      @JsonKey(toJson: intToString) int offset,
+      @JsonKey(toJson: intToString) int limit});
 }
 
 /// @nodoc
@@ -160,23 +155,18 @@ abstract class _$$_SearchFilterCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'sort', toJson: searchSortToString)
-          SearchSort sort,
+      {@JsonKey(name: 'sort', toJson: searchSortToString) SearchSort sort,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
-          List<Language> languages,
+      List<Language> languages,
       @JsonKey(name: 'target', toJson: searchTargetToStringList)
-          List<SearchTarget> targets,
-      @JsonKey(name: 'topic')
-          List<String> topics,
-      @JsonKey(name: 'vch')
-          List<String> videoChannels,
+      List<SearchTarget> targets,
+      @JsonKey(name: 'topic') List<String> topics,
+      @JsonKey(name: 'vch') List<String> videoChannels,
       @JsonKey(name: 'org', toJson: organizationListToStringList)
-          List<Organization> organizations,
+      List<Organization> organizations,
       bool paginated,
-      @JsonKey(toJson: intToString)
-          int offset,
-      @JsonKey(toJson: intToString)
-          int limit});
+      @JsonKey(toJson: intToString) int offset,
+      @JsonKey(toJson: intToString) int limit});
 }
 
 /// @nodoc
@@ -246,25 +236,21 @@ class __$$_SearchFilterCopyWithImpl<$Res>
 class _$_SearchFilter implements _SearchFilter {
   const _$_SearchFilter(
       {@JsonKey(name: 'sort', toJson: searchSortToString)
-          this.sort = SearchSort.newest,
+      this.sort = SearchSort.newest,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
-          final List<Language> languages = const [],
+      final List<Language> languages = const [],
       @JsonKey(name: 'target', toJson: searchTargetToStringList)
-          final List<SearchTarget> targets = const [
+      final List<SearchTarget> targets = const [
         SearchTarget.clip,
         SearchTarget.stream
       ],
-      @JsonKey(name: 'topic')
-          final List<String> topics = const [],
-      @JsonKey(name: 'vch')
-          final List<String> videoChannels = const [],
+      @JsonKey(name: 'topic') final List<String> topics = const [],
+      @JsonKey(name: 'vch') final List<String> videoChannels = const [],
       @JsonKey(name: 'org', toJson: organizationListToStringList)
-          final List<Organization> organizations = const [],
+      final List<Organization> organizations = const [],
       this.paginated = true,
-      @JsonKey(toJson: intToString)
-          this.offset = 0,
-      @JsonKey(toJson: intToString)
-          this.limit = 25})
+      @JsonKey(toJson: intToString) this.offset = 0,
+      @JsonKey(toJson: intToString) this.limit = 25})
       : assert(limit <= 50, 'The limit cannot be greater than 50'),
         _languages = languages,
         _targets = targets,
@@ -415,23 +401,18 @@ class _$_SearchFilter implements _SearchFilter {
 
 abstract class _SearchFilter implements SearchFilter {
   const factory _SearchFilter(
-      {@JsonKey(name: 'sort', toJson: searchSortToString)
-          final SearchSort sort,
+      {@JsonKey(name: 'sort', toJson: searchSortToString) final SearchSort sort,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
-          final List<Language> languages,
+      final List<Language> languages,
       @JsonKey(name: 'target', toJson: searchTargetToStringList)
-          final List<SearchTarget> targets,
-      @JsonKey(name: 'topic')
-          final List<String> topics,
-      @JsonKey(name: 'vch')
-          final List<String> videoChannels,
+      final List<SearchTarget> targets,
+      @JsonKey(name: 'topic') final List<String> topics,
+      @JsonKey(name: 'vch') final List<String> videoChannels,
       @JsonKey(name: 'org', toJson: organizationListToStringList)
-          final List<Organization> organizations,
+      final List<Organization> organizations,
       final bool paginated,
-      @JsonKey(toJson: intToString)
-          final int offset,
-      @JsonKey(toJson: intToString)
-          final int limit}) = _$_SearchFilter;
+      @JsonKey(toJson: intToString) final int offset,
+      @JsonKey(toJson: intToString) final int limit}) = _$_SearchFilter;
 
   @override
 

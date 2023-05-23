@@ -91,32 +91,22 @@ abstract class $VideoFullCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
-      @JsonKey(fromJson: _parseVideoType)
-          VideoType? type,
-      @JsonKey(name: 'topic_id')
-          String? topicId,
-      @JsonKey(name: 'published_at')
-          String? publishedAt,
-      @JsonKey(name: 'available_at')
-          String availableAt,
+      @JsonKey(fromJson: _parseVideoType) VideoType? type,
+      @JsonKey(name: 'topic_id') String? topicId,
+      @JsonKey(name: 'published_at') String? publishedAt,
+      @JsonKey(name: 'available_at') String availableAt,
       int? duration,
       @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
-          VideoStatus status,
-      @JsonKey(name: 'start_scheduled')
-          String? startScheduled,
-      @JsonKey(name: 'start_actual')
-          String? startActual,
-      @JsonKey(name: 'end_actual')
-          String? endActual,
-      @JsonKey(name: 'live_viewers')
-          int? liveViewers,
+      VideoStatus status,
+      @JsonKey(name: 'start_scheduled') String? startScheduled,
+      @JsonKey(name: 'start_actual') String? startActual,
+      @JsonKey(name: 'end_actual') String? endActual,
+      @JsonKey(name: 'live_viewers') int? liveViewers,
       String? description,
       int? songcount,
-      @JsonKey(name: 'channel_id')
-          String? channelId,
+      @JsonKey(name: 'channel_id') String? channelId,
       ChannelMin? channel,
-      @JsonKey(name: 'lang')
-          String? language,
+      @JsonKey(name: 'lang') String? language,
       List<Comment> comments,
       List<Video> recommendations,
       List<Video> clips,
@@ -125,8 +115,7 @@ abstract class $VideoFullCopyWith<$Res> {
       List<Video> simulcasts,
       List<Channel> mentions,
       List<Song> songs,
-      @JsonKey(name: 'same_source_clips')
-          List<Video> sameSourceClips});
+      @JsonKey(name: 'same_source_clips') List<Video> sameSourceClips});
 
   $ChannelMinCopyWith<$Res>? get channel;
 }
@@ -302,32 +291,22 @@ abstract class _$$_VideoFullCopyWith<$Res> implements $VideoFullCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
-      @JsonKey(fromJson: _parseVideoType)
-          VideoType? type,
-      @JsonKey(name: 'topic_id')
-          String? topicId,
-      @JsonKey(name: 'published_at')
-          String? publishedAt,
-      @JsonKey(name: 'available_at')
-          String availableAt,
+      @JsonKey(fromJson: _parseVideoType) VideoType? type,
+      @JsonKey(name: 'topic_id') String? topicId,
+      @JsonKey(name: 'published_at') String? publishedAt,
+      @JsonKey(name: 'available_at') String availableAt,
       int? duration,
       @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
-          VideoStatus status,
-      @JsonKey(name: 'start_scheduled')
-          String? startScheduled,
-      @JsonKey(name: 'start_actual')
-          String? startActual,
-      @JsonKey(name: 'end_actual')
-          String? endActual,
-      @JsonKey(name: 'live_viewers')
-          int? liveViewers,
+      VideoStatus status,
+      @JsonKey(name: 'start_scheduled') String? startScheduled,
+      @JsonKey(name: 'start_actual') String? startActual,
+      @JsonKey(name: 'end_actual') String? endActual,
+      @JsonKey(name: 'live_viewers') int? liveViewers,
       String? description,
       int? songcount,
-      @JsonKey(name: 'channel_id')
-          String? channelId,
+      @JsonKey(name: 'channel_id') String? channelId,
       ChannelMin? channel,
-      @JsonKey(name: 'lang')
-          String? language,
+      @JsonKey(name: 'lang') String? language,
       List<Comment> comments,
       List<Video> recommendations,
       List<Video> clips,
@@ -336,8 +315,7 @@ abstract class _$$_VideoFullCopyWith<$Res> implements $VideoFullCopyWith<$Res> {
       List<Video> simulcasts,
       List<Channel> mentions,
       List<Song> songs,
-      @JsonKey(name: 'same_source_clips')
-          List<Video> sameSourceClips});
+      @JsonKey(name: 'same_source_clips') List<Video> sameSourceClips});
 
   @override
   $ChannelMinCopyWith<$Res>? get channel;
@@ -496,32 +474,22 @@ class _$_VideoFull extends _VideoFull {
   const _$_VideoFull(
       {required this.id,
       required this.title,
-      @JsonKey(fromJson: _parseVideoType)
-          this.type,
-      @JsonKey(name: 'topic_id')
-          this.topicId,
-      @JsonKey(name: 'published_at')
-          this.publishedAt,
-      @JsonKey(name: 'available_at')
-          required this.availableAt,
+      @JsonKey(fromJson: _parseVideoType) this.type,
+      @JsonKey(name: 'topic_id') this.topicId,
+      @JsonKey(name: 'published_at') this.publishedAt,
+      @JsonKey(name: 'available_at') required this.availableAt,
       this.duration,
       @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
-          required this.status,
-      @JsonKey(name: 'start_scheduled')
-          this.startScheduled,
-      @JsonKey(name: 'start_actual')
-          this.startActual,
-      @JsonKey(name: 'end_actual')
-          this.endActual,
-      @JsonKey(name: 'live_viewers')
-          this.liveViewers,
+      required this.status,
+      @JsonKey(name: 'start_scheduled') this.startScheduled,
+      @JsonKey(name: 'start_actual') this.startActual,
+      @JsonKey(name: 'end_actual') this.endActual,
+      @JsonKey(name: 'live_viewers') this.liveViewers,
       this.description,
       this.songcount,
-      @JsonKey(name: 'channel_id')
-          this.channelId,
+      @JsonKey(name: 'channel_id') this.channelId,
       this.channel,
-      @JsonKey(name: 'lang')
-          this.language,
+      @JsonKey(name: 'lang') this.language,
       final List<Comment> comments = const [],
       final List<Video> recommendations = const [],
       final List<Video> clips = const [],
@@ -531,7 +499,7 @@ class _$_VideoFull extends _VideoFull {
       final List<Channel> mentions = const [],
       final List<Song> songs = const [],
       @JsonKey(name: 'same_source_clips')
-          final List<Video> sameSourceClips = const []})
+      final List<Video> sameSourceClips = const []})
       : _comments = comments,
         _recommendations = recommendations,
         _clips = clips,
@@ -792,32 +760,22 @@ abstract class _VideoFull extends VideoFull {
   const factory _VideoFull(
       {required final String id,
       required final String title,
-      @JsonKey(fromJson: _parseVideoType)
-          final VideoType? type,
-      @JsonKey(name: 'topic_id')
-          final String? topicId,
-      @JsonKey(name: 'published_at')
-          final String? publishedAt,
-      @JsonKey(name: 'available_at')
-          required final String availableAt,
+      @JsonKey(fromJson: _parseVideoType) final VideoType? type,
+      @JsonKey(name: 'topic_id') final String? topicId,
+      @JsonKey(name: 'published_at') final String? publishedAt,
+      @JsonKey(name: 'available_at') required final String availableAt,
       final int? duration,
       @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
-          required final VideoStatus status,
-      @JsonKey(name: 'start_scheduled')
-          final String? startScheduled,
-      @JsonKey(name: 'start_actual')
-          final String? startActual,
-      @JsonKey(name: 'end_actual')
-          final String? endActual,
-      @JsonKey(name: 'live_viewers')
-          final int? liveViewers,
+      required final VideoStatus status,
+      @JsonKey(name: 'start_scheduled') final String? startScheduled,
+      @JsonKey(name: 'start_actual') final String? startActual,
+      @JsonKey(name: 'end_actual') final String? endActual,
+      @JsonKey(name: 'live_viewers') final int? liveViewers,
       final String? description,
       final int? songcount,
-      @JsonKey(name: 'channel_id')
-          final String? channelId,
+      @JsonKey(name: 'channel_id') final String? channelId,
       final ChannelMin? channel,
-      @JsonKey(name: 'lang')
-          final String? language,
+      @JsonKey(name: 'lang') final String? language,
       final List<Comment> comments,
       final List<Video> recommendations,
       final List<Video> clips,
@@ -827,7 +785,7 @@ abstract class _VideoFull extends VideoFull {
       final List<Channel> mentions,
       final List<Song> songs,
       @JsonKey(name: 'same_source_clips')
-          final List<Video> sameSourceClips}) = _$_VideoFull;
+      final List<Video> sameSourceClips}) = _$_VideoFull;
   const _VideoFull._() : super._();
 
   factory _VideoFull.fromJson(Map<String, dynamic> json) =

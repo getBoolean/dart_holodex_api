@@ -76,45 +76,30 @@ abstract class $ChannelCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      @JsonKey(name: 'english_name')
-          String? englishName,
+      @JsonKey(name: 'english_name') String? englishName,
       ChannelType? type,
       String? photo,
-      @JsonKey(name: 'org')
-          String? organization,
-      @JsonKey(name: 'video_count')
-          String? videoCount,
-      @JsonKey(name: 'subscriber_count')
-          String? subscriberCount,
-      @JsonKey(name: 'view_count')
-          String? viewCount,
-      @JsonKey(name: 'clip_count')
-          int? clipCount,
-      @JsonKey(name: 'suborg')
-          String? subOrganization,
+      @JsonKey(name: 'org') String? organization,
+      @JsonKey(name: 'video_count') String? videoCount,
+      @JsonKey(name: 'subscriber_count') String? subscriberCount,
+      @JsonKey(name: 'view_count') String? viewCount,
+      @JsonKey(name: 'clip_count') int? clipCount,
+      @JsonKey(name: 'suborg') String? subOrganization,
       String? banner,
       String? twitter,
       @JsonKey(toJson: Language.toStringStatic, fromJson: Language.fromString)
-          Language lang,
+      Language lang,
       bool? inactive,
       String? description,
-      @JsonKey(name: 'published_at')
-          String? publishedAt,
-      @JsonKey(name: 'crawled_at')
-          String? crawledAt,
-      @JsonKey(name: 'comments_crawled_at')
-          String? commentsCrawledAt,
-      @JsonKey(name: 'updated_at')
-          String? updatedAt,
-      @JsonKey(name: 'yt_uploads_id')
-          String? ytUploadsId,
-      @JsonKey(name: 'top_topics')
-          List<String> topTopics,
-      @JsonKey(name: 'yt_handle')
-          List<String> ytHandle,
+      @JsonKey(name: 'published_at') String? publishedAt,
+      @JsonKey(name: 'crawled_at') String? crawledAt,
+      @JsonKey(name: 'comments_crawled_at') String? commentsCrawledAt,
+      @JsonKey(name: 'updated_at') String? updatedAt,
+      @JsonKey(name: 'yt_uploads_id') String? ytUploadsId,
+      @JsonKey(name: 'top_topics') List<String> topTopics,
+      @JsonKey(name: 'yt_handle') List<String> ytHandle,
       String? twitch,
-      @JsonKey(name: 'yt_name_history')
-          List<String> ytNameHistory,
+      @JsonKey(name: 'yt_name_history') List<String> ytNameHistory,
       String? group});
 }
 
@@ -277,45 +262,30 @@ abstract class _$$_ChannelCopyWith<$Res> implements $ChannelCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      @JsonKey(name: 'english_name')
-          String? englishName,
+      @JsonKey(name: 'english_name') String? englishName,
       ChannelType? type,
       String? photo,
-      @JsonKey(name: 'org')
-          String? organization,
-      @JsonKey(name: 'video_count')
-          String? videoCount,
-      @JsonKey(name: 'subscriber_count')
-          String? subscriberCount,
-      @JsonKey(name: 'view_count')
-          String? viewCount,
-      @JsonKey(name: 'clip_count')
-          int? clipCount,
-      @JsonKey(name: 'suborg')
-          String? subOrganization,
+      @JsonKey(name: 'org') String? organization,
+      @JsonKey(name: 'video_count') String? videoCount,
+      @JsonKey(name: 'subscriber_count') String? subscriberCount,
+      @JsonKey(name: 'view_count') String? viewCount,
+      @JsonKey(name: 'clip_count') int? clipCount,
+      @JsonKey(name: 'suborg') String? subOrganization,
       String? banner,
       String? twitter,
       @JsonKey(toJson: Language.toStringStatic, fromJson: Language.fromString)
-          Language lang,
+      Language lang,
       bool? inactive,
       String? description,
-      @JsonKey(name: 'published_at')
-          String? publishedAt,
-      @JsonKey(name: 'crawled_at')
-          String? crawledAt,
-      @JsonKey(name: 'comments_crawled_at')
-          String? commentsCrawledAt,
-      @JsonKey(name: 'updated_at')
-          String? updatedAt,
-      @JsonKey(name: 'yt_uploads_id')
-          String? ytUploadsId,
-      @JsonKey(name: 'top_topics')
-          List<String> topTopics,
-      @JsonKey(name: 'yt_handle')
-          List<String> ytHandle,
+      @JsonKey(name: 'published_at') String? publishedAt,
+      @JsonKey(name: 'crawled_at') String? crawledAt,
+      @JsonKey(name: 'comments_crawled_at') String? commentsCrawledAt,
+      @JsonKey(name: 'updated_at') String? updatedAt,
+      @JsonKey(name: 'yt_uploads_id') String? ytUploadsId,
+      @JsonKey(name: 'top_topics') List<String> topTopics,
+      @JsonKey(name: 'yt_handle') List<String> ytHandle,
       String? twitch,
-      @JsonKey(name: 'yt_name_history')
-          List<String> ytNameHistory,
+      @JsonKey(name: 'yt_name_history') List<String> ytNameHistory,
       String? group});
 }
 
@@ -471,45 +441,31 @@ class _$_Channel extends _Channel {
   const _$_Channel(
       {required this.id,
       required this.name,
-      @JsonKey(name: 'english_name')
-          this.englishName,
+      @JsonKey(name: 'english_name') this.englishName,
       this.type,
       this.photo,
-      @JsonKey(name: 'org')
-          this.organization,
-      @JsonKey(name: 'video_count')
-          this.videoCount,
-      @JsonKey(name: 'subscriber_count')
-          this.subscriberCount,
-      @JsonKey(name: 'view_count')
-          this.viewCount,
-      @JsonKey(name: 'clip_count')
-          this.clipCount,
-      @JsonKey(name: 'suborg')
-          this.subOrganization,
+      @JsonKey(name: 'org') this.organization,
+      @JsonKey(name: 'video_count') this.videoCount,
+      @JsonKey(name: 'subscriber_count') this.subscriberCount,
+      @JsonKey(name: 'view_count') this.viewCount,
+      @JsonKey(name: 'clip_count') this.clipCount,
+      @JsonKey(name: 'suborg') this.subOrganization,
       this.banner,
       this.twitter,
       @JsonKey(toJson: Language.toStringStatic, fromJson: Language.fromString)
-          required this.lang,
+      required this.lang,
       this.inactive,
       this.description,
-      @JsonKey(name: 'published_at')
-          this.publishedAt,
-      @JsonKey(name: 'crawled_at')
-          this.crawledAt,
-      @JsonKey(name: 'comments_crawled_at')
-          this.commentsCrawledAt,
-      @JsonKey(name: 'updated_at')
-          this.updatedAt,
-      @JsonKey(name: 'yt_uploads_id')
-          this.ytUploadsId,
-      @JsonKey(name: 'top_topics')
-          final List<String> topTopics = const [],
-      @JsonKey(name: 'yt_handle')
-          final List<String> ytHandle = const [],
+      @JsonKey(name: 'published_at') this.publishedAt,
+      @JsonKey(name: 'crawled_at') this.crawledAt,
+      @JsonKey(name: 'comments_crawled_at') this.commentsCrawledAt,
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      @JsonKey(name: 'yt_uploads_id') this.ytUploadsId,
+      @JsonKey(name: 'top_topics') final List<String> topTopics = const [],
+      @JsonKey(name: 'yt_handle') final List<String> ytHandle = const [],
       this.twitch,
       @JsonKey(name: 'yt_name_history')
-          final List<String> ytNameHistory = const [],
+      final List<String> ytNameHistory = const [],
       this.group})
       : _topTopics = topTopics,
         _ytHandle = ytHandle,
@@ -710,45 +666,30 @@ abstract class _Channel extends Channel {
   const factory _Channel(
       {required final String id,
       required final String name,
-      @JsonKey(name: 'english_name')
-          final String? englishName,
+      @JsonKey(name: 'english_name') final String? englishName,
       final ChannelType? type,
       final String? photo,
-      @JsonKey(name: 'org')
-          final String? organization,
-      @JsonKey(name: 'video_count')
-          final String? videoCount,
-      @JsonKey(name: 'subscriber_count')
-          final String? subscriberCount,
-      @JsonKey(name: 'view_count')
-          final String? viewCount,
-      @JsonKey(name: 'clip_count')
-          final int? clipCount,
-      @JsonKey(name: 'suborg')
-          final String? subOrganization,
+      @JsonKey(name: 'org') final String? organization,
+      @JsonKey(name: 'video_count') final String? videoCount,
+      @JsonKey(name: 'subscriber_count') final String? subscriberCount,
+      @JsonKey(name: 'view_count') final String? viewCount,
+      @JsonKey(name: 'clip_count') final int? clipCount,
+      @JsonKey(name: 'suborg') final String? subOrganization,
       final String? banner,
       final String? twitter,
       @JsonKey(toJson: Language.toStringStatic, fromJson: Language.fromString)
-          required final Language lang,
+      required final Language lang,
       final bool? inactive,
       final String? description,
-      @JsonKey(name: 'published_at')
-          final String? publishedAt,
-      @JsonKey(name: 'crawled_at')
-          final String? crawledAt,
-      @JsonKey(name: 'comments_crawled_at')
-          final String? commentsCrawledAt,
-      @JsonKey(name: 'updated_at')
-          final String? updatedAt,
-      @JsonKey(name: 'yt_uploads_id')
-          final String? ytUploadsId,
-      @JsonKey(name: 'top_topics')
-          final List<String> topTopics,
-      @JsonKey(name: 'yt_handle')
-          final List<String> ytHandle,
+      @JsonKey(name: 'published_at') final String? publishedAt,
+      @JsonKey(name: 'crawled_at') final String? crawledAt,
+      @JsonKey(name: 'comments_crawled_at') final String? commentsCrawledAt,
+      @JsonKey(name: 'updated_at') final String? updatedAt,
+      @JsonKey(name: 'yt_uploads_id') final String? ytUploadsId,
+      @JsonKey(name: 'top_topics') final List<String> topTopics,
+      @JsonKey(name: 'yt_handle') final List<String> ytHandle,
       final String? twitch,
-      @JsonKey(name: 'yt_name_history')
-          final List<String> ytNameHistory,
+      @JsonKey(name: 'yt_name_history') final List<String> ytNameHistory,
       final String? group}) = _$_Channel;
   const _Channel._() : super._();
 
