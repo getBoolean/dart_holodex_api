@@ -20,6 +20,7 @@ PaginatedVideos _$PaginatedVideosFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PaginatedVideos {
+  /// The total number of videos on the server.
   @JsonKey(fromJson: _parseTotal)
   int? get total => throw _privateConstructorUsedError;
   List<VideoFull> get items => throw _privateConstructorUsedError;
@@ -136,6 +137,7 @@ class _$_PaginatedVideos extends _PaginatedVideos {
   factory _$_PaginatedVideos.fromJson(Map<String, dynamic> json) =>
       _$$_PaginatedVideosFromJson(json);
 
+  /// The total number of videos on the server.
   @override
   @JsonKey(fromJson: _parseTotal)
   final int? total;
@@ -198,6 +200,8 @@ abstract class _PaginatedVideos extends PaginatedVideos {
       _$_PaginatedVideos.fromJson;
 
   @override
+
+  /// The total number of videos on the server.
   @JsonKey(fromJson: _parseTotal)
   int? get total;
   @override

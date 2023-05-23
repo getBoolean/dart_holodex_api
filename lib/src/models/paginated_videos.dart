@@ -25,6 +25,7 @@ class PaginatedVideos with _$PaginatedVideos {
 
   /// Creates a paginated list of [VideoFull]s.
   const factory PaginatedVideos({
+    /// The total number of videos on the server.
     @JsonKey(fromJson: _parseTotal) int? total,
     @Default([]) List<VideoFull> items,
     @Default(false) bool paginated,
