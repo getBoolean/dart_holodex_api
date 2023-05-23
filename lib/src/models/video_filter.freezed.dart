@@ -93,37 +93,35 @@ abstract class $VideoFilterCopyWith<$Res> {
       _$VideoFilterCopyWithImpl<$Res, VideoFilter>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'channel_id', includeIfNull: false)
-          String? channelId,
+      {@JsonKey(name: 'channel_id', includeIfNull: false) String? channelId,
       @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
-          List<String> ids,
-      @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
-          List<Includes> includes,
+      List<String> ids,
+      @JsonKey(
+          toJson: concatIncludesList, name: 'include', includeIfNull: false)
+      List<Includes> includes,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
-          List<Language> languages,
-      @JsonKey(toJson: intToString)
-          int limit,
-      @JsonKey(name: 'max_upcoming_hours', toJson: intToStringNullable, includeIfNull: false)
-          int? maxUpcomingHours,
+      List<Language> languages,
+      @JsonKey(toJson: intToString) int limit,
+      @JsonKey(
+          name: 'max_upcoming_hours',
+          toJson: intToStringNullable,
+          includeIfNull: false)
+      int? maxUpcomingHours,
       @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
-          String? mentionedChannelId,
-      @JsonKey(toJson: intToString)
-          int offset,
-      @JsonKey(toJson: orderToString)
-          Order order,
+      String? mentionedChannelId,
+      @JsonKey(toJson: intToString) int offset,
+      @JsonKey(toJson: orderToString) Order order,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
-          Organization? organization,
-      @JsonKey(toJson: paginatedToString)
-          bool paginated,
+      Organization? organization,
+      @JsonKey(toJson: paginatedToString) bool paginated,
       @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
-          List<VideoSort> sort,
+      List<VideoSort> sort,
       @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
-          List<VideoStatus> status,
-      @JsonKey(includeIfNull: false)
-          String? topic,
+      List<VideoStatus> status,
+      @JsonKey(includeIfNull: false) String? topic,
       @JsonKey(toJson: videoTypeToString, includeIfNull: false)
       @JsonKey(includeIfNull: false)
-          VideoType? type});
+      VideoType? type});
 }
 
 /// @nodoc
@@ -229,37 +227,35 @@ abstract class _$$_VideoFilterCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'channel_id', includeIfNull: false)
-          String? channelId,
+      {@JsonKey(name: 'channel_id', includeIfNull: false) String? channelId,
       @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
-          List<String> ids,
-      @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
-          List<Includes> includes,
+      List<String> ids,
+      @JsonKey(
+          toJson: concatIncludesList, name: 'include', includeIfNull: false)
+      List<Includes> includes,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
-          List<Language> languages,
-      @JsonKey(toJson: intToString)
-          int limit,
-      @JsonKey(name: 'max_upcoming_hours', toJson: intToStringNullable, includeIfNull: false)
-          int? maxUpcomingHours,
+      List<Language> languages,
+      @JsonKey(toJson: intToString) int limit,
+      @JsonKey(
+          name: 'max_upcoming_hours',
+          toJson: intToStringNullable,
+          includeIfNull: false)
+      int? maxUpcomingHours,
       @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
-          String? mentionedChannelId,
-      @JsonKey(toJson: intToString)
-          int offset,
-      @JsonKey(toJson: orderToString)
-          Order order,
+      String? mentionedChannelId,
+      @JsonKey(toJson: intToString) int offset,
+      @JsonKey(toJson: orderToString) Order order,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
-          Organization? organization,
-      @JsonKey(toJson: paginatedToString)
-          bool paginated,
+      Organization? organization,
+      @JsonKey(toJson: paginatedToString) bool paginated,
       @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
-          List<VideoSort> sort,
+      List<VideoSort> sort,
       @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
-          List<VideoStatus> status,
-      @JsonKey(includeIfNull: false)
-          String? topic,
+      List<VideoStatus> status,
+      @JsonKey(includeIfNull: false) String? topic,
       @JsonKey(toJson: videoTypeToString, includeIfNull: false)
       @JsonKey(includeIfNull: false)
-          VideoType? type});
+      VideoType? type});
 }
 
 /// @nodoc
@@ -358,37 +354,35 @@ class __$$_VideoFilterCopyWithImpl<$Res>
 @JsonSerializable(createFactory: false)
 class _$_VideoFilter extends _VideoFilter {
   const _$_VideoFilter(
-      {@JsonKey(name: 'channel_id', includeIfNull: false)
-          this.channelId,
+      {@JsonKey(name: 'channel_id', includeIfNull: false) this.channelId,
       @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
-          final List<String> ids = const [],
-      @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
-          final List<Includes> includes = const [],
+      final List<String> ids = const [],
+      @JsonKey(
+          toJson: concatIncludesList, name: 'include', includeIfNull: false)
+      final List<Includes> includes = const [],
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
-          final List<Language> languages = const [],
-      @JsonKey(toJson: intToString)
-          this.limit = 25,
-      @JsonKey(name: 'max_upcoming_hours', toJson: intToStringNullable, includeIfNull: false)
-          this.maxUpcomingHours,
+      final List<Language> languages = const [],
+      @JsonKey(toJson: intToString) this.limit = 25,
+      @JsonKey(
+          name: 'max_upcoming_hours',
+          toJson: intToStringNullable,
+          includeIfNull: false)
+      this.maxUpcomingHours,
       @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
-          this.mentionedChannelId,
-      @JsonKey(toJson: intToString)
-          this.offset = 0,
-      @JsonKey(toJson: orderToString)
-          this.order = Order.descending,
+      this.mentionedChannelId,
+      @JsonKey(toJson: intToString) this.offset = 0,
+      @JsonKey(toJson: orderToString) this.order = Order.descending,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
-          this.organization,
-      @JsonKey(toJson: paginatedToString)
-          this.paginated = false,
+      this.organization,
+      @JsonKey(toJson: paginatedToString) this.paginated = false,
       @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
-          final List<VideoSort> sort = const [VideoSort.availableAt],
+      final List<VideoSort> sort = const [VideoSort.availableAt],
       @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
-          final List<VideoStatus> status = const [],
-      @JsonKey(includeIfNull: false)
-          this.topic,
+      final List<VideoStatus> status = const [],
+      @JsonKey(includeIfNull: false) this.topic,
       @JsonKey(toJson: videoTypeToString, includeIfNull: false)
       @JsonKey(includeIfNull: false)
-          this.type})
+      this.type})
       : assert(limit <= 50, 'Limit cannot be greater than 50'),
         _ids = ids,
         _includes = includes,
@@ -581,36 +575,35 @@ class _$_VideoFilter extends _VideoFilter {
 abstract class _VideoFilter extends VideoFilter {
   const factory _VideoFilter(
       {@JsonKey(name: 'channel_id', includeIfNull: false)
-          final String? channelId,
+      final String? channelId,
       @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
-          final List<String> ids,
-      @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
-          final List<Includes> includes,
+      final List<String> ids,
+      @JsonKey(
+          toJson: concatIncludesList, name: 'include', includeIfNull: false)
+      final List<Includes> includes,
       @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
-          final List<Language> languages,
-      @JsonKey(toJson: intToString)
-          final int limit,
-      @JsonKey(name: 'max_upcoming_hours', toJson: intToStringNullable, includeIfNull: false)
-          final int? maxUpcomingHours,
+      final List<Language> languages,
+      @JsonKey(toJson: intToString) final int limit,
+      @JsonKey(
+          name: 'max_upcoming_hours',
+          toJson: intToStringNullable,
+          includeIfNull: false)
+      final int? maxUpcomingHours,
       @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
-          final String? mentionedChannelId,
-      @JsonKey(toJson: intToString)
-          final int offset,
-      @JsonKey(toJson: orderToString)
-          final Order order,
+      final String? mentionedChannelId,
+      @JsonKey(toJson: intToString) final int offset,
+      @JsonKey(toJson: orderToString) final Order order,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
-          final Organization? organization,
-      @JsonKey(toJson: paginatedToString)
-          final bool paginated,
+      final Organization? organization,
+      @JsonKey(toJson: paginatedToString) final bool paginated,
       @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
-          final List<VideoSort> sort,
+      final List<VideoSort> sort,
       @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
-          final List<VideoStatus> status,
-      @JsonKey(includeIfNull: false)
-          final String? topic,
+      final List<VideoStatus> status,
+      @JsonKey(includeIfNull: false) final String? topic,
       @JsonKey(toJson: videoTypeToString, includeIfNull: false)
       @JsonKey(includeIfNull: false)
-          final VideoType? type}) = _$_VideoFilter;
+      final VideoType? type}) = _$_VideoFilter;
   const _VideoFilter._() : super._();
 
   @override
