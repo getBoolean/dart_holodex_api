@@ -1,5 +1,9 @@
 <!-- markdownlint-disable MD041 -->
 
+## 1.0.0+5
+
+- **Fixed:** Dart formatting (again)
+
 ## 1.0.0+4
 
 - **Fixed:** Dart formatting
