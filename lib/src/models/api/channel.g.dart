@@ -20,9 +20,9 @@ _$_Channel _$$_ChannelFromJson(Map<String, dynamic> json) => $checkedCreate(
               'type', (v) => $enumDecodeNullable(_$ChannelTypeEnumMap, v)),
           photo: $checkedConvert('photo', (v) => v as String?),
           organization: $checkedConvert('org', (v) => v as String?),
-          videoCount: $checkedConvert('video_count', (v) => v as String?),
+          videoCount: $checkedConvert('video_count', (v) => v as int?),
           subscriberCount:
-              $checkedConvert('subscriber_count', (v) => v as String?),
+              $checkedConvert('subscriber_count', (v) => v as int?),
           viewCount: $checkedConvert('view_count', (v) => v as String?),
           clipCount: $checkedConvert('clip_count', (v) => v as int?),
           subOrganization: $checkedConvert('suborg', (v) => v as String?),

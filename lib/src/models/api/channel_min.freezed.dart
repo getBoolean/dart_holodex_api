@@ -29,9 +29,9 @@ mixin _$ChannelMin {
   @JsonKey(name: 'org')
   String? get organization => throw _privateConstructorUsedError;
   @JsonKey(name: 'video_count')
-  String? get videoCount => throw _privateConstructorUsedError;
+  int? get videoCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'subscriber_count')
-  String? get subscriberCount => throw _privateConstructorUsedError;
+  int? get subscriberCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'view_count')
   String? get viewCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'clip_count')
@@ -56,8 +56,8 @@ abstract class $ChannelMinCopyWith<$Res> {
       ChannelType? type,
       String? photo,
       @JsonKey(name: 'org') String? organization,
-      @JsonKey(name: 'video_count') String? videoCount,
-      @JsonKey(name: 'subscriber_count') String? subscriberCount,
+      @JsonKey(name: 'video_count') int? videoCount,
+      @JsonKey(name: 'subscriber_count') int? subscriberCount,
       @JsonKey(name: 'view_count') String? viewCount,
       @JsonKey(name: 'clip_count') int? clipCount});
 }
@@ -114,11 +114,11 @@ class _$ChannelMinCopyWithImpl<$Res, $Val extends ChannelMin>
       videoCount: freezed == videoCount
           ? _value.videoCount
           : videoCount // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       subscriberCount: freezed == subscriberCount
           ? _value.subscriberCount
           : subscriberCount // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       viewCount: freezed == viewCount
           ? _value.viewCount
           : viewCount // ignore: cast_nullable_to_non_nullable
@@ -146,8 +146,8 @@ abstract class _$$_ChannelMinCopyWith<$Res>
       ChannelType? type,
       String? photo,
       @JsonKey(name: 'org') String? organization,
-      @JsonKey(name: 'video_count') String? videoCount,
-      @JsonKey(name: 'subscriber_count') String? subscriberCount,
+      @JsonKey(name: 'video_count') int? videoCount,
+      @JsonKey(name: 'subscriber_count') int? subscriberCount,
       @JsonKey(name: 'view_count') String? viewCount,
       @JsonKey(name: 'clip_count') int? clipCount});
 }
@@ -202,11 +202,11 @@ class __$$_ChannelMinCopyWithImpl<$Res>
       videoCount: freezed == videoCount
           ? _value.videoCount
           : videoCount // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       subscriberCount: freezed == subscriberCount
           ? _value.subscriberCount
           : subscriberCount // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       viewCount: freezed == viewCount
           ? _value.viewCount
           : viewCount // ignore: cast_nullable_to_non_nullable
@@ -254,10 +254,10 @@ class _$_ChannelMin extends _ChannelMin {
   final String? organization;
   @override
   @JsonKey(name: 'video_count')
-  final String? videoCount;
+  final int? videoCount;
   @override
   @JsonKey(name: 'subscriber_count')
-  final String? subscriberCount;
+  final int? subscriberCount;
   @override
   @JsonKey(name: 'view_count')
   final String? viewCount;
@@ -320,8 +320,8 @@ abstract class _ChannelMin extends ChannelMin {
       final ChannelType? type,
       final String? photo,
       @JsonKey(name: 'org') final String? organization,
-      @JsonKey(name: 'video_count') final String? videoCount,
-      @JsonKey(name: 'subscriber_count') final String? subscriberCount,
+      @JsonKey(name: 'video_count') final int? videoCount,
+      @JsonKey(name: 'subscriber_count') final int? subscriberCount,
       @JsonKey(name: 'view_count') final String? viewCount,
       @JsonKey(name: 'clip_count') final int? clipCount}) = _$_ChannelMin;
   const _ChannelMin._() : super._();
@@ -345,10 +345,10 @@ abstract class _ChannelMin extends ChannelMin {
   String? get organization;
   @override
   @JsonKey(name: 'video_count')
-  String? get videoCount;
+  int? get videoCount;
   @override
   @JsonKey(name: 'subscriber_count')
-  String? get subscriberCount;
+  int? get subscriberCount;
   @override
   @JsonKey(name: 'view_count')
   String? get viewCount;

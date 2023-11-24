@@ -21,9 +21,9 @@ _$_ChannelMin _$$_ChannelMinFromJson(Map<String, dynamic> json) =>
               'type', (v) => $enumDecodeNullable(_$ChannelTypeEnumMap, v)),
           photo: $checkedConvert('photo', (v) => v as String?),
           organization: $checkedConvert('org', (v) => v as String?),
-          videoCount: $checkedConvert('video_count', (v) => v as String?),
+          videoCount: $checkedConvert('video_count', (v) => v as int?),
           subscriberCount:
-              $checkedConvert('subscriber_count', (v) => v as String?),
+              $checkedConvert('subscriber_count', (v) => v as int?),
           viewCount: $checkedConvert('view_count', (v) => v as String?),
           clipCount: $checkedConvert('clip_count', (v) => v as int?),
         );
