@@ -1,5 +1,12 @@
 <!-- markdownlint-disable MD041 -->
 
+## 2.0.0
+
+- **Breaking**: Updated minimum Dart SDK version to 3.0.0.
+- **Breaking**: Changed `ChannelMin.viewCount` from `String` to `int`.
+- **Breaking**: Changed `ChannelMin.subscriberCount` from `String` to `int`.
+- **Breaking**: Changed `ChannelMin.videoCount` from `String` to `int`.
+
 ## 1.0.0+5
 
 - **Fixed:** Dart formatting (again)
