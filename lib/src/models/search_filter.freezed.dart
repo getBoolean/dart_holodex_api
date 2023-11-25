@@ -147,11 +147,11 @@ class _$SearchFilterCopyWithImpl<$Res, $Val extends SearchFilter>
 }
 
 /// @nodoc
-abstract class _$$_SearchFilterCopyWith<$Res>
+abstract class _$$SearchFilterImplCopyWith<$Res>
     implements $SearchFilterCopyWith<$Res> {
-  factory _$$_SearchFilterCopyWith(
-          _$_SearchFilter value, $Res Function(_$_SearchFilter) then) =
-      __$$_SearchFilterCopyWithImpl<$Res>;
+  factory _$$SearchFilterImplCopyWith(
+          _$SearchFilterImpl value, $Res Function(_$SearchFilterImpl) then) =
+      __$$SearchFilterImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -170,11 +170,11 @@ abstract class _$$_SearchFilterCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SearchFilterCopyWithImpl<$Res>
-    extends _$SearchFilterCopyWithImpl<$Res, _$_SearchFilter>
-    implements _$$_SearchFilterCopyWith<$Res> {
-  __$$_SearchFilterCopyWithImpl(
-      _$_SearchFilter _value, $Res Function(_$_SearchFilter) _then)
+class __$$SearchFilterImplCopyWithImpl<$Res>
+    extends _$SearchFilterCopyWithImpl<$Res, _$SearchFilterImpl>
+    implements _$$SearchFilterImplCopyWith<$Res> {
+  __$$SearchFilterImplCopyWithImpl(
+      _$SearchFilterImpl _value, $Res Function(_$SearchFilterImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -190,7 +190,7 @@ class __$$_SearchFilterCopyWithImpl<$Res>
     Object? offset = null,
     Object? limit = null,
   }) {
-    return _then(_$_SearchFilter(
+    return _then(_$SearchFilterImpl(
       sort: null == sort
           ? _value.sort
           : sort // ignore: cast_nullable_to_non_nullable
@@ -233,8 +233,8 @@ class __$$_SearchFilterCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable(createFactory: false)
-class _$_SearchFilter implements _SearchFilter {
-  const _$_SearchFilter(
+class _$SearchFilterImpl implements _SearchFilter {
+  const _$SearchFilterImpl(
       {@JsonKey(name: 'sort', toJson: searchSortToString)
       this.sort = SearchSort.newest,
       @JsonKey(toJson: languageListToStringList, name: 'lang')
@@ -355,7 +355,7 @@ class _$_SearchFilter implements _SearchFilter {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchFilter &&
+            other is _$SearchFilterImpl &&
             (identical(other.sort, sort) || other.sort == sort) &&
             const DeepCollectionEquality()
                 .equals(other._languages, _languages) &&
@@ -388,12 +388,12 @@ class _$_SearchFilter implements _SearchFilter {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchFilterCopyWith<_$_SearchFilter> get copyWith =>
-      __$$_SearchFilterCopyWithImpl<_$_SearchFilter>(this, _$identity);
+  _$$SearchFilterImplCopyWith<_$SearchFilterImpl> get copyWith =>
+      __$$SearchFilterImplCopyWithImpl<_$SearchFilterImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SearchFilterToJson(
+    return _$$SearchFilterImplToJson(
       this,
     );
   }
@@ -412,7 +412,7 @@ abstract class _SearchFilter implements SearchFilter {
       final List<Organization> organizations,
       final bool paginated,
       @JsonKey(toJson: intToString) final int offset,
-      @JsonKey(toJson: intToString) final int limit}) = _$_SearchFilter;
+      @JsonKey(toJson: intToString) final int limit}) = _$SearchFilterImpl;
 
   @override
 
@@ -464,6 +464,6 @@ abstract class _SearchFilter implements SearchFilter {
   int get limit;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchFilterCopyWith<_$_SearchFilter> get copyWith =>
+  _$$SearchFilterImplCopyWith<_$SearchFilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

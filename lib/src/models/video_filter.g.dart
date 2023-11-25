@@ -8,7 +8,7 @@ part of 'video_filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$$_VideoFilterToJson(_$_VideoFilter instance) {
+Map<String, dynamic> _$$VideoFilterImplToJson(_$VideoFilterImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

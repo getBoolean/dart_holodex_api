@@ -8,11 +8,12 @@ part of 'channel.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Channel _$$_ChannelFromJson(Map<String, dynamic> json) => $checkedCreate(
-      r'_$_Channel',
+_$ChannelImpl _$$ChannelImplFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$ChannelImpl',
       json,
       ($checkedConvert) {
-        final val = _$_Channel(
+        final val = _$ChannelImpl(
           id: $checkedConvert('id', (v) => v as String),
           name: $checkedConvert('name', (v) => v as String),
           englishName: $checkedConvert('english_name', (v) => v as String?),
@@ -20,10 +21,10 @@ _$_Channel _$$_ChannelFromJson(Map<String, dynamic> json) => $checkedCreate(
               'type', (v) => $enumDecodeNullable(_$ChannelTypeEnumMap, v)),
           photo: $checkedConvert('photo', (v) => v as String?),
           organization: $checkedConvert('org', (v) => v as String?),
-          videoCount: $checkedConvert('video_count', (v) => v as String?),
+          videoCount: $checkedConvert('video_count', (v) => v as int?),
           subscriberCount:
-              $checkedConvert('subscriber_count', (v) => v as String?),
-          viewCount: $checkedConvert('view_count', (v) => v as String?),
+              $checkedConvert('subscriber_count', (v) => v as int?),
+          viewCount: $checkedConvert('view_count', (v) => v as int?),
           clipCount: $checkedConvert('clip_count', (v) => v as int?),
           subOrganization: $checkedConvert('suborg', (v) => v as String?),
           banner: $checkedConvert('banner', (v) => v as String?),
@@ -77,7 +78,7 @@ _$_Channel _$$_ChannelFromJson(Map<String, dynamic> json) => $checkedCreate(
       },
     );
 
-Map<String, dynamic> _$$_ChannelToJson(_$_Channel instance) =>
+Map<String, dynamic> _$$ChannelImplToJson(_$ChannelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

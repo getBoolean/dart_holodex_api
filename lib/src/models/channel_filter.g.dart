@@ -8,7 +8,7 @@ part of 'channel_filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$$_ChannelFilterToJson(_$_ChannelFilter instance) {
+Map<String, dynamic> _$$ChannelFilterImplToJson(_$ChannelFilterImpl instance) {
   final val = <String, dynamic>{
     'lang': concatLanguageListWithDefault(instance.languages),
     'limit': intToString(instance.limit),

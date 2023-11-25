@@ -8,11 +8,11 @@ part of 'song.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Song _$$_SongFromJson(Map<String, dynamic> json) => $checkedCreate(
-      r'_$_Song',
+_$SongImpl _$$SongImplFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$SongImpl',
       json,
       ($checkedConvert) {
-        final val = _$_Song(
+        final val = _$SongImpl(
           name: $checkedConvert('name', (v) => v as String),
           art: $checkedConvert('art', (v) => v as String?),
           end: $checkedConvert('end', (v) => v as int?),
@@ -26,7 +26,8 @@ _$_Song _$$_SongFromJson(Map<String, dynamic> json) => $checkedCreate(
       fieldKeyMap: const {'originalArtist': 'original_artist'},
     );
 
-Map<String, dynamic> _$$_SongToJson(_$_Song instance) => <String, dynamic>{
+Map<String, dynamic> _$$SongImplToJson(_$SongImpl instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'art': instance.art,
       'end': instance.end,

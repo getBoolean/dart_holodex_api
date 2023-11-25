@@ -104,11 +104,11 @@ class _$ChannelVideoFilterCopyWithImpl<$Res, $Val extends ChannelVideoFilter>
 }
 
 /// @nodoc
-abstract class _$$_ChannelVideoFilterCopyWith<$Res>
+abstract class _$$ChannelVideoFilterImplCopyWith<$Res>
     implements $ChannelVideoFilterCopyWith<$Res> {
-  factory _$$_ChannelVideoFilterCopyWith(_$_ChannelVideoFilter value,
-          $Res Function(_$_ChannelVideoFilter) then) =
-      __$$_ChannelVideoFilterCopyWithImpl<$Res>;
+  factory _$$ChannelVideoFilterImplCopyWith(_$ChannelVideoFilterImpl value,
+          $Res Function(_$ChannelVideoFilterImpl) then) =
+      __$$ChannelVideoFilterImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -123,11 +123,11 @@ abstract class _$$_ChannelVideoFilterCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChannelVideoFilterCopyWithImpl<$Res>
-    extends _$ChannelVideoFilterCopyWithImpl<$Res, _$_ChannelVideoFilter>
-    implements _$$_ChannelVideoFilterCopyWith<$Res> {
-  __$$_ChannelVideoFilterCopyWithImpl(
-      _$_ChannelVideoFilter _value, $Res Function(_$_ChannelVideoFilter) _then)
+class __$$ChannelVideoFilterImplCopyWithImpl<$Res>
+    extends _$ChannelVideoFilterCopyWithImpl<$Res, _$ChannelVideoFilterImpl>
+    implements _$$ChannelVideoFilterImplCopyWith<$Res> {
+  __$$ChannelVideoFilterImplCopyWithImpl(_$ChannelVideoFilterImpl _value,
+      $Res Function(_$ChannelVideoFilterImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -139,7 +139,7 @@ class __$$_ChannelVideoFilterCopyWithImpl<$Res>
     Object? offset = null,
     Object? paginated = null,
   }) {
-    return _then(_$_ChannelVideoFilter(
+    return _then(_$ChannelVideoFilterImpl(
       includes: null == includes
           ? _value._includes
           : includes // ignore: cast_nullable_to_non_nullable
@@ -166,8 +166,8 @@ class __$$_ChannelVideoFilterCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable(createFactory: false)
-class _$_ChannelVideoFilter extends _ChannelVideoFilter {
-  const _$_ChannelVideoFilter(
+class _$ChannelVideoFilterImpl extends _ChannelVideoFilter {
+  const _$ChannelVideoFilterImpl(
       {@JsonKey(
           toJson: concatIncludesList, name: 'include', includeIfNull: false)
       final List<Includes> includes = const [],
@@ -229,7 +229,7 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChannelVideoFilter &&
+            other is _$ChannelVideoFilterImpl &&
             const DeepCollectionEquality().equals(other._includes, _includes) &&
             const DeepCollectionEquality()
                 .equals(other._languages, _languages) &&
@@ -252,13 +252,13 @@ class _$_ChannelVideoFilter extends _ChannelVideoFilter {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChannelVideoFilterCopyWith<_$_ChannelVideoFilter> get copyWith =>
-      __$$_ChannelVideoFilterCopyWithImpl<_$_ChannelVideoFilter>(
+  _$$ChannelVideoFilterImplCopyWith<_$ChannelVideoFilterImpl> get copyWith =>
+      __$$ChannelVideoFilterImplCopyWithImpl<_$ChannelVideoFilterImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ChannelVideoFilterToJson(
+    return _$$ChannelVideoFilterImplToJson(
       this,
     );
   }
@@ -274,7 +274,7 @@ abstract class _ChannelVideoFilter extends ChannelVideoFilter {
           @JsonKey(toJson: intToString) final int limit,
           @JsonKey(toJson: intToString) final int offset,
           @JsonKey(toJson: paginatedToString) final bool paginated}) =
-      _$_ChannelVideoFilter;
+      _$ChannelVideoFilterImpl;
   const _ChannelVideoFilter._() : super._();
 
   @override
@@ -304,6 +304,6 @@ abstract class _ChannelVideoFilter extends ChannelVideoFilter {
   bool get paginated;
   @override
   @JsonKey(ignore: true)
-  _$$_ChannelVideoFilterCopyWith<_$_ChannelVideoFilter> get copyWith =>
+  _$$ChannelVideoFilterImplCopyWith<_$ChannelVideoFilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
