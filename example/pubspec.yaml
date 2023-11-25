@@ -1,17 +1,16 @@
 name: example
 description: A simple command-line application.
 version: 1.0.0
-publish_to: 'none'
+publish_to: "none"
 # homepage: https://www.example.com
 
 environment:
-  sdk: '>=2.19.0 <3.0.0'
-
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   dart_holodex_api:
-    path: '../'
+    path: "../"
   dotenv: ^4.1.0
 
 dev_dependencies:
-  lints: ^2.0.1
+  lints: ^3.0.0
