@@ -8,12 +8,12 @@ part of 'channel_min.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ChannelMin _$$_ChannelMinFromJson(Map<String, dynamic> json) =>
+_$ChannelMinImpl _$$ChannelMinImplFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_ChannelMin',
+      r'_$ChannelMinImpl',
       json,
       ($checkedConvert) {
-        final val = _$_ChannelMin(
+        final val = _$ChannelMinImpl(
           id: $checkedConvert('id', (v) => v as String),
           name: $checkedConvert('name', (v) => v as String),
           englishName: $checkedConvert('english_name', (v) => v as String?),
@@ -24,7 +24,7 @@ _$_ChannelMin _$$_ChannelMinFromJson(Map<String, dynamic> json) =>
           videoCount: $checkedConvert('video_count', (v) => v as int?),
           subscriberCount:
               $checkedConvert('subscriber_count', (v) => v as int?),
-          viewCount: $checkedConvert('view_count', (v) => v as String?),
+          viewCount: $checkedConvert('view_count', (v) => v as int?),
           clipCount: $checkedConvert('clip_count', (v) => v as int?),
         );
         return val;
@@ -39,7 +39,7 @@ _$_ChannelMin _$$_ChannelMinFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$$_ChannelMinToJson(_$_ChannelMin instance) =>
+Map<String, dynamic> _$$ChannelMinImplToJson(_$ChannelMinImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

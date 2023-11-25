@@ -219,11 +219,11 @@ class _$VideoFilterCopyWithImpl<$Res, $Val extends VideoFilter>
 }
 
 /// @nodoc
-abstract class _$$_VideoFilterCopyWith<$Res>
+abstract class _$$VideoFilterImplCopyWith<$Res>
     implements $VideoFilterCopyWith<$Res> {
-  factory _$$_VideoFilterCopyWith(
-          _$_VideoFilter value, $Res Function(_$_VideoFilter) then) =
-      __$$_VideoFilterCopyWithImpl<$Res>;
+  factory _$$VideoFilterImplCopyWith(
+          _$VideoFilterImpl value, $Res Function(_$VideoFilterImpl) then) =
+      __$$VideoFilterImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -259,11 +259,11 @@ abstract class _$$_VideoFilterCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_VideoFilterCopyWithImpl<$Res>
-    extends _$VideoFilterCopyWithImpl<$Res, _$_VideoFilter>
-    implements _$$_VideoFilterCopyWith<$Res> {
-  __$$_VideoFilterCopyWithImpl(
-      _$_VideoFilter _value, $Res Function(_$_VideoFilter) _then)
+class __$$VideoFilterImplCopyWithImpl<$Res>
+    extends _$VideoFilterCopyWithImpl<$Res, _$VideoFilterImpl>
+    implements _$$VideoFilterImplCopyWith<$Res> {
+  __$$VideoFilterImplCopyWithImpl(
+      _$VideoFilterImpl _value, $Res Function(_$VideoFilterImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -285,7 +285,7 @@ class __$$_VideoFilterCopyWithImpl<$Res>
     Object? topic = freezed,
     Object? type = freezed,
   }) {
-    return _then(_$_VideoFilter(
+    return _then(_$VideoFilterImpl(
       channelId: freezed == channelId
           ? _value.channelId
           : channelId // ignore: cast_nullable_to_non_nullable
@@ -352,8 +352,8 @@ class __$$_VideoFilterCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable(createFactory: false)
-class _$_VideoFilter extends _VideoFilter {
-  const _$_VideoFilter(
+class _$VideoFilterImpl extends _VideoFilter {
+  const _$VideoFilterImpl(
       {@JsonKey(name: 'channel_id', includeIfNull: false) this.channelId,
       @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
       final List<String> ids = const [],
@@ -514,7 +514,7 @@ class _$_VideoFilter extends _VideoFilter {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VideoFilter &&
+            other is _$VideoFilterImpl &&
             (identical(other.channelId, channelId) ||
                 other.channelId == channelId) &&
             const DeepCollectionEquality().equals(other._ids, _ids) &&
@@ -561,12 +561,12 @@ class _$_VideoFilter extends _VideoFilter {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VideoFilterCopyWith<_$_VideoFilter> get copyWith =>
-      __$$_VideoFilterCopyWithImpl<_$_VideoFilter>(this, _$identity);
+  _$$VideoFilterImplCopyWith<_$VideoFilterImpl> get copyWith =>
+      __$$VideoFilterImplCopyWithImpl<_$VideoFilterImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VideoFilterToJson(
+    return _$$VideoFilterImplToJson(
       this,
     );
   }
@@ -603,7 +603,7 @@ abstract class _VideoFilter extends VideoFilter {
       @JsonKey(includeIfNull: false) final String? topic,
       @JsonKey(toJson: videoTypeToString, includeIfNull: false)
       @JsonKey(includeIfNull: false)
-      final VideoType? type}) = _$_VideoFilter;
+      final VideoType? type}) = _$VideoFilterImpl;
   const _VideoFilter._() : super._();
 
   @override
@@ -687,6 +687,6 @@ abstract class _VideoFilter extends VideoFilter {
   VideoType? get type;
   @override
   @JsonKey(ignore: true)
-  _$$_VideoFilterCopyWith<_$_VideoFilter> get copyWith =>
+  _$$VideoFilterImplCopyWith<_$VideoFilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

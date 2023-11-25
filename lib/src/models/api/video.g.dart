@@ -8,11 +8,11 @@ part of 'video.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Video _$$_VideoFromJson(Map<String, dynamic> json) => $checkedCreate(
-      r'_$_Video',
+_$VideoImpl _$$VideoImplFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$VideoImpl',
       json,
       ($checkedConvert) {
-        final val = _$_Video(
+        final val = _$VideoImpl(
           id: $checkedConvert('id', (v) => v as String),
           title: $checkedConvert('title', (v) => v as String),
           type: $checkedConvert(
@@ -53,7 +53,8 @@ _$_Video _$$_VideoFromJson(Map<String, dynamic> json) => $checkedCreate(
       },
     );
 
-Map<String, dynamic> _$$_VideoToJson(_$_Video instance) => <String, dynamic>{
+Map<String, dynamic> _$$VideoImplToJson(_$VideoImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'type': _$VideoTypeEnumMap[instance.type],

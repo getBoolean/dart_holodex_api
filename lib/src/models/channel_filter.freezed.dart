@@ -125,11 +125,11 @@ class _$ChannelFilterCopyWithImpl<$Res, $Val extends ChannelFilter>
 }
 
 /// @nodoc
-abstract class _$$_ChannelFilterCopyWith<$Res>
+abstract class _$$ChannelFilterImplCopyWith<$Res>
     implements $ChannelFilterCopyWith<$Res> {
-  factory _$$_ChannelFilterCopyWith(
-          _$_ChannelFilter value, $Res Function(_$_ChannelFilter) then) =
-      __$$_ChannelFilterCopyWithImpl<$Res>;
+  factory _$$ChannelFilterImplCopyWith(
+          _$ChannelFilterImpl value, $Res Function(_$ChannelFilterImpl) then) =
+      __$$ChannelFilterImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -147,11 +147,11 @@ abstract class _$$_ChannelFilterCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChannelFilterCopyWithImpl<$Res>
-    extends _$ChannelFilterCopyWithImpl<$Res, _$_ChannelFilter>
-    implements _$$_ChannelFilterCopyWith<$Res> {
-  __$$_ChannelFilterCopyWithImpl(
-      _$_ChannelFilter _value, $Res Function(_$_ChannelFilter) _then)
+class __$$ChannelFilterImplCopyWithImpl<$Res>
+    extends _$ChannelFilterCopyWithImpl<$Res, _$ChannelFilterImpl>
+    implements _$$ChannelFilterImplCopyWith<$Res> {
+  __$$ChannelFilterImplCopyWithImpl(
+      _$ChannelFilterImpl _value, $Res Function(_$ChannelFilterImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -165,7 +165,7 @@ class __$$_ChannelFilterCopyWithImpl<$Res>
     Object? order = null,
     Object? organization = freezed,
   }) {
-    return _then(_$_ChannelFilter(
+    return _then(_$ChannelFilterImpl(
       languages: null == languages
           ? _value._languages
           : languages // ignore: cast_nullable_to_non_nullable
@@ -200,8 +200,8 @@ class __$$_ChannelFilterCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable(createFactory: false)
-class _$_ChannelFilter extends _ChannelFilter {
-  const _$_ChannelFilter(
+class _$ChannelFilterImpl extends _ChannelFilter {
+  const _$ChannelFilterImpl(
       {@JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
       final List<Language> languages = const [],
       @JsonKey(toJson: intToString) this.limit = 25,
@@ -275,7 +275,7 @@ class _$_ChannelFilter extends _ChannelFilter {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChannelFilter &&
+            other is _$ChannelFilterImpl &&
             const DeepCollectionEquality()
                 .equals(other._languages, _languages) &&
             (identical(other.limit, limit) || other.limit == limit) &&
@@ -302,12 +302,12 @@ class _$_ChannelFilter extends _ChannelFilter {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChannelFilterCopyWith<_$_ChannelFilter> get copyWith =>
-      __$$_ChannelFilterCopyWithImpl<_$_ChannelFilter>(this, _$identity);
+  _$$ChannelFilterImplCopyWith<_$ChannelFilterImpl> get copyWith =>
+      __$$ChannelFilterImplCopyWithImpl<_$ChannelFilterImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ChannelFilterToJson(
+    return _$$ChannelFilterImplToJson(
       this,
     );
   }
@@ -325,7 +325,7 @@ abstract class _ChannelFilter extends ChannelFilter {
       final List<ChannelSort> sort,
       @JsonKey(toJson: orderToString) final Order order,
       @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
-      final Organization? organization}) = _$_ChannelFilter;
+      final Organization? organization}) = _$ChannelFilterImpl;
   const _ChannelFilter._() : super._();
 
   @override
@@ -365,6 +365,6 @@ abstract class _ChannelFilter extends ChannelFilter {
   Organization? get organization;
   @override
   @JsonKey(ignore: true)
-  _$$_ChannelFilterCopyWith<_$_ChannelFilter> get copyWith =>
+  _$$ChannelFilterImplCopyWith<_$ChannelFilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

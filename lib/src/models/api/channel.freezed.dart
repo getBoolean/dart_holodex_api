@@ -33,7 +33,7 @@ mixin _$Channel {
   @JsonKey(name: 'subscriber_count')
   int? get subscriberCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'view_count')
-  String? get viewCount => throw _privateConstructorUsedError;
+  int? get viewCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'clip_count')
   int? get clipCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'suborg')
@@ -82,7 +82,7 @@ abstract class $ChannelCopyWith<$Res> {
       @JsonKey(name: 'org') String? organization,
       @JsonKey(name: 'video_count') int? videoCount,
       @JsonKey(name: 'subscriber_count') int? subscriberCount,
-      @JsonKey(name: 'view_count') String? viewCount,
+      @JsonKey(name: 'view_count') int? viewCount,
       @JsonKey(name: 'clip_count') int? clipCount,
       @JsonKey(name: 'suborg') String? subOrganization,
       String? banner,
@@ -179,7 +179,7 @@ class _$ChannelCopyWithImpl<$Res, $Val extends Channel>
       viewCount: freezed == viewCount
           ? _value.viewCount
           : viewCount // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       clipCount: freezed == clipCount
           ? _value.clipCount
           : clipCount // ignore: cast_nullable_to_non_nullable
@@ -253,10 +253,10 @@ class _$ChannelCopyWithImpl<$Res, $Val extends Channel>
 }
 
 /// @nodoc
-abstract class _$$_ChannelCopyWith<$Res> implements $ChannelCopyWith<$Res> {
-  factory _$$_ChannelCopyWith(
-          _$_Channel value, $Res Function(_$_Channel) then) =
-      __$$_ChannelCopyWithImpl<$Res>;
+abstract class _$$ChannelImplCopyWith<$Res> implements $ChannelCopyWith<$Res> {
+  factory _$$ChannelImplCopyWith(
+          _$ChannelImpl value, $Res Function(_$ChannelImpl) then) =
+      __$$ChannelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -268,7 +268,7 @@ abstract class _$$_ChannelCopyWith<$Res> implements $ChannelCopyWith<$Res> {
       @JsonKey(name: 'org') String? organization,
       @JsonKey(name: 'video_count') int? videoCount,
       @JsonKey(name: 'subscriber_count') int? subscriberCount,
-      @JsonKey(name: 'view_count') String? viewCount,
+      @JsonKey(name: 'view_count') int? viewCount,
       @JsonKey(name: 'clip_count') int? clipCount,
       @JsonKey(name: 'suborg') String? subOrganization,
       String? banner,
@@ -290,10 +290,11 @@ abstract class _$$_ChannelCopyWith<$Res> implements $ChannelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ChannelCopyWithImpl<$Res>
-    extends _$ChannelCopyWithImpl<$Res, _$_Channel>
-    implements _$$_ChannelCopyWith<$Res> {
-  __$$_ChannelCopyWithImpl(_$_Channel _value, $Res Function(_$_Channel) _then)
+class __$$ChannelImplCopyWithImpl<$Res>
+    extends _$ChannelCopyWithImpl<$Res, _$ChannelImpl>
+    implements _$$ChannelImplCopyWith<$Res> {
+  __$$ChannelImplCopyWithImpl(
+      _$ChannelImpl _value, $Res Function(_$ChannelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -326,7 +327,7 @@ class __$$_ChannelCopyWithImpl<$Res>
     Object? ytNameHistory = null,
     Object? group = freezed,
   }) {
-    return _then(_$_Channel(
+    return _then(_$ChannelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -362,7 +363,7 @@ class __$$_ChannelCopyWithImpl<$Res>
       viewCount: freezed == viewCount
           ? _value.viewCount
           : viewCount // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       clipCount: freezed == clipCount
           ? _value.clipCount
           : clipCount // ignore: cast_nullable_to_non_nullable
@@ -437,8 +438,8 @@ class __$$_ChannelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Channel extends _Channel {
-  const _$_Channel(
+class _$ChannelImpl extends _Channel {
+  const _$ChannelImpl(
       {required this.id,
       required this.name,
       @JsonKey(name: 'english_name') this.englishName,
@@ -472,8 +473,8 @@ class _$_Channel extends _Channel {
         _ytNameHistory = ytNameHistory,
         super._();
 
-  factory _$_Channel.fromJson(Map<String, dynamic> json) =>
-      _$$_ChannelFromJson(json);
+  factory _$ChannelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ChannelImplFromJson(json);
 
   @override
   final String id;
@@ -497,7 +498,7 @@ class _$_Channel extends _Channel {
   final int? subscriberCount;
   @override
   @JsonKey(name: 'view_count')
-  final String? viewCount;
+  final int? viewCount;
   @override
   @JsonKey(name: 'clip_count')
   final int? clipCount;
@@ -571,7 +572,7 @@ class _$_Channel extends _Channel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Channel &&
+            other is _$ChannelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.englishName, englishName) ||
@@ -651,12 +652,12 @@ class _$_Channel extends _Channel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChannelCopyWith<_$_Channel> get copyWith =>
-      __$$_ChannelCopyWithImpl<_$_Channel>(this, _$identity);
+  _$$ChannelImplCopyWith<_$ChannelImpl> get copyWith =>
+      __$$ChannelImplCopyWithImpl<_$ChannelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ChannelToJson(
+    return _$$ChannelImplToJson(
       this,
     );
   }
@@ -672,7 +673,7 @@ abstract class _Channel extends Channel {
       @JsonKey(name: 'org') final String? organization,
       @JsonKey(name: 'video_count') final int? videoCount,
       @JsonKey(name: 'subscriber_count') final int? subscriberCount,
-      @JsonKey(name: 'view_count') final String? viewCount,
+      @JsonKey(name: 'view_count') final int? viewCount,
       @JsonKey(name: 'clip_count') final int? clipCount,
       @JsonKey(name: 'suborg') final String? subOrganization,
       final String? banner,
@@ -690,10 +691,10 @@ abstract class _Channel extends Channel {
       @JsonKey(name: 'yt_handle') final List<String> ytHandle,
       final String? twitch,
       @JsonKey(name: 'yt_name_history') final List<String> ytNameHistory,
-      final String? group}) = _$_Channel;
+      final String? group}) = _$ChannelImpl;
   const _Channel._() : super._();
 
-  factory _Channel.fromJson(Map<String, dynamic> json) = _$_Channel.fromJson;
+  factory _Channel.fromJson(Map<String, dynamic> json) = _$ChannelImpl.fromJson;
 
   @override
   String get id;
@@ -717,7 +718,7 @@ abstract class _Channel extends Channel {
   int? get subscriberCount;
   @override
   @JsonKey(name: 'view_count')
-  String? get viewCount;
+  int? get viewCount;
   @override
   @JsonKey(name: 'clip_count')
   int? get clipCount;
@@ -765,6 +766,6 @@ abstract class _Channel extends Channel {
   String? get group;
   @override
   @JsonKey(ignore: true)
-  _$$_ChannelCopyWith<_$_Channel> get copyWith =>
+  _$$ChannelImplCopyWith<_$ChannelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

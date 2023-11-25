@@ -33,7 +33,7 @@ mixin _$ChannelMin {
   @JsonKey(name: 'subscriber_count')
   int? get subscriberCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'view_count')
-  String? get viewCount => throw _privateConstructorUsedError;
+  int? get viewCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'clip_count')
   int? get clipCount => throw _privateConstructorUsedError;
 
@@ -58,7 +58,7 @@ abstract class $ChannelMinCopyWith<$Res> {
       @JsonKey(name: 'org') String? organization,
       @JsonKey(name: 'video_count') int? videoCount,
       @JsonKey(name: 'subscriber_count') int? subscriberCount,
-      @JsonKey(name: 'view_count') String? viewCount,
+      @JsonKey(name: 'view_count') int? viewCount,
       @JsonKey(name: 'clip_count') int? clipCount});
 }
 
@@ -122,7 +122,7 @@ class _$ChannelMinCopyWithImpl<$Res, $Val extends ChannelMin>
       viewCount: freezed == viewCount
           ? _value.viewCount
           : viewCount // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       clipCount: freezed == clipCount
           ? _value.clipCount
           : clipCount // ignore: cast_nullable_to_non_nullable
@@ -132,11 +132,11 @@ class _$ChannelMinCopyWithImpl<$Res, $Val extends ChannelMin>
 }
 
 /// @nodoc
-abstract class _$$_ChannelMinCopyWith<$Res>
+abstract class _$$ChannelMinImplCopyWith<$Res>
     implements $ChannelMinCopyWith<$Res> {
-  factory _$$_ChannelMinCopyWith(
-          _$_ChannelMin value, $Res Function(_$_ChannelMin) then) =
-      __$$_ChannelMinCopyWithImpl<$Res>;
+  factory _$$ChannelMinImplCopyWith(
+          _$ChannelMinImpl value, $Res Function(_$ChannelMinImpl) then) =
+      __$$ChannelMinImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -148,16 +148,16 @@ abstract class _$$_ChannelMinCopyWith<$Res>
       @JsonKey(name: 'org') String? organization,
       @JsonKey(name: 'video_count') int? videoCount,
       @JsonKey(name: 'subscriber_count') int? subscriberCount,
-      @JsonKey(name: 'view_count') String? viewCount,
+      @JsonKey(name: 'view_count') int? viewCount,
       @JsonKey(name: 'clip_count') int? clipCount});
 }
 
 /// @nodoc
-class __$$_ChannelMinCopyWithImpl<$Res>
-    extends _$ChannelMinCopyWithImpl<$Res, _$_ChannelMin>
-    implements _$$_ChannelMinCopyWith<$Res> {
-  __$$_ChannelMinCopyWithImpl(
-      _$_ChannelMin _value, $Res Function(_$_ChannelMin) _then)
+class __$$ChannelMinImplCopyWithImpl<$Res>
+    extends _$ChannelMinCopyWithImpl<$Res, _$ChannelMinImpl>
+    implements _$$ChannelMinImplCopyWith<$Res> {
+  __$$ChannelMinImplCopyWithImpl(
+      _$ChannelMinImpl _value, $Res Function(_$ChannelMinImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -174,7 +174,7 @@ class __$$_ChannelMinCopyWithImpl<$Res>
     Object? viewCount = freezed,
     Object? clipCount = freezed,
   }) {
-    return _then(_$_ChannelMin(
+    return _then(_$ChannelMinImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -210,7 +210,7 @@ class __$$_ChannelMinCopyWithImpl<$Res>
       viewCount: freezed == viewCount
           ? _value.viewCount
           : viewCount // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       clipCount: freezed == clipCount
           ? _value.clipCount
           : clipCount // ignore: cast_nullable_to_non_nullable
@@ -221,8 +221,8 @@ class __$$_ChannelMinCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ChannelMin extends _ChannelMin {
-  const _$_ChannelMin(
+class _$ChannelMinImpl extends _ChannelMin {
+  const _$ChannelMinImpl(
       {required this.id,
       required this.name,
       @JsonKey(name: 'english_name') this.englishName,
@@ -235,8 +235,8 @@ class _$_ChannelMin extends _ChannelMin {
       @JsonKey(name: 'clip_count') this.clipCount})
       : super._();
 
-  factory _$_ChannelMin.fromJson(Map<String, dynamic> json) =>
-      _$$_ChannelMinFromJson(json);
+  factory _$ChannelMinImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ChannelMinImplFromJson(json);
 
   @override
   final String id;
@@ -260,7 +260,7 @@ class _$_ChannelMin extends _ChannelMin {
   final int? subscriberCount;
   @override
   @JsonKey(name: 'view_count')
-  final String? viewCount;
+  final int? viewCount;
   @override
   @JsonKey(name: 'clip_count')
   final int? clipCount;
@@ -274,7 +274,7 @@ class _$_ChannelMin extends _ChannelMin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChannelMin &&
+            other is _$ChannelMinImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.englishName, englishName) ||
@@ -301,12 +301,12 @@ class _$_ChannelMin extends _ChannelMin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChannelMinCopyWith<_$_ChannelMin> get copyWith =>
-      __$$_ChannelMinCopyWithImpl<_$_ChannelMin>(this, _$identity);
+  _$$ChannelMinImplCopyWith<_$ChannelMinImpl> get copyWith =>
+      __$$ChannelMinImplCopyWithImpl<_$ChannelMinImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ChannelMinToJson(
+    return _$$ChannelMinImplToJson(
       this,
     );
   }
@@ -322,12 +322,12 @@ abstract class _ChannelMin extends ChannelMin {
       @JsonKey(name: 'org') final String? organization,
       @JsonKey(name: 'video_count') final int? videoCount,
       @JsonKey(name: 'subscriber_count') final int? subscriberCount,
-      @JsonKey(name: 'view_count') final String? viewCount,
-      @JsonKey(name: 'clip_count') final int? clipCount}) = _$_ChannelMin;
+      @JsonKey(name: 'view_count') final int? viewCount,
+      @JsonKey(name: 'clip_count') final int? clipCount}) = _$ChannelMinImpl;
   const _ChannelMin._() : super._();
 
   factory _ChannelMin.fromJson(Map<String, dynamic> json) =
-      _$_ChannelMin.fromJson;
+      _$ChannelMinImpl.fromJson;
 
   @override
   String get id;
@@ -351,12 +351,12 @@ abstract class _ChannelMin extends ChannelMin {
   int? get subscriberCount;
   @override
   @JsonKey(name: 'view_count')
-  String? get viewCount;
+  int? get viewCount;
   @override
   @JsonKey(name: 'clip_count')
   int? get clipCount;
   @override
   @JsonKey(ignore: true)
-  _$$_ChannelMinCopyWith<_$_ChannelMin> get copyWith =>
+  _$$ChannelMinImplCopyWith<_$ChannelMinImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

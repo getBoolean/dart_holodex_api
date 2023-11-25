@@ -8,12 +8,13 @@ part of 'paginated_videos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PaginatedVideos _$$_PaginatedVideosFromJson(Map<String, dynamic> json) =>
+_$PaginatedVideosImpl _$$PaginatedVideosImplFromJson(
+        Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_PaginatedVideos',
+      r'_$PaginatedVideosImpl',
       json,
       ($checkedConvert) {
-        final val = _$_PaginatedVideos(
+        final val = _$PaginatedVideosImpl(
           total: $checkedConvert('total', (v) => _parseTotal(v)),
           items: $checkedConvert(
               'items',
@@ -29,7 +30,8 @@ _$_PaginatedVideos _$$_PaginatedVideosFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$$_PaginatedVideosToJson(_$_PaginatedVideos instance) =>
+Map<String, dynamic> _$$PaginatedVideosImplToJson(
+        _$PaginatedVideosImpl instance) =>
     <String, dynamic>{
       'total': instance.total,
       'items': instance.items.map((e) => e.toJson()).toList(),

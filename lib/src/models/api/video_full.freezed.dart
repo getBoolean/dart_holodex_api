@@ -282,10 +282,11 @@ class _$VideoFullCopyWithImpl<$Res, $Val extends VideoFull>
 }
 
 /// @nodoc
-abstract class _$$_VideoFullCopyWith<$Res> implements $VideoFullCopyWith<$Res> {
-  factory _$$_VideoFullCopyWith(
-          _$_VideoFull value, $Res Function(_$_VideoFull) then) =
-      __$$_VideoFullCopyWithImpl<$Res>;
+abstract class _$$VideoFullImplCopyWith<$Res>
+    implements $VideoFullCopyWith<$Res> {
+  factory _$$VideoFullImplCopyWith(
+          _$VideoFullImpl value, $Res Function(_$VideoFullImpl) then) =
+      __$$VideoFullImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -322,11 +323,11 @@ abstract class _$$_VideoFullCopyWith<$Res> implements $VideoFullCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_VideoFullCopyWithImpl<$Res>
-    extends _$VideoFullCopyWithImpl<$Res, _$_VideoFull>
-    implements _$$_VideoFullCopyWith<$Res> {
-  __$$_VideoFullCopyWithImpl(
-      _$_VideoFull _value, $Res Function(_$_VideoFull) _then)
+class __$$VideoFullImplCopyWithImpl<$Res>
+    extends _$VideoFullCopyWithImpl<$Res, _$VideoFullImpl>
+    implements _$$VideoFullImplCopyWith<$Res> {
+  __$$VideoFullImplCopyWithImpl(
+      _$VideoFullImpl _value, $Res Function(_$VideoFullImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -359,7 +360,7 @@ class __$$_VideoFullCopyWithImpl<$Res>
     Object? songs = null,
     Object? sameSourceClips = null,
   }) {
-    return _then(_$_VideoFull(
+    return _then(_$VideoFullImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -470,8 +471,8 @@ class __$$_VideoFullCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_VideoFull extends _VideoFull {
-  const _$_VideoFull(
+class _$VideoFullImpl extends _VideoFull {
+  const _$VideoFullImpl(
       {required this.id,
       required this.title,
       @JsonKey(fromJson: _parseVideoType) this.type,
@@ -511,8 +512,8 @@ class _$_VideoFull extends _VideoFull {
         _sameSourceClips = sameSourceClips,
         super._();
 
-  factory _$_VideoFull.fromJson(Map<String, dynamic> json) =>
-      _$$_VideoFullFromJson(json);
+  factory _$VideoFullImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VideoFullImplFromJson(json);
 
   @override
   final String id;
@@ -667,7 +668,7 @@ class _$_VideoFull extends _VideoFull {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VideoFull &&
+            other is _$VideoFullImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.type, type) || other.type == type) &&
@@ -745,12 +746,12 @@ class _$_VideoFull extends _VideoFull {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VideoFullCopyWith<_$_VideoFull> get copyWith =>
-      __$$_VideoFullCopyWithImpl<_$_VideoFull>(this, _$identity);
+  _$$VideoFullImplCopyWith<_$VideoFullImpl> get copyWith =>
+      __$$VideoFullImplCopyWithImpl<_$VideoFullImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VideoFullToJson(
+    return _$$VideoFullImplToJson(
       this,
     );
   }
@@ -785,11 +786,11 @@ abstract class _VideoFull extends VideoFull {
       final List<Channel> mentions,
       final List<Song> songs,
       @JsonKey(name: 'same_source_clips')
-      final List<Video> sameSourceClips}) = _$_VideoFull;
+      final List<Video> sameSourceClips}) = _$VideoFullImpl;
   const _VideoFull._() : super._();
 
   factory _VideoFull.fromJson(Map<String, dynamic> json) =
-      _$_VideoFull.fromJson;
+      _$VideoFullImpl.fromJson;
 
   @override
   String get id;
@@ -875,6 +876,6 @@ abstract class _VideoFull extends VideoFull {
   List<Video> get sameSourceClips;
   @override
   @JsonKey(ignore: true)
-  _$$_VideoFullCopyWith<_$_VideoFull> get copyWith =>
+  _$$VideoFullImplCopyWith<_$VideoFullImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -22,7 +22,7 @@ class ChannelMin with _$ChannelMin {
     @JsonKey(name: 'org') String? organization,
     @JsonKey(name: 'video_count') int? videoCount,
     @JsonKey(name: 'subscriber_count') int? subscriberCount,
-    @JsonKey(name: 'view_count') String? viewCount,
+    @JsonKey(name: 'view_count') int? viewCount,
     @JsonKey(name: 'clip_count') int? clipCount,
   }) = _ChannelMin;
 
