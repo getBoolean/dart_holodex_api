@@ -93,7 +93,7 @@
 
     <dl class="constructor-summary-list">
         <dt id="VideoFilter" class="callable">
-          <span class="name"><a href="../dart_holodex_api/VideoFilter/VideoFilter.html">VideoFilter</a></span><span class="signature">(<span class="parameter" id="-param-channelId">{<span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;channel_id&#39;, includeIfNull: false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">channelId</span>, </span><span class="parameter" id="-param-ids"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;id&#39;, toJson: nullStringListIfEmpty, includeIfNull: false)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="-param-includes"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatIncludesList, name: &#39;include&#39;, includeIfNull: false)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/Includes.html">Includes</a></span>&gt;</span></span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="-param-languages"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>([])</span> <span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatLanguageListWithDefault, name: &#39;lang&#39;)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span>, </span><span class="parameter" id="-param-limit"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: intToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>(25)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="-param-maxUpcomingHours"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;max_upcoming_hours&#39;, toJson: intToStringNullable, includeIfNull: false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">maxUpcomingHours</span>, </span><span class="parameter" id="-param-mentionedChannelId"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;mentioned_channel_id&#39;, includeIfNull: false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">mentionedChannelId</span>, </span><span class="parameter" id="-param-offset"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: intToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>(0)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="-param-order"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: orderToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>(Order.descending)</span> <span class="type-annotation"><a href="../dart_holodex_api/Order.html">Order</a></span> <span class="parameter-name">order</span>, </span><span class="parameter" id="-param-organization"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;org&#39;, toJson: organizationToString, includeIfNull: false)</span> <span class="type-annotation"><a href="../dart_holodex_api/Organization-class.html">Organization</a>?</span> <span class="parameter-name">organization</span>, </span><span class="parameter" id="-param-paginated"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: paginatedToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>(false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span>, </span><span class="parameter" id="-param-sort"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatVideoSortList, includeIfNull: false)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>([VideoSort.availableAt])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/VideoSort.html">VideoSort</a></span>&gt;</span></span> <span class="parameter-name">sort</span>, </span><span class="parameter" id="-param-status"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatVideoStatusList, includeIfNull: false)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/VideoStatus.html">VideoStatus</a></span>&gt;</span></span> <span class="parameter-name">status</span>, </span><span class="parameter" id="-param-topic"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(includeIfNull: false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">topic</span>, </span><span class="parameter" id="-param-type"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: videoTypeToString, includeIfNull: false)</span> <span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(includeIfNull: false)</span> <span class="type-annotation"><a href="../dart_holodex_api/VideoType.html">VideoType</a>?</span> <span class="parameter-name">type</span>}</span>)</span>
+          <span class="name"><a href="../dart_holodex_api/VideoFilter/VideoFilter.html">VideoFilter</a></span><span class="signature">(<span class="parameter" id="-param-channelId">{<span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;channel_id&#39;, includeIfNull: false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">channelId</span>, </span><span class="parameter" id="-param-ids"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;id&#39;, toJson: nullStringListIfEmpty, includeIfNull: false)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.2.1/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="-param-includes"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatIncludesList, name: &#39;include&#39;, includeIfNull: false)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/Includes.html">Includes</a></span>&gt;</span></span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="-param-languages"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>([])</span> <span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatLanguageListWithDefault, name: &#39;lang&#39;)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span>, </span><span class="parameter" id="-param-limit"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: intToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>(25)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="-param-maxUpcomingHours"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;max_upcoming_hours&#39;, toJson: intToStringNullable, includeIfNull: false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">maxUpcomingHours</span>, </span><span class="parameter" id="-param-mentionedChannelId"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;mentioned_channel_id&#39;, includeIfNull: false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">mentionedChannelId</span>, </span><span class="parameter" id="-param-offset"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: intToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>(0)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="-param-order"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: orderToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>(Order.descending)</span> <span class="type-annotation"><a href="../dart_holodex_api/Order.html">Order</a></span> <span class="parameter-name">order</span>, </span><span class="parameter" id="-param-organization"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;org&#39;, toJson: organizationToString, includeIfNull: false)</span> <span class="type-annotation"><a href="../dart_holodex_api/Organization-class.html">Organization</a>?</span> <span class="parameter-name">organization</span>, </span><span class="parameter" id="-param-paginated"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: paginatedToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>(false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span>, </span><span class="parameter" id="-param-sort"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatVideoSortList, includeIfNull: false)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>([VideoSort.availableAt])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/VideoSort.html">VideoSort</a></span>&gt;</span></span> <span class="parameter-name">sort</span>, </span><span class="parameter" id="-param-status"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: concatVideoStatusList, includeIfNull: false)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/VideoStatus.html">VideoStatus</a></span>&gt;</span></span> <span class="parameter-name">status</span>, </span><span class="parameter" id="-param-topic"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(includeIfNull: false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">topic</span>, </span><span class="parameter" id="-param-type"><span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: videoTypeToString, includeIfNull: false)</span> <span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(includeIfNull: false)</span> <span class="type-annotation"><a href="../dart_holodex_api/VideoType.html">VideoType</a>?</span> <span class="parameter-name">type</span>}</span>)</span>
         </dt>
         <dd>
           Filter the results returns by the Holodex API channel endpoints
@@ -109,12 +109,12 @@
       <dl class="properties">
         <dt id="channelId" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/channelId.html">channelId</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd class="inherited">
   Filter by video uploader channel ID
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
@@ -125,95 +125,95 @@
 </dt>
 <dd class="inherited">
   
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="hashCode" class="property inherited">
-  <span class="name"><a href="https://api.dart.dev/stable/3.1.4/dart-core/Object/hashCode.html">hashCode</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/int-class.html">int</a></span> 
+  <span class="name"><a href="https://api.dart.dev/stable/3.2.1/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/int-class.html">int</a></span> 
 
 </dt>
 <dd class="inherited">
   The hash code for this object.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="ids" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/ids.html">ids</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a></span>&gt;</span></span> 
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.2.1/dart-core/String-class.html">String</a></span>&gt;</span></span> 
 
 </dt>
 <dd class="inherited">
   Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="includes" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/includes.html">includes</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/Includes.html">Includes</a></span>&gt;</span></span> 
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/Includes.html">Includes</a></span>&gt;</span></span> 
 
 </dt>
 <dd class="inherited">
   Request extra data be included in the results. They are not guarenteed to be returned.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="languages" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/languages.html">languages</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> 
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> 
 
 </dt>
 <dd class="inherited">
   Filter by the <code>Language</code>
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="limit" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/limit.html">limit</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/int-class.html">int</a></span> 
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/int-class.html">int</a></span> 
 
 </dt>
 <dd class="inherited">
   Limit the number of results returned. Maximum value of 50
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="maxUpcomingHours" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/maxUpcomingHours.html">maxUpcomingHours</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/int-class.html">int</a>?</span> 
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/int-class.html">int</a>?</span> 
 
 </dt>
 <dd class="inherited">
   Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="mentionedChannelId" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/mentionedChannelId.html">mentionedChannelId</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd class="inherited">
   Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="offset" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/offset.html">offset</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/int-class.html">int</a></span> 
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/int-class.html">int</a></span> 
 
 </dt>
 <dd class="inherited">
   Receive results starting at this number in the array from the Holodex API
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
@@ -224,7 +224,7 @@
 </dt>
 <dd class="inherited">
   Order results by ascending or descending
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
@@ -235,62 +235,62 @@
 </dt>
 <dd class="inherited">
   Filter by clips that feature the org's talent or videos posted by the org's talent.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="paginated" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/paginated.html">paginated</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/bool-class.html">bool</a></span> 
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/bool-class.html">bool</a></span> 
 
 </dt>
 <dd class="inherited">
   If paginated is set to true, returns <a href="../dart_holodex_api/PaginatedVideos-class.html">PaginatedVideos</a> with total, otherwise returns <a href="../dart_holodex_api/PaginatedVideos-class.html">PaginatedVideos</a> without the total.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="runtimeType" class="property inherited">
-  <span class="name"><a href="https://api.dart.dev/stable/3.1.4/dart-core/Object/runtimeType.html">runtimeType</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/Type-class.html">Type</a></span> 
+  <span class="name"><a href="https://api.dart.dev/stable/3.2.1/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/Type-class.html">Type</a></span> 
 
 </dt>
 <dd class="inherited">
   A representation of the runtime type of the object.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="sort" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/sort.html">sort</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/VideoSort.html">VideoSort</a></span>&gt;</span></span> 
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/VideoSort.html">VideoSort</a></span>&gt;</span></span> 
 
 </dt>
 <dd class="inherited">
   Sort the returned data by this field
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="status" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/status.html">status</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/VideoStatus.html">VideoStatus</a></span>&gt;</span></span> 
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart_holodex_api/VideoStatus.html">VideoStatus</a></span>&gt;</span></span> 
 
 </dt>
 <dd class="inherited">
   Filter by the video status
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="topic" class="property inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/topic.html">topic</a></span>
-  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd class="inherited">
   Filter by video topic ID
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
@@ -301,7 +301,7 @@
 </dt>
 <dd class="inherited">
   Filter by type of video, either clips or streams
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
@@ -315,7 +315,7 @@
     <h2>Methods</h2>
     <dl class="callables">
         <dt id="noSuchMethod" class="callable inherited">
-  <span class="name"><a href="https://api.dart.dev/stable/3.1.4/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+  <span class="name"><a href="https://api.dart.dev/stable/3.2.1/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
     <span class="returntype parameter">&#8594; dynamic</span>
   </span>
   
@@ -329,7 +329,7 @@
 
         <dt id="toJson" class="callable inherited">
   <span class="name"><a href="../dart_holodex_api/VideoFilter/toJson.html">toJson</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.2.1/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>
   </span>
   
 
@@ -341,8 +341,8 @@
 </dd>
 
         <dt id="toString" class="callable inherited">
-  <span class="name"><a href="https://api.dart.dev/stable/3.1.4/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a></span>
+  <span class="name"><a href="https://api.dart.dev/stable/3.2.1/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/String-class.html">String</a></span>
   </span>
   
 
@@ -362,8 +362,8 @@
     <h2>Operators</h2>
     <dl class="callables">
         <dt id="operator ==" class="callable inherited">
-  <span class="name"><a href="https://api.dart.dev/stable/3.1.4/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.1.4/dart-core/bool-class.html">bool</a></span>
+  <span class="name"><a href="https://api.dart.dev/stable/3.2.1/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.1/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.2.1/dart-core/bool-class.html">bool</a></span>
   </span>
   
 
@@ -398,7 +398,7 @@
 </ol>
 
 
-    <!--<h5>dart_holodex_api library</h5>-->
+    <h5>dart_holodex_api library</h5>
     <div id="dartdoc-sidebar-left-content"></div>
   </div>
 
