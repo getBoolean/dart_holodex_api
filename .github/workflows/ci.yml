@@ -7,14 +7,9 @@ name: Build & Test Dart
 
 on:
   push:
-    branches:
-      - main
-      - release
-      - release/**
-      - feature/**
-      - fix/**
-      - chore/**
-      - dependabot/**
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
