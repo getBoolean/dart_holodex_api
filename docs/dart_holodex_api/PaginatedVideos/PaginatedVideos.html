@@ -11,7 +11,7 @@
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   
   <link rel="stylesheet" href="../../static-assets/github.css?v1">
   <link rel="stylesheet" href="../../static-assets/styles.css?v1">
@@ -29,7 +29,7 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">dart_holodex_api</a></li>
-    <li><a href="../../dart_holodex_api/dart_holodex_api-library.html">dart_holodex_api</a></li>
+    <li><a href="../../dart_holodex_api/dart_holodex_api-library.html">dart_holodex_api.dart</a></li>
     <li><a href="../../dart_holodex_api/PaginatedVideos-class.html">PaginatedVideos</a></li>
     <li class="self-crumb">PaginatedVideos const constructor</li>
   </ol>
@@ -37,14 +37,14 @@
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button">
+  <div class="toggle" id="theme-button" title="Toggle brightness">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
       <span id="dark-theme-button" class="material-symbols-outlined">
-        brightness_4
+        dark_mode
       </span>
       <span id="light-theme-button" class="material-symbols-outlined">
-        brightness_5
+        light_mode
       </span>
     </label>
   </div>
@@ -62,9 +62,9 @@
 
     <section class="multi-line-signature">
       const
-      <span class="name ">PaginatedVideos</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-total">{<span>@<a href="https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonKey-class.html">JsonKey</a>(fromJson: _parseTotal)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.3/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">total</span>, </span></li>
-<li><span class="parameter" id="-param-items"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.3/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/VideoFull-class.html">VideoFull</a></span>&gt;</span></span> <span class="parameter-name">items</span>, </span></li>
-<li><span class="parameter" id="-param-paginated"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>(false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.2.3/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span>}</span></li>
+      <span class="name ">PaginatedVideos</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-total">{<span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(fromJson: _parseTotal)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.2/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">total</span>, </span></li>
+<li><span class="parameter" id="-param-items"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/VideoFull-class.html">VideoFull</a></span>&gt;</span></span> <span class="parameter-name">items</span>, </span></li>
+<li><span class="parameter" id="-param-paginated"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.1/freezed_annotation/Default-class.html">Default</a>(false)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.2/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span>}</span></li>
 </ol>)
     </section>
 
@@ -77,7 +77,12 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">const factory PaginatedVideos</code></pre>
+  <pre class="language-dart"><code class="language-dart">const factory PaginatedVideos({
+  &#47;&#47;&#47; The total number of videos on the server.
+  @JsonKey(fromJson: _parseTotal) int? total,
+  @Default([]) List&lt;VideoFull&gt; items,
+  @Default(false) bool paginated,
+}) = _PaginatedVideos;</code></pre>
 </section>
 
 
