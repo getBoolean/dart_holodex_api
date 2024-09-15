@@ -68,7 +68,7 @@
       
   <div>
     <ol class="annotation-list">
-        <li>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(ignore: true)</li>
+        <li>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(includeFromJson: false, includeToJson: false)</li>
     </ol>
   </div>
       <span class="returntype">$CommentCopyWith<span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Comment-class.html">Comment</a></span>&gt;</span></span>
@@ -78,11 +78,15 @@
     </section>
 
     
+<section class="desc markdown">
+  <p>Create a copy of Comment
+with the given fields replaced by the non-null parameter values.</p>
+</section>
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">@JsonKey(ignore: true)
+  <pre class="language-dart"><code class="language-dart">@JsonKey(includeFromJson: false, includeToJson: false)
 $CommentCopyWith&lt;Comment&gt; get copyWith =&gt; throw _privateConstructorUsedError;</code></pre>
 </section>
 
@@ -119,7 +123,7 @@ $CommentCopyWith&lt;Comment&gt; get copyWith =&gt; throw _privateConstructorUsed
 <footer>
   <span class="no-break">
     dart_holodex_api
-      2.0.0
+      2.1.0
   </span>
 
   
