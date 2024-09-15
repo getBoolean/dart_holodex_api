@@ -12,7 +12,7 @@ part of 'channel_min.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ChannelMin _$ChannelMinFromJson(Map<String, dynamic> json) {
   return _ChannelMin.fromJson(json);
@@ -37,8 +37,12 @@ mixin _$ChannelMin {
   @JsonKey(name: 'clip_count')
   int? get clipCount => throw _privateConstructorUsedError;
 
+  /// Serializes this ChannelMin to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChannelMin
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChannelMinCopyWith<ChannelMin> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -72,6 +76,8 @@ class _$ChannelMinCopyWithImpl<$Res, $Val extends ChannelMin>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChannelMin
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,6 +166,8 @@ class __$$ChannelMinImplCopyWithImpl<$Res>
       _$ChannelMinImpl _value, $Res Function(_$ChannelMinImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChannelMin
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -271,7 +279,7 @@ class _$ChannelMinImpl extends _ChannelMin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChannelMinImpl &&
@@ -293,12 +301,14 @@ class _$ChannelMinImpl extends _ChannelMin {
                 other.clipCount == clipCount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, englishName, type,
       photo, organization, videoCount, subscriberCount, viewCount, clipCount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChannelMin
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChannelMinImplCopyWith<_$ChannelMinImpl> get copyWith =>
@@ -355,8 +365,11 @@ abstract class _ChannelMin extends ChannelMin {
   @override
   @JsonKey(name: 'clip_count')
   int? get clipCount;
+
+  /// Create a copy of ChannelMin
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChannelMinImplCopyWith<_$ChannelMinImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

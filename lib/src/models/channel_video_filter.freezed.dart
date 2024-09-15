@@ -12,7 +12,7 @@ part of 'channel_video_filter.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ChannelVideoFilter {
@@ -36,8 +36,12 @@ mixin _$ChannelVideoFilter {
   @JsonKey(toJson: paginatedToString)
   bool get paginated => throw _privateConstructorUsedError;
 
+  /// Serializes this ChannelVideoFilter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChannelVideoFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChannelVideoFilterCopyWith<ChannelVideoFilter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -69,6 +73,8 @@ class _$ChannelVideoFilterCopyWithImpl<$Res, $Val extends ChannelVideoFilter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChannelVideoFilter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,6 +136,8 @@ class __$$ChannelVideoFilterImplCopyWithImpl<$Res>
       $Res Function(_$ChannelVideoFilterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChannelVideoFilter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -226,7 +234,7 @@ class _$ChannelVideoFilterImpl extends _ChannelVideoFilter {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChannelVideoFilterImpl &&
@@ -239,7 +247,7 @@ class _$ChannelVideoFilterImpl extends _ChannelVideoFilter {
                 other.paginated == paginated));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -249,7 +257,9 @@ class _$ChannelVideoFilterImpl extends _ChannelVideoFilter {
       offset,
       paginated);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChannelVideoFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChannelVideoFilterImplCopyWith<_$ChannelVideoFilterImpl> get copyWith =>
@@ -277,33 +287,35 @@ abstract class _ChannelVideoFilter extends ChannelVideoFilter {
       _$ChannelVideoFilterImpl;
   const _ChannelVideoFilter._() : super._();
 
-  @override
-
   /// Request extra data be included in the results. They are not guarenteed to be returned.
+  @override
   @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
   List<Includes> get includes;
-  @override
 
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  @override
   @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
   List<Language> get languages;
-  @override
 
   /// Result limit. Max of 50.
+  @override
   @JsonKey(toJson: intToString)
   int get limit;
-  @override
 
   /// Offset results
+  @override
   @JsonKey(toJson: intToString)
   int get offset;
-  @override
 
   /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
+  @override
   @JsonKey(toJson: paginatedToString)
   bool get paginated;
+
+  /// Create a copy of ChannelVideoFilter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChannelVideoFilterImplCopyWith<_$ChannelVideoFilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

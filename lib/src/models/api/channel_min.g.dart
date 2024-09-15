@@ -21,11 +21,12 @@ _$ChannelMinImpl _$$ChannelMinImplFromJson(Map<String, dynamic> json) =>
               'type', (v) => $enumDecodeNullable(_$ChannelTypeEnumMap, v)),
           photo: $checkedConvert('photo', (v) => v as String?),
           organization: $checkedConvert('org', (v) => v as String?),
-          videoCount: $checkedConvert('video_count', (v) => v as int?),
+          videoCount:
+              $checkedConvert('video_count', (v) => (v as num?)?.toInt()),
           subscriberCount:
-              $checkedConvert('subscriber_count', (v) => v as int?),
-          viewCount: $checkedConvert('view_count', (v) => v as int?),
-          clipCount: $checkedConvert('clip_count', (v) => v as int?),
+              $checkedConvert('subscriber_count', (v) => (v as num?)?.toInt()),
+          viewCount: $checkedConvert('view_count', (v) => (v as num?)?.toInt()),
+          clipCount: $checkedConvert('clip_count', (v) => (v as num?)?.toInt()),
         );
         return val;
       },

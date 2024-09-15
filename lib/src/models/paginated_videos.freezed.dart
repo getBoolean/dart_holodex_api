@@ -12,7 +12,7 @@ part of 'paginated_videos.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PaginatedVideos _$PaginatedVideosFromJson(Map<String, dynamic> json) {
   return _PaginatedVideos.fromJson(json);
@@ -26,8 +26,12 @@ mixin _$PaginatedVideos {
   List<VideoFull> get items => throw _privateConstructorUsedError;
   bool get paginated => throw _privateConstructorUsedError;
 
+  /// Serializes this PaginatedVideos to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaginatedVideos
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaginatedVideosCopyWith<PaginatedVideos> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$PaginatedVideosCopyWithImpl<$Res, $Val extends PaginatedVideos>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaginatedVideos
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,6 +106,8 @@ class __$$PaginatedVideosImplCopyWithImpl<$Res>
       _$PaginatedVideosImpl _value, $Res Function(_$PaginatedVideosImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaginatedVideos
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,7 +168,7 @@ class _$PaginatedVideosImpl extends _PaginatedVideos {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaginatedVideosImpl &&
@@ -170,12 +178,14 @@ class _$PaginatedVideosImpl extends _PaginatedVideos {
                 other.paginated == paginated));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, total,
       const DeepCollectionEquality().hash(_items), paginated);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaginatedVideos
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaginatedVideosImplCopyWith<_$PaginatedVideosImpl> get copyWith =>
@@ -200,17 +210,19 @@ abstract class _PaginatedVideos extends PaginatedVideos {
   factory _PaginatedVideos.fromJson(Map<String, dynamic> json) =
       _$PaginatedVideosImpl.fromJson;
 
-  @override
-
   /// The total number of videos on the server.
+  @override
   @JsonKey(fromJson: _parseTotal)
   int? get total;
   @override
   List<VideoFull> get items;
   @override
   bool get paginated;
+
+  /// Create a copy of PaginatedVideos
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaginatedVideosImplCopyWith<_$PaginatedVideosImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
