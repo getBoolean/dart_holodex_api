@@ -15,9 +15,9 @@ _$SongImpl _$$SongImplFromJson(Map<String, dynamic> json) => $checkedCreate(
         final val = _$SongImpl(
           name: $checkedConvert('name', (v) => v as String),
           art: $checkedConvert('art', (v) => v as String?),
-          end: $checkedConvert('end', (v) => v as int?),
-          start: $checkedConvert('start', (v) => v as int?),
-          itunesid: $checkedConvert('itunesid', (v) => v as int?),
+          end: $checkedConvert('end', (v) => (v as num?)?.toInt()),
+          start: $checkedConvert('start', (v) => (v as num?)?.toInt()),
+          itunesid: $checkedConvert('itunesid', (v) => (v as num?)?.toInt()),
           originalArtist:
               $checkedConvert('original_artist', (v) => v as String?),
         );

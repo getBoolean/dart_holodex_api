@@ -12,7 +12,7 @@ part of 'video.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Video _$VideoFromJson(Map<String, dynamic> json) {
   return _Video.fromJson(json);
@@ -66,8 +66,12 @@ mixin _$Video {
   @JsonKey(name: 'lang')
   String? get language => throw _privateConstructorUsedError;
 
+  /// Serializes this Video to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Video
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VideoCopyWith<Video> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -109,6 +113,8 @@ class _$VideoCopyWithImpl<$Res, $Val extends Video>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Video
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -202,6 +208,8 @@ class _$VideoCopyWithImpl<$Res, $Val extends Video>
     ) as $Val);
   }
 
+  /// Create a copy of Video
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ChannelMinCopyWith<$Res>? get channel {
@@ -254,6 +262,8 @@ class __$$VideoImplCopyWithImpl<$Res>
       _$VideoImpl _value, $Res Function(_$VideoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Video
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -444,7 +454,7 @@ class _$VideoImpl extends _Video {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VideoImpl &&
@@ -478,7 +488,7 @@ class _$VideoImpl extends _Video {
                 other.language == language));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -500,7 +510,9 @@ class _$VideoImpl extends _Video {
       channel,
       language);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Video
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VideoImplCopyWith<_$VideoImpl> get copyWith =>
@@ -544,53 +556,53 @@ abstract class _Video extends Video {
   String get title;
   @override
   VideoType? get type;
-  @override
 
   /// corresponds to a Topic ID, Videos of type clip cannot not have topic. Streams may or may not have topic.
+  @override
   @JsonKey(name: 'topic_id')
   String? get topicId;
   @override
   @JsonKey(name: 'published_at')
   String? get publishedAt;
-  @override
 
   /// Takes on the first non-null value of end_actual, start_actual, start_scheduled, or published_at
+  @override
   @JsonKey(name: 'available_at')
   String get availableAt;
-  @override
 
   /// Duration of the video in seconds
+  @override
   int? get duration;
   @override
   @JsonKey(fromJson: VideoStatus.fromJson, toJson: VideoStatus.toJsonStatic)
   VideoStatus get status;
-  @override
 
   /// Included when includes contains 'live_info'
+  @override
   @JsonKey(name: 'start_scheduled')
   String? get startScheduled;
-  @override
 
   /// Included when includes contains 'live_info'
+  @override
   @JsonKey(name: 'start_actual')
   String? get startActual;
-  @override
 
   /// Included when includes contains 'live_info'
+  @override
   @JsonKey(name: 'end_actual')
   String? get endActual;
-  @override
 
   /// Included when includes contains 'live_info'
+  @override
   @JsonKey(name: 'live_viewers')
   int? get liveViewers;
-  @override
 
   /// Included when includes contains 'description'
-  String? get description;
   @override
+  String? get description;
 
   /// Number of tagged songs for this video
+  @override
   int? get songcount;
   @override
   @JsonKey(name: 'channel_id')
@@ -600,8 +612,11 @@ abstract class _Video extends Video {
   @override
   @JsonKey(name: 'lang')
   String? get language;
+
+  /// Create a copy of Video
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VideoImplCopyWith<_$VideoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

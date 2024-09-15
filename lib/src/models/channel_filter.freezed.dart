@@ -12,7 +12,7 @@ part of 'channel_filter.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ChannelFilter {
@@ -44,8 +44,12 @@ mixin _$ChannelFilter {
   @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
   Organization? get organization => throw _privateConstructorUsedError;
 
+  /// Serializes this ChannelFilter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChannelFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChannelFilterCopyWith<ChannelFilter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -80,6 +84,8 @@ class _$ChannelFilterCopyWithImpl<$Res, $Val extends ChannelFilter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChannelFilter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,6 +160,8 @@ class __$$ChannelFilterImplCopyWithImpl<$Res>
       _$ChannelFilterImpl _value, $Res Function(_$ChannelFilterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChannelFilter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -272,7 +280,7 @@ class _$ChannelFilterImpl extends _ChannelFilter {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChannelFilterImpl &&
@@ -287,7 +295,7 @@ class _$ChannelFilterImpl extends _ChannelFilter {
                 other.organization == organization));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -299,7 +307,9 @@ class _$ChannelFilterImpl extends _ChannelFilter {
       order,
       organization);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChannelFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChannelFilterImplCopyWith<_$ChannelFilterImpl> get copyWith =>
@@ -328,43 +338,45 @@ abstract class _ChannelFilter extends ChannelFilter {
       final Organization? organization}) = _$ChannelFilterImpl;
   const _ChannelFilter._() : super._();
 
-  @override
-
   /// List of Language enum to filter channels/clips. Official streams do not follow this parameter
+  @override
   @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
   List<Language> get languages;
-  @override
 
   /// Result limit. Max of 50.
+  @override
   @JsonKey(toJson: intToString)
   int get limit;
-  @override
 
   /// Offset results
+  @override
   @JsonKey(toJson: intToString)
   int get offset;
-  @override
 
   /// Type of Channel, whether it's a vtuber or a subber. Leave unset to query all.
+  @override
   @JsonKey(includeIfNull: false, toJson: channelTypeToString)
   ChannelType? get type;
-  @override
 
   /// Column to sort on
+  @override
   @JsonKey(toJson: channelSortToStringList, includeIfNull: false)
   List<ChannelSort> get sort;
-  @override
 
   /// ASC or DESC order, default asc.
+  @override
   @JsonKey(toJson: orderToString)
   Order get order;
-  @override
 
   /// If set, filter for a Vtuber belonging to a specific org
+  @override
   @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
   Organization? get organization;
+
+  /// Create a copy of ChannelFilter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChannelFilterImplCopyWith<_$ChannelFilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

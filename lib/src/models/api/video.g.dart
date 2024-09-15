@@ -20,16 +20,17 @@ _$VideoImpl _$$VideoImplFromJson(Map<String, dynamic> json) => $checkedCreate(
           topicId: $checkedConvert('topic_id', (v) => v as String?),
           publishedAt: $checkedConvert('published_at', (v) => v as String?),
           availableAt: $checkedConvert('available_at', (v) => v as String),
-          duration: $checkedConvert('duration', (v) => v as int?),
+          duration: $checkedConvert('duration', (v) => (v as num?)?.toInt()),
           status: $checkedConvert(
               'status', (v) => VideoStatus.fromJson(v as String?)),
           startScheduled:
               $checkedConvert('start_scheduled', (v) => v as String?),
           startActual: $checkedConvert('start_actual', (v) => v as String?),
           endActual: $checkedConvert('end_actual', (v) => v as String?),
-          liveViewers: $checkedConvert('live_viewers', (v) => v as int?),
+          liveViewers:
+              $checkedConvert('live_viewers', (v) => (v as num?)?.toInt()),
           description: $checkedConvert('description', (v) => v as String?),
-          songcount: $checkedConvert('songcount', (v) => v as int?),
+          songcount: $checkedConvert('songcount', (v) => (v as num?)?.toInt()),
           channelId: $checkedConvert('channel_id', (v) => v as String?),
           channel: $checkedConvert(
               'channel',

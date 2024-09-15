@@ -12,7 +12,7 @@ part of 'song.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Song _$SongFromJson(Map<String, dynamic> json) {
   return _Song.fromJson(json);
@@ -28,8 +28,12 @@ mixin _$Song {
   @JsonKey(name: 'original_artist')
   String? get originalArtist => throw _privateConstructorUsedError;
 
+  /// Serializes this Song to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Song
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SongCopyWith<Song> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -57,6 +61,8 @@ class _$SongCopyWithImpl<$Res, $Val extends Song>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Song
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,6 +125,8 @@ class __$$SongImplCopyWithImpl<$Res>
   __$$SongImplCopyWithImpl(_$SongImpl _value, $Res Function(_$SongImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Song
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -192,7 +200,7 @@ class _$SongImpl implements _Song {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SongImpl &&
@@ -206,12 +214,14 @@ class _$SongImpl implements _Song {
                 other.originalArtist == originalArtist));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, name, art, end, start, itunesid, originalArtist);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Song
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SongImplCopyWith<_$SongImpl> get copyWith =>
@@ -250,8 +260,11 @@ abstract class _Song implements Song {
   @override
   @JsonKey(name: 'original_artist')
   String? get originalArtist;
+
+  /// Create a copy of Song
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SongImplCopyWith<_$SongImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

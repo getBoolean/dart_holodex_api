@@ -12,7 +12,7 @@ part of 'video_filter.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$VideoFilter {
@@ -80,8 +80,12 @@ mixin _$VideoFilter {
   @JsonKey(includeIfNull: false)
   VideoType? get type => throw _privateConstructorUsedError;
 
+  /// Serializes this VideoFilter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VideoFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VideoFilterCopyWith<VideoFilter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -134,6 +138,8 @@ class _$VideoFilterCopyWithImpl<$Res, $Val extends VideoFilter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VideoFilter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -266,6 +272,8 @@ class __$$VideoFilterImplCopyWithImpl<$Res>
       _$VideoFilterImpl _value, $Res Function(_$VideoFilterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VideoFilter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -511,7 +519,7 @@ class _$VideoFilterImpl extends _VideoFilter {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VideoFilterImpl &&
@@ -538,7 +546,7 @@ class _$VideoFilterImpl extends _VideoFilter {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -558,7 +566,9 @@ class _$VideoFilterImpl extends _VideoFilter {
       topic,
       type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VideoFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VideoFilterImplCopyWith<_$VideoFilterImpl> get copyWith =>
@@ -606,87 +616,89 @@ abstract class _VideoFilter extends VideoFilter {
       final VideoType? type}) = _$VideoFilterImpl;
   const _VideoFilter._() : super._();
 
-  @override
-
   /// Filter by video uploader channel ID
+  @override
   @JsonKey(name: 'channel_id', includeIfNull: false)
   String? get channelId;
-  @override
 
   /// Youtube Video IDs. If Specified, only this video can be returned (may be filtered out by other conditions though)
+  @override
   @JsonKey(name: 'id', toJson: nullStringListIfEmpty, includeIfNull: false)
   List<String> get ids;
-  @override
 
   /// Request extra data be included in the results. They are not guarenteed to be returned.
+  @override
   @JsonKey(toJson: concatIncludesList, name: 'include', includeIfNull: false)
   List<Includes> get includes;
-  @override
 
   /// Filter by the `Language`
+  @override
   @JsonKey(toJson: concatLanguageListWithDefault, name: 'lang')
   List<Language> get languages;
-  @override
 
   /// Limit the number of results returned. Maximum value of 50
+  @override
   @JsonKey(toJson: intToString)
   int get limit;
-  @override
 
   /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
+  @override
   @JsonKey(
       name: 'max_upcoming_hours',
       toJson: intToStringNullable,
       includeIfNull: false)
   int? get maxUpcomingHours;
-  @override
 
   /// Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
+  @override
   @JsonKey(name: 'mentioned_channel_id', includeIfNull: false)
   String? get mentionedChannelId;
-  @override
 
   /// Receive results starting at this number in the array from the Holodex API
+  @override
   @JsonKey(toJson: intToString)
   int get offset;
-  @override
 
   /// Order results by ascending or descending
+  @override
   @JsonKey(toJson: orderToString)
   Order get order;
-  @override
 
   /// Filter by clips that feature the org's talent or videos posted by the org's talent.
+  @override
   @JsonKey(name: 'org', toJson: organizationToString, includeIfNull: false)
   Organization? get organization;
-  @override
 
   /// If paginated is set to true, returns [PaginatedVideos] with total, otherwise returns [PaginatedVideos] without the total.
+  @override
   @JsonKey(toJson: paginatedToString)
   bool get paginated;
-  @override
 
   /// Sort the returned data by this field
+  @override
   @JsonKey(toJson: concatVideoSortList, includeIfNull: false)
   List<VideoSort> get sort;
-  @override
 
   /// Filter by the video status
+  @override
   @JsonKey(toJson: concatVideoStatusList, includeIfNull: false)
   List<VideoStatus> get status;
-  @override
 
   /// Filter by video topic ID
+  @override
   @JsonKey(includeIfNull: false)
   String? get topic;
-  @override
 
   /// Filter by type of video, either clips or streams
+  @override
   @JsonKey(toJson: videoTypeToString, includeIfNull: false)
   @JsonKey(includeIfNull: false)
   VideoType? get type;
+
+  /// Create a copy of VideoFilter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VideoFilterImplCopyWith<_$VideoFilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
