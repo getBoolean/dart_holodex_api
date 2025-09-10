@@ -14,11 +14,7 @@ void main() {
     test('Getting channel videos paginated', () async {
       // Setup
       final fauna = 'UCO_aKKYxn4tvrqPjcTzZ6EQ';
-      final filter = ChannelVideoFilter(
-        limit: 10,
-        offset: 0,
-        paginated: true,
-      );
+      final filter = ChannelVideoFilter(limit: 10, offset: 0, paginated: true);
 
       // Test
       final video = await client.getChannelRelatedVideos(
@@ -28,18 +24,17 @@ void main() {
       );
 
       // Expect
-      expect(video.total, isNotNull,
-          reason: 'Total should be included if paginated');
+      expect(
+        video.total,
+        isNotNull,
+        reason: 'Total should be included if paginated',
+      );
     });
 
     test('Getting channel videos not paginated', () async {
       // Setup
       final fauna = 'UCO_aKKYxn4tvrqPjcTzZ6EQ';
-      final filter = ChannelVideoFilter(
-        limit: 10,
-        offset: 0,
-        paginated: false,
-      );
+      final filter = ChannelVideoFilter(limit: 10, offset: 0, paginated: false);
 
       // Test
       final videos = await client.getChannelRelatedVideos(
@@ -49,8 +44,11 @@ void main() {
       );
 
       // Expect
-      expect(videos.total, isNull,
-          reason: 'Total should not be included if not paginated');
+      expect(
+        videos.total,
+        isNull,
+        reason: 'Total should not be included if not paginated',
+      );
     });
   });
 
@@ -58,41 +56,33 @@ void main() {
     test('Getting channel clips paginated', () async {
       // Setup
       final fauna = 'UCO_aKKYxn4tvrqPjcTzZ6EQ';
-      final filter = ChannelVideoFilter(
-        limit: 10,
-        offset: 0,
-        paginated: true,
-      );
+      final filter = ChannelVideoFilter(limit: 10, offset: 0, paginated: true);
 
       // Test
-      final video = await client.getVTuberClips(
-        fauna,
-        filter: filter,
-      );
+      final video = await client.getVTuberClips(fauna, filter: filter);
 
       // Expect
-      expect(video.total, isNotNull,
-          reason: 'Total should be included if paginated');
+      expect(
+        video.total,
+        isNotNull,
+        reason: 'Total should be included if paginated',
+      );
     });
 
     test('Getting channel clips not paginated', () async {
       // Setup
       final fauna = 'UCO_aKKYxn4tvrqPjcTzZ6EQ';
-      final filter = ChannelVideoFilter(
-        limit: 10,
-        offset: 0,
-        paginated: false,
-      );
+      final filter = ChannelVideoFilter(limit: 10, offset: 0, paginated: false);
 
       // Test
-      final videos = await client.getVTuberClips(
-        fauna,
-        filter: filter,
-      );
+      final videos = await client.getVTuberClips(fauna, filter: filter);
 
       // Expect
-      expect(videos.total, isNull,
-          reason: 'Total should not be included if not paginated');
+      expect(
+        videos.total,
+        isNull,
+        reason: 'Total should not be included if not paginated',
+      );
     });
   });
 
@@ -100,41 +90,33 @@ void main() {
     test('Getting channel videos paginated', () async {
       // Setup
       final fauna = 'UCO_aKKYxn4tvrqPjcTzZ6EQ';
-      final filter = ChannelVideoFilter(
-        limit: 10,
-        offset: 0,
-        paginated: true,
-      );
+      final filter = ChannelVideoFilter(limit: 10, offset: 0, paginated: true);
 
       // Test
-      final video = await client.getChannelVideos(
-        fauna,
-        filter: filter,
-      );
+      final video = await client.getChannelVideos(fauna, filter: filter);
 
       // Expect
-      expect(video.total, isNotNull,
-          reason: 'Total should be included if paginated');
+      expect(
+        video.total,
+        isNotNull,
+        reason: 'Total should be included if paginated',
+      );
     });
 
     test('Getting channel videos not paginated', () async {
       // Setup
       final fauna = 'UCO_aKKYxn4tvrqPjcTzZ6EQ';
-      final filter = ChannelVideoFilter(
-        limit: 10,
-        offset: 0,
-        paginated: false,
-      );
+      final filter = ChannelVideoFilter(limit: 10, offset: 0, paginated: false);
 
       // Test
-      final videos = await client.getChannelVideos(
-        fauna,
-        filter: filter,
-      );
+      final videos = await client.getChannelVideos(fauna, filter: filter);
 
       // Expect
-      expect(videos.total, isNull,
-          reason: 'Total should not be included if not paginated');
+      expect(
+        videos.total,
+        isNull,
+        reason: 'Total should not be included if not paginated',
+      );
     });
   });
 
@@ -142,41 +124,33 @@ void main() {
     test('Getting channel collabs paginated', () async {
       // Setup
       final fauna = 'UCO_aKKYxn4tvrqPjcTzZ6EQ';
-      final filter = ChannelVideoFilter(
-        limit: 10,
-        offset: 0,
-        paginated: true,
-      );
+      final filter = ChannelVideoFilter(limit: 10, offset: 0, paginated: true);
 
       // Test
-      final video = await client.getVTuberCollabs(
-        fauna,
-        filter: filter,
-      );
+      final video = await client.getVTuberCollabs(fauna, filter: filter);
 
       // Expect
-      expect(video.total, isNotNull,
-          reason: 'Total should be included if paginated');
+      expect(
+        video.total,
+        isNotNull,
+        reason: 'Total should be included if paginated',
+      );
     });
 
     test('Getting channel collabs not paginated', () async {
       // Setup
       final fauna = 'UCO_aKKYxn4tvrqPjcTzZ6EQ';
-      final filter = ChannelVideoFilter(
-        limit: 10,
-        offset: 0,
-        paginated: false,
-      );
+      final filter = ChannelVideoFilter(limit: 10, offset: 0, paginated: false);
 
       // Test
-      final videos = await client.getVTuberCollabs(
-        fauna,
-        filter: filter,
-      );
+      final videos = await client.getVTuberCollabs(fauna, filter: filter);
 
       // Expect
-      expect(videos.total, isNull,
-          reason: 'Total should not be included if not paginated');
+      expect(
+        videos.total,
+        isNull,
+        reason: 'Total should not be included if not paginated',
+      );
     });
   });
 }

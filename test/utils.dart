@@ -27,11 +27,7 @@ HolodexClient setUpHolodexClient({
 }
 
 void expectVideoDetails(VideoFull video) {
-  expect(
-    video.type,
-    VideoType.clip,
-    reason: 'Expected video to be a clip',
-  );
+  expect(video.type, VideoType.clip, reason: 'Expected video to be a clip');
 
   expect(
     video.duration,
@@ -69,21 +65,9 @@ void expectVideoDetails(VideoFull video) {
     reason: 'Video is not a premier or a live stream',
   );
 
-  expect(
-    video.songcount,
-    isNull,
-    reason: 'Video has no songs',
-  );
+  expect(video.songcount, isNull, reason: 'Video has no songs');
 
-  expect(
-    video.songs,
-    isEmpty,
-    reason: 'Video has no songs',
-  );
+  expect(video.songs, isEmpty, reason: 'Video has no songs');
 
-  expect(
-    video.language,
-    'en',
-    reason: 'Video language is english',
-  );
+  expect(video.language, 'en', reason: 'Video language is english');
 }

@@ -195,8 +195,9 @@ class Organization {
   static const Tsunderia = Organization._internal('Tsunderia');
 
   /// Twitch Independents
-  static const TwitchIndependents =
-      Organization._internal('Twitch Independents');
+  static const TwitchIndependents = Organization._internal(
+    'Twitch Independents',
+  );
 
   /// Unreal Night Girls
   static const UnrealNightGirls = Organization._internal('Unreal Night Girls');
@@ -205,8 +206,9 @@ class Organization {
   static const Varium = Organization._internal('Varium');
 
   /// V Dimension.Creators
-  static const VDimensionCreators =
-      Organization._internal('V Dimension.Creators');
+  static const VDimensionCreators = Organization._internal(
+    'V Dimension.Creators',
+  );
 
   /// ViViD
   static const ViViD = Organization._internal('ViViD');

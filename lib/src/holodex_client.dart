@@ -58,12 +58,14 @@ class HolodexClient {
     String videoId, {
     List<Includes> includes = const [],
   }) async {
-    final paginatedVideos = await getVideos(VideoFilter(
-      ids: [videoId],
-      includes: includes,
-      paginated: false,
-      limit: 1,
-    ));
+    final paginatedVideos = await getVideos(
+      VideoFilter(
+        ids: [videoId],
+        includes: includes,
+        paginated: false,
+        limit: 1,
+      ),
+    );
 
     return paginatedVideos.first;
   }
@@ -131,8 +133,9 @@ class HolodexClient {
   ///
   /// - `channelId` ID of the Youtube Channel that is being queried
   Future<Channel> getChannelById(String channelId) async {
-    final Response response =
-        await get(path: '${HolodexEndpoint.channels}/$channelId');
+    final Response response = await get(
+      path: '${HolodexEndpoint.channels}/$channelId',
+    );
 
     return Channel.fromString(response.body);
   }
@@ -150,8 +153,10 @@ class HolodexClient {
     ),
   ]) async {
     final Map<String, dynamic> params = filter.toJson();
-    final response =
-        await getEndpoint(HolodexEndpoint.channels, params: params);
+    final response = await getEndpoint(
+      HolodexEndpoint.channels,
+      params: params,
+    );
     final List<dynamic> list = jsonDecode(response.body);
 
     return list.map((channel) => Channel.fromJson(channel)).toList();
@@ -177,8 +182,10 @@ class HolodexClient {
     final Map<String, dynamic> params = {};
     _addChannels(channelIds, params);
 
-    final response =
-        await getEndpoint(HolodexEndpoint.userLive, params: params);
+    final response = await getEndpoint(
+      HolodexEndpoint.userLive,
+      params: params,
+    );
     final List<dynamic> list = jsonDecode(response.body);
     return list.map((video) => Video.fromJson(video)).toList();
   }
@@ -271,8 +278,9 @@ class HolodexClient {
   }) async {
     final Map<String, dynamic> params = filter.toJson();
     final response = await get(
-        path: '${HolodexEndpoint.channels}/$channelId/${type.code}',
-        params: params);
+      path: '${HolodexEndpoint.channels}/$channelId/${type.code}',
+      params: params,
+    );
 
     if (filter.paginated) {
       // Grab total and return with it
@@ -302,8 +310,10 @@ class HolodexClient {
     _addLanguages(filterRecommendationLanguages, params);
     _addCommentsFlag(includeTimestampComments, params);
 
-    final response =
-        await get(path: '${HolodexEndpoint.videos}/$videoId', params: params);
+    final response = await get(
+      path: '${HolodexEndpoint.videos}/$videoId',
+      params: params,
+    );
     final body = jsonDecode(response.body);
     return VideoFull.fromJson(body);
   }
@@ -337,11 +347,13 @@ class HolodexClient {
   }) async {
     final Map<String, dynamic> data = {
       'conditions': conditions,
-      ...filter.toJson()
+      ...filter.toJson(),
     };
 
-    final response =
-        await postEndpoint(HolodexEndpoint.videoSearch, data: data);
+    final response = await postEndpoint(
+      HolodexEndpoint.videoSearch,
+      data: data,
+    );
 
     if (filter.paginated) {
       // Grab total and return with it
@@ -352,7 +364,8 @@ class HolodexClient {
 
     final List<dynamic> list = jsonDecode(response.body);
     return PaginatedVideos(
-        items: list.map((video) => VideoFull.fromJson(video)).toList());
+      items: list.map((video) => VideoFull.fromJson(video)).toList(),
+    );
   }
 
   /// Flexible endpoint to search for comments in videos fulfilling multiple conditions.
@@ -372,12 +385,11 @@ class HolodexClient {
       limit: 25,
     ),
   }) async {
-    final Map<String, dynamic> data = {
-      'comment': comment,
-      ...filter.toJson(),
-    };
-    final response =
-        await postEndpoint(HolodexEndpoint.commentSearch, data: data);
+    final Map<String, dynamic> data = {'comment': comment, ...filter.toJson()};
+    final response = await postEndpoint(
+      HolodexEndpoint.commentSearch,
+      data: data,
+    );
     if (filter.paginated) {
       // Grab total and return with it
       final videoList = PaginatedVideos.fromString(response.body);
@@ -411,10 +423,7 @@ class HolodexClient {
   }) async {
     // return await call('get', path: path, headers: headers, params: params);
     headers ??= {};
-    headers.addAll({
-      'content-type': 'application/json',
-      'X-APIKEY': apiKey,
-    });
+    headers.addAll({'content-type': 'application/json', 'X-APIKEY': apiKey});
 
     try {
       final finalUri = _getUriUrl(basePath + path, params);
@@ -436,7 +445,11 @@ class HolodexClient {
     Map<String, dynamic>? data,
   }) async {
     return post(
-        path: endpoint.path, headers: headers, params: params, data: data);
+      path: endpoint.path,
+      headers: headers,
+      params: params,
+      data: data,
+    );
   }
 
   /// Utility method to make a custom http post call with the
@@ -449,14 +462,14 @@ class HolodexClient {
   }) async {
     // return await call('post', path: path, headers: headers, data: data);
     headers ??= {};
-    headers.addAll({
-      'content-type': 'application/json',
-      'X-APIKEY': apiKey,
-    });
+    headers.addAll({'content-type': 'application/json', 'X-APIKEY': apiKey});
 
     try {
-      return await _client.post(_getUriUrl(basePath + path, params),
-          headers: headers, body: json.encode(data));
+      return await _client.post(
+        _getUriUrl(basePath + path, params),
+        headers: headers,
+        body: json.encode(data),
+      );
     } catch (e) {
       if (e is HolodexException) {
         rethrow;

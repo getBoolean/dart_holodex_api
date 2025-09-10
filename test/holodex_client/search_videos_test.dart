@@ -24,8 +24,11 @@ void main() {
       final videos = await client.searchVideos(filter: filter);
 
       // Expect
-      expect(videos.total, isNotNull,
-          reason: 'Total should be included if paginated');
+      expect(
+        videos.total,
+        isNotNull,
+        reason: 'Total should be included if paginated',
+      );
     });
 
     test('Getting live videos not paginated', () async {
@@ -41,8 +44,11 @@ void main() {
       final videos = await client.searchVideos(filter: filter);
 
       // Expect
-      expect(videos.total, isNull,
-          reason: 'Total should not be included if not paginated');
+      expect(
+        videos.total,
+        isNull,
+        reason: 'Total should not be included if not paginated',
+      );
     });
   });
 }
