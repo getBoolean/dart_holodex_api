@@ -20,7 +20,7 @@ int? _parseTotal(dynamic value) {
 
 /// A paginated list of [VideoFull]s.
 @freezed
-class PaginatedVideos with _$PaginatedVideos {
+abstract class PaginatedVideos with _$PaginatedVideos {
   const PaginatedVideos._();
 
   /// Creates a paginated list of [VideoFull]s.
@@ -32,15 +32,11 @@ class PaginatedVideos with _$PaginatedVideos {
   }) = _PaginatedVideos;
 
   /// Creates a paginated list of [VideoFull]s from a JSON object.
-  factory PaginatedVideos.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+  factory PaginatedVideos.fromJson(Map<String, dynamic> json) =>
       _$PaginatedVideosFromJson(json);
 
   /// Creates a paginated list of [VideoFull]s from a JSON string.
-  factory PaginatedVideos.fromString(
-    String json,
-  ) =>
+  factory PaginatedVideos.fromString(String json) =>
       PaginatedVideos.fromJson(jsonDecode(json));
 
   /// Returns the first element.

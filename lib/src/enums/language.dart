@@ -43,40 +43,49 @@ class Language {
   }
 
   /// [Language] with locale set to `all`.
-  static final all =
-      Language._internal(Locale.fromSubtags(languageCode: 'all'));
+  static final all = Language._internal(
+    Locale.fromSubtags(languageCode: 'all'),
+  );
 
   /// [Language] with locale `en`.
-  static final english =
-      Language._internal(Locale.fromSubtags(languageCode: 'en'));
+  static final english = Language._internal(
+    Locale.fromSubtags(languageCode: 'en'),
+  );
 
   /// [Language] with locale `jp`.
-  static final japanese =
-      Language._internal(Locale.fromSubtags(languageCode: 'jp'));
+  static final japanese = Language._internal(
+    Locale.fromSubtags(languageCode: 'jp'),
+  );
 
   /// [Language] with locale `es`.
-  static final spanish =
-      Language._internal(Locale.fromSubtags(languageCode: 'es'));
+  static final spanish = Language._internal(
+    Locale.fromSubtags(languageCode: 'es'),
+  );
 
   /// [Language] with locale `zh`.
-  static final chinese =
-      Language._internal(Locale.fromSubtags(languageCode: 'zh'));
+  static final chinese = Language._internal(
+    Locale.fromSubtags(languageCode: 'zh'),
+  );
 
   /// [Language] with locale `ko`.
-  static final korean =
-      Language._internal(Locale.fromSubtags(languageCode: 'ko'));
+  static final korean = Language._internal(
+    Locale.fromSubtags(languageCode: 'ko'),
+  );
 
   /// [Language] with locale `fr`.
-  static final french =
-      Language._internal(Locale.fromSubtags(languageCode: 'fr'));
+  static final french = Language._internal(
+    Locale.fromSubtags(languageCode: 'fr'),
+  );
 
   /// [Language] with locale `id`.
-  static final indonesian =
-      Language._internal(Locale.fromSubtags(languageCode: 'id'));
+  static final indonesian = Language._internal(
+    Locale.fromSubtags(languageCode: 'id'),
+  );
 
   /// [Language] with locale `ru`.
-  static final russian =
-      Language._internal(Locale.fromSubtags(languageCode: 'ru'));
+  static final russian = Language._internal(
+    Locale.fromSubtags(languageCode: 'ru'),
+  );
 
   /// Most languages supported by Holodex as of 2023-02-05.
   ///

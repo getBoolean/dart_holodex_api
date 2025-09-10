@@ -22,12 +22,17 @@ void main() {
       );
 
       // Test
-      final videos =
-          await client.searchComments(filter: filter, comment: 'shion');
+      final videos = await client.searchComments(
+        filter: filter,
+        comment: 'shion',
+      );
 
       // Expect
-      expect(videos.total, isNotNull,
-          reason: 'Total should be included if paginated');
+      expect(
+        videos.total,
+        isNotNull,
+        reason: 'Total should be included if paginated',
+      );
     });
 
     // randomly timing out
@@ -41,12 +46,17 @@ void main() {
       );
 
       // Test
-      final videos =
-          await client.searchComments(filter: filter, comment: 'shion');
+      final videos = await client.searchComments(
+        filter: filter,
+        comment: 'shion',
+      );
 
       // Expect
-      expect(videos.total, isNull,
-          reason: 'Total should not be included if not paginated');
+      expect(
+        videos.total,
+        isNull,
+        reason: 'Total should not be included if not paginated',
+      );
     });
   });
 }

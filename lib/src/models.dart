@@ -1,5 +1,3 @@
-library dart_holodex_api.models;
-
 export 'models/api/channel.dart';
 export 'models/api/channel_min.dart';
 export 'models/api/comment.dart';

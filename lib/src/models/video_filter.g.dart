@@ -8,30 +8,21 @@ part of 'video_filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$$VideoFilterImplToJson(_$VideoFilterImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('channel_id', instance.channelId);
-  writeNotNull('id', nullStringListIfEmpty(instance.ids));
-  writeNotNull('include', concatIncludesList(instance.includes));
-  val['lang'] = concatLanguageListWithDefault(instance.languages);
-  val['limit'] = intToString(instance.limit);
-  writeNotNull(
-      'max_upcoming_hours', intToStringNullable(instance.maxUpcomingHours));
-  writeNotNull('mentioned_channel_id', instance.mentionedChannelId);
-  val['offset'] = intToString(instance.offset);
-  val['order'] = orderToString(instance.order);
-  writeNotNull('org', organizationToString(instance.organization));
-  val['paginated'] = paginatedToString(instance.paginated);
-  writeNotNull('sort', concatVideoSortList(instance.sort));
-  writeNotNull('status', concatVideoStatusList(instance.status));
-  writeNotNull('topic', instance.topic);
-  writeNotNull('type', videoTypeToString(instance.type));
-  return val;
-}
+Map<String, dynamic> _$VideoFilterToJson(_VideoFilter instance) =>
+    <String, dynamic>{
+      'channel_id': ?instance.channelId,
+      'id': ?nullStringListIfEmpty(instance.ids),
+      'include': ?concatIncludesList(instance.includes),
+      'lang': concatLanguageListWithDefault(instance.languages),
+      'limit': intToString(instance.limit),
+      'max_upcoming_hours': ?intToStringNullable(instance.maxUpcomingHours),
+      'mentioned_channel_id': ?instance.mentionedChannelId,
+      'offset': intToString(instance.offset),
+      'order': orderToString(instance.order),
+      'org': ?organizationToString(instance.organization),
+      'paginated': paginatedToString(instance.paginated),
+      'sort': ?concatVideoSortList(instance.sort),
+      'status': ?concatVideoStatusList(instance.status),
+      'topic': ?instance.topic,
+      'type': ?videoTypeToString(instance.type),
+    };

@@ -8,39 +8,41 @@ part of 'channel_min.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ChannelMinImpl _$$ChannelMinImplFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$ChannelMinImpl',
-      json,
-      ($checkedConvert) {
-        final val = _$ChannelMinImpl(
-          id: $checkedConvert('id', (v) => v as String),
-          name: $checkedConvert('name', (v) => v as String),
-          englishName: $checkedConvert('english_name', (v) => v as String?),
-          type: $checkedConvert(
-              'type', (v) => $enumDecodeNullable(_$ChannelTypeEnumMap, v)),
-          photo: $checkedConvert('photo', (v) => v as String?),
-          organization: $checkedConvert('org', (v) => v as String?),
-          videoCount:
-              $checkedConvert('video_count', (v) => (v as num?)?.toInt()),
-          subscriberCount:
-              $checkedConvert('subscriber_count', (v) => (v as num?)?.toInt()),
-          viewCount: $checkedConvert('view_count', (v) => (v as num?)?.toInt()),
-          clipCount: $checkedConvert('clip_count', (v) => (v as num?)?.toInt()),
-        );
-        return val;
-      },
-      fieldKeyMap: const {
-        'englishName': 'english_name',
-        'organization': 'org',
-        'videoCount': 'video_count',
-        'subscriberCount': 'subscriber_count',
-        'viewCount': 'view_count',
-        'clipCount': 'clip_count'
-      },
+_ChannelMin _$ChannelMinFromJson(Map<String, dynamic> json) => $checkedCreate(
+  '_ChannelMin',
+  json,
+  ($checkedConvert) {
+    final val = _ChannelMin(
+      id: $checkedConvert('id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      englishName: $checkedConvert('english_name', (v) => v as String?),
+      type: $checkedConvert(
+        'type',
+        (v) => $enumDecodeNullable(_$ChannelTypeEnumMap, v),
+      ),
+      photo: $checkedConvert('photo', (v) => v as String?),
+      organization: $checkedConvert('org', (v) => v as String?),
+      videoCount: $checkedConvert('video_count', (v) => (v as num?)?.toInt()),
+      subscriberCount: $checkedConvert(
+        'subscriber_count',
+        (v) => (v as num?)?.toInt(),
+      ),
+      viewCount: $checkedConvert('view_count', (v) => (v as num?)?.toInt()),
+      clipCount: $checkedConvert('clip_count', (v) => (v as num?)?.toInt()),
     );
+    return val;
+  },
+  fieldKeyMap: const {
+    'englishName': 'english_name',
+    'organization': 'org',
+    'videoCount': 'video_count',
+    'subscriberCount': 'subscriber_count',
+    'viewCount': 'view_count',
+    'clipCount': 'clip_count',
+  },
+);
 
-Map<String, dynamic> _$$ChannelMinImplToJson(_$ChannelMinImpl instance) =>
+Map<String, dynamic> _$ChannelMinToJson(_ChannelMin instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

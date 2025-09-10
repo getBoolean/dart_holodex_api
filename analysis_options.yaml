@@ -2,13 +2,13 @@ include: package:lints/recommended.yaml
 
 analyzer:
   exclude:
-    - '**/*.g.dart'
-    - '**/*.freezed.dart'
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
 
 linter:
   rules:
     use_super_parameters: true
-    
+
     # Single quotes are easier to type and don't compromise on readability.
     prefer_single_quotes: true
 
@@ -31,7 +31,6 @@ linter:
     unnecessary_constructor_name: true
 
     # Documentation
-    package_api_docs: true
     # public_member_api_docs: true
     slash_for_doc_comments: true
 

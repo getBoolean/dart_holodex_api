@@ -8,7 +8,8 @@ void main() {
   setUp(() {
     // Must test against mock server because the live videos change frequently
     client = setUpHolodexClient(
-        basePath: 'https://stoplight.io/mocks/holodex/holodex/11620234');
+      basePath: 'https://stoplight.io/mocks/holodex/holodex/11620234',
+    );
   });
   tearDown(() => client.close());
 
@@ -21,8 +22,11 @@ void main() {
       final videos = await client.getLiveVideosFromChannelsQuickly(channelIds);
 
       // Expect
-      expect(videos, isNotEmpty,
-          reason: 'There should be at least one live video');
+      expect(
+        videos,
+        isNotEmpty,
+        reason: 'There should be at least one live video',
+      );
     });
   });
 }

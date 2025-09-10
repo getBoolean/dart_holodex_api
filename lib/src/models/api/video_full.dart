@@ -20,7 +20,7 @@ VideoType? _parseVideoType(String? type) {
 /// An extended [Video] class with [comments], [sources], [refers],
 /// [simulcasts], [mentions], and [songs] fields.
 @freezed
-class VideoFull with _$VideoFull {
+abstract class VideoFull with _$VideoFull {
   const VideoFull._();
 
   /// Returns a new [VideoFull] instance.
@@ -80,22 +80,22 @@ class VideoFull with _$VideoFull {
 
   /// Converts this [VideoFull] instance to a [Video] instance.
   Video toVideo() => Video(
-        id: id,
-        title: title,
-        type: type,
-        topicId: topicId,
-        publishedAt: publishedAt,
-        availableAt: availableAt,
-        duration: duration,
-        status: status,
-        startScheduled: startScheduled,
-        startActual: startActual,
-        endActual: endActual,
-        liveViewers: liveViewers,
-        description: description,
-        songcount: songcount,
-        channelId: channelId,
-        channel: channel,
-        language: language,
-      );
+    id: id,
+    title: title,
+    type: type,
+    topicId: topicId,
+    publishedAt: publishedAt,
+    availableAt: availableAt,
+    duration: duration,
+    status: status,
+    startScheduled: startScheduled,
+    startActual: startActual,
+    endActual: endActual,
+    liveViewers: liveViewers,
+    description: description,
+    songcount: songcount,
+    channelId: channelId,
+    channel: channel,
+    language: language,
+  );
 }

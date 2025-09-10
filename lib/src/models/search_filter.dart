@@ -13,7 +13,7 @@ part 'search_filter.g.dart';
 
 /// Filter the results returns by the Holodex API channel endpoints
 @Freezed(fromJson: false, toJson: true)
-class SearchFilter with _$SearchFilter {
+abstract class SearchFilter with _$SearchFilter {
   /// Filter the results returns by the Holodex API channel endpoints
   @Assert('limit <= 50', 'The limit cannot be greater than 50')
   const factory SearchFilter({

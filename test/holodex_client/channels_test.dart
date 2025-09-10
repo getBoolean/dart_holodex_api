@@ -26,17 +26,17 @@ void main() {
   group('HolodexClient.getChannels', () {
     test('Getting channels is not empty', () async {
       // Setup
-      final filter = ChannelFilter(
-        limit: 10,
-        offset: 0,
-      );
+      final filter = ChannelFilter(limit: 10, offset: 0);
 
       // Test
       final channels = await client.getChannels(filter);
 
       // Expect
-      expect(channels, isNotEmpty,
-          reason: 'The channels list should not be empty');
+      expect(
+        channels,
+        isNotEmpty,
+        reason: 'The channels list should not be empty',
+      );
     });
   });
 }

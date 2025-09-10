@@ -7,7 +7,7 @@ part 'comment.g.dart';
 
 /// A [Comment] class with information retrieved from Holodex.
 @freezed
-class Comment with _$Comment {
+abstract class Comment with _$Comment {
   /// Returns a new [Comment] instance.
   const factory Comment({
     @JsonKey(name: 'comment_key') required String commentKey,
