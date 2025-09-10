@@ -25,7 +25,7 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">dart_holodex_api</a></li>
-    <li><a href="../../dart_holodex_api/dart_holodex_api-library.html">dart_holodex_api.dart</a></li>
+    <li><a href="../../dart_holodex_api/">dart_holodex_api.dart</a></li>
     <li><a href="../../dart_holodex_api/VideoFull-class.html">VideoFull</a></li>
     <li class="self-crumb">simulcasts property</li>
   </ol>
@@ -33,17 +33,14 @@
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button" title="Toggle brightness">
-    <label for="theme">
-      <input type="checkbox" id="theme" value="light-theme">
-      <span id="dark-theme-button" class="material-symbols-outlined">
-        dark_mode
-      </span>
-      <span id="light-theme-button" class="material-symbols-outlined">
-        light_mode
-      </span>
-    </label>
-  </div>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
 </header>
 <main>
 <div
@@ -62,7 +59,7 @@
   <section id="getter">
     <section class="multi-line-signature">
       
-      <span class="returntype"><a href="https://api.dart.dev/stable/3.6.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Video-class.html">Video</a></span>&gt;</span></span>
+      <span class="returntype"><a href="https://api.dart.dev/stable/3.9.3/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Video-class.html">Video</a></span>&gt;</span></span>
       get
       <span class="name ">simulcasts</span>
       <div class="features"><span class="feature">inherited</span></div>
@@ -73,7 +70,7 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">List&lt;Video&gt; get simulcasts =&gt; throw _privateConstructorUsedError;</code></pre>
+  <pre class="language-dart"><code class="language-dart">int? get songcount;@JsonKey(name: &#39;channel_id&#39;) String? get channelId; ChannelMin? get channel;@JsonKey(name: &#39;lang&#39;) String? get language; List&lt;Comment&gt; get comments; List&lt;Video&gt; get recommendations; List&lt;Video&gt; get clips; List&lt;Video&gt; get sources; List&lt;Video&gt; get refers; List&lt;Video&gt; get simulcasts;</code></pre>
 </section>
 
   </section>
@@ -89,7 +86,7 @@
 </header>
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">dart_holodex_api</a></li>
-    <li><a href="../../dart_holodex_api/dart_holodex_api-library.html">dart_holodex_api</a></li>
+    <li><a href="../../dart_holodex_api/">dart_holodex_api</a></li>
     <li><a href="../../dart_holodex_api/VideoFull-class.html">VideoFull</a></li>
     <li class="self-crumb">simulcasts property</li>
 </ol>
@@ -103,7 +100,7 @@
 <footer>
   <span class="no-break">
     dart_holodex_api
-      2.1.0
+      2.2.0
   </span>
   
 </footer>

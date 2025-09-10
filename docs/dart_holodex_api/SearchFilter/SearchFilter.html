@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the SearchFilter constructor from Class SearchFilter from the dart_holodex_api library, for the Dart programming language.">
-  <title>SearchFilter constructor - SearchFilter - dart_holodex_api library - Dart API</title>
+  <meta name="description" content="API docs for the SearchFilter.new constructor from Class SearchFilter from the dart_holodex_api library, for the Dart programming language.">
+  <title>SearchFilter.new constructor - SearchFilter - dart_holodex_api library - Dart API</title>
 
 
   
@@ -25,25 +25,22 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">dart_holodex_api</a></li>
-    <li><a href="../../dart_holodex_api/dart_holodex_api-library.html">dart_holodex_api.dart</a></li>
+    <li><a href="../../dart_holodex_api/">dart_holodex_api.dart</a></li>
     <li><a href="../../dart_holodex_api/SearchFilter-class.html">SearchFilter</a></li>
-    <li class="self-crumb">SearchFilter const constructor</li>
+    <li class="self-crumb">SearchFilter.new const constructor</li>
   </ol>
-  <div class="self-name">SearchFilter</div>
+  <div class="self-name">SearchFilter.new</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button" title="Toggle brightness">
-    <label for="theme">
-      <input type="checkbox" id="theme" value="light-theme">
-      <span id="dark-theme-button" class="material-symbols-outlined">
-        dark_mode
-      </span>
-      <span id="light-theme-button" class="material-symbols-outlined">
-        light_mode
-      </span>
-    </label>
-  </div>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
 </header>
 <main>
   <div
@@ -59,18 +56,18 @@
       
   <div>
     <ol class="annotation-list">
-        <li>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.4/freezed_annotation/Assert-class.html">Assert</a>(&#39;limit &lt;= 50&#39;, &#39;The limit cannot be greater than 50&#39;)</li>
+        <li>@<a href="https://pub.dev/documentation/freezed_annotation/3.1.0/freezed_annotation/Assert-class.html">Assert</a>(&#39;limit &lt;= 50&#39;, &#39;The limit cannot be greater than 50&#39;)</li>
     </ol>
   </div>const
-      <span class="name ">SearchFilter</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="-param-sort"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;sort&#39;, toJson: searchSortToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.4/freezed_annotation/Default-class.html">Default</a>(SearchSort.newest)</span> <span class="type-annotation"><a href="../../dart_holodex_api/SearchSort.html">SearchSort</a></span> <span class="parameter-name">sort</span>, </span></li>
-<li><span class="parameter" id="-param-languages"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: languageListToStringList, name: &#39;lang&#39;)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.4/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span>, </span></li>
-<li><span class="parameter" id="-param-targets"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.4/freezed_annotation/Default-class.html">Default</a>([SearchTarget.clip, SearchTarget.stream])</span> <span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;target&#39;, toJson: searchTargetToStringList)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/SearchTarget.html">SearchTarget</a></span>&gt;</span></span> <span class="parameter-name">targets</span>, </span></li>
-<li><span class="parameter" id="-param-topics"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;topic&#39;)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.4/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.6.0/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">topics</span>, </span></li>
-<li><span class="parameter" id="-param-videoChannels"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;vch&#39;)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.4/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.6.0/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">videoChannels</span>, </span></li>
-<li><span class="parameter" id="-param-organizations"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;org&#39;, toJson: organizationListToStringList)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.4/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Organization-class.html">Organization</a></span>&gt;</span></span> <span class="parameter-name">organizations</span>, </span></li>
-<li><span class="parameter" id="-param-paginated"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.4/freezed_annotation/Default-class.html">Default</a>(true)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span>, </span></li>
-<li><span class="parameter" id="-param-offset"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: intToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.4/freezed_annotation/Default-class.html">Default</a>(0)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span></li>
-<li><span class="parameter" id="-param-limit"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: intToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.4.4/freezed_annotation/Default-class.html">Default</a>(25)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span>, </span></li>
+      <span class="name ">SearchFilter</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="-param-sort"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;sort&#39;, toJson: searchSortToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/3.1.0/freezed_annotation/Default-class.html">Default</a>(SearchSort.newest)</span> <span class="type-annotation"><a href="../../dart_holodex_api/SearchSort.html">SearchSort</a></span> <span class="parameter-name">sort</span>, </span></li>
+<li><span class="parameter" id="-param-languages"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: languageListToStringList, name: &#39;lang&#39;)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/3.1.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.3/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Language-class.html">Language</a></span>&gt;</span></span> <span class="parameter-name">languages</span>, </span></li>
+<li><span class="parameter" id="-param-targets"><span>@<a href="https://pub.dev/documentation/freezed_annotation/3.1.0/freezed_annotation/Default-class.html">Default</a>([SearchTarget.clip, SearchTarget.stream])</span> <span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;target&#39;, toJson: searchTargetToStringList)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.3/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/SearchTarget.html">SearchTarget</a></span>&gt;</span></span> <span class="parameter-name">targets</span>, </span></li>
+<li><span class="parameter" id="-param-topics"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;topic&#39;)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/3.1.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.3/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.9.3/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">topics</span>, </span></li>
+<li><span class="parameter" id="-param-videoChannels"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;vch&#39;)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/3.1.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.3/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.9.3/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">videoChannels</span>, </span></li>
+<li><span class="parameter" id="-param-organizations"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(name: &#39;org&#39;, toJson: organizationListToStringList)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/3.1.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.3/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart_holodex_api/Organization-class.html">Organization</a></span>&gt;</span></span> <span class="parameter-name">organizations</span>, </span></li>
+<li><span class="parameter" id="-param-paginated"><span>@<a href="https://pub.dev/documentation/freezed_annotation/3.1.0/freezed_annotation/Default-class.html">Default</a>(true)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.3/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">paginated</span>, </span></li>
+<li><span class="parameter" id="-param-offset"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: intToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/3.1.0/freezed_annotation/Default-class.html">Default</a>(0)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span></li>
+<li><span class="parameter" id="-param-limit"><span>@<a href="https://pub.dev/documentation/json_annotation/4.9.0/json_annotation/JsonKey-class.html">JsonKey</a>(toJson: intToString)</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/3.1.0/freezed_annotation/Default-class.html">Default</a>(25)</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span>, </span></li>
 </ol>})
     </section>
     
@@ -136,9 +133,9 @@ const factory SearchFilter({
 </header>
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">dart_holodex_api</a></li>
-    <li><a href="../../dart_holodex_api/dart_holodex_api-library.html">dart_holodex_api</a></li>
+    <li><a href="../../dart_holodex_api/">dart_holodex_api</a></li>
     <li><a href="../../dart_holodex_api/SearchFilter-class.html">SearchFilter</a></li>
-    <li class="self-crumb">SearchFilter const constructor</li>
+    <li class="self-crumb">SearchFilter.new const constructor</li>
 </ol>
 
     <h5>SearchFilter class</h5>
@@ -150,7 +147,7 @@ const factory SearchFilter({
 <footer>
   <span class="no-break">
     dart_holodex_api
-      2.1.0
+      2.2.0
   </span>
   
 </footer>

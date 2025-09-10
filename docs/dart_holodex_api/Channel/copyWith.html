@@ -25,7 +25,7 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">dart_holodex_api</a></li>
-    <li><a href="../../dart_holodex_api/dart_holodex_api-library.html">dart_holodex_api.dart</a></li>
+    <li><a href="../../dart_holodex_api/">dart_holodex_api.dart</a></li>
     <li><a href="../../dart_holodex_api/Channel-class.html">Channel</a></li>
     <li class="self-crumb">copyWith property</li>
   </ol>
@@ -33,17 +33,14 @@
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button" title="Toggle brightness">
-    <label for="theme">
-      <input type="checkbox" id="theme" value="light-theme">
-      <span id="dark-theme-button" class="material-symbols-outlined">
-        dark_mode
-      </span>
-      <span id="light-theme-button" class="material-symbols-outlined">
-        light_mode
-      </span>
-    </label>
-  </div>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
 </header>
 <main>
 <div
@@ -83,7 +80,8 @@ with the given fields replaced by the non-null parameter values.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@JsonKey(includeFromJson: false, includeToJson: false)
-$ChannelCopyWith&lt;Channel&gt; get copyWith =&gt; throw _privateConstructorUsedError;</code></pre>
+@pragma(&#39;vm:prefer-inline&#39;)
+$ChannelCopyWith&lt;Channel&gt; get copyWith =&gt; _$ChannelCopyWithImpl&lt;Channel&gt;(this as Channel, _$identity);</code></pre>
 </section>
 
   </section>
@@ -99,7 +97,7 @@ $ChannelCopyWith&lt;Channel&gt; get copyWith =&gt; throw _privateConstructorUsed
 </header>
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">dart_holodex_api</a></li>
-    <li><a href="../../dart_holodex_api/dart_holodex_api-library.html">dart_holodex_api</a></li>
+    <li><a href="../../dart_holodex_api/">dart_holodex_api</a></li>
     <li><a href="../../dart_holodex_api/Channel-class.html">Channel</a></li>
     <li class="self-crumb">copyWith property</li>
 </ol>
@@ -113,7 +111,7 @@ $ChannelCopyWith&lt;Channel&gt; get copyWith =&gt; throw _privateConstructorUsed
 <footer>
   <span class="no-break">
     dart_holodex_api
-      2.1.0
+      2.2.0
   </span>
   
 </footer>
