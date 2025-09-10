@@ -1,5 +1,10 @@
 <!-- markdownlint-disable MD041 -->
 
+## 2.2.0
+
+- Updated minimum Dart SDK version to 3.8.0
+- Updated dependencies
+
 ## 2.1.0
 
 - Updated minimum Dart SDK version to 3.4.0
