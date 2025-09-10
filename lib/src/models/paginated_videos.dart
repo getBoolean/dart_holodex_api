@@ -20,7 +20,7 @@ int? _parseTotal(dynamic value) {
 
 /// A paginated list of [VideoFull]s.
 @freezed
-class PaginatedVideos with _$PaginatedVideos {
+abstract class PaginatedVideos with _$PaginatedVideos {
   const PaginatedVideos._();
 
   /// Creates a paginated list of [VideoFull]s.

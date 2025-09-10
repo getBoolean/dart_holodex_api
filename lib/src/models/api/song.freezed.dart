@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,262 +9,284 @@ part of 'song.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Song _$SongFromJson(Map<String, dynamic> json) {
-  return _Song.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Song {
-  String get name => throw _privateConstructorUsedError;
-  String? get art => throw _privateConstructorUsedError;
-  int? get end => throw _privateConstructorUsedError;
-  int? get start => throw _privateConstructorUsedError;
-  int? get itunesid => throw _privateConstructorUsedError;
-  @JsonKey(name: 'original_artist')
-  String? get originalArtist => throw _privateConstructorUsedError;
+
+ String get name; String? get art; int? get end; int? get start; int? get itunesid;@JsonKey(name: 'original_artist') String? get originalArtist;
+/// Create a copy of Song
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SongCopyWith<Song> get copyWith => _$SongCopyWithImpl<Song>(this as Song, _$identity);
 
   /// Serializes this Song to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Song
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SongCopyWith<Song> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Song&&(identical(other.name, name) || other.name == name)&&(identical(other.art, art) || other.art == art)&&(identical(other.end, end) || other.end == end)&&(identical(other.start, start) || other.start == start)&&(identical(other.itunesid, itunesid) || other.itunesid == itunesid)&&(identical(other.originalArtist, originalArtist) || other.originalArtist == originalArtist));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name,art,end,start,itunesid,originalArtist);
+
+@override
+String toString() {
+  return 'Song(name: $name, art: $art, end: $end, start: $start, itunesid: $itunesid, originalArtist: $originalArtist)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SongCopyWith<$Res> {
-  factory $SongCopyWith(Song value, $Res Function(Song) then) =
-      _$SongCopyWithImpl<$Res, Song>;
-  @useResult
-  $Res call(
-      {String name,
-      String? art,
-      int? end,
-      int? start,
-      int? itunesid,
-      @JsonKey(name: 'original_artist') String? originalArtist});
-}
+abstract mixin class $SongCopyWith<$Res>  {
+  factory $SongCopyWith(Song value, $Res Function(Song) _then) = _$SongCopyWithImpl;
+@useResult
+$Res call({
+ String name, String? art, int? end, int? start, int? itunesid,@JsonKey(name: 'original_artist') String? originalArtist
+});
 
+
+
+
+}
 /// @nodoc
-class _$SongCopyWithImpl<$Res, $Val extends Song>
+class _$SongCopyWithImpl<$Res>
     implements $SongCopyWith<$Res> {
-  _$SongCopyWithImpl(this._value, this._then);
+  _$SongCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Song _self;
+  final $Res Function(Song) _then;
 
-  /// Create a copy of Song
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? art = freezed,
-    Object? end = freezed,
-    Object? start = freezed,
-    Object? itunesid = freezed,
-    Object? originalArtist = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      art: freezed == art
-          ? _value.art
-          : art // ignore: cast_nullable_to_non_nullable
-              as String?,
-      end: freezed == end
-          ? _value.end
-          : end // ignore: cast_nullable_to_non_nullable
-              as int?,
-      start: freezed == start
-          ? _value.start
-          : start // ignore: cast_nullable_to_non_nullable
-              as int?,
-      itunesid: freezed == itunesid
-          ? _value.itunesid
-          : itunesid // ignore: cast_nullable_to_non_nullable
-              as int?,
-      originalArtist: freezed == originalArtist
-          ? _value.originalArtist
-          : originalArtist // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of Song
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? art = freezed,Object? end = freezed,Object? start = freezed,Object? itunesid = freezed,Object? originalArtist = freezed,}) {
+  return _then(_self.copyWith(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,art: freezed == art ? _self.art : art // ignore: cast_nullable_to_non_nullable
+as String?,end: freezed == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
+as int?,start: freezed == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
+as int?,itunesid: freezed == itunesid ? _self.itunesid : itunesid // ignore: cast_nullable_to_non_nullable
+as int?,originalArtist: freezed == originalArtist ? _self.originalArtist : originalArtist // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$SongImplCopyWith<$Res> implements $SongCopyWith<$Res> {
-  factory _$$SongImplCopyWith(
-          _$SongImpl value, $Res Function(_$SongImpl) then) =
-      __$$SongImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String name,
-      String? art,
-      int? end,
-      int? start,
-      int? itunesid,
-      @JsonKey(name: 'original_artist') String? originalArtist});
 }
 
-/// @nodoc
-class __$$SongImplCopyWithImpl<$Res>
-    extends _$SongCopyWithImpl<$Res, _$SongImpl>
-    implements _$$SongImplCopyWith<$Res> {
-  __$$SongImplCopyWithImpl(_$SongImpl _value, $Res Function(_$SongImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of Song
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? art = freezed,
-    Object? end = freezed,
-    Object? start = freezed,
-    Object? itunesid = freezed,
-    Object? originalArtist = freezed,
-  }) {
-    return _then(_$SongImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      art: freezed == art
-          ? _value.art
-          : art // ignore: cast_nullable_to_non_nullable
-              as String?,
-      end: freezed == end
-          ? _value.end
-          : end // ignore: cast_nullable_to_non_nullable
-              as int?,
-      start: freezed == start
-          ? _value.start
-          : start // ignore: cast_nullable_to_non_nullable
-              as int?,
-      itunesid: freezed == itunesid
-          ? _value.itunesid
-          : itunesid // ignore: cast_nullable_to_non_nullable
-              as int?,
-      originalArtist: freezed == originalArtist
-          ? _value.originalArtist
-          : originalArtist // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Song].
+extension SongPatterns on Song {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Song value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Song() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Song value)  $default,){
+final _that = this;
+switch (_that) {
+case _Song():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Song value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Song() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String? art,  int? end,  int? start,  int? itunesid, @JsonKey(name: 'original_artist')  String? originalArtist)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Song() when $default != null:
+return $default(_that.name,_that.art,_that.end,_that.start,_that.itunesid,_that.originalArtist);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String? art,  int? end,  int? start,  int? itunesid, @JsonKey(name: 'original_artist')  String? originalArtist)  $default,) {final _that = this;
+switch (_that) {
+case _Song():
+return $default(_that.name,_that.art,_that.end,_that.start,_that.itunesid,_that.originalArtist);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String? art,  int? end,  int? start,  int? itunesid, @JsonKey(name: 'original_artist')  String? originalArtist)?  $default,) {final _that = this;
+switch (_that) {
+case _Song() when $default != null:
+return $default(_that.name,_that.art,_that.end,_that.start,_that.itunesid,_that.originalArtist);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SongImpl implements _Song {
-  const _$SongImpl(
-      {required this.name,
-      this.art,
-      this.end,
-      this.start,
-      this.itunesid,
-      @JsonKey(name: 'original_artist') this.originalArtist});
 
-  factory _$SongImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SongImplFromJson(json);
+class _Song implements Song {
+  const _Song({required this.name, this.art, this.end, this.start, this.itunesid, @JsonKey(name: 'original_artist') this.originalArtist});
+  factory _Song.fromJson(Map<String, dynamic> json) => _$SongFromJson(json);
 
-  @override
-  final String name;
-  @override
-  final String? art;
-  @override
-  final int? end;
-  @override
-  final int? start;
-  @override
-  final int? itunesid;
-  @override
-  @JsonKey(name: 'original_artist')
-  final String? originalArtist;
+@override final  String name;
+@override final  String? art;
+@override final  int? end;
+@override final  int? start;
+@override final  int? itunesid;
+@override@JsonKey(name: 'original_artist') final  String? originalArtist;
 
-  @override
-  String toString() {
-    return 'Song(name: $name, art: $art, end: $end, start: $start, itunesid: $itunesid, originalArtist: $originalArtist)';
-  }
+/// Create a copy of Song
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SongCopyWith<_Song> get copyWith => __$SongCopyWithImpl<_Song>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SongImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.art, art) || other.art == art) &&
-            (identical(other.end, end) || other.end == end) &&
-            (identical(other.start, start) || other.start == start) &&
-            (identical(other.itunesid, itunesid) ||
-                other.itunesid == itunesid) &&
-            (identical(other.originalArtist, originalArtist) ||
-                other.originalArtist == originalArtist));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, art, end, start, itunesid, originalArtist);
-
-  /// Create a copy of Song
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SongImplCopyWith<_$SongImpl> get copyWith =>
-      __$$SongImplCopyWithImpl<_$SongImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SongImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SongToJson(this, );
 }
 
-abstract class _Song implements Song {
-  const factory _Song(
-          {required final String name,
-          final String? art,
-          final int? end,
-          final int? start,
-          final int? itunesid,
-          @JsonKey(name: 'original_artist') final String? originalArtist}) =
-      _$SongImpl;
-
-  factory _Song.fromJson(Map<String, dynamic> json) = _$SongImpl.fromJson;
-
-  @override
-  String get name;
-  @override
-  String? get art;
-  @override
-  int? get end;
-  @override
-  int? get start;
-  @override
-  int? get itunesid;
-  @override
-  @JsonKey(name: 'original_artist')
-  String? get originalArtist;
-
-  /// Create a copy of Song
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SongImplCopyWith<_$SongImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Song&&(identical(other.name, name) || other.name == name)&&(identical(other.art, art) || other.art == art)&&(identical(other.end, end) || other.end == end)&&(identical(other.start, start) || other.start == start)&&(identical(other.itunesid, itunesid) || other.itunesid == itunesid)&&(identical(other.originalArtist, originalArtist) || other.originalArtist == originalArtist));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name,art,end,start,itunesid,originalArtist);
+
+@override
+String toString() {
+  return 'Song(name: $name, art: $art, end: $end, start: $start, itunesid: $itunesid, originalArtist: $originalArtist)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SongCopyWith<$Res> implements $SongCopyWith<$Res> {
+  factory _$SongCopyWith(_Song value, $Res Function(_Song) _then) = __$SongCopyWithImpl;
+@override @useResult
+$Res call({
+ String name, String? art, int? end, int? start, int? itunesid,@JsonKey(name: 'original_artist') String? originalArtist
+});
+
+
+
+
+}
+/// @nodoc
+class __$SongCopyWithImpl<$Res>
+    implements _$SongCopyWith<$Res> {
+  __$SongCopyWithImpl(this._self, this._then);
+
+  final _Song _self;
+  final $Res Function(_Song) _then;
+
+/// Create a copy of Song
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? art = freezed,Object? end = freezed,Object? start = freezed,Object? itunesid = freezed,Object? originalArtist = freezed,}) {
+  return _then(_Song(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,art: freezed == art ? _self.art : art // ignore: cast_nullable_to_non_nullable
+as String?,end: freezed == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
+as int?,start: freezed == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
+as int?,itunesid: freezed == itunesid ? _self.itunesid : itunesid // ignore: cast_nullable_to_non_nullable
+as int?,originalArtist: freezed == originalArtist ? _self.originalArtist : originalArtist // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

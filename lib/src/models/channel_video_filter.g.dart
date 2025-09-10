@@ -8,20 +8,11 @@ part of 'channel_video_filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$$ChannelVideoFilterImplToJson(
-    _$ChannelVideoFilterImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('include', concatIncludesList(instance.includes));
-  val['lang'] = concatLanguageListWithDefault(instance.languages);
-  val['limit'] = intToString(instance.limit);
-  val['offset'] = intToString(instance.offset);
-  val['paginated'] = paginatedToString(instance.paginated);
-  return val;
-}
+Map<String, dynamic> _$ChannelVideoFilterToJson(_ChannelVideoFilter instance) =>
+    <String, dynamic>{
+      'include': ?concatIncludesList(instance.includes),
+      'lang': concatLanguageListWithDefault(instance.languages),
+      'limit': intToString(instance.limit),
+      'offset': intToString(instance.offset),
+      'paginated': paginatedToString(instance.paginated),
+    };

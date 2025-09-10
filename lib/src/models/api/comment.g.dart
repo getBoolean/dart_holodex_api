@@ -8,24 +8,22 @@ part of 'comment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CommentImpl _$$CommentImplFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$CommentImpl',
-      json,
-      ($checkedConvert) {
-        final val = _$CommentImpl(
-          commentKey: $checkedConvert('comment_key', (v) => v as String),
-          videoId: $checkedConvert('video_id', (v) => v as String?),
-          message: $checkedConvert('message', (v) => v as String? ?? ''),
-        );
-        return val;
-      },
-      fieldKeyMap: const {'commentKey': 'comment_key', 'videoId': 'video_id'},
+_Comment _$CommentFromJson(Map<String, dynamic> json) => $checkedCreate(
+  '_Comment',
+  json,
+  ($checkedConvert) {
+    final val = _Comment(
+      commentKey: $checkedConvert('comment_key', (v) => v as String),
+      videoId: $checkedConvert('video_id', (v) => v as String?),
+      message: $checkedConvert('message', (v) => v as String? ?? ''),
     );
+    return val;
+  },
+  fieldKeyMap: const {'commentKey': 'comment_key', 'videoId': 'video_id'},
+);
 
-Map<String, dynamic> _$$CommentImplToJson(_$CommentImpl instance) =>
-    <String, dynamic>{
-      'comment_key': instance.commentKey,
-      'video_id': instance.videoId,
-      'message': instance.message,
-    };
+Map<String, dynamic> _$CommentToJson(_Comment instance) => <String, dynamic>{
+  'comment_key': instance.commentKey,
+  'video_id': instance.videoId,
+  'message': instance.message,
+};

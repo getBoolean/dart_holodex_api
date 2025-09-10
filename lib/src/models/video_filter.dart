@@ -15,7 +15,7 @@ part 'video_filter.g.dart';
 
 /// Filter the results returns by the Holodex API `/videos` endpoint
 @Freezed(fromJson: false, toJson: true)
-class VideoFilter with _$VideoFilter {
+abstract class VideoFilter with _$VideoFilter {
   const VideoFilter._();
 
   /// Filter the results returns by the Holodex API channel endpoints
@@ -44,9 +44,10 @@ class VideoFilter with _$VideoFilter {
 
     /// Number of maximum hours upcoming to get upcoming videos by (for rejecting waiting rooms that are two years out)
     @JsonKey(
-        name: 'max_upcoming_hours',
-        toJson: intToStringNullable,
-        includeIfNull: false)
+      name: 'max_upcoming_hours',
+      toJson: intToStringNullable,
+      includeIfNull: false,
+    )
     int? maxUpcomingHours,
 
     /// Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel
@@ -80,8 +81,6 @@ class VideoFilter with _$VideoFilter {
     @JsonKey(includeIfNull: false) String? topic,
 
     /// Filter by type of video, either clips or streams
-    @JsonKey(toJson: videoTypeToString, includeIfNull: false)
-    @JsonKey(includeIfNull: false)
-    VideoType? type,
+    @JsonKey(toJson: videoTypeToString, includeIfNull: false) VideoType? type,
   }) = _VideoFilter;
 }

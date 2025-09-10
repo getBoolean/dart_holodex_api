@@ -12,7 +12,7 @@ part 'channel.g.dart';
 
 /// A [Channel] class with information retrieved from Holodex.
 @freezed
-class Channel with _$Channel {
+abstract class Channel with _$Channel {
   const Channel._();
 
   /// Returns a new [Channel] instance.
@@ -55,15 +55,15 @@ class Channel with _$Channel {
 
   /// Converts this [Channel] instance to a [ChannelMin] instance.
   ChannelMin toChannelMin() => ChannelMin(
-        id: id,
-        name: name,
-        englishName: englishName,
-        type: type,
-        photo: photo,
-        organization: organization,
-        videoCount: videoCount,
-        subscriberCount: subscriberCount,
-        viewCount: viewCount,
-        clipCount: clipCount,
-      );
+    id: id,
+    name: name,
+    englishName: englishName,
+    type: type,
+    photo: photo,
+    organization: organization,
+    videoCount: videoCount,
+    subscriberCount: subscriberCount,
+    viewCount: viewCount,
+    clipCount: clipCount,
+  );
 }

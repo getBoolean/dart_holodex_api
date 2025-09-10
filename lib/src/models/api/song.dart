@@ -7,7 +7,7 @@ part 'song.g.dart';
 
 /// A [Song] class with information retrieved from Holodex.
 @freezed
-class Song with _$Song {
+abstract class Song with _$Song {
   /// Returns a new [Song] instance.
   const factory Song({
     required String name,

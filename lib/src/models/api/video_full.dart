@@ -20,7 +20,7 @@ VideoType? _parseVideoType(String? type) {
 /// An extended [Video] class with [comments], [sources], [refers],
 /// [simulcasts], [mentions], and [songs] fields.
 @freezed
-class VideoFull with _$VideoFull {
+abstract class VideoFull with _$VideoFull {
   const VideoFull._();
 
   /// Returns a new [VideoFull] instance.

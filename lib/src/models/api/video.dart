@@ -9,9 +9,8 @@ part 'video.freezed.dart';
 part 'video.g.dart';
 
 @freezed
-
 /// A [Video] class with information retrieved from Holodex.
-class Video with _$Video {
+abstract class Video with _$Video {
   const Video._();
 
   /// Returns a new [Video] instance.
@@ -59,22 +58,22 @@ class Video with _$Video {
 
   /// Converts this [Video] instance to a [VideoFull] instance.
   VideoFull toVideoFull() => VideoFull(
-        id: id,
-        title: title,
-        type: type,
-        topicId: topicId,
-        publishedAt: publishedAt,
-        availableAt: availableAt,
-        duration: duration,
-        status: status,
-        startScheduled: startScheduled,
-        startActual: startActual,
-        endActual: endActual,
-        liveViewers: liveViewers,
-        description: description,
-        songcount: songcount,
-        channelId: channelId,
-        channel: channel,
-        language: language,
-      );
+    id: id,
+    title: title,
+    type: type,
+    topicId: topicId,
+    publishedAt: publishedAt,
+    availableAt: availableAt,
+    duration: duration,
+    status: status,
+    startScheduled: startScheduled,
+    startActual: startActual,
+    endActual: endActual,
+    liveViewers: liveViewers,
+    description: description,
+    songcount: songcount,
+    channelId: channelId,
+    channel: channel,
+    language: language,
+  );
 }

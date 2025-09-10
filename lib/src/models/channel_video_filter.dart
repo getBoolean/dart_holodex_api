@@ -10,7 +10,7 @@ part 'channel_video_filter.g.dart';
 
 /// Filter the results returns by the Holodex API channel videos endpoints
 @Freezed(fromJson: false, toJson: true)
-class ChannelVideoFilter with _$ChannelVideoFilter {
+abstract class ChannelVideoFilter with _$ChannelVideoFilter {
   const ChannelVideoFilter._();
 
   /// Used to filter the results returns by the Holodex API's `channels` endpoints

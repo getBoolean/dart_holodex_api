@@ -13,7 +13,7 @@ part 'channel_filter.g.dart';
 
 /// Filter the results returns by the Holodex API channel endpoints
 @Freezed(fromJson: false, toJson: true)
-class ChannelFilter with _$ChannelFilter {
+abstract class ChannelFilter with _$ChannelFilter {
   const ChannelFilter._();
 
   /// Filter the results returns by the Holodex API channel endpoints

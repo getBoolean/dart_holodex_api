@@ -8,7 +8,7 @@ part of 'search_filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$$SearchFilterImplToJson(_$SearchFilterImpl instance) =>
+Map<String, dynamic> _$SearchFilterToJson(_SearchFilter instance) =>
     <String, dynamic>{
       'sort': searchSortToString(instance.sort),
       'lang': languageListToStringList(instance.languages),

@@ -8,30 +8,24 @@ part of 'song.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SongImpl _$$SongImplFromJson(Map<String, dynamic> json) => $checkedCreate(
-      r'_$SongImpl',
-      json,
-      ($checkedConvert) {
-        final val = _$SongImpl(
-          name: $checkedConvert('name', (v) => v as String),
-          art: $checkedConvert('art', (v) => v as String?),
-          end: $checkedConvert('end', (v) => (v as num?)?.toInt()),
-          start: $checkedConvert('start', (v) => (v as num?)?.toInt()),
-          itunesid: $checkedConvert('itunesid', (v) => (v as num?)?.toInt()),
-          originalArtist:
-              $checkedConvert('original_artist', (v) => v as String?),
-        );
-        return val;
-      },
-      fieldKeyMap: const {'originalArtist': 'original_artist'},
-    );
+_Song _$SongFromJson(Map<String, dynamic> json) =>
+    $checkedCreate('_Song', json, ($checkedConvert) {
+      final val = _Song(
+        name: $checkedConvert('name', (v) => v as String),
+        art: $checkedConvert('art', (v) => v as String?),
+        end: $checkedConvert('end', (v) => (v as num?)?.toInt()),
+        start: $checkedConvert('start', (v) => (v as num?)?.toInt()),
+        itunesid: $checkedConvert('itunesid', (v) => (v as num?)?.toInt()),
+        originalArtist: $checkedConvert('original_artist', (v) => v as String?),
+      );
+      return val;
+    }, fieldKeyMap: const {'originalArtist': 'original_artist'});
 
-Map<String, dynamic> _$$SongImplToJson(_$SongImpl instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'art': instance.art,
-      'end': instance.end,
-      'start': instance.start,
-      'itunesid': instance.itunesid,
-      'original_artist': instance.originalArtist,
-    };
+Map<String, dynamic> _$SongToJson(_Song instance) => <String, dynamic>{
+  'name': instance.name,
+  'art': instance.art,
+  'end': instance.end,
+  'start': instance.start,
+  'itunesid': instance.itunesid,
+  'original_artist': instance.originalArtist,
+};
